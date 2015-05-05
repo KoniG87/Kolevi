@@ -13,4 +13,14 @@ function validDate($date, $format = 'Y-m-d'){
     return $d && $d->format($format) == $date;
 }
 
+function getDecisionText($decision){
+	$text = '';
+	if ($decision){
+		$text = 'Igen';
+	}else{
+		$text = 'Nem';
+	}
+	
+	return $text;
+}
 ?>

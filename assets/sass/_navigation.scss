@@ -1,0 +1,382 @@
+/*NAVIGATION*/
+
+.sitckyNav {
+	width:100%;
+	height:6rem;
+	margin: 0; padding-top:1rem;
+	width:100%;
+	position: absolute;
+	text-align:center;
+	z-index:999;
+	display: none;
+	@include breakpoint(tablet){
+		display: block;
+	}
+	.row{
+		a{
+			color:$gray;
+			position:relative;
+			padding:0.5rem;
+			text-decoration:none;
+			text-align:center;
+			font-family: $danielreg;
+			font-size: 90%;
+			/*display: inline-block;*/
+			@extend .left;
+			width: 14.285714285714285714285714285714%;
+			width: calc(100% / 7);
+			@include perspective(200px);
+			&:hover{
+				color:$white;
+			}
+				.diszvonal{
+					height: 0.25rem;
+				}
+		}
+			
+		}
+
+		.icon-logo{
+			  width: 6rem;
+			  height: 6rem;
+			  position: absolute;
+			  left: 1rem;
+			  top: 0;
+			  display: none;
+			  @include breakpoint(bigscreen){
+				display: block;
+			  }
+		}
+	}
+
+.sticky-fold{
+	position: absolute;
+	width: 84%;
+	margin:0 8%;
+	font-family:$danielbld;
+	font-size: 90%;
+	color:$black;
+	left:0;
+	bottom:1.1rem;
+	padding-top:0rem;
+	height: 0px;
+	
+	@extend .paper-bg-darker;
+	@include transition(all 0.2s);
+	
+	@include transform-origin(bottom);
+
+		@include rotate-3d(0,0,0);
+		box-shadow:inset 0 0 15px -10px rgba(0,0,0,0.4);
+}
+.fold-out{
+	padding-top:0.7rem;
+	height: 2.5rem;
+	@include transition(all 0.5s ease);
+
+	&:hover{
+		@include rotate-3d(-15deg,0,0);
+		box-shadow:inset 0 -20px 20px -15px rgba(0,0,0,0.4);
+	}
+}
+.fixedattop {
+  	position: fixed;
+  	top: 0px;
+	margin-left:0px;
+	width:100%;
+}
+.backToTop{
+	position: absolute;
+	right:0.5rem;
+	top:6rem;
+	margin:auto;
+	width: 2.5rem;
+	height: 2.5rem;
+	cursor:pointer;
+	@include breakpoint(laptop){
+		width: 4rem;
+		height: 4rem;
+	}
+}
+.nav-info{
+	position: absolute;
+	top: 0.2rem;
+	width: 3rem;
+	height: 1rem;
+	right: 6.5rem;
+	border-right:1px solid $darkgray;
+	font-family: $danielreg;
+	font-size: 90%;
+	
+
+
+	@include breakpoint(bigscreen){
+		border-right:1px solid transparent;
+		top: 0;
+		width: 4rem;
+		height: 100%;
+		right: 7rem;
+	}
+	a{
+		padding: 0;
+		width: 100%;
+		text-decoration: none;
+	}
+	span{
+		color: $darkgray;
+		font-size: 90%;
+		&:hover{
+			color:$white;
+		}
+		@include breakpoint(bigscreen){
+		display: none;
+	}
+	}
+	svg{
+		display: none;
+		margin-top: 0.6rem;
+		width: 4.5rem;
+		height: 4.5rem;
+			@include breakpoint(bigscreen){
+				display: block;
+			}
+	}
+
+}
+.langselect-container{
+	position: absolute;
+	right: 0;
+	width: 6rem;
+	height: 1.5rem;
+	top: 0;
+	font-family:$danielbld;
+	@include breakpoint(bigscreen){
+		width: 5rem;
+		right: 1rem;
+		height: 100%;
+	}
+	.eng, .hun{
+		margin: 0.2rem;
+		color:$darkgray;
+		cursor: pointer;
+		width: 50%;
+		position: absolute;
+		font-size:70%;
+		text-align: center;
+		
+		@include breakpoint(bigscreen){
+			font-size: 85%;
+			height: 1.6rem;
+		    margin: 2.45rem 0;
+		    color:$darkgray;
+		}
+	}
+	.hun{
+		
+		right:0.1rem;
+	}
+	.eng{
+		left:-0.1rem;
+		span{
+			color:$white !important;
+			@include breakpoint(bigscreen){
+				display: none;
+			}
+		}
+	}
+}
+.langselect{
+	@include abs-pos(0,0,initial,initial);
+	width: 5.3rem;
+	height: 100%;
+	display: none;
+	@include breakpoint(bigscreen){
+		display: block;
+	}
+}
+.lang-selected{
+	color:$white !important;
+	@include breakpoint(bigscreen){
+		color: $black !important;
+	}
+}
+
+
+/*MOBIL*/
+
+#trigger{
+	@include breakpoint(tablet){
+		display: none;
+	}
+}
+
+/*NAVICON STYLES*/
+.navicon-button {
+    top:0.5rem;																
+    right:0.5rem;
+    display:block;
+    margin:0 auto;
+    transition: 0.6s;
+    cursor:pointer;
+    user-select:none;
+    opacity:1;
+    z-index:9999;
+    position:fixed;
+    padding: 20px 10px;
+    /*background-color: $black;*/
+}
+.navicon-button .navicon:before, .navicon-button .navicon:after {transition: 0.25s;}
+.navicon-button:hover .navicon:before, .navicon-button:hover .navicon:after, .navicon:hover {transition: 0.25s;opacity: 1;}
+.navicon {
+    position: relative;
+    width: 30px;
+    height: .2rem;
+    background: $white;
+    @include transition(0.3s);
+}
+.navicon:after, .navicon:before {
+    display: block;
+    content: "";
+    height: .2rem;
+    width: 30px;
+    background: $white;
+    position: absolute;
+    z-index: -1;
+    @include transition(0.3s 0.25s);
+}
+.navicon:after {top: -.5rem;}
+.navicon:before {top: .5rem;}
+.open-mobile-nav:not(.steps) .navicon:before,
+.open-mobile-nav:not(.steps) .navicon:after {top: 0 !important;}
+.open-mobile-nav .navicon:before,
+.open-mobile-nav .navicon:after {transition: 0.5s;opacity:1;}
+.open-mobile-nav {}
+.open-mobile-nav.x .navicon {background: transparent;}
+.open-mobile-nav.x .navicon:after {-webkit-transform: rotate(45deg);transform: rotate(45deg);}
+.open-mobile-nav.x .navicon:before {-webkit-transform: rotate(-45deg);transform: rotate(-45deg);}
+
+.open-mobile-nav.navicon-button{ right: 288px;}
+#wrapper.push-content{
+	left:-280px;
+	
+}
+.push-content .side-nav{
+	right:0;
+	
+}
+.push-content .side-nav-inner{
+	@include rotate-3d(0,0,0);
+	/*box-shadow: inset 80px 0 0 -80px rgba(0,0,0,0.4);*/
+	/*box-shadow: inset -300px 0 160px -300px rgba(0,0,0,0.2);*/
+}
+.no-scroll{
+	  overflow-y: hidden!important;
+  position: static;
+}
+.side-nav{
+
+position: fixed;
+top: 0;
+right: -280px;
+width: 280px;
+height: 100%;
+  z-index: 999;
+   background-color: #555;
+  @include perspective(800px);
+  @include transition(0.6s);
+
+  /*@extend .paper-bg;*/
+ 
+  	@include breakpoint(tablet){
+		display: none;
+	}
+
+}
+header{
+    height: 4rem;
+    width: 100%;
+    background-color: $black;
+    /*box-shadow: 0 10px 10px -5px rgba(0,0,0,0.2);*/
+    position: relative;
+    z-index: 999;
+    @include breakpoint(mobile){
+        /*height: 8rem;*/
+    }
+    @include breakpoint(tablet){
+        display: none;
+    }
+/*    h1{
+      color: white;
+      margin-left: 6rem;
+      letter-spacing: 2px;
+      display: inline-block;
+      font-size: 100%;
+      font-family: $danielreg;
+      line-height: 4rem;
+          @include breakpoint(tabtop){
+       font-size: 160%;
+    }
+    }*/
+    .icon-logo{
+      width: 4rem;
+      height: 4rem;
+      position: absolute;
+      left: 1rem;
+      top: 0;
+}
+.nav-info{
+        height: 1.5rem;
+        top:1.2rem;
+    a{
+        text-decoration: none;
+        font-family: $danielbld;
+    }
+    
+}
+.langselect-container{
+        top: 1.4rem;
+      
+}
+
+
+
+}
+.side-nav-inner{
+  @include transform-origin(left);
+  @include rotate-3d(0,90deg,0);
+  @extend .paper-bg-darker;
+  @include transition(0.6s);
+	/*background-color: rgba(183, 168, 147, 0.2);*/
+	/*box-shadow: inset -300px 0 160px 160px rgba(0,0,0,0.5);*/
+	width: 100%;
+	height: 100%;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	overflow: auto;
+
+	ul{
+		text-align: center;
+		padding:1rem  ;
+		position: relative;
+		svg{
+			width: 100%;
+			height: 8rem;
+		}
+		a{
+		text-decoration:none;
+		color:#666;
+		letter-spacing: 2px;
+		font-size: 85%;
+			&:hover{
+				color:$black;
+    		}
+    		li{
+    			padding:0.2rem;
+    		}
+		}
+	}
+
+}
+

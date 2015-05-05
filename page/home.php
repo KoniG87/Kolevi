@@ -1,22 +1,8 @@
 <?php
-/*
-<h1>Kőleves</h1>
-<nav>
-    <ul>
-        <li>Vendéglő</li>
-        <li>Kert</li>
-        <li>Delicates</li>
-        <li>Apartman</li>
-    </ul>
-</nav>
-<hr/>
-<section>
-    Content
-</section>
-*/
 
+include('core/template/landing.php');
 
-$menu = new Menu(null);
-$menu->drawNapiMenu();
-
+if (in_array($page, $frameRequired) && $pageExists){
+	$app->drawNav(false);
+}
 ?>

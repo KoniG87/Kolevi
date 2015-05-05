@@ -14,9 +14,16 @@
 				'sub'	=> '1',
 				'build'	=> '0'
 			),
-			'dbParams' => array(
+/*			'dbParams' => array(
 				'host' 		=> '127.0.0.1',
-				'name' 		=> 'halu_koleves',
+				'name' 		=> 'kolevesvendeglo_hu',
+				'userName' 	=> 'kolevesvendeglo',
+				'userPass' 	=> 'EA55kTCugILhl',
+				'prefix'	=> ''
+			),*/
+			'dbParams' => array(
+				'host' 		=> 'localhost',
+				'name' 		=> 'kolevesvendeglo_hu',
 				'userName' 	=> 'root',
 				'userPass' 	=> '',
 				'prefix'	=> ''
@@ -56,6 +63,7 @@
 	
 	$app = new Application($defaultParameters['application']);
 	
+	include('core/pageConfig.php');
 	
 	if (!$app->isUserLogged()){
 		$_GET['page'] = 'login';

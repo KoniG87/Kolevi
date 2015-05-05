@@ -1,0 +1,975 @@
+.no-pointing{
+  pointer-events:none;
+}
+/*.hovInt div{
+  @extend .no-pointing;
+}*/
+.info-black{
+  display: none;
+}
+.landing-container{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: none;
+  @extend .paper-bg-darker;
+    @include breakpoint(tablet){
+    display: block;
+  }
+    header{
+      background-color: transparent;
+      display: none;
+      /*height: 20rem;*/
+      @include breakpoint(tablet){
+        display: block;
+        width: 93%;
+        margin-top:4rem;
+        z-index: 0;
+      }
+      .icon-logo{
+        width: 7rem;
+        height: 7rem;
+        right: 0.5rem;
+        top: 2rem;
+
+        left:initial;
+        @include breakpoint(bigscreen){
+          width: 10rem;
+          height: 10rem;
+          right: 0.5rem;
+          top: 0.5rem;
+        }
+      }
+      .nav-info{
+        top: 0.4rem;
+        
+        @include breakpoint(bigscreen){
+        top:8.5rem;
+        }
+      }
+      .langselect-container{
+        width: 6rem;
+        top:-1.5rem;
+        display: none;
+        height: 5.3rem;
+        
+        @include breakpoint(bigscreen){
+          top:8.7rem;
+          width: 5.3rem;
+        }
+      }
+      .eng, .hun{
+        margin:0;
+        margin-top:2.1rem;
+      }
+      .lang-selected,
+      .langselect-container .eng span{
+        color:$black !important;
+      }
+      .info-black{
+        display: block;
+      }
+      .info-white{
+        display: none;
+      }
+    }
+}
+
+
+
+.barkas-container{
+  height: auto;
+  min-width: 400px;
+  width: 70%;
+  position: absolute;
+  bottom: 0;
+  right:-250px;
+/*  pointer-events:none;
+*/  @include breakpoint(laptop){
+   /* right: 2rem;*/
+    bottom: 2rem;
+  }
+}
+.barkas{
+  width: 400px;
+  min-height:272px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left:200px;
+  top:auto !important;
+  cursor: pointer;
+
+  ul{
+   /* z-index: -1;*/
+    @include perspective(400px);
+      li{
+        padding: 1rem;
+        height: 3rem;
+        width:97.5%;
+        margin:-3px 1.25%;
+        a{
+        text-decoration: none;
+        color:$black;
+        position: relative;
+        padding:0.4rem;
+        &:hover{
+          color:$darkgray;
+        }
+        &:after{
+          content:"";
+          position: absolute;
+          width: 1rem;
+          height: 1rem;
+          background-image: url(../img/barkas_hir-nyil.png);
+          background-repeat: no-repeat;
+          background-size: cover;
+          margin-top:7px;
+        }
+        }
+
+      }
+    li:nth-child(odd){
+      /*@extend .paper-bg;*/
+      background-color: #eee;
+      }
+    li:nth-child(even){
+      /*@extend .paper-bg-darker;*/
+      background-color: #ddd;
+      }
+  }
+}
+.barkas-open{
+  margin-bottom:0rem !important;
+  li{
+      &:last-of-type{
+        margin-bottom:-5px !important;
+      }
+    }
+}
+.barkas-top{
+  width: 100%;
+  height: 177px;
+  background-image:url(../img/barkas_top.png);
+}
+
+.barkas-bottom{
+  width: 100%;
+  height: 95px;
+  background-image:url(../img/barkas_bottom.png);
+  margin-bottom: 3px;
+}
+
+.barkas-cover{
+position: absolute;
+bottom: 0;
+z-index: 999;
+
+}
+
+
+.illustration-container{
+  background-image:url(../img/landing_bg.png);
+  @include abs-pos(0,0,0,0);
+  width: 986px;
+  height: 489px;
+  margin:auto;
+  @include perspective(1000px);
+  >div{
+    position: absolute;
+/*    -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+     transform-style: preserve-3d;*/
+/*	    -webkit-backface-visibility: hidden;
+	   -moz-backface-visibility: hidden;*/
+    /*box-shadow:0 0px 20px rgba(0,0,0,.3);*/
+
+  /*opacity:0.7;*/
+    /*border:1px solid rgba(255, 0, 0, 0.5);*/
+    div{
+/*      -webkit-backface-visibility: hidden;
+     -moz-backface-visibility: hidden;*/
+/*     -webkit-transform-style: flat;
+     -moz-transform-style: flat;*/
+
+    }
+  }
+
+}
+.allo{
+/*box-shadow:0 0 20px rgba(0,0,0,.4) !important;*/
+}
+div[class^="delic-"],
+div[class^="kert-"],
+div[class^="vend-"],
+div[class^="apartman-"]
+{
+  position: absolute;
+}
+.hoverEffect{
+  @include transform-origin(bottom);
+}
+.vendeglo{
+    left:0;
+    bottom:0;
+    width: 495px;
+    height: 296px;
+    /*@include perspective(2000px);*/
+  .vend-fa{
+    top:-40px;
+    left:220px;
+    width: 146px;
+    height: 251px;
+    background-image:url(../img/fa.png);
+    
+  }
+/*  .vend-frontW{
+    width: 495px;
+    height: 296px;
+    bottom:0;
+    left:0;
+    background-image: url(../img/vend_frontW.png);
+  }*/
+  .vend-front{
+    width: 495px;
+    height: 296px;
+    bottom:0;
+    left:0;
+    @include transform-origin(bottom);
+
+     .vend-front-front{
+    background-image:url(../img/vend_front.png);
+     
+     background-size: cover;
+     background-repeat: no-repeat;
+     width: 100%;
+      height: 100%;
+      position: absolute;
+      bottom:0;
+     }
+/*    &:hover{
+transform: rotateX(-130deg) rotateY(0deg) rotateZ(0deg) perspective(15000px);
+
+    }*/
+  }
+  .vend-kerites-front-left{
+    width: 129px;
+    height: 96px;
+    background-image: url(../img/kerites_front-left.png);
+    right: -125px;
+    bottom: -5px;
+  }
+  .vend-bokor-kutya{
+    width: 101px;
+    height: 115px;
+    background-image: url(../img/bokor_kutya.png);
+    right: -165px;
+    bottom: -8px;
+  }
+}
+
+div[class^="vend-emberke"]{
+  width: 90px;
+  height: 72px;
+  background-image:url(../img/vend_emberkek.png);
+  background-repeat: no-repeat;
+}
+
+.vend-emberke1{
+  left:28px;
+  top: 94px;
+  /*background-position: -28px -94px;*/
+  background-position: -67px -94px; 
+}
+.vend-emberke2{
+  left:180px;
+  top: 94px;
+  /*background-position: -180px -94px;*/
+  background-position: -215px -94px;
+}
+.vend-emberke3{
+  left:405px;
+  top: 94px;
+  /*background-position: -405px -94px;*/
+  background-position: -441px -94px;
+}
+.vend-emberke4{
+  left:105px;
+  top: 183px;
+  /*background-position: -105px -183px;*/
+  background-position: -143px -183px;
+}
+.vend-emberke5{
+  left:251px;
+  top: 183px;
+  /*background-position: -251px -183px;*/
+  background-position: -285px -183px;
+}
+
+.vend-kihuzo{
+  width:180px;
+  height:210px;
+  
+
+  background-image:url(../img/vend_kihuzo.png);
+  right: 8px;
+  /*margin:auto 0;*/
+  /*bottom:0;*/
+  top:2rem;
+  z-index:-1 !important;
+    nav{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        padding:1.2rem 2rem;
+        a{
+          text-decoration: none;
+          color:#444;
+          &:hover{
+            color:#999;
+          }
+        }
+    }
+    li{
+      height:24px;
+      width: 100%;
+      text-align: right;
+      font-size: 88%;
+      color:$darkgray;
+      &:hover{
+        color:$black;
+      }
+    }
+}
+.vend-kihuzo-ful{
+  width: 140px;
+  height: 140px;
+  background-image:url(../img/vend-kihuzo-ful.png);
+  position: absolute;
+  background-repeat: no-repeat;
+  right:-140px;
+  top:37px;
+    .icon{
+      width: 100px;
+      height: 100px;
+      margin-left: 32px;
+      margin-top:10px;
+    }
+}
+.delicates{
+    top:0;
+    width:287px;
+    height: 450px;
+    .delic-side{
+    left: 0;
+    top:0;
+    width: 287px;
+    height: 450px;
+    background-image: url(../img/delic_side.png);
+    }
+    .delic-kemeny{
+      bottom: 125px;
+      /*bottom: 250px;*/
+      left: 10px;
+      width: 69px;
+      height: 305px;
+     
+    }
+    .delic-kemeny-kemeny{
+      width: 69px;
+      height: 305px;
+      background-image:url(../img/kemeny.png);
+    }
+/*    .delic-kihuzo-container{
+      width: 0;
+      height: 200px;
+      left: 55px;
+      top:-80px;
+      top:20px;
+    }
+    .delic-mask{
+      max-width: 180px;
+      height: 200px;
+      overflow: hidden;
+      position: relative !important;
+
+    }*/
+
+    .delic-kihuzo{
+      width:151px;
+      height:315px;
+    -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+      background-image:url(../img/delic_kihuzo2.png);
+      background-size: cover;
+      left: 0;
+      /*margin:auto 0;*/
+      /*bottom:0;*/
+      top:-15px;
+        nav{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            padding: 10rem 1.5rem 7rem 3.5rem;
+            ul{
+              @include rotate(48);
+              margin:0.3rem 0 0 .7rem;
+            }
+            a{
+              text-decoration: none;
+              color:#444;
+
+              &:hover{
+                color:#999;
+              }
+            }
+        }
+        li{
+          height:24px;
+          width: 100%;
+          text-align: right;
+          font-size: 70%;
+          color:$darkgray;
+          &:hover{
+            color:$black;
+          }
+        }
+    }
+    .delic-kihuzo-ful{
+      width: 110px;
+      height: 110px;
+      position: absolute;
+      left:0;
+      top:0;
+        .icon{
+          width: 90px;
+          height: 90px;
+          margin-left: 60px;
+          margin-top: -10px;
+        }
+    }
+
+    .delic-front{
+      left: 0;
+      top:0;
+      width: 287px;
+      height: 450px;
+      background-image:url(../img/delic_front.png);
+    }
+    .delic-fogaskerek{
+      width: 121px;
+      height: 121px;
+      top:160px;
+      left: -30px;
+      @include transform-origin(center);
+      background-image: url(../img/fogaskerek.png);
+    }
+}
+
+
+.apartman{
+  top:-3px;
+    width: 351px;
+    height: 238px;
+    left:215px;
+  .apartman-front{
+    background-image:url(../img/apartman_front.png);
+    width: 351px;
+    height: 238px;
+  }
+  .apartman-front-left{
+    width: 351px;
+    height: 238px;
+    background-image:url(../img/apartman_front-left.png);
+  }
+  div[class^="apartman-emberke"]{
+    background-image:url(../img/apartman_emberek.png);
+    background-repeat: no-repeat;
+  }
+  .apartman-emberke1{
+    /*background-position: -28px -54px;*/
+    background-position: -28px 0;
+    left: 267px;
+    top:17px;
+    width: 50px;
+    height: 50px;
+  }
+  .apartman-emberke2{
+    /*background-position: -76px -53px;*/
+    background-position: -76px 6px;
+    left:264px;
+    top:120px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .apartman-kihuzo-container{
+    width: 166px;
+    height: 166px;
+    @include transform-origin(center);
+    left: 8px;
+    top: 0;
+  }
+  .apartman-kihuzo{
+    width: 130px;
+    height: 236px;
+    top: 0;
+    left:80px;
+    background-image:url(../img/apartman_kihuzo2.png);
+      nav{
+        position: absolute;
+
+        left: 0;
+        bottom: 0;
+        padding: 1rem;
+        padding-bottom: 5rem;
+        /*@include rotate(90);*/
+          /*padding: 2rem 3.5rem 2.5rem 1rem;*/
+        a{
+          text-decoration: none;
+          color:#444;
+          &:hover{
+            color:#999;
+          }
+        }
+    }
+    li{
+      height:24px;
+      width: 100%;
+      text-align: center;
+      font-size: 100%;
+      color:$darkgray;
+      &:hover{
+        color:$black;
+      }
+    }
+  }
+.apartman-kihuzo-ful{
+  width: 90px;
+  height: 90px;
+  left:132px;
+  top: 10px;
+    .icon{
+      width: 80px;
+      height: 80px;
+      margin-left: -130px;
+      margin-top:-10px;
+    }
+
+}
+
+}
+
+
+
+
+
+
+
+.kert{
+   /*border: 1px solid rgba(0,255,0,.5);*/
+   width: 300px;
+   height: 250px;
+  right: 100px;
+  bottom:50px;
+
+  .kert-fa-villa{
+    width: 163px;
+    height: 278px;
+    background-image: url(../img/fa_villa.png);
+    top: -180px;
+    left: -50px;
+  }
+  .kert-kerites-side{
+    width: 119px;
+    height: 258px;
+    background-image: url(../img/kerites-side.png);
+    right: -101px;
+    bottom: -27px;
+
+  }
+  .kert-kerites-top{
+    width: 335px;
+    height: 87px;
+    background-image: url(../img/kerites_top.png);
+    top: 15px;
+    right: 0;
+  }
+  .kert-bokor-sima{
+    width: 121px;
+    height: 105px;
+    background-image: url(../img/bokor_sima.png);
+    left: -40px;
+    top: 5px;
+  }
+  .kert-bokor-vodor{
+    width: 90px;
+    height: 118px;
+    background-image: url(../img/bokor_vodor.png);
+    right: 0px;
+    top: 10px;
+  }
+  .kert-bokor-sima2{
+    width: 98px;
+    height: 85px;
+    background-image: url(../img/bokor_sima2.png);
+    right: -36px;
+    bottom: 3px;
+  }
+  .kert-kerites-front-right{
+    width: 252px;
+    height: 96px;
+    background-image: url(../img/kerites_front-right.png);
+    bottom: -55px;
+    right: -106px;
+  }
+
+  .kert-viragok{
+    width: 400px;
+    height: 166px;
+    right: -106px;
+    bottom: -56px;
+  }
+  .kert-kihuzo-cover{
+    width: 400px;
+    height: 166px;
+    background-image:url(../img/landing_bg.png);
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    
+  }
+.kert-emberek-cover{
+  width: 400px;
+  height: 100px;
+  background-image:url(../img/landing_bg.png);
+  background-repeat: no-repeat;
+  background-position: -292px -394px;
+  bottom: 4px;
+  right: 300px;
+  pointer-events:none;
+  &:after{
+    content: "";
+    position: absolute;
+    bottom:96px;
+    width: 100%;
+    height: 5px;
+    background-image:url(../img/vagas.png);
+    background-size:100% 5px;
+    background-repeat:no-repeat;
+  }
+}
+
+.kert-emberek{
+  width: 240px;
+  height: 260px;
+  bottom:15px;
+  right: 380px;
+  pointer-events:none;
+}
+.kert-asztal{
+  width: 80px;
+  height: 141px;
+  background-image:url(../img/kert_asztal.png);
+  bottom:80px;
+  left:75px;
+ /* @include rotate-3d(30deg,0,0);*/
+  @include transform-origin(bottom);
+}
+.kert-fiu,
+.kert-lany{
+  height: 100px;
+  width: 167px;
+}
+.kert-fiu{
+  background-image:url(../img/kert_fiu.png);
+  left:-70px;
+  bottom:-10px;
+  @include transform-origin(top right);
+  /*@include rotate-3d(0,0,-90deg);*/
+}
+.kert-lany{
+  background-image: url(../img/kert_lany.png);
+  right: -70px;
+  bottom:-10px;
+  @include transform-origin(top left);
+  /*@include rotate-3d(0,0,90deg);*/
+}
+
+div[class^="kert-kisvirag"]{
+  width: 55px;
+  height: 125px;
+  background-image:url(../img/kert_kisviragok.png);
+  background-repeat: no-repeat;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.5);
+  &:after{
+    content: "";
+    position: absolute;
+    bottom:-2px;
+    height: 5px;
+    width: 100%;
+    background-image:url(../img/vagas.png);
+    background-size:contain;
+    background-repeat:no-repeat;
+  }
+}
+.kert-kisvirag1{
+  right: 162px;
+  bottom:77px;
+  background-position: 0 125px;
+}
+.kert-kisvirag2{
+  right: 300px;
+  bottom:50px;
+  background-position: -55px 125px;
+}
+.kert-kisvirag3{
+  right: 304px;
+  bottom:73px;
+  background-position: -110px 125px;
+}
+.kert-kisvirag4{
+  right: 340px;
+  bottom:140px;
+  
+  background-position: -389px 125px;
+}
+.kert-kisvirag5{
+  right: 391px;
+  bottom: 44px;
+  background-position: -220px 125px;
+}
+.kert-kisvirag6{
+  right: 600px;
+  bottom:25px;
+  background-position: -275px 125px;
+}
+.kert-kisvirag7{
+  right: 504px;
+  bottom:45px;
+  background-position: -330px 125px;
+}
+.kert-kisvirag8{
+  right: 470px;
+  bottom:220px;
+  background-position: -165px 125px;
+/*   &:after{
+    bottom:20px !important;
+  } */
+}
+.kert-kisvirag9{
+  right: 567px;
+  bottom:134px;
+  background-position: -440px 125px;
+}
+.kert-kisvirag10{
+  right: 618px;
+  bottom:175px;
+  background-position: -495px 125px;
+}
+.kert-kisvirag11{
+  right: 630px;
+  bottom:66px;
+  background-position: -550px 125px;
+}
+
+
+.kert-kihuzo{
+  width: 187px;
+  height: 160px;
+  top: 0;
+  left: 50px;
+  background-image:url(../img/kert_kihuzo.png);
+/*  box-shadow: inset 0 -63px 50px -50px rgba(0,0,0,0.9);*/
+      nav{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+          padding: 2rem;
+        a{
+          text-decoration: none;
+          color:#444;
+          &:hover{
+            color:#999;
+          }
+        }
+    }
+    li{
+      height:24px;
+      width: 100%;
+      text-align: center;
+      font-size: 100%;
+      color:$darkgray;
+      &:hover{
+        color:$black;
+      }
+    }
+}
+
+.kert-kihuzo-ful{
+
+  width: 187px;
+  height: 130px;
+
+  background-image:url(../img/kert_kihuzo_ful.png);
+  position: absolute;
+  top: -130px;
+  left: -1px;
+
+    .icon{
+      width: 100px;
+      height: 100px;
+      margin-left: 52px;
+      margin-top:5px;
+    }
+
+}
+
+}
+
+
+/*MOBILE*/
+
+.mobile-landing-container{
+  width: 100%;
+  position: relative;
+  overflow:hidden;
+  background-image:url(../img/mob_landing-bg.png);
+  @include breakpoint(tablet){
+    display: none;
+  }
+  div[class^="mobile-"]{
+    position: absolute;
+    overflow: visible;
+    ul{
+      position: absolute;
+      a{
+        text-decoration: none;
+        color:#555;
+      }
+    }
+  }
+}
+.mobile-deliapart{
+  top: 1%;
+  @include breakpoint(tabtop){
+    top:10%;
+  }
+}
+.mobile-apartman{
+  width: 391px;
+  height: 158px;
+  background-image:url(../img/mob_apartman.png);
+  top: 12px;
+  left:-95px;
+      ul{
+  width: 110px;
+  height: 100px;
+  top: 40px;
+  left: 82px;
+  }
+  @include breakpoint(mobile){
+  }
+}
+.mobile-kerites{
+  width: 281px;
+  height: 76px;
+  background-image:url(../img/mob_kerites.png);
+  bottom: 0;
+  right: -275px;
+}
+.mobile-villafa{
+  width:125px ;
+  height: 214px;
+  background-image:url(../img/mob_villafa.png);
+  right: -6%;
+  top: 0;
+  pointer-events: none;
+  @include breakpoint(moblet){
+    right: 10%;
+  }
+  @include breakpoint(tabtop){
+    right:30%;
+    top:6%;
+  }
+}
+.mobile-kert{
+  width:349px ;
+  height: 240px;
+  background-image:url(../img/mob_kert.png);
+  right: -264px;
+  top: 26%;
+    ul{
+  width: 150px;
+  height: 150px;
+  top: 50px;
+  right: 45px;
+  }
+}
+.mobile-delicates{
+  width:427px;
+  height:320px ;
+  background-image:url(../img/mob_delicates.png);
+  top: 0;
+  left:-273px;
+    ul{
+  width: 150px;
+  height: 120px;
+  bottom: 37px;
+  left: 125px;
+  }
+  @include breakpoint(mobile){
+   
+  }
+}
+.mobile-vendeglo{
+  width:364px;
+  height:463px;
+  background-image:url(../img/mob_vendeglo.png);
+  bottom: -260px;
+  left: -80px;
+  ul{
+  width: 150px;
+  height: 200px;
+  bottom: 37px;
+  right: 85px;
+  }
+}
+.mobile-sugo{
+  bottom: 0;
+  right: 0;
+  right:-300px;
+  width: 206px;
+  height: 97px;
+}
+
+.mobile-sugo-bubble{
+  width: 170px;
+  height: 156px;
+  background-image:url(../img/mob_sugo-bubble.png);
+  top: -160px;
+  padding: 2rem 1rem;
+  text-align: center;
+  @include scale(0);
+  @include transition(0.5s cubic-bezier(.6,0,.48,1.31));
+}
+.mobile-barkas{
+    bottom: 0;
+    right:0;
+    width: 206px;
+    height: 97px;
+    background-image:url(../img/mob_barkas.png);
+}
+.mobile-sugo-trigger{
+  width: 49px;
+  height: 46px;
+  background-image:url(../img/mob_sugo-trigger.png);
+  bottom:1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+.kamufos{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index:-1;
+}

@@ -1,0 +1,72 @@
+/*NAVIGATION*/
+
+.sitckyNav {
+	width:100%;
+	height:4rem;
+	background: rgba(255,255,255,0.1);
+	margin: 0; padding-top:1rem;
+	width:100%;
+	position: absolute;
+	text-align:center;
+	z-index:999;
+	background:$black;
+	@extend .b-shadow;
+
+	a {
+			color:$white;
+			position:relative;
+			text-transform:uppercase;
+			padding:0.2rem 1rem;
+			text-decoration:none;
+			text-align:center;
+			position: relative;
+
+			&:hover{
+				color:$blue;
+			}
+			&:active{
+				color:$blue;
+			}
+		}
+	}
+
+.sticky-fold{
+	position: absolute;
+	width: 90%;
+	margin:0 5%;
+	background:$white;
+	color:$black;
+	left:0;
+	bottom:0;
+	padding-top:0rem;
+	height: 2px;
+	@include transition(all 0.3s ease);
+
+}
+.fold-out{
+	padding-top:0.5rem;
+	height: 40px;
+	@include transform-origin(bottom);
+	@include skew(5,0);
+	&:hover{
+		/*font-weight:600;*/
+		@include skew(0,0);
+	}
+}
+.fixedattop {
+  	position: fixed;
+  	top: 0px;
+	margin-left:0px;
+	width:100%;
+}
+.backToTop{
+	position: absolute;
+	right:1rem;
+	top:0;
+	bottom:0;
+	margin:auto;
+	width: 50px;
+	height: 50px;
+	background: $blue;
+	cursor:pointer;
+}

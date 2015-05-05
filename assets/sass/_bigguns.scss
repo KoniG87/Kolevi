@@ -1,0 +1,158 @@
+*,
+*:after,
+*:before {
+  @include box-sizing(border-box);
+}
+
+* {
+    -webkit-touch-callout:none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust:none;             /* prevent webkit from resizing text to fit */
+    -webkit-tap-highlight-color:rgba(0,0,0,0); /* prevent tap highlight color / shadow */
+    -webkit-user-select:text;                 /* prevent copy paste, to allow, change 'none' to 'text' */
+}
+::-moz-selection { /* Code for Firefox */
+    color: $white;
+    background: $black;
+}
+
+::selection {
+    color: $white; 
+    background: $black;
+}
+/* Disabled effect class */
+.disabled {
+	pointer-events: none;
+	opacity: 0.5;
+}
+/*Clearfix*/
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+    *zoom: 1;
+}
+
+/* Links improvement */
+.link {
+	text-decoration: none;
+	position: relative;
+	padding: .5em;
+	margin: -.5em;
+}
+/*responsive images*/
+
+img{
+	max-width: 100%;
+}
+/* Float classes */
+.right { float: right !important; }
+.left { float: left !important; } 
+
+/* Hide / Show classes */
+.hide { display: none; }
+.show { display: block; }
+.ellipsis {
+  text-overflow: ellipsis;
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.disabled{
+  pointer-events:none;
+  opacity: 0.5;
+}
+
+#wrapper{
+	min-width: 320px;
+}
+.b-shadow{
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.b-shadow-right{
+  box-shadow: 5px 0 10px rgba(0,0,0,.2);
+}
+.paper-bg{
+  background-repeat: repeat;
+  background-image:$backgroundPaper;
+  @include image-2x("../img/lightpaperfibers@2x.png", 500px, 300px);
+}
+.paper-bg-darker{
+  background-repeat: repeat;
+  background-image:$backgroundPaperDarker;
+  @include image-2x("../img/lightpaperfibers-darker@2x.png", 500px, 300px);
+}
+.paper-shadow{
+    &:after,&:before {
+      content:"";
+      position: absolute;
+      bottom: 15px;
+      width: 50%;
+      height: 20%;
+      max-width: 300px;
+      max-height: 100px;
+      -webkit-box-shadow: 0 20px 10px rgba(31,31,31,.5);
+      box-shadow: 0 20px 10px rgba(31,31,31,.5);
+      z-index:-2;
+    }
+    &:before {
+      left: 20px;
+      @include rotate(-4);
+
+    }
+    &:after{
+      right: 20px;
+      @include rotate(4);
+    }
+}
+.visuallyhidden{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  border:0;
+  clip:rect(0,0,0,0);
+  overflow:hidden;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: $gray;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background-color: $black;
+    height: 64px;
+
+}
+body{
+  -ms-overflow-x: hidden;
+}
+.has-sprite{
+	  background-repeat:no-repeat;
+    background-image:$sprite;
+    /*@include image-2x("../img/main-sprite@2x.png", 300px, 300px);*/
+}
+/*
+.preloaded-images {
+   position: absolute;
+   overflow: hidden;
+   left: -9999px; 
+   top: -9999px;
+   height: 1px;
+   width: 1px;
+}*/

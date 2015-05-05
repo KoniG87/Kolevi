@@ -1,0 +1,343 @@
+@mixin breakpoint($point) {
+@if $point == bigscreen {/*1280px*/
+    @media (min-width: 80em) { @content; }
+  }
+  @else if $point == laptop {/*1030px*/
+    @media (min-width: 64.375em) { @content; }
+  }
+  @else if $point == tablet {/*800px*/
+    @media (min-width: 50em) { @content; }
+  }
+  @else if $point == tabtop {/*560px*/
+    @media (min-width: 35em) { @content; }
+  }
+  @else if $point == mobile {/*480px*/
+    @media (min-width: 30em)  { @content; }
+  }
+  @else if $point == moblet {/*400px*/
+    @media (min-width: 25em)  { @content; }
+  }
+  /* for JS MediaQueries*/
+  @else if $point == matchMobile{
+    @media all and (max-width: 30em) {@content;}
+  }
+    @else if $point == matchTablet{
+    @media all and (max-width: 50em) and (min-width: 30em) {@content;}
+  }
+    @else if $point == matchLaptop{
+    @media all and (min-width: 50em){@content;}
+  }
+}
+/*.page-wrap {
+  width: 75%;
+  @include breakpoint(large) { width: 60%; }
+  @include breakpoint(medium) { width: 80%; }
+  @include breakpoint(small) { width: 95%; }
+}*/
+
+@mixin image-2x($image, $width, $height) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+         (-o-min-device-pixel-ratio: 2.6/2),
+         (-webkit-min-device-pixel-ratio: 1.3),
+         (min-device-pixel-ratio: 1.3),
+         (min-resolution: 1.3dppx) {
+
+    background-image: url($image);
+    background-size: $width $height;
+  }
+}
+/*div.logo {
+   background: url("logo.png") no-repeat;
+   @include image-2x("logo2x.png", 100px, 25px);
+ }*/
+
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+     -moz-box-sizing: $box-model; // Firefox <= 19
+          box-sizing: $box-model;
+}
+/**,
+*:after,
+*:before {
+  @include box-sizing(border-box);
+}*/
+
+@mixin clearfix() {
+  *zoom: 1;
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+/*.article {
+     @include clearfix();
+}*/
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+// Single side border-radius
+
+@mixin border-top-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+   -webkit-border-top-left-radius: $radius;
+   border-top-left-radius: $radius;
+   background-clip: padding-box;
+}
+@mixin border-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+     -webkit-border-top-right-radius: $radius;
+     border-top-right-radius: $radius;
+     background-clip: padding-box;
+}
+@mixin border-bottom-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+   -webkit-border-bottom-left-radius: $radius;
+   border-bottom-left-radius: $radius;
+   background-clip: padding-box;
+}
+@mixin border-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+     -webkit-border-top-left-radius: $radius;
+     border-top-left-radius: $radius;
+     background-clip: padding-box;
+}
+
+/*.button {
+  @include border-radius(5px);
+}
+
+.submit-button {
+  @include border-top-radius(10px);
+  @include border-right-radius(8px);
+  @include border-bottom-radius(10px);
+  @include border-left-radius (6px);
+}*/
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+/*.article-heading {
+  @include opacity(0.8);
+}*/
+
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*.footer-wrap {
+  width: 450px;
+  @include center-block;
+}*/
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*.text-truncate {
+  @include text-truncate;
+}*/
+
+@mixin abs-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+/*.abs {
+  @include abs-pos(10px, 10px, 5px, 15px);
+}*/
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+/*p {
+  @include font-size(14px)
+}*/
+
+$image-path: '../img' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+@mixin background-image($name, $size:false){
+    background-image: url(#{$image-path}/#{$name}.svg);
+    @if($size){
+        background-size: $size;
+    }
+    .no-svg &{
+        background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+
+        @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+          background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+        }
+    }
+}
+/*
+body {
+  @include background-image('pattern');
+}*/
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes $animation-name {
+    @content;
+  }
+  @-moz-keyframes $animation-name {
+    @content;
+  }  
+  @-ms-keyframes $animation-name {
+    @content;
+  }
+  @-o-keyframes $animation-name {
+    @content;
+  }  
+  @keyframes $animation-name {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}
+
+/*
+@include keyframes(slide-down) {
+  0% { opacity: 1; }
+  90% { opacity: 0; }
+}
+
+.element {
+  width: 100px;
+  height: 100px;
+  background: black;
+  @include animation('slide-down 5s 3');
+}
+*/
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+/*
+a {
+  color: gray;
+  @include transition(color .3s ease);
+  &:hover {
+    color: black;
+  }
+*/
+
+
+/*generic transform*/
+@mixin transform($transforms) {
+     -moz-transform: $transforms;
+       -o-transform: $transforms;
+      -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+          transform: $transforms;
+}
+/*rotate*/
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+ 
+/*scale*/
+@mixin scale($scale) {
+   @include transform(scale($scale));
+} 
+/*translate*/
+@mixin translate ($x, $y) {
+   @include transform(translate($x, $y));
+}
+/*skew*/
+@mixin skew ($x, $y) {
+   @include transform(skew(#{$x}deg, #{$y}deg));
+}
+/*transform origin*/
+@mixin transform-origin ($origin) {
+    moz-transform-origin: $origin;
+       -o-transform-origin: $origin;
+      -ms-transform-origin: $origin;
+  -webkit-transform-origin: $origin;
+          transform-origin: $origin;
+}
+/*transform-3d*/
+
+/*@mixin transform-3d($translate-x: 0, $translate-y: 0, $translate-z: 0, $rotate-x: 0, $rotate-y: 0, $rotate-z: 0, $scale-x: 1, $scale-y: 1, $scale-z: 1, $perspective: none) {
+  -webkit-transform: 
+    translate3d($translate-x, $translate-y, $translate-z) 
+    rotateX($rotate-x) rotateY($rotate-y) rotateZ($rotate-z) 
+    scaleX($scale-x) scaleY($scale-y) scaleZ($scale-z) 
+    perspective($perspective);
+  -ms-transform: 
+    translate3d($translate-x, $translate-y, $translate-z) 
+    rotateX($rotate-x) rotateY($rotate-y) rotateZ($rotate-z) 
+    scaleX($scale-x) scaleY($scale-y) scaleZ($scale-z) 
+  transform: 
+    translate3d($translate-x, $translate-y, $translate-z) 
+    rotateX($rotate-x) rotateY($rotate-y) rotateZ($rotate-z) 
+    scaleX($scale-x) scaleY($scale-y) scaleZ($scale-z) 
+    perspective($perspective);
+}*/
+@mixin rotate-3d($rotate-x: 0, $rotate-y: 0, $rotate-z: 0){
+  -webkit-transform: rotateX($rotate-x) rotateY($rotate-y) rotateZ($rotate-z);
+  -ms-transform: rotateX($rotate-x) rotateY($rotate-y) rotateZ($rotate-z);
+  transform: rotateX($rotate-x) rotateY($rotate-y) rotateZ($rotate-z);
+}
+/*perspective*/
+
+@mixin perspective($perspective: none) {
+  -webkit-perspective: $perspective;
+  perspective: $perspective;
+}
+/*@include perspective(400px);*/
+/*grid*/
+@mixin rowMachine($numPerRow, $margin) {
+  width: ((100% - (($numPerRow - 1) * $margin)) / $numPerRow);
+  &:nth-child(n) {
+    margin-bottom: $margin;
+    margin-right: $margin;
+  }
+  &:nth-child(#{$numPerRow}n) {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
+
+/*
+@include rowMachine(5, 2%);
+*/

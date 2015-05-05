@@ -1,0 +1,75 @@
+/*
+ *  Variables
+ */
+
+ /*fonts*/
+ /*roboto*/
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700&subset=latin,latin-ext);
+/*daniel*/
+
+@font-face {
+    font-family:'Daniel-Regular';
+    src: url('../fonts/Daniel_gdi.eot');
+    src: url('../fonts/Daniel_gdi.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Daniel_gdi.woff') format('woff'),
+        url('../fonts/Daniel_gdi.ttf') format('truetype'),
+        url('../fonts/Daniel_gdi.svg#Daniel-Regular') format('svg');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-0178;
+}
+@font-face {
+    font-family:'DanielBold-Regular';
+    src: url('../fonts/DanielBold_gdi.eot');
+    src: url('../fonts/DanielBold_gdi.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/DanielBold_gdi.woff') format('woff'),
+        url('../fonts/DanielBold_gdi.ttf') format('truetype'),
+        url('../fonts/DanielBold_gdi.svg#DanielBold-Regular') format('svg');
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    unicode-range: U+0020-0178;
+}
+
+$blue: #00BAED;
+$white:#fff;
+$black:#000;
+$lightgray:#eee;
+$gray:#e3e3e3;
+$darkgray:#999;
+
+
+$danielreg: 'Daniel-Regular', sans serif;
+$danielbld: 'DanielBold-Regular', sans serif;
+$roboto: 'Roboto Slab',Courier, serif;
+
+
+$backgroundPaper: url("../img/lightpaperfibers.png");
+$backgroundPaperDarker: url("../img/lightpaperfibers-darker.png");
+$sprite: url("../img/koleves_sprite.png");
+
+/*
+ * Typo Variables
+ */
+
+$text-color: #333;
+$quiet-color: #ccc;
+$loud-color: #000;
+$heading-color: #111;
+
+$link-color: #d54aaf;
+$link-hover-color: saturate(#d54aaf, 20%);
+$link-visited-color: purple;
+
+$base-font-family: 'Roboto Condensed', sans-serif;
+$base-font-size: 18px;
+$base-font-weight: 300;
+
+$fixed-font-family: 'Andale Mono', AndaleMono, monospace;
+$fixed-font-size: 15px;
+$fixed-line-height: 1.2;
+
+$heading-font-family: 'Roboto Condensed', sans-serif;
+$heading-font-weight: 700;
+
