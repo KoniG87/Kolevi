@@ -256,48 +256,48 @@ $(".kamufos").css("z-index","99");
 
   if (thisOne.is(mVend)) {
 
-      mVend.velocity({bottom: 0,translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-      mDeli.velocity({left: -380,translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-      mApart.velocity({left: -95,translateZ: 0, top:-120},{duration: 2000, easing: [ 300, 20 ]});
-      mKert.velocity({right: -350,translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
+      mVend.velocity({bottom: 0},{duration: 2000, easing: [ 300, 20 ]});
+      mDeli.velocity({left: -380},{duration: 2000, easing: [ 300, 20 ]});
+      mApart.velocity({left: -95, top:-120},{duration: 2000, easing: [ 300, 20 ]});
+      mKert.velocity({right: -350},{duration: 2000, easing: [ 300, 20 ]});
 
       mVend.on("click",function(event){
         event.stopPropagation();
       });
   }
   else if(thisOne.is(mDeli)){
-    mDeli.velocity({left: 0,translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-    mKert.velocity({right: -350,translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-    mVend.velocity({bottom: -400,translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-    mApart.velocity({left: -95, top:-120,translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
+    mDeli.velocity({left: 0},{duration: 2000, easing: [ 300, 20 ]});
+    mKert.velocity({right: -350},{duration: 2000, easing: [ 300, 20 ]});
+    mVend.velocity({bottom: -400},{duration: 2000, easing: [ 300, 20 ]});
+    mApart.velocity({left: -95, top:-120},{duration: 2000, easing: [ 300, 20 ]});
     mDeli.on("click",function(event){
   event.stopPropagation();
 });
   }
   else if(thisOne.is(mApart)){
-    mApart.velocity({left: 100, translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-    mDeli.velocity({left: -380, translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-    mKert.velocity({right: -350, translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-    mVend.velocity({bottom: -400, translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
+    mApart.velocity({left: 100},{duration: 2000, easing: [ 300, 20 ]});
+    mDeli.velocity({left: -380},{duration: 2000, easing: [ 300, 20 ]});
+    mKert.velocity({right: -350},{duration: 2000, easing: [ 300, 20 ]});
+    mVend.velocity({bottom: -400},{duration: 2000, easing: [ 300, 20 ]});
     mApart.on("click",function(event){
   event.stopPropagation();
 });
   }
   else if(thisOne.is(mKert)){
-    mKert.velocity({right: 16, translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-    mVend.velocity({bottom: -400, translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-      mDeli.velocity({left: -380, translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-      mApart.velocity({left: -95, top:-120, translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
+    mKert.velocity({right: 16},{duration: 2000, easing: [ 300, 20 ]});
+    mVend.velocity({bottom: -400},{duration: 2000, easing: [ 300, 20 ]});
+      mDeli.velocity({left: -380},{duration: 2000, easing: [ 300, 20 ]});
+      mApart.velocity({left: -95, top:-120},{duration: 2000, easing: [ 300, 20 ]});
     mKert.on("click",function(event){
   event.stopPropagation();
 });
   }
 }
 function backToStart(){
-      mVend.velocity({bottom: -260, translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-      mDeli.velocity({left: -273, translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-      mApart.velocity({left: -95, top:12, translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
-      mKert.velocity({right: -264, translateZ: 0},{duration: 2000, easing: [ 300, 20 ]});
+      mVend.velocity({bottom: -260},{duration: 2000, easing: [ 300, 20 ]});
+      mDeli.velocity({left: -273},{duration: 2000, easing: [ 300, 20 ]});
+      mApart.velocity({left: -95, top:12},{duration: 2000, easing: [ 300, 20 ]});
+      mKert.velocity({right: -264},{duration: 2000, easing: [ 300, 20 ]});
   }
 
 $(".mob-trigger").on("click",mobilLandingAnim);
@@ -1183,6 +1183,10 @@ $(".nl-submit").Svgenerate({
 });
 
 
+
+
+
+
 $("#rendezvenyek h3").each(function(){
   $(this).Svgenerate({
     rangeX:0.98,
@@ -1622,10 +1626,8 @@ function galleryOpen(){
 
 gEl.on("click",function(){
   var thisImgIndex = $(this).data("imgindex");
-/*  console.log(thisImgIndex);*/
   $(".gallery-slider").slick('slickGoTo',thisImgIndex,true);
   galleryOpen();
-
 });
 
 //close

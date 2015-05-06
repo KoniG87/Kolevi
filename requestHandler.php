@@ -143,16 +143,23 @@ if (isset($_POST['request'])){
 	}
 	
 }else{
-	if (isset($_SERVER['HTTP_REFERER'])){
-		include('core/config.php');
-	
-		$menu = new Menu($app->getDbHandler());
-		$menu->generateEtlapPDF();
-	}else{
-		header('Location: /');
+	if (isset($_GET['request'])){
+		$_POST = $_GET;
+		$vendeglo = new Vendeglo($app->getDbHandler());
+		$vendeglo->updateFoglalas();
 		
-	}
+	}else{
 	
+		if (isset($_SERVER['HTTP_REFERER'])){
+			include('core/config.php');
+		
+			$menu = new Menu($app->getDbHandler());
+			$menu->generateEtlapPDF();
+		}else{
+			header('Location: /');
+			
+		}
+	}
 }
 
 ?>

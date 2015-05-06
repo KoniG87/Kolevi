@@ -19,7 +19,7 @@
                             <div class="foglalas-form">
                                 
 
-                                <form id="nl-form" action="requestHandler.php" class="nl-form">
+                                <form id="nl-form" action="requestHandler.php" class="nl-form" name="nl-form">
                                     <input type="hidden" name="request" value="asztalfoglalasUpdate"/>
                                     <input type="hidden" name="id" value="0"/>
                                     <h3>Asztalfoglalás</h3>

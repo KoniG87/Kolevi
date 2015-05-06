@@ -58,7 +58,7 @@ class Image extends BaseObject{
         $newHeight = $height;
         
         $tmpImage = imagecreatetruecolor( $width, $height );
-        imagecopyresized( $tmpImage, $oldImage, 0, 0, 0, 0, $newWidth, $newHeight, $oldWidth, $oldHeight );
+        imagecopyresized( $tmpImage, $oldImage, 0, 0, $oldWidth/3, $oldHeight/3, $newWidth, $newHeight, $newWidth, $newHeight );
         
         if ($fileExt == 'png'){
             imagepng( $tmpImage, $destination."th_".$fileName );

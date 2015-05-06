@@ -32,10 +32,10 @@ class Application{
                         <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
                         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-                        <!-- Windows 8 Pinned Site -->
-                        <meta name="msapplication-TileImage" content="assets/img/pinsite.png">
+                        <!-- Windows 8 Pinned Site 
+                        <meta name="msapplication-TileImage" content="/pinsite.png">
                         <meta name="msapplication-TileColor" content="#ffffff">
-                        <meta name="application-name" content="Kőleves">
+                        <meta name="application-name" content="Kőleves">-->
 
         		<link rel="stylesheet" media="screen" type="text/css" href="assets/css/styles.min.css"/>
         		
@@ -298,6 +298,8 @@ class Application{
         	<script src="assets/js/main.js"></script>
     		<script type="text/javascript">
     			$(document).ready(function(){
+					var contents = $("#nl-form").html();
+					
                     $(document).on("submit","#nl-form",function(e){
                       e.preventDefault();
                       
@@ -318,9 +320,9 @@ class Application{
                         //if (resp.status){
                            $("#nl-form").slideToggle();
                            setTimeout(function(){
-                            $("#nl-form").html("<h3>Asztalfoglalás megörtént!</h3><br/>Köszi, hogy betértél hozzánk! Hamarosan visszaigazolunk a megadott email címen, hogy a megadott időpontban tudjuk-e biztosítani a kért helyeket.");
+                            $("#nl-form").html("<h3>Asztalfoglalás megörtént!</h3><br/>Köszi, hogy betértél hozzánk! Hamarosan visszaigazolunk a megadott email címen, hogy a megadott időpontban tudjuk-e biztosítani a kért helyeket.<div class=\"nl-submit-wrap\"><button class=\"nl-reset\" type=\"submit\">Újbóli foglalás</button></div>");
                             $("#nl-form").slideToggle();
-                            
+                            $(".nl-reset").Svgenerate({rangeX:0.94,rangeY:0.91,});
                            }, 350);
                            
                           //console.log(resp);
@@ -328,6 +330,16 @@ class Application{
                       }, "json");
                     
                     });
+					
+					$(document).on("click", ".nl-reset", function(e){
+						e.preventDefault();
+						$("#nl-form").slideToggle();
+					   setTimeout(function(){
+                            $("#nl-form").html(contents);
+                            $("#nl-form").slideToggle();
+                            
+					   }, 350);
+					});
     			});	
     		</script>
         		</body>

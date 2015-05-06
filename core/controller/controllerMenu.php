@@ -1,5 +1,4 @@
 <?php
-
 class Menu extends BaseObject{
 	
 	function __construct($dbHandler){
@@ -474,19 +473,22 @@ class Menu extends BaseObject{
     public function generateEtlapPDF(){
     	$kategoriak = $this->getEtlapData();
     	
+		
+		
     	require_once('assets/libs/tcpdf/tcpdf.php');
-    	$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+    	require_once('assets/libs/tcpdf/kolevespdf.php');
+    	$pdf = new kolevesPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
     	
     	$pdf->SetAuthor('Kőleves');
     	$pdf->SetTitle('Kőleves Menü');
     	$pdf->setPrintHeader(false);
     	$pdf->setPrintFooter(false);
     	$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-    	$pdf->setTopMargin(16);
+    	$pdf->setTopMargin(15);
     	
     	$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
     	$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-    	$pdf->SetFont('freeserif', '', 11);
+    	$pdf->SetFont('freesans', '', 8);
     	
     	$pdf->AddPage();
     	
@@ -505,25 +507,32 @@ class Menu extends BaseObject{
     	$html = '
 <table>
 	<tr>
-		<td>&nbsp;&nbsp;<img src="assets/img/etlap_bf.png"/></td>
-		<td style="text-align:center;"><br/><br/><img src="assets/img/etlap-logo.png"/></td>
-		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/etlap_jf.png"/></td>
+		<td>&nbsp;&nbsp;</td>
+		<td style="text-align:center;">
+			<br/><br/><img src="assets/img/etlap-logo.png"/><br/><span style="font-size:22px;font-weight:bold;">ÉTLAP</span><br/>
+		</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	</tr>
+	
 </table>
     	
 <div style="text-align:center;">';
     	
 	    foreach ($kategoriak AS $kategoria => $etelek){
-	    	$html .= '<h3>&bull; '.$kategoria.' &bull;</h3><p>'; 	
+	    	$html .= '<span style="font-size:12px;font-weight:bold;">&bull; '.$kategoria.' &bull;</span><p>'; 	
 	    
 	    	foreach ($etelek AS $etelAdat){
-	    		$html .= $etelAdat['MEGNEVEZES'].' &bull; '.$etelAdat['TAGEK'].' - '.$etelAdat['AR'].' Ft<br/>';	
+	    		$html .= $etelAdat['MEGNEVEZES'].' '. (!is_null($etelAdat['TAGEK']) && trim($etelAdat['TAGEK']) != "" ? '&bull; '.$etelAdat['TAGEK'] : '').' - <strong>'.$etelAdat['AR'].' Ft</strong><br/>';	
 	    	}
 	    	
 	    	$html .= '</p>';
 	    
 	    }
     	
+		$html .= '<span style="font-size:12px;font-weight:bold;">&bull; KÉRÉSRE GYEREKEKNEK IS KÉSZÍTÜNK ÉTELT &bull;</span><p>
+			GM = gluténmentes &nbsp; TM = tejtermék mentes &nbsp; V = vegetáriánus<br/>
+			</p>
+		';
 		$html .= '</div>';
 
     	

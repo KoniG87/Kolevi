@@ -9,7 +9,7 @@ class Galeria extends BaseObject{
 	}
     
     public function drawGaleria(){
-		$SQL = 'SELECT id AS IMAGE_ID, fajlnev AS PATH, gallery_tag AS GALLERY_TAG FROM koleves_kepek WHERE gallery_tag IS NOT NULL AND gallery_tag <> "";';
+		$SQL = 'SELECT (@curRow:=@curRow+1) AS IMAGE_ID, fajlnev AS PATH, gallery_tag AS GALLERY_TAG FROM koleves_kepek JOIN (SELECT @curRow:=-1) AS cr WHERE gallery_tag IS NOT NULL AND gallery_tag <> "";';
 		$elements = $this->fetchItems($SQL);
 		
 		/*
