@@ -56,15 +56,105 @@ class Application{
     
     
         
-    public function drawNav($loadWrapper = true){
+    public function drawNav($loadWrapper = true, $subPage){
     	if ($loadWrapper){
     		echo '<div id="wrapper">';
     	}
     	else{
+    		
+    		$menuContents = array(
+    				'napiMenu'	=> array(
+    						'showOn' => array(
+    								'vendeglo'	=> 1
+    						),
+    						'labels' => array(
+    								'hu'	=> 'Napi Menü',
+    								'en'	=> 'Daily Menu'
+    						)
+    				),
+    				'etlap'	=> array(
+    						'showOn' => array(
+    								'vendeglo'	=> 2,
+    								'kert'		=> 2
+    						),
+    						'labels' => array(
+    								'hu'	=> 'Étlap',
+    								'en'	=> 'Foodz'
+    						)
+    				),
+    				'asztalfoglalas'	=> array(
+    						'showOn' => array(
+    								'vendeglo'	=> 3
+    						),
+    						'labels' => array(
+    								'hu'	=> 'Asztalfoglalás',
+    								'en'	=> 'Reservation'
+    						)
+    				),
+    				'rendezvenyek'	=> array(
+    						'showOn' => array(
+    								'vendeglo'	=> 4,
+    								'kert'		=> 3
+    						),
+    						'labels' => array(
+    								'hu'	=> 'Rendezvények',
+    								'en'	=> 'Events'
+    						)
+    				),
+    				'programok'	=> array(
+    						'showOn' => array(
+    								'vendeglo'	=> 5
+    						),
+    						'labels' => array(
+    								'hu'	=> 'Programok',
+    								'en'	=> 'Programok'
+    						)
+    				),
+    				'rolunk'	=> array(
+    						'showOn' => array(
+    								'vendeglo'	=> 6,
+    								'kert'		=> 1,
+    								'apartman'	=> 1
+    						),
+    						'labels' => array(
+    								'hu'	=> 'Rólunk',
+    								'en'	=> 'About Us'
+    						)
+    				),
+    				'kepek'	=> array(
+    						'showOn' => array(
+    								'vendeglo'	=> 7,
+    								'kert'		=> 4,
+    								'apartman'	=> 2
+    						),
+    						'labels' => array(
+    								'hu'	=> 'Képek',
+    								'en'	=> 'Pictures'
+    						)
+    				)
+    		);
+    		$menuToShow = array();
+    		foreach ($menuContents AS $menuKey => $menuData){
+    			if (in_array($subPage, array_keys($menuData['showOn']))){
+    				$menuToShow[$menuData['showOn'][$subPage]][$menuKey] = $menuData['labels']['hu'];
+    			}
+    		}
+    		
+    		
     	echo '<nav class="sitckyNav">
 <a href="/kolevi/"><svg class="icon icon-logo"><use xlink:href="#icon-logo"></use></svg></a>
 <svg class="icon icon-backtotop backToTop"><use xlink:href="#icon-backtotop"></use></svg>
-    <div class="row">
+    <div class="row">';
+    	
+    	foreach ($menuToShow AS $sorrend => $linkInfo){
+    		foreach ($linkInfo AS $key => $label){
+    			echo '<a href="#'.$key.'"><span>'.$label.'</span>
+	            <div class="diszvonal"></div>
+	        <div class="sticky-fold">'.$label.'</div>
+	        </a>';
+    		}
+    	}
+    	/*
         <a href="#napiMenu"><span>Napi Menü</span>
             <div class="diszvonal"></div>
         <div class="sticky-fold">Napi Menü</div>
@@ -94,7 +184,8 @@ class Application{
             <div class="diszvonal"></div>
         <div class="sticky-fold">Képek</div>
         </a>
-
+*/
+    	echo '
                
     </div>
     <div class="nav-info right" ><a href="#footer"><span>Info</span><svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg></a></div>'.(false ? '

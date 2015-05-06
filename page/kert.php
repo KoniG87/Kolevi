@@ -4,7 +4,6 @@ include('page/home.php');
 
 <div class="row stickyStart">
 	<div class="twelve coulumns vendeglo-container">
-
 <?php
 	$db = $app->getDbHandler();
 	
@@ -13,9 +12,13 @@ include('page/home.php');
 	$menu = new Menu($db);
 
 	$vendeglo->drawRolunk();
+	
+	$menu->drawEtlap();
 	$menu->drawItallap();
+	
 	$vendeglo->drawRendezveny();
+	
 	$galeria->drawGaleria();
 ?>
 
-	</div>
+</div>
