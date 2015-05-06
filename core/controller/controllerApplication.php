@@ -145,7 +145,7 @@ class Application{
 <a href="/kolevi/"><svg class="icon icon-logo"><use xlink:href="#icon-logo"></use></svg></a>
 <svg class="icon icon-backtotop backToTop"><use xlink:href="#icon-backtotop"></use></svg>
     <div class="row">';
-    	
+    	sort($menuToShow);
     	foreach ($menuToShow AS $sorrend => $linkInfo){
     		foreach ($linkInfo AS $key => $label){
     			echo '<a href="#'.$key.'"><span>'.$label.'</span>
