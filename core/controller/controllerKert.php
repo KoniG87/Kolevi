@@ -1,6 +1,6 @@
 <?php
 
-class Vendeglo extends BaseObject{
+class Kert extends BaseObject{
 	
 	function __construct($dbHandler){
         $this->objectType = 'Vendeglo';
@@ -12,6 +12,8 @@ class Vendeglo extends BaseObject{
         $this->view->drawFoglalasForm();
     }
     
+    /*
+      
     public function drawRendezveny(){
     	
     	$szervezoSQL = "SELECT NEV, KEP, TELEFON, EMAIL, FACEBOOK FROM koleves_dolgozok WHERE rendezvenyfelelos = 1;";
@@ -105,7 +107,7 @@ class Vendeglo extends BaseObject{
     	
     	$this->view->drawProgram($elements);
     }
-    
+    */
     public function drawRolunk(){
     	$SQL = "SELECT username AS NICK, nev AS FULLNAME, megjegyzes AS DESCRIPTION, kep AS KEP FROM koleves_dolgozok WHERE vendeglo = 1 AND allapot = 1;";
     	$elements = $this->fetchItems($SQL);
@@ -113,7 +115,7 @@ class Vendeglo extends BaseObject{
     	$this->view->drawRolunk($elements);
     	
     }
-    
+    /*
     
     public function loadKepek($tipusID = null){
         $SQL = "SELECT id, fajlnev FROM koleves_kepek WHERE szekcio = ?;";
@@ -133,11 +135,13 @@ class Vendeglo extends BaseObject{
     }
     
     
+    
     public function drawFoglalasLista(){
         $elements = $this->getFoglalasData();
         
         $this->view->drawFoglalasLista($elements);
     }
+    */
     
     public function updateFoglalas(){
     	$res = array();
@@ -195,7 +199,7 @@ class Vendeglo extends BaseObject{
     	echo json_encode($res);
     }
 	
-	
+	/*
 	public function drawRendezvenyAdmin($rendezvenyID){
 		$elements = array(
 			'rendezveny'	=> $this->loadRendezvenyData($rendezvenyID),
@@ -217,7 +221,7 @@ class Vendeglo extends BaseObject{
     	
     	$this->view->drawProgramList($elements);
     }
-    
+    */
     
     public function updateRendezveny(){
     	$res = array();

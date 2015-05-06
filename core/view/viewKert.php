@@ -1,6 +1,6 @@
 <?php
 
-class VendegloView extends BaseView{
+class KertView extends BaseView{
 	
 	function __construct(){
 		/*$valtozo < template/kajaMenu.php
@@ -246,7 +246,7 @@ class VendegloView extends BaseView{
     	echo '
 			<div class="row clearfix">
 				<div class="eight columns">
-					<h3>A Vendéglő</h3>
+					<h3>A Kert</h3>
 					<p>A Kőleves 10 éves vendéglő. Imola és Kápszi ültünk egy rémséges vasút-állomáson 1995 körül és elhatároztuk, hogy nyitunk egy vendéglőt. 
 		Azt hiszem ez kb. 10 évvel később, de megvalósult 2005-ben. Ez a tíz év beszélgetés a vendéglőről elég volt ahhoz, hogy pontosan tudjuk mit akarunk és lássuk, 
 		hogy ugyanazt, ez azóta is töretlenül működik köztünk. Persze nem magától ment minden, hanem sok kölcsön pénzből, amivel az elején nehéz volt küzdenünk. Először 
