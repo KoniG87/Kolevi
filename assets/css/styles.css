@@ -1526,7 +1526,8 @@ div[class^="vend-emberke"] {
       position: absolute;
       height: 100%;
       width: 100%;
-      padding: 2rem; }
+      padding: 1.1rem 2rem;
+      font-size: 80%; }
       .kert .kert-kihuzo nav a {
         text-decoration: none;
         color: #444; }
@@ -4923,7 +4924,16 @@ section {
   background-size: cover !important;
   background-repeat: no-repeat !important; }
 
+.kert-spec .itallap {
+  padding-top: 0 !important; }
+
 .rolunk-kert-kep {
   position: relative; }
   .rolunk-kert-kep img {
     display: none; }
+
+.ehes-szomjas {
+  display: table;
+  margin: 0 auto;
+  font-family: "Daniel-Regular", sans serif;
+  font-size: 120%; }

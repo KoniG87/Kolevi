@@ -1,6 +1,8 @@
 .kert-spec{
 
-
+.itallap{
+	padding-top:0 !important;
+}
 
 }
 
@@ -9,4 +11,10 @@
 	img{
 		display: none;
 	}
+}
+.ehes-szomjas{
+	display:table;
+	margin:0 auto;
+	font-family:$danielreg;
+	font-size:120%;
 }

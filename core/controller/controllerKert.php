@@ -1,12 +1,12 @@
 <?php
 
 class Kert extends BaseObject{
-	
-	function __construct($dbHandler){
+    
+    function __construct($dbHandler){
         $this->objectType = 'Kert';
         
-		parent::__construct($dbHandler);
-	}
+        parent::__construct($dbHandler);
+    }
     
     public function drawFoglalasForm(){
         $this->view->drawFoglalasForm();
@@ -15,45 +15,43 @@ class Kert extends BaseObject{
     
       
     public function drawRendezveny(){
-    	
-    	$szervezoSQL = "SELECT NEV, KEP, TELEFON, EMAIL, FACEBOOK FROM koleves_dolgozok WHERE rendezvenyfelelos = 1;";
-    	
-    	$elements = array(
-    		'szervezo'	=> $this->fetchItem($szervezoSQL),
-    		'rendezvenyek' => $this->getRendezvenyData()
-    	);
-    	$elements['szervezo']['FEJLEC_IMAGE'] = 'assets/img/rendezvenyek-img.png';   	
-    	
-    
-    	$this->view->drawRendezveny($elements);
+        $szervezoSQL = "SELECT NEV, KEP, TELEFON, EMAIL, FACEBOOK FROM koleves_dolgozok WHERE rendezvenyfelelos = 1;";
+        
+        $elements = array(
+            'szervezo'  => $this->fetchItem($szervezoSQL),
+            'rendezvenyek' => $this->getRendezvenyData()
+        );
+        $elements['szervezo']['FEJLEC_IMAGE'] = 'assets/img/kert-rendezvenyek.png';     
+        
+        $this->view->drawRendezveny($elements);
     }
     
     
     public function getRendezvenyData($allapot = 0){
-    	$SQL = "SELECT id, text_hu AS MEGNEVEZES, leiras_hu AS MEGJEGYZES, allapot FROM koleves_rendezvenyek WHERE allapot <> ? ORDER BY sorrend ASC;";
-    	$kepSQL = "SELECT FAJLNEV FROM koleves_kepek AS k LEFT JOIN koleves_kep_osszekotesek AS ko ON ko.kep_id = k.id WHERE ko.tipus = 1 AND ko.fk_id = ? ORDER BY ko.sorrend ASC;";
-    	
-    	
-    	$rendezvenyCounter = 0;
-    	
-    	$tmpArray = $this->fetchItems($SQL, array($allapot));
-    	
-    	if (sizeof($tmpArray) > 0){
-    		foreach ($tmpArray AS $rendezvenyData){
-    			$tmpArray[$rendezvenyCounter]['kepek'] = $this->fetchItems($kepSQL, array($rendezvenyData['id']));
-    			$rendezvenyCounter++;
-    		}
-    	}
-    	
-    	return $tmpArray;
+        $SQL = "SELECT id, text_hu AS MEGNEVEZES, leiras_hu AS MEGJEGYZES, allapot FROM koleves_rendezvenyek WHERE allapot <> ? ORDER BY sorrend ASC;";
+        $kepSQL = "SELECT FAJLNEV FROM koleves_kepek AS k LEFT JOIN koleves_kep_osszekotesek AS ko ON ko.kep_id = k.id WHERE ko.tipus = 1 AND ko.fk_id = ? ORDER BY ko.sorrend ASC;";
+        
+        
+        $rendezvenyCounter = 0;
+        
+        $tmpArray = $this->fetchItems($SQL, array($allapot));
+        
+        if (sizeof($tmpArray) > 0){
+            foreach ($tmpArray AS $rendezvenyData){
+                $tmpArray[$rendezvenyCounter]['kepek'] = $this->fetchItems($kepSQL, array($rendezvenyData['id']));
+                $rendezvenyCounter++;
+            }
+        }
+        
+        return $tmpArray;
     }
     
     /*
     
      public function getProgramData($allapot){
-    	$SQL = "SELECT id, datum, text_hu AS labelHeader, SUBSTRING(leiras_hu, 1, 55) AS labelDesc, allapot, kep, fblink FROM koleves_programok WHERE allapot <> ? ORDER BY datum DESC;";
-    	
-    	return $this->fetchItems($SQL, array($allapot));
+        $SQL = "SELECT id, datum, text_hu AS labelHeader, SUBSTRING(leiras_hu, 1, 55) AS labelDesc, allapot, kep, fblink FROM koleves_programok WHERE allapot <> ? ORDER BY datum DESC;";
+        
+        return $this->fetchItems($SQL, array($allapot));
     }
     
     
@@ -64,18 +62,18 @@ class Kert extends BaseObject{
             'MEGNEVEZES'  => '',
             'MEGJEGYZES'   => '',
             'allapot'   => '1',
-			'kepek'	=> null
+            'kepek' => null
         );
         
         if (!is_null($id)){
             $SQL = "SELECT id, text_hu AS MEGNEVEZES, leiras_hu AS MEGJEGYZES, allapot FROM koleves_rendezvenyek WHERE id = ?";
             $tmpArray = $this->fetchItem($SQL, array($id));
-			
-			$kepSQL = "SELECT ok.id, k.fajlnev FROM koleves_kepek AS k 
-				LEFT JOIN koleves_kep_osszekotesek AS ok ON ok.kep_id = k.id
-				WHERE ok.fk_id = ? AND ok.tipus = ?
-				ORDER BY ok.sorrend ASC;";
-			$tmpArray['kepek'] = $this->fetchItems($kepSQL, array($id, 1));
+            
+            $kepSQL = "SELECT ok.id, k.fajlnev FROM koleves_kepek AS k 
+                LEFT JOIN koleves_kep_osszekotesek AS ok ON ok.kep_id = k.id
+                WHERE ok.fk_id = ? AND ok.tipus = ?
+                ORDER BY ok.sorrend ASC;";
+            $tmpArray['kepek'] = $this->fetchItems($kepSQL, array($id, 1));
         }
         
         return $tmpArray;
@@ -87,8 +85,8 @@ class Kert extends BaseObject{
             'id'    => '0',
             'labelHeader'  => '',
             'labelDesc'   => '',
-            'datum'		=> '',
-			'allapot'   => '1',
+            'datum'     => '',
+            'allapot'   => '1',
             'kep'   => '',
             'fblink'    => ''
         );
@@ -103,17 +101,17 @@ class Kert extends BaseObject{
     
     
     public function drawProgram(){
-    	$elements = $this->getProgramData(0);
-    	
-    	$this->view->drawProgram($elements);
+        $elements = $this->getProgramData(0);
+        
+        $this->view->drawProgram($elements);
     }
     */
     public function drawRolunk(){
-    	$SQL = "SELECT username AS NICK, nev AS FULLNAME, megjegyzes AS DESCRIPTION, kep AS KEP FROM koleves_dolgozok WHERE vendeglo = 1 AND allapot = 1;";
-    	$elements = $this->fetchItems($SQL);
-    	
-    	$this->view->drawRolunk($elements);
-    	
+        $SQL = "SELECT username AS NICK, nev AS FULLNAME, megjegyzes AS DESCRIPTION, kep AS KEP FROM koleves_dolgozok WHERE vendeglo = 1 AND allapot = 1;";
+        $elements = $this->fetchItems($SQL);
+        
+        $this->view->drawRolunk($elements);
+        
     }
     
     /*
@@ -124,15 +122,15 @@ class Kert extends BaseObject{
         return $this->fetchItems($SQL, array($tipusID));
     }
     
-	
+    
 
     
     
     public function getFoglalasData(){
-    	$foglalasSQL = "SELECT id, nev, megjegyzes, email, hanyfo, idopont, jovahagyva FROM koleves_asztalfoglalasok ORDER BY idopont DESC;";
-    	$foglalasRES = $this->fetchItems($foglalasSQL);
-    	 
-    	return $foglalasRES;
+        $foglalasSQL = "SELECT id, nev, megjegyzes, email, hanyfo, idopont, jovahagyva FROM koleves_asztalfoglalasok ORDER BY idopont DESC;";
+        $foglalasRES = $this->fetchItems($foglalasSQL);
+         
+        return $foglalasRES;
     }
     
     
@@ -145,184 +143,184 @@ class Kert extends BaseObject{
     */
     
     public function updateFoglalas(){
-    	$res = array();
-    	 
-    	try{
-    		$this->beginTransaction();
-    	
-    			    		
-    		
-    		/*
-    		 * Új sor beszúrása
-    		*/
-    		if ($_POST['id'] == "0"){
-    			 
-    			$SQL = "INSERT INTO koleves_asztalfoglalasok SET nev = ?, email = ?, megjegyzes = ?, hanyfo = ?, idopont = ?;";
-    			 
-    			$queryParams = array(
-    					$_POST['nev'],
-    					$_POST['email'],
-    					$_POST['megjegyzes'],
-    					$_POST['hanyfo'],
-    					$_POST['datum'].' '.$_POST['ido']
-    			);
-    			 
-    			$res['inputID'] = $this->insertItem($SQL, $queryParams);
-    		}
-    		/*
-    		 * Meglévő sor updatelése
-    		 */
-    		else{
-    			$SQL = "UPDATE koleves_asztalfoglalasok SET nev = ?, email = ?, megjegyzes = ?, hanyfo = ?, idopont = ?, jovahagyta = ?, jovahagyva = ? WHERE id = ?;";
-    	
-    			$queryParams = array(
-    					$_POST['nev'],
-    					$_POST['email'],
-    					$_POST['megjegyzes'],
-    					$_POST['hanyfo'],
-    					$_POST['datum'].' '.$_POST['ido'],
-    					$_SESSION['user']['id'],
-    					currentTime(),
-    					$_POST['id']
-    			);
-    	
-    			$this->updateItem($SQL, $queryParams);
-    			 
-    		}
-    	
-    		$res['status'] = true;
-    		$this->commit();
-    	}catch(Exception $e){
-    		$res['status'] = false;
-    		$this->rollback();
-    	}
-    	 
-    	echo json_encode($res);
+        $res = array();
+         
+        try{
+            $this->beginTransaction();
+        
+                            
+            
+            /*
+             * Új sor beszúrása
+            */
+            if ($_POST['id'] == "0"){
+                 
+                $SQL = "INSERT INTO koleves_asztalfoglalasok SET nev = ?, email = ?, megjegyzes = ?, hanyfo = ?, idopont = ?;";
+                 
+                $queryParams = array(
+                        $_POST['nev'],
+                        $_POST['email'],
+                        $_POST['megjegyzes'],
+                        $_POST['hanyfo'],
+                        $_POST['datum'].' '.$_POST['ido']
+                );
+                 
+                $res['inputID'] = $this->insertItem($SQL, $queryParams);
+            }
+            /*
+             * Meglévő sor updatelése
+             */
+            else{
+                $SQL = "UPDATE koleves_asztalfoglalasok SET nev = ?, email = ?, megjegyzes = ?, hanyfo = ?, idopont = ?, jovahagyta = ?, jovahagyva = ? WHERE id = ?;";
+        
+                $queryParams = array(
+                        $_POST['nev'],
+                        $_POST['email'],
+                        $_POST['megjegyzes'],
+                        $_POST['hanyfo'],
+                        $_POST['datum'].' '.$_POST['ido'],
+                        $_SESSION['user']['id'],
+                        currentTime(),
+                        $_POST['id']
+                );
+        
+                $this->updateItem($SQL, $queryParams);
+                 
+            }
+        
+            $res['status'] = true;
+            $this->commit();
+        }catch(Exception $e){
+            $res['status'] = false;
+            $this->rollback();
+        }
+         
+        echo json_encode($res);
     }
-	
-	/*
-	public function drawRendezvenyAdmin($rendezvenyID){
-		$elements = array(
-			'rendezveny'	=> $this->loadRendezvenyData($rendezvenyID),
-			'elerhetoKepek'	=> $this->loadKepek(1)
-		);
-		
-		$this->view->drawRendezvenyAdmin($elements);
-	}
+    
+    /*
+    public function drawRendezvenyAdmin($rendezvenyID){
+        $elements = array(
+            'rendezveny'    => $this->loadRendezvenyData($rendezvenyID),
+            'elerhetoKepek' => $this->loadKepek(1)
+        );
+        
+        $this->view->drawRendezvenyAdmin($elements);
+    }
     
     public function drawRendezvenyList(){
-  		$elements = $this->getRendezvenyData(2);
-    	
-    	$this->view->drawRendezvenyList($elements);
+        $elements = $this->getRendezvenyData(2);
+        
+        $this->view->drawRendezvenyList($elements);
     }
     
     
     public function drawProgramList(){
-    	$elements = $this->getProgramData(2);
-    	
-    	$this->view->drawProgramList($elements);
+        $elements = $this->getProgramData(2);
+        
+        $this->view->drawProgramList($elements);
     }
     */
     
     public function updateRendezveny(){
-    	$res = array();
-    	 
-    	try{
-    		$this->beginTransaction();
+        $res = array();
+         
+        try{
+            $this->beginTransaction();
     
-    		/*
-    		 * Új sor beszúrása
-    		*/
-    		if ($_POST['id'] == "0"){
-    			 
-    			$SQL = "INSERT INTO koleves_rendezvenyek SET text_hu = ?, leiras_hu = ?;";
-    			 
-    			$queryParams = array(
-    					$_POST['text_hu'],
-    					$_POST['leiras_hu']
-    			);
-    			 
-    			$res['inputID'] = $this->insertItem($SQL, $queryParams);
-    		}
-    		/*
-    		 * Meglévő sor updatelése
-    		 */
-    		else{
-    			$SQL = "UPDATE koleves_rendezvenyek SET text_hu = ?, leiras_hu = ?, allapot = ? WHERE id = ?;";
+            /*
+             * Új sor beszúrása
+            */
+            if ($_POST['id'] == "0"){
+                 
+                $SQL = "INSERT INTO koleves_rendezvenyek SET text_hu = ?, leiras_hu = ?;";
+                 
+                $queryParams = array(
+                        $_POST['text_hu'],
+                        $_POST['leiras_hu']
+                );
+                 
+                $res['inputID'] = $this->insertItem($SQL, $queryParams);
+            }
+            /*
+             * Meglévő sor updatelése
+             */
+            else{
+                $SQL = "UPDATE koleves_rendezvenyek SET text_hu = ?, leiras_hu = ?, allapot = ? WHERE id = ?;";
     
-    			$queryParams = array(
-    					$_POST['text_hu'],
-    					$_POST['leiras_hu'],
-    					$_POST['allapot'],
-    					$_POST['id']
-    			);
+                $queryParams = array(
+                        $_POST['text_hu'],
+                        $_POST['leiras_hu'],
+                        $_POST['allapot'],
+                        $_POST['id']
+                );
     
-    			$this->updateItem($SQL, $queryParams);
-    			 
-    		}
+                $this->updateItem($SQL, $queryParams);
+                 
+            }
     
-    		$res['status'] = "ok";
-    		$this->commit();
-    	}catch(Exception $e){
-    		$res['status'] = "nope";
-    		$this->rollback();
-    	}
-    	 
-    	echo json_encode($res);
+            $res['status'] = "ok";
+            $this->commit();
+        }catch(Exception $e){
+            $res['status'] = "nope";
+            $this->rollback();
+        }
+         
+        echo json_encode($res);
     }
     
     
     public function updateProgram(){
-    	$res = array();
-    	 
-    	try{
-    		$this->beginTransaction();
+        $res = array();
+         
+        try{
+            $this->beginTransaction();
     
-    		/*
-    		 * Új sor beszúrása
-    		*/
-    		if ($_POST['id'] == "0"){
-    			 
-    			$SQL = "INSERT INTO koleves_programok SET text_hu = ?, leiras_hu = ?, kep = ?, fblink = ?, datum = ?;";
-    			 
-    			$queryParams = array(
-    				$_POST['text_hu'],
-    				$_POST['leiras_hu'],
+            /*
+             * Új sor beszúrása
+            */
+            if ($_POST['id'] == "0"){
+                 
+                $SQL = "INSERT INTO koleves_programok SET text_hu = ?, leiras_hu = ?, kep = ?, fblink = ?, datum = ?;";
+                 
+                $queryParams = array(
+                    $_POST['text_hu'],
+                    $_POST['leiras_hu'],
                     $_POST['kep'],
                     $_POST['fblink'],
                     $_POST['datum']
-    			);
-    			 
-    			$res['inputID'] = $this->insertItem($SQL, $queryParams);
-    		}
-    		/*
-    		 * Meglévő sor updatelése
-    		 */
-    		else{
-    			$SQL = "UPDATE koleves_programok SET text_hu = ?, leiras_hu = ?, kep = ?, fblink = ?, datum = ?, allapot = ? WHERE id = ?;";
+                );
+                 
+                $res['inputID'] = $this->insertItem($SQL, $queryParams);
+            }
+            /*
+             * Meglévő sor updatelése
+             */
+            else{
+                $SQL = "UPDATE koleves_programok SET text_hu = ?, leiras_hu = ?, kep = ?, fblink = ?, datum = ?, allapot = ? WHERE id = ?;";
     
-    			$queryParams = array(
-    				$_POST['text_hu'],
-    				$_POST['leiras_hu'],
+                $queryParams = array(
+                    $_POST['text_hu'],
+                    $_POST['leiras_hu'],
                     $_POST['kep'],
                     $_POST['fblink'],
                     $_POST['datum'],
                     $_POST['allapot'],
-    				$_POST['id']
-    			);
+                    $_POST['id']
+                );
     
-    			$this->updateItem($SQL, $queryParams);
-    			 
-    		}
+                $this->updateItem($SQL, $queryParams);
+                 
+            }
     
-    		$res['status'] = "ok";
-    		$this->commit();
-    	}catch(Exception $e){
-    		$res['status'] = "nope";
-    		$this->rollback();
-    	}
-    	 
-    	echo json_encode($res);
+            $res['status'] = "ok";
+            $this->commit();
+        }catch(Exception $e){
+            $res['status'] = "nope";
+            $this->rollback();
+        }
+         
+        echo json_encode($res);
     }
     
     
@@ -427,49 +425,49 @@ class Kert extends BaseObject{
     
     public function updateHir(){
         $res = array();
-    	 
-    	try{
-    		$this->beginTransaction();
+         
+        try{
+            $this->beginTransaction();
     
-    		/*
-    		 * Új sor beszúrása
-    		*/
-    		if ($_POST['id'] == "0"){
-    			 
-    			$SQL = "INSERT INTO koleves_hirsav SET tipus_id = ?, text_hu = ?, rogzitve = ?;";
-    			 
-    			$queryParams = array(
-    				$_POST['tipus_id'],	
+            /*
+             * Új sor beszúrása
+            */
+            if ($_POST['id'] == "0"){
+                 
+                $SQL = "INSERT INTO koleves_hirsav SET tipus_id = ?, text_hu = ?, rogzitve = ?;";
+                 
+                $queryParams = array(
+                    $_POST['tipus_id'], 
                     $_POST['text_hu'],
-                    date('Y-m-d H:i:s')   					
-    			);
-    			 
-    			$res['inputID'] = $this->insertItem($SQL, $queryParams);
-    		}
-    		/*
-    		 * Meglévő sor updatelése
-    		 */
-    		else{
-    			$SQL = "UPDATE koleves_hirsav SET tipus_id = ?, text_hu = ? WHERE id = ?;";
+                    date('Y-m-d H:i:s')                     
+                );
+                 
+                $res['inputID'] = $this->insertItem($SQL, $queryParams);
+            }
+            /*
+             * Meglévő sor updatelése
+             */
+            else{
+                $SQL = "UPDATE koleves_hirsav SET tipus_id = ?, text_hu = ? WHERE id = ?;";
     
-    			$queryParams = array(
-    				$_POST['tipus_id'],	
+                $queryParams = array(
+                    $_POST['tipus_id'], 
                     $_POST['text_hu'],
-    				$_POST['id']
-    			);
+                    $_POST['id']
+                );
     
-    			$this->updateItem($SQL, $queryParams);
-    			 
-    		}
+                $this->updateItem($SQL, $queryParams);
+                 
+            }
     
-    		$res['status'] = "ok";
-    		$this->commit();
-    	}catch(Exception $e){
-    		$res['status'] = "nope";
-    		$this->rollback();
-    	}
-    	 
-    	echo json_encode($res);
+            $res['status'] = "ok";
+            $this->commit();
+        }catch(Exception $e){
+            $res['status'] = "nope";
+            $this->rollback();
+        }
+         
+        echo json_encode($res);
     
     }
 }

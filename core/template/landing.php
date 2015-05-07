@@ -49,9 +49,19 @@
                         <div class="kert-kihuzo">
                           <nav>
                             <ul>
-                              <a href="vendeglo">
-                                <li>Hamarosan!</li>
+                              <a href="kert#roulunk">
+                                <li>Rólunk</li>
                               </a>
+                              <a href="kert#etlap">
+                                <li>Étlap</li>
+                              </a>
+                              <a href="kert#rendezvenyek">
+                                <li>Rendezvények</li>
+                              </a>
+                              <a href="kert#kepek">
+                                <li>Képek</li>
+                              </a>
+
                             </ul>
                           </nav>
                           <div class="kert-kihuzo-ful">

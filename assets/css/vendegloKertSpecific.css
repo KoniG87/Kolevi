@@ -2694,7 +2694,16 @@ section {
   background-size: cover !important;
   background-repeat: no-repeat !important; }
 
+.kert-spec .itallap {
+  padding-top: 0 !important; }
+
 .rolunk-kert-kep {
   position: relative; }
   .rolunk-kert-kep img {
     display: none; }
+
+.ehes-szomjas {
+  display: table;
+  margin: 0 auto;
+  font-family: "Daniel-Regular", sans serif;
+  font-size: 120%; }

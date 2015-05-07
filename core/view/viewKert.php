@@ -253,8 +253,8 @@ at a toy store. And you must think you\'re in a toy store, because you\'re here 
 Look, just because I don\'t be givin\' no man a foot massage don\'t make it right for Marsellus to throw Antwone into a glass motherfuckin\' house, 
 fuckin\' up the way the nigger talks. Motherfucker do that shit to me, he better paralyze my ass, \'cause I\'ll kill the motherfucker, know what I\'m sayin\'?</p>
 				</div>
-				<div class=" eight columns centered rolunk-kert-kep">
-					<img src="assets/img/vendegkonyv.png" alt="Rólunk">
+				<div class=" ten columns centered rolunk-kert-kep">
+					<img src="assets/img/kert-kep.jpg" alt="Ez itt a kert!">
 				</div>
 			</div>
 			<div class="row clearfix">

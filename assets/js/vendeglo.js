@@ -1,9 +1,4 @@
 $(document).ready(function(){
-
-console.log("2");
-/*function refreshWaypoints(){
-  $.waypoints('refresh');
-}*/
 /*
  *  VENDÉGLŐ
  */ 
