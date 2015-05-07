@@ -8,13 +8,15 @@ include('page/home.php');
 	$db = $app->getDbHandler();
 	
 	$vendeglo = new Vendeglo($db);
+	$kert = new Kert($db);
 	$galeria = new Galeria($db);
 	$menu = new Menu($db);
 
-	$vendeglo->drawRolunk();
 	
-
-	/*kell nekünk ide egy $menu->drawKertEtlap*/
+	$kert->drawRolunk();
+	
+	/*kell nekünk ide egy*/
+	$menu->drawKertEtlap();
 	$menu->drawItallap();
 	
 	$vendeglo->drawRendezveny();

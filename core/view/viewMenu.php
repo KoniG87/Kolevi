@@ -302,11 +302,11 @@ class MenuView extends BaseView{
                                 <img class="right etlap-level lazy" data-src="assets/img/etlap_jf@2x.jpg" alt=""><noscript><img src="assets/img/etlap_jf@2x.jpg" alt=""></noscript>
                             </div>';
     	
-    	foreach ($elements['kategoriak'] AS $kategoria => $etelek){
+    	foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
     		
     		echo '<h3>'.$kategoria.'</h3>';
-
-    			$this->loadTemplate('etlapForma', $etelek);
+			
+    		$this->loadTemplate('etlapForma', $kategoriaAdat['etelek']);
 
     		
     	}
@@ -330,9 +330,73 @@ class MenuView extends BaseView{
     }
     
 
+    
+    
+    
+public function drawKertEtlap($elements){
+     /*print_r($elements);
+     exit;*/
+		echo '<section id="etlap">
+     		<div class="row clearfix">
+             <div class="twelve columns centered itallap etel-fold">';
+     
+     foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
+        
+      echo '<ul class="fold-list">
+                    <div class="itallap-head">
+        <svg class="icon icon-'.$kategoriaAdat['ikon'].'"><use xlink:href="#icon-'.$kategoriaAdat['ikon'].'"></use></svg>
+        '.$kategoria.'</div>';
+      
+      $italSzamlalo = 0;
+      $osszesItal = sizeof($kategoriaAdat['etelek']);
+      
+      $containerSzamlalo = 1;
+      $maxElemSzam = 3;
+            
+      $italContainer = array();
+      foreach ($kategoriaAdat['etelek'] AS $ital){
+       array_push($italContainer, $ital);
+       $italSzamlalo += 1;
+       
+       if (sizeof($italContainer) % $maxElemSzam == 0 || $italSzamlalo == $osszesItal){
+        echo '<li>';
+        $this->loadTemplate('itallapElem', $italContainer);
+        echo '</li>';
+        $containerSzamlalo++;
+        
+        if ($containerSzamlalo == 1 || $containerSzamlalo == $osszesItal){
+         $maxElemSzam = 3;
+        }else{
+         $maxElemSzam = 4;
+        }
+        
+        
+        $italContainer = array();
+       }
+      }
+      
+      if ($containerSzamlalo % 2 == 1){
+       echo '<li>
+         <p></p><b></b>
+         <p></p><b></b>
+         <p></p><b></b>
+        </li>';
+      }
+      
+      echo '</ul>';
+     }
+     
+     echo '
+       </div> 
+                    </div>
+                </section>';
+     
+    }
+    
+    
     public function drawItallap($elements){
      echo '                <div class="row clearfix">
-                           <div class="twelve columns centered itallap">';
+                           <div class="twelve columns centered itallap ital-fold">';
      
      
       
@@ -388,6 +452,9 @@ class MenuView extends BaseView{
                 </section>';
      
     }
+    
+    
+    
     
     
     public function drawCetli($elements){

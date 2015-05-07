@@ -195,7 +195,7 @@ class Menu extends BaseObject{
     public function getEtlapData(){
     	$etlapArray = array();
     	
-    	$etelKategoriaSQL = "SELECT id, text_hu as labelText FROM koleves_etelkategoriak ORDER BY id ASC;";
+    	$etelKategoriaSQL = "SELECT id, text_hu as labelText, ikon FROM koleves_etelkategoriak ORDER BY id ASC;";
     	 
     	$etelSQL = "SELECT id, text_hu AS MEGNEVEZES, TAGEK, AR
     			FROM koleves_etelek
@@ -205,11 +205,14 @@ class Menu extends BaseObject{
     	$kategoriaRES = $this->fetchItems($etelKategoriaSQL);
     	
     	foreach ($kategoriaRES AS $kategoriaAdat){
-    		$etlapArray[$kategoriaAdat['labelText']] = array();
+    		$etlapArray[$kategoriaAdat['labelText']] = array(
+    				'ikon'	=> $kategoriaAdat['ikon'],
+    				'etelek'=> array()
+    		);
     	
     		$etelRES = $this->fetchItems($etelSQL, array($kategoriaAdat['id']));
     		foreach ($etelRES AS $etelAdat){
-    			array_push($etlapArray[$kategoriaAdat['labelText']], $etelAdat);
+    			array_push($etlapArray[$kategoriaAdat['labelText']]['etelek'], $etelAdat);
     		}
     	
     	}
@@ -250,7 +253,17 @@ class Menu extends BaseObject{
     	
     	
     	$this->view->drawEtlap($elements);
-    } 
+    }
+
+    
+    public function drawKertEtlap(){
+    	 $elements = array(
+    		'kategoriak' => $this->getEtlapData()
+    	);
+    	 
+    		 
+    	$this->view->drawKertEtlap($elements);
+    }
     
     
     
@@ -472,8 +485,7 @@ class Menu extends BaseObject{
     
     public function generateEtlapPDF(){
     	$kategoriak = $this->getEtlapData();
-    	
-		
+    			
 		
     	require_once('assets/libs/tcpdf/tcpdf.php');
     	require_once('assets/libs/tcpdf/kolevespdf.php');
@@ -518,10 +530,10 @@ class Menu extends BaseObject{
     	
 <div style="text-align:center;">';
     	
-	    foreach ($kategoriak AS $kategoria => $etelek){
+	    foreach ($kategoriak AS $kategoria => $kategoriaAdat){
 	    	$html .= '<span style="font-size:12px;font-weight:bold;">&bull; '.$kategoria.' &bull;</span><p>'; 	
 	    
-	    	foreach ($etelek AS $etelAdat){
+	    	foreach ($kategoriaAdat['etelek'] AS $etelAdat){
 	    		$html .= $etelAdat['MEGNEVEZES'].' '. (!is_null($etelAdat['TAGEK']) && trim($etelAdat['TAGEK']) != "" ? '&bull; '.$etelAdat['TAGEK'] : '').' - <strong>'.$etelAdat['AR'].' Ft</strong><br/>';	
 	    	}
 	    	
