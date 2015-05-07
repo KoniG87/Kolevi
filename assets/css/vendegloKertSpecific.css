@@ -1048,7 +1048,7 @@ body {
   overflow: hidden;
   padding-top: 5rem !important; }
 
-.itallap-head {
+.itallap-head, .etlap-head {
   color: #fff;
   height: 80px;
   font-size: 100%;
@@ -1061,9 +1061,9 @@ body {
   cursor: pointer;
   z-index: 1;
   margin: 0.2rem 0; }
-  .itallap-head:hover svg {
+  .itallap-head:hover svg, .etlap-head:hover svg {
     left: 0.5rem; }
-  .itallap-head svg {
+  .itallap-head svg, .etlap-head svg {
     -webkit-transition: left 0.3s ease;
     -moz-transition: left 0.3s ease;
     -ms-transition: left 0.3s ease;
@@ -1078,7 +1078,7 @@ body {
     /*		@extend .has-sprite;*/
     /*800px*/ }
     @media (min-width: 50em) {
-      .itallap-head svg {
+      .itallap-head svg, .etlap-head svg {
         left: 5rem;
         width: 60px;
         height: 60px;

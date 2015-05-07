@@ -984,7 +984,7 @@ function itallapAccordion(){
     $(".fold-list li:nth-child(even)").velocity(alapEven,1,spring);
 
     // CLICK
-    $(".itallap-head").click(itallapAccordionCLICK).click(function(){
+    $(".itallap-head, .etlap-head").click(itallapAccordionCLICK).click(function(){
       setTimeout(function(){ refreshWaypoints(); }, 1400);
     });
 }
@@ -1372,12 +1372,14 @@ var docWidth = document.documentElement.offsetWidth;
  */
     if(window.location.href.indexOf("/vendeglo") > -1) {
        /*include("assets/js/vend.min.js","assets/css/vendegloKertSpecific.css");*/
-       include("assets/js/vend.min.js");
+       setTimeout(function(){ include("assets/js/vend.min.js"); }, 100);
+       
     }
     else if(window.location.href.indexOf("/kert") > -1) {
       $("body").addClass("kert-spec");
        /*include("assets/js/kert.min.js","assets/css/vendegloKertSpecific.css");*/
-       include("assets/js/kert.min.js");
+      
+       setTimeout(function(){  include("assets/js/kert.min.js"); }, 100);
     }
 
 
