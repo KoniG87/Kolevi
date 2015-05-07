@@ -20,7 +20,7 @@ class Vendeglo extends BaseObject{
     		'szervezo'	=> $this->fetchItem($szervezoSQL),
     		'rendezvenyek' => $this->getRendezvenyData()
     	);
-    	   	
+    	$elements['szervezo']['FEJLEC_IMAGE'] = 'assets/img/rendezvenyek-img.png';
     	
     
     	$this->view->drawRendezveny($elements);
