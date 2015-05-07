@@ -343,7 +343,7 @@ public function drawKertEtlap($elements){
      foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
         
       echo '<ul class="fold-list">
-                    <div class="itallap-head">
+                    <div class="etlap-head">
         <svg class="icon icon-'.$kategoriaAdat['ikon'].'"><use xlink:href="#icon-'.$kategoriaAdat['ikon'].'"></use></svg>
         '.$kategoria.'</div>';
       

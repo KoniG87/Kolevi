@@ -38,5 +38,5 @@
     	$app->drawFooter();
     }
     
-    $app->drawPageClosure();
+    $app->drawPageClosure($page);
 ?>

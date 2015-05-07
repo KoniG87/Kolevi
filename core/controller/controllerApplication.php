@@ -383,10 +383,18 @@ class Application{
     }
     
     
-    public function drawPageClosure(){
+    public function drawPageClosure($subPage){
     	echo '
 			<script src="assets/js/plugins.min.js"></script>
         	<script src="assets/js/main.js"></script>
+    	';
+    
+    	$subPageScriptPath = 'assets/js/'.$subPage.'.js';
+    	if (file_exists($subPageScriptPath)){
+    		echo '<script src="'.$subPageScriptPath.'"></script>';
+    	}
+    	
+    	echo '
     		<script type="text/javascript">
     			$(document).ready(function(){
 					var contents = $("#nl-form").html();
