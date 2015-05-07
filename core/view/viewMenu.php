@@ -338,7 +338,14 @@ public function drawKertEtlap($elements){
      exit;*/
 		echo '<section id="etlap">
      		<div class="row clearfix">
-             <div class="twelve columns centered itallap etel-fold">';
+        <div class="four columns left">
+    <img data-src="assets/img/rendezvenyek-img.png" alt="Rendezvények" class="lazy-loaded" src="assets/img/rendezvenyek-img.png">
+    <noscript>
+      &lt;img src="assets/img/rendezvenyek-img.png" alt="Rendezvények"&gt;
+    </noscript>
+
+        </div>
+             <div class="eight columns right  itallap etel-fold">';
      
      foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
         
@@ -396,6 +403,12 @@ public function drawKertEtlap($elements){
     
     public function drawItallap($elements){
      echo '                <div class="row clearfix">
+                            <div class="four columns right">
+    <img data-src="assets/img/rendezvenyek-img.png" alt="Rendezvények" class="lazy-loaded" src="assets/img/rendezvenyek-img.png">
+    <noscript>
+      &lt;img src="assets/img/rendezvenyek-img.png" alt="Rendezvények"&gt;
+    </noscript>
+  </div>
                            <div class="twelve columns centered itallap ital-fold">';
      
      

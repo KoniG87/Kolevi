@@ -4923,5 +4923,7 @@ section {
   background-size: cover !important;
   background-repeat: no-repeat !important; }
 
-.kert-spec #rolunk > .row > .three.columns.right {
-  display: none; }
+.rolunk-kert-kep {
+  position: relative; }
+  .rolunk-kert-kep img {
+    display: none; }
