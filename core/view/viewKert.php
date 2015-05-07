@@ -114,7 +114,7 @@ class KertView extends BaseView{
     public function drawRendezveny($elements){
     	echo '<section id="rendezvenyek">';
                 
-    	$this->drawSectionLabel("Rendezvények", "rendezvenyek", 4);
+    	$this->drawSectionLabel("Rendezvények", "rendezvenyek", 3);
     	
     	
     	echo '<p>A földszinti vendégtérből nyílik az általunk "VIP" teremnek nevezett kisterem, ahol maximum 13 fő fér el. Zártkörű ebédekhez, vacsorákhoz vagy megbeszélésekhez ajánljuk.</p>
@@ -242,7 +242,7 @@ class KertView extends BaseView{
     
     public function drawRolunk($elements){
     	echo '<section id="rolunk">';
-    	$this->drawSectionLabel("Rólunk", "rolunk", 6);
+    	$this->drawSectionLabel("Rólunk", "rolunk", 1);
     	echo '
 			<div class="row clearfix">
 				<div class="eight columns">

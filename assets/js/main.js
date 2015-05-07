@@ -2,10 +2,6 @@
 $(document).ready(function(){
   var onDesktop = true;
 
-function alertMe(){
-  alert("!!!!");
-}
-
 Pace.on("done", function(){
   setTimeout(function(){ refreshWaypoints(); }, 100);
 });
@@ -491,6 +487,10 @@ $(".barkas").on("mouseleave",barkasAccordionClose);
 // barkasAccordion();
 $(".barkas").draggable({ axis: "x" },{ containment: "parent" });
 
+/*
+ *  LANDING ANIMÁCIÓK
+ */
+
   var osszes = $(".illustration-container .hoverEffect"),
       vend = $(".vendeglo"),
       delic = $(".delicates"),
@@ -915,81 +915,6 @@ stickyFoldAnim();
 
 
 
-/*
- *  MOBILE GYROSCOPE ANIMÁCIÓ
- */      
-// function gyroForMobile(){
-//       var mKert = $(".mobile-kert"),
-//           mApartman = $(".mobile-apartman"),
-//           mDelicates = $(".mobile-delicates"),
-//           mVendeglo = $(".mobile-vendeglo"),
-//           mLanding = $(".mobile-landing-container");
-
-//       var mKertPos = mKert.position(),
-//           mApartmanPos = mApartman.position(),
-//           mDelicatesPos = mDelicates.position(),
-//           mVendegloPos = mVendeglo.position();
-
-// gyro.startTracking(function(o) {
-//      var test = document.getElementById("m-landing");
-//      // alpha = irány
-//      // gamma = jobb-bal
-//      // beta = fel-le
-//      test.innerHTML = "<h2>Gyro</h2>" +
-//                     "<p> alpha =   " + Math.round(o.alpha * 1) / 1 + "°</p>" +
-//                     "<p> beta =   " + Math.round(o.beta * 1) / 1 + "°</p>" +
-//                     "<p> gamma =   " + Math.round(o.gamma * 1) / 1 + "°</p>";
-
-
-//       var gyroLeft = Math.round(o.gamma * 1) / 1,
-//           gyroTop  = Math.round(o.beta * 1) / 1,
-//           BGpos = gyroLeft+"px "+gyroTop+"px";   
-
-
-//         // console.error(mDelicatesPos);
-//           GyroPosser(mApartman,mApartmanPos,0.1);
-//           GyroPosser(mKert,mKertPos,0.6);
-//           GyroPosser(mDelicates,mDelicatesPos,0.6);
-//           GyroPosser(mVendeglo,mVendegloPos,1);
-//           mLanding.css("background-position",BGpos);
-// function GyroPosser(tar,tarPos,timeing){
-//       tar.css("left", tarPos.left+(gyroLeft*timeing) );
-//       tar.css("top", tarPos.top+(gyroTop*timeing) );
-// }
-
-//     });
-// }
-
-/*
- *  VENDÉGLŐ
- */ 
-
-/* napi menü */
-//tábláki kianimálása
-
-$(".napi-tablak>li").each(function(){
-  $(this).Svgenerate({
-    rangeX:0.96,
-    rangeY:0.92
-  });
-});
-
-function napiMenuTablakOut(){
-
-  $(".stickyStart").waypoint(function(){
-    var tLength = $(".napi-tablak>li").length -1,
-        tStagger = 250;
-        tDelay = tLength * tStagger;
-
-  $(".napi-tablak>li:not(:last-of-type)").velocity("transition.perspectiveDownIn", {stagger:tStagger},{duration:600});
-  $(".napi-tablak>li:last-of-type").delay(tDelay).velocity("transition.perspectiveDownIn", {duration: 600, complete: function() {
-    refreshWaypoints();
-  }});
-  }, {
-    offset: -100,
-    triggerOnce: true
-});
-}
 
 
 // refresh waypoint (ha display:none-ból megjelentek valamit akkor be kell frissteni, különben behal ez a fos.)
@@ -1064,41 +989,7 @@ function itallapAccordion(){
     });
 }
 
-$(".fold-list:nth-child(1)>.itallap-head").Svgenerate({
-    rangeX:0.995,
-    rangeY:0.8,
-    midmove:0.1,
-    bottomFixed: "on",
-    fill:"#dd9a3c"
-  });
-$(".fold-list:nth-child(2)>.itallap-head").Svgenerate({
-    rangeX:0.995,
-    rangeY:0.8,
-    midmove:0.1,
-    bottomFixed: "on",
-    fill:"#ad333e"
-  });
-$(".fold-list:nth-child(3)>.itallap-head").Svgenerate({
-    rangeX:0.995,
-    rangeY:0.8,
-    midmove:0.1,
-    bottomFixed: "on",
-    fill:"#7a5a71"
-  });
-$(".fold-list:nth-child(4)>.itallap-head").Svgenerate({
-    rangeX:0.995,
-    rangeY:0.8,
-    midmove:0.1,
-    bottomFixed: "on",
-    fill:"#4e8193"
-  });
-$(".fold-list:nth-child(5)>.itallap-head").Svgenerate({
-    rangeX:0.995,
-    rangeY:0.8,
-    midmove:0.1,
-    bottomFixed: "on",
-    fill:"#86a516"
-  });
+
 
 
 
@@ -1109,28 +1000,7 @@ itallapAccordion();
 
 
 
-// asztalfoglalás
 
-var nlform = new NLForm( document.getElementById( 'nl-form' ) );
-
-$(".datepicker").datetimepicker({
-  lang:'hu',
-  timepicker:false,
-  format:'Y . m . d',
-  closeOnDateSelect:true,
-  minDate:0,
-  todayButton:false,
-  dayOfWeekStart: 1,
-  startDate:new Date()
-});
-$(".timepicker").datetimepicker({
-  datepicker:false,
-  format:'H:i',
-  step:30,
-  closeOnDateSelect:true,
-  minTime:'08:00',
-  maxTime:'24:00'
-})
 
 // rendezvények
 var prevA = "<svg class=\"icon icon-slider-balra slick-prev\"><use xlink:href=\"#icon-slider-balra\"></use></svg>";
@@ -1177,14 +1047,6 @@ $(".diszvonal-vert").each(function(){
   });
 
 
-$(".nl-submit").Svgenerate({
-  rangeX:0.94,
-  rangeY:0.91,
-});
-
-
-
-
 
 
 $("#rendezvenyek h3").each(function(){
@@ -1194,200 +1056,7 @@ $("#rendezvenyek h3").each(function(){
   });
 });
 
-//programok
 
-// naptár ikon kinyitó
-
-$(".naptar-trigger").on("click",function(){
-  $("#mini-clndr, .naptar-trigger").toggleClass("naptar-is-on");
-  refreshWaypoints();
-});
-
-
-
-$(".program-date").each(function(){
-  $(this).Svgenerate({
-    rangeX:0.9,
-    rangeY:0.96,
-    bottomFixed:"on",
-    topFixed:"on"
-  });
-});
-
-var programDotHeight = 160;
-
-var truncateIfNeeded = function(jqueryTag){
-    var $selectionToTruncate = jqueryTag || $(".program-right");
-    
-    $selectionToTruncate.dotdotdot({
-        ellipsis: '...',
-        watch   : true,
-        wrap    : 'letter',
-        height  : programDotHeight, // max height then ...
-        after   : '.program-nyil-le',
-        callback: function( isTruncated, orgContent ) {
-            
-            if( isTruncated ){
-                $(this).addClass('truncable-txt--is-truncated');
-            }
-            programNyilLe(); // bind click on "lefele nyil"
-        },
-    });
-};
-truncateIfNeeded();
-// Ha nem kell még a dotdotdot,akkor tüntesd el a nyilakat...
-$(".program").each(function(){
-  var dotContent = $(this).find(".program-right");
-  console.log(dotContent.innerHeight());
-  if(dotContent.innerHeight() > programDotHeight){
-    dotContent.find(".program-nyil").css("opacity","1");
-    
-  }
-  else{
-    dotContent.find(".program-nyil").css("opacity","0");
-  }
-});
-
-
-function programNyilLe(){
-$(".program-nyil-le").on("click",function(event){
-event.preventDefault();
-var programokParent = $(this).parent().parent().parent();
-programokParent.toggleClass("program-fullheight");
-var parent = $(this).parent();
-        parent.trigger("destroy");
-        parent.removeClass('truncable-txt--is-truncated');
-        parent.addClass('truncable-txt--is-not-truncated');
-        programNyilFel();
-});
-refreshWaypoints();
-}
-
-function programNyilFel(){
-$(".program-nyil-fel").on("click",function(event){
-event.preventDefault();
-var programokParent = $(this).parent().parent();
-var programokParentHeight = programokParent.height();
-if(mT.matches || mM.matches){
-programokParent.velocity({height: "20rem"},1000).delay(1000).velocity({height: programokParentHeight},1);
-}
-else if(mL.matches){
-  programokParent.velocity({height: "10rem"},1000).delay(1000).velocity({height: programokParentHeight},1);
-}
-
-programokParent.toggleClass("program-fullheight");
-var parent = $(this).parent();
-truncateIfNeeded(parent);
-
-});
-refreshWaypoints();
-
-}
-
-/*$(".program-nyil").on("click",function(event){
-event.preventDefault();
-var programokParent = $(this).parent().parent().parent();
-
-
-
-
-
-
-var programokParent = $(this).parent().parent().parent();
-
-programokParent.toggleClass("program-fullheight");
-
-if (programokParent.hasClass("program-fullheight")) {
-$(".program-nyil").velocity({ rotateZ: "180deg" });
-
-
-}
-else{
-$(".program-nyil").velocity({ rotateZ: "0" });
-
-
-
-}
-
-refreshWaypoints();
-});*/
-
-
-// CALENDAR
-
-//Ha magyar
-  moment.locale('hu',{
-    // months : "jan._feb._már._ápr._máj._jun._jul._aug._szep._okt._nov._dec.".split("_"),
-  });
-  
-// Ha angol
- // moment.locale('en',{
- //  months : "jan._feb._mar._apr._may_jun._jul._aug._sep._okt._nov._dec.".split("_"),
- // });
-
-
-  var mName =moment().format('MMMM', 'hu');
-  var mDate = moment().format('DD', 'hu');
-  var dName = moment().format('dddd', 'hu');
-  var currentMonth = moment().format('YYYY-MM');
-  var nextMonth    = moment().add('month', 1).format('YYYY-MM');
-  
-
-
-
-var eventIndex;
-
-$("#mini-clndr").clndr({
-template: $('#calendar-template').html(),
-   events: events,
-    clickEvents: {
-      click: function(target) {
-       
-        if(target.events.length) {  // Ha eventre klikkelek
-          var targetProgi = $('.program[data-datum="'+target.events[0].date+'"]');
-          targetProgi.velocity("scroll", {
-				duration: 1000,
-				easing: "ease",
-				offset:-120
-			});
-          if(targetProgi.find(".program-right").innerHeight() > 160){
-            targetProgi.find(".program-nyil-le").click();
-            console.log(targetProgi.innerHeight());
-          }
-        }
-      },
-      onMonthChange: function(month){ 
-        callCalendar();
-       }
-    },
-    startWithMonth:currentMonth,
-    adjacentDaysChangeMonth: true,
-
-});
-
-
-function callCalendar(){
-  $(".controls, .days-container").Svgenerate({
-      rangeY:0.92,
-      midmove:0.4
-    });
-  $(".day.today").Svgenerate({
-      rangeX:0.9,
-      rangeY:0.9,
-      fill:"#fff"
-  });
-
-  $(".day.event").each(function(){
-    $(this).Svgenerate({
-      rangeX:0.9,
-      rangeY:0.9,
-      strokeColor:"white",
-      strokeWidth:2
-
-    });
-  });
-}
-callCalendar();
  //rólunk
  setTimeout(function(){ 
     $(".rolunk-visible").each(function(){
@@ -1439,6 +1108,8 @@ $(".rolunk-fel").on("click",function(){
   thisOne.find(".origami-container").delay(delay*2.3).velocity({height:0,marginTop:0});
  thisOne.parent().find("h4, svg.icon").delay(delay*2.5).velocity({opacity:1});
 });
+
+
 //képek
 
 $(".rend-slide").each(function(){
@@ -1477,7 +1148,6 @@ setTimeout(function(){ callThumbs(); }, 1000);
 /*callThumbs();*/
 // filtering
 
-// TODO: FILTERINGET MAJD TAGEKKEL KELL PHP-VAL, EZ CSAK IDEIGLENES!
 
 function filtering(){
   var dataFilter = $(".filter-on").data("filter");
@@ -1486,77 +1156,7 @@ function filtering(){
 
 var gEl = $(".gallery-grid-element");
 
-/*function filterUp(){
-$(".filter-on").velocity({opacity:1});
-  $(".filter-on").find(".tag-before").velocity({
-    skewY:"-20deg",
-    translateY:"-4px"
-  });
-     $(".filter-on").find(".tag-after").velocity({
-    skewY:"20deg",
-    translateY:"-4px"
-  });
-     $(".filter-on").find(".tag-label").velocity({
-    translateY:"-10px"
-  });
-}
-function filterDown(){
-$(".filter").velocity({opacity:0.6});
-  $(".filter").find(".tag-before").velocity({
-    skewY:"-5deg",
-    translateY:0
-  });
-     $(".filter").find(".tag-after").velocity({
-    skewY:"5deg",
-    translateY:0
-  });
-     $(".filter").find(".tag-label").velocity({
-    translateY:"-2px"
-  });
-}
 
-//beállit minden filtert
-filterDown();
-// beállitja az aktivat
-filterUp();*/
-  
-
-
-/*$(".filter").on("click",function(){
-var thisOne = $(this),
-    thisBefore = thisOne.find(".tag-before"),
-    thisAfter = thisOne.find(".tag-after"),
-    label = thisOne.find(".tag-label");
-  
-  $(".filter").removeClass("filter-on");
-  thisOne.addClass("filter-on");
-  filterDown();
-  filterUp();
-
-  filtering();
-
-  if(filtering() === 1){
-    gEl.delay(300).velocity("transition.slideUpIn", { stagger: 50 }, 1000);
-  }
-  else if(filtering() === 2){
-    gEl.velocity("transition.slideUpOut", 1000);
-
-    $(".gallery-grid-element:nth-child(4n+2)").delay(300).velocity("transition.slideUpIn", { stagger: 50 }, 1000);
-  }  
-  else if(filtering() === 3){
-    gEl.velocity("transition.slideUpOut", 1000);
-    $(".gallery-grid-element:nth-child(4n+3)").delay(300).velocity("transition.slideUpIn", { stagger: 50 }, 1000);
-  }  
-  else if(filtering() === 4){
-    gEl.velocity("transition.slideUpOut", 1000);
-    $(".gallery-grid-element:nth-child(4n+4)").delay(300).velocity("transition.slideUpIn", { stagger: 50 }, 1000);
-  }  
-  else if(filtering() === 5){
-    gEl.velocity("transition.slideUpOut", 1000);
-    $(".gallery-grid-element:nth-child(4n+5)").delay(300).velocity("transition.slideUpIn", { stagger: 50 }, 1000);
-  }
-  refreshWaypoints();
-});*/
 function acitveFilter(){
   $(".filter").each(function(){
   $(this).Svgenerate({
@@ -1593,25 +1193,7 @@ acitveFilter();
     $('.gallery-grid-element[data-galtag="'+filterState+'"]').delay(300).velocity('transition.slideUpIn', { stagger: 50 }, 1000);
 	  
   }
-  /*else if(filtering() === 1){
-    gEl.velocity("transition.slideUpOut", 1000);
-
-    $(".gallery-grid-element[data-galtag=""]").delay(300).velocity("transition.slideUpIn", { stagger: 50 }, 1000);
-	//$(".gallery-grid-element:nth-child(4n+2)").delay(300).velocity("transition.slideUpIn", { stagger: 50 }, 1000);
-  }  
-  else if(filtering() === 2){
-    gEl.velocity("transition.slideUpOut", 1000);
-    $(".gallery-grid-element:nth-child(4n+3)").delay(300).velocity("transition.slideUpIn", { stagger: 50 }, 1000);
-  }  
-  else if(filtering() === 3){
-    gEl.velocity("transition.slideUpOut", 1000);
-    $(".gallery-grid-element:nth-child(4n+4)").delay(300).velocity("transition.slideUpIn", { stagger: 50 }, 1000);
-  }  
-  else if(filtering() === 4){
-    gEl.velocity("transition.slideUpOut", 1000);
-    $(".gallery-grid-element:nth-child(4n+5)").delay(300).velocity("transition.slideUpIn", { stagger: 50 }, 1000);
-  }
-  */
+ 
   refreshWaypoints();
   });
 var galleryX = "<svg class=\"icon icon-close gallery-close\"><use xlink:href=\"#icon-close\"></use></svg>";
@@ -1758,7 +1340,7 @@ if (matchMedia) {
              /*callGallery();*/
             /* callThumbs();*/
             $(".section-label").each(sectionLabels);
-            napiMenuTablakOut();
+           /* napiMenuTablakOut();*/
             callFooter(0.9);
             
         }
@@ -1783,6 +1365,44 @@ var docWidth = document.documentElement.offsetWidth;
 }
 
 // overflowFinder();
+
+
+/*
+ *  ALOLDAL SCRIPT ADAGOLÓ
+ */
+    if(window.location.href.indexOf("/vendeglo") > -1) {
+       /*include("assets/js/vend.min.js","assets/css/vendegloKertSpecific.css");*/
+       include("assets/js/vend.min.js");
+    }
+    else if(window.location.href.indexOf("/kert") > -1) {
+      $("body").addClass("kert-spec");
+       /*include("assets/js/kert.min.js","assets/css/vendegloKertSpecific.css");*/
+       include("assets/js/kert.min.js");
+    }
+
+
+
+
+
+
+/*function include(JS, CSS){
+  var Js = JS,
+      Css = CSS;
+
+  
+$("body").append('<script type="text/javascript" src="' + Js + '"></script>');
+$("head").append('<link rel="stylesheet" media="screen" type="text/css" href="' + Css + '"/>');
+}*/
+
+
+function include(JS){
+  var Js = JS;
+
+  
+$("body").append('<script type="text/javascript" src="' + Js + '"></script>');
+}
+
+
 
  }); // document ready
 

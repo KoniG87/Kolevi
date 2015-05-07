@@ -13,7 +13,8 @@ include('page/home.php');
 
 	$vendeglo->drawRolunk();
 	
-	$menu->drawEtlap();
+
+	/*kell nekünk ide egy $menu->drawKertEtlap*/
 	$menu->drawItallap();
 	
 	$vendeglo->drawRendezveny();
