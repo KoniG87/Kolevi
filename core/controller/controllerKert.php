@@ -3,7 +3,7 @@
 class Kert extends BaseObject{
 	
 	function __construct($dbHandler){
-        $this->objectType = 'Vendeglo';
+        $this->objectType = 'Kert';
         
 		parent::__construct($dbHandler);
 	}
@@ -115,6 +115,7 @@ class Kert extends BaseObject{
     	$this->view->drawRolunk($elements);
     	
     }
+    
     /*
     
     public function loadKepek($tipusID = null){

@@ -15,13 +15,14 @@ include('page/home.php');
 	
 	$kert->drawRolunk();
 	
-	/*kell nekünk ide egy*/
+	
 	$menu->drawKertEtlap();
 	$menu->drawItallap();
 	
 	$vendeglo->drawRendezveny();
 	
 	$galeria->drawGaleria();
+	
 ?>
 
 </div>
