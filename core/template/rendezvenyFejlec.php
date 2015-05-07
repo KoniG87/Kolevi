@@ -21,10 +21,10 @@
 
 	</div>
 	<div class="three columns right">
-		<img data-src="assets/img/rendezvenyek-img.png" alt="Rendezvények"
+		<img data-src="[[FEJLEC_IMAGE]]" alt="Rendezvények"
 			class="lazy">
 		<noscript>
-			<img src="assets/img/rendezvenyek-img.png" alt="Rendezvények">
+			<img src="[[FEJLEC_IMAGE]]" alt="Rendezvények">
 		</noscript>
 	</div>
 </div>

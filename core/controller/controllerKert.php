@@ -12,7 +12,7 @@ class Kert extends BaseObject{
         $this->view->drawFoglalasForm();
     }
     
-    /*
+    
       
     public function drawRendezveny(){
     	
@@ -22,7 +22,7 @@ class Kert extends BaseObject{
     		'szervezo'	=> $this->fetchItem($szervezoSQL),
     		'rendezvenyek' => $this->getRendezvenyData()
     	);
-    	   	
+    	$elements['szervezo']['FEJLEC_IMAGE'] = 'assets/img/rendezvenyek-img.png';   	
     	
     
     	$this->view->drawRendezveny($elements);
@@ -48,7 +48,7 @@ class Kert extends BaseObject{
     	return $tmpArray;
     }
     
-   
+    /*
     
      public function getProgramData($allapot){
     	$SQL = "SELECT id, datum, text_hu AS labelHeader, SUBSTRING(leiras_hu, 1, 55) AS labelDesc, allapot, kep, fblink FROM koleves_programok WHERE allapot <> ? ORDER BY datum DESC;";

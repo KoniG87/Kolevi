@@ -19,7 +19,7 @@ include('page/home.php');
 	$menu->drawKertEtlap();
 	$menu->drawItallap();
 	
-	$vendeglo->drawRendezveny();
+	$kert->drawRendezveny();
 	
 	$galeria->drawGaleria();
 	
