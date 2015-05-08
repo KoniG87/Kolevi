@@ -15,16 +15,14 @@ class Kert extends BaseObject{
     
       
     public function drawRendezveny(){
-    	
     	$szervezoSQL = "SELECT NEV, KEP, TELEFON, EMAIL, FACEBOOK FROM koleves_dolgozok WHERE rendezvenyfelelos = 1;";
     	
     	$elements = array(
     		'szervezo'	=> $this->fetchItem($szervezoSQL),
     		'rendezvenyek' => $this->getRendezvenyData()
     	);
-    	$elements['szervezo']['FEJLEC_IMAGE'] = 'assets/img/rendezvenyek-img.png';   	
+    	$elements['szervezo']['FEJLEC_IMAGE'] = 'assets/img/kert-rendezvenyek.png';   	
     	
-    
     	$this->view->drawRendezveny($elements);
     }
     
