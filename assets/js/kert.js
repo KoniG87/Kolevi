@@ -1,8 +1,6 @@
 
 $(document).ready(function(){
 
-
-
 // etlap
 $(".fold-list:nth-child(2n+1)>.etlap-head").Svgenerate({
     rangeX:0.995,
@@ -46,10 +44,10 @@ $(".rolunk-kert-kep").Svgenerate({
     setToImg:"on",
     dropShadow: "on",
     blur:5,
-    dX:47,
-    dY:47,
+    dX:20,
+    dY:20,
     opacity:0.25,
-    rangeX:0.93,
-    rangeY:0.93
+    rangeX:0.8,
+    rangeY:0.9
   });
 }); //doc-ready

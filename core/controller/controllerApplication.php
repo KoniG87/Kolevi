@@ -297,21 +297,20 @@ class Application{
 		<div class="f-sitemap left clearfix">
 			<ul>
 				<h4>étterem</h4>
-				<a href="#napiMenu"><li>Napi menü</li></a>
-				<a href="#etlap"><li>Étlap</li></a>
-				<a href="#asztalfoglalas"><li>Asztalfoglalás</li></a>
-				<a href="#rendezvenyek"><li>Rendezvények</li></a>
-				<a href="#programok"><li>Programok</li></a>
-				<a href="#rolunk"><li>Rólunk</li></a>
-				<a href="#kepek"><li>Képek</li></a>
+				<a href="vendeglo#napiMenu"><li>Napi menü</li></a>
+				<a href="vendeglo#etlap"><li>Étlap</li></a>
+				<a href="vendeglo#asztalfoglalas"><li>Asztalfoglalás</li></a>
+				<a href="vendeglo#rendezvenyek"><li>Rendezvények</li></a>
+				<a href="vendeglo#programok"><li>Programok</li></a>
+				<a href="vendeglo#rolunk"><li>Rólunk</li></a>
+				<a href="vendeglo#kepek"><li>Képek</li></a>
 			</ul>
 			<ul>
 				<h4>kert</h4>
-				'.(false ? '<a href=""><li>Étlap</li></a>
-				<a href=""><li>Asztalfoglalás</li></a>
-				<a href=""><li>Programok</li></a>
-				<a href=""><li>Kertről</li></a>
-				<a href=""><li>Képek</li></a>' : '<li>Hamarosan</li>').'
+                <a href="kert#rolunk"><li>Rólunk</li></a>
+				<a href="kert#etlap"><li>Étlap</li></a>
+                <a href="kert#rendezvenyek"><li>Rendezvények</li></a>
+                <a href="kert#kepek"><li>Képek</li></a>
 			</ul>
 			<ul>
 				<h4>apartman</h4>
@@ -386,10 +385,10 @@ class Application{
     public function drawPageClosure($subPage){
     	echo '
 			<script src="assets/js/plugins.min.js"></script>
-        	<script src="assets/js/main.js"></script>
+        	<script src="assets/js/main.min.js"></script>
     	';
     
-    	$subPageScriptPath = 'assets/js/'.$subPage.'.js';
+    	$subPageScriptPath = 'assets/js/'.$subPage.'.min.js';
     	if (file_exists($subPageScriptPath)){
     		echo '<script src="'.$subPageScriptPath.'"></script>';
     	}

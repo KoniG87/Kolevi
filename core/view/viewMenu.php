@@ -336,12 +336,17 @@ class MenuView extends BaseView{
 public function drawKertEtlap($elements){
      /*print_r($elements);
      exit;*/
-		echo '<section id="etlap">
+		echo '<section id="etlap">';
+		
+		$this->drawSectionLabel("Étlap", "etlap", 2);
+		
+		echo '
      		<div class="row clearfix">
-        <div class="four columns left">
-    <img data-src="assets/img/rendezvenyek-img.png" alt="Rendezvények" class="lazy-loaded" src="assets/img/rendezvenyek-img.png">
+        <div class="three columns left">
+        <p class="ehes-szomjas">Éhes vagy?</p>
+    <img data-src="assets/img/asztalos_bacsi.png" alt="kert étlap" class="lazy-loaded" >
     <noscript>
-      &lt;img src="assets/img/rendezvenyek-img.png" alt="Rendezvények"&gt;
+      &lt;img src="assets/img/asztalos_bacsi.png" alt="kert étlap"&gt;
     </noscript>
 
         </div>
@@ -403,10 +408,11 @@ public function drawKertEtlap($elements){
     
     public function drawItallap($elements){
      echo '                <div class="row clearfix">
-                            <div class="four columns right">
-    <img data-src="assets/img/rendezvenyek-img.png" alt="Rendezvények" class="lazy-loaded" src="assets/img/rendezvenyek-img.png">
+                            <div class="three columns right">
+                             <p class="ehes-szomjas">Szomjas?</p>
+    <img data-src="assets/img/asztalos_neni.png" alt="Kert itallap" class="lazy-loaded">
     <noscript>
-      &lt;img src="assets/img/rendezvenyek-img.png" alt="Rendezvények"&gt;
+      &lt;img src="assets/img/asztalos_neni.png" alt="Kert itallap"&gt;
     </noscript>
   </div>
                            <div class="twelve columns centered itallap ital-fold">';
