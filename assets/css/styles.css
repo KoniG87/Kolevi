@@ -4937,3 +4937,8 @@ section {
   margin: 0 auto;
   font-family: "Daniel-Regular", sans serif;
   font-size: 120%; }
+
+.fold-list li p {
+  width: 85%; }
+.fold-list li b {
+  width: 10%; }

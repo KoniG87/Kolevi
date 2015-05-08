@@ -385,10 +385,10 @@ class Application{
     public function drawPageClosure($subPage){
     	echo '
 			<script src="assets/js/plugins.min.js"></script>
-        	<script src="assets/js/main.js"></script>
+        	<script src="assets/js/main.min.js"></script>
     	';
     
-    	$subPageScriptPath = 'assets/js/'.$subPage.'.js';
+    	$subPageScriptPath = 'assets/js/'.$subPage.'.min.js';
     	if (file_exists($subPageScriptPath)){
     		echo '<script src="'.$subPageScriptPath.'"></script>';
     	}
