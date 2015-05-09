@@ -342,7 +342,7 @@ public function drawKertEtlap($elements){
 		
 		echo '
      		<div class="row clearfix">
-        <div class="three columns left">
+        <div class="three columns left illusztracio">
         <p class="ehes-szomjas">Éhes vagy?</p>
     <img data-src="assets/img/asztalos_bacsi.png" alt="kert étlap" class="lazy-loaded" >
     <noscript>
@@ -355,7 +355,7 @@ public function drawKertEtlap($elements){
      foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
         
       echo '<ul class="fold-list">
-                    <div class="etlap-head">
+                    <div class="etel-head">
         <svg class="icon icon-'.$kategoriaAdat['ikon'].'"><use xlink:href="#icon-'.$kategoriaAdat['ikon'].'"></use></svg>
         '.$kategoria.'</div>';
       
@@ -408,7 +408,7 @@ public function drawKertEtlap($elements){
     
     public function drawItallap($elements){
      echo '                <div class="row clearfix">
-                            <div class="three columns right">
+                            <div class="three columns right illusztracio">
                              <p class="ehes-szomjas">Szomjas?</p>
     <img data-src="assets/img/asztalos_neni.png" alt="Kert itallap" class="lazy-loaded">
     <noscript>

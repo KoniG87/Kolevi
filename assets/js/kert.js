@@ -2,14 +2,14 @@
 $(document).ready(function(){
 
 // etlap
-$(".fold-list:nth-child(2n+1)>.etlap-head").Svgenerate({
+$(".fold-list:nth-child(2n+1)>.etel-head").Svgenerate({
     rangeX:0.995,
     rangeY:0.86,
     midmove:0.1,
     bottomFixed: "on",
     fill:"#c69c6d"
   });
-$(".fold-list:nth-child(2n+2)>.etlap-head").Svgenerate({
+$(".fold-list:nth-child(2n+2)>.etel-head").Svgenerate({
     rangeX:0.995,
     rangeY:0.86,
     midmove:0.1,

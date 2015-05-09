@@ -226,11 +226,10 @@ class Application{
       </ul>
       <ul>
         <svg class="icon icon-kert"><use xlink:href="#icon-kert"></use></svg>
-        '.(false ? '<a href=""><li>Étlap</li></a>
-        <a href=""><li>Asztalfoglalás</li></a>
-        <a href=""><li>Programok</li></a>
-        <a href=""><li>Kertről</li></a>
-        <a href=""><li>Képek</li></a>' : '<li>Hamarosan</li>').'
+        <a href="kert#rolunk"><li>Rólunk</li></a>
+        <a href="kert#etlap"><li>Étlap</li></a>
+        <a href="kert#rendezvenyek"><li>Rendezvények</li></a>
+        <a href="kert#kepek"><li>Képek</li></a>
       </ul>
       <ul>
         <svg class="icon icon-apartman"><use xlink:href="#icon-apartman"></use></svg>

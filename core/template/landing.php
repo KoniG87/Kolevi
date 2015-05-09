@@ -282,12 +282,11 @@
                 <div class="mobile-villafa mob-trigger"></div>
 
                 <div class="mobile-kert mob-trigger">
-                      <ul class="disabled">
-                        <a href=""><li>Hamarosan</li></a>
-<!--                         <a href=""><li>Asztalfoglalás</li></a>
-                        <a href=""><li>Programok</li></a>
-                        <a href=""><li>Kertről</li></a>
-                        <a href=""><li>Képek</li></a> -->
+                      <ul>
+                       <a href="kert#rolunk"><li>Rólunk</li></a>
+                        <a href="kert#etlap"><li>Étlap</li></a>
+                        <a href="kert#rendezvenyek"><li>Rendezvények</li></a>
+                        <a href="kert#kepek"><li>Képek</li></a>
                       </ul>
                 </div>       
 

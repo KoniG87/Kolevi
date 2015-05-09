@@ -986,7 +986,7 @@ function itallapAccordion(){
     $(".fold-list li:nth-child(even)").velocity(alapEven,1,spring);
 
     // CLICK
-    $(".itallap-head, .etlap-head").click(itallapAccordionCLICK).click(function(){
+    $(".itallap-head, .etel-head").click(itallapAccordionCLICK).click(function(){
       setTimeout(function(){ refreshWaypoints(); }, 1400);
     });
 }
