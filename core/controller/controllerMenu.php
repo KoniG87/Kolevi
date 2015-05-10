@@ -261,9 +261,6 @@ class Menu extends BaseObject{
     		'kategoriak' => $this->getEtlapData()
     	);
     	 
-    	 print_r($elements);
-    	 exit;
-    	 
     		 
     	$this->view->drawKertEtlap($elements);
     }
@@ -480,10 +477,10 @@ class Menu extends BaseObject{
     }
     
     
-    public function drawItallap(){
+    public function drawItallap($helyiseg = 'vendeglo'){
     	$elements = $this->getItallapData();
     	    	
-    	$this->view->drawItallap($elements);
+    	$this->view->drawItallap($elements, $helyiseg);
     }
     
     public function generateEtlapPDF(){

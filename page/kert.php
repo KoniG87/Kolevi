@@ -17,7 +17,7 @@ include('page/home.php');
 	
 	
 	$menu->drawKertEtlap();
-	$menu->drawItallap();
+	$menu->drawItallap('kert');
 	
 	$kert->drawRendezveny();
 	

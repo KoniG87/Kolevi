@@ -406,16 +406,21 @@ public function drawKertEtlap($elements){
     }
     
     
-    public function drawItallap($elements){
-     echo '                <div class="row clearfix">
-                            <div class="three columns right illusztracio">
-                             <p class="ehes-szomjas">Szomjas?</p>
-    <img data-src="assets/img/asztalos_neni.png" alt="Kert itallap" class="lazy-loaded">
-    <noscript>
-      &lt;img src="assets/img/asztalos_neni.png" alt="Kert itallap"&gt;
-    </noscript>
-  </div>
-                           <div class="twelve columns centered itallap ital-fold">';
+    public function drawItallap($elements, $helyiseg){
+     echo '<div class="row clearfix">';
+     
+     if ($helyiseg == 'kert'){
+     	echo '
+     
+             <div class="three columns right illusztracio">
+             <p class="ehes-szomjas">Szomjas?</p>
+    		 <img data-src="assets/img/asztalos_neni.png" alt="Kert itallap" class="lazy-loaded">
+    		<noscript>
+      			&lt;img src="assets/img/asztalos_neni.png" alt="Kert itallap"&gt;
+    			</noscript>
+  			</div>';
+     }
+      echo '<div class="twelve columns centered itallap ital-fold">';
      
      
       

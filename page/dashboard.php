@@ -3,8 +3,7 @@
         <div class="logo left">
             <a href="dashboard"><svg class="icon icon-logo"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-logo"></use></svg></a>
         </div>
-            <a href="" title="Jelenleg itt tartózkodsz">Vendéglő</a>
-            <a href="" title="Hamarosan">Kert</a>
+            <a href="" title="Jelenleg itt tartózkodsz">Vendéglő & Kert</a>
             <a href="" title="Hamarosan">Delicates</a>
             <a href="" title="Hamarosan">Apartman</a>
             <a href="./vendeglo" class="right" style="margin-right:5rem;">Vissza az oldalra</a>

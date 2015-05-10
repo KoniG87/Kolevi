@@ -38,7 +38,7 @@
 		<tr>
 			<td><label>Kép</label></td>
 			<td>
-                 <select name="kep">
+                 <select name="kep" required>
                     <option value=""></option>
                <?php
             foreach ($programKepek AS $kepData){
@@ -87,7 +87,7 @@
 				text_hu: $('#editForm input[name="text_hu"]').val(),
 				leiras_hu: $('#editForm textarea[name="leiras_hu"]').val(),
 				datum: $('#editForm input[name="datum"]').val(),
-				kep: $('#editForm input[name="kep"]').val(),
+				kep: $('#editForm select[name="kep"]').val(),
 				fblink: $('#editForm input[name="fblink"]').val(),
 				allapot: 1
 			};

@@ -154,37 +154,7 @@ class Application{
 	        </a>';
     		}
     	}
-    	/*
-        <a href="#napiMenu"><span>Napi Menü</span>
-            <div class="diszvonal"></div>
-        <div class="sticky-fold">Napi Menü</div>
-        </a>
-        
-        <a href="#etlap"><span>Étlap</span>
-            <div class="diszvonal"></div>
-        <div class="sticky-fold">Étlap</div>
-        </a>
-        <a href="#asztalfoglalas"><span>Asztalfoglalás</span>
-            <div class="diszvonal"></div>
-        <div class="sticky-fold">Asztalfoglalás</div>
-        </a>
-        <a href="#rendezvenyek"><span>Rendezvények</span>
-            <div class="diszvonal"></div>
-        <div class="sticky-fold">Rendezvények</div>
-        </a>
-        <a href="#programok"><span>Programok</span>
-            <div class="diszvonal"></div>
-        <div class="sticky-fold">Programok</div>
-        </a>
-        <a href="#rolunk"><span>Rólunk</span>
-            <div class="diszvonal"></div>
-        <div class="sticky-fold">Rólunk</div>
-        </a>
-        <a href="#kepek"><span>Képek</span>
-            <div class="diszvonal"></div>
-        <div class="sticky-fold">Képek</div>
-        </a>
-*/
+    	
     	echo '
                
     </div>
@@ -437,6 +407,15 @@ class Application{
                             
 					   }, 350);
 					});
+    			
+    				navCounter = 1;
+    				$(".sitckyNav div.row a").each(function(){
+    					navLabel = $(this).attr("href").substring(1);
+    					$(".section-label label[for=\""+navLabel+"\"]").parent().attr("data-labelpos", navCounter);
+    					navCounter += 1; 
+    				}).promise().done(function(){
+    					//$(".section-label").each(sectionLabels);
+    				});
     			});	
     		</script>
         		</body>

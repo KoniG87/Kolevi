@@ -49,7 +49,7 @@
                         <div class="kert-kihuzo">
                           <nav>
                             <ul>
-                              <a href="kert#roulunk">
+                              <a href="kert#rolunk">
                                 <li>Rólunk</li>
                               </a>
                               <a href="kert#etlap">
