@@ -400,8 +400,8 @@ public function drawKertEtlap($elements){
      
      echo '
        </div> 
-                    </div>
-                </section>';
+           </div>
+                ';
      
     }
     
