@@ -261,6 +261,9 @@ class Menu extends BaseObject{
     		'kategoriak' => $this->getEtlapData()
     	);
     	 
+    	 print_r($elements);
+    	 exit;
+    	 
     		 
     	$this->view->drawKertEtlap($elements);
     }

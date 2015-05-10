@@ -3346,13 +3346,14 @@ header {
       .fold-list li {
         background-size: 230px !important; } }
     .fold-list li p {
+      font-size:0.6em;
       width: 70%;
       display: inline-block;
       margin-bottom: 0; }
     .fold-list li b {
       width: 25%;
       display: inline-block;
-      font-size: 90%; }
+      font-size: 0.6em; }
 
 .fold-list li:nth-child(2) {
   padding-top: 1.5rem; }
