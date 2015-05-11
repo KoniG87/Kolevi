@@ -161,40 +161,34 @@ class ApartmanView extends BaseView{
     }
     
     
-    public function drawSzobak($elements){
-    	echo '<section id="szobak">';
+    public function drawSzoba($szobaData){
     	
-    	$this->drawSectionLabel("Szobák", "szobak", 3);
-    	echo '
+    	echo '<div class="szoba clearfix">
     	
-    	<div class="row clearfix szobak-container">
-    	<div class="szoba clearfix">
+		<div class="szoba-description four columns">
+    		<h3>'.$szobaData['header'].'</h3>
+    		<p>'.$szobaData['desc'].'</p>
+    	</div>    			
+
     	<div class=" seven columns">
-    	<div class="szoba-carousel">
-    	<div><img src="assets/img/gslide-1.png" alt=""></div>
-    	<div><img src="assets/img/gslide-2.png" alt=""></div>
-    	<div><img src="assets/img/gslide-3.png" alt=""></div>
-    	<div><img src="assets/img/gslide-4.png" alt=""></div>
-    	<div><img src="assets/img/gslide-1.png" alt=""></div>
-    	<div><img src="assets/img/gslide-2.png" alt=""></div>
-    	<div><img src="assets/img/gslide-3.png" alt=""></div>
-    	<div><img src="assets/img/gslide-4.png" alt=""></div>
+    		<div class="szoba-carousel">';
+    	
+    	$slideOutput = '';
+    	foreach ($szobaData['kepek'] AS $kepData){
+    		$slideOutput .= '<div><img src="'.$kepData['fajlnev'].'" alt=""></div>'; 
+    	}
+    	echo $slideOutput;
+    	
+    	echo '
+		    </div>
+	    	<div class="szoba-carousel-nav">';
+    	
+    	echo $slideOutput;
+			    
+    	echo '
+	    	</div>
     	</div>
-    	<div class="szoba-carousel-nav">
-    	<div><img src="assets/img/gslide-1.png" alt=""></div>
-    	<div><img src="assets/img/gslide-2.png" alt=""></div>
-    	<div><img src="assets/img/gslide-3.png" alt=""></div>
-    	<div><img src="assets/img/gslide-4.png" alt=""></div>
-    	<div><img src="assets/img/gslide-1.png" alt=""></div>
-    	<div><img src="assets/img/gslide-2.png" alt=""></div>
-    	<div><img src="assets/img/gslide-3.png" alt=""></div>
-    	<div><img src="assets/img/gslide-4.png" alt=""></div>
-    	</div>
-    	</div>
-    	<div class="szoba-description four columns">
-    	<h3>Szoba 1</h3>
-    	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto perspiciatis deserunt amet culpa commodi a praesentium fuga quod eligendi labore quidem asperiores sint accusamus aperiam similique id cupiditate dolorum omnis maiores enim quas tempora, ullam, perferendis officia accusantium. Quis, quasi.</p>
-    	</div>
+    	
     	
     	<div class="review-container ten columns centered">
     	
@@ -236,8 +230,23 @@ class ApartmanView extends BaseView{
     	</form>
     	</div>
     	</div>
-    	</div>
+    	</div>';
+    }
+    
+    
+    public function drawSzobak($elements){
+    	echo '<section id="szobak">';
     	
+    	$this->drawSectionLabel("Szobák", "szobak", 3);
+    	echo '
+    	
+    	<div class="row clearfix szobak-container">';
+    	
+    	foreach ($elements['szobak'] AS $sorrend => $szobaData){
+    		$this->drawSzoba($szobaData);
+    	}
+    	
+    	echo '
     	</div>
     	</section>';
     }

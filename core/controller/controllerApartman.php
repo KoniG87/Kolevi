@@ -21,8 +21,39 @@ class Apartman extends BaseObject{
     	$this->view->drawTerkep();
     }
     
-    public function drawSzobak(){
+    
+    public function getSzobaData($visible = 1){
     	$elements = array();
+    	
+    	$SQL = "SELECT id, text_hu AS header, leiras_hu AS \"desc\", kezdokep FROM koleves_szobak WHERE visible = ?;";
+    	$params = array($visible);
+    	$szobaRES = $this->fetchItems($SQL, $params);
+    	
+    	$kepSQL = "SELECT fajlnev FROM koleves_kepek AS k
+    			LEFT JOIN koleves_kep_osszekotesek AS ok ON ok.kep_id = k.id
+    			WHERE ok.fk_id = ? AND ok.tipus = ?
+    			ORDER BY ok.sorrend ASC;";
+    	
+    	foreach ($szobaRES AS $szobaData){
+    		$tmpArray = array(
+    			'id'	=> $szobaData['id'],
+    			'header'=> $szobaData['header'],
+    			'desc'	=> $szobaData['desc'],
+    			'kezdokep'=> $szobaData['kezdokep'],
+    			'kepek'	=> $this->fetchItems($kepSQL, array($szobaData['id'], 4))
+    		);
+    		
+    		array_push($elements, $tmpArray);
+    	}
+    	
+    	return $elements;
+    	
+    }
+    
+    public function drawSzobak(){
+    	$elements = array(
+    		'szobak'	=> $this->getSzobaData()
+    	);
     	
     	$this->view->drawSzobak($elements);
     }

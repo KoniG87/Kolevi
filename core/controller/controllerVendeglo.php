@@ -49,8 +49,9 @@ class Vendeglo extends BaseObject{
    
     
      public function getProgramData($allapot){
-    	$SQL = "SELECT id, datum, text_hu AS labelHeader, SUBSTRING(leiras_hu, 1, 55) AS labelDesc, allapot, kep, fblink FROM koleves_programok WHERE allapot <> ? ORDER BY datum DESC;";
-    	
+    	//$SQL = "SELECT id, datum, text_hu AS labelHeader, SUBSTRING(leiras_hu, 1, 55) AS labelDesc, allapot, kep, fblink FROM koleves_programok WHERE allapot <> ? ORDER BY datum DESC;";
+     	$SQL = "SELECT id, datum, text_hu AS labelHeader, leiras_hu AS labelDesc, allapot, kep, fblink FROM koleves_programok WHERE allapot <> ? ORDER BY datum DESC;";
+     	
     	return $this->fetchItems($SQL, array($allapot));
     }
     
@@ -92,7 +93,7 @@ class Vendeglo extends BaseObject{
         );
         
         if (!is_null($id)){
-            $SQL = "SELECT id, datum, text_hu AS labelHeader, SUBSTRING(leiras_hu, 1, 55) AS labelDesc, allapot, kep, fblink FROM koleves_programok WHERE id = ?;";
+            $SQL = "SELECT id, datum, text_hu AS labelHeader, leiras_hu AS labelDesc, allapot, kep, fblink FROM koleves_programok WHERE id = ?;";
             $tmpArray = $this->fetchItem($SQL, array($id));
         }
         

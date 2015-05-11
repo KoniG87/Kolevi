@@ -63,15 +63,6 @@ class Application{
     	else{
     		
     		$menuContents = array(
-    				'terkep'	=> array(
-    						'showOn' => array(
-    								'apartman'	=> 1
-    						),
-    						'labels' => array(
-    								'hu'	=> 'Térkép',
-    								'en'	=> 'Map'
-    						)
-    				),
     				'hely'	=> array(
     						'showOn' => array(
     								'apartman'	=> 2
@@ -90,6 +81,16 @@ class Application{
     								'en'	=> 'Rooms'
     						)
     				),
+    				'terkep'	=> array(
+    						'showOn' => array(
+    								'apartman'	=> 1
+    						),
+    						'labels' => array(
+    								'hu'	=> 'Térkép',
+    								'en'	=> 'Map'
+    						)
+    				),
+    				
     				'napiMenu'	=> array(
     						'showOn' => array(
     								'vendeglo'	=> 1
@@ -161,6 +162,7 @@ class Application{
     				
     		);
     		$menuToShow = array();
+    		
     		foreach ($menuContents AS $menuKey => $menuData){
     			if (in_array($subPage, array_keys($menuData['showOn']))){
     				$menuToShow[$menuData['showOn'][$subPage]][$menuKey] = $menuData['labels']['hu'];
@@ -168,11 +170,16 @@ class Application{
     		}
     		
     		
+    		
     	echo '<nav class="sitckyNav">
 <a href="/kolevi/"><svg class="icon icon-logo"><use xlink:href="#icon-logo"></use></svg></a>
 <svg class="icon icon-backtotop backToTop"><use xlink:href="#icon-backtotop"></use></svg>
     <div class="row">';
+    	
+    	
     	sort($menuToShow);
+    	
+    	
     	foreach ($menuToShow AS $sorrend => $linkInfo){
     		foreach ($linkInfo AS $key => $label){
     			echo '<a href="#'.$key.'"><span>'.$label.'</span>
@@ -381,7 +388,19 @@ class Application{
     
     public function drawPageClosure($subPage){
     	echo '
-			<script src="assets/js/plugins.min.js"></script>
+			<script type="text/javascript">
+    			$(document).ready(function(){
+    		navCounter = 1;
+    				$(".sitckyNav div.row a").each(function(){
+    					navLabel = $(this).attr("href").substring(1);
+    					$(".section-label label[for=\""+navLabel+"\"]").parent().attr("data-labelpos", navCounter);
+    					navCounter += 1; 
+    				}).promise().done(function(){
+    					//$(".section-label").each(sectionLabels);
+    				});	
+    		});
+    			</script>
+    		<script src="assets/js/plugins.min.js"></script>
         	<script src="assets/js/main.min.js"></script>
     	';
     
@@ -436,14 +455,7 @@ class Application{
 					   }, 350);
 					});
     			
-    				navCounter = 1;
-    				$(".sitckyNav div.row a").each(function(){
-    					navLabel = $(this).attr("href").substring(1);
-    					$(".section-label label[for=\""+navLabel+"\"]").parent().attr("data-labelpos", navCounter);
-    					navCounter += 1; 
-    				}).promise().done(function(){
-    					//$(".section-label").each(sectionLabels);
-    				});
+    				
     			});	
     		</script>
         		</body>
