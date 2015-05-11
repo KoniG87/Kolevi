@@ -111,9 +111,29 @@ $(".szoba-carousel-nav .slick-slide").each(function(){
     rangeY:0.93
   });
 });
-
-
  }, 1000);
+
+
+/*
+ * review-k
+ */
+
+$(".add-review input[type=\"submit\"]").Svgenerate({
+  rangeX:0.94,
+  rangeY:0.91,
+  fill: "#d5d5d5"
+});
+
+/*gender switch*/
+$(".gender-switch").on("click",function(){
+	if($("#male").is(":checked")){
+		$(this).parent().velocity({backgroundPositionX: 0});
+	}
+	else if($("#female").is(":checked")){
+		$(this).parent().velocity({backgroundPositionX: -150});
+	}
+});
+
 
 
 

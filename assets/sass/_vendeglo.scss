@@ -505,7 +505,7 @@ input:focus::-ms-input-placeholder {
 	margin-top: 0.4em;
 }
 
-.nl-form .nl-submit {
+.nl-form .nl-submit, .nl-reset,  .add-review input[type="submit"]{
 	line-height: 2;
 	text-transform: uppercase;
 	cursor: pointer;
@@ -546,7 +546,7 @@ input:focus::-ms-input-placeholder {
 	transition: visibility 0s 0.3s, opacity 0.3s;
 }
 .overlay{
-	background: rgba(255,255,255,0.9 );
+	background: rgba(255,255,255,0.9);
 }
 .nl-field.nl-field-open ~ .nl-overlay , .overlay.gallery-open{
 	opacity: 1;

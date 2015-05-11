@@ -53,7 +53,7 @@ include('page/home.php');
 	<div class="row">
 		<div class="twelve columns centered">
 			<h3>A Hely</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus sit cumque quisquam ad! Obcaecati aperiam itaque porro, possimus nemo dolores, reiciendis praesentium ipsa maxime! Distinctio velit dolorum qui, repudiandae dolorem corporis magnam dignissimos sunt odio cum. Mollitia, voluptates. Esse, animi totam facilis dolore voluptatem iure perspiciatis ullam nulla voluptatibus aliquam incidunt sint dolor itaque, repellendus! Laborum incidunt ipsam sequi placeat!</p>
+			<p>lorem ipsum dolor sit amet, consectetur adipisicing elit. accusamus sit cumque quisquam ad! obcaecati aperiam itaque porro, possimus nemo dolores, reiciendis praesentium ipsa maxime! distinctio velit dolorum qui, repudiandae dolorem corporis magnam dignissimos sunt odio cum. mollitia, voluptates. esse, animi totam facilis dolore voluptatem iure perspiciatis ullam nulla voluptatibus aliquam incidunt sint dolor itaque, repellendus! laborum incidunt ipsam sequi placeat!</p>
 		</div>
 	</div>
 </section>
@@ -94,11 +94,48 @@ include('page/home.php');
 			</div>
 			<div class="szoba-description four columns">
 				<h3>Szoba 1</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo natus adipisci corporis assumenda, officiis facilis nemo sunt aliquam. Reiciendis, iure quos libero nemo eum culpa quas, vero perferendis velit ipsa minus ducimus commodi doloribus saepe beatae facilis eos modi cum molestiae omnis minima nihil. Reiciendis quos recusandae nulla earum maxime sapiente porro aliquam, dolorem velit, ratione itaque tenetur. Magnam, modi, dolor. Molestias optio maxime ratione voluptates at repellendus perferendis ipsa, obcaecati, voluptas minima reiciendis ab tenetur culpa et, quisquam sunt?</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto perspiciatis deserunt amet culpa commodi a praesentium fuga quod eligendi labore quidem asperiores sint accusamus aperiam similique id cupiditate dolorum omnis maiores enim quas tempora, ullam, perferendis officia accusantium. Quis, quasi.</p>
 			</div>
 
-			<div class="review-container twelve columns">
-				REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! REVIEWS! 
+			<div class="review-container ten columns centered">
+				
+				<div class="add-review">
+					<form action="">
+					<div class="three columns">
+						<div class="review-img">
+							<div class="gender-switch">
+								<input type="radio" name="gender" id="male" checked="true">
+								<label for="male">M</label>/
+								<input type="radio" name="gender" id="female">
+								<label style="margin-left:-8px;" for="female">F</label>
+							</div>
+						</div>
+						<input type="text" placeholder="Név">
+					</div>
+					<div class="nine columns">
+
+						<input type="text" placeholder="Cím">
+
+						<div class="stars">
+							<input type="radio" name="star" class="star-1" id="star-1" />
+							<label class="star-1" for="star-1">1</label>
+							<input type="radio" name="star" class="star-2" id="star-2" />
+							<label class="star-2" for="star-2">2</label>
+							<input type="radio" name="star" class="star-3" id="star-3" />
+							<label class="star-3" for="star-3">3</label>
+							<input type="radio" name="star" class="star-4" id="star-4" />
+							<label class="star-4" for="star-4">4</label>
+							<input type="radio" name="star" class="star-5" id="star-5" />
+							<label class="star-5" for="star-5">5</label>
+							<span></span>
+						</div>
+
+						<textarea placeholder="Szeretem a tollpárnákat" ></textarea>
+
+					</div>
+						<input type="submit" value="Küldés">
+					</form>
+				</div>
 			</div>
 		</div>
 
