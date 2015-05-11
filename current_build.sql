@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Hoszt: 127.0.0.1
--- Létrehozás ideje: 2015. Máj 07. 15:35
+-- Létrehozás ideje: 2015. Máj 11. 22:38
 -- Szerver verzió: 5.6.21
 -- PHP verzió: 5.6.3
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `koleves_dolgozok` (
   `RENDEZVENYFELELOS` tinyint(1) NOT NULL DEFAULT '0',
   `VENDEGLO` tinyint(1) DEFAULT '1',
   `ALLAPOT` int(1) DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_dolgozok`
@@ -164,10 +164,10 @@ CREATE TABLE IF NOT EXISTS `koleves_etelkategoriak` (
 --
 
 INSERT INTO `koleves_etelkategoriak` (`ID`, `TEXT_HU`, `TEXT_EN`, `SORREND`, `IKON`) VALUES
-(1, 'KŐLEVESEK', 'STONE SOUPS', 1, 'ital-kave'),
-(2, 'SALÁTÁK ÉS ELŐÉTELEK', 'SALADS AND APPETIZERS', 2, 'ital-kave'),
-(3, 'FŐÉTELEK', 'MAIN COURSES', 3, 'ital-kave'),
-(4, 'DESSZERTEK', 'DESSERTS', 4, 'ital-kave');
+(1, 'KŐLEVESEK', 'STONE SOUPS', 1, 'etel-leves'),
+(2, 'SALÁTÁK ÉS ELŐÉTELEK', 'SALADS AND APPETIZERS', 2, 'etel-salata'),
+(3, 'FŐÉTELEK', 'MAIN COURSES', 3, 'etel-foetel'),
+(4, 'DESSZERTEK', 'DESSERTS', 4, 'etel-desszert');
 
 -- --------------------------------------------------------
 
@@ -310,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `koleves_kepek` (
   `LEIRAS_HU` varchar(256) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `GALLERY_TAG` tinyint(1) DEFAULT NULL,
   `SZEKCIO` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_kepek`
@@ -322,7 +322,16 @@ INSERT INTO `koleves_kepek` (`ID`, `FAJLNEV`, `LEIRAS_HU`, `GALLERY_TAG`, `SZEKC
 (5, 'assets/uploads/gallery02.jpg', NULL, NULL, 1),
 (6, 'assets/uploads/gallery03.jpg', NULL, NULL, 1),
 (7, 'assets/uploads/gallery04.jpg', NULL, NULL, NULL),
-(8, 'assets/uploads/about-img.png', NULL, NULL, 3);
+(8, 'assets/uploads/about-img.png', NULL, NULL, 3),
+(9, 'assets/uploads/cat-tracks.jpg', NULL, NULL, NULL),
+(10, 'assets/img/gslide-1.png', NULL, NULL, 4),
+(11, 'assets/img/gslide-2.png', NULL, NULL, 4),
+(12, 'assets/img/gslide-3.png', NULL, NULL, 4),
+(13, 'assets/img/gslide-4.png', NULL, NULL, 4),
+(14, 'assets/img/gslide-1.png', NULL, NULL, 4),
+(15, 'assets/img/gslide-2.png', NULL, NULL, 4),
+(16, 'assets/img/gslide-3.png', NULL, NULL, 4),
+(17, 'assets/img/gslide-4.png', NULL, NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -335,7 +344,7 @@ CREATE TABLE IF NOT EXISTS `koleves_keptipusok` (
   `MEGNEVEZES` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `SZEKCIO` varchar(50) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `ALLAPOT` int(1) DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_keptipusok`
@@ -344,7 +353,8 @@ CREATE TABLE IF NOT EXISTS `koleves_keptipusok` (
 INSERT INTO `koleves_keptipusok` (`ID`, `MEGNEVEZES`, `SZEKCIO`, `ALLAPOT`) VALUES
 (1, 'Rendezvény', 'rendezvenyek', 1),
 (2, 'Program', 'programok', 2),
-(3, 'Hir', NULL, 3);
+(3, 'Hir', NULL, 3),
+(4, 'Szoba', 'szoba', 4);
 
 -- --------------------------------------------------------
 
@@ -358,7 +368,7 @@ CREATE TABLE IF NOT EXISTS `koleves_kep_osszekotesek` (
   `FK_ID` int(5) NOT NULL,
   `KEP_ID` int(6) NOT NULL,
   `SORREND` int(3) DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_kep_osszekotesek`
@@ -366,7 +376,15 @@ CREATE TABLE IF NOT EXISTS `koleves_kep_osszekotesek` (
 
 INSERT INTO `koleves_kep_osszekotesek` (`ID`, `TIPUS`, `FK_ID`, `KEP_ID`, `SORREND`) VALUES
 (11, 1, 1, 6, 1),
-(13, 1, 1, 5, 1);
+(13, 1, 1, 5, 1),
+(14, 4, 1, 10, 1),
+(15, 4, 1, 11, 2),
+(16, 4, 1, 12, 3),
+(17, 4, 1, 13, 4),
+(18, 4, 1, 14, 5),
+(19, 4, 1, 15, 6),
+(20, 4, 1, 16, 7),
+(21, 4, 1, 17, 8);
 
 -- --------------------------------------------------------
 
@@ -382,7 +400,7 @@ CREATE TABLE IF NOT EXISTS `koleves_napimenuk` (
   `TEXT_HU` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
   `TEXT_EN` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
   `TAGEK` varchar(15) COLLATE utf8_hungarian_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_napimenuk`
@@ -479,7 +497,7 @@ CREATE TABLE IF NOT EXISTS `koleves_programok` (
   `KEP` varchar(155) COLLATE utf8_hungarian_ci NOT NULL,
   `FBLINK` varchar(155) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `ALLAPOT` tinyint(1) DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_programok`
@@ -487,9 +505,11 @@ CREATE TABLE IF NOT EXISTS `koleves_programok` (
 
 INSERT INTO `koleves_programok` (`ID`, `DATUM`, `TEXT_HU`, `TEXT_EN`, `LEIRAS_HU`, `LEIRAS_EN`, `KEP`, `FBLINK`, `ALLAPOT`) VALUES
 (1, '2015-03-31', 'Kőleves Kert nyárbúcsuztató napok', 'Kőleves summer closing days', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p><p>Lorem ipsum dolor sit amet.</p>', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p><p>Lorem ipsum dolor sit amet.</p>', 'assets/img/gslide-1.png', NULL, 1),
-(2, '2015-04-17', 'programnevea', 'nameofprogram', 'Lorem ipsum dolor sit amet, consectetur adipisicing \nLorem ipsum dolor sit amet, consectetur adipisicing \nLorem ipsum dolor sit amet, consectetur adipisicing \nLorem ipsum dolor sit amet, consectetur adipisicing ', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p><p>Lorem ipsum dolor sit amet.</p>', '', NULL, 1),
-(3, '2015-04-18', 'Valami lesz ggsdfsgfdsgsfdgd ', NULL, 'Lorem ipsum dolor sit amet, consectetur adipisicing eli dsfafd a daf adfas asdf asfda afdasfd asfd adfadfa fd asfdasfa faf afa fdsf asdf Lorem ipsum dolor sit amet, consectetur adipisicing eli dsfafd a daf adfas asdf asfda afdasfd asfd adfadfa fd asfdasfa faf afa fdsf asdf Lorem ipsum dolor sit amet, consectetur adipisicing eli dsfafd a daf adfas asdf asfda afdasfd asfd adfadfa fd asfdasfa faf afa fdsf asdf ', NULL, 'assets/uploads/gallery02.jpg', 'https://www.facebook.com/events/1594402937444863/', 1),
-(4, '2015-04-28', 'teszt progi', NULL, '	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae obcaecati deserunt minus possimus, accusamus ipsam eaque doloribus ex dolore quidem velit similique quae nisi doloremque error reiciendis, modi provident! Facere aliquam veritatis odio, omnis doloremque quia molestias exercitationem impedit aliquid! Aut consequuntur minima, atque aperiam quod cupiditate, cum rerum quasi saepe iste explicabo nobis ab eaque asperiores expedita et magnam.', NULL, 'assets/uploads/gallery02.jpg', NULL, 1);
+(2, '2015-04-17', 'programnevea', 'nameofprogram', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p> <p>Lorem ipsum dolor sit amet.</p>', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p><p>Lorem ipsum dolor sit amet.</p>', '', NULL, 1),
+(3, '2015-04-18', 'Valami lesz ggsdfsgfdsgsfdgd ', NULL, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p><p>Lorem ipsum dolor sit amet.</p>', NULL, 'assets/uploads/gallery02.jpg', 'https://www.facebook.com/events/1594402937444863/', 1),
+(4, '2015-04-28', 'teszt progi', NULL, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p> <p>Lorem ipsum dolor sit amet.</p>', NULL, 'assets/uploads/gallery02.jpg', NULL, 1),
+(5, '2015-05-31', 'Valami progi', NULL, 'Van leírása is', NULL, 'assets/uploads/gallery02.jpg', '', 1),
+(6, '2015-06-25', 'Letsdothis', NULL, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p><p>Lorem ipsum dolor sit amet.</p>', NULL, 'assets/uploads/gallery02.jpg', '', 1);
 
 -- --------------------------------------------------------
 
@@ -505,7 +525,7 @@ CREATE TABLE IF NOT EXISTS `koleves_rendezvenyek` (
   `LEIRAS_EN` varchar(512) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `SORREND` int(2) NOT NULL DEFAULT '1',
   `ALLAPOT` int(1) DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_rendezvenyek`
@@ -525,7 +545,7 @@ CREATE TABLE IF NOT EXISTS `koleves_statikus` (
   `LABEL` varchar(40) COLLATE utf8_hungarian_ci NOT NULL,
   `TEXT_HU` varchar(2048) COLLATE utf8_hungarian_ci NOT NULL,
   `TEXT_EN` varchar(2048) COLLATE utf8_hungarian_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_statikus`
@@ -542,7 +562,31 @@ INSERT INTO `koleves_statikus` (`ID`, `LABEL`, `TEXT_HU`, `TEXT_EN`) VALUES
 (8, 'RENDEZVENY', '<p>A földszinti vendégtérből nyílik az általunk "VIP" teremnek nevezett kisterem, ahol maximum 13 fő fér el. Zártkörű ebédekhez, vacsorákhoz vagy megbeszélésekhez ajánljuk.</p><p>Az épület hátsó részében található az "Elefántos" terem, ahol maximum 25 fő fér el ültetve, ha nem feltétlenül szeretne mindenki leülni, akkor 40 ember is befér. Ezt a termet zártkörű ebédekhez, vacsorákhoz, megbeszélésekhez, osztálytalálkozókhoz, tréningekhez, workshopokhoz, stb. ajánljuk. Ennek a teremnek van egy külön pultja is, projektora és néhány kényelmes fotelje is.</p><p>Az emeleti különterem a legnagyobb külön helyiségünk. Ültetve 70-75 ember fér el benne, állva 120-150-en is akár. Ehhez a teremhez tartozik egy külön bárpult és egy dohányzó terasz is. Amit biztosítani tudunk: erősítő, keverőpult, hangfalak, mikrofonok, projektor, vetítővászon, flipchart tábla. Mindenféle zártkörű rendezvényekhez ajánljuk, például ebédekhez, vacsorákhoz, esküvőkhöz, születésnapokhoz, előadások, tréningek, stb.</p><p>Ezen kívül a kertbe is felveszünk nagyobb foglalásokat és arra is van lehetőség, hogy az egész vendéglőt kivedd.</p>', 'We''ll be adding some further information here.</p>'),
 (9, 'SZERVEZO', 'Szia!<br/>Amenyiben szeretnél rendezvényt hozni a Levesbe keress bátran!', 'Hi!For any info regarding events, just give me a ring!'),
 (10, 'VENDEGLO', 'A Kőleves 10 éves vendéglő. Imola és Kápszi ültünk egy rémséges vasút-állomáson 1995 körül és elhatároztuk, hogy nyitunk egy vendéglőt. Azt hiszem ez kb. 10 évvel később, de megvalósult 2005-ben. Ez a tíz év beszélgetés a vendéglőről elég volt ahhoz, hogy pontosan tudjuk mit akarunk és lássuk, hogy ugyanazt, ez azóta is töretlenül működik köztünk. Persze nem magától ment minden, hanem sok kölcsön pénzből, amivel az elején nehéz volt küzdenünk. Először a Dob-Kazinczy sarkán nyitottuk meg a Kőlevest, ahol 8 évig üzemeltünk egyre sikeresebben. Itt sikerült egysmást tanulnunk erről a szakmáról, hiszen egyikünk sem volt vendéglátós azelőtt, mégpedig főleg azt, hogy ha magunkat adjuk és beletesszük az energiáinkat, őszinték vagyunk, és figyelünk, akkor ezt a közönségünk is megérzi, és elérjük a sikert. A Kazinczy 41-be három éve költöztünk, ami már egy ötször akkora hely és itt megvalósulhatott minden álmunk, amit egy konyháról képzeltünk. Kidobhattuk a micro sütőt és mindent magunk tudunk elkészíteni, ami lekvár, szósz, pesto, öntet, vagy bármi hozzávaló és eredeti ízt kíván. Útközben még megnyitottuk a Kőleves kertet 7 évvel ezelőtt, hogy nyáron is lehessen könnyű grill konyhával a szabadban enni-inni. Azután 4 éve elkészült a Mika Tivadar Mulató, majd egy évvel később, a hozzá tartozó kert is.', 'We''ll be providing further description here.'),
-(11, 'ABOUT_US', 'Igazán fiatalos, modern arcok vagyunk - és mindemellett még finomkat is főzünk! Gyere be hozz, akár csak egy kávéra is, ha nem szeretnéd otthon egyedül meginni, hanem kedves társasággal szeretnéd megosztani a reggeli lendületet!', 'We''ll be providing further description here.');
+(11, 'ABOUT_US', 'Igazán fiatalos, modern arcok vagyunk - és mindemellett még finomkat is főzünk! Gyere be hozz, akár csak egy kávéra is, ha nem szeretnéd otthon egyedül meginni, hanem kedves társasággal szeretnéd megosztani a reggeli lendületet!', 'We''ll be providing further description here.'),
+(12, 'KERT', 'A Kőleves Kert 8. szezonját éli. Amikor még a sarkon volt a vendéglőnk és egy elég brutális mellék-helység volt a kertben, akkor a szimpla kerten kívül senki más nem volt a környéken, nagyon vártuk, hogy végre ennyire nyüzsgő belváros legyünk.', 'We''ll be providing further description here.');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `koleves_szobak`
+--
+
+CREATE TABLE IF NOT EXISTS `koleves_szobak` (
+`ID` int(6) NOT NULL,
+  `TEXT_HU` varchar(80) COLLATE utf8_hungarian_ci NOT NULL,
+  `TEXT_EN` varchar(80) COLLATE utf8_hungarian_ci NOT NULL,
+  `LEIRAS_HU` varchar(512) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `LEIRAS_EN` varchar(512) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `KEZDOKEP` int(6) DEFAULT NULL,
+  `VISIBLE` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `koleves_szobak`
+--
+
+INSERT INTO `koleves_szobak` (`ID`, `TEXT_HU`, `TEXT_EN`, `LEIRAS_HU`, `LEIRAS_EN`, `KEZDOKEP`, `VISIBLE`) VALUES
+(1, 'Szoba 1', 'Room 1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto perspiciatis deserunt amet culpa commodi a praesentium fuga quod eligendi labore quidem asperiores sint accusamus aperiam similique id cupiditate dolorum omnis maiores enim quas tempora, ullam, perferendis officia accusantium. Quis, quasi.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto perspiciatis deserunt amet culpa commodi a praesentium fuga quod eligendi labore quidem asperiores sint accusamus aperiam similique id cupiditate dolorum omnis maiores enim quas tempora, ullam, perferendis officia accusantium. Quis, quasi.', NULL, 1);
 
 --
 -- Indexes for dumped tables
@@ -645,6 +689,12 @@ ALTER TABLE `koleves_statikus`
  ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `koleves_szobak`
+--
+ALTER TABLE `koleves_szobak`
+ ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -657,7 +707,7 @@ MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 -- AUTO_INCREMENT for table `koleves_dolgozok`
 --
 ALTER TABLE `koleves_dolgozok`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `koleves_etelek`
 --
@@ -692,22 +742,22 @@ MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 -- AUTO_INCREMENT for table `koleves_kepek`
 --
 ALTER TABLE `koleves_kepek`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `koleves_keptipusok`
 --
 ALTER TABLE `koleves_keptipusok`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `koleves_kep_osszekotesek`
 --
 ALTER TABLE `koleves_kep_osszekotesek`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `koleves_napimenuk`
 --
 ALTER TABLE `koleves_napimenuk`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=60;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT for table `koleves_napimenu_idoszakok`
 --
@@ -717,17 +767,22 @@ MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT for table `koleves_programok`
 --
 ALTER TABLE `koleves_programok`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `koleves_rendezvenyek`
 --
 ALTER TABLE `koleves_rendezvenyek`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `koleves_statikus`
 --
 ALTER TABLE `koleves_statikus`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `koleves_szobak`
+--
+ALTER TABLE `koleves_szobak`
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
