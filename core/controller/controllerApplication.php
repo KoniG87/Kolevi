@@ -63,6 +63,33 @@ class Application{
     	else{
     		
     		$menuContents = array(
+    				'terkep'	=> array(
+    						'showOn' => array(
+    								'apartman'	=> 1
+    						),
+    						'labels' => array(
+    								'hu'	=> 'Térkép',
+    								'en'	=> 'Map'
+    						)
+    				),
+    				'hely'	=> array(
+    						'showOn' => array(
+    								'apartman'	=> 2
+    						),
+    						'labels' => array(
+    								'hu'	=> 'A hely',
+    								'en'	=> 'The place'
+    						)
+    				),
+    				'szobak'	=> array(
+    						'showOn' => array(
+    								'apartman'	=> 3
+    						),
+    						'labels' => array(
+    								'hu'	=> 'Szobák',
+    								'en'	=> 'Rooms'
+    						)
+    				),
     				'napiMenu'	=> array(
     						'showOn' => array(
     								'vendeglo'	=> 1
@@ -113,8 +140,7 @@ class Application{
     				'rolunk'	=> array(
     						'showOn' => array(
     								'vendeglo'	=> 6,
-    								'kert'		=> 1,
-    								'apartman'	=> 1
+    								'kert'		=> 1
     						),
     						'labels' => array(
     								'hu'	=> 'Rólunk',
@@ -125,13 +151,14 @@ class Application{
     						'showOn' => array(
     								'vendeglo'	=> 7,
     								'kert'		=> 4,
-    								'apartman'	=> 2
+    								'apartman'	=> 4
     						),
     						'labels' => array(
     								'hu'	=> 'Képek',
     								'en'	=> 'Pictures'
     						)
     				)
+    				
     		);
     		$menuToShow = array();
     		foreach ($menuContents AS $menuKey => $menuData){
