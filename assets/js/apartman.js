@@ -54,15 +54,13 @@ $("#szoba3").on("mouseleave",function(){
  */
 function szobaCarousel(){
 
-
-
 var szobaPrev = "<svg class=\"icon icon-nyil-balra slick-prev\"><use xlink:href=\"#icon-nyil-balra\"></use></svg>";
 var szobaNext = "<svg class=\"icon icon-nyil-jobbra slick-next\"><use xlink:href=\"#icon-nyil-jobbra\"></use></svg>";
 var szobaCarousel = $(this).find(".szoba-carousel");
 var szobaCarouselNav = $(this).find('.szoba-carousel-nav');
 
 	szobaCarousel.slick({ 
-	  adaptiveHeight: "true",
+	  adaptiveHeight: true,
 	  speed: 700,
 	  prevArrow: szobaPrev,
 	  nextArrow: szobaNext,
@@ -80,11 +78,16 @@ var szobaCarouselNav = $(this).find('.szoba-carousel-nav');
 	});
 				
 }
-
 $(".szoba").each(szobaCarousel);
 
+
 setTimeout(function(){
-$(".szoba-carousel .slick-slide").each(function(){
+callSzobaCarouselSvg();
+ }, 1000);
+
+
+function callSzobaCarouselSvg(){
+	$(".szoba-carousel .slick-slide").each(function(){
   $(this).Svgenerate({
     imgMask:"on",
     setToImg:"on",
@@ -111,7 +114,7 @@ $(".szoba-carousel-nav .slick-slide").each(function(){
     rangeY:0.93
   });
 });
- }, 1000);
+}
 
 
 /*
@@ -137,4 +140,36 @@ $(".gender-switch").on("click",function(){
 
 
 
+
+
+
+// Resize end function
+var rtime = new Date(1, 1, 2000, 12,00,00);
+var timeout = false;
+var delta = 200;
+$(window).resize(function() {
+    rtime = new Date();
+    if (timeout === false) {
+        timeout = true;
+        setTimeout(resizeend, delta);
+    }
+});
+
+function resizeend() {
+    if (new Date() - rtime < delta) {
+        setTimeout(resizeend, delta);
+    } else {
+        timeout = false;
+
+
+
+
+    }               
+}
+ resizeend();
+
+
 });// doc ready
+
+
+

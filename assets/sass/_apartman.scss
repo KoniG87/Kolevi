@@ -80,7 +80,10 @@
 }
 .szoba-carousel-nav{
 	cursor:pointer;
-
+	display:none;
+	@include breakpoint (tablet){
+		display: block;
+	}
 	.slick-slide{
 		padding:1rem;
 		position: relative;
@@ -92,23 +95,39 @@
 
 .szoba:nth-of-type(odd){
 	.seven{
-		float: left !important;
+		float: none !important;
+		@include breakpoint (tablet){
+			float: left !important;	
+		}
 	}
 	.szoba-description{
-		float: right !important;
+		float: none !important;
+		@include breakpoint (tablet){
+			float: right !important;	
+		}
 	}
 
 }
 .szoba:nth-of-type(even){
 	.seven{
-		float: right !important;
+		float: none !important;
+		@include breakpoint (tablet){
+			float: right !important;	
+		}
 	}
 	.szoba-description{
 		
-		float: left !important;
+		float: none !important;
+		@include breakpoint (tablet){
+			float: left !important;	
+		}
 	}
 }
-
+/* .szoba{
+	>div{
+		position:relative;
+	}
+} */
 
 .review-container{
 	margin:5rem 0;
@@ -120,14 +139,23 @@
 	padding:1rem;
 	height: auto;
 	position: relative;
-	height:14.5rem;
+	
+	clear:both;
+	height:auto;
+	margin-bottom:4rem;
+	@include breakpoint (tablet){
+		height:14.5rem;
+	}
 	input[type="text"], textarea{
 		padding:0.4rem 0.5rem;
-		width: 150px;
+		width: 100%;
 		box-shadow:inset 0 0 3px rgba(0,0,0,0.3);
 		border:none;
 		line-height: 1.4;
 		letter-spacing:2px;
+		@include breakpoint(tablet){
+			width: 150px;
+		}
 	}
 	textarea{
 		width: 100%;
@@ -172,19 +200,28 @@
 		color:$black;
 
 	}
-
+.nine{
+	margin-top:1rem;
+	@include breakpoint(tablet){
+		margin-top:0;
+	}
+}
 }
 
 
 .review-img{
-	width:100%;
-	max-width: 150px;
+	width: 150px;
 	height: 150px;
 	background-image:url(../img/gender-switch.png);
 	background-repeat:no-repeat;
 	background-position: 0 0;
+	margin:0 auto;
 	margin-bottom:1rem;
 	position:relative;
+	@include breakpoint (tablet){
+		margin:0;
+		margin-bottom:1rem;
+	}
 	input{
 	  position: absolute;
 	  opacity: 0;

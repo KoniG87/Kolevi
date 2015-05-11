@@ -413,6 +413,8 @@ $(".rend-contact-kep-container").Svgenerate({
 
 callFooter(0.95);
 
+callSzobaCarouselSvg();
+
     }               
 }
 

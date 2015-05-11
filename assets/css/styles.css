@@ -2501,9 +2501,14 @@ footer {
           height: 3rem; } }
 
 .diszvonal-vert {
-  width: 0.3rem;
-  height: 100%;
-  position: absolute; }
+  display: none;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .diszvonal-vert {
+      display: block;
+      width: 0.3rem;
+      height: 100%;
+      position: absolute; } }
 
 .f-nyitvatartas {
   width: 100%;
@@ -4953,7 +4958,12 @@ section {
     right: -1.5rem; }
 
 .szoba-carousel-nav {
-  cursor: pointer; }
+  cursor: pointer;
+  display: none;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .szoba-carousel-nav {
+      display: block; } }
   .szoba-carousel-nav .slick-slide {
     padding: 1rem;
     position: relative; }
@@ -4961,15 +4971,36 @@ section {
       display: none; }
 
 .szoba:nth-of-type(odd) .seven {
-  float: left !important; }
+  float: none !important;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .szoba:nth-of-type(odd) .seven {
+      float: left !important; } }
 .szoba:nth-of-type(odd) .szoba-description {
-  float: right !important; }
+  float: none !important;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .szoba:nth-of-type(odd) .szoba-description {
+      float: right !important; } }
 
 .szoba:nth-of-type(even) .seven {
-  float: right !important; }
+  float: none !important;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .szoba:nth-of-type(even) .seven {
+      float: right !important; } }
 .szoba:nth-of-type(even) .szoba-description {
-  float: left !important; }
+  float: none !important;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .szoba:nth-of-type(even) .szoba-description {
+      float: left !important; } }
 
+/* .szoba{
+	>div{
+		position:relative;
+	}
+} */
 .review-container {
   margin: 5rem 0; }
 
@@ -4978,14 +5009,24 @@ section {
   padding: 1rem;
   height: auto;
   position: relative;
-  height: 14.5rem; }
+  clear: both;
+  height: auto;
+  margin-bottom: 4rem;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .add-review {
+      height: 14.5rem; } }
   .add-review input[type="text"], .add-review textarea {
     padding: 0.4rem 0.5rem;
-    width: 150px;
+    width: 100%;
     box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
     border: none;
     line-height: 1.4;
-    letter-spacing: 2px; }
+    letter-spacing: 2px;
+    /*800px*/ }
+    @media (min-width: 50em) {
+      .add-review input[type="text"], .add-review textarea {
+        width: 150px; } }
   .add-review textarea {
     width: 100%;
     height: 6rem;
@@ -5018,16 +5059,27 @@ section {
   font-family: "DanielBold-Regular", sans serif;
   font-size: 120%;
   color: #000; }
+.add-review .nine {
+  margin-top: 1rem;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .add-review .nine {
+      margin-top: 0; } }
 
 .review-img {
-  width: 100%;
-  max-width: 150px;
+  width: 150px;
   height: 150px;
   background-image: url(../img/gender-switch.png);
   background-repeat: no-repeat;
   background-position: 0 0;
+  margin: 0 auto;
   margin-bottom: 1rem;
-  position: relative; }
+  position: relative;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .review-img {
+      margin: 0;
+      margin-bottom: 1rem; } }
   .review-img input {
     position: absolute;
     opacity: 0;

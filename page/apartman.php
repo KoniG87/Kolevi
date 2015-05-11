@@ -70,6 +70,10 @@ include('page/home.php');
 
 	<div class="row clearfix szobak-container">
 		<div class="szoba clearfix">
+			<div class="szoba-description four columns">
+				<h3>Szoba 1</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto perspiciatis deserunt amet culpa commodi a praesentium fuga quod eligendi labore quidem asperiores sint accusamus aperiam similique id cupiditate dolorum omnis maiores enim quas tempora, ullam, perferendis officia accusantium. Quis, quasi.</p>
+			</div>
 			<div class=" seven columns">
 				<div class="szoba-carousel">
 					<div><img src="assets/img/gslide-1.png" alt=""></div>
@@ -92,10 +96,7 @@ include('page/home.php');
 					<div><img src="assets/img/gslide-4.png" alt=""></div>
 				</div>
 			</div>
-			<div class="szoba-description four columns">
-				<h3>Szoba 1</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto perspiciatis deserunt amet culpa commodi a praesentium fuga quod eligendi labore quidem asperiores sint accusamus aperiam similique id cupiditate dolorum omnis maiores enim quas tempora, ullam, perferendis officia accusantium. Quis, quasi.</p>
-			</div>
+
 
 			<div class="review-container ten columns centered">
 				
