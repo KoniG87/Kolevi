@@ -3,7 +3,7 @@ include('page/home.php');
 ?>
 
 <div class="row stickyStart">
-	<div class="twelve coulumns vendeglo-container">
+	<div class="twelve coulumns kert-container">
 <?php
 	$db = $app->getDbHandler();
 	

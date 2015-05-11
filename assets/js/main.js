@@ -874,7 +874,7 @@ else if(mM.matches){
     });
   
 
-  $(".sitckyNav .row a, .nav-info a").on("click",function(event){
+  $(".sitckyNav .row a, .nav-info a, .terkep-container a").on("click",function(event){
     event.preventDefault();
     event.stopPropagation();
     var anchorTarget = $(this).attr("href");
@@ -1051,7 +1051,7 @@ $(".diszvonal-vert").each(function(){
 
 
 
-$("#rendezvenyek h3").each(function(){
+$("#rendezvenyek h3, .szoba-description h3").each(function(){
   $(this).Svgenerate({
     rangeX:0.98,
     rangeY:0.83

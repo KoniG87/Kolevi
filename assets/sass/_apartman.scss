@@ -1,0 +1,115 @@
+
+/* 
+ * TÉRKÉP
+ */
+#terkep{
+	margin-top: 15rem;
+}
+.terkep-container{
+	margin-bottom:5rem;
+	position: relative;
+}
+
+.marker-logo{
+	position: absolute;
+	top: 19rem;
+	left:28.5rem;
+	width: 10.5rem;
+	height: 8rem;
+	cursor: pointer;
+	svg{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top:0;
+	}
+	h2{
+		position: absolute;
+		bottom:-3rem;
+		color:$black;
+		font-family: $danielbld;
+		letter-spacing: 1px;
+		opacity: 0;
+		display: none;
+
+	}
+}
+.marker-shadow{
+	height: 1.6rem;
+	width:2.5rem;
+	background-color:$black;
+	position: absolute;
+	bottom:-0.6rem;
+	border-radius:100%;
+	opacity: 0.2;
+	margin:auto;
+	left:0.5rem;
+	right:0;
+}
+
+/* 
+ * SZOBÁK
+ */
+
+.szoba-description h3{
+	margin-top:0;
+}
+.szoba-carousel{
+	padding:0 2rem 2rem 2rem;
+	cursor:pointer;
+
+	.slick-slide{
+		position:relative;
+		margin:0.5rem;
+		img{
+			display: none;
+		}
+	}
+	.slick-prev, .slick-next{
+		position:absolute;
+		width: 3.5rem;
+		height: 3.5rem;
+		top:40%;
+	}
+	.slick-prev{
+		left:-1.5rem;
+	}
+	.slick-next{
+		right:-1.5rem;
+	}
+}
+.szoba-carousel-nav{
+	cursor:pointer;
+
+	.slick-slide{
+		padding:1rem;
+		position: relative;
+		img{
+			display: none;
+		}
+	}
+}
+
+.szoba:nth-of-type(odd){
+	.seven{
+		float: left !important;
+	}
+	.szoba-description{
+		float: right !important;
+	}
+
+}
+.szoba:nth-of-type(even){
+	.seven{
+		float: right !important;
+	}
+	.szoba-description{
+		
+		float: left !important;
+	}
+}
+
+
+.review-container{
+	margin-bottom:10rem;
+}

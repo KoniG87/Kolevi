@@ -2333,70 +2333,12 @@ p {
   height: 1em;
   fill: currentColor; }
 
-/*#icon-apartman .path1, #icon-apartman .path2, #icon-apartman .path5, #icon-apartman .path6 {
-	fill: rgb(0, 0, 0);
-}
-#icon-apartman .path3, #icon-apartman .path4, #icon-apartman .path7, #icon-apartman .path8, #icon-apartman .path9, #icon-apartman .path10, #icon-apartman .path11, #icon-apartman .path12, #icon-apartman .path13, #icon-apartman .path14 {
-	fill: rgb(255, 255, 255);
-}
+#icon-marker-logo .path1, #icon-marker-logo .path3, #icon-marker-logo .path4, #icon-marker-logo .path5, #icon-marker-logo .path6, #icon-marker-logo .path7, #icon-marker-logo .path8, #icon-marker-logo .path9, #icon-marker-logo .path10, #icon-marker-logo .path11 {
+  fill: black; }
 
-#icon-apartman-2 .path1, #icon-apartman-2 .path2, #icon-apartman-2 .path5, #icon-apartman-2 .path6, #icon-apartman-2 .path7, #icon-apartman-2 .path8, #icon-apartman-2 .path9, #icon-apartman-2 .path10, #icon-apartman-2 .path11, #icon-apartman-2 .path12 {
-	fill: rgb(0, 0, 0);
-}
-#icon-apartman-2 .path3, #icon-apartman-2 .path4 {
-	fill: rgb(255, 255, 255);
-}
+#icon-marker-logo .path2 {
+  fill: white; }
 
-#icon-delicates .path1, #icon-delicates .path2, #icon-delicates .path3, #icon-delicates .path4, #icon-delicates .path5, #icon-delicates .path6 {
-	fill: rgb(0, 0, 0);
-}
-#icon-delicates .path7, #icon-delicates .path8, #icon-delicates .path9, #icon-delicates .path10, #icon-delicates .path11, #icon-delicates .path12, #icon-delicates .path13, #icon-delicates .path14, #icon-delicates .path15 {
-	fill: rgb(255, 255, 255);
-}
-
-
-
-#icon-kert .path1, #icon-kert .path7, #icon-kert .path8, #icon-kert .path14, #icon-kert .path15, #icon-kert .path16, #icon-kert .path17 {
-	fill: rgb(255, 255, 255);
-}
-#icon-kert .path2, #icon-kert .path3, #icon-kert .path4, #icon-kert .path5, #icon-kert .path6, #icon-kert .path9, #icon-kert .path10, #icon-kert .path11, #icon-kert .path12, #icon-kert .path13 {
-	fill: rgb(0, 0, 0);
-}
-
-#icon-kert-2 .path1, #icon-kert-2 .path2, #icon-kert-2 .path3, #icon-kert-2 .path4, #icon-kert-2 .path5, #icon-kert-2 .path8, #icon-kert-2 .path9, #icon-kert-2 .path10, #icon-kert-2 .path11, #icon-kert-2 .path12, #icon-kert-2 .path13, #icon-kert-2 .path14 {
-	fill: rgb(0, 0, 0);
-}
-#icon-kert-2 .path6, #icon-kert-2 .path7 {
-	fill: rgb(255, 255, 255);
-}
-
-/*info-bg*/
-/*#icon-info .path1 {
-	fill: rgb(255, 255, 255);
-}*/
-/*info-szöveg*/
-/*#icon-info .path2, #icon-info .path3, #icon-info .path4, #icon-info .path5 {
-	fill: rgb(0, 0, 0);
-}*/
-/*lang-bg*/
-/*#icon-lang-select .path1 {
-	fill: rgb(0, 0, 0);
-	fill:#fff;
-}*/
-/*hun*/
-/*#icon-lang-select .hun {
-	fill: rgb(138, 138, 138);
-	cursor: pointer;
-}*/
-/*eng*/
-/*#icon-lang-select .eng {
-	fill: rgb(138, 138, 138);
-	cursor: pointer;
-}*/
-/*perjel*/
-/*#icon-lang-select .path2{
-	fill: rgb(0, 0, 0);
-}*/
 #icon-logo .path1, #icon-logo .path3, #icon-logo .path4, #icon-logo .path5, #icon-logo .path6, #icon-logo .path7, #icon-logo .path8, #icon-logo .path9, #icon-logo .path10, #icon-logo .path11 {
   fill: black; }
 
@@ -3346,14 +3288,13 @@ header {
       .fold-list li {
         background-size: 230px !important; } }
     .fold-list li p {
-      font-size:0.6em;
       width: 70%;
       display: inline-block;
       margin-bottom: 0; }
     .fold-list li b {
       width: 25%;
       display: inline-block;
-      font-size: 0.6em; }
+      font-size: 90%; }
 
 .fold-list li:nth-child(2) {
   padding-top: 1.5rem; }
@@ -4139,7 +4080,7 @@ input:focus::-ms-input-placeholder {
   width: 87px !important; }
 
 /*RENDEZVÉNYEK*/
-#rendezvenyek h3 {
+#rendezvenyek h3, .szoba-description h3 {
   width: auto;
   display: table;
   padding: 0.2rem 1rem;
@@ -4943,3 +4884,91 @@ section {
   width: 85%; }
 .fold-list li b {
   width: 10%; }
+
+/* 
+ * TÉRKÉP
+ */
+#terkep {
+  margin-top: 15rem; }
+
+.terkep-container {
+  margin-bottom: 5rem;
+  position: relative; }
+
+.marker-logo {
+  position: absolute;
+  top: 19rem;
+  left: 28.5rem;
+  width: 10.5rem;
+  height: 8rem;
+  cursor: pointer; }
+  .marker-logo svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; }
+  .marker-logo h2 {
+    position: absolute;
+    bottom: -3rem;
+    color: #000;
+    font-family: "DanielBold-Regular", sans serif;
+    letter-spacing: 1px;
+    opacity: 0;
+    display: none; }
+
+.marker-shadow {
+  height: 1.6rem;
+  width: 2.5rem;
+  background-color: #000;
+  position: absolute;
+  bottom: -0.6rem;
+  border-radius: 100%;
+  opacity: 0.2;
+  margin: auto;
+  left: 0.5rem;
+  right: 0; }
+
+/* 
+ * SZOBÁK
+ */
+.szoba-description h3 {
+  margin-top: 0; }
+
+.szoba-carousel {
+  padding: 0 2rem 2rem 2rem;
+  cursor: pointer; }
+  .szoba-carousel .slick-slide {
+    position: relative;
+    margin: 0.5rem; }
+    .szoba-carousel .slick-slide img {
+      display: none; }
+  .szoba-carousel .slick-prev, .szoba-carousel .slick-next {
+    position: absolute;
+    width: 3.5rem;
+    height: 3.5rem;
+    top: 40%; }
+  .szoba-carousel .slick-prev {
+    left: -1.5rem; }
+  .szoba-carousel .slick-next {
+    right: -1.5rem; }
+
+.szoba-carousel-nav {
+  cursor: pointer; }
+  .szoba-carousel-nav .slick-slide {
+    padding: 1rem;
+    position: relative; }
+    .szoba-carousel-nav .slick-slide img {
+      display: none; }
+
+.szoba:nth-of-type(odd) .seven {
+  float: left !important; }
+.szoba:nth-of-type(odd) .szoba-description {
+  float: right !important; }
+
+.szoba:nth-of-type(even) .seven {
+  float: right !important; }
+.szoba:nth-of-type(even) .szoba-description {
+  float: left !important; }
+
+.review-container {
+  margin-bottom: 10rem; }
