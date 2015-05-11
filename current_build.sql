@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Hoszt: 127.0.0.1
--- Létrehozás ideje: 2015. Máj 11. 22:38
+-- Létrehozás ideje: 2015. Máj 11. 23:45
 -- Szerver verzió: 5.6.21
 -- PHP verzió: 5.6.3
 
@@ -324,14 +324,14 @@ INSERT INTO `koleves_kepek` (`ID`, `FAJLNEV`, `LEIRAS_HU`, `GALLERY_TAG`, `SZEKC
 (7, 'assets/uploads/gallery04.jpg', NULL, NULL, NULL),
 (8, 'assets/uploads/about-img.png', NULL, NULL, 3),
 (9, 'assets/uploads/cat-tracks.jpg', NULL, NULL, NULL),
-(10, 'assets/img/gslide-1.png', NULL, NULL, 4),
-(11, 'assets/img/gslide-2.png', NULL, NULL, 4),
-(12, 'assets/img/gslide-3.png', NULL, NULL, 4),
-(13, 'assets/img/gslide-4.png', NULL, NULL, 4),
-(14, 'assets/img/gslide-1.png', NULL, NULL, 4),
-(15, 'assets/img/gslide-2.png', NULL, NULL, 4),
-(16, 'assets/img/gslide-3.png', NULL, NULL, 4),
-(17, 'assets/img/gslide-4.png', NULL, NULL, 4);
+(10, 'assets/uploads/gslide-1.jpg', NULL, NULL, 4),
+(11, 'assets/uploads/gslide-2.jpg', NULL, NULL, 4),
+(12, 'assets/uploads/gslide-3.jpg', NULL, NULL, 4),
+(13, 'assets/uploads/gslide-4.jpg', NULL, NULL, 4),
+(14, 'assets/uploads/gslide-1.jpg', NULL, NULL, 4),
+(15, 'assets/uploads/gslide-2.jpg', NULL, NULL, 4),
+(16, 'assets/uploads/gslide-3.jpg', NULL, NULL, 4),
+(17, 'assets/uploads/gslide-4.jpg', NULL, NULL, 4);
 
 -- --------------------------------------------------------
 
