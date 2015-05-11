@@ -111,13 +111,11 @@ class ApartmanView extends BaseView{
     
     
     public function drawTerkep(){
-    	echo '<section id="terkep">
-	<div class="section-label" data-labelpos="1">
-		<div class="papercut-left"></div>
-		<label for="terkep"><span></span>
-		<h2>Térkép</h2></label>
-		<div class="papercut-right" ></div>
-	</div>
+    	echo '<section id="terkep">';
+    	
+    	$this->drawSectionLabel("Térkép", "terkep", 1);
+    	
+    	echo '
 	<div class="terkep-container">';
 	    
 	    include('core/template/terkep_svg.php');
@@ -143,13 +141,10 @@ class ApartmanView extends BaseView{
     
     
     public function drawHely(){
-    	echo '<section id="hely">
-	<div class="section-label" data-labelpos="2">
-		<div class="papercut-left"></div>
-		<label for="hely"><span></span>
-		<h2>A hely</h2></label>
-		<div class="papercut-right" ></div>
-	</div>
+    	echo '<section id="hely">';
+    	
+    	$this->drawSectionLabel("Hely", "hely", 2);
+	echo '
 
 	<div class="hely-container">';
 	      
@@ -167,13 +162,10 @@ class ApartmanView extends BaseView{
     
     
     public function drawSzobak($elements){
-    	echo '<section id="szobak">
-    	<div class="section-label" data-labelpos="3">
-    	<div class="papercut-left"></div>
-    	<label for="szobak"><span></span>
-    	<h2>Szobák</h2></label>
-    	<div class="papercut-right" ></div>
-    	</div>
+    	echo '<section id="szobak">';
+    	
+    	$this->drawSectionLabel("Szobák", "szobak", 3);
+    	echo '
     	
     	<div class="row clearfix szobak-container">
     	<div class="szoba clearfix">

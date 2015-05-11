@@ -230,9 +230,10 @@ class Application{
       </ul>
       <ul>
         <svg class="icon icon-apartman"><use xlink:href="#icon-apartman"></use></svg>
-        '.(false ? '<a href=""><li>Térkép</li></a>
-        <a href=""><li>Szobák</li></a>
-        <a href=""><li>Képek</li></a>' : '<li>Hamarosan</li>').'
+       <a href="apartman#terkep"><li>Térkép</li></a>
+    		<a href="apartman#hely"><li>A hely</li></a>
+        <a href="apartman#szobak"><li>Szobák</li></a>
+        <a href="apartman#kepek"><li>Képek</li></a>
 
       </ul>
       <ul>
@@ -310,10 +311,10 @@ class Application{
 			</ul>
 			<ul>
 				<h4>apartman</h4>
-				'.(false ? '<a href=""><li>Térkép</li></a>
-				<a href=""><li>Szobák</li></a>
-				<a href=""><li>Képek</li></a>' : '<li>Hamarosan</li>').'
-    
+				<a href="apartman#terkep"><li>Térkép</li></a>
+    			<a href="apartman#hely"><li>A hely</li></a>
+				<a href="apartman#szobak"><li>Szobák</li></a>
+				<a href="apartman#kepek"><li>Képek</li></a>    
 			</ul>
 			<ul>
 				<h4>delicates</h4>
