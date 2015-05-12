@@ -126,6 +126,11 @@ img{
   clip:rect(0,0,0,0);
   overflow:hidden;
 }
+.measure{
+  position: absolute !important;
+  visibility: hidden !important;
+  display: block !important;
+}
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;

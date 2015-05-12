@@ -4825,7 +4825,7 @@ var datepicker = $.datepicker;
             var counts = {};
             jQuery.getJSON('https://count.donreach.com/?url=' + encodeURIComponent(opts.url) + '&callback=?',
               function (data) {
-                console.log(data);
+                /*console.log(data);*/
                 counts.url = data.url;
                 counts.facebook = data.shares.facebook;
                 counts.twitter = data.shares.twitter;
@@ -11833,7 +11833,7 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
     function quaternionToEuler(q) {
         var s = 180 / Math.PI;
         var front = quaternionApply({x:0,y:1,z:0}, q);
-        console.log(front);
+        /*console.log(front);*/
         var alpha = (front.x == 0 && front.y == 0) ?
             0 : -Math.atan2(front.x, front.y);
         var beta = Math.atan2(front.z,Math.sqrt(front.x*front.x+front.y*front.y));

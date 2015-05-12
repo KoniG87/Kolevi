@@ -331,8 +331,8 @@ truncateIfNeeded();
 // Ha nem kell még a dotdotdot,akkor tüntesd el a nyilakat...
 $(".program").each(function(){
   var dotContent = $(this).find(".program-right");
-  console.log(dotContent.innerHeight());
-  if(dotContent.innerHeight() > programDotHeight){
+
+  if(dotContent.innerHeight() >= programDotHeight){
     dotContent.find(".program-nyil").css("opacity","1");
     
   }
@@ -362,10 +362,10 @@ event.preventDefault();
 var programokParent = $(this).parent().parent();
 var programokParentHeight = programokParent.height();
 if(mT.matches || mM.matches){
-programokParent.velocity({height: "20rem"},1000).delay(1000).velocity({height: programokParentHeight},1);
+programokParent.velocity({height: "20rem"},500).delay(1000).velocity({height: programokParentHeight},1);
 }
 else if(mL.matches){
-  programokParent.velocity({height: "10rem"},1000).delay(1000).velocity({height: programokParentHeight},1);
+  programokParent.velocity({height: "10rem"},500).delay(1000).velocity({height: programokParentHeight},1);
 }
 
 programokParent.toggleClass("program-fullheight");
@@ -445,7 +445,7 @@ template: $('#calendar-template').html(),
       });
           if(targetProgi.find(".program-right").innerHeight() > 160){
             targetProgi.find(".program-nyil-le").click();
-            console.log(targetProgi.innerHeight());
+            /*console.log(targetProgi.innerHeight());*/
           }
         }
       },
@@ -483,4 +483,41 @@ function callCalendar(){
 callCalendar();
 
 
+if (matchMedia) {
+        var mM = window.matchMedia('(max-width: 30em)');
+        var mT = window.matchMedia('(max-width: 50em) and (min-width: 30em)');
+        var mL = window.matchMedia('(min-width: 50em)');
+        // var mBig = window.matchMedia('(min-width: 64.375em)');
+
+        mM.addListener(matchMobile);
+        mT.addListener(matchTablet);
+        mL.addListener(matchLaptop);
+        // mBig.addListener(matchBig);
+
+        matchMobile(mM);
+        matchTablet(mT);
+        matchLaptop(mL);
+        // matchBig(mBig);
+    }
+// media query change
+    function matchMobile(mM) {
+        if (mM.matches) {
+        }
+
+    }
+    function matchTablet(mT) {
+        if (mT.matches) {
+
+        }
+
+    }
+    function matchLaptop(mL) {
+        if (mL.matches) {
+             onDesktop = true;
+            
+        }
+        else {
+            onDesktop = false;
+        }
+    }
  });

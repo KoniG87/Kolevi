@@ -1183,7 +1183,12 @@ input:focus::-ms-input-placeholder {
 }
 .rend-contact-kep-container{
 		margin: 0 auto;
-		padding:1rem 2rem 1rem 1rem;
+		padding:2rem !important;
+		@include breakpoint (tablet){
+			padding:1rem 2rem 1rem 1rem !important;
+		}
+		
+
 }
 .diszvonal{
 	height:0.5rem;
@@ -1467,8 +1472,9 @@ input:focus::-ms-input-placeholder {
 	height: 100%;
 	min-height: 20rem;
 	max-height: 20rem;
-	
-	@include transition(max-height 1s cubic-bezier(.5,0,1,0));
+	/* felfele */
+	@include transition(max-height 0.5s cubic-bezier(.5,0,1,0));
+
 	@extend .paper-bg-darker;
 	@include breakpoint(tablet){
 		overflow: hidden;
@@ -1477,9 +1483,12 @@ input:focus::-ms-input-placeholder {
 	}
 	
 }
-.program-fullheight{
+
+/* cubic-bezier(.5,0,1,0)
+ */.program-fullheight{
 	max-height:1500px !important;
-	@include transition(max-height 1.5s cubic-bezier(.5,0,1,0));
+	/* lefele */
+	@include transition(max-height 2s cubic-bezier(1,0,1,1));
 	.program-nyil-le{
 		display: none !important;
 	}

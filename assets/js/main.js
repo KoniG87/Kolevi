@@ -4,6 +4,14 @@ function refreshWaypoints(){
   $.waypoints('refresh');
 } 
 
+function measureHeight(target){
+  $(target).addClass("measure");
+  var actualHeight = $(target).height();
+  $(target).removeClass("measure");
+
+  return actualHeight;
+ }
+
 
 $(document).ready(function(){
   var onDesktop = true;
@@ -51,7 +59,7 @@ var maskUrlIndex = 0;
         }
         var t = $(this),
         pW = t.width(),
-        pH = t.height();
+        pH = measureHeight(this);
         var sourceImg = t.find("img"),
         imgSrc = sourceImg.attr("src");
 
@@ -413,7 +421,7 @@ $(".rend-contact-kep-container").Svgenerate({
 
 callFooter(0.95);
 
-callSzobaCarouselSvg();
+
 
     }               
 }
@@ -1017,14 +1025,14 @@ $(".rend-slider").slick({
   });
 
 $(".rend-contact").Svgenerate({
-  rangeX:0.95,
-  rangeY:0.93,
+  rangeX:0.97,
+  rangeY:0.95,
 });
 $(".rend-contact-kep-container").Svgenerate({
   imgMask:"on",
   setToImg:"on",
-  rangeX:0.94,
-  rangeY:0.94
+  rangeX:0.97,
+  rangeY:0.95
 });
 
 $(".diszvonal").each(function(){
@@ -1326,25 +1334,19 @@ if (matchMedia) {
 // media query change
     function matchMobile(mM) {
         if (mM.matches) {
-          /*callGallery();*/
-          /*callThumbs();*/
         }
 
     }
     function matchTablet(mT) {
         if (mT.matches) {
-          /*callGallery();*/
-          /*callThumbs();*/
+
         }
 
     }
     function matchLaptop(mL) {
         if (mL.matches) {
              onDesktop = true;
-             /*callGallery();*/
-            /* callThumbs();*/
             $(".section-label").each(sectionLabels);
-           /* napiMenuTablakOut();*/
             callFooter(0.9);
             
         }

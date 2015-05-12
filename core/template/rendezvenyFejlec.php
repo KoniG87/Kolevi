@@ -22,7 +22,7 @@
 	</div>
 	<div class="three columns right">
 		<img data-src="[[FEJLEC_IMAGE]]" alt="Rendezvények"
-			class="lazy">
+			class="lazy illusztracio">
 		<noscript>
 			<img src="[[FEJLEC_IMAGE]]" alt="Rendezvények">
 		</noscript>

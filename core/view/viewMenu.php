@@ -344,9 +344,9 @@ public function drawKertEtlap($elements){
      		<div class="row clearfix">
         <div class="three columns left illusztracio">
         <p class="ehes-szomjas">Éhes vagy?</p>
-    <img data-src="assets/img/asztalos_bacsi.png" alt="kert étlap" class="lazy-loaded" >
+    <img data-src="assets/img/asztalos_bacsi.png" alt="kert étlap" class="lazy illusztracio" >
     <noscript>
-      &lt;img src="assets/img/asztalos_bacsi.png" alt="kert étlap"&gt;
+      <img src="assets/img/asztalos_bacsi.png" alt="kert étlap">
     </noscript>
 
         </div>
@@ -414,9 +414,9 @@ public function drawKertEtlap($elements){
      
              <div class="three columns right illusztracio">
              <p class="ehes-szomjas">Szomjas?</p>
-    		 <img data-src="assets/img/asztalos_neni.png" alt="Kert itallap" class="lazy-loaded">
+    		 <img data-src="assets/img/asztalos_neni.png" alt="Kert itallap" class="lazy illusztracio">
     		<noscript>
-      			&lt;img src="assets/img/asztalos_neni.png" alt="Kert itallap"&gt;
+      			<img src="assets/img/asztalos_neni.png" alt="Kert itallap">
     			</noscript>
   			</div>';
      }

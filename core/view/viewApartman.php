@@ -1,6 +1,6 @@
 <?php
 
-class VendegloView extends BaseView{
+class ApartmanView extends BaseView{
 	
 	function __construct(){
 		/*$valtozo < template/kajaMenu.php
@@ -110,40 +110,148 @@ class VendegloView extends BaseView{
     
     
     
+    public function drawTerkep(){
+    	echo '<section id="terkep">';
+    	
+    	$this->drawSectionLabel("Térkép", "terkep", 1);
+    	
+    	echo '
+	<div class="terkep-container">';
+	    
+	    include('core/template/terkep_svg.php');
+	    
+	    echo '
+		<!-- <img src="assets/img/aprt_terkep.png" alt="Térkép" title="térkép"> -->
+		<a href="#hely" class="marker-pos">
+			<div class="marker-logo">
+				<h2>Kőleves Vendéglő</h2>
+				<svg class="icon icon-marker-logo"><use xlink:href="#icon-marker-logo"></use></svg>
+				<div class="marker-shadow"></div>
+			</div>
+		</a>
+	</div>
+	<div class="row">
+		<div class="twelve columns centered">
+			<h3>A mi Budapestünk</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus sit cumque quisquam ad! Obcaecati aperiam itaque porro, possimus nemo dolores, reiciendis praesentium ipsa maxime! Distinctio velit dolorum qui, repudiandae dolorem corporis magnam dignissimos sunt odio cum. Mollitia, voluptates. Esse, animi totam facilis dolore voluptatem iure perspiciatis ullam nulla voluptatibus aliquam incidunt sint dolor itaque, repellendus! Laborum incidunt ipsam sequi placeat!</p>
+		</div>
+	</div>
+</section>';
+    }
     
-    public function drawRendezveny($elements){
-    	echo '<section id="rendezvenyek">';
-                
-    	$this->drawSectionLabel("Rendezvények", "rendezvenyek", 4);
+    
+    public function drawHely(){
+    	echo '<section id="hely">';
+    	
+    	$this->drawSectionLabel("Hely", "hely", 2);
+	echo '
+
+	<div class="hely-container">';
+	      
+	    include('core/template/hely_svg.php');
+	    echo '
+		</div>
+	<div class="row">
+		<div class="twelve columns centered">
+			<h3>A Hely</h3>
+			<p>lorem ipsum dolor sit amet, consectetur adipisicing elit. accusamus sit cumque quisquam ad! obcaecati aperiam itaque porro, possimus nemo dolores, reiciendis praesentium ipsa maxime! distinctio velit dolorum qui, repudiandae dolorem corporis magnam dignissimos sunt odio cum. mollitia, voluptates. esse, animi totam facilis dolore voluptatem iure perspiciatis ullam nulla voluptatibus aliquam incidunt sint dolor itaque, repellendus! laborum incidunt ipsam sequi placeat!</p>
+		</div>
+	</div>
+</section>';
+    }
+    
+    
+    public function drawSzoba($szobaData){
+    	
+    	echo '<div class="szoba clearfix">
+    	
+		<div class="szoba-description four columns">
+    		<h3>'.$szobaData['header'].'</h3>
+    		<p>'.$szobaData['desc'].'</p>
+    	</div>    			
+
+    	<div class=" seven columns">
+    		<div class="szoba-carousel">';
+    	
+    	$slideOutput = '';
+    	foreach ($szobaData['kepek'] AS $kepData){
+    		$slideOutput .= '<div><img src="'.$kepData['fajlnev'].'" alt=""></div>'; 
+    	}
+    	echo $slideOutput;
+    	
+    	echo '
+		    </div>
+	    	<div class="szoba-carousel-nav">';
+    	
+    	echo $slideOutput;
+			    
+    	echo '
+	    	</div>
+    	</div>
     	
     	
-    	echo '<p>A földszinti vendégtérből nyílik az általunk "VIP" teremnek nevezett kisterem, ahol maximum 13 fő fér el. Zártkörű ebédekhez, vacsorákhoz vagy megbeszélésekhez ajánljuk.</p>
-    			<p>Az épület hátsó részében található az "Elefántos" terem, ahol maximum 25 fő fér el ültetve, ha nem feltétlenül szeretne mindenki leülni, akkor 40 ember is befér. Ezt a termet zártkörű ebédekhez, vacsorákhoz, megbeszélésekhez, osztálytalálkozókhoz, tréningekhez, workshopokhoz, stb. ajánljuk. Ennek a teremnek van egy külön pultja is, projektora és néhány kényelmes fotelje is.</p>
-    			<p>Az emeleti különterem a legnagyobb külön helyiségünk. Ültetve 70-75 ember fér el benne, állva 120-150-en is akár. Ehhez a teremhez tartozik egy külön bárpult és egy dohányzó terasz is. Amit biztosítani tudunk: erősítő, keverőpult, hangfalak, mikrofonok, projektor, vetítővászon, flipchart tábla. Mindenféle zártkörű rendezvényekhez ajánljuk, például ebédekhez, vacsorákhoz, esküvőkhöz, születésnapokhoz, előadások, tréningek, stb.</p>
-    			<p>Ezen kívül a kertbe is felveszünk nagyobb foglalásokat és arra is van lehetőség, hogy az egész vendéglőt kivedd.</p>';
+    	<div class="review-container ten columns centered">
     	
-    	$this->loadTemplate('rendezvenyFejlec', array($elements['szervezo']));
+    	<div class="add-review">
+    	<form action="">
+    	<div class="three columns">
+    	<div class="review-img">
+    	<div class="gender-switch">
+    	<input type="radio" name="gender" id="male" checked="true">
+    	<label for="male">M</label>
+        <span>/</span>
+    	<input type="radio" name="gender" id="female">
+    	<label style="margin-left:-8px;" for="female">F</label>
+    	</div>
+    	</div>
+    	<input type="text" placeholder="Név">
+    	</div>
+    	<div class="nine columns">
     	
-    	foreach ($elements['rendezvenyek'] AS $rendezvenyData){
-    		echo '<div class="row">
-                        <div class="twelve columns">
-                            <h3>'.$rendezvenyData['MEGNEVEZES'].'</h3>
-                            <p>'.$rendezvenyData['MEGJEGYZES'].'</p>
-                        </div>
-                        <div class="eight columns centered rend-slider">';
+    	<input type="text" placeholder="Cím">
     	
-    		$this->loadTemplate('rendezvenyLista', $rendezvenyData['kepek']);
-    		
-    		echo '</div>
-            <svg class="icon icon-swipe"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-swipe"></use></svg>
-                    </div>';
+    	<div class="stars">
+    	<input type="radio" name="star" class="star-1" id="star-1" />
+    	<label class="star-1" for="star-1">1</label>
+    	<input type="radio" name="star" class="star-2" id="star-2" />
+    	<label class="star-2" for="star-2">2</label>
+    	<input type="radio" name="star" class="star-3" id="star-3" />
+    	<label class="star-3" for="star-3">3</label>
+    	<input type="radio" name="star" class="star-4" id="star-4" />
+    	<label class="star-4" for="star-4">4</label>
+    	<input type="radio" name="star" class="star-5" id="star-5" />
+    	<label class="star-5" for="star-5">5</label>
+    	<span></span>
+    	</div>
+    	
+    	<textarea placeholder="Szeretem a tollpárnákat" ></textarea>
+    	
+    	</div>
+    	<input type="submit" value="Küldés">
+    	</form>
+    	</div>
+    	</div>
+    	</div>';
+    }
+    
+    
+    public function drawSzobak($elements){
+    	echo '<section id="szobak">';
+    	
+    	$this->drawSectionLabel("Szobák", "szobak", 3);
+    	echo '
+    	
+    	<div class="row clearfix szobak-container">';
+    	
+    	foreach ($elements['szobak'] AS $sorrend => $szobaData){
+    		$this->drawSzoba($szobaData);
     	}
     	
-                            
-                       
-    	
-    	echo '</section>';
+    	echo '
+    	</div>
+    	</section>';
     }
+    
     
     
     
@@ -243,23 +351,17 @@ class VendegloView extends BaseView{
     
     public function drawRolunk($elements){
     	echo '<section id="rolunk">';
-    	$this->drawSectionLabel("Rólunk", "rolunk", 6);
+    	$this->drawSectionLabel("Rólunk", "rolunk", 1);
     	echo '
 			<div class="row clearfix">
-				<div class="eight columns">
-					<h3>A Vendéglő</h3>
-					<p>A Kőleves 10 éves vendéglő. Imola és Kápszi ültünk egy rémséges vasút-állomáson 1995 körül és elhatároztuk, hogy nyitunk egy vendéglőt. 
-		Azt hiszem ez kb. 10 évvel később, de megvalósult 2005-ben. Ez a tíz év beszélgetés a vendéglőről elég volt ahhoz, hogy pontosan tudjuk mit akarunk és lássuk, 
-		hogy ugyanazt, ez azóta is töretlenül működik köztünk. Persze nem magától ment minden, hanem sok kölcsön pénzből, amivel az elején nehéz volt küzdenünk. Először 
-		a Dob-Kazinczy sarkán nyitottuk meg a Kőlevest, ahol 8 évig üzemeltünk egyre sikeresebben. Itt sikerült egysmást tanulnunk erről a szakmáról, hiszen egyikünk sem 
-		volt vendéglátós azelőtt, mégpedig főleg azt, hogy ha magunkat adjuk és beletesszük az energiáinkat, őszinték vagyunk, és figyelünk, akkor ezt a közönségünk is 
-		megérzi, és elérjük a sikert. A Kazinczy 41-be három éve költöztünk, ami már egy ötször akkora hely és itt megvalósulhatott minden álmunk, amit egy konyháról 
-		képzeltünk. Kidobhattuk a micro sütőt és mindent magunk tudunk elkészíteni, ami lekvár, szósz, pesto, öntet, vagy bármi hozzávaló és eredeti ízt kíván. Útközben 
-		még megnyitottuk a Kőleves kertet 7 évvel ezelőtt, hogy nyáron is lehessen könnyű grill konyhával a szabadban enni-inni. Azután 4 éve elkészült a <a href="http://www.mikativadarmulato.hu/">Mika Tivadar Mulató</a>, 
-		majd egy évvel később, a hozzá tartozó kert is.</p>
+				<div class="twelve columns">
+					<h3>A Kert</h3>
+					<p>A Kőleves Kert 8. szezonját éli. Amikor még a sarkon volt a vendéglőnk és egy elég brutális mellék-helység 
+volt a kertben, akkor a szimpla kerten kívül senki más nem volt a környéken, nagyon vártuk, hogy végre 
+ennyire nyüzsgő belváros legyünk.</p>
 				</div>
-				<div class="three columns right">
-					<img data-src="assets/img/vendegkonyv.png" alt="Rólunk" class="lazy illusztracio"><noscript><img src="assets/img/vendegkonyv.png" alt="Rólunk"></noscript>
+				<div class=" ten columns centered rolunk-kert-kep">
+					<img src="assets/img/kert-kep.jpg" alt="Ez itt a kert!">
 				</div>
 			</div>
 			<div class="row clearfix">

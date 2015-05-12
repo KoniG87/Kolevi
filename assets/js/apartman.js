@@ -76,14 +76,9 @@ var szobaCarouselNav = $(this).find('.szoba-carousel-nav');
 	  focusOnSelect: true,
 	  arrows:false
 	});
-				
+callSzobaCarouselSvg();			
 }
 $(".szoba").each(szobaCarousel);
-
-
-setTimeout(function(){
-callSzobaCarouselSvg();
- }, 1000);
 
 
 function callSzobaCarouselSvg(){
@@ -120,6 +115,29 @@ $(".szoba-carousel-nav .slick-slide").each(function(){
 /*
  * review-k
  */
+
+/*felvitt reviewk*/
+
+
+function reviewRating(){
+	var ratingNum = $(this).data("rating");
+
+	$(this).width(ratingNum*30);
+}
+
+$(".star-rating").each(reviewRating);
+
+function callRevCardImgj(){
+	$(".review-card-img").each(function(){
+  $(this).Svgenerate({
+    imgMask:"on",
+    setToImg:"on"
+  });
+});
+}
+
+callRevCardImgj();
+
 
 $(".add-review input[type=\"submit\"]").Svgenerate({
   rangeX:0.94,
@@ -161,8 +179,8 @@ function resizeend() {
     } else {
         timeout = false;
 
-
-
+callSzobaCarouselSvg();
+callRevCardImgj();
 
     }               
 }

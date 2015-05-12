@@ -135,6 +135,7 @@ class KertView extends BaseView{
     		$this->loadTemplate('rendezvenyLista', $rendezvenyData['kepek']);
     		
     		echo '</div>
+            <svg class="icon icon-swipe"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-swipe"></use></svg>
                     </div>';
     	}
     	
