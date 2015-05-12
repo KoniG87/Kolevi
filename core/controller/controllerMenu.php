@@ -494,7 +494,9 @@ class Menu extends BaseObject{
     	$pdf->SetAuthor('Kőleves');
     	$pdf->SetTitle('Kőleves Menü');
     	$pdf->setPrintHeader(false);
-    	$pdf->setPrintFooter(false);
+    	$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+    	$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+    	//$pdf->setPrintFooter(true);
     	$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
     	$pdf->setTopMargin(15);
     	
@@ -502,11 +504,13 @@ class Menu extends BaseObject{
     	$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
     	$pdf->SetFont('freesans', '', 8);
     	
-    	$pdf->AddPage();
+    	
     	
     	$bMargin = $pdf->getBreakMargin();
     	$auto_page_break = $pdf->getAutoPageBreak();
     	$pdf->SetAutoPageBreak(false, 0);
+    	
+    	$pdf->AddPage();
     	
     	// Background pattern
     	$img_file = 'assets/img/pdfBackground.jpg';
