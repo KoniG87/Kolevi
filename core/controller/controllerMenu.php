@@ -554,7 +554,7 @@ class Menu extends BaseObject{
     	
    		$pdf->writeHTML($html, true, false, true, false, '');
     	
-    	$pdf->Output('KolevesMenu.pdf', 'I');
+    	$pdf->Output('KolevesMenu.pdf', 'D');
     }
 }
 ?>
