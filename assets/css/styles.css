@@ -1273,6 +1273,7 @@ div[class^="vend-emberke"] {
   .apartman .apartman-front-left {
     width: 351px;
     height: 238px;
+    pointer-events: none;
     background-image: url(../img/apartman_front-left.png); }
   .apartman div[class^="apartman-emberke"] {
     background-image: url(../img/apartman_emberek.png);
@@ -1309,19 +1310,21 @@ div[class^="vend-emberke"] {
     background-image: url(../img/apartman_kihuzo2.png); }
     .apartman .apartman-kihuzo nav {
       position: absolute;
+      width: 100%;
       left: 0;
       bottom: 0;
       padding: 1rem;
-      padding-bottom: 5rem;
+      top: 5.5rem;
       /*@include rotate(90);*/
       /*padding: 2rem 3.5rem 2.5rem 1rem;*/ }
       .apartman .apartman-kihuzo nav a {
         text-decoration: none;
-        color: #444; }
+        color: #444;
+        font-size: 80%; }
         .apartman .apartman-kihuzo nav a:hover {
           color: #999; }
     .apartman .apartman-kihuzo li {
-      height: 24px;
+      height: 20px;
       width: 100%;
       text-align: center;
       font-size: 100%;

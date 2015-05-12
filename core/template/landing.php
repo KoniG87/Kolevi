@@ -23,9 +23,18 @@
                       <div class="apartman-kihuzo">
                         <nav>
                           <ul>
-                            <a href="vendeglo">
-                              <li>Hamarosan!</li>
-                            </a>
+                              <a href="apartman#terkep">
+                                <li>Térkép</li>
+                              </a>
+                              <a href="apartman#hely">
+                                <li>A hely</li>
+                              </a>
+                              <a href="apartman#szobak">
+                                <li>Szobák</li>
+                              </a>
+                              <a href="apartman#kepek">
+                                <li>Képek</li>
+                              </a>
                           </ul>
                         </nav>
                         <div class="apartman-kihuzo-ful">
@@ -261,15 +270,15 @@
                 <div class="mobile-deliapart">
                   <div class="mobile-apartman mob-trigger">
                     <div class="mobile-kerites"></div>
-                      <ul class="disabled">
-                        <a href=""><li>Hamarosan</li></a>
-<!--                         <a href=""><li>Szobák</li></a>
-                        <a href=""><li>Képek</li></a> -->
-
+                      <ul>
+                        <a href="apartman#terkep"><li>Térkép</li></a>
+                        <a href="apartman#hely"><li>A hely</li></a>
+                        <a href="apartman#szobak"><li>Szobák</li></a>
+                        <a href="apartman#kepek"><li>Képek</li></a>  
                       </ul>
                   </div>
                   <div class="mobile-delicates mob-trigger">
-                      <ul class="disabled">
+                      <ul>
                         <a href=""><li>Hamarosan</li></a>
 <!--                         <a href=""><li>valami</li></a>
                         <a href=""><li>valami</li></a>
