@@ -49,6 +49,18 @@ $("#szoba3").on("mouseleave",function(){
 });
 
 
+$("#hely_svg a").on("click",function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    var anchorTarget = $(this).attr("href");
+
+$(anchorTarget).velocity("scroll", {
+            duration: 2000,
+            easing: "ease",
+            offset:-160
+        });
+});
+
 /*
  * szobák carousel
  */

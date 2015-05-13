@@ -884,7 +884,7 @@ else if(mM.matches){
     });
   
 
-  $(".sitckyNav .row a, .nav-info a, .terkep-container a").on("click",function(event){
+$(".sitckyNav .row a, .nav-info a, .terkep-container a").on("click",function(event){
     event.preventDefault();
     event.stopPropagation();
     var anchorTarget = $(this).attr("href");

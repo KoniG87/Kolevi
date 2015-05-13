@@ -181,9 +181,11 @@ class ApartmanView extends BaseView{
 		</div>';
     }
     
+    
     public function drawSzoba($szobaData){
-    	
-    	echo '<div class="szoba clearfix">
+    	$counterSzoba = 0;
+        $counterSzoba++;
+    	echo '<div class="szoba clearfix" id="szoba_'.$counterSzoba.'">
     	
 		<div class="szoba-description four columns">
     		<h3>'.$szobaData['header'].'</h3>
