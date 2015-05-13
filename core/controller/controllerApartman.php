@@ -34,13 +34,16 @@ class Apartman extends BaseObject{
     			WHERE ok.fk_id = ? AND ok.tipus = ?
     			ORDER BY ok.sorrend ASC;";
     	
+    	$reviewSQL = "SELECT cim, nev, leiras, kep, rating FROM koleves_szoba_reviewek WHERE szoba_id = ? AND visible = ?;";
+    	
     	foreach ($szobaRES AS $szobaData){
     		$tmpArray = array(
     			'id'	=> $szobaData['id'],
     			'header'=> $szobaData['header'],
     			'desc'	=> $szobaData['desc'],
     			'kezdokep'=> $szobaData['kezdokep'],
-    			'kepek'	=> $this->fetchItems($kepSQL, array($szobaData['id'], 4))
+    			'kepek'	=> $this->fetchItems($kepSQL, array($szobaData['id'], 4)),
+    			'reviewek' => $this->fetchItems($reviewSQL, array($szobaData['id'], 1))
     		);
     		
     		array_push($elements, $tmpArray);

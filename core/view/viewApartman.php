@@ -161,6 +161,26 @@ class ApartmanView extends BaseView{
     }
     
     
+    public function drawReview($reviewData){
+    	echo '<div class="review-container ten columns centered"> <!-- Ez a container csak úgy itt van, de amúgy nem kell -->
+			
+			<div class="review-card clearfix" >
+				<div class="three columns">
+					<div class="review-card-img">
+						<img src="'.$reviewData['kep'].'" alt="'.$reviewData['kep'].'">
+					</div>
+					<h2>'.$reviewData['nev'].'</h2>
+				</div>
+				<div class="nine columns">
+					<h2>"'.$reviewData['cim'].'"</h2>
+					<div class="star-rating" data-rating="'.$reviewData['rating'].'"></div>
+					<p>'.$reviewData['leiras'].'</p>
+				</div>
+			</div>
+			
+		</div>';
+    }
+    
     public function drawSzoba($szobaData){
     	
     	echo '<div class="szoba clearfix">
@@ -191,7 +211,13 @@ class ApartmanView extends BaseView{
     	
     	
     	<div class="review-container ten columns centered">
+    	';
     	
+    	foreach ($szobaData['reviewek'] AS $reviewData){
+    		$this->drawReview($reviewData);
+    	}
+    	
+    	echo '
     	<div class="add-review">
     	<form action="">
     	<div class="three columns">
