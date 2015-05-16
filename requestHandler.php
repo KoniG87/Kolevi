@@ -63,6 +63,8 @@ if (isset($_POST['request'])){
 			break;
 			
 		case 'etlapDelete':
+			$menu = new Menu($app->getDbHandler());
+			$menu->deleteEtlapElem();
 			
 			break;
 			

@@ -49,8 +49,8 @@
 		</tr>
 		<tr>
 			<td><label>Rövid leírás</label></td>
-			<td><textarea type="text" name="megjegyzes" ><?=$userData['megjegyzes']?></textarea>
-			<span class="tooltip">Rövid leírás, max. 100 karakter</span>
+			<td><textarea type="text" name="megjegyzes" maxlength="500"><?=$userData['megjegyzes']?></textarea>
+			<span class="tooltip">Rövid leírás, max. 500 karakter</span>
 			</td>
 		</tr>
         <tr>
@@ -64,7 +64,7 @@
             }
             ?>
                 </select>
-			<span class="tooltip">Rövid leírás, max. 100 karakter</span>
+			<span class="tooltip">Dolgozó képe</span>
 			</td>
 		</tr>
 		<tr>

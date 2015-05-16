@@ -1,7 +1,7 @@
 <?php
 	include('core/config.php');
     include('core/functions.php');
-    //chomulungmasdsdfsdfaadsa
+    
     if (isset($_SESSION['user'])){
       //  unset($_SESSION['user']);
      }

@@ -212,6 +212,7 @@ class Menu extends BaseObject{
     	
     		$etelRES = $this->fetchItems($etelSQL, array($kategoriaAdat['id']));
     		foreach ($etelRES AS $etelAdat){
+    			$etelAdat['AR'] = number_format($etelAdat['AR'], 0, '.', ' ');
     			array_push($etlapArray[$kategoriaAdat['labelText']]['etelek'], $etelAdat);
     		}
     	
@@ -324,6 +325,31 @@ class Menu extends BaseObject{
     		$this->rollback();
     	}
     		 
+    	echo json_encode($res);
+    }
+    
+    
+    
+    public function deleteEtlapElem(){
+    	$res = array();
+    	 
+    	try{
+    		$this->beginTransaction();
+    	
+    		$SQL = "DELETE FROM koleves_etelek WHERE id = ?;";
+    			 
+    		$queryParams = array(
+    			$_POST['id']
+    		);
+    		$this->deleteItem($SQL, $queryParams);
+    			 
+    		$res['status'] = true;
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = false;
+    		$this->rollback();
+    	}
+    	 
     	echo json_encode($res);
     }
     

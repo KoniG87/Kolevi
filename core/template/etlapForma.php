@@ -1,1 +1,1 @@
-<p>[[MEGNEVEZES]] • [[TAGEK]]<span> — [[AR]]</span></p>
+<p>[[MEGNEVEZES]] • [[TAGEK]]<span> — [[AR]] Ft</span></p>

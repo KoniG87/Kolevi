@@ -82,6 +82,22 @@
 			}
 		});
 
+
+		$(document).on('click', '.deleteEtel', function(){
+			containingRow = $(this).parents('tr');
+			data = {
+				id: containingRow.attr('data-id'),
+				request: "etlapDelete"
+			};
+			
+			$.post('requestHandler.php', data, function(resp){
+				if (resp['status']){
+					containingRow.hide(250, function(){ $(this).remove(); });			
+				}
+			}, 'json');
+				
+		});
+
 		$('input, textarea, select').change(function(){
 			attr = $(this).attr('required');
 			if (typeof attr !== typeof undefined && attr !== false){
