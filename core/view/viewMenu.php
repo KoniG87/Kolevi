@@ -180,17 +180,15 @@ class MenuView extends BaseView{
 			</div>
 			
 			<table class="tablaGrid etlapTabla">
-				
-				
 				';
 		
-		foreach ($elements['kategoriak'] AS $kategoria => $etelek){
+		foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
 			echo '<tr class="kategoriaRow">
 					<td colspan="5">'.$kategoria.'</td>
 					</tr>
 					';
 			
-			foreach ($etelek AS $etelAdat){
+			foreach ($kategoriaAdat['etelek'] AS $etelAdat){
 				echo '<tr data-id="'.$etelAdat['id'].'">
 						<td>'.$etelAdat['MEGNEVEZES'].'</td>
 						<td>'.$etelAdat['TAGEK'].'</td>

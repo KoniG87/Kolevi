@@ -1,7 +1,7 @@
 <?php
 	include('core/config.php');
     include('core/functions.php');
-    
+    //chomulungmasdsdfsdfaadsa
     if (isset($_SESSION['user'])){
       //  unset($_SESSION['user']);
      }
@@ -10,7 +10,7 @@
     $path = 'page/'.$page.'.php';
     $pageExists = file_exists($path);
     
-    
+
     
 	if (in_array($page, $frameRequired) && $pageExists){
     	$app->drawHeader();

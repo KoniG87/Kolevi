@@ -3289,6 +3289,7 @@ header {
   -webkit-perspective: 400px;
   perspective: 400px; }
   .fold-list li {
+    font-size:0.6em;
     height: 6.6rem;
     padding: 0 1rem;
     width: 97.5%;

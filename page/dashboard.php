@@ -3,9 +3,9 @@
         <div class="logo left">
             <a href="dashboard"><svg class="icon icon-logo"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-logo"></use></svg></a>
         </div>
-            <a href="" title="Jelenleg itt tartózkodsz">Vendéglő & Kert</a>
+            <a href="?page=dashboard&sec=vendeglo&sub=dashboard" title="Vendéglő & Kert">Vendéglő & Kert</a>
             <a href="" title="Hamarosan">Delicates</a>
-            <a href="" title="Hamarosan">Apartman</a>
+            <a href="?page=dashboard&sec=apartman&sub=dashboard" title="Apartman">Apartman</a>
             <a href="./vendeglo" class="right" style="margin-right:5rem;">Vissza az oldalra</a>
             <div class="lang-select"><?php /*<span class="lang-active">Hu</span> / <span>En</span>*/ ?></div>
         </nav>
@@ -17,7 +17,19 @@
     <aside class="left">
 
         <ul class="dashNavigator">
-            <?php include('core/template/dashVendeglo.php');?>
+            <?php
+             print_r($_GET);
+            	$sectionIndicator = "Vendeglo";
+            	if (isset($_GET['sec'])){
+            		$sectionIndicator = ucfirst($_GET['sec']);
+            	}
+            	
+            	$dashPath = 'core/template/dash'. $sectionIndicator .'.php';
+            	if (file_exists($dashPath)){
+            		include($dashPath);
+				}
+            	
+				?>
            </ul>
     </aside>
 

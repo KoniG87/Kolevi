@@ -19,7 +19,7 @@
 	$(document).ready(function(){
 		<?php
             if (isset($_SESSION['user']['id'])){ ?>
-        window.location.href = "dashboard";
+        window.location.href = "index.php?page=dashboard&sec=vendeglo&sub=dashboard";
         <?php
             }
         ?>
@@ -33,7 +33,7 @@
 			};
 			$.post("requestHandler.php", queryData, function(resp){
 				if (resp.status == "ok"){
-					window.location.href = "dashboard";
+					window.location.href = "index.php?page=dashboard&sec=vendeglo&sub=dashboard";
 	
 				}else{
 					e.preventDefault();

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Hoszt: 127.0.0.1
--- Létrehozás ideje: 2015. Máj 11. 23:45
+-- Létrehozás ideje: 2015. Máj 13. 21:54
 -- Szerver verzió: 5.6.21
 -- PHP verzió: 5.6.3
 
@@ -581,26 +581,36 @@ CREATE TABLE IF NOT EXISTS `koleves_szobak` (
   `VISIBLE` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
-
-CREATE TABLE IF NOT EXISTS `koleves_szoba_reviewek` (
-  `ID` int(6) NOT NULL,
-  `CIM` varchar(128) COLLATE utf8_hungarian_ci NOT NULL,
-  `NEV` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `LEIRAS` varchar(512) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `KEP` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `RATING` int(6) DEFAULT NULL,
-  `VISIBLE` tinyint(1) DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
-INSERT INTO koleves_szoba_reviewek (CIM, NEV, LEIRAS, KEP, RATING) VALUES
-	('Nice try near Budapest', 'Példa Pál', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia quis quod neque? Beatae mollitia commodi blanditiis, accusamus temporibus molestiae dolor totam, quibusdam corporis nobis ex, ipsum recusandae! Eum dolorem nam minus culpa veniam, in. Pariatur voluptatem, officiis harum blanditiis mollitia.', 'assets/img/tmb-2.png', 4);
-
 --
 -- A tábla adatainak kiíratása `koleves_szobak`
 --
 
 INSERT INTO `koleves_szobak` (`ID`, `TEXT_HU`, `TEXT_EN`, `LEIRAS_HU`, `LEIRAS_EN`, `KEZDOKEP`, `VISIBLE`) VALUES
 (1, 'Szoba 1', 'Room 1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto perspiciatis deserunt amet culpa commodi a praesentium fuga quod eligendi labore quidem asperiores sint accusamus aperiam similique id cupiditate dolorum omnis maiores enim quas tempora, ullam, perferendis officia accusantium. Quis, quasi.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto perspiciatis deserunt amet culpa commodi a praesentium fuga quod eligendi labore quidem asperiores sint accusamus aperiam similique id cupiditate dolorum omnis maiores enim quas tempora, ullam, perferendis officia accusantium. Quis, quasi.', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `koleves_szoba_reviewek`
+--
+
+CREATE TABLE IF NOT EXISTS `koleves_szoba_reviewek` (
+  `ID` int(6) NOT NULL,
+  `SZOBA_ID` int(4) NOT NULL,
+  `CIM` varchar(128) COLLATE utf8_hungarian_ci NOT NULL,
+  `NEV` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `LEIRAS` varchar(512) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `KEP` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `RATING` int(6) DEFAULT NULL,
+  `VISIBLE` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `koleves_szoba_reviewek`
+--
+
+INSERT INTO `koleves_szoba_reviewek` (`ID`, `SZOBA_ID`, `CIM`, `NEV`, `LEIRAS`, `KEP`, `RATING`, `VISIBLE`) VALUES
+(0, 1, 'Nice try near Budapest', 'Példa Pál', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia quis quod neque? Beatae mollitia commodi blanditiis, accusamus temporibus molestiae dolor totam, quibusdam corporis nobis ex, ipsum recusandae! Eum dolorem nam minus culpa veniam, in. Pariatur voluptatem, officiis harum blanditiis mollitia.', 'assets/img/tmb-2.png', 4, 1);
 
 --
 -- Indexes for dumped tables
