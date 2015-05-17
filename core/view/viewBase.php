@@ -3,14 +3,19 @@
 class BaseView{
 	
 	function __construct(){
-		/*$valtozo < template/kajaMenu.php
-		
-		$valtozo */
+	
 	}
     
+	
+	/*
+	 * loadTemplate: load template identified by $template, and fill-in values held in $elements array 
+	 * @param string $template
+	 * @param array $elements
+	 */
     public function loadTemplate($template, $elements = null){
         $path = 'core/template/'.$template.'.php';
         $output = '';
+        
         if (file_exists($path)){
             $tpl = file_get_contents($path);
             
@@ -18,10 +23,11 @@ class BaseView{
             	
                 foreach ($elements AS $key => $val){
                     $stateTpl = $tpl;
-                    //print_r($val);
+              		      
                     if (is_array($val)){
+                    	
                         foreach ($val AS $subKey => $subVal){
-                            $stateTpl = str_replace('[['.$subKey.']]', $subVal, $stateTpl);
+                        	$stateTpl = str_replace('[['.$subKey.']]', $subVal, $stateTpl);
                         }
                     }else{
                         $stateTpl = str_replace('[['.$key.']]', $val, $stateTpl);
@@ -33,8 +39,10 @@ class BaseView{
             }
             
         }
-		$output = preg_replace('/(\[\[\w*\]\])/', '', $output);
         
+        // Clear out any leftover tags
+		$output = preg_replace('/(\[\[\w*\]\])/', '', $output);
+
         echo $output;
     }
     

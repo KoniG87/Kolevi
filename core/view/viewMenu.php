@@ -25,7 +25,7 @@ class MenuView extends BaseView{
                             <ul class="napi-tablak">';
     	
         if (sizeof($elements) > 0){
-    		$this->loadTemplate('kajaMenu', $elements);
+        	$this->loadTemplate('kajaMenu', $elements);
         }
         
     	echo ' </ul>
