@@ -20,25 +20,25 @@
 			<td>
                 <input type="hidden" name="id" value="<?=$programData['id']?>"/>
                 <label>Neve</label></td>
-			<td><input maxlength="75" type="text" name="text_hu" value="<?=$programData['labelHeader']?>" required/>
+			<td><input maxlength="75" title="Cím" type="text" name="text_hu" value="<?=$programData['labelHeader']?>" required/>
 			<span class="tooltip">Cím, max. 75 karakter</span>
 			</td>
 		</tr>
 		<tr>
 			<td><label>Dátum</label></td>
-			<td><input maxlength="10" type="text" class="datepicker" name="datum" value="<?=$programData['datum']?>" required/>
+			<td><input title="Dátum" type="text" class="datepicker" name="datum" value="<?=$programData['datum']?>" required/>
 			<span class="tooltip">Dátum</span>
 			</td>
 		</tr>
 		<tr>
 			<td><label>Leírás</label></td>
-			<td><textarea maxlength="1024" type="text" name="leiras_hu" required><?=$programData['labelDesc']?></textarea>
+			<td><textarea maxlength="1024" title="Leírás" type="text" name="leiras_hu" required><?=$programData['labelDesc']?></textarea>
 			<span class="tooltip">Leírás, max. 1024 karakter</span></td>
 		</tr>
 		<tr>
 			<td><label>Kép</label></td>
 			<td>
-                 <select name="kep" required>
+                 <select name="kep" required title="Program képe">
                     <option value=""></option>
                <?php
             foreach ($programKepek AS $kepData){
@@ -51,7 +51,7 @@
 		</tr>
 		<tr>
 			<td><label>Facebook oldala</label></td>
-			<td><input maxlength="155" type="text" name="fblink" value="<?=$programData['fblink']?>" placeholder=""/>
+			<td><input maxlength="155" title="Facebook oldal" type="text" name="fblink" value="<?=$programData['fblink']?>" placeholder=""/>
 			<span class="tooltip">Facebook oldal, max. 155 karakter</span></td>
 		</tr>
 		

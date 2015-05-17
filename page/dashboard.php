@@ -18,7 +18,7 @@
 
         <ul class="dashNavigator">
             <?php
-             print_r($_GET);
+             
             	$sectionIndicator = "Vendeglo";
             	if (isset($_GET['sec'])){
             		$sectionIndicator = ucfirst($_GET['sec']);
@@ -79,5 +79,24 @@
 			});
 		});
 		*/
+
+		$('.tablaGrid input, .tablaGrid select').focus(remainderCharacters);
+		$('.tablaGrid input, .tablaGrid select').keyup(remainderCharacters);
 	});
+
+
+	function remainderCharacters(){
+	    maxKar = $(this).attr("maxlength");
+	    tooltipText = $(this).attr("title");
+	    
+	    if (maxKar != undefined){
+	        hatraVan = maxKar - $(this).val().length;
+	        tooltipText += ", max "+maxKar+" karakter (még "+hatraVan+")";
+	    }
+	    
+	    $(this).next(".tooltip").text(tooltipText);
+	}
   </script>
+  <style type="text/css">
+  	.countdownRemainder{}
+  </style>

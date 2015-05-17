@@ -193,14 +193,14 @@ class VendegloView extends BaseView{
 				<tr>
 					<td><input type="hidden" name="id" value="'.$elements['rendezveny']['id'].'"/>
 						<label>Neve</label></td>
-					<td><input maxlength="75" type="text" name="text_hu" value="'.$elements['rendezveny']['MEGNEVEZES'].'" required/>
+					<td><input maxlength="75" title="Cím" type="text" name="text_hu" value="'.$elements['rendezveny']['MEGNEVEZES'].'" required/>
 					<span class="tooltip">Cím, max. 75 karakter</span>
 					</td>
 					<td></td>
 				</tr>
 				<tr>
 					<td><label>Leírás</label></td>
-					<td><textarea maxlength="1024" type="text" name="leiras_hu" required>'.$elements['rendezveny']['MEGJEGYZES'].'</textarea>
+					<td><textarea maxlength="1024" title="Leírás" type="text" name="leiras_hu" required>'.$elements['rendezveny']['MEGJEGYZES'].'</textarea>
 					<span class="tooltip">Leírás, max. 1024 karakter</span></td>
 					<td></td>
 				</tr>

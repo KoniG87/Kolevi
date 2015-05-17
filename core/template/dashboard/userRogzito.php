@@ -20,7 +20,7 @@
 		<input type="hidden" name="id" value="<?=$userData['id']?>"/>
 		<tr>
 			<td><label>Nicknév</label></td>
-			<td><input type="text" name="username" required value="<?=$userData['username']?>"/>
+			<td><input type="text" name="username" title="Becenév" maxlength="40" required value="<?=$userData['username']?>"/>
 			<span class="tooltip">Becenév, max. 40 karakter</span>
 			</td>
 		</tr>
@@ -43,20 +43,20 @@
         ?>
 		<tr>
 			<td><label>Teljes név</label></td>
-			<td><input type="text" name="nev" required value="<?=$userData['nev']?>"/>
+			<td><input type="text" name="nev" maxlength="70" title="Teljes név" required value="<?=$userData['nev']?>"/>
 			<span class="tooltip">Teljes név, max. 70 karakter</span>
 			</td>
 		</tr>
 		<tr>
 			<td><label>Rövid leírás</label></td>
-			<td><textarea type="text" name="megjegyzes" maxlength="500"><?=$userData['megjegyzes']?></textarea>
+			<td><textarea type="text" name="megjegyzes" maxlength="500" title="Rövid leírás" maxlength="500"><?=$userData['megjegyzes']?></textarea>
 			<span class="tooltip">Rövid leírás, max. 500 karakter</span>
 			</td>
 		</tr>
         <tr>
 			<td><label>Kép</label></td>
 			<td>
-                <select name="kep">
+                <select name="kep" title="Dolgozó képe">
                     <option value=""></option>
                <?php
             foreach ($userKepek AS $kepData){
@@ -69,19 +69,19 @@
 		</tr>
 		<tr>
 			<td><label>Telszám</label></td>
-			<td><input type="text" name="telefon" value="<?=$userData['telefon']?>"/>
+			<td><input type="text" name="telefon" maxlength="20" title="Telefonszám" value="<?=$userData['telefon']?>"/>
 			<span class="tooltip">Telefon szám</span>
 			</td>
 		</tr>
 		<tr>
 			<td><label>Email</label></td>
-			<td><input type="text" name="email" required value="<?=$userData['email']?>"/>
+			<td><input type="text" name="email" maxlength="100" title="Email cím" required value="<?=$userData['email']?>"/>
 			<span class="tooltip">Email cím</span>
 			</td>
 		</tr>
 		<tr>
 			<td><label>Facebook</label></td>
-			<td><input type="text" name="facebook" value="<?=$userData['facebook']?>"/>
+			<td><input type="text" name="facebook" maxlength="100" title="Facebook profil" value="<?=$userData['facebook']?>"/>
 			<span class="tooltip">Facebook profil</span>
 			</td>
 		</tr>
@@ -90,7 +90,7 @@
         <tr>
 			<td><label>Jogosultság</label></td>
 			<td>
-                <select name="jogosultsag_id">
+                <select name="jogosultsag_id" title="Jogosultsági szint">
                     <option value=""></option>
                     <option <?=($userData['jogosultsag_id'] == 1 ? 'selected="selected"' : '')?> value="1">Csak listázáshoz</option>
                     <option <?=($userData['jogosultsag_id'] == 9? 'selected="selected"' : '')?> value="9">Adminisztrátor</option>
@@ -101,7 +101,7 @@
         <tr>
 			<td><label>Aktív?</label></td>
 			<td>
-                <select name="allapot">
+                <select name="allapot" title="Profil állapota">
                     <option value=""></option>
                     <option <?=(!$userData['allapot'] ? 'selected="selected"' : '')?> value="0">Nem</option>
                     <option <?=($userData['allapot'] ? 'selected="selected"' : '')?> value="1">Igen</option>
@@ -113,7 +113,7 @@
         <tr>
 			<td><label>Rendezvényfelelős?</label></td>
 			<td>
-                <select name="rendezvenyfelelos">
+                <select name="rendezvenyfelelos" title="Rendezvényfelelős-e?">
                     <option value=""></option>
                     <option <?=($userData['rendezvenyfelelos'] == 0 ? 'selected="selected"' : '')?> value="0">Nem</option>
                     <option <?=($userData['rendezvenyfelelos'] == 1? 'selected="selected"' : '')?> value="1">Igen</option>
