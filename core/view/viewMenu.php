@@ -82,6 +82,8 @@ class MenuView extends BaseView{
 				$.post("requestHandler.php", data, function(resp){
 					if (resp["status"]){
 						triggeredInput.addClass("success");
+    					triggeredInput.attr("data-id", resp["inputID"]);
+    					triggeredInput.next("input.menuTag").attr("data-id", resp["inputID"]);
 					}else{
 						triggeredInput.addClass("error");
 						triggeredInput.val(originalValue);
@@ -89,9 +91,8 @@ class MenuView extends BaseView{
     			
     			setTimeout(function(){
     				triggeredInput.removeClass("success error");
-    }, 750);
-    						
-	    				}, "json");		
+    			}, 750);
+    			}, "json");		
     				});	
     			
     			});
