@@ -145,7 +145,7 @@ section.right select{
 	width:19.5rem;
 	
 }
-section.right input:focus + span.tooltip, section.right textarea:focus + span.tooltip, section.right select:focus + span.tooltip{
+section.right input:focus + span.tooltip, section.right input:focus + input + span.tooltip, section.right textarea:focus + span.tooltip, section.right select:focus + span.tooltip{
 	opacity:1.0;
 }
 section.right input.shortInput{

@@ -40,17 +40,17 @@ class MenuView extends BaseView{
     	
     	foreach ($elements AS $napiAdat){
     		echo '<strong data-napazon="'.$napiAdat['NAPAZON'].'" data-ev="'.$napiAdat['EV'].'" data-het="'.$napiAdat['HET'].'">'.$napiAdat['NAPSZAM']. " " .$napiAdat['NAPNEV'].'</strong><br/>
-    				<input maxlength="100" name="menuInput" class="menuInput reactive" data-id="'.$napiAdat['ELSO']['ID'].'" data-fogas="1"  type="text" value="'. $napiAdat['ELSO']['ETEL']. '"/> 
-					<input maxlength="15" name="menuTag" class="menuTag reactive" data-id="'.$napiAdat['ELSO']['ID'].'" data-fogas="1"  type="text" value="'. $napiAdat['ELSO']['TAG']. '"/> 
+    				<input maxlength="100" title="1. fogás neve" name="menuInput" class="menuInput reactive" data-id="'.$napiAdat['ELSO']['ID'].'" data-fogas="1"  type="text" value="'. $napiAdat['ELSO']['ETEL']. '"/> 
+					<input maxlength="15" title="1. fogás összetevők" name="menuTag" class="menuTag reactive" data-id="'.$napiAdat['ELSO']['ID'].'" data-fogas="1"  type="text" value="'. $napiAdat['ELSO']['TAG']. '"/> 
 					<span class="tooltip">Leves, max. 100 karakter</span> <br/>
     				
-					<input maxlength="100" name="menuInput" class="menuInput reactive" data-id="'.$napiAdat['MASODIK']['ID'].'" data-fogas="2" type="text" value="'. $napiAdat['MASODIK']['ETEL']. '"/> 
-					<input maxlength="15" name="menuTag" class="menuTag reactive" data-id="'.$napiAdat['MASODIK']['ID'].'" data-fogas="2"  type="text" value="'. $napiAdat['MASODIK']['TAG']. '"/>
+					<input maxlength="100" title="2. fogás neve" name="menuInput" class="menuInput reactive" data-id="'.$napiAdat['MASODIK']['ID'].'" data-fogas="2" type="text" value="'. $napiAdat['MASODIK']['ETEL']. '"/> 
+					<input maxlength="15" title="2. fogás összetevők" name="menuTag" class="menuTag reactive" data-id="'.$napiAdat['MASODIK']['ID'].'" data-fogas="2"  type="text" value="'. $napiAdat['MASODIK']['TAG']. '"/>
 					<span class="tooltip">Főétel, max. 100 karakter</span> <br/>
     				
 					
-					<input maxlength="100" name="menuInput" class="menuInput reactive" data-id="'.$napiAdat['HARMADIK']['ID'].'" data-fogas="3" type="text" value="'. $napiAdat['HARMADIK']['ETEL']. '"/> 
-					<input maxlength="15" name="menuTag" class="menuTag reactive" data-id="'.$napiAdat['HARMADIK']['ID'].'" data-fogas="3"  type="text" value="'. $napiAdat['HARMADIK']['TAG']. '"/>
+					<input maxlength="100" title="3. fogás neve" name="menuInput" class="menuInput reactive" data-id="'.$napiAdat['HARMADIK']['ID'].'" data-fogas="3" type="text" value="'. $napiAdat['HARMADIK']['ETEL']. '"/> 
+					<input maxlength="15" title="3. fogás összetevők" name="menuTag" class="menuTag reactive" data-id="'.$napiAdat['HARMADIK']['ID'].'" data-fogas="3"  type="text" value="'. $napiAdat['HARMADIK']['TAG']. '"/>
 					<span class="tooltip">Desszeret, max. 100 karakter</span> <br/>
     				';
     		
@@ -113,7 +113,7 @@ class MenuView extends BaseView{
 					<td>Étlap szekció</td>
 					<td>
     					<input type="hidden" name="id" value="0"/>
-						<select name="kategoria" value="" required>
+						<select name="kategoria" title="Ételszekció" value="" required>
 							<option value=""></option>';
 		foreach ($kategoriaNevek AS $kategoria){
 			echo '<option value="'.$kategoria.'">'.$kategoria.'</option>';
@@ -126,21 +126,21 @@ class MenuView extends BaseView{
 				<tr>
 					<td>Megnevezés</td>
 					<td>
-						<input type="text" name="text" value="" required/>
+						<input type="text" maxlength="255" title="Étel neve" name="text" value="" required/>
 						<span class="tooltip">Étel neve, max. 255 karakter</span>
 					</td>
 				</tr>
 				<tr>
 					<td>Ételjelölők</td>
 					<td>
-						<input type="text" name="tagek" value="" required/>
+						<input type="text" maxlength="20" title="Jelölők" name="tagek" value="" required/>
 						<span class="tooltip">Jelölők, max. 20 karakter</span>
 					</td>
 				</tr>
 				<tr>
 					<td>Ár</td>
 					<td>
-						<input type="text" name="ar" value="" required/>
+						<input type="text" title="Étel ára" name="ar" value="" required/>
 						<span class="tooltip">Étel ára</span>
 					</td>
 				</tr>
@@ -161,7 +161,7 @@ class MenuView extends BaseView{
     	$cetliSzamlalo = 1;
     	foreach ($elements['cetli'] AS $cetliAdat){
 			echo '
-    		<input class="reactive" type="text" maxlength="30" data-id="'.$cetliAdat['id'].'" name="cetli'.$cetliSzamlalo.'" value="'.$cetliAdat['labelText'].'"/> 
+    		<input class="reactive" type="text" maxlength="30" title="Cetli '.$cetliSzamlalo.'. sora" data-id="'.$cetliAdat['id'].'" name="cetli'.$cetliSzamlalo.'" value="'.$cetliAdat['labelText'].'"/> 
     				<span class="tooltip">Cetli '.$cetliSzamlalo++.'. sora, max. 30 karakter</span> <br/>';
 		}
     	
@@ -230,14 +230,14 @@ class MenuView extends BaseView{
 				<tr>
 					<td>Megnevezés</td>
 					<td>
-						<input type="text" name="text_hu" value="" required/>
+						<input type="text" maxlength="255" title="Ital neve" name="text_hu" value="" required/>
 						<span class="tooltip">Ital neve, max. 255 karakter</span>
 					</td>
 				</tr>
 				<tr>
 					<td>Ár</td>
 					<td>
-						<input type="text" name="ar" value="" required/>
+						<input type="text" title="Ital ára" name="ar" value="" required/>
 						<span class="tooltip">Ital ára</span>
 					</td>
 				</tr>

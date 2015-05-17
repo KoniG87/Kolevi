@@ -80,8 +80,8 @@
 		});
 		*/
 
-		$('.tablaGrid input, .tablaGrid select').focus(remainderCharacters);
-		$('.tablaGrid input, .tablaGrid select').keyup(remainderCharacters);
+		$('input, select').focus(remainderCharacters);
+		$('input, select').keyup(remainderCharacters);
 	});
 
 
@@ -94,7 +94,7 @@
 	        tooltipText += ", max "+maxKar+" karakter (még "+hatraVan+")";
 	    }
 	    
-	    $(this).next(".tooltip").text(tooltipText);
+	    $(this).nextAll(".tooltip:first").text(tooltipText);
 	}
   </script>
   <style type="text/css">
