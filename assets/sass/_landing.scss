@@ -83,7 +83,7 @@
   width: 70%;
   position: absolute;
   bottom: 0;
-  right:-250px;
+  right:-500px;
 /*  pointer-events:none;
 */  @include breakpoint(laptop){
    /* right: 2rem;*/
@@ -484,7 +484,7 @@ div[class^="vend-emberke"]{
     background-image:url(../img/apartman_front-left.png);
   }
   div[class^="apartman-emberke"]{
-    background-image:url(../img/apartman_emberek.png);
+    background-image:url(../img/apartman_emberek-elefant.png);
     background-repeat: no-repeat;
   }
   .apartman-emberke1{
@@ -498,11 +498,21 @@ div[class^="vend-emberke"]{
   .apartman-emberke2{
     /*background-position: -76px -53px;*/
     background-position: -76px 6px;
-    left:264px;
-    top:120px;
+    left:262px;
+    top:121px;
     width: 70px;
     height: 70px;
+
   }
+  .apartman-emberke3{
+    width: 55px;
+    height: 55px;
+    left: 85px;
+    top: 130px;
+    background-position: -144px -2px;
+    background-position: -144px -2px;
+  }
+
 
   .apartman-kihuzo-container{
     width: 166px;
@@ -630,9 +640,9 @@ div[class^="vend-emberke"]{
 
   .kert-viragok{
     width: 400px;
-    height: 166px;
-    right: -106px;
-    bottom: -56px;
+    height: 156px;
+    right: -99px;
+    bottom: -40px;
   }
   .kert-kihuzo-cover{
     width: 400px;
@@ -647,7 +657,7 @@ div[class^="vend-emberke"]{
   height: 100px;
   background-image:url(../img/landing_bg.png);
   background-repeat: no-repeat;
-  background-position: -292px -394px;
+  background-position: -285px -375px;
   bottom: 4px;
   right: 300px;
   pointer-events:none;

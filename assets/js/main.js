@@ -422,11 +422,26 @@ $(".rend-contact-kep-container").Svgenerate({
 callFooter(0.95);
 
 
+/*kert*/
+
+$(".rolunk-kert-kep").Svgenerate({
+    imgMask:"on",
+    setToImg:"on",
+    dropShadow: "on",
+    blur:5,
+    dX:20,
+    dY:20,
+    opacity:0.25,
+    rangeX:0.8,
+    rangeY:0.9
+  });
+
 
     }               
 }
 
 // Barkas
+var barkasContainerWidth = $(".barkas-container").width() - 910;
 
 var alapOddBarkas = {
         rotateX:"90deg",
@@ -474,10 +489,12 @@ function barkasAccordionCLICK(){
     if($(this).hasClass("barkas-open")){
          $(this).find("li:nth-child(odd)").velocity(nyitvaOddBarkas,durationBarkas,springBarkas);
          $(this).find("li:nth-child(even)").velocity(nyitvaEvenBarkas,durationBarkas,springBarkas);
+         $(".barkas").velocity({left: barkasContainerWidth}, {duration: 3000, easing: [ 300, 24 ]});
       }
     else{
         $(this).find("li:nth-child(odd)").velocity(alapOddBarkas,1000);
         $(this).find("li:nth-child(even)").velocity(alapEvenBarkas,1000);
+        /*$(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});*/
     }
 }
 
@@ -485,12 +502,14 @@ function barkasAccordionClose(){
         $(this).removeClass("barkas-open"); 
         $(this).find("li:nth-child(odd)").velocity(alapOddBarkas,1000);
         $(this).find("li:nth-child(even)").velocity(alapEvenBarkas,1000);
+       /* $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});*/
 }
 
 function barkasAccordionOpen(){   
          $(this).addClass("barkas-open");
          $(this).find("li:nth-child(odd)").velocity(nyitvaOddBarkas,durationBarkas,springBarkas);
          $(this).find("li:nth-child(even)").velocity(nyitvaEvenBarkas,durationBarkas,springBarkas);
+         $(".barkas").velocity({left: barkasContainerWidth}, {duration: 3000, easing: [ 300, 24 ]});
 
 }
 
@@ -499,6 +518,7 @@ $(".barkas").click(barkasAccordionCLICK).click(function(){
 });
 $(".barkas").on("mouseenter",barkasAccordionOpen);
 $(".barkas").on("mouseleave",barkasAccordionClose);
+/*$(".barkas").hoverIntent(barkasAccordionOpen,barkasAccordionClose);*/
 
 // barkasAccordion();
 $(".barkas").draggable({ axis: "x" },{ containment: "parent" });
@@ -547,12 +567,7 @@ $(".barkas").draggable({ axis: "x" },{ containment: "parent" });
                   rotateX:"30deg",
                   rotateZ: 0
                   };
-  var fekszikNegativ = {
-                  translateZ: 0, 
-                  rotateY:0,
-                  rotateX:"-130deg",
-                  rotateZ: 0
-                  };
+
   var all = {
                   translateZ: 0, 
                   rotateY:0,
@@ -566,12 +581,7 @@ $(".barkas").draggable({ axis: "x" },{ containment: "parent" });
                   rotateZ: 0
                   };
 
-var delicatesAnimacio = {
-                  translateZ: 0, 
-                  rotateY:"-40deg",
-                  rotateX:0,
-                  rotateZ: 0
-                  };
+
 
 var dur = 1200;
 var easing = {duration: dur, easing: [ 300, 20 ]};
@@ -624,7 +634,7 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
       keriFR.delay(150).velocity({rotateX:"-40deg"}, easing);
       vendFront.delay(250).velocity({rotateX:"-15deg"}, {duration: 2500, easing: [ 300, 14 ]});
       vendKihuzo.delay(500).velocity({right: -155}, {duration: dur, easing: [ 300, 25 ]});
-      $(".barkas").velocity({left: 470}, {duration: dur, easing: [ 300, 24 ]});
+      $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});
       $(this).find(".vend-emberke1").delay(800).velocity({backgroundPositionX: -28}, {duration: dur, easing: [ 200, 20 ]});
       $(this).find(".vend-emberke2").delay(800).velocity({backgroundPositionX: -180}, {duration: dur, easing: [ 200, 20 ]});
       $(this).find(".vend-emberke3").delay(800).velocity({backgroundPositionX: -405}, {duration: dur, easing: [ 200, 20 ]});
@@ -651,7 +661,7 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
       vendFront.velocity({rotateX:"-110deg"}, {duration: 3000, easing: [ 300, 14 ]});
       fa.delay(200).velocity({rotateX:"50deg"}, easing);
       // kertKihuzo.delay(250).velocity({rotateX:"20deg"}, easing);
-      $(".barkas").velocity({left: 450}, {duration: dur, easing: [ 300, 24 ]});
+      $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});
     }
     else if(thisOne.hasClass("apartman")){
       /*keriSide.delay(100).velocity({rotateX:"-20deg"}, {duration: 2500, easing: [ 300, 20 ]});*/
@@ -673,9 +683,10 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
       // faVilla.delay(150).velocity({rotateX:"15deg"}, {duration: 2000, easing: [ 300, 14 ]});
 
       $(this).find(".apartman-emberke1").delay(1200).velocity({backgroundPositionY: -54}, {duration: dur, easing: [ 200, 20 ]});
-      $(this).find(".apartman-emberke2").delay(1200).velocity({backgroundPositionY: -53}, {duration: dur, easing: [ 200, 20 ]});
+      $(this).find(".apartman-emberke2").delay(1200).velocity({backgroundPositionY: -52}, {duration: dur, easing: [ 200, 20 ]});
+      $(this).find(".apartman-emberke3").delay(1200).velocity({backgroundPositionY: -60}, {duration: dur, easing: [ 200, 20 ]});
       apartKihuzo.delay(1000).velocity({top: -100}, {duration: 2500, easing: [ 300, 16 ]});
-      $(".barkas").velocity({left: 400}, {duration: dur, easing: [ 300, 24 ]});
+     $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});
     }
     else if(thisOne.hasClass("kert")){
       delic.delay(150).velocity({rotateX:"55deg"}, easing);
@@ -695,15 +706,14 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
       kertLany.delay(250).velocity({rotateZ:"-90deg"}, easing);
 
       $(this).find("div[class^='kert-kisvirag']").delay(1000).velocity({backgroundPositionY: 0}, {duration: dur, easing: [ 200, 20 ]});
-      $(".barkas").velocity({left: 500}, {duration: dur, easing: [ 300, 24 ]});
+      $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});
     }
   }
   
     function hoverOff(){
       var thisOne = $(this);
        NoAnim(osszes);
-       var barkasContainerWidth = $(".barkas-container").width() - 660;
-       $(".barkas").velocity({left: barkasContainerWidth}, {duration: 3000, easing: [ 300, 24 ]});
+       /*$(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});*/
 if($(this).hasClass("vendeglo")){
           vendKihuzo.velocity({right: 8}).velocity(alap);
           vendFront.delay(200).velocity(alap);
@@ -789,6 +799,7 @@ if($(this).hasClass("vendeglo")){
           apartKihuzo.velocity(alap);
           $(this).find(".apartman-emberke1").delay(200).velocity({backgroundPositionY: 0});
           $(this).find(".apartman-emberke2").delay(200).velocity({backgroundPositionY: 6});
+          $(this).find(".apartman-emberke3").delay(200).velocity({backgroundPositionY: -2});
 
           vendFront.velocity(alap);
           kemeny.velocity(alap);

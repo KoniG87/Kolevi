@@ -915,7 +915,7 @@ body {
   width: 70%;
   position: absolute;
   bottom: 0;
-  right: -250px;
+  right: -500px;
   /*  pointer-events:none;
   */
   /*1030px*/ }
@@ -1276,7 +1276,7 @@ div[class^="vend-emberke"] {
     pointer-events: none;
     background-image: url(../img/apartman_front-left.png); }
   .apartman div[class^="apartman-emberke"] {
-    background-image: url(../img/apartman_emberek.png);
+    background-image: url(../img/apartman_emberek-elefant.png);
     background-repeat: no-repeat; }
   .apartman .apartman-emberke1 {
     /*background-position: -28px -54px;*/
@@ -1288,10 +1288,17 @@ div[class^="vend-emberke"] {
   .apartman .apartman-emberke2 {
     /*background-position: -76px -53px;*/
     background-position: -76px 6px;
-    left: 264px;
-    top: 120px;
+    left: 262px;
+    top: 121px;
     width: 70px;
     height: 70px; }
+  .apartman .apartman-emberke3 {
+    width: 55px;
+    height: 55px;
+    left: 85px;
+    top: 130px;
+    background-position: -144px -2px;
+    background-position: -144px -2px; }
   .apartman .apartman-kihuzo-container {
     width: 166px;
     height: 166px;
@@ -1392,9 +1399,9 @@ div[class^="vend-emberke"] {
     right: -106px; }
   .kert .kert-viragok {
     width: 400px;
-    height: 166px;
-    right: -106px;
-    bottom: -56px; }
+    height: 156px;
+    right: -99px;
+    bottom: -40px; }
   .kert .kert-kihuzo-cover {
     width: 400px;
     height: 166px;
@@ -1406,7 +1413,7 @@ div[class^="vend-emberke"] {
     height: 100px;
     background-image: url(../img/landing_bg.png);
     background-repeat: no-repeat;
-    background-position: -292px -394px;
+    background-position: -285px -375px;
     bottom: 4px;
     right: 300px;
     pointer-events: none; }
@@ -3096,7 +3103,7 @@ header {
       content: "\2022";
       margin: 0 0.2rem; }
   .etlap > p {
-    font-size: 53%;
+    font-size: 68%;
     letter-spacing: initial;
     display: table;
     margin: 0 auto;
@@ -3289,7 +3296,6 @@ header {
   -webkit-perspective: 400px;
   perspective: 400px; }
   .fold-list li {
-    font-size:0.6em;
     height: 6.6rem;
     padding: 0 1rem;
     width: 97.5%;
