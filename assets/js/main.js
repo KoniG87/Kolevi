@@ -4,14 +4,14 @@ function refreshWaypoints(){
   $.waypoints('refresh');
 } 
 
-function measureHeight(target){
+/*function measureHeight(target){
   $(target).addClass("measure");
   var actualHeight = $(target).height();
   $(target).removeClass("measure");
 
   return actualHeight;
  }
-
+*/
 
 $(document).ready(function(){
   var onDesktop = true;
@@ -58,8 +58,8 @@ var maskUrlIndex = 0;
           // Inkább a setToImg-t kell használni.
         }
         var t = $(this),
-        pW = t.width(),
-        pH = measureHeight(this);
+        pW = t.actual( 'width' ),
+        pH = t.actual( 'height' );
         var sourceImg = t.find("img"),
         imgSrc = sourceImg.attr("src");
 
