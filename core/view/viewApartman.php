@@ -162,8 +162,7 @@ class ApartmanView extends BaseView{
     
     
     public function drawReview($reviewData){
-    	echo '<div class="review-container ten columns centered"> <!-- Ez a container csak úgy itt van, de amúgy nem kell -->
-			
+    	echo '		
 			<div class="review-card clearfix" >
 				<div class="three columns">
 					<div class="review-card-img">
@@ -176,9 +175,7 @@ class ApartmanView extends BaseView{
 					<div class="star-rating" data-rating="'.$reviewData['rating'].'"></div>
 					<p>'.$reviewData['leiras'].'</p>
 				</div>
-			</div>
-			
-		</div>';
+			</div>';
     }
     
     
