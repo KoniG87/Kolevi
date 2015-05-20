@@ -190,3 +190,14 @@ footer{
 		font-size: 200%;
 	} */
 }
+.h-logo{
+	width: 30px;
+	height: 30px;
+	margin:auto;
+	@include abs-pos(0,0,10px,0);
+	@include transition(transform 0.8s);
+
+}
+.copyright:hover .h-logo{
+	@include scale(1.2);
+}

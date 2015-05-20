@@ -1546,7 +1546,7 @@ input:focus::-ms-input-placeholder {
   min-height: 10rem;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: right top;
   left: 0;
   top: 0;
   right: 5%;
@@ -1617,6 +1617,7 @@ input:focus::-ms-input-placeholder {
 .rolunk-container{
 	margin:8rem auto;
 }
+
 .rolunk-grid-element {
 	position: relative;
 	color:$white;
@@ -1631,7 +1632,6 @@ input:focus::-ms-input-placeholder {
 			@include rowMachine(1, 0);
 			padding: 20%;
 		}
-
 		@include breakpoint(tabtop){
 			@include rowMachine(2, 15%);
 			padding: 1rem;
@@ -1640,13 +1640,7 @@ input:focus::-ms-input-placeholder {
 			@include rowMachine(3, 10%);
 			padding: 1rem;
 		}
-/*  		@include breakpoint(tablet){
-			@include rowMachine(4, 2%);
-			padding: 3rem;
-		}
-		@include breakpoint(laptop){
-			@include rowMachine(5, 1%);
-		}*/
+
   div[class^="ori-"]{
 	position: absolute;
 	overflow:hidden;
@@ -1657,6 +1651,7 @@ input:focus::-ms-input-placeholder {
 	background-color: $white;
   }
 }
+
 .rolunk-visible{
 	padding:2rem 2rem 1rem 2rem;
 	position: relative;
@@ -1674,6 +1669,7 @@ input:focus::-ms-input-placeholder {
 
 	}
 }
+
 .roulunk-kep-container{
 	width: 100%;
 	margin-bottom:1rem;

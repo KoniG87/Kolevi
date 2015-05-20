@@ -361,7 +361,7 @@ class Application{
     
     
 		<div class="copyright">
-			<a href="http://halluci-nation.com/"><img src="../kolevi/assets/img/halu_logo.png" alt="Created by Halluci-Nation" title="Created by Halluci-Nation"></a>
+			<a href="http://halluci-nation.com/"><img src="assets/img/halu_logo.png" alt="Created by Halluci-Nation" title="Created by Halluci-Nation"><img src="assets/img/h_logo.png" alt="Created by Halluci-Nation" title="Created by Halluci-Nation" class="h-logo"></a>
 		</div>
 	</div>
             </footer>

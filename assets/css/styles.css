@@ -2667,6 +2667,28 @@ footer {
   		font-size: 200%;
   	} */ }
 
+.h-logo {
+  width: 30px;
+  height: 30px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  -webkit-transition: transform 0.8s;
+  -moz-transition: transform 0.8s;
+  -ms-transition: transform 0.8s;
+  -o-transition: transform 0.8s;
+  transition: transform 0.8s; }
+
+.copyright:hover .h-logo {
+  -moz-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2); }
+
 /*NAVIGATION*/
 .sitckyNav {
   width: 100%;
@@ -4525,7 +4547,7 @@ input:focus::-ms-input-placeholder {
   min-height: 10rem;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: right top;
   left: 0;
   top: 0;
   right: 5%;
@@ -4609,14 +4631,7 @@ input:focus::-ms-input-placeholder {
   /*400px*/
   /*480px*/
   /*560px*/
-  /*800px*/
-  /*  		@include breakpoint(tablet){
-  			@include rowMachine(4, 2%);
-  			padding: 3rem;
-  		}
-  		@include breakpoint(laptop){
-  			@include rowMachine(5, 1%);
-  		}*/ }
+  /*800px*/ }
   .rolunk-grid-element:nth-child(n) {
     margin-bottom: 0;
     margin-right: 0; }
