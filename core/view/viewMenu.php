@@ -18,9 +18,6 @@ class MenuView extends BaseView{
                         <div class="eight columns left">
                             <h3>Kedves Vendégeink!</h3>
                             <p>Vegetáriánus és húsos menünk van hétköznaponként 1.000 Ft és 1.250 Ft-os áron, ami mellé szörpöt is adunk. Siessetek, mert ½ 12-től van ebéd és 60-70 adagot készítünk, ezért van, hogy ½ 1-re elfogy.</p>
-                            <p>GM = gluténmentes</p>
-                            <p>TM = tejtermék mentes</p>
-                            <p>V = vegetáriánus</p>
                             
                             <ul class="napi-tablak">';
     	

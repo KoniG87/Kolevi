@@ -6,7 +6,7 @@
 
                             <p>Ezen a helyen csak a Kőleves Vendéglőbe tudsz asztalt foglalni maximum 7 főre,ha többen jönnétek, kérlek telefonáljatok.</p>
                             <p>Ha jó idő van, akkor talán a teraszon is ülhetsz, ha ott szeretnél asztalt, kérlek írd meg a megjegyzésbe. Foglalásod csak akkor érvényes, ha visszaigazoljuk e-mailben vagy telefonon.</p>
-                            <p>Ha nagyobb rendezvényt szeretnél, kérlek telefonálj nekünk. <br> +3620 213 5999, +361 322 1011</p>
+                            <p>Ha nagyobb rendezvényt szeretnél, kérlek telefonálj nekünk. <br>( +3620 213 5999, +361 322 1011 )</p>
                             <p>A Kőleves Kert, ami egy különálló kocsma, külön grill konyhával, nem tévesztendő össze a vendéglővel, de ha oda szeretnél foglalni, próbáld meg a vendéglőt hívni. Oda csak 10 fő fölött és csak este 7-ig áll módunkban tartani az asztalt.</p>
                             <p>Késés esetén az asztalfoglalást 20 percig tartjuk, ha mégis lemondanád a foglalást, kérlek telefonálj nekünk.</p>
                         </div>    
