@@ -891,7 +891,7 @@ body {
     .landing-container header .langselect-container {
       width: 6rem;
       top: -1.5rem;
-      display: none;
+      /*  display: none; */
       height: 5.3rem;
       /*1280px*/ }
       @media (min-width: 80em) {
@@ -908,6 +908,48 @@ body {
       display: block; }
     .landing-container header .info-white {
       display: none; }
+
+/* NEW logo */
+.landing-logo-container {
+  width: 140px;
+  height: 170px;
+  right: 90px;
+  top: 0; }
+  .landing-logo-container .icon-logo {
+    width: 8rem;
+    height: 8rem;
+    right: 0.5rem;
+    top: 0.5rem; }
+  .landing-logo-container .info-black {
+    position: absolute;
+    left: -0.7rem;
+    bottom: -0.5rem;
+    display: block;
+    width: 4rem;
+    height: 4rem; }
+    .landing-logo-container .info-black span {
+      display: none; }
+    .landing-logo-container .info-black svg {
+      width: 100%;
+      height: 100%; }
+  .landing-logo-container .langselect {
+    top: 6.8rem;
+    width: 4.7rem;
+    height: 4.7rem;
+    display: block; }
+  .landing-logo-container .langselect-container {
+    width: 4.5rem;
+    right: 1rem;
+    height: 2.5rem;
+    bottom: 0; }
+  .landing-logo-container .lang-selected {
+    color: #fff !important; }
+  .landing-logo-container .eng, .landing-logo-container .hun {
+    top: 8.6rem !important;
+    font-size: 75% !important;
+    margin: 0 !important; }
+  .landing-logo-container .eng span {
+    display: none; }
 
 .barkas-container {
   height: auto;
@@ -930,7 +972,7 @@ body {
   position: absolute;
   right: 0;
   bottom: 0;
-  left: 200px;
+  left: 160px;
   top: auto !important;
   cursor: pointer; }
   .barkas ul {
@@ -1076,7 +1118,7 @@ div[class^="apartman-"] {
     height: 96px;
     background-image: url(../img/kerites_front-left.png);
     right: -125px;
-    bottom: -5px; }
+    bottom: 0; }
   .vendeglo .vend-bokor-kutya {
     width: 101px;
     height: 115px;
@@ -1276,7 +1318,7 @@ div[class^="vend-emberke"] {
     pointer-events: none;
     background-image: url(../img/apartman_front-left.png); }
   .apartman div[class^="apartman-emberke"] {
-    background-image: url(../img/apartman_emberek-elefant.png);
+    background-image: url(../img/apartman_emberek-elefant2.png);
     background-repeat: no-repeat; }
   .apartman .apartman-emberke1 {
     /*background-position: -28px -54px;*/
@@ -1395,7 +1437,7 @@ div[class^="vend-emberke"] {
     width: 252px;
     height: 96px;
     background-image: url(../img/kerites_front-right.png);
-    bottom: -55px;
+    bottom: -45px;
     right: -106px; }
   .kert .kert-viragok {
     width: 400px;
@@ -1403,29 +1445,33 @@ div[class^="vend-emberke"] {
     right: -99px;
     bottom: -40px; }
   .kert .kert-kihuzo-cover {
-    width: 400px;
+    width: 230px;
     height: 166px;
+    left: 30px;
+    box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.5);
     background-image: url(../img/landing_bg.png);
-    background-position: right bottom;
+    background-position: -615px -323px;
     background-repeat: no-repeat; }
   .kert .kert-emberek-cover {
     width: 400px;
-    height: 100px;
+    height: 110px;
     background-image: url(../img/landing_bg.png);
     background-repeat: no-repeat;
     background-position: -285px -375px;
-    bottom: 4px;
+    bottom: -6px;
     right: 300px;
-    pointer-events: none; }
-    .kert .kert-emberek-cover:after {
-      content: "";
-      position: absolute;
-      bottom: 96px;
-      width: 100%;
-      height: 5px;
-      background-image: url(../img/vagas.png);
-      background-size: 100% 5px;
-      background-repeat: no-repeat; }
+    pointer-events: none;
+    box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.5);
+    /*   &:after{
+        content: "";
+        position: absolute;
+        bottom:96px;
+        width: 100%;
+        height: 5px;
+        background-image:url(../img/vagas.png);
+        background-size:100% 5px;
+        background-repeat:no-repeat;
+      } */ }
   .kert .kert-emberek {
     width: 240px;
     height: 260px;
@@ -1447,11 +1493,11 @@ div[class^="vend-emberke"] {
   .kert .kert-fiu,
   .kert .kert-lany {
     height: 100px;
-    width: 167px; }
+    width: 167px;
+    bottom: -20px; }
   .kert .kert-fiu {
     background-image: url(../img/kert_fiu.png);
     left: -70px;
-    bottom: -10px;
     moz-transform-origin: top right;
     -o-transform-origin: top right;
     -ms-transform-origin: top right;
@@ -1461,7 +1507,6 @@ div[class^="vend-emberke"] {
   .kert .kert-lany {
     background-image: url(../img/kert_lany.png);
     right: -70px;
-    bottom: -10px;
     moz-transform-origin: top left;
     -o-transform-origin: top left;
     -ms-transform-origin: top left;
@@ -2400,32 +2445,32 @@ p {
 #icon-kert .path14, #icon-kert .path15, #icon-kert .path16, #icon-kert .path17 {
   fill: white; }
 
-#icon-lang-select .path1 {
-  fill: black; }
+/* #icon-lang-select .hun {
+	fill: rgb(255,0,0);
+	cursor: pointer;
+}
 
-#icon-lang-select .path2, #icon-lang-select .path6, #icon-lang-select .path7, #icon-lang-select .path8 {
-  fill: white; }
-
-#icon-lang-select .path3, #icon-lang-select .path4, #icon-lang-select .path5 {
-  fill: #8a8a8a; }
-
+#icon-lang-select .eng {
+	fill: rgb(138, 138, 138);
+	cursor: pointer;
+} */
+/* langselect sima */
 /*lang-bg*/
 #icon-lang-select .path1 {
   fill: black;
   fill: #fff; }
 
-/*hun*/
-#icon-lang-select .hun {
-  fill: red;
-  cursor: pointer; }
-
-/*eng*/
-#icon-lang-select .eng {
-  fill: #8a8a8a;
-  cursor: pointer; }
-
 /*perjel*/
 #icon-lang-select .path2 {
+  fill: black; }
+
+/* langselect black */
+/*lang-bg*/
+#icon-lang-select-black .path1 {
+  fill: black; }
+
+/*perjel*/
+#icon-lang-select-black .path2 {
   fill: black; }
 
 #icon-logo .path1, #icon-logo .path12, #icon-logo .path13, #icon-logo .path14, #icon-logo .path15, #icon-logo .path16, #icon-logo .path17, #icon-logo .path18, #icon-logo .path19, #icon-logo .path20, #icon-logo .path21, #icon-logo .path22, #icon-logo .path23 {
@@ -2575,7 +2620,8 @@ footer {
     .f-sitemap ul a {
       text-decoration: none;
       color: #999;
-      font-size: 75%; }
+      font-size: 75%;
+      letter-spacing: 1px; }
       .f-sitemap ul a:hover {
         color: #000; }
 
@@ -2610,14 +2656,16 @@ footer {
 .copyright {
   position: relative;
   margin: 0 auto;
-  display: table;
-  width: auto;
-  font-size: 60%;
-  text-transform: uppercase; }
-  .copyright span {
-    color: #00BAED;
-    font-weight: 600;
-    font-size: 200%; }
+  width: 320px;
+  /* 	display: table;
+  	width: auto;
+  	font-size: 60%;
+  	text-transform: uppercase; */
+  /* 	span{
+  		color:$blue;
+  		font-weight: 600;
+  		font-size: 200%;
+  	} */ }
 
 /*NAVIGATION*/
 .sitckyNav {
@@ -3091,25 +3139,50 @@ header {
   -webkit-border-image: url(../img/etlap_bimage.png) 60 63 60 62 round;
   -o-border-image: url(../img/etlap_bimage.png) 60 63 60 62 round;
   border-image: url(../img/etlap_bimage.png) 60 63 60 62 fill round;
-  position: relative; }
-  .etlap > h3 {
+  position: relative;
+  /* 	>h3{
+  		text-transform: uppercase;
+  		font-size:80%;
+  		letter-spacing: initial;
+  		margin:0 auto;
+  		margin-top:0.5rem;
+  		display: table;
+  	}
+  	>p{
+  		font-size: 68%;
+  		letter-spacing: initial;
+  		display: table;
+  		margin:0 auto;
+  		text-align: center;
+  		span{
+  			font-weight: bold;
+  		}
+  	} */ }
+
+.etlap-kategoria {
+  border-bottom: 0.5rem transparent solid;
+  border-top: 0.5rem transparent solid; }
+  .etlap-kategoria td {
     text-transform: uppercase;
     font-size: 80%;
-    letter-spacing: initial;
-    margin: 0 auto;
-    margin-top: 0.5rem;
-    display: table; }
-    .etlap > h3:before, .etlap > h3:after {
-      content: "\2022";
-      margin: 0 0.2rem; }
-  .etlap > p {
-    font-size: 68%;
-    letter-spacing: initial;
-    display: table;
-    margin: 0 auto;
+    letter-spacing: 1px;
     text-align: center; }
-    .etlap > p span {
-      font-weight: bold; }
+
+.etlap-sor {
+  border-bottom: 0.1rem transparent solid;
+  border-top: 0.1rem transparent solid; }
+  .etlap-sor td {
+    font-size: 68%;
+    letter-spacing: 0.5px;
+    text-align: center; }
+    .etlap-sor td:nth-child(2) {
+      font-weight: bold;
+      width: 40%;
+      vertical-align: middle;
+      /*480px*/ }
+      @media (min-width: 30em) {
+        .etlap-sor td:nth-child(2) {
+          width: 20%; } }
 
 .etlap-head .icon-logo_barna {
   width: 3.5rem;
@@ -3449,7 +3522,7 @@ header {
   width: 90%;
   padding: 0.2em 2em 0.2em 0.5em;
   border-bottom: none;
-  color: #000;
+  font-family: "DanielBold-Regular", sans serif;
   font-size: 80%;
   height: 2.5rem; }
 
@@ -3469,21 +3542,24 @@ header {
 
 /* custom placeholder color */
 input::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.8); }
+  color: rgba(0, 0, 0, 0.8);
+  font-family: "DanielBold-Regular", sans serif; }
 
 input:active::-webkit-input-placeholder,
 input:focus::-webkit-input-placeholder {
   color: rgba(0, 0, 0, 0.2); }
 
 input::-moz-placeholder {
-  color: rgba(0, 0, 0, 0.8); }
+  color: rgba(0, 0, 0, 0.8);
+  font-family: "DanielBold-Regular", sans serif; }
 
 input:active::-moz-placeholder,
 input:focus::-moz-placeholder {
   color: rgba(0, 0, 0, 0.2); }
 
 input:-ms-input-placeholder {
-  color: rgba(0, 0, 0, 0.8); }
+  color: rgba(0, 0, 0, 0.8);
+  font-family: "DanielBold-Regular", sans serif; }
 
 input:active::-ms-input-placeholder,
 input:focus::-ms-input-placeholder {
@@ -3854,7 +3930,8 @@ input:focus::-ms-input-placeholder {
 .xdsoft_datetimepicker .xdsoft_time_box > div > div.xdsoft_disabled {
   opacity: 0.5;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-  cursor: default; }
+  cursor: default;
+  display: none; }
 
 .xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_other_month.xdsoft_disabled {
   opacity: 0.2;
@@ -4237,6 +4314,7 @@ input:focus::-ms-input-placeholder {
 /*PROGRAMOK*/
 /*CLNDR*/
 .naptar-trigger {
+  display: none;
   width: 5rem;
   height: 5rem;
   cursor: pointer;
@@ -4281,11 +4359,7 @@ input:focus::-ms-input-placeholder {
   -ms-transition: 1s;
   -o-transition: 1s;
   transition: 1s;
-  -moz-transform: scale(0);
-  -o-transform: scale(0);
-  -ms-transform: scale(0);
-  -webkit-transform: scale(0);
-  transform: scale(0);
+  /*  @include scale(0); */
   /*800px*/ }
   @media (min-width: 50em) {
     #mini-clndr {
@@ -4424,7 +4498,7 @@ input:focus::-ms-input-placeholder {
 /* cubic-bezier(.5,0,1,0)
  */
 .program-fullheight {
-  max-height: 1500px !important;
+  max-height: 950px !important;
   /* lefele */
   -webkit-transition: max-height 2s cubic-bezier(1, 0, 1, 1);
   -moz-transition: max-height 2s cubic-bezier(1, 0, 1, 1);
@@ -4532,6 +4606,7 @@ input:focus::-ms-input-placeholder {
   color: #fff;
   width: 100%;
   padding: 15%;
+  /*400px*/
   /*480px*/
   /*560px*/
   /*800px*/
@@ -4548,6 +4623,16 @@ input:focus::-ms-input-placeholder {
   .rolunk-grid-element:nth-child(1n) {
     margin-right: 0;
     margin-bottom: 0; }
+  @media (min-width: 25em) {
+    .rolunk-grid-element {
+      width: 100%;
+      padding: 18%; }
+      .rolunk-grid-element:nth-child(n) {
+        margin-bottom: 0;
+        margin-right: 0; }
+      .rolunk-grid-element:nth-child(1n) {
+        margin-right: 0;
+        margin-bottom: 0; } }
   @media (min-width: 30em) {
     .rolunk-grid-element {
       width: 100%;

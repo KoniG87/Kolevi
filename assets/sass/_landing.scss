@@ -48,9 +48,10 @@
         }
       }
       .langselect-container{
+
         width: 6rem;
         top:-1.5rem;
-        display: none;
+       /*  display: none; */
         height: 5.3rem;
         
         @include breakpoint(bigscreen){
@@ -75,6 +76,65 @@
     }
 }
 
+/* NEW logo */
+.landing-logo-container{
+      width: 140px;
+      height: 170px;
+      right: 90px;
+      top: 0;
+  .icon-logo{
+      width: 8rem;
+      height: 8rem;
+      right: 0.5rem;
+      top: 0.5rem;
+  }
+    .info-black{
+      position: absolute;
+      left: -0.7rem;
+      bottom: -0.5rem;
+      display: block;
+      width: 4rem;
+      height: 4rem;
+      span{
+        display: none;
+      }
+      svg{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+.langselect{
+  top:6.8rem;
+  width: 4.7rem;
+  height: 4.7rem;
+  display: block;
+
+}
+.langselect-container{
+  width: 4.5rem;
+  right:1rem;
+  height: 2.5rem;
+  bottom: 0;
+}
+.lang-selected{
+  color:$white !important;
+}
+  .eng, .hun{
+    top:8.6rem!important;
+    font-size:75% !important;
+    margin:0 !important;
+
+  }
+  .eng{
+    span{
+      display: none;
+    }
+  }
+}
+
+
+
 
 
 .barkas-container{
@@ -96,7 +156,7 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  left:200px;
+  left:160px;
   top:auto !important;
   cursor: pointer;
 
@@ -257,7 +317,7 @@ transform: rotateX(-130deg) rotateY(0deg) rotateZ(0deg) perspective(15000px);
     height: 96px;
     background-image: url(../img/kerites_front-left.png);
     right: -125px;
-    bottom: -5px;
+    bottom: 0;
   }
   .vend-bokor-kutya{
     width: 101px;
@@ -484,7 +544,7 @@ div[class^="vend-emberke"]{
     background-image:url(../img/apartman_front-left.png);
   }
   div[class^="apartman-emberke"]{
-    background-image:url(../img/apartman_emberek-elefant.png);
+    background-image:url(../img/apartman_emberek-elefant2.png);
     background-repeat: no-repeat;
   }
   .apartman-emberke1{
@@ -634,7 +694,7 @@ div[class^="vend-emberke"]{
     width: 252px;
     height: 96px;
     background-image: url(../img/kerites_front-right.png);
-    bottom: -55px;
+    bottom: -45px;
     right: -106px;
   }
 
@@ -645,23 +705,26 @@ div[class^="vend-emberke"]{
     bottom: -40px;
   }
   .kert-kihuzo-cover{
-    width: 400px;
+    width: 230px;
     height: 166px;
+    left: 30px;
+    box-shadow: 0 -10px 10px -10px rgba(0,0,0,0.5);
     background-image:url(../img/landing_bg.png);
-    background-position: right bottom;
+    background-position: -615px -323px;
     background-repeat: no-repeat;
     
   }
 .kert-emberek-cover{
   width: 400px;
-  height: 100px;
+  height: 110px;
   background-image:url(../img/landing_bg.png);
   background-repeat: no-repeat;
   background-position: -285px -375px;
-  bottom: 4px;
+  bottom: -6px;
   right: 300px;
   pointer-events:none;
-  &:after{
+  box-shadow: 0 -10px 10px -10px rgba(0,0,0,0.5);
+/*   &:after{
     content: "";
     position: absolute;
     bottom:96px;
@@ -670,7 +733,7 @@ div[class^="vend-emberke"]{
     background-image:url(../img/vagas.png);
     background-size:100% 5px;
     background-repeat:no-repeat;
-  }
+  } */
 }
 
 .kert-emberek{
@@ -693,18 +756,17 @@ div[class^="vend-emberke"]{
 .kert-lany{
   height: 100px;
   width: 167px;
+  bottom:-20px;
 }
 .kert-fiu{
   background-image:url(../img/kert_fiu.png);
   left:-70px;
-  bottom:-10px;
   @include transform-origin(top right);
   /*@include rotate-3d(0,0,-90deg);*/
 }
 .kert-lany{
   background-image: url(../img/kert_lany.png);
   right: -70px;
-  bottom:-10px;
   @include transform-origin(top left);
   /*@include rotate-3d(0,0,90deg);*/
 }

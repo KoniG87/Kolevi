@@ -443,7 +443,7 @@ template: $('#calendar-template').html(),
         easing: "ease",
         offset:-120
       });
-          if(targetProgi.find(".program-right").innerHeight() > 160){
+          if(targetProgi.find(".program-right").innerHeight() >= 160){
             targetProgi.find(".program-nyil-le").click();
             /*console.log(targetProgi.innerHeight());*/
           }

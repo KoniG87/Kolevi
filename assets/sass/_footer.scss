@@ -127,6 +127,7 @@ footer{
 			text-decoration: none;
 			color:$darkgray;
 			font-size: 75%;
+			letter-spacing: 1px;
 			&:hover{
 				color:$black;
 			}
@@ -178,13 +179,14 @@ footer{
 .copyright{
 	position: relative;
 	margin:0 auto;
-	display: table;
+	width: 320px;
+/* 	display: table;
 	width: auto;
 	font-size: 60%;
-	text-transform: uppercase;
-	span{
+	text-transform: uppercase; */
+/* 	span{
 		color:$blue;
 		font-weight: 600;
 		font-size: 200%;
-	}
+	} */
 }

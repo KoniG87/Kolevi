@@ -361,7 +361,7 @@ class Application{
     
     
 		<div class="copyright">
-			Created by: <img src="../kolevi/assets/img/halu_logo.png" alt=""> Halluci-Nation
+			<a href="http://halluci-nation.com/"><img src="../kolevi/assets/img/halu_logo.png" alt="Created by Halluci-Nation" title="Created by Halluci-Nation"></a>
 		</div>
 	</div>
             </footer>

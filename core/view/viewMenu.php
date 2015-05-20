@@ -287,11 +287,11 @@ class MenuView extends BaseView{
     	$this->drawSectionLabel("Étlap", "etlap", 2);
     	
         echo '<div class="row clearfix">
-                        <div class="four columns">
+                        <div class="three columns">
                             <img class="lazy illusztracio" data-src="assets/img/etlap-img.png" alt=""><noscript><img src="assets/img/etlap-img.png" alt=""></noscript>
                         </div>
     			
-    			<div class="eight columns etlap">';
+    			<div class="nine columns etlap">';
     	
     	$this->drawCetli($elements['cetli']);
     	
@@ -300,17 +300,17 @@ class MenuView extends BaseView{
                                 <svg class="icon icon-logo_barna"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-logo_barna"></use></svg>
                                 <img class="right etlap-level lazy" data-src="assets/img/etlap_jf@2x.jpg" alt=""><noscript><img src="assets/img/etlap_jf@2x.jpg" alt=""></noscript>
                             </div>';
-    	
+    	echo '<table>';
     	foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
     		
-    		echo '<h3>'.$kategoria.'</h3>';
+    		echo '<tr class="etlap-kategoria"><td colspan="2"> • '.$kategoria.' • </td></tr>';
 			
     		$this->loadTemplate('etlapForma', $kategoriaAdat['etelek']);
 
     		
     	}
     	
-    	echo '</div>
+    	echo '</table></div>
                         
                     </div>
                     <div class="row clearfix">

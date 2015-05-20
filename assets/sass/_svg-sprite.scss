@@ -68,33 +68,38 @@
 	fill: rgb(255, 255, 255);
 }
 
-#icon-lang-select .path1 {
-	fill: rgb(0, 0, 0);
-}
-#icon-lang-select .path2, #icon-lang-select .path6, #icon-lang-select .path7, #icon-lang-select .path8 {
-	fill: rgb(255, 255, 255);
-}
-#icon-lang-select .path3, #icon-lang-select .path4, #icon-lang-select .path5 {
-	fill: rgb(138, 138, 138);
+
+
+
+
+/* #icon-lang-select .hun {
+	fill: rgb(255,0,0);
+	cursor: pointer;
 }
 
+#icon-lang-select .eng {
+	fill: rgb(138, 138, 138);
+	cursor: pointer;
+} */
+/* langselect sima */
 /*lang-bg*/
 #icon-lang-select .path1 {
 	fill: rgb(0, 0, 0);
 	fill:#fff;
 }
-/*hun*/
-#icon-lang-select .hun {
-	fill: rgb(255,0,0);
-	cursor: pointer;
-}
-/*eng*/
-#icon-lang-select .eng {
-	fill: rgb(138, 138, 138);
-	cursor: pointer;
-}
 /*perjel*/
 #icon-lang-select .path2{
+	fill: rgb(0, 0, 0);
+}
+
+
+/* langselect black */
+/*lang-bg*/
+#icon-lang-select-black .path1 {
+	fill: rgb(0, 0, 0);
+}
+/*perjel*/
+#icon-lang-select-black .path2{
 	fill: rgb(0, 0, 0);
 }
 

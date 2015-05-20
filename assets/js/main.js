@@ -22,8 +22,26 @@ Pace.on("done", function(){
 
 
 /*
+ * RETINA KÉP CSERÉLŐK
+ */
+ 
+function loadRetina(targetParent, target, attribute){
+         if (window.devicePixelRatio > 1) {
+        targetParent.find(target).each(function(){
+            var kepnev = $(this).attr(attribute);
+            kepnev = kepnev.replace(".jpg","@2x.jpg");
+            kepnev = kepnev.replace(".png","@2x.png");
+            $(this).attr(attribute,kepnev);
+        });
+     }
+}
+
+loadRetina($(".copyright"), "img", "src");
+
+/*
  *  RANDOM SVG GENERÁLÓ 
  */
+ 
 var maskUrlIndex = 0;
   jQuery.fn.extend({
     Svgenerate: function (options){
@@ -487,11 +505,19 @@ function barkasAccordionCLICK(){
     $(this).toggleClass("barkas-open");
 
     if($(this).hasClass("barkas-open")){
+         $(this).find("li:nth-child(odd)").velocity("stop");
+         $(this).find("li:nth-child(even)").velocity("stop");
+         $(".barkas").velocity("stop");
+
          $(this).find("li:nth-child(odd)").velocity(nyitvaOddBarkas,durationBarkas,springBarkas);
          $(this).find("li:nth-child(even)").velocity(nyitvaEvenBarkas,durationBarkas,springBarkas);
          $(".barkas").velocity({left: barkasContainerWidth}, {duration: 3000, easing: [ 300, 24 ]});
       }
     else{
+         $(this).find("li:nth-child(odd)").velocity("stop");
+         $(this).find("li:nth-child(even)").velocity("stop");
+         $(".barkas").velocity("stop");
+
         $(this).find("li:nth-child(odd)").velocity(alapOddBarkas,1000);
         $(this).find("li:nth-child(even)").velocity(alapEvenBarkas,1000);
         /*$(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});*/
@@ -500,13 +526,23 @@ function barkasAccordionCLICK(){
 
 function barkasAccordionClose(){   
         $(this).removeClass("barkas-open"); 
+
+        $(this).find("li:nth-child(odd)").velocity("stop");
+        $(this).find("li:nth-child(even)").velocity("stop");
+        $(".barkas").velocity("stop");
+
         $(this).find("li:nth-child(odd)").velocity(alapOddBarkas,1000);
         $(this).find("li:nth-child(even)").velocity(alapEvenBarkas,1000);
-       /* $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});*/
+        $(".barkas").velocity({left: barkasContainerWidth +120}, {duration: 3000, easing: [ 300, 24 ]});
 }
 
 function barkasAccordionOpen(){   
          $(this).addClass("barkas-open");
+
+         $(this).find("li:nth-child(odd)").velocity("stop");
+         $(this).find("li:nth-child(even)").velocity("stop");
+         $(".barkas").velocity("stop");
+
          $(this).find("li:nth-child(odd)").velocity(nyitvaOddBarkas,durationBarkas,springBarkas);
          $(this).find("li:nth-child(even)").velocity(nyitvaEvenBarkas,durationBarkas,springBarkas);
          $(".barkas").velocity({left: barkasContainerWidth}, {duration: 3000, easing: [ 300, 24 ]});
@@ -521,7 +557,8 @@ $(".barkas").on("mouseleave",barkasAccordionClose);
 /*$(".barkas").hoverIntent(barkasAccordionOpen,barkasAccordionClose);*/
 
 // barkasAccordion();
-$(".barkas").draggable({ axis: "x" },{ containment: "parent" });
+/*$(".barkas").draggable({ axis: "x" },{ containment: "parent" });*/
+
 
 /*
  *  LANDING ANIMÁCIÓK
@@ -634,7 +671,7 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
       keriFR.delay(150).velocity({rotateX:"-40deg"}, easing);
       vendFront.delay(250).velocity({rotateX:"-15deg"}, {duration: 2500, easing: [ 300, 14 ]});
       vendKihuzo.delay(500).velocity({right: -155}, {duration: dur, easing: [ 300, 25 ]});
-      $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});
+   /*   $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});*/
       $(this).find(".vend-emberke1").delay(800).velocity({backgroundPositionX: -28}, {duration: dur, easing: [ 200, 20 ]});
       $(this).find(".vend-emberke2").delay(800).velocity({backgroundPositionX: -180}, {duration: dur, easing: [ 200, 20 ]});
       $(this).find(".vend-emberke3").delay(800).velocity({backgroundPositionX: -405}, {duration: dur, easing: [ 200, 20 ]});
@@ -661,7 +698,7 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
       vendFront.velocity({rotateX:"-110deg"}, {duration: 3000, easing: [ 300, 14 ]});
       fa.delay(200).velocity({rotateX:"50deg"}, easing);
       // kertKihuzo.delay(250).velocity({rotateX:"20deg"}, easing);
-      $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});
+    /*  $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});*/
     }
     else if(thisOne.hasClass("apartman")){
       /*keriSide.delay(100).velocity({rotateX:"-20deg"}, {duration: 2500, easing: [ 300, 20 ]});*/
@@ -686,7 +723,7 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
       $(this).find(".apartman-emberke2").delay(1200).velocity({backgroundPositionY: -52}, {duration: dur, easing: [ 200, 20 ]});
       $(this).find(".apartman-emberke3").delay(1200).velocity({backgroundPositionY: -60}, {duration: dur, easing: [ 200, 20 ]});
       apartKihuzo.delay(1000).velocity({top: -100}, {duration: 2500, easing: [ 300, 16 ]});
-     $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});
+  /*   $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});*/
     }
     else if(thisOne.hasClass("kert")){
       delic.delay(150).velocity({rotateX:"55deg"}, easing);
@@ -705,8 +742,8 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
       kertFiu.delay(250).velocity({rotateZ:"90deg"}, easing);
       kertLany.delay(250).velocity({rotateZ:"-90deg"}, easing);
 
-      $(this).find("div[class^='kert-kisvirag']").delay(1000).velocity({backgroundPositionY: 0}, {duration: dur, easing: [ 200, 20 ]});
-      $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});
+      $(this).find("div[class^='kert-kisvirag']").delay(400).velocity({backgroundPositionY: 0}, {duration: 1000});
+ /*     $(".barkas").velocity({left: barkasContainerWidth +250}, {duration: 3000, easing: [ 300, 24 ]});*/
     }
   }
   

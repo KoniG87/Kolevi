@@ -1,7 +1,7 @@
             <div class="landing-container">
-        <header>
+<!--         <header>
             <a href="/kolevi/"><svg class="icon icon-logo"><use xlink:href="#icon-logo"></use></svg></a>
-            <!-- <h1>Vendéglő</h1> -->
+
             <div class="nav-info right info-black" ><a href="#footer"><span>Info</span><svg class="icon icon-info-black"><use xlink:href="#icon-info-black"></use></svg></a></div>
             <div class="nav-info right info-white" ><a href="#footer"><span>Info</span><svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg></a></div>
             <div class="langselect-container clearfix">
@@ -9,8 +9,21 @@
                 <div class="left eng">Eng<span> / </span></div>
                 <div class="right hun lang-selected">Hun</div>
             </div>
-        </header>
+        </header> -->
               <div class="illustration-container" >
+<!-- LOGO -->
+            <div class="landing-logo-container">
+              <a href="/kolevi/"><svg class="icon icon-logo"><use xlink:href="#icon-logo"></use></svg></a>
+            
+            <div class="info-black" ><a href="#footer"><span>Info</span><svg class="icon icon-info-black"><use xlink:href="#icon-info-black"></use></svg></a></div>
+            
+            <div class="langselect-container clearfix">
+                <svg class="icon icon-lang-select-black langselect"><use xlink:href="#icon-lang-select-black"></use></svg>
+                <div class="left eng">Eng<span> / </span></div>
+                <div class="right hun lang-selected">Hun</div>
+            </div>
+
+            </div>
 <!-- APARTMAN -->
                 <div class="hovInt apartman hoverEffect " id="hovInt-apartman">
 

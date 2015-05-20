@@ -71,17 +71,13 @@
 	-o-border-image: url(../img/etlap_bimage.png) 60 63 60 62 round;
 	border-image: url(../img/etlap_bimage.png) 60 63 60 62 fill round;
 	position: relative;
-	>h3{
+/* 	>h3{
 		text-transform: uppercase;
 		font-size:80%;
 		letter-spacing: initial;
 		margin:0 auto;
 		margin-top:0.5rem;
 		display: table;
-		&:before,&:after{
-			content: "\2022";
-			margin:0 0.2rem;
-		}
 	}
 	>p{
 		font-size: 68%;
@@ -92,7 +88,40 @@
 		span{
 			font-weight: bold;
 		}
+	} */
+}
+.etlap-kategoria{
+	  border-bottom: 0.5rem transparent solid;
+	  border-top: 0.5rem transparent solid;
+	td{
+		text-transform: uppercase;
+		font-size:80%;
+		letter-spacing: 1px;
+		
+		text-align:center;
 	}
+}
+.etlap-sor{
+	  border-bottom: 0.1rem transparent solid;
+	  border-top: 0.1rem transparent solid;
+	td{
+		font-size: 68%;
+		letter-spacing: 0.5px;
+		text-align: center;
+
+		&:nth-child(2){
+			font-weight: bold;
+			width: 40%;
+			vertical-align: middle;
+			
+			@include breakpoint(mobile){
+				width: 20%;
+			}
+			}
+
+	}
+
+
 }
 .etlap-head{
 	.icon-logo_barna{
@@ -438,7 +467,7 @@
 	width: 90%;
 	padding: 0.2em 2em 0.2em 0.5em;
 	border-bottom: none;
-	color: #000;
+	font-family:$danielbld;
 	font-size: 80%;
 	height: 2.5rem;
 }
@@ -463,6 +492,7 @@
 /* custom placeholder color */
 input::-webkit-input-placeholder {
 	color: rgba(0,0,0,0.8);
+	font-family:$danielbld;
 }
 
 input:active::-webkit-input-placeholder ,
@@ -472,6 +502,7 @@ input:focus::-webkit-input-placeholder {
 
 input::-moz-placeholder {
 	color: rgba(0,0,0,0.8);
+	font-family:$danielbld;
 }
 
 input:active::-moz-placeholder,
@@ -481,6 +512,7 @@ input:focus::-moz-placeholder {
 
 input:-ms-input-placeholder {  
 	color: rgba(0,0,0,0.8);
+	font-family:$danielbld;
 }
 
 input:active::-ms-input-placeholder ,
@@ -897,6 +929,7 @@ input:focus::-ms-input-placeholder {
 	opacity: 0.5;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
 	cursor: default;
+	display: none;
 }
 
 .xdsoft_datetimepicker .xdsoft_calendar td.xdsoft_other_month.xdsoft_disabled {
@@ -1301,6 +1334,7 @@ input:focus::-ms-input-placeholder {
 
 
 .naptar-trigger{
+	display:none;
 	width: 5rem;
 	height: 5rem;
 	cursor: pointer;
@@ -1333,7 +1367,7 @@ input:focus::-ms-input-placeholder {
   margin-right:1rem;
   @include transform-origin(top right);
   @include transition (1s);
-  @include scale(0);
+ /*  @include scale(0); */
   @include breakpoint(tablet){
   	float: right;
   }
@@ -1484,9 +1518,10 @@ input:focus::-ms-input-placeholder {
 	
 }
 
+
 /* cubic-bezier(.5,0,1,0)
  */.program-fullheight{
-	max-height:1500px !important;
+	max-height:950px !important;
 	/* lefele */
 	@include transition(max-height 2s cubic-bezier(1,0,1,1));
 	.program-nyil-le{
@@ -1588,11 +1623,15 @@ input:focus::-ms-input-placeholder {
     @include rowMachine(1, 0);
     @extend .left;
 	padding: 15%;
-
+		@include breakpoint(moblet){
+			@include rowMachine(1, 0);
+			padding: 18%;
+		}
 		@include breakpoint(mobile){
 			@include rowMachine(1, 0);
 			padding: 20%;
 		}
+
 		@include breakpoint(tabtop){
 			@include rowMachine(2, 15%);
 			padding: 1rem;
