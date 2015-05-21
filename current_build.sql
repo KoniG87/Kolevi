@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Hoszt: 127.0.0.1
--- Létrehozás ideje: 2015. Máj 13. 21:54
+-- Létrehozás ideje: 2015. Máj 21. 23:35
 -- Szerver verzió: 5.6.21
 -- PHP verzió: 5.6.3
 
@@ -74,8 +74,9 @@ CREATE TABLE IF NOT EXISTS `koleves_dolgozok` (
 `ID` int(6) NOT NULL,
   `USERNAME` varchar(40) COLLATE utf8_hungarian_ci NOT NULL,
   `NEV` varchar(70) COLLATE utf8_hungarian_ci NOT NULL,
-  `MEGJEGYZES` varchar(100) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `MEGJEGYZES` varchar(512) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `SZULETES` date DEFAULT NULL,
+  `NEME` char(1) COLLATE utf8_hungarian_ci DEFAULT 'f',
   `KEP` varchar(100) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `TELEFON` varchar(20) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `EMAIL` varchar(100) COLLATE utf8_hungarian_ci DEFAULT NULL,
@@ -91,8 +92,8 @@ CREATE TABLE IF NOT EXISTS `koleves_dolgozok` (
 -- A tábla adatainak kiíratása `koleves_dolgozok`
 --
 
-INSERT INTO `koleves_dolgozok` (`ID`, `USERNAME`, `NEV`, `MEGJEGYZES`, `SZULETES`, `KEP`, `TELEFON`, `EMAIL`, `JELSZAV`, `FACEBOOK`, `JOGOSULTSAG_ID`, `RENDEZVENYFELELOS`, `VENDEGLO`, `ALLAPOT`) VALUES
-(1, 'janka', 'Mosolygós Janka', 'Janka egy mosolygós kedves lány, jól dolgozk.', NULL, 'assets/uploads/about-img.png', '+36 70 6383 996', 'janka@kolevesvendeglo.hu', '242f21c3e786eb437c665e833666f35304623e0cc1112ed5f0f3644b5f76cff5', 'mjanka', 9, 1, 1, 1);
+INSERT INTO `koleves_dolgozok` (`ID`, `USERNAME`, `NEV`, `MEGJEGYZES`, `SZULETES`, `NEME`, `KEP`, `TELEFON`, `EMAIL`, `JELSZAV`, `FACEBOOK`, `JOGOSULTSAG_ID`, `RENDEZVENYFELELOS`, `VENDEGLO`, `ALLAPOT`) VALUES
+(1, 'janka', 'Mosolygós Janka', 'Janka egy mosolygós kedves lány, jól dolgozk.', NULL, 'l', '', '+36 70 6383 996', 'janka@kolevesvendeglo.hu', '242f21c3e786eb437c665e833666f35304623e0cc1112ed5f0f3644b5f76cff5', 'mjanka', 9, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -109,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `koleves_etelek` (
   `TAGEK` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
   `AR` int(6) DEFAULT NULL,
   `VISIBLE` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_etelek`
@@ -400,7 +401,7 @@ CREATE TABLE IF NOT EXISTS `koleves_napimenuk` (
   `TEXT_HU` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
   `TEXT_EN` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
   `TAGEK` varchar(15) COLLATE utf8_hungarian_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_napimenuk`
@@ -457,7 +458,11 @@ INSERT INTO `koleves_napimenuk` (`ID`, `IDOSZAK_ID`, `NAPAZON`, `FOGASAZON`, `TE
 (53, 6, 1, 2, 'Szüzérme ropogósan', '', 'A'),
 (55, 6, 1, 3, 'Rántott sajt áfonyalekvárral', '', 'V'),
 (57, 6, 2, 1, 'Something soup', '', 'TM'),
-(58, 6, 2, 3, 'Uj csupacsokidesszert', '', 'V');
+(58, 6, 2, 3, 'Uj csupacsokidesszert', '', 'V'),
+(65, 7, 1, 1, 'Leves', '', 'TM'),
+(70, 7, 1, 2, 'Második', '', 'V'),
+(71, 7, 1, 3, 'Harmadik', '', 'GM'),
+(72, 8, 1, 1, 'Hétfői leves', '', 'V');
 
 -- --------------------------------------------------------
 
@@ -469,7 +474,7 @@ CREATE TABLE IF NOT EXISTS `koleves_napimenu_idoszakok` (
 `ID` int(6) NOT NULL,
   `EV` int(4) DEFAULT NULL,
   `HET` int(2) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_napimenu_idoszakok`
@@ -479,7 +484,9 @@ INSERT INTO `koleves_napimenu_idoszakok` (`ID`, `EV`, `HET`) VALUES
 (1, 2015, 15),
 (2, 2015, 16),
 (5, 2015, 17),
-(6, 2015, 18);
+(6, 2015, 18),
+(7, 2015, 20),
+(8, 2015, 22);
 
 -- --------------------------------------------------------
 
@@ -736,7 +743,7 @@ MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `koleves_etelek`
 --
 ALTER TABLE `koleves_etelek`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `koleves_etelkategoriak`
 --
@@ -781,12 +788,12 @@ MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 -- AUTO_INCREMENT for table `koleves_napimenuk`
 --
 ALTER TABLE `koleves_napimenuk`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `koleves_napimenu_idoszakok`
 --
 ALTER TABLE `koleves_napimenu_idoszakok`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `koleves_programok`
 --

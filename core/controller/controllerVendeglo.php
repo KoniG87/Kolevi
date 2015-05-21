@@ -108,7 +108,7 @@ class Vendeglo extends BaseObject{
     }
     
     public function drawRolunk(){
-    	$SQL = "SELECT username AS NICK, nev AS FULLNAME, megjegyzes AS DESCRIPTION, kep AS KEP FROM koleves_dolgozok WHERE vendeglo = 1 AND allapot = 1;";
+    	$SQL = "SELECT username AS NICK, nev AS FULLNAME, megjegyzes AS DESCRIPTION, (CASE WHEN kep > '' THEN kep ELSE CONCAT('assets/img/no-pic-', neme, '.png') END) AS KEP FROM koleves_dolgozok WHERE vendeglo = 1 AND allapot = 1;";
     	$elements = $this->fetchItems($SQL);
     	
     	$this->view->drawRolunk($elements);
