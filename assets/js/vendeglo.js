@@ -16,6 +16,7 @@ $(".napi-tablak>li").each(function(){
 function napiMenuTablakOut(){
 
   $(".stickyStart").waypoint(function(){
+  
     var tLength = $(".napi-tablak>li").length -1,
         tStagger = 250;
         tDelay = tLength * tStagger;
@@ -29,7 +30,7 @@ function napiMenuTablakOut(){
     triggerOnce: true
 });
 }
-
+ napiMenuTablakOut();
 // itallap
 
 

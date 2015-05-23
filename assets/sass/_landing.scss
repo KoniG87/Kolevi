@@ -139,11 +139,10 @@
 
 .barkas-container{
   height: auto;
-  min-width: 400px;
-  width: 70%;
+  width: 400px;
   position: absolute;
   bottom: 0;
-  right:-500px;
+  right:0;
 /*  pointer-events:none;
 */  @include breakpoint(laptop){
    /* right: 2rem;*/
@@ -156,7 +155,7 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  left:160px;
+  left:120px;
   top:auto !important;
   cursor: pointer;
 
@@ -780,8 +779,8 @@ div[class^="kert-kisvirag"]{
   &:after{
     content: "";
     position: absolute;
-    bottom:-2px;
-    height: 5px;
+    bottom:-12px;
+    height: 25px;
     width: 100%;
     background-image:url(../img/vagas.png);
     background-size:contain;
