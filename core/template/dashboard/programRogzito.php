@@ -20,7 +20,7 @@
 			<td>
                 <input type="hidden" name="id" value="<?=$programData['id']?>"/>
                 <label>Neve</label></td>
-			<td><input maxlength="75" title="Cím" type="text" name="text_hu" value="<?=$programData['labelHeader']?>" required/>
+			<td><input maxlength="75" title="Cím" type="text" name="text" value="<?=$programData['labelHeader']?>" required/>
 			<span class="tooltip">Cím, max. 75 karakter</span>
 			</td>
 		</tr>
@@ -32,7 +32,7 @@
 		</tr>
 		<tr>
 			<td><label>Leírás</label></td>
-			<td><textarea maxlength="1024" title="Leírás" type="text" name="leiras_hu" required><?=$programData['labelDesc']?></textarea>
+			<td><textarea maxlength="1024" title="Leírás" type="text" name="leiras" required><?=$programData['labelDesc']?></textarea>
 			<span class="tooltip">Leírás, max. 1024 karakter</span></td>
 		</tr>
 		<tr>
@@ -84,8 +84,8 @@
 			canSubmit = true;
 			data = {
                 id:  $('#editForm input[name="id"]').val(),
-				text_hu: $('#editForm input[name="text_hu"]').val(),
-				leiras_hu: $('#editForm textarea[name="leiras_hu"]').val(),
+				text: $('#editForm input[name="text"]').val(),
+				leiras: $('#editForm textarea[name="leiras"]').val(),
 				datum: $('#editForm input[name="datum"]').val(),
 				kep: $('#editForm select[name="kep"]').val(),
 				fblink: $('#editForm input[name="fblink"]').val(),

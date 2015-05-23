@@ -129,7 +129,7 @@
 			canSubmit = true;
 			data = {
 				id: $('#editForm input[name="id"]').val(),
-				text_hu: $('#editForm input[name="felirat"]').val(),
+				text: $('#editForm input[name="felirat"]').val(),
                 tipus_id: $('#editForm select[name="tipus"]').val(),
                 allapot: $('#editForm select[name="allapot"]').val(),
                 request: "updateHir"

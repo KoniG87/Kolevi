@@ -28,6 +28,9 @@
 				'userPass' 	=> '',
 				'prefix'	=> ''
 			),
+			'helperParams' => array(
+				'language' => 'hu'
+			),
 			'state'		=> 'dev',
 			'skin'		=> 'default',
 			'dbSalt' 	=> 'bi1Oc@-1pqS9&!7',
@@ -68,3 +71,7 @@
 	if (!$app->isUserLogged()){
 		$_GET['page'] = 'login';
 	}
+	
+	$app->initHelper($defaultParameters['application']['helperParams']);
+	
+?>
