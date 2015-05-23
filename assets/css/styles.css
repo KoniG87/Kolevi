@@ -3195,11 +3195,13 @@ header {
   .etlap-sor td {
     font-size: 68%;
     letter-spacing: 0.5px;
-    text-align: center; }
+    padding-left: 1rem; }
     .etlap-sor td:nth-child(2) {
       font-weight: bold;
       width: 40%;
       vertical-align: middle;
+      text-align: center;
+      padding-left: 0;
       /*480px*/ }
       @media (min-width: 30em) {
         .etlap-sor td:nth-child(2) {
@@ -3469,7 +3471,7 @@ header {
 .nl-form select {
   /*line-height: 1.6;*/
   display: inline-block;
-  color: #999;
+  color: #ccc;
   cursor: pointer;
   font-size: 90%;
   border-bottom: 1px dashed #e3e3e3;
@@ -3550,7 +3552,7 @@ header {
 .nl-form .nl-field-go {
   position: absolute;
   right: 0;
-  top: 1px;
+  top: 4px;
   height: 2.5rem;
   width: 10%;
   cursor: pointer;
@@ -3662,7 +3664,8 @@ input:focus::-ms-input-placeholder {
   z-index: 9999;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  display: none; }
+  display: none;
+  font-family: "DanielBold-Regular", sans serif; }
 
 .xdsoft_datetimepicker iframe {
   position: absolute;
@@ -4193,6 +4196,25 @@ input:focus::-ms-input-placeholder {
   font-family: "DanielBold-Regular", sans serif;
   color: #999;
   font-size: 100%; }
+
+/* custom placeholder color */
+input.datepicker::-webkit-input-placeholder {
+  color: #ccc; }
+
+input.datepicker::-moz-placeholder {
+  color: #ccc; }
+
+input.datepicker:-ms-input-placeholder {
+  color: #ccc; }
+
+input.timepicker::-webkit-input-placeholder {
+  color: #ccc; }
+
+input.timepicker::-moz-placeholder {
+  color: #ccc; }
+
+input.timepicker:-ms-input-placeholder {
+  color: #ccc; }
 
 .xdsoft_timepicker {
   width: 87px !important; }

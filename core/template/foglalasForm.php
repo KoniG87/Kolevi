@@ -27,7 +27,7 @@
                                     <input type="text" name="nev" class="formText"  value="" placeholder="XY" data-subline="Ide írd be a neved: <em>Vezetéknév</em> és <em>Keresztnév</em> is kell" required/>
                                     vagyok és nagyon szeretnék
                                     <select name="hanyfo" required>
-                                        <option value="1" selected>egy</option>
+                                        <option value="1" selected >egy</option>
                                         <option value="2">két</option>
                                         <option value="3">három</option>
                                         <option value="4">négy</option>

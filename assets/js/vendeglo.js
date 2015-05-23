@@ -175,6 +175,7 @@ $(".fold-list:nth-child(5)>.itallap-head").Svgenerate({
       this.getinput = document.createElement( 'input' );
       this.getinput.setAttribute( 'type', 'text' );
       this.getinput.setAttribute( 'placeholder', this.elOriginal.getAttribute( 'placeholder' ) );
+     /* this.getinput.focus();*/
       this.getinputWrapper = document.createElement( 'li' );
       this.getinputWrapper.className = 'nl-ti-input';
       this.inputsubmit = document.createElement( 'button' );
@@ -261,6 +262,33 @@ $(".fold-list:nth-child(5)>.itallap-head").Svgenerate({
 
 
 var nlform = new NLForm( document.getElementById( 'nl-form' ) );
+
+
+/*asztalfoglalás kiegésztések*/
+
+$(".nl-field-toggle").on("click",function(){
+/*  alert("hey");*/
+  var theInput = $(this).parent().find(".nl-ti-input input[type='text']");
+  setTimeout(function(){ 
+    theInput.focus();
+     }, 200);
+  
+});
+
+$(".nl-ti-input input[type='text']").on("change",function(){
+  $(this).parent().parent().parent().find("a").css("color","black");
+});
+
+$("#nl-form .datepicker, #nl-form .timepicker").on("change",function(){
+  $(this).css("color","black");
+});
+
+$(".nl-dd>ul>li ").on("click",function(){
+  var inputmezo = $(this).parent().parent().find("a");
+    inputmezo.css("color","black");
+  
+});
+
 
 $(".datepicker").datetimepicker({
   lang:'hu',
