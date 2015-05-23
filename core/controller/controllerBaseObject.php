@@ -13,7 +13,9 @@ class BaseObject{
     
     protected function initView(){
         $viewName = $this->objectType.'View';
-        $this->view = new $viewName();        
+        if (file_exists('core/view/view'.$this->objectType.'.php')){
+        	$this->view = new $viewName();
+        }                
     }
     
     protected function fetchItem($SQL, $params = null){

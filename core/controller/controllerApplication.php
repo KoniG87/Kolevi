@@ -169,17 +169,14 @@ class Application{
     			}
     		}
     		
-    		
-    		
     	echo '<nav class="sitckyNav">
 <a href="/kolevi/"><svg class="icon icon-logo"><use xlink:href="#icon-logo"></use></svg></a>
 <svg class="icon icon-backtotop backToTop"><use xlink:href="#icon-backtotop"></use></svg>
     <div class="row">';
     	
-    	
-    	sort($menuToShow);
-    	
-    	
+    	    	
+    	ksort($menuToShow);
+    	    	    	
     	foreach ($menuToShow AS $sorrend => $linkInfo){
     		foreach ($linkInfo AS $key => $label){
     			echo '<a href="#'.$key.'"><span>'.$label.'</span>
@@ -469,20 +466,18 @@ class Application{
 			$this->db = new PDO("mysql:host=".$this->parameters['database']['host'].';dbname='.$this->parameters['database']['name'], $this->parameters['database']['userName'], $this->parameters['database']['userPass']);
 			$this->db->exec("SET CHARACTER SET utf8");
 		} catch (Exception $e){
-			
-			/*echo '<html>
-        <head>
-            <meta charset="utf-8"/>
-            <title>Kőleves :: Átmenetileg nem elérhető</title>
-        </head>
-        <body>
-			<p class="message notification">adatbázis átmenetileg nem elérhető<br/>próbálja újra hamarosan</p>
-			<style type="text/css">body{background:url(skins/default/img/bgElement.png);}.message{font-weight:bold;text-align:center;padding:0.5em 0.8em;border-radius:0.35em;font-size:1.1em;box-shadow:1px 1px 3px 1px #555;display:block;min-width:17em;max-width:25em;margin:0 auto;font-variant:small-caps;letter-spacing:1.5px;}.message.notification{background:#f3d8b2;box-shadow:1px 1px 3px 1px #7e5c2b;}</style>
-            </body>
-        </html>';*/
+			echo '<html>
+        	<head>
+	            <meta charset="utf-8"/>
+            	<title>Kőleves :: Átmenetileg nem elérhető</title>
+        	</head>
+        	<body>
+				<p class="message notification">adatbázis átmenetileg nem elérhető<br/>próbálja újra hamarosan</p>
+				<style type="text/css">.message{font-weight:bold;text-align:center;padding:0.5em 0.8em;border-radius:0.35em;font-size:1.1em;box-shadow:1px 1px 3px 1px #555;display:block;min-width:17em;max-width:25em;margin:0 auto;font-variant:small-caps;letter-spacing:1.5px;}.message.notification{background:#f3d8b2;box-shadow:1px 1px 3px 1px #7e5c2b;}</style>
+            	</body>
+        	</html>';
             
-			//echo '..adatbázis: off';
-			//exit;
+			exit;
 		}
 	}
     
@@ -491,7 +486,6 @@ class Application{
         $scriptFile = $this->parameters['directories']['skins'] . $this->parameters['skin'] . '/func/'. $viewName.'.js';
         
 		if ($viewName != 'process' && !isset($_POST['formSubmitted'])){
-		//if ($viewName != 'process' && $viewName != 'home' && !isset($_POST['formSubmitted'])){
 			echo '<script type="text/javascript">';
 			include($this->parameters['directories']['skins'] . $this->parameters['skin'] . '/func/default.js');
 			if (file_exists($scriptFile)){
@@ -533,7 +527,10 @@ class Application{
 		echo $redirectQuery;
 	}
     
-    
+
+	public function initHelper($params){
+		$_SESSION['helper'] = new Helper($params);
+	}
     
 }
 ?>

@@ -39,8 +39,8 @@
 			canSubmit = true;
 			data = {
                 id: $('#editForm input[name="id"]').val(),
-				text_hu: $('#editForm input[name="text_hu"]').val(),
-				leiras_hu: $('#editForm textarea[name="leiras_hu"]').val(),
+				text: $('#editForm input[name="text_hu"]').val(),
+				leiras: $('#editForm textarea[name="leiras_hu"]').val(),
 				allapot: 1
 			};
 

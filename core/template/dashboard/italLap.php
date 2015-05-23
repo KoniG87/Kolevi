@@ -15,7 +15,7 @@
             data = {
 				id: containingRow.attr('data-id'),
 				kategoria: containingRow.prevAll('tr.kategoriaRow').first().find('td').text(),
-				text_hu: $('td:nth-of-type(1)', containingRow).text(),
+				text: $('td:nth-of-type(1)', containingRow).text(),
 				ar: $('td:nth-of-type(2)', containingRow).text()
 			};
             elozoKategoria = data.kategoria;
@@ -39,7 +39,7 @@
 			data = {
 				id: $('input[name="id"]').val(),
 				kategoria: $('select[name="kategoria"]').val(),
-				text_hu: $('input[name="text_hu"]').val(),
+				text: $('input[name="text_hu"]').val(),
 				ar: $('input[name="ar"]').val()
 			};
 

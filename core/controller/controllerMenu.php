@@ -39,7 +39,7 @@ class Menu extends BaseObject{
     	$week = date('W');
     	$nthInWeek = date('w');
     	 
-    	$napiMenuSQL = "SELECT napazon, fogasazon, text_hu AS labeltext, tagek FROM koleves_napimenuk AS n
+    	$napiMenuSQL = "SELECT napazon, fogasazon, ".$_SESSION['helper']->getLangLabel('text')." AS labeltext, tagek FROM koleves_napimenuk AS n
     	LEFT JOIN koleves_napimenu_idoszakok AS i ON i.id = n.idoszak_id
     	WHERE i.ev = ? AND het = ?
 		ORDER BY napazon ASC, fogasazon ASC;"; 
@@ -112,7 +112,7 @@ class Menu extends BaseObject{
     	$week = $date->format('W');
     	
     	
-    	$napiMenuSQL = "SELECT n.id, n.fogasazon, n.text_hu AS labeltext, n.tagek AS tag FROM koleves_napimenuk AS n
+    	$napiMenuSQL = "SELECT n.id, n.fogasazon, n.".$_SESSION['helper']->getLangLabel('text')." AS labeltext, n.tagek AS tag FROM koleves_napimenuk AS n
     	LEFT JOIN koleves_napimenu_idoszakok AS i ON i.id = n.idoszak_id
     	WHERE i.ev = ? AND i.het = ? AND n.napazon = ?
 		ORDER BY napazon ASC, fogasazon ASC;";
@@ -187,7 +187,7 @@ class Menu extends BaseObject{
     
     
     public function getCetliData(){
-    	$cetliSQL = "SELECT id, text_hu AS labelText FROM koleves_statikus WHERE label LIKE 'CETLI%' ORDER BY label ASC;";
+    	$cetliSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS labelText FROM koleves_statikus WHERE label LIKE 'CETLI%' ORDER BY label ASC;";
     	
     	return $this->fetchItems($cetliSQL);
     }
@@ -195,12 +195,12 @@ class Menu extends BaseObject{
     public function getEtlapData(){
     	$etlapArray = array();
     	
-    	$etelKategoriaSQL = "SELECT id, text_hu as labelText, ikon FROM koleves_etelkategoriak ORDER BY id ASC;";
+    	$etelKategoriaSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." as labelText, ikon FROM koleves_etelkategoriak ORDER BY id ASC;";
     	 
-    	$etelSQL = "SELECT id, text_hu AS MEGNEVEZES, TAGEK, AR
+    	$etelSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, TAGEK, AR
     			FROM koleves_etelek
     				WHERE visible = 1 AND kategoria_id = ?
-    			ORDER BY kategoria_id ASC, text_hu ASC;";
+    			ORDER BY kategoria_id ASC, ".$_SESSION['helper']->getLangLabel('text')." ASC;";
     	
     	$kategoriaRES = $this->fetchItems($etelKategoriaSQL);
     	
@@ -222,21 +222,21 @@ class Menu extends BaseObject{
     }
     
     public function getItallapData(){
-    	$kategoriaSQL = "SELECT id, text_hu, ikon FROM koleves_italkategoriak ORDER BY sorrend ASC;";
+    	$kategoriaSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text').", ikon FROM koleves_italkategoriak ORDER BY sorrend ASC;";
     	$kategoriaRES = $this->fetchItems($kategoriaSQL);
     	 
-    	$italSQL = "SELECT id, text_hu AS MEGNEVEZES, AR FROM koleves_italok WHERE kategoria_id = ? AND visible = 1 ORDER BY sorrend ASC;";
+    	$italSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, AR FROM koleves_italok WHERE kategoria_id = ? AND visible = 1 ORDER BY sorrend ASC;";
     	 
     	$kategoriak = array();
     	foreach ($kategoriaRES AS $key => $kategoriaData){
     		$italRES = $this->fetchItems($italSQL, array($kategoriaData['id']));
     	
-    		$kategoriak[$kategoriaData['text_hu']] = array(
+    		$kategoriak[$kategoriaData[$_SESSION['helper']->getLangLabel('text')]] = array(
     				'ikon'	=> $kategoriaData['ikon'],
     				'italok'=> array()
     		);
     		foreach ($italRES AS $key => $italData){
-    			array_push($kategoriak[$kategoriaData['text_hu']]['italok'], $italData);
+    			array_push($kategoriak[$kategoriaData[$_SESSION['helper']->getLangLabel('text')]]['italok'], $italData);
     		}
     		
     	}
@@ -276,7 +276,7 @@ class Menu extends BaseObject{
     		
     		$kategoriaSQL = "SELECT ek.id, count(e.sorrend) AS utolsoSorszam FROM koleves_etelkategoriak AS ek
 				LEFT JOIN koleves_etelek AS e ON e.kategoria_id = ek.id
-				WHERE ek.text_hu LIKE ?;";
+				WHERE ek.".$_SESSION['helper']->getLangLabel('text')." LIKE ?;";
     		
     		$kategoriaParams = array(
     			$_POST['kategoria']
@@ -288,7 +288,7 @@ class Menu extends BaseObject{
     		 */
     		if ($_POST['id'] == "0"){
     			
-    			$SQL = "INSERT INTO koleves_etelek SET kategoria_id = ?, text_hu = ?, tagek = ?, ar = ?, sorrend = ?;";
+    			$SQL = "INSERT INTO koleves_etelek SET kategoria_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, tagek = ?, ar = ?, sorrend = ?;";
     			
     			$queryParams = array(
     					$kategoriaAdat['id'],
@@ -304,7 +304,7 @@ class Menu extends BaseObject{
     		 * Meglévő sor updatelése
     		 */
     		else{
-    			$SQL = "UPDATE koleves_etelek SET kategoria_id = ?, text_hu = ?, tagek = ?, ar = ? WHERE id = ?;";
+    			$SQL = "UPDATE koleves_etelek SET kategoria_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, tagek = ?, ar = ? WHERE id = ?;";
     			 
     			$queryParams = array(
     					$kategoriaAdat['id'],
@@ -362,7 +362,7 @@ class Menu extends BaseObject{
     
     		$kategoriaSQL = "SELECT ek.id, count(e.sorrend) AS utolsoSorszam FROM koleves_italkategoriak AS ek
 				LEFT JOIN koleves_italok AS e ON e.kategoria_id = ek.id
-				WHERE ek.text_hu LIKE ?;";
+				WHERE ek.".$_SESSION['helper']->getLangLabel('text')." LIKE ?;";
     
     		$kategoriaParams = array(
                 $_POST['kategoria']
@@ -374,11 +374,11 @@ class Menu extends BaseObject{
     		*/
     		if ($_POST['id'] == "0"){
     			 
-    			$SQL = "INSERT INTO koleves_italok SET kategoria_id = ?, text_hu = ?, ar = ?, sorrend = ?;";
+    			$SQL = "INSERT INTO koleves_italok SET kategoria_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, ar = ?, sorrend = ?;";
     			 
     			$queryParams = array(
     					$kategoriaAdat['id'],
-    					$_POST['text_hu'],
+    					$_POST['text'],
     					$_POST['ar'],
     					($kategoriaAdat['utolsoSorszam'] + 1)
     			);
@@ -389,11 +389,11 @@ class Menu extends BaseObject{
     		 * Meglévő sor updatelése
     		 */
     		else{
-    			$SQL = "UPDATE koleves_italok SET kategoria_id = ?, text_hu = ?, ar = ? WHERE id = ?;";
+    			$SQL = "UPDATE koleves_italok SET kategoria_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, ar = ? WHERE id = ?;";
     
     			$queryParams = array(
     					$kategoriaAdat['id'],
-    					$_POST['text_hu'],
+    					$_POST['text'],
     					$_POST['ar'],
     					$_POST['id']
     			);
@@ -419,7 +419,7 @@ class Menu extends BaseObject{
     	try{
     		$this->beginTransaction();
     	
-    		$cetliSQL = "UPDATE koleves_statikus SET text_hu = ? WHERE id = ?;";
+    		$cetliSQL = "UPDATE koleves_statikus SET ".$_SESSION['helper']->getLangLabel('text')." = ? WHERE id = ?;";
     	
     		$cetliParams = array(
     				$_POST['text'],
@@ -463,7 +463,7 @@ class Menu extends BaseObject{
 				}
 				
 	    		
-	    		$SQL = "INSERT INTO koleves_napimenuk SET idoszak_id = ?, napazon = ?, fogasazon = ?, text_hu = ?, tagek = ?;";
+	    		$SQL = "INSERT INTO koleves_napimenuk SET idoszak_id = ?, napazon = ?, fogasazon = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, tagek = ?;";
 	
 	    		$queryParams = array(
 	    			$idoszakAdat['id'],
@@ -480,7 +480,7 @@ class Menu extends BaseObject{
 	    	 * Meglévő sor updatelése
 	    	 */
 	    	else{
-	    		$SQL = "UPDATE koleves_napimenuk SET text_hu = ?, tagek = ? WHERE id = ?;";
+	    		$SQL = "UPDATE koleves_napimenuk SET ".$_SESSION['helper']->getLangLabel('text')." = ?, tagek = ? WHERE id = ?;";
 	    		
 	    		$queryParams = array(
 	    			$_POST['menuInput'],
