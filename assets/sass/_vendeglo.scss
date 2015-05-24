@@ -211,7 +211,7 @@
 .dot{
 
 }
-	.cetli, .mobile-cetli{
+	.cetli{
 		@extend .has-sprite;
 		height:240px;
 		width: 256px;
@@ -226,14 +226,31 @@
 		}
 	}
 .mobile-cetli{
-	/*@extend .left;*/
-	margin:2rem auto;
-
+	position:relative;
+	margin-top:3rem;
+	img{
+		position:absolute;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+	}
+	article{
+		padding: 1rem 2.5rem 2.5rem 2rem; 
+			@include breakpoint(tabtop){
+				padding: 2rem 3rem 5rem 3rem; 
+			}
+	}
 	@include breakpoint(moblet){
 		float:left;
 			}
+	@include breakpoint(tabtop){
+		width: 70%;
+	}
 	@include breakpoint(tablet){
 		display: none;
+	}
+	p{
+		margin-bottom:0;
 	}
 }	
 .dl-pdf{
