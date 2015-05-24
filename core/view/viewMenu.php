@@ -79,21 +79,23 @@ class MenuView extends BaseView{
 				$.post("requestHandler.php", data, function(resp){
 					if (resp["status"]){
 						triggeredInput.addClass("success");
+    					triggeredInput.next("input.menuTag").addClass("success");
     					triggeredInput.attr("data-id", resp["inputID"]);
     					triggeredInput.next("input.menuTag").attr("data-id", resp["inputID"]);
 					}else{
 						triggeredInput.addClass("error");
+    					triggeredInput.next("input.menuTag").addClass("error");
 						triggeredInput.val(originalValue);
 					}
     			
     			setTimeout(function(){
     				triggeredInput.removeClass("success error");
+    				triggeredInput.next("input.menuTag").removeClass("success error");
     			}, 750);
     			}, "json");		
-    				});	
-    			
-    			});
-    			</script>';
+    		});	
+    	});
+    	</script>';
     	
     }
     
@@ -313,15 +315,11 @@ class MenuView extends BaseView{
                     <div class="row clearfix">
                     <div class="four columns" style="margin-bottom:3rem;">
                             <div class="mobile-cetli">
-                            <img src="assets/img/mobile-cetli.png" alt="Külön ajánlatunk" title="Külön ajánlatunk">
-                              <article>
                                 <h3>Külön ajánlat</h3>';
                                   foreach ($elements['cetli'] AS $key => $cetliAdat){
-                                        echo '<p>'.$cetliAdat['labelText'].' Ft</p>';
+                                        echo '<p>'.$cetliAdat['labelText'].'</p>';
                                    }  
-                            echo '
-                            </article>
-                            </div>
+                            echo '</div>
                             <a class="dl-pdf" target="_blank" href="requestHandler.php"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
                     </div>
                     </div>
@@ -482,43 +480,14 @@ public function drawKertEtlap($elements){
     
     
     public function drawCetli($elements){
-    	echo '<div class="spec-ajanlat cetli-1">
+    	echo '<div class="spec-ajanlat">
 
                                 <svg class="csipesz icon icon-csipesz"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-csipesz"></use></svg>
 
                                 <div class="cetli">
                                 <h3>Külön ajánlat</h3>';
        foreach ($elements AS $key => $cetliAdat){
-       		echo '<p>'.$cetliAdat['labelText'].' Ft</p>';
-       }                             
-                                 
-                                    
-        echo '</div>
-            </div>';
-
-            echo '<div class="spec-ajanlat cetli-2">
-
-                                <svg class="csipesz icon icon-csipesz"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-csipesz"></use></svg>
-
-                                <div class="cetli">
-                                <h3>Külön ajánlat</h3>';
-       foreach ($elements AS $key => $cetliAdat){
-          echo '<p>'.$cetliAdat['labelText'].' Ft</p>';
-       }                             
-                                 
-                                    
-        echo '</div>
-            </div>';
-
-
-              echo '<div class="spec-ajanlat cetli-3">
-
-                                <svg class="csipesz icon icon-csipesz"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-csipesz"></use></svg>
-
-                                <div class="cetli">
-                                <h3>Külön ajánlat</h3>';
-       foreach ($elements AS $key => $cetliAdat){
-          echo '<p>'.$cetliAdat['labelText'].' Ft</p>';
+       		echo '<p>'.$cetliAdat['labelText'].'</p>';
        }                             
                                  
                                     

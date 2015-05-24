@@ -9,7 +9,16 @@ class Vendeglo extends BaseObject{
 	}
     
     public function drawFoglalasForm(){
-        $this->view->drawFoglalasForm();
+    	$statikusSQL = "SELECT label, ".$_SESSION['helper']->getLangLabel('text')." AS staticText FROM koleves_statikus WHERE label IN ('DEARGUESTS', 'FOGLALAS_LEIRAS');";
+    	    	
+    	$elements = array(
+    		'static'	=> array()	
+    	);
+    	foreach ($this->fetchItems($statikusSQL) AS $staticData){
+    		$elements['static'][$staticData['label']] = $staticData['staticText'];
+    	}
+    	
+        $this->view->drawFoglalasForm($elements);
     }
     
     public function drawRendezveny(){

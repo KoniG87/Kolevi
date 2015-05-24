@@ -35,7 +35,7 @@
 		  callbacks: {
 			onComplete: function(id, name, response) {
 				setTimeout(function(){
-                    $('.alert-success, .alert-error').slideToggle(550, function(){ $(this).remove(); });
+                    $('.alert-success').slideToggle(550, function(){ $(this).remove(); });
                 }, 8500);
                 setTimeout(function(){
                     $.post('requestHandler.php', {request: 'handleImages'}, function(resp){});

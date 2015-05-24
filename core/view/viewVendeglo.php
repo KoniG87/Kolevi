@@ -9,11 +9,14 @@ class VendegloView extends BaseView{
         
 	}
     
-    public function drawFoglalasForm(){
+    public function drawFoglalasForm($elements){
     	echo '<section id="asztalfoglalas">';
+    	
     	$this->drawSectionLabel("Asztalfoglalás", "asztalfoglalas", 3);
-		$this->loadTemplate('foglalasForm');
-		echo '</section>';
+		
+    	$this->loadTemplate('foglalasForm', $elements);
+		
+    	echo '</section>';
     }
     
     

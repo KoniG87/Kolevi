@@ -163,6 +163,11 @@ class Application{
     		);
     		$menuToShow = array();
     		
+    		if ($_SESSION['helper']->getLang() == 'en'){
+    			unset($menuContents['napiMenu']['showOn']['vendeglo']);
+    		}
+    		
+    		
     		foreach ($menuContents AS $menuKey => $menuData){
     			if (in_array($subPage, array_keys($menuData['showOn']))){
     				$menuToShow[$menuData['showOn'][$subPage]][$menuKey] = $menuData['labels']['hu'];
@@ -189,12 +194,16 @@ class Application{
     	echo '
                
     </div>
-    <div class="nav-info right" ><a href="#footer"><span>Info</span><svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg></a></div>'.(false ? '
+    <div class="nav-info right" >
+    	<a href="#footer">
+    		<span>Info</span>
+    		<svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg></a>
+    </div>
     <div class="langselect-container clearfix">
         <svg class="icon icon-lang-select langselect right"><use xlink:href="#icon-lang-select"></use></svg>
         <div class="left eng">Eng<span> / </span></div>
         <div class="right hun lang-selected">Hun</div>
-    </div>' : '').'
+    </div>
 </nav>
 
 
@@ -387,13 +396,13 @@ class Application{
     	echo '
 			<script type="text/javascript">
     			$(document).ready(function(){
-    		navCounter = 1;
+    				navCounter = 1;
     				$(".sitckyNav div.row a").each(function(){
     					navLabel = $(this).attr("href").substring(1);
     					$(".section-label label[for=\""+navLabel+"\"]").parent().attr("data-labelpos", navCounter);
     					navCounter += 1; 
     				}).promise().done(function(){
-    					//$(".section-label").each(sectionLabels);
+    					
     				});	
     		});
     			</script>
@@ -428,31 +437,31 @@ class Application{
                           
 
                       $.post("requestHandler.php", foglalasData, function(resp){
-                        //if (resp.status){
-                           $("#nl-form").slideToggle();
+                        
+                           $("#nl-form").fadeToggle();
                            setTimeout(function(){
-                            $("#nl-form").html("<h3>Asztalfoglalás megörtént!</h3><br/>Köszi, hogy betértél hozzánk! Hamarosan visszaigazolunk a megadott email címen, hogy a megadott időpontban tudjuk-e biztosítani a kért helyeket.<div class=\"nl-submit-wrap\"><button class=\"nl-reset\" type=\"submit\">Újbóli foglalás</button></div>");
-                            $("#nl-form").slideToggle();
-                            $(".nl-reset").Svgenerate({rangeX:0.94,rangeY:0.91,});
+                      	      $("#nl-form").html("<h3>Asztalfoglalás megörtént!</h3><br/>Köszi, hogy betértél hozzánk! Hamarosan visszaigazolunk a megadott email címen, hogy a megadott időpontban tudjuk-e biztosítani a kért helyeket.<div class=\"nl-submit-wrap\"><button class=\"nl-reset\" type=\"submit\">Újbóli foglalás</button></div>");
+                        	    $("#nl-form").fadeToggle();
+                            	$(".nl-reset").Svgenerate({rangeX:0.94,rangeY:0.91,});
                            }, 350);
-                           
-                          //console.log(resp);
-                        //}
+                         
                       }, "json");
                     
                     });
 					
 					$(document).on("click", ".nl-reset", function(e){
 						e.preventDefault();
-						$("#nl-form").slideToggle();
+						$("#nl-form").fadeToggle();
 					   setTimeout(function(){
                             $("#nl-form").html(contents);
-                            $("#nl-form").slideToggle();
+                            $("#nl-form").fadeToggle();
                             
 					   }, 350);
 					});
     			
     				
+    				$(".tag-label.tag-'.$_SESSION['helper']->getPage().'").trigger("click");
+    		
     			});	
     		</script>
         		</body>

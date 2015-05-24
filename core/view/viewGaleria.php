@@ -18,19 +18,19 @@ class GaleriaView extends BaseView{
 			<div class="row">
 			   <div class="twelve columns centered gallery-filters clearfix">
 					<div class="left filter filter-on" data-filter="0">
-						<div class="tag-before"></div><div class="tag-label">Összes</div><div class="tag-after"></div>
+						<div class="tag-before"></div><div class="tag-label tag-osszes">Összes</div><div class="tag-after"></div>
 					</div>
 					<div class="left filter" data-filter="1">
-						<div class="tag-before"></div><div class="tag-label">Vendéglő</div><div class="tag-after"></div>
+						<div class="tag-before"></div><div class="tag-label tag-vendeglo">Vendéglő</div><div class="tag-after"></div>
 					</div>
 					<div class="left filter" data-filter="2">
-						<div class="tag-before"></div><div class="tag-label">Kert</div><div class="tag-after"></div>
+						<div class="tag-before"></div><div class="tag-label tag-kert">Kert</div><div class="tag-after"></div>
 					</div>
 					<div class="left filter" data-filter="3">
-						<div class="tag-before"></div><div class="tag-label">Delicates</div><div class="tag-after"></div>
+						<div class="tag-before"></div><div class="tag-label tag-delicates">Delicates</div><div class="tag-after"></div>
 					</div>
 					<div class="left filter" data-filter="4">
-						<div class="tag-before"></div><div class="tag-label">Apartman</div><div class="tag-after"></div>
+						<div class="tag-before"></div><div class="tag-label tag-apartman">Apartman</div><div class="tag-after"></div>
 					</div>
 
 
@@ -57,6 +57,7 @@ class GaleriaView extends BaseView{
 
 				</div>
 			</div>
+		
 		</section>';
     }
     

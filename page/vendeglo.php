@@ -11,8 +11,10 @@ include('page/home.php');
 	$galeria = new Galeria($db);
 	$menu = new Menu($db);
 
+	if ($_SESSION['helper']->getLang() == 'hu'){
+		$menu->drawNapiMenu();
+	}
 	
-	$menu->drawNapiMenu();
 	$menu->drawEtlap();
 	$menu->drawItallap();
 	
