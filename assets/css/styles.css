@@ -3251,9 +3251,10 @@ header {
   display: none;
   position: absolute;
   top: -4.5rem;
-  right: -6rem;
+  right: -7rem;
   bottom: inherit;
   left: inherit;
+  z-index: 1;
   /*800px*/
   width: 15rem; }
   @media (min-width: 50em) {
@@ -3270,7 +3271,48 @@ header {
     right: 6rem;
     bottom: inherit;
     left: inherit;
-    z-index: 1; }
+    z-index: 2; }
+
+.spec-ajanlat.cetli-2 {
+  width: 320px;
+  position: absolute;
+  top: -4.5rem;
+  right: 50%;
+  bottom: inherit;
+  left: inherit;
+  margin-right: -160px; }
+  .spec-ajanlat.cetli-2 .csipesz {
+    /* @include abs-pos(-2.5rem,4.5rem,inherit,inherit); */ }
+  .spec-ajanlat.cetli-2 .cetli {
+    width: 320px;
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    background-position: 0 -356px;
+    padding: 2.5rem 1.5rem; }
+
+.spec-ajanlat.cetli-3 {
+  position: absolute;
+  top: -4.5rem;
+  right: inherit;
+  bottom: inherit;
+  left: -8rem; }
+  .spec-ajanlat.cetli-3 .csipesz {
+    position: absolute;
+    top: -2.5rem;
+    right: inherit;
+    bottom: inherit;
+    left: 6rem; }
+  .spec-ajanlat.cetli-3 .cetli {
+    background-position: -240px -100px;
+    -moz-transform: rotate(10deg);
+    -o-transform: rotate(10deg);
+    -ms-transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+    padding: 2.5rem 2rem 2rem 3rem; }
 
 .cetli, .mobile-cetli {
   height: 240px;
@@ -4992,12 +5034,19 @@ section {
   section {
     overflow: visible; }
 
-  .spec-ajanlat {
+  .spec-ajanlat.cetli-1 {
     position: absolute;
     top: -4.5rem;
     right: -9rem;
     bottom: inherit;
-    left: inherit; } }
+    left: inherit; }
+
+  .spec-ajanlat.cetli-3 {
+    position: absolute;
+    top: -4.5rem;
+    right: inherit;
+    bottom: inherit;
+    left: -9rem; } }
 .sitckyNav,
 .nl-submit,
 .rend-contact,

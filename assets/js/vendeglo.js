@@ -263,6 +263,9 @@ $(".fold-list:nth-child(5)>.itallap-head").Svgenerate({
 
 var nlform = new NLForm( document.getElementById( 'nl-form' ) );
 
+$(".nl-reset").on("click",function(){
+  nlform = new NLForm( document.getElementById( 'nl-form' ) );
+});
 
 /*asztalfoglalás kiegésztések*/
 

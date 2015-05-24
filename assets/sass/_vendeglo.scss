@@ -164,7 +164,8 @@
 }
 .spec-ajanlat{
 	display: none;
-	@include abs-pos(-4.5rem,-6rem,inherit,inherit);
+	@include abs-pos(-4.5rem,-7rem,inherit,inherit);
+	z-index:1;
 	@include breakpoint(tablet){
 			display: block;
 		}
@@ -176,10 +177,37 @@
 		/*@extend .has-sprite;*/
 		/*background-position: 0 0;*/
 		@include abs-pos(-2.5rem,6rem,inherit,inherit);
-		z-index:1;
+		z-index:2;
 	}
 
 }
+.spec-ajanlat.cetli-2{
+	width: 320px;
+	@include abs-pos(-4.5rem,50%,inherit,inherit);
+	margin-right:-160px;
+	.csipesz{
+		/* @include abs-pos(-2.5rem,4.5rem,inherit,inherit); */
+	}
+	.cetli{
+		width: 320px;
+		@include rotate(0);
+		background-position: 0 -356px;
+		padding:2.5rem 1.5rem;
+	}
+}
+
+.spec-ajanlat.cetli-3{
+	@include abs-pos(-4.5rem,inherit,inherit,-8rem);
+	.csipesz{
+		@include abs-pos(-2.5rem,inherit,inherit,6rem);
+	}
+	.cetli{
+		background-position: -240px -100px;
+		@include rotate(10);
+		padding:2.5rem 2rem 2rem 3rem;
+	}
+}
+
 .dot{
 
 }
@@ -1969,8 +1997,11 @@ section{
     section {
       overflow: visible;
      }
-     .spec-ajanlat{
+     .spec-ajanlat.cetli-1{
 	@include abs-pos(-4.5rem,-9rem,inherit,inherit);
+     }
+     .spec-ajanlat.cetli-3{
+	@include abs-pos(-4.5rem,inherit,inherit,-9rem);
      }
        }
 

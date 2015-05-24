@@ -478,7 +478,7 @@ public function drawKertEtlap($elements){
     
     
     public function drawCetli($elements){
-    	echo '<div class="spec-ajanlat">
+    	echo '<div class="spec-ajanlat cetli-1">
 
                                 <svg class="csipesz icon icon-csipesz"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-csipesz"></use></svg>
 
@@ -486,6 +486,35 @@ public function drawKertEtlap($elements){
                                 <h3>Külön ajánlat</h3>';
        foreach ($elements AS $key => $cetliAdat){
        		echo '<p>'.$cetliAdat['labelText'].'</p>';
+       }                             
+                                 
+                                    
+        echo '</div>
+            </div>';
+
+            echo '<div class="spec-ajanlat cetli-2">
+
+                                <svg class="csipesz icon icon-csipesz"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-csipesz"></use></svg>
+
+                                <div class="cetli">
+                                <h3>Külön ajánlat</h3>';
+       foreach ($elements AS $key => $cetliAdat){
+          echo '<p>'.$cetliAdat['labelText'].'</p>';
+       }                             
+                                 
+                                    
+        echo '</div>
+            </div>';
+
+
+              echo '<div class="spec-ajanlat cetli-3">
+
+                                <svg class="csipesz icon icon-csipesz"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-csipesz"></use></svg>
+
+                                <div class="cetli">
+                                <h3>Külön ajánlat</h3>';
+       foreach ($elements AS $key => $cetliAdat){
+          echo '<p>'.$cetliAdat['labelText'].'</p>';
        }                             
                                  
                                     
