@@ -263,10 +263,15 @@ class VendegloView extends BaseView{
 					<img data-src="assets/img/vendegkonyv.png" alt="Rólunk" class="lazy illusztracio"><noscript><img src="assets/img/vendegkonyv.png" alt="Rólunk"></noscript>
 				</div>
 			</div>
+            <div class="row clearfix">
+                <div class="twelve columns cikkek-container">
+                    <h3>Rólunk írták</h3>
+                    <p>Itt lesznek a cikkek</p>
+                </div>
+            </div>
 			<div class="row clearfix">
 				<div class="twelve columns">
-					<h3>Mi</h3>
-					<p>Igazán fiatalos, modern arcok vagyunk - és mindemellett még finomkat is főzünk! Gyere be hozz, akár csak egy kávéra is, ha nem szeretnéd otthon egyedül meginni, hanem kedves társasággal szeretnéd megosztani a reggeli lendületet!</p>
+					
 					 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 			
 			
@@ -308,6 +313,40 @@ class VendegloView extends BaseView{
     	$this->loadTemplate('rolunkEmber', $elements);
                     echo '  	 
                     </div>
+                        <div class="row clearfix">
+                            <div class="twelve columns partnerek-container">
+                                <h3>Akiket szeretünk</h3>
+
+
+                                    <div class="partner clearfix">
+                                        <div class="two columns">
+                                                <div class="partner-img">
+                                                    <a href="http://rcko.fm/radio/" target="_blank">
+                                                        <img src="assets/img/tmb-2.png" alt="">
+                                                    </a>
+                                                </div>
+                                        </div>
+                                        <div class="ten columns">
+                                            <a href="http://rcko.fm/radio/" target="_blank"><h3>A cég neve nem kellene ide?</h3></a>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores similique facilis non quia aliquam perspiciatis, eum consectetur quisquam quo! Optio totam ad quibusdam repellat cupiditate consequuntur, amet est, quidem perferendis.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="partner clearfix">
+                                        <div class="two columns">
+                                                <div class="partner-img">
+                                                    <a href="http://rcko.fm/radio/" target="_blank">
+                                                        <img src="assets/img/tmb-2.png" alt="">
+                                                    </a>
+                                                </div>
+                                        </div>
+                                        <div class="ten columns">
+                                            <a href="http://rcko.fm/radio/" target="_blank"><h3>A cég neve nem kellene ide?</h3></a>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores similique facilis non quia aliquam perspiciatis, eum consectetur quisquam quo! Optio totam ad quibusdam repellat cupiditate consequuntur, amet est, quidem perferendis.</p>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
                 </section>';
     	
     }

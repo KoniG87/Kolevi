@@ -4703,6 +4703,20 @@ input.timepicker:-ms-input-placeholder {
 .rolunk-container {
   margin: 8rem auto; }
 
+.partner {
+  box-shadow: 0 10px 10px -2px rgba(0, 0, 0, 0.25), inset 0 2rem 5rem -2rem rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  margin-bottom: 2.5rem; }
+  .partner a {
+    text-decoration: none;
+    color: inherit; }
+  .partner h3 {
+    line-height: 1;
+    margin-bottom: 1rem;
+    font-size: 90%; }
+  .partner p {
+    font-size: 75%; }
+
 .rolunk-grid-element {
   position: relative;
   color: #fff;
