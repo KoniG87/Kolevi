@@ -2720,16 +2720,17 @@ footer {
       color: #fff; }
     .sitckyNav .row a .diszvonal {
       height: 0.25rem; }
-  .sitckyNav .icon-logo {
+  .sitckyNav .sticky-page-icon {
     width: 6rem;
     height: 6rem;
     position: absolute;
     left: 1rem;
     top: 0;
     display: none;
+    color: white;
     /*1280px*/ }
     @media (min-width: 80em) {
-      .sitckyNav .icon-logo {
+      .sitckyNav .sticky-page-icon {
         display: block; } }
 
 .sticky-fold {

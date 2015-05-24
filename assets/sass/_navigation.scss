@@ -36,13 +36,14 @@
 			
 		}
 
-		.icon-logo{
+		.sticky-page-icon{
 			  width: 6rem;
 			  height: 6rem;
 			  position: absolute;
 			  left: 1rem;
 			  top: 0;
 			  display: none;
+			  color:white;
 			  @include breakpoint(bigscreen){
 				display: block;
 			  }
