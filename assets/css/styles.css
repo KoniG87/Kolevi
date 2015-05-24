@@ -5076,13 +5076,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bcbcbc', end
 
 .gallery-slider {
   max-width: 960px;
-  margin: 6rem auto;
+  margin: 10% auto;
+  height: 80%;
   /*	height:50%;
   	margin:auto;
   	@include abs-pos(0,0,0,0);
   	@include breakpoint(tablet){
   
   	}*/ }
+  .gallery-slider .slick-list, .gallery-slider .slick-track {
+    height: 100%; }
   .gallery-slider .slick-prev,
   .gallery-slider .slick-next,
   .gallery-slider .gallery-close {
@@ -5100,15 +5103,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bcbcbc', end
     margin-right: 2.5rem; }
 
 .gallery-slider-element {
-  position: relative; }
+  position: relative;
+  padding: 0 1rem;
+  /* 	img{
+  		display: none !important;
+  	}
+  	svg{
+  		@include scale(0.95);
+  	} */ }
   .gallery-slider-element img {
-    display: none !important; }
-  .gallery-slider-element svg {
-    -moz-transform: scale(0.95);
-    -o-transform: scale(0.95);
-    -ms-transform: scale(0.95);
-    -webkit-transform: scale(0.95);
-    transform: scale(0.95); }
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-height: 95%;
+    max-width: 95%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4); }
 
 .landing-container,
 section {

@@ -2044,13 +2044,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bcbcbc', end
 }
 .gallery-slider{
 	max-width: 960px;
-	margin:6rem auto;
+	margin:10% auto;
+	height:80%;
 /*	height:50%;
 	margin:auto;
 	@include abs-pos(0,0,0,0);
 	@include breakpoint(tablet){
 
 	}*/
+	.slick-list, .slick-track{
+		height: 100%;
+	}
 	.slick-prev,
 	.slick-next,
 	.gallery-close{
@@ -2072,12 +2076,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bcbcbc', end
 }
 .gallery-slider-element{
     position: relative;
-	img{
+    padding:0 1rem;
+    img{
+    	margin:auto;
+    	@include abs-pos(0,0,0,0);
+    	max-height: 95%;
+    	max-width: 95%;
+    	box-shadow:5px 5px 15px rgba(0,0,0,0.4);
+    }
+/* 	img{
 		display: none !important;
 	}
 	svg{
 		@include scale(0.95);
-	}
+	} */
 }
 
 .landing-container,

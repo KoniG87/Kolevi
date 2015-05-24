@@ -1199,9 +1199,9 @@ $(".gallery-grid-element").each(function(){
     setToImg:"on",
     dropShadow: "on",
     blur:5,
-    dX:47,
-    dY:47,
-    opacity:0.25,
+    dX:35,
+    dY:35,
+    opacity:0.3,
     rangeX:0.93,
     rangeY:0.93
   });
@@ -1305,7 +1305,8 @@ $(document.body).on("click",".slick-track, .slick-prev, .slick-next",function(ev
 });
 
 function callGallery(){
-    $(".gallery-slider-element").each(function(){
+
+/*    $(".gallery-slider-element").each(function(){
       $(this).Svgenerate({
         imgMask:"on",
         setToImg:"on",
@@ -1317,12 +1318,12 @@ function callGallery(){
         rangeX:0.94,
         rangeY:0.92
       });
-    });
+    });*/
 }
 var prevG = "<svg class=\"icon icon-nyil-balra slick-prev\"><use xlink:href=\"#icon-nyil-balra\"></use></svg>";
 var nextG = "<svg class=\"icon icon-nyil-jobbra slick-next\"><use xlink:href=\"#icon-nyil-jobbra\"></use></svg>";
 $(".gallery-slider").slick({ 
-  adaptiveHeight: "ture",
+  adaptiveHeight: false,
   speed: 700,
   prevArrow: prevG,
   nextArrow: nextG
