@@ -397,6 +397,10 @@ function resizeend() {
         $(".section-label").each(sectionLabels);
 
 
+    setTimeout(function(){ 
+    callCikkKepek();
+   }, 200);
+
 callGallery();
 callThumbs();
 $(".rend-slide").each(function(){
@@ -1358,6 +1362,25 @@ $(".socials").socialShare({
   url:"http://kolevesvendeglo.hu/vendeglo"
 });
 
+
+//  VENDÉGLŐ CKKEK REFRESH
+
+function callCikkKepek(){
+
+$(".cikk-img").each(function(){
+  $(this).Svgenerate({
+    imgMask:"on",
+    setToImg:"on",
+    dropShadow: "on",
+    blur:6,
+    dX:5,
+    dY:5,
+    opacity:0.3,
+    rangeX:0.95,
+    rangeY:0.95
+  });
+});
+}
 
 /*
  *  JS MEDIA QUERY

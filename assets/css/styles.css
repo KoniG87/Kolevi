@@ -398,7 +398,7 @@ img {
   -webkit-transform: rotate(4deg);
   transform: rotate(4deg); }
 
-.visuallyhidden, .rend-slide img, .rolunk-visible img {
+.visuallyhidden, .rend-slide img, .cikk-img img, .rolunk-visible img {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -4701,7 +4701,60 @@ input.timepicker:-ms-input-placeholder {
 
 /*RÓLUNK*/
 .rolunk-container {
-  margin: 8rem auto; }
+  margin: 2rem auto; }
+
+.cikkek-slider {
+  padding: 2rem 0;
+  /*560px*/ }
+  @media (min-width: 35em) {
+    .cikkek-slider {
+      padding: 2rem 3rem; } }
+  .cikkek-slider .slick-slide {
+    position: relative;
+    margin: 0.5rem;
+    /* 		img{
+    			@extend .visuallyhidden;
+    		} */ }
+  .cikkek-slider .slick-prev, .cikkek-slider .slick-next {
+    position: absolute;
+    width: 3.5rem;
+    height: 3.5rem;
+    top: 40%;
+    cursor: pointer; }
+  .cikkek-slider .slick-prev {
+    left: -1.5rem; }
+  .cikkek-slider .slick-next {
+    right: -1.5rem; }
+  .cikkek-slider .slick-center {
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    opacity: 1; }
+
+.cikk {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  opacity: 0.4;
+  -webkit-transition: transform 0.7s, opacity 0.5s;
+  -moz-transition: transform 0.7s, opacity 0.5s;
+  -ms-transition: transform 0.7s, opacity 0.5s;
+  -o-transition: transform 0.7s, opacity 0.5s;
+  transition: transform 0.7s, opacity 0.5s;
+  position: relative; }
+  .cikk a {
+    text-decoration: none;
+    color: inherit; }
+  .cikk h4 {
+    margin: 0.2rem 0;
+    text-align: center;
+    font-size: 80%; }
+  .cikk:hover {
+    opacity: 1; }
+
+.cikk-img {
+  position: relative; }
 
 .partner {
   box-shadow: 0 10px 10px -2px rgba(0, 0, 0, 0.25), inset 0 2rem 5rem -2rem rgba(0, 0, 0, 0.15);

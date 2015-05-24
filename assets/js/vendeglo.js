@@ -515,6 +515,67 @@ function callCalendar(){
 callCalendar();
 
 
+/*Rólunk cikkek*/
+
+
+function rolunkCikkek(){
+
+var cikkPrev = "<svg class=\"icon icon-nyil-balra slick-prev\"><use xlink:href=\"#icon-nyil-balra\"></use></svg>";
+var cikkNext = "<svg class=\"icon icon-nyil-jobbra slick-next\"><use xlink:href=\"#icon-nyil-jobbra\"></use></svg>";
+
+
+  $(".cikkek-slider").slick({
+    centerMode: true,
+    centerPadding: '60px',
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots: false,
+    speed: 700,
+    prevArrow: cikkPrev,
+    nextArrow: cikkNext,
+    responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: true,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+  });
+  callCikkKepek();  
+}
+rolunkCikkek();
+
+function callCikkKepek(){
+
+$(".cikk-img").each(function(){
+  $(this).Svgenerate({
+    imgMask:"on",
+    setToImg:"on",
+    dropShadow: "on",
+    blur:6,
+    dX:5,
+    dY:5,
+    opacity:0.3,
+    rangeX:0.95,
+    rangeY:0.95
+  });
+});
+}
+
+
 if (matchMedia) {
         var mM = window.matchMedia('(max-width: 30em)');
         var mT = window.matchMedia('(max-width: 50em) and (min-width: 30em)');
