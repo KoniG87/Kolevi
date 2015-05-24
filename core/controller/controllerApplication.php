@@ -226,7 +226,7 @@ class Application{
         </header>
       <ul>
         <svg class="icon icon-vendeglo"><use xlink:href="#icon-vendeglo"></use></svg>
-        <a href="vendeglo#napiMenu"><li>Napi menü</li></a>
+        '.($_SESSION['helper']->getLang() == 'hu' ? '<a href="vendeglo#napiMenu"><li>Napi menü</li></a>' : '').'
         <a href="vendeglo#etlap"><li>Étlap</li></a>
         <a href="vendeglo#asztalfoglalas"><li>Asztalfoglalás</li></a>
         <a href="vendeglo#rendezvenyek"><li>Rendezvények</li></a>
