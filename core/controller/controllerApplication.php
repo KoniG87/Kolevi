@@ -201,8 +201,8 @@ class Application{
     </div>
     <div class="langselect-container clearfix">
         <svg class="icon icon-lang-select langselect right"><use xlink:href="#icon-lang-select"></use></svg>
-        <div class="left eng">Eng<span> / </span></div>
-        <div class="right hun lang-selected">Hun</div>
+        <div class="left eng '.($_SESSION['helper']->getLang() == "en" ? 'lang-selected' : '') .'">Eng<span> / </span></div>
+        <div class="right hun '.($_SESSION['helper']->getLang() == "hu" ? 'lang-selected' : '') .'">Hun</div>
     </div>
 </nav>
 
@@ -220,8 +220,8 @@ class Application{
             <div class="nav-info right" ><a href="#footer"><span>Info</span><svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg></a></div>
             <div class="langselect-container clearfix">
                 <svg class="icon icon-lang-select langselect right"><use xlink:href="#icon-lang-select"></use></svg>
-                <div class="left eng">Eng<span> / </span></div>
-                <div class="right hun lang-selected">Hun</div>
+                <div class="left eng '.($_SESSION['helper']->getLang() == "en" ? 'lang-selected' : '') .'">Eng<span> / </span></div>
+                <div class="right hun '.($_SESSION['helper']->getLang() == "hu" ? 'lang-selected' : '') .'">Hun</div>
             </div>
         </header>
       <ul>
@@ -462,6 +462,15 @@ class Application{
     				
     				$(".tag-label.tag-'.$_SESSION['helper']->getPage().'").trigger("click");
     		
+    				$(".langselect-container div").click(function(){
+    					data = {
+    						request: "switchLanguage",
+    						lang: $(this).text().substring(0, 2).toLowerCase()
+    					};
+    					$.post("requestHandler.php", data, function(resp){
+    						location.reload();
+    					});
+    				});
     			});	
     		</script>
         		</body>

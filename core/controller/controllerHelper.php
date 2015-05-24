@@ -15,10 +15,10 @@ class Helper{
     
     public function mapSessionVariable($varName, $defaultValue){
     	$value = $defaultValue;
-    	/*if (isset($_SESSION['pref'][$varName])){
+    	if (isset($_SESSION['pref'][$varName])){
     		$value = $_SESSION['pref'][$varName];
     	}
-    	*/
+    	
     	return $value;
     }
     
@@ -36,6 +36,7 @@ class Helper{
     
     public function registerValue($param, $value){
     	if (in_array($param, $this->validParams)){
+    		$_SESSION['pref'][$param] = $value;
     		$this->parameters[$param] = $value;
     	}    	    	
     }

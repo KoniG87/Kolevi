@@ -136,6 +136,12 @@ if (isset($_POST['request'])){
 			$image->insertImageRef();
 		
 			break;
+			
+		case 'switchLanguage':
+			$_SESSION['helper']->registerValue('lang', $_POST['lang']);
+			
+			
+			break;
 		
 		default:
 			$menu = new Menu($app->getDbHandler());
