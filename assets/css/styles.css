@@ -427,7 +427,7 @@ img {
 body {
   -ms-overflow-x: hidden; }
 
-.has-sprite, .cetli {
+.has-sprite, .allergen, .cetli {
   background-repeat: no-repeat;
   background-image: url("../img/koleves_sprite.png");
   /*@include image-2x("../img/main-sprite@2x.png", 300px, 300px);*/ }
@@ -3207,6 +3207,55 @@ header {
       @media (min-width: 30em) {
         .etlap-sor td:nth-child(2) {
           width: 20%; } }
+
+.allergen {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-bottom: -7px;
+  margin-right: 0; }
+
+.alg-1 {
+  background-position: 0 0; }
+
+.alg-2 {
+  background-position: -20px 0; }
+
+.alg-3 {
+  background-position: -40px 0; }
+
+.alg-4 {
+  background-position: -60px 0; }
+
+.alg-5 {
+  background-position: -80px 0; }
+
+.alg-6 {
+  background-position: -100px 0; }
+
+.alg-7 {
+  background-position: -120px 0; }
+
+.alg-8 {
+  background-position: -140px 0; }
+
+.alg-9 {
+  background-position: -160px 0; }
+
+.alg-10 {
+  background-position: -180px 0; }
+
+.alg-11 {
+  background-position: -200px 0; }
+
+.alg-12 {
+  background-position: -220px 0; }
+
+.alg-13 {
+  background-position: -240px 0; }
+
+.alg-14 {
+  background-position: -260px 0; }
 
 .etlap-head .icon-logo_barna {
   width: 3.5rem;
