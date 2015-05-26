@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Hoszt: 127.0.0.1
--- Létrehozás ideje: 2015. Máj 21. 23:35
+-- Létrehozás ideje: 2015. Máj 27. 00:08
 -- Szerver verzió: 5.6.21
 -- PHP verzió: 5.6.3
 
@@ -74,9 +74,9 @@ CREATE TABLE IF NOT EXISTS `koleves_dolgozok` (
 `ID` int(6) NOT NULL,
   `USERNAME` varchar(40) COLLATE utf8_hungarian_ci NOT NULL,
   `NEV` varchar(70) COLLATE utf8_hungarian_ci NOT NULL,
-  `MEGJEGYZES` varchar(512) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `MEGJEGYZES` varchar(4096) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `SZULETES` date DEFAULT NULL,
-  `NEME` char(1) COLLATE utf8_hungarian_ci DEFAULT 'f',
+  `NEME` char(1) COLLATE utf8_hungarian_ci NOT NULL DEFAULT 'f',
   `KEP` varchar(100) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `TELEFON` varchar(20) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `EMAIL` varchar(100) COLLATE utf8_hungarian_ci DEFAULT NULL,
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `koleves_dolgozok` (
 --
 
 INSERT INTO `koleves_dolgozok` (`ID`, `USERNAME`, `NEV`, `MEGJEGYZES`, `SZULETES`, `NEME`, `KEP`, `TELEFON`, `EMAIL`, `JELSZAV`, `FACEBOOK`, `JOGOSULTSAG_ID`, `RENDEZVENYFELELOS`, `VENDEGLO`, `ALLAPOT`) VALUES
-(1, 'janka', 'Mosolygós Janka', 'Janka egy mosolygós kedves lány, jól dolgozk.', NULL, 'l', '', '+36 70 6383 996', 'janka@kolevesvendeglo.hu', '242f21c3e786eb437c665e833666f35304623e0cc1112ed5f0f3644b5f76cff5', 'mjanka', 9, 1, 1, 1);
+(1, 'janka', 'Mosolygós Janka', 'Janka egy mosolygós kedves lány, jól dolgozk.', NULL, 'f', 'assets/uploads/about-img.png', '+36 70 6383 996', 'janka@kolevesvendeglo.hu', '242f21c3e786eb437c665e833666f35304623e0cc1112ed5f0f3644b5f76cff5', 'mjanka', 9, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -110,41 +110,41 @@ CREATE TABLE IF NOT EXISTS `koleves_etelek` (
   `TAGEK` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
   `AR` int(6) DEFAULT NULL,
   `VISIBLE` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_etelek`
 --
 
 INSERT INTO `koleves_etelek` (`ID`, `KATEGORIA_ID`, `TEXT_HU`, `TEXT_EN`, `SORREND`, `TAGEK`, `AR`, `VISIBLE`) VALUES
-(2, 1, 'Medvehagymás brokkolikrémleves füstölt fürjtojással', 'Broccolisoup with hot smokin eggs of delight', 2, 'GM, V', 890, 1),
-(3, 1, 'Palócgulyás borjúból', 'Palocgulyas with da beef', 3, 'GM', 1180, 1),
-(4, 2, 'Avokádósaláta, szárított paradicsom, mandarin, mandula, kéksajt', 'Macesz-ball soup', 1, 'GM, V', 1550, 1),
-(5, 2, 'Füstölt tokhal, tökmagolajos saláta', 'Broccolisoup with hot smokin eggs of delight', 2, 'GM, TM', 1450, 1),
-(6, 2, 'Szarvasgerinc, vargányás polenta, barnamártás', 'Palocgulyas with da beef', 3, ' ', 1890, 1),
-(7, 3, 'Körtés-tejszínes tagliatelle ginnel, gorgonzolával', 'Macesz-ball soup', 1, 'V', 2150, 1),
-(8, 3, 'Muszaka adzuki babbal, fekete lencsével', 'Broccolisoup with hot smokin eggs of delight', 2, 'V, TM', 2050, 1),
-(9, 3, 'Grillezett brie sajt, sült alma, céklás vöröslencse saláta', 'Palocgulyas with da beef', 3, 'GM, V', 2350, 1),
-(10, 4, 'Maceszflódni', 'Macesz-ball soup', 1, 'TM', 950, 1),
-(11, 4, 'Pisztáciás tiramisu', 'Broccolisoup with hot smokin eggs of delight', 2, ' ', 960, 1),
-(12, 4, 'New York sajttorta', 'Palocgulyas with da beef', 3, ' ', 990, 1),
-(13, 1, 'Maceszgombócleves', '', 1, 'TM', 890, 1),
-(14, 1, 'Skandináv rákleves', '', 4, 'GM', 1180, 1),
-(15, 2, 'Tapas (füstölt libamell, bresaola, borjúsűlt, tárkonyos lazac, medvehagymás retek, kecskesajt, angol mustáros öntet)', '', 4, ' ', 2400, 1),
-(16, 2, 'Vegetáriánus Tapas (taleggio sajt, chilis pecorino, olajbogyó, kecskesajttal töltött kápiapaprika, piros pesztó)', '', 5, 'V', 2100, 1),
-(17, 3, 'Gombás-spenótos rétes zöld pesztóval, sütőtökös salátával', '', 4, 'V', 2450, 1),
-(18, 3, 'Wokban pirított zöldségek, kesudió és jázmin rizs', '', 5, 'TM, V', 2090, 1),
-(19, 3, 'Tanyasi csirkemell, avokádósaláta, szárított paradicsom, mandarin, kéksajt', '', 6, 'GM', 2980, 1),
-(20, 3, 'Vadas házinyúl, zsemlegombóc', '', 7, ' ', 3150, 1),
-(21, 3, 'Magyar báránysült, laskagomba, prósza, kefires fejes saláta', '', 8, ' ', 4750, 1),
-(22, 3, 'Ribeye steak, tormás krumpli és céklás káposztasaláta', '', 9, 'GM', 4650, 1),
-(23, 3, 'Csodaszarvas steak, vargányás polenta, barnamártás', '', 10, ' ', 4250, 1),
-(24, 3, 'Egészben sült pisztráng, sült édeskömény, gratin krumpli', '', 11, 'GM', 4350, 1),
-(25, 3, 'Konfitált libacomb, hagymás törtkrumpli és aszalt gyümölcsös párolt káposzta', '', 12, 'GM, TM', 3280, 1),
-(26, 3, 'Sólet libacombbal vagy tojással (pénteken, szombaton, vasárnap)', '', 13, 'TM', 3080, 1),
-(27, 3, 'Wokban pirított kacsamell, zöldségek, kesudió és jázmin rizs', '', 14, 'TM', 2980, 1),
-(28, 3, 'Roston kacsamell, chilis-datolyás sült zeller', '', 15, 'TM', 3280, 1),
-(29, 4, 'Csokoládés karobtorta, fagylalt', '', 4, 'GM', 980, 1);
+(2, 1, 'Medvehagymás brokkolikrémleves füstölt fürjtojással', 'Broccolisoup with hot smokin eggs of delight', 2, '1,4,5,6,9', 890, 1),
+(3, 1, 'Palócgulyás borjúból', 'Palocgulyas with da beef', 3, '1,2,10,11,1,3,10', 1, 1),
+(4, 2, 'Avokádósaláta, szárított paradicsom, mandarin, mandula, kéksajt', 'Macesz-ball soup', 1, '1,3,6', 1550, 1),
+(5, 2, 'Füstölt tokhal, tökmagolajos saláta', 'Broccolisoup with hot smokin eggs of delight', 2, '2,8', 1450, 1),
+(6, 2, 'Szarvasgerinc, vargányás polenta, barnamártás', 'Palocgulyas with da beef', 3, '8,12', 1890, 1),
+(7, 3, 'Körtés-tejszínes tagliatelle ginnel, gorgonzolával', 'Macesz-ball soup', 1, '7,8,10', 2150, 1),
+(8, 3, 'Muszaka adzuki babbal, fekete lencsével', 'Broccolisoup with hot smokin eggs of delight', 2, '2,4,5,10', 2050, 1),
+(9, 3, 'Grillezett brie sajt, sült alma, céklás vöröslencse saláta', 'Palocgulyas with da beef', 3, '1,3,6', 2350, 1),
+(10, 4, 'Maceszflódni', 'Macesz-ball soup', 1, '2,3,10', 950, 1),
+(11, 4, 'Pisztáciás tiramisu', 'Broccolisoup with hot smokin eggs of delight', 2, '5,6', 960, 1),
+(12, 4, 'New York sajttorta', 'Palocgulyas with da beef', 3, '5,6', 990, 1),
+(13, 1, 'Maceszgombócleves', '', 1, '1,3,10', 890, 1),
+(14, 1, 'Skandináv rákleves', 'Scandinavian lobstersoup', 4, '4,9,13', 1180, 1),
+(15, 2, 'Tapas (füstölt libamell, bresaola, borjúsűlt, tárkonyos lazac, medvehagymás retek, kecskesajt, angol mustáros öntet)', '', 4, '5,6', 2400, 1),
+(16, 2, 'Vegetáriánus Tapas (taleggio sajt, chilis pecorino, olajbogyó, kecskesajttal töltött kápiapaprika, piros pesztó)', '', 5, '7,8,10', 2100, 1),
+(17, 3, 'Gombás-spenótos rétes zöld pesztóval, sütőtökös salátával', '', 4, '7,8,10', 2450, 1),
+(18, 3, 'Wokban pirított zöldségek, kesudió és jázmin rizs', '', 5, '1,14', 2090, 1),
+(19, 3, 'Tanyasi csirkemell, avokádósaláta, szárított paradicsom, mandarin, kéksajt', '', 6, '4,9,13', 2980, 1),
+(20, 3, 'Vadas házinyúl, zsemlegombóc', '', 7, '5,6', 3150, 1),
+(21, 3, 'Magyar báránysült, laskagomba, prósza, kefires fejes saláta', '', 8, '5,6', 4750, 1),
+(22, 3, 'Ribeye steak, tormás krumpli és céklás káposztasaláta', '', 9, '4,9,13', 4650, 1),
+(23, 3, 'Csodaszarvas steak, vargányás polenta, barnamártás', '', 10, '5,6', 4250, 1),
+(24, 3, 'Egészben sült pisztráng, sült édeskömény, gratin krumpli', '', 11, '4,9,13', 4350, 1),
+(25, 3, 'Konfitált libacomb, hagymás törtkrumpli és aszalt gyümölcsös párolt káposzta', '', 12, '2,8', 3280, 1),
+(26, 3, 'Sólet libacombbal vagy tojással (pénteken, szombaton, vasárnap)', '', 13, '2,3,10', 3080, 1),
+(27, 3, 'Wokban pirított kacsamell, zöldségek, kesudió és jázmin rizs', '', 14, '2,3,10', 2980, 1),
+(28, 3, 'Roston kacsamell, chilis-datolyás sült zeller', '', 15, '2,3,10', 3280, 1),
+(29, 4, 'Csokoládés karobtorta, fagylalt', '', 4, '4,9,13', 980, 1);
 
 -- --------------------------------------------------------
 
@@ -401,7 +401,7 @@ CREATE TABLE IF NOT EXISTS `koleves_napimenuk` (
   `TEXT_HU` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
   `TEXT_EN` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
   `TAGEK` varchar(15) COLLATE utf8_hungarian_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_napimenuk`
@@ -459,10 +459,7 @@ INSERT INTO `koleves_napimenuk` (`ID`, `IDOSZAK_ID`, `NAPAZON`, `FOGASAZON`, `TE
 (55, 6, 1, 3, 'Rántott sajt áfonyalekvárral', '', 'V'),
 (57, 6, 2, 1, 'Something soup', '', 'TM'),
 (58, 6, 2, 3, 'Uj csupacsokidesszert', '', 'V'),
-(65, 7, 1, 1, 'Leves', '', 'TM'),
-(70, 7, 1, 2, 'Második', '', 'V'),
-(71, 7, 1, 3, 'Harmadik', '', 'GM'),
-(72, 8, 1, 1, 'Hétfői leves', '', 'V');
+(59, 7, 1, 1, 'Tedd oda', 'Pambam Soup', 'V');
 
 -- --------------------------------------------------------
 
@@ -474,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `koleves_napimenu_idoszakok` (
 `ID` int(6) NOT NULL,
   `EV` int(4) DEFAULT NULL,
   `HET` int(2) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_napimenu_idoszakok`
@@ -485,8 +482,7 @@ INSERT INTO `koleves_napimenu_idoszakok` (`ID`, `EV`, `HET`) VALUES
 (2, 2015, 16),
 (5, 2015, 17),
 (6, 2015, 18),
-(7, 2015, 20),
-(8, 2015, 22);
+(7, 2015, 21);
 
 -- --------------------------------------------------------
 
@@ -539,7 +535,7 @@ CREATE TABLE IF NOT EXISTS `koleves_rendezvenyek` (
 --
 
 INSERT INTO `koleves_rendezvenyek` (`ID`, `TEXT_HU`, `LEIRAS_HU`, `TEXT_EN`, `LEIRAS_EN`, `SORREND`, `ALLAPOT`) VALUES
-(1, 'Esküvő az emeleten', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi quaerat at, perspiciatis assumenda veritatis. Blanditiis natus facilis placeat aliquam.', NULL, NULL, 1, 1);
+(1, 'Esküvő az emeleten', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi quaerat at, perspiciatis assumenda veritatis. Blanditiis natus facilis placeat aliquam.', 'Wedding UpStairs', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi quaerat at, perspiciatis assumenda veritatis. Blanditiis natus facilis placeat aliquam.', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -559,13 +555,13 @@ CREATE TABLE IF NOT EXISTS `koleves_statikus` (
 --
 
 INSERT INTO `koleves_statikus` (`ID`, `LABEL`, `TEXT_HU`, `TEXT_EN`) VALUES
-(1, 'CETLI1', 'Csirkepaprikás nokedlivel', 'English Lorem ipsum dolor.'),
-(2, 'CETLI2', 'házi káposztasalátával', 'English Lorem ipsum dolor.'),
-(3, 'CETLI3', '1950', 'English Lorem ipsum dolor.'),
+(1, 'CETLI1', 'Csirkepaprikás nokedlivel', 'Chickenpaprika stew with'),
+(2, 'CETLI2', 'házi káposztasalátával', 'noodles and homemade cabbagesalad'),
+(3, 'CETLI3', '1950', '1950'),
 (4, 'DEARGUESTS', 'Kedves Vendégeink!', 'Dear Guests!'),
 (5, 'NAPIMENU_TEXT', 'Vegetáriánus és húsos menünk van hétköznaponként 1.000 Ft és 1.250 Ft-os áron, ami mellé szörpöt is adunk. Siessetek, mert ½ 12-től van ebéd és 60-70 adagot készítünk, ezért van, hogy ½ 1-re elfogy.', 'We''ll be adding some further information here.'),
 (6, 'NAPIMENU_LEGEND', 'GM = gluténmentes TM = tejtermék mentes V = vegetáriánus', 'GM = gluten-free TM = lactose-free V = vegetarian'),
-(7, 'FOGLALAS_LEIRAS', '<p>Ezen a helyen csak a Kőleves Vendéglőbe tudsz asztalt foglalni maximum 7 főre,ha többen jönnétek, kérlek telefonáljatok.</p><p>Ha jó idő van, akkor talán a teraszon is ülhetsz, ha ott szeretnél asztalt, kérlek írd meg a megjegyzésbe. Foglalásod csak akkor érvényes, ha visszaigazoljuk e-mailben vagy telefonon.</p>&nbsp;<p>Ha nagyobb rendezvényt szeretnél, kérlek telefonálj nekünk. +3620 213 5999, +361 322 1011</p><p>A Kőleves Kert, ami egy különálló kocsma, külön grill konyhával, nem tévesztendő össze a vendéglővel, de ha oda szeretnél foglalni, próbáld meg a vendéglőt hívni. Oda csak 10 fő fölött és csak este 7-ig áll módunkban tartani az asztalt.', 'We''ll be adding some further information here.</p>'),
+(7, 'FOGLALAS_LEIRAS', '<p>Ezen a helyen csak a Kőleves Vendéglőbe tudsz asztalt foglalni maximum 7 főre,ha többen jönnétek, kérlek telefonáljatok.</p><p>Ha jó idő van, akkor talán a teraszon is ülhetsz, ha ott szeretnél asztalt, kérlek írd meg a megjegyzésbe. Foglalásod csak akkor érvényes, ha visszaigazoljuk e-mailben vagy telefonon.</p>&nbsp;<p>Ha nagyobb rendezvényt szeretnél, kérlek telefonálj nekünk. +3620 213 5999, +361 322 1011</p><p>A Kőleves Kert, ami egy különálló kocsma, külön grill konyhával, nem tévesztendő össze a vendéglővel, de ha oda szeretnél foglalni, próbáld meg a vendéglőt hívni. Oda csak 10 fő fölött és csak este 7-ig áll módunkban tartani az asztalt.</p><p>Késés esetén az asztalfoglalást 20 percig tartjuk, ha mégis lemondanád a foglalást, kérlek telefonálj nekünk.</p>', '<p>We''ll be adding some further information here.</p>'),
 (8, 'RENDEZVENY', '<p>A földszinti vendégtérből nyílik az általunk "VIP" teremnek nevezett kisterem, ahol maximum 13 fő fér el. Zártkörű ebédekhez, vacsorákhoz vagy megbeszélésekhez ajánljuk.</p><p>Az épület hátsó részében található az "Elefántos" terem, ahol maximum 25 fő fér el ültetve, ha nem feltétlenül szeretne mindenki leülni, akkor 40 ember is befér. Ezt a termet zártkörű ebédekhez, vacsorákhoz, megbeszélésekhez, osztálytalálkozókhoz, tréningekhez, workshopokhoz, stb. ajánljuk. Ennek a teremnek van egy külön pultja is, projektora és néhány kényelmes fotelje is.</p><p>Az emeleti különterem a legnagyobb külön helyiségünk. Ültetve 70-75 ember fér el benne, állva 120-150-en is akár. Ehhez a teremhez tartozik egy külön bárpult és egy dohányzó terasz is. Amit biztosítani tudunk: erősítő, keverőpult, hangfalak, mikrofonok, projektor, vetítővászon, flipchart tábla. Mindenféle zártkörű rendezvényekhez ajánljuk, például ebédekhez, vacsorákhoz, esküvőkhöz, születésnapokhoz, előadások, tréningek, stb.</p><p>Ezen kívül a kertbe is felveszünk nagyobb foglalásokat és arra is van lehetőség, hogy az egész vendéglőt kivedd.</p>', 'We''ll be adding some further information here.</p>'),
 (9, 'SZERVEZO', 'Szia!<br/>Amenyiben szeretnél rendezvényt hozni a Levesbe keress bátran!', 'Hi!For any info regarding events, just give me a ring!'),
 (10, 'VENDEGLO', 'A Kőleves 10 éves vendéglő. Imola és Kápszi ültünk egy rémséges vasút-állomáson 1995 körül és elhatároztuk, hogy nyitunk egy vendéglőt. Azt hiszem ez kb. 10 évvel később, de megvalósult 2005-ben. Ez a tíz év beszélgetés a vendéglőről elég volt ahhoz, hogy pontosan tudjuk mit akarunk és lássuk, hogy ugyanazt, ez azóta is töretlenül működik köztünk. Persze nem magától ment minden, hanem sok kölcsön pénzből, amivel az elején nehéz volt küzdenünk. Először a Dob-Kazinczy sarkán nyitottuk meg a Kőlevest, ahol 8 évig üzemeltünk egyre sikeresebben. Itt sikerült egysmást tanulnunk erről a szakmáról, hiszen egyikünk sem volt vendéglátós azelőtt, mégpedig főleg azt, hogy ha magunkat adjuk és beletesszük az energiáinkat, őszinték vagyunk, és figyelünk, akkor ezt a közönségünk is megérzi, és elérjük a sikert. A Kazinczy 41-be három éve költöztünk, ami már egy ötször akkora hely és itt megvalósulhatott minden álmunk, amit egy konyháról képzeltünk. Kidobhattuk a micro sütőt és mindent magunk tudunk elkészíteni, ami lekvár, szósz, pesto, öntet, vagy bármi hozzávaló és eredeti ízt kíván. Útközben még megnyitottuk a Kőleves kertet 7 évvel ezelőtt, hogy nyáron is lehessen könnyű grill konyhával a szabadban enni-inni. Azután 4 éve elkészült a Mika Tivadar Mulató, majd egy évvel később, a hozzá tartozó kert is.', 'We''ll be providing further description here.'),
@@ -603,7 +599,7 @@ INSERT INTO `koleves_szobak` (`ID`, `TEXT_HU`, `TEXT_EN`, `LEIRAS_HU`, `LEIRAS_E
 
 CREATE TABLE IF NOT EXISTS `koleves_szoba_reviewek` (
   `ID` int(6) NOT NULL,
-  `SZOBA_ID` int(4) NOT NULL,
+  `SZOBA_ID` int(5) NOT NULL,
   `CIM` varchar(128) COLLATE utf8_hungarian_ci NOT NULL,
   `NEV` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `LEIRAS` varchar(512) COLLATE utf8_hungarian_ci DEFAULT NULL,
@@ -743,7 +739,7 @@ MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `koleves_etelek`
 --
 ALTER TABLE `koleves_etelek`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `koleves_etelkategoriak`
 --
@@ -788,12 +784,12 @@ MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 -- AUTO_INCREMENT for table `koleves_napimenuk`
 --
 ALTER TABLE `koleves_napimenuk`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT for table `koleves_napimenu_idoszakok`
 --
 ALTER TABLE `koleves_napimenu_idoszakok`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `koleves_programok`
 --

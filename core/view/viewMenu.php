@@ -133,8 +133,35 @@ class MenuView extends BaseView{
 				<tr>
 					<td>Ételjelölők</td>
 					<td>
-						<input type="text" maxlength="20" title="Jelölők" name="tagek" value="" required/>
+						<!--<input type="text" maxlength="20" title="Jelölők" name="tagek" value="" required/>
 						<span class="tooltip">Jelölők, max. 20 karakter</span>
+						-->
+				';
+		
+		
+		
+		$allergenTipusok = array(
+			1 => 'Csillagfürt',
+			2 => 'Diófélék',	
+			3 => 'Földimogyi',
+			4 => 'Glutén',
+			5 => 'Hal',
+			6 => 'Mustár',
+			7 => 'Puhatestűek',
+			8 => 'Rákfélék',
+			9 => 'Szezámmag',
+			10 => 'Szójabab',
+			11 => 'Szulfitok',
+			12 => 'Tej',
+			13 => 'Tojás',
+			14 => 'Zeller'				
+		);
+		
+		for ($allergenCounter = 1; $allergenCounter <= 14; $allergenCounter++){
+			echo '<span data-val="'.$allergenCounter.'" title="'.$allergenTipusok[$allergenCounter].'" class="allergen allergenSelector alg-'.$allergenCounter.'"></span>';
+		}
+		
+		echo '
 					</td>
 				</tr>
 				<tr>
@@ -191,7 +218,15 @@ class MenuView extends BaseView{
 			foreach ($kategoriaAdat['etelek'] AS $etelAdat){
 				echo '<tr data-id="'.$etelAdat['id'].'">
 						<td>'.$etelAdat['MEGNEVEZES'].'</td>
-						<td>'.$etelAdat['TAGEK'].'</td>
+						<td data-val="'.$etelAdat['TAGEK'].'">';
+
+				$megadottAllergenek = explode(',', $etelAdat['TAGEK']);
+				foreach ($megadottAllergenek AS $allergenSzam){
+					echo '<span data-val="'.$allergenSzam.'" title="'.$allergenTipusok[$allergenSzam].'" class="allergen alg-'.$allergenSzam.'"></span>';
+				}
+					
+								
+				echo '</td>
 						<td>'.$etelAdat['AR'].'</td>
 						<td><button class="editEtel">Szerkesztés</button></td>
 						<td><button class="deleteEtel">Törlés</button></td>
