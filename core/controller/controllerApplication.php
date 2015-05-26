@@ -363,8 +363,19 @@ class Application{
             <p>Google Plus</p>
         </div>
     </a>
-    
+    <a href="https://foursquare.com/v/k%C5%91leves-vend%C3%A9gl%C5%91/4b75b6abf964a520101f2ee3" target="_blank">
+        <div class="social-link">
+            <svg class="icon icon-foursquare-original left"><use xlink:href="#icon-foursquare-original"></use></svg>
+            
+            <p>Four Square</p>
+        </div>
+    </a>
         <div class="social-link share-trigger">
+
+            <div class="share-popup">
+                <a href="http://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/Koleves?ref=ts&fref=ts" target="_blank" class="share-button share-fb"><svg class="icon icon-facebook-original"><use xlink:href="#icon-facebook-original"></use></svg></a>
+                <a href="http://plus.google.com/share?url=https://plus.google.com/118370404699522430705/posts" target="_blank" class="share-button share-g"><svg class="icon icon-google-original"><use xlink:href="#icon-google-original"></use></svg></a>
+            </div>
             <svg class="icon icon-share-original left"><use xlink:href="#icon-share-original"></use></svg>
             
             <p>Share</p>

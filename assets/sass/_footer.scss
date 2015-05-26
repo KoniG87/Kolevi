@@ -153,12 +153,12 @@ footer{
 		@extend .left;
 		cursor:pointer;
 		@include breakpoint(mobile){
-			width: 25%;
+			width: 20%;
 		}
-		svg{
+		>svg{
 			width: 100%;
 			padding: 1.4rem;
-			height: 5rem;
+			height: 7rem;
 			display: block;
 		}
 		p{
@@ -190,6 +190,62 @@ footer{
 	&:hover{
 		
 	}
+}
+.icon-foursquare-original{
+	color:#fa4778;
+	&:hover{
+		
+	}
+}
+
+.share-trigger{
+	position:relative;
+}
+.share-popup{
+	width:6rem;
+	height:3rem;
+	position:absolute;
+	margin:auto;
+	background:#ddd;
+	left:0;
+	right: 0;
+	top:-3rem;
+	display:none;
+	&:after{
+		content: '';
+		position: absolute;
+		border: 1px solid #ddd;
+		border-color: #ddd transparent;
+		border-width: 14px 14px 0 14px;
+		bottom: -14px;
+		left: 50%;
+		margin-left: -14px;
+	}
+	a{
+		float: left;
+		width: 3rem;
+		height: 3rem;
+		color:$white;
+	}
+}
+.share-fb{
+	background:#36609F;
+	svg{
+		color:$white;
+		width: 2rem;
+		height: 2rem;
+		margin:0.5rem;
+	}
+}
+.share-g{
+	background:#DB5442;
+	svg{
+		color:$white;
+		width: 2rem;
+		height: 2rem;
+		margin:0.5rem;
+	}
+
 }
 
 .copyright{

@@ -1378,12 +1378,19 @@ $(".share-button").click(function(event){
     window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,' + window_size);
   });
   
-$(".share-trigger").on("click",function(){
+$(".share-trigger").on("click",function(event){
+  event.stopPropagation();
+  $(this).find(".share-popup").velocity("transition.slideUpIn", 1000);
+
 
 });
 
-
-
+$(".share-popup").on("click",function(event){
+ event.stopPropagation();
+});
+$(document).on("click",function(){
+ $(".share-popup").velocity("transition.slideDownOut", 600);
+});
 
 //  VENDÉGLŐ CKKEK REFRESH
 
