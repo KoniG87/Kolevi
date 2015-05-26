@@ -2558,6 +2558,11 @@ footer {
         .f-contact .rend-ikon svg {
           width: 4rem;
           height: 3rem; } }
+    .f-contact .rend-ikon a {
+      text-decoration: none;
+      color: #999; }
+      .f-contact .rend-ikon a:hover {
+        color: #000; }
 
 .diszvonal-vert {
   display: none;
@@ -2633,15 +2638,20 @@ footer {
       width: 38%; } }
   .socials .social-link {
     color: #000;
-    width: 33.33%;
-    cursor: pointer; }
+    width: 100%;
+    cursor: pointer;
+    /*480px*/ }
+    @media (min-width: 30em) {
+      .socials .social-link {
+        width: 25%; } }
     .socials .social-link svg {
       width: 100%;
       padding: 1.4rem;
-      height: 7rem;
+      height: 5rem;
       display: block; }
     .socials .social-link p {
-      text-align: center; }
+      text-align: center;
+      font-size: 60%; }
 
 .icon-facebook-original {
   color: #3b5998; }
@@ -2651,6 +2661,9 @@ footer {
 
 .icon-google-original {
   color: #db4a39; }
+
+.icon-share-original {
+  color: #6eaf22; }
 
 .copyright {
   position: relative;

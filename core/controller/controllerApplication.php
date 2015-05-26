@@ -288,6 +288,7 @@ class Application{
 			<div class="rend-ikon"><svg class="icon icon-phone"><use xlink:href="#icon-phone"></use></svg>+36 20 2135 999, &nbsp;  + 36 1 322 1011</div>
 			<div class="rend-ikon" style="text-transform:lowercase;"><svg class="icon icon-mail"><use xlink:href="#icon-mail"></use></svg>asztalfoglalas@koleves.com, &nbsp; reservation@koleves.com,  &nbsp;info@koleves.com</div>
 			<div class="rend-ikon"><svg class="icon icon-map"><use xlink:href="#icon-map"></use></svg>kazinczy utca 41., budapest, hungary, 1075</div>
+            <div class="rend-ikon"><svg class="icon icon-epitesz"><use xlink:href="#icon-epitesz"></use></svg>belső építész: <a href="mailto:langer.vera@gmail.com?Subject=Hello%20again" target="_top">Langer Vera</a></div>
 		</div>
 		<div class="f-nyitvatartas right">
 		      <div class="diszvonal-vert left"></div>
@@ -340,26 +341,35 @@ class Application{
             <div class="diszvonal-vert" style="right:0;"></div>
 		</div>
 		<div class="socials right clearfix">
-	<div class="social-link">
-		<svg class="icon icon-facebook-original left facebook-share"><use xlink:href="#icon-facebook-original"></use></svg>
-		<p class="facebook-count"></p>
-        <p>Facebook</p>
-	</div>
+<a href="https://www.facebook.com/Koleves?fref=ts" target="_blank">
+    <div class="social-link">
+        <svg class="icon icon-facebook-original left facebook-share"><use xlink:href="#icon-facebook-original"></use></svg>
+        
+            <p>Facebook</p>
+    </div>
+    </a>
 
 <a target="_blank" href="http://www.tripadvisor.co.hu/Restaurant_Review-g274887-d797853-Reviews-Koleves-Budapest_Central_Hungary.html">
 	<div class="social-link">
 		<svg class="icon icon-trip-original left"><use xlink:href="#icon-trip-original"></use></svg>
-		<p>'.$socNumbers['tripadvisor'].'</p>
+		
         <p>TripAdvisor</p>
 	</div>
 </a>
-
-	<div class="social-link">
-		<svg class="icon icon-google-original left gplus-share"><use xlink:href="#icon-google-original"></use></svg>
-		<p class="gplus-count"></p>
-        <p>GooglePlus</p>
-	</div>
-
+    <a href="https://plus.google.com/118370404699522430705/posts" target="_blank">
+        <div class="social-link">
+            <svg class="icon icon-google-original left gplus-share"><use xlink:href="#icon-google-original"></use></svg>
+            
+            <p>Google Plus</p>
+        </div>
+    </a>
+    
+        <div class="social-link share-trigger">
+            <svg class="icon icon-share-original left"><use xlink:href="#icon-share-original"></use></svg>
+            
+            <p>Share</p>
+        </div>
+    
 		</div>
 	</div>
 	<div class="diszvonal"></div>
@@ -390,7 +400,9 @@ class Application{
           </div>
         </script>';
     }
-    
+   /* <p>'.$socNumbers['tripadvisor'].'</p>
+   <p class="gplus-count"></p>
+   <p class="facebook-count"></p>*/
     
     public function drawPageClosure($subPage){
     	echo '

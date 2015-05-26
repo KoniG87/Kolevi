@@ -53,6 +53,13 @@ footer{
 
 				}
 			}
+			a{
+				text-decoration: none;
+				color:$darkgray;
+				&:hover{
+					color:$black;
+				}
+			}
 
 		
 	}
@@ -142,17 +149,21 @@ footer{
 }
 	.social-link{
 		color:$black;
-		width: 33.33%;
+		width: 100%;
 		@extend .left;
 		cursor:pointer;
+		@include breakpoint(mobile){
+			width: 25%;
+		}
 		svg{
 			width: 100%;
 			padding: 1.4rem;
-			height: 7rem;
+			height: 5rem;
 			display: block;
 		}
 		p{
 			text-align: center;
+			font-size: 60%;
 		}
 	}
 }
@@ -174,7 +185,12 @@ footer{
 		
 	}
 }
-
+.icon-share-original{
+	color:#6eaf22;
+	&:hover{
+		
+	}
+}
 
 .copyright{
 	position: relative;
