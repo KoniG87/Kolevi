@@ -480,9 +480,9 @@ public function drawKertEtlap($elements){
     
     
     public function drawCetli($elements){
-    	echo '<div class="spec-ajanlat">
-
-                                <svg class="csipesz icon icon-csipesz"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-csipesz"></use></svg>
+    	for ($i = 1; $i<= 3; $i++){
+    	echo '<div class="spec-ajanlat cetli-'.$i.'">
+                            <svg class="csipesz icon icon-csipesz"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-csipesz"></use></svg>
 
                                 <div class="cetli">
                                 <h3>Külön ajánlat</h3>';
@@ -493,6 +493,7 @@ public function drawKertEtlap($elements){
                                     
         echo '</div>
             </div>';
+    	}
     }
     
 }
