@@ -427,7 +427,7 @@ img {
 body {
   -ms-overflow-x: hidden; }
 
-.has-sprite, .allergen, .cetli {
+.has-sprite, .allergen, .cetli, .review-img {
   background-repeat: no-repeat;
   background-image: url("../img/koleves_sprite.png");
   /*@include image-2x("../img/main-sprite@2x.png", 300px, 300px);*/ }
@@ -1817,7 +1817,7 @@ body.pace-done #wrapper {
     width: 60px;
     height: 30px;
     background-image: url(../img/loader.png);
-    right: -90px;
+    right: 0;
     top: -20px;
     background-size: cover; }
   .pace .pace-progress:after {
@@ -5579,9 +5579,9 @@ section {
 .review-img {
   width: 150px;
   height: 150px;
-  background-image: url(../img/gender-switch.png);
-  background-repeat: no-repeat;
-  background-position: 0 0;
+  /* 	background-image:url(../img/gender-switch.png);
+  	background-repeat:no-repeat; */
+  background-position: -330px -356px;
   margin: 0 auto;
   margin-bottom: 1rem;
   position: relative;

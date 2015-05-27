@@ -221,13 +221,7 @@ class ApartmanView extends BaseView{
     	<form action="">
     	<div class="three columns">
     	<div class="review-img">
-    	<div class="gender-switch">
-    	<input type="radio" name="gender" id="male" checked="true">
-    	<label for="male">M</label>
-        <span>/</span>
-    	<input type="radio" name="gender" id="female">
-    	<label style="margin-left:-8px;" for="female">F</label>
-    	</div>
+
     	</div>
     	<input type="text" placeholder="Név">
     	</div>

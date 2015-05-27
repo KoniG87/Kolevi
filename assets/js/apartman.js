@@ -158,14 +158,14 @@ $(".add-review input[type=\"submit\"]").Svgenerate({
 });
 
 /*gender switch*/
-$(".gender-switch").on("click",function(){
+/*$(".gender-switch").on("click",function(){
 	if($("#male").is(":checked")){
 		$(this).parent().velocity({backgroundPositionX: 0});
 	}
 	else if($("#female").is(":checked")){
 		$(this).parent().velocity({backgroundPositionX: -150});
 	}
-});
+});*/
 
 
 
