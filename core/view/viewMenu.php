@@ -504,7 +504,9 @@ public function drawKertEtlap($elements){
      }
      
      echo '
+     <a class="dl-pdf dl-pdf-itallap" target="_blank" href="requestHandler.php"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
        </div> 
+
                     </div>
                 </section>';
      

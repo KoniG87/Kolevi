@@ -3500,6 +3500,23 @@ header {
     width: inherit;
     height: inherit; }
 
+.dl-pdf-itallap {
+  /*400px*/
+  /*800px*/ }
+  @media (min-width: 25em) {
+    .dl-pdf-itallap {
+      float: none; } }
+  @media (min-width: 50em) {
+    .dl-pdf-itallap {
+      margin-top: 0;
+      padding-top: 0;
+      height: 140px;
+      float: left;
+      margin: 3rem; } }
+  .dl-pdf-itallap .icon-letoltes {
+    width: 100px;
+    height: 100px; }
+
 /* itallap: */
 .itallap {
   overflow: hidden;

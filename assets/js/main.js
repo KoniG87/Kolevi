@@ -61,10 +61,8 @@ function engPopup(){
 
 $(".eng").on("click",function(event){
   event.preventDefault();
-
  engPopup();
  $('.eng-popup-box').velocity("transition.slideUpIn", 1000);
-   return false;
 });
 
 

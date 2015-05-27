@@ -335,7 +335,22 @@ background-position: -260px 0;
 		height: inherit;
 	}
  }
-
+.dl-pdf-itallap{
+	@include breakpoint(moblet){
+		float:none;
+	}
+	@include breakpoint(tablet){
+		margin-top: 0;
+		padding-top:0;
+		height: 140px;
+		float: left;
+		margin:3rem;
+	}
+	.icon-letoltes{
+		width: 100px;
+		height: 100px;	
+	}
+}
 /* itallap: */
 .itallap{
 	overflow: hidden;
