@@ -13,6 +13,66 @@ function refreshWaypoints(){
  }
 */
 
+/* langselect english kamu */
+
+
+function engPopup(){
+  
+  var engPopupBox = $('<div/>').addClass('eng-popup-box').html("<p>The english version of the site is comming soon! ...But you can</p><a target='_blank' href='requestHandler.php'><svg class='icon icon-letoltes'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#icon-letoltes'></use></svg>Download the menu here</a>");
+  $(".eng").append(engPopupBox);
+  $('.eng-popup-box').css({
+      width:200,
+      height:200,
+      backgroundColor:'#ddd',
+      position: 'absolute',
+      top:0,
+      left:-100,
+      zIndex: 99999,
+      color:'#000',
+      padding: 16,
+      display:'none',
+      fontSize:'120%',
+      boxShadow: '0 0 10px rgba(0,0,0,.2)'
+    }).on("click",function(event){
+    event.stopPropagation();
+  });
+    $('.eng-popup-box a').css({
+      backgroundColor: '#000',
+      color: '#fff',
+      textDecoration: 'none',
+      display: 'block',
+      padding: 10,
+      paddingLeft:30,
+      position: 'relative',
+      fontSize: '90%'
+    });
+    $('.eng-popup-box svg').css({
+      position: 'absolute',
+      fontSize: 40,
+      left: -5,
+      top: 10
+    });
+
+    $(document).on("click",function(){
+      $('.eng-popup-box').velocity("transition.slideDownOut", 600);
+    });
+}
+
+
+$(".eng").on("click",function(event){
+  event.preventDefault();
+
+ engPopup();
+ $('.eng-popup-box').velocity("transition.slideUpIn", 1000);
+   return false;
+});
+
+
+
+
+
+
+
 $(document).ready(function(){
   var onDesktop = true;
 
