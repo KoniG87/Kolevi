@@ -164,12 +164,17 @@ $(".add-review input[type=\"submit\"]").Svgenerate({
 	}
 	else if($("#female").is(":checked")){
 		$(this).parent().velocity({backgroundPositionX: -150});
-	}
+	
 });*/
 
 
-
-
+/*$(".partner").each(function(){
+  $(this).Svgenerate({
+  rangeX:0.94,
+  rangeY:0.91,
+  });
+});
+*/
 
 
 

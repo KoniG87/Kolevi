@@ -2860,7 +2860,7 @@ footer {
   height: 1rem;
   right: 6.5rem;
   border-right: 1px solid #999;
-  font-family: "Daniel-Regular", sans serif;
+  font-family: "DanielBold-Regular", sans serif;
   font-size: 90%;
   /*1280px*/ }
   @media (min-width: 80em) {
@@ -3635,6 +3635,11 @@ header {
   margin-bottom: 0rem !important; }
   .open li:last-of-type {
     margin-bottom: -5px; }
+
+.vendeglo-itallap .fold-list:nth-of-type(2) {
+  border: 1px solid red; }
+  .vendeglo-itallap .fold-list:nth-of-type(2) li:nth-of-type(3) {
+    border: 1px solid aquamarine; }
 
 /*asztalfoglalás*/
 /* general style for the form */

@@ -453,7 +453,13 @@ public function drawKertEtlap($elements){
     			</noscript>
   			</div>';
      }
+     if ($helyiseg == 'vendeglo'){
+      echo '<div class="twelve columns centered itallap ital-fold vendeglo-itallap">';
+     }
+     else{
       echo '<div class="twelve columns centered itallap ital-fold">';
+     }
+      
      
      
       
