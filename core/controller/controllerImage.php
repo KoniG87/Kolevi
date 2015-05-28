@@ -52,13 +52,16 @@ class Image extends BaseObject{
         $oldWidth = imagesx( $oldImage );
         $oldHeight = imagesy( $oldImage );
         
-        //$newWidth = $width;
-        //$newHeight = floor( $oldHeight * ( $width / $oldWidth ) );
         $newWidth = $width;
         $newHeight = $height;
         
+        $sourceRectangle = $oldWidth < $oldHeight ? $oldWidth : $oldHeight;
+        $sourceX = ($oldWidth - $sourceRectangle) / 2;
+        $sourceY = ($oldHeight - $sourceRectangle) / 2;
+        
         $tmpImage = imagecreatetruecolor( $width, $height );
-        imagecopyresized( $tmpImage, $oldImage, 0, 0, $oldWidth/3, $oldHeight/3, $newWidth, $newHeight, $newWidth, $newHeight );
+
+        imagecopyresized( $tmpImage, $oldImage, 0, 0, $sourceX, $sourceY, $newWidth, $newHeight, $sourceRectangle, $sourceRectangle );
         
         if ($fileExt == 'png'){
             imagepng( $tmpImage, $destination."th_".$fileName );
