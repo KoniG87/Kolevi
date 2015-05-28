@@ -282,7 +282,9 @@ class Vendeglo extends BaseObject{
     	 
     	try{
     		$this->beginTransaction();
-    
+    		
+    		$leirasText = str_replace(array("\r\n", "\r", "\n"), "<br/>", $_POST['leiras']);
+    		
     		/*
     		 * Új sor beszúrása
     		*/
@@ -292,7 +294,7 @@ class Vendeglo extends BaseObject{
     			 
     			$queryParams = array(
     				$_POST['text'],
-    				$_POST['leiras'],
+    				$leirasText,
                     $_POST['kep'],
                     $_POST['fblink'],
                     $_POST['datum']
@@ -308,7 +310,7 @@ class Vendeglo extends BaseObject{
     
     			$queryParams = array(
     				$_POST['text'],
-    				$_POST['leiras'],
+    				$leirasText,
                     $_POST['kep'],
                     $_POST['fblink'],
                     $_POST['datum'],
@@ -333,7 +335,7 @@ class Vendeglo extends BaseObject{
     
     
     public function getHirData($allapot = 0){
-        $SQL = "SELECT id, fk_id, tipus_id, ".$_SESSION['helper']->getLangLabel('text')." AS felirat, sorrend, allapot FROM koleves_hirsav WHERE allapot <> ?;";
+        $SQL = "SELECT id, fk_id, url, tipus_id, ".$_SESSION['helper']->getLangLabel('text')." AS felirat, sorrend, allapot FROM koleves_hirsav WHERE allapot <> ?;";
     
         return $this->fetchItems($SQL, array($allapot));
     }
@@ -441,11 +443,12 @@ class Vendeglo extends BaseObject{
     		*/
     		if ($_POST['id'] == "0"){
     			 
-    			$SQL = "INSERT INTO koleves_hirsav SET tipus_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, rogzitve = ?;";
+    			$SQL = "INSERT INTO koleves_hirsav SET tipus_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, url = ?, rogzitve = ?;";
     			 
     			$queryParams = array(
     				$_POST['tipus_id'],	
                     $_POST['text'],
+    				$_POST['url'],
                     date('Y-m-d H:i:s')   					
     			);
     			 
@@ -455,11 +458,12 @@ class Vendeglo extends BaseObject{
     		 * Meglévő sor updatelése
     		 */
     		else{
-    			$SQL = "UPDATE koleves_hirsav SET tipus_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ? WHERE id = ?;";
+    			$SQL = "UPDATE koleves_hirsav SET tipus_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, url = ? WHERE id = ?;";
     
     			$queryParams = array(
     				$_POST['tipus_id'],	
                     $_POST['text'],
+    				$_POST['url'],
     				$_POST['id']
     			);
     

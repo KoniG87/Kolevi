@@ -32,7 +32,7 @@
 		</tr>
 		<tr>
 			<td><label>Leírás</label></td>
-			<td><textarea maxlength="1024" title="Leírás" type="text" name="leiras" required><?=$programData['labelDesc']?></textarea>
+			<td><textarea maxlength="1024" title="Leírás" type="text" name="leiras" required><?=str_replace(array("<br />","<br>","<br/>","<br />","&lt;br /&gt;","&lt;br/&gt;","&lt;br&gt;"), "\r\n", $programData['labelDesc'])?></textarea>
 			<span class="tooltip">Leírás, max. 1024 karakter</span></td>
 		</tr>
 		<tr>
