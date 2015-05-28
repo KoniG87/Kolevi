@@ -3586,22 +3586,6 @@ header {
         height: 60px;
         top: 16px; } }
 
-/*.fold-list:nth-child(1)>.itallap-head>span {
-	background-position: -160px 0;
-}
-.fold-list:nth-child(2)>.itallap-head>span {
-	background-position: -220px 0;
-}
-.fold-list:nth-child(3)>.itallap-head>span {
-	background-position: -280px 0;
-}
-.fold-list:nth-child(4)>.itallap-head>span {
-	background-position: -340px 0;
-}
-.fold-list:nth-child(5)>.itallap-head>span {
-	background-position: -400px;
-}
-*/
 .fold-list {
   -webkit-perspective: 400px;
   perspective: 400px; }
@@ -3613,6 +3597,7 @@ header {
     background-size: 0 !important;
     box-shadow: 0 0 30px -17px #000;
     line-height: 1.5rem;
+    background-repeat: no-repeat;
     /*800px*/ }
     @media (min-width: 50em) {
       .fold-list li {
@@ -3636,10 +3621,56 @@ header {
   .open li:last-of-type {
     margin-bottom: -5px; }
 
-.vendeglo-itallap .fold-list:nth-of-type(2) {
-  border: 1px solid red; }
-  .vendeglo-itallap .fold-list:nth-of-type(2) li:nth-of-type(3) {
-    border: 1px solid aquamarine; }
+.vendeglo-itallap .itallap-sor {
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .vendeglo-itallap .itallap-sor {
+      width: 75%; } }
+.vendeglo-itallap .fold-list:nth-of-type(1) li:nth-of-type(1) {
+  background-image: url(../img/forro-italok-dark.png);
+  background-position: right top; }
+.vendeglo-itallap .fold-list:nth-of-type(1) li:nth-of-type(2) {
+  background-image: url(../img/forro-italok.png);
+  background-position: right center; }
+.vendeglo-itallap .fold-list:nth-of-type(1) li:nth-of-type(3) {
+  background-image: url(../img/forro-italok-dark.png);
+  background-position: right bottom; }
+.vendeglo-itallap .fold-list:nth-of-type(2) li:nth-of-type(1) {
+  background-image: url(../img/uditok-dark.png);
+  background-position: right top; }
+.vendeglo-itallap .fold-list:nth-of-type(2) li:nth-of-type(2) {
+  background-image: url(../img/uditok.png);
+  background-position: right center; }
+.vendeglo-itallap .fold-list:nth-of-type(2) li:nth-of-type(3) {
+  background-image: url(../img/uditok-dark.png);
+  background-position: right bottom; }
+.vendeglo-itallap .fold-list:nth-of-type(3) li:nth-of-type(1) {
+  background-image: url(../img/sor-dark.png);
+  background-position: right top; }
+.vendeglo-itallap .fold-list:nth-of-type(3) li:nth-of-type(2) {
+  background-image: url(../img/sor.png);
+  background-position: right center; }
+.vendeglo-itallap .fold-list:nth-of-type(3) li:nth-of-type(3) {
+  background-image: url(../img/sor-dark.png);
+  background-position: right bottom; }
+.vendeglo-itallap .fold-list:nth-of-type(4) li:nth-of-type(1) {
+  background-image: url(../img/bor-dark.png);
+  background-position: right top; }
+.vendeglo-itallap .fold-list:nth-of-type(4) li:nth-of-type(2) {
+  background-image: url(../img/bor.png);
+  background-position: right center; }
+.vendeglo-itallap .fold-list:nth-of-type(4) li:nth-of-type(3) {
+  background-image: url(../img/bor-dark.png);
+  background-position: right bottom; }
+.vendeglo-itallap .fold-list:nth-of-type(5) li:nth-of-type(1) {
+  background-image: url(../img/rovid-italok-dark.png);
+  background-position: right top; }
+.vendeglo-itallap .fold-list:nth-of-type(5) li:nth-of-type(2) {
+  background-image: url(../img/rovid-italok.png);
+  background-position: right center; }
+.vendeglo-itallap .fold-list:nth-of-type(5) li:nth-of-type(3) {
+  background-image: url(../img/rovid-italok-dark.png);
+  background-position: right bottom; }
 
 /*asztalfoglalás*/
 /* general style for the form */

@@ -418,22 +418,7 @@ background-position: -260px 0;
 		}
 	}
 }
-/*.fold-list:nth-child(1)>.itallap-head>span {
-	background-position: -160px 0;
-}
-.fold-list:nth-child(2)>.itallap-head>span {
-	background-position: -220px 0;
-}
-.fold-list:nth-child(3)>.itallap-head>span {
-	background-position: -280px 0;
-}
-.fold-list:nth-child(4)>.itallap-head>span {
-	background-position: -340px 0;
-}
-.fold-list:nth-child(5)>.itallap-head>span {
-	background-position: -400px;
-}
-*/
+
 .fold-list{
 	@include perspective(400px);
 	li{
@@ -444,6 +429,7 @@ background-position: -260px 0;
 		background-size: 0 !important;
 		box-shadow: 0 0 30px -17px $black;
 		line-height: 1.5rem;
+		background-repeat:no-repeat;
 		@include breakpoint(tablet){
 			background-size: 230px !important;
 		}
@@ -477,16 +463,92 @@ background-position: -260px 0;
 }
 
 .vendeglo-itallap{
+	.itallap-sor{
+		@include breakpoint(tablet){
+			width: 75%;
+		}
+	}
 	.fold-list{
-		&:nth-of-type(2){
-			border:1px solid red;
+		&:nth-of-type(1){
 			li{
+				&:nth-of-type(1){
+					background-image:url(../img/forro-italok-dark.png);
+					background-position: right top;
+				}
+				&:nth-of-type(2){
+					background-image:url(../img/forro-italok.png);
+					background-position: right center;
+				}
 				&:nth-of-type(3){
-					border:1px solid aquamarine;
+					background-image:url(../img/forro-italok-dark.png);
+					background-position: right bottom;
 				}
 			}
 		}
-
+		&:nth-of-type(2){
+			li{
+				&:nth-of-type(1){
+					background-image:url(../img/uditok-dark.png);
+					background-position: right top;
+				}
+				&:nth-of-type(2){
+					background-image:url(../img/uditok.png);
+					background-position: right center;
+				}
+				&:nth-of-type(3){
+					background-image:url(../img/uditok-dark.png);
+					background-position: right bottom;
+				}
+			}
+		}
+		&:nth-of-type(3){
+			li{
+				&:nth-of-type(1){
+					background-image:url(../img/sor-dark.png);
+					background-position: right top;
+				}
+				&:nth-of-type(2){
+					background-image:url(../img/sor.png);
+					background-position: right center;
+				}
+				&:nth-of-type(3){
+					background-image:url(../img/sor-dark.png);
+					background-position: right bottom;
+				}
+			}
+		}
+		&:nth-of-type(4){
+			li{
+				&:nth-of-type(1){
+					background-image:url(../img/bor-dark.png);
+					background-position: right top;
+				}
+				&:nth-of-type(2){
+					background-image:url(../img/bor.png);
+					background-position: right center;
+				}
+				&:nth-of-type(3){
+					background-image:url(../img/bor-dark.png);
+					background-position: right bottom;
+				}
+			}
+		}
+		&:nth-of-type(5){
+			li{
+				&:nth-of-type(1){
+					background-image:url(../img/rovid-italok-dark.png);
+					background-position: right top;
+				}
+				&:nth-of-type(2){
+					background-image:url(../img/rovid-italok.png);
+					background-position: right center;
+				}
+				&:nth-of-type(3){
+					background-image:url(../img/rovid-italok-dark.png);
+					background-position: right bottom;
+				}
+			}
+		}
 	}
 }
 
