@@ -11,7 +11,7 @@ class GaleriaView extends BaseView{
     
     public function drawGaleria($elements){
         echo '<section id="kepek">';
-                    
+    	
         $this->drawSectionLabel("Képek", "kepek", 7);
         
         echo '
@@ -45,7 +45,7 @@ class GaleriaView extends BaseView{
 					<div class="row gallery-slider">
 				';
 		foreach ($elements AS $kepAdat){
-			echo '<div class="gallery-slider-element"><img src="'.$kepAdat['PATH'].'" alt="" ></div>
+			echo '<div class="gallery-slider-element"><img src="'.$kepAdat['IMAGE_PATH'].'" alt="" ></div>
 			';
 		}
 				
