@@ -453,51 +453,54 @@ public function drawKertEtlap($elements){
     			</noscript>
   			</div>';
      }
+     if ($helyiseg == 'vendeglo'){
+      echo '<div class="twelve columns centered itallap ital-fold vendeglo-itallap">';
+     }
+     else{
       echo '<div class="twelve columns centered itallap ital-fold">';
-     
-     
+     }
+    foreach ( $elements as $kategoria => $kategoriaAdatok ) {
+		echo '<ul class="fold-list">
+			<div class="itallap-head">
+	        <svg class="icon icon-' . $kategoriaAdatok ['ikon'] . '"><use xlink:href="#icon-' . $kategoriaAdatok ['ikon'] . '"></use></svg>
+	        ' . $kategoria . '</div>';
+				
+		$italSzamlalo = 0;
+		$osszesItal = sizeof ( $kategoriaAdatok ['italok'] );
+				
+		$containerSzamlalo = 0;
+		$maxElemSzam = 3;
+				
+		$italContainer = array ();
+		foreach ( $kategoriaAdatok ['italok'] as $ital ) {
+		array_push ( $italContainer, $ital );
+		$italSzamlalo += 1;
+			
+		if (sizeof ( $italContainer ) % $maxElemSzam == 0 || $italSzamlalo == $osszesItal) {
+			echo '<li>';
+			$this->loadTemplate ( 'itallapElem', $italContainer );
+			echo '</li>';
+			$containerSzamlalo ++;
+			
+			if ($containerSzamlalo > 1 || $italSzamlalo == $osszesItal) {
+				$maxElemSzam = 3;
+			} else {
+				$maxElemSzam = 4;
+			}
+			
+			$italContainer = array ();
+		}
+	}
       
-     foreach ($elements AS $kategoria => $kategoriaAdatok){
-        
-      echo '<ul class="fold-list">
-                    <div class="itallap-head">
-        <svg class="icon icon-'.$kategoriaAdatok['ikon'].'"><use xlink:href="#icon-'.$kategoriaAdatok['ikon'].'"></use></svg>
-        '.$kategoria.'</div>';
-      
-      $italSzamlalo = 0;
-      $osszesItal = sizeof($kategoriaAdatok['italok']);
-      
-      $containerSzamlalo = 1;
-      $maxElemSzam = 3;
-            
-      $italContainer = array();
-      foreach ($kategoriaAdatok['italok'] AS $ital){
-       array_push($italContainer, $ital);
-       $italSzamlalo += 1;
-       
-       if (sizeof($italContainer) % $maxElemSzam == 0 || $italSzamlalo == $osszesItal){
-        echo '<li>';
-        $this->loadTemplate('itallapElem', $italContainer);
-        echo '</li>';
-        $containerSzamlalo++;
-        
-        if ($containerSzamlalo == 1 || $containerSzamlalo == $osszesItal){
-         $maxElemSzam = 3;
-        }else{
-         $maxElemSzam = 4;
-        }
-        
-        
-        $italContainer = array();
-       }
-      }
-      
-      if ($containerSzamlalo % 2 == 1){
-       echo '<li>
-         <p></p><b></b>
-         <p></p><b></b>
-         <p></p><b></b>
-        </li>';
+      if ($containerSzamlalo % 3 != 0){
+      	for ($i = (3- $containerSzamlalo % 3 ); $i > 0; $i--){
+       		echo '<li>
+        	 <p></p><b></b>
+         	<p></p><b></b>
+         	<p></p><b></b>
+        	</li>';
+       	}
+      	
       }
       
       echo '</ul>';

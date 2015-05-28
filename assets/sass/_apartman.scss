@@ -286,9 +286,10 @@
 .review-img{
 	width: 150px;
 	height: 150px;
-	background-image:url(../img/gender-switch.png);
-	background-repeat:no-repeat;
-	background-position: 0 0;
+/* 	background-image:url(../img/gender-switch.png);
+	background-repeat:no-repeat; */
+	@extend .has-sprite;
+	background-position: -330px -356px;
 	margin:0 auto;
 	margin-bottom:1rem;
 	position:relative;

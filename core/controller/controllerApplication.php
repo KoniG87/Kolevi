@@ -494,6 +494,16 @@ class Application{
     						//location.reload();
     					});
     				});
+
+ //   				$(".langselect-container div").click(function(){
+ //   					data = {
+ //   						request: "switchLanguage",
+ //   						lang: $(this).text().substring(0, 2).toLowerCase()
+ //   					};
+ //   					$.post("requestHandler.php", data, function(resp){
+ //   						location.reload();
+ //   					});
+ //   				});
     			});	
     		</script>
         		</body>

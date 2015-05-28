@@ -61,6 +61,7 @@ function engPopup(){
 
 $(".eng").on("click",function(event){
   event.preventDefault();
+  event.stopPropagation();
  engPopup();
  $('.eng-popup-box').velocity("transition.slideUpIn", 1000);
 });
@@ -1045,7 +1046,7 @@ var alapOdd = {
         rotateZ:0,
         scaleX:0.8,
         scaleY:0.8,
-        marginTop:"-6.6rem",
+        marginTop:"-8rem",
         backgroundColor:"#fff",
         backgroundColorAlpha: 0.5
 
@@ -1055,7 +1056,7 @@ var alapOdd = {
          rotateZ:0,
         scaleX:0.8,
         scaleY:0.8,
-          marginTop:"-6.6rem",
+          marginTop:"-8rem",
         backgroundColor:"#000",
         backgroundColorAlpha: 0.1
 

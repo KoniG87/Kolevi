@@ -29,7 +29,7 @@
 				'prefix'	=> ''
 			),
 			'helperParams' => array(
-				'language' => 'en',
+				'language' => 'hu',
 				'validParams' => array(
 					'page',
 					'lang'	
