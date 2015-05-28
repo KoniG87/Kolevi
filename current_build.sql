@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Hoszt: 127.0.0.1
--- Létrehozás ideje: 2015. Máj 27. 00:08
+-- Létrehozás ideje: 2015. Máj 28. 23:44
 -- Szerver verzió: 5.6.21
 -- PHP verzió: 5.6.3
 
@@ -182,19 +182,21 @@ CREATE TABLE IF NOT EXISTS `koleves_hirsav` (
   `FK_ID` int(4) NOT NULL,
   `TEXT_HU` varchar(80) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `TEXT_EN` varchar(80) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `URL` varchar(250) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `ROGZITVE` datetime DEFAULT NULL,
   `SORREND` tinyint(2) DEFAULT '1',
   `ALLAPOT` tinyint(1) DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_hirsav`
 --
 
-INSERT INTO `koleves_hirsav` (`ID`, `TIPUS_ID`, `FK_ID`, `TEXT_HU`, `TEXT_EN`, `ROGZITVE`, `SORREND`, `ALLAPOT`) VALUES
-(1, 1, 1, 'Esküvő az emeleten', 'Wedding in the attic', '2015-04-20 16:20:06', 1, 1),
-(2, 3, 0, 'Ma köménymagos cipó lesz!', NULL, '2015-04-20 16:59:32', 1, 1),
-(3, 2, 0, 'Kerti nyitóprogram', NULL, '2015-04-22 03:40:45', 1, 1);
+INSERT INTO `koleves_hirsav` (`ID`, `TIPUS_ID`, `FK_ID`, `TEXT_HU`, `TEXT_EN`, `URL`, `ROGZITVE`, `SORREND`, `ALLAPOT`) VALUES
+(1, 1, 1, 'Esküvő az emeleten', 'Wedding in the attic', NULL, '2015-04-20 16:20:06', 1, 1),
+(2, 3, 0, 'Ma köménymagos cipó lesz!', NULL, NULL, '2015-04-20 16:59:32', 1, 1),
+(3, 2, 0, 'Kerti nyitóprogram', NULL, NULL, '2015-04-22 03:40:45', 1, 1),
+(4, 4, 0, 'Google', NULL, 'http://google.com', '2015-05-28 22:16:20', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -507,12 +509,12 @@ CREATE TABLE IF NOT EXISTS `koleves_programok` (
 --
 
 INSERT INTO `koleves_programok` (`ID`, `DATUM`, `TEXT_HU`, `TEXT_EN`, `LEIRAS_HU`, `LEIRAS_EN`, `KEP`, `FBLINK`, `ALLAPOT`) VALUES
-(1, '2015-03-31', 'Kőleves Kert nyárbúcsuztató napok', 'Kőleves summer closing days', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p><p>Lorem ipsum dolor sit amet.</p>', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p><p>Lorem ipsum dolor sit amet.</p>', 'assets/img/gslide-1.png', NULL, 1),
-(2, '2015-04-17', 'programnevea', 'nameofprogram', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p> <p>Lorem ipsum dolor sit amet.</p>', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p><p>Lorem ipsum dolor sit amet.</p>', '', NULL, 1),
-(3, '2015-04-18', 'Valami lesz ggsdfsgfdsgsfdgd ', NULL, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p><p>Lorem ipsum dolor sit amet.</p>', NULL, 'assets/uploads/gallery02.jpg', 'https://www.facebook.com/events/1594402937444863/', 1),
-(4, '2015-04-28', 'teszt progi', NULL, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p> <p>Lorem ipsum dolor sit amet.</p>', NULL, 'assets/uploads/gallery02.jpg', NULL, 1),
-(5, '2015-05-31', 'Valami progi', NULL, 'Van leírása is', NULL, 'assets/uploads/gallery02.jpg', '', 1),
-(6, '2015-06-25', 'Letsdothis', NULL, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.</p><p>Lorem ipsum dolor sit amet.</p>', NULL, 'assets/uploads/gallery02.jpg', '', 1);
+(1, '2015-03-31', 'Kőleves Kert nyárbúcsuztató napok', 'Kőleves summer closing days', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.<br/>Lorem ipsum dolor sit amet.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.<br/>Lorem ipsum dolor sit amet.', 'assets/img/gslide-1.png', NULL, 1),
+(2, '2015-04-17', 'programnevea', 'nameofprogram', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.<br/>Lorem ipsum dolor sit amet.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.<br/>Lorem ipsum dolor sit amet.', '', NULL, 1),
+(3, '2015-04-18', 'Valami lesz ggsdfsgfdsgsfdgd ', NULL, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.<br/>Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.<br/>Lorem ipsum dolor sit amet.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.<br/>Lorem ipsum dolor sit amet.', 'assets/uploads/gallery02.jpg', 'https://www.facebook.com/events/1594402937444863/', 1),
+(4, '2015-04-28', 'teszt progi', NULL, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.<br/>Lorem ipsum dolor sit amet.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.<br/>Lorem ipsum dolor sit amet.', 'assets/uploads/gallery02.jpg', NULL, 1),
+(5, '2015-05-31', 'Valami progi', NULL, 'Van ám olyan is, <br/>aminek rövid leírása <br/>van csak.', 'There''s this one with the rather short description, ye know.', 'assets/uploads/gallery02.jpg', '', 1),
+(6, '2015-06-25', 'Letsdothis', NULL, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.<br/>Lorem ipsum dolor sit amet.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dignissimos eveniet labore, atque fuga sequi adipisci. Rerum pariatur quisquam a cupiditate quis nihil ipsam similique earum magni numquam consectetur, vitae!<br/>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, quidem.<br/>Lorem ipsum dolor sit amet.', 'assets/uploads/gallery02.jpg', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -749,7 +751,7 @@ MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `koleves_hirsav`
 --
 ALTER TABLE `koleves_hirsav`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `koleves_italkategoriak`
 --

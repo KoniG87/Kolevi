@@ -251,7 +251,7 @@
     <ul>
       <li></li>
         <?php
-    $SQL = "SELECT h.text_hu AS labelText, kt.szekcio AS link FROM koleves_hirsav AS h
+    $SQL = "SELECT h.tipus_id AS tipus, h.url, h.text_hu AS labelText, kt.szekcio AS link FROM koleves_hirsav AS h
     LEFT JOIN koleves_keptipusok AS kt ON kt.id = h.tipus_id 
     WHERE h.allapot = 1
     ORDER BY h.sorrend ASC;";
@@ -263,7 +263,14 @@
         echo '<li>';
         
         if (!is_null($hirData['link'])){
-            echo '<a href="vendeglo#'.$hirData['link'].'">'.$hirData['labelText'].'</a>';
+        	$linkHref = 'vendeglo#'.$hirData['link'];
+        	$linkTarget = "_self";
+        	if ($hirData['tipus'] == 4){
+        		$linkHref = $hirData['url'];
+        		$linkTarget = "_blank";
+        	}        	 
+        	
+            echo '<a href="'.$linkHref.'" target="'.$linkTarget.'">'.$hirData['labelText'].'</a>';
         }else{
             echo $hirData['labelText'];
         }

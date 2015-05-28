@@ -66,20 +66,19 @@ class VendegloView extends BaseView{
     	$this->drawSectionLabel("Programok", "programok", 5);
     	
     	echo '<div class="row clearfix">
-                        <div class="four columns">
-                            <img data-src="assets/img/programok-img.png" alt="Asztalfoglalás" class="lazy illusztracio"><noscript><img src="assets/img/programok-img.png" alt="Asztalfoglalás"></noscript>
-                        </div>
-                        <div class="eight columns" style="position:relative;">
+              	<div class="four columns">
+                	<img data-src="assets/img/programok-img.png" alt="Asztalfoglalás" class="lazy illusztracio"><noscript><img src="assets/img/programok-img.png" alt="Asztalfoglalás"></noscript>
+                </div>
+                <div class="eight columns" style="position:relative;">
                             
-                            <div id="mini-clndr"></div>
-                            <svg class="icon icon-naptar naptar-trigger"><use xlink:href="#icon-naptar"></use></svg>
-                        </div>
-                    </div>
-                    <div class="row clearfix programok-container">
-    			';
+                <div id="mini-clndr"></div>
+                	<svg class="icon icon-naptar naptar-trigger"><use xlink:href="#icon-naptar"></use></svg>
+                </div>
+              </div>
+              <div class="row clearfix programok-container">
+    	';
     	
-        
-        
+                
     	foreach ($elements AS $programData){
     		$date = new DateTime($programData['datum']);
     		echo '	<div data-datum="'.$programData['datum'].'" class="program">
@@ -93,8 +92,8 @@ class VendegloView extends BaseView{
                             </div>
                             <div class="program-right four columns">
                                 <h3>'.$programData['labelHeader'].'</h3>
-                                '.$programData['labelDesc'].'
-                                '.(!is_null($programData['fblink']) ? '<a href="'.$programData['fblink'].'">facebook esemény</a>' : '').'
+                                <p>'.$programData['labelDesc'].'</p>
+                                '.(!empty($programData['fblink']) ? '<a target="_blank" href="'.$programData['fblink'].'">facebook esemény</a>' : '').'
                                 <svg class="icon icon-rolunk-le program-nyil program-nyil-le"><use xlink:href="#icon-rolunk-le"></use></svg>	
                                 <svg class="icon icon-rolunk-le program-nyil program-nyil-fel"><use xlink:href="#icon-rolunk-le"></use></svg>
                             </div>
@@ -418,7 +417,7 @@ class VendegloView extends BaseView{
     
     public function drawHirList($elements){
         foreach ($elements AS $hirData){
-            echo '<tr data-id="'.$hirData['id'].'" data-tipus="'.$hirData['tipus_id'].'" data-allapot="'.$hirData['allapot'].'" data-bejegyzes="'.$hirData['fk_id'].'">
+            echo '<tr data-id="'.$hirData['id'].'" data-url="'.$hirData['url'].'" data-tipus="'.$hirData['tipus_id'].'" data-allapot="'.$hirData['allapot'].'" data-bejegyzes="'.$hirData['fk_id'].'">
                 
                 <td>'.$hirData['felirat'].'</td>
                 <td>'.getDecisionText($hirData['allapot']).'</td>
