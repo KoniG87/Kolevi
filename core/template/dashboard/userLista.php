@@ -3,12 +3,7 @@
 ?>
 
 
-<div class="section-label" data-labelpos="1">
-	<div class="papercut-left"></div>
-	<label for="dolgozok"><span></span>
-	<h2>Dolgozók</h2></label>
-	<div class="papercut-right"></div>
-</div>
+<h2>Dolgozók</h2>
 
 <table class="tablaGrid striped">
 	<thead>

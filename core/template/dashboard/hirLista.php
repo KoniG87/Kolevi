@@ -2,12 +2,7 @@
 	$vendeg = new Vendeglo($app->getDbHandler());
 	
 ?>
-<div class="section-label" data-labelpos="1">
-	<div class="papercut-left"></div>
-	<label for="hirkezelo"><span></span>
-	<h2>Hír kezelése</h2></label>
-	<div class="papercut-right"></div>
-</div>
+<h2>Hír kezelése</h2>
 <button id="saveHir">Hír mentése</button>
 <form id="editForm">
 <table class="tablaGrid">
@@ -59,12 +54,7 @@
 </table>
 </form>
 
-<div class="section-label" data-labelpos="2">
-	<div class="papercut-left"></div>
-	<label for="hirlista"><span></span>
-	<h2>Hírlista</h2></label>
-	<div class="papercut-right"></div>
-</div>
+<h2>Hírlista</h2>
 
 <table class="tablaGrid hirTabla striped">
 	<thead>

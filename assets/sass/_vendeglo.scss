@@ -1868,6 +1868,9 @@ input.timepicker:-ms-input-placeholder {
 	@include breakpoint(tabtop){
 		padding:2rem 3rem;
 	}
+	.slick-list{
+		  box-shadow: inset 10px 0 10px -10px rgba(0,0,0,0.2), inset -10px 0 10px -10px rgba(0,0,0,0.2);
+	}
 	.slick-slide{
 		position:relative;
 		margin:0.5rem;

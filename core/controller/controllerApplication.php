@@ -175,7 +175,7 @@ class Application{
     		}
     		
     	echo '<nav class="sitckyNav">
-<a href="/kolevi/"><svg class="sticky-page-icon icon icon-'.$_SESSION['helper']->getPage().'-2"><use xlink:href="#icon-'.$_SESSION['helper']->getPage().'-2"></use></svg></a>
+<a href="" class="sticky-logo"><svg class="sticky-page-icon icon icon-'.$_SESSION['helper']->getPage().'-2"><use xlink:href="#icon-'.$_SESSION['helper']->getPage().'-2"></use></svg></a>
 <svg class="icon icon-backtotop backToTop"><use xlink:href="#icon-backtotop"></use></svg>
     <div class="row">';
     	

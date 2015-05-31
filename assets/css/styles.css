@@ -4902,6 +4902,8 @@ input.timepicker:-ms-input-placeholder {
   @media (min-width: 35em) {
     .cikkek-slider {
       padding: 2rem 3rem; } }
+  .cikkek-slider .slick-list {
+    box-shadow: inset 10px 0 10px -10px rgba(0, 0, 0, 0.2), inset -10px 0 10px -10px rgba(0, 0, 0, 0.2); }
   .cikkek-slider .slick-slide {
     position: relative;
     margin: 0.5rem;

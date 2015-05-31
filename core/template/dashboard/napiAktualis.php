@@ -1,9 +1,10 @@
-<div class="section-label" data-labelpos="1">
+<!-- <div class="section-label" data-labelpos="1">
 	<div class="papercut-left"></div>
 	<label for="aktualis"><span></span>
 	<h2>Aktuális hét</h2></label>
 	<div class="papercut-right"></div>
-</div>
+</div> -->
+<h2>Aktuális hét</h2>
 <?php
 	$date = new DateTime(date('Y-m-d'));	
 		

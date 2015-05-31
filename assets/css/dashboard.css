@@ -1,37 +1,69 @@
+body{
+	background-image: none;
+	background-color: #eee;
+}
+.subsite-active{
+	border:1px solid red;
+}
 a{
 	text-decoration: none;
-	color:#999;
+	color:#2c3e50;
+}
+a:hover{
+	color:#18bc9c;
 }
 header{
 	width: 100%;
 	position: fixed;
 	top:0;
+	height: 5rem;
+    box-shadow: 0 0 20px rgba(0,0,0,.4);
+	
 }
+header .icon-logo{
+	width: 100% !important;
+	margin:1rem 0;
+	left:0;
+
+}
+
 .nav-head{
 	width: 100%;
-	height: 2.5rem;
-	background-color:#eee;
-	color:#e5e5e5;
+	background-color:#fff;
 	position: relative;
+	height: 5rem;
+
 }
 .nav-head a{
-	line-height: 2.5rem;
+	line-height: 5rem;
 	padding:0 1rem;
-	font-size: 85%;
 }
+.nav-head a svg{
+	margin-top:0.4rem;
+	height: 4.5rem;
+	width: 6rem;
+}
+
 .logo{
 	width: 20%;
-	background:#333;
+	background:#1a242f;
+	background: #18bc9c;
+	background: #d1d1d1;
+	height: 5rem;
+	position: relative;
+}
+.logo a{
+	padding:0;
 }
 .lang-select{
 	position: absolute;
 	right: 0;
 	top: 0;
-	color:#999;
-	background:#ddd;
+	color:#6E879F;
+	background:#2c3e50;
 	width: auto;
-	height: 2.5rem;
-	line-height: 2.5rem;
+	height: 5rem;
+	line-height: 5rem;
 	padding:0 1rem;
 }
 .lang-active{
@@ -48,12 +80,13 @@ header{
 	padding:2rem;
 }
 aside{
-	background-color: #222;
+	background-color: #2c3e50;
+/*	background-color: #1a242f;*/
 	width: 20%;
 	height: 100%;
 	position: fixed;
 	left:0;
-	top:4.0rem;
+	top:5rem;
 }
 
 aside ul{
@@ -65,84 +98,115 @@ aside ul{
 
 aside ul h3,
 aside ul li{
-	font-size: 90%;
+
 	padding:0.35rem 1.0rem;
 }
-aside ul li{
-	background-color:rgba(0,0,0,0.2);
-	border-bottom:1px solid #333;
+aside ul a{
+	/*background-color:rgba(0,0,0,0.2);*/
+	color:#6E879F;
 	letter-spacing: 0.5px;
 
 }
 aside ul h3{
-	color:#e5e5e5;
-	border-bottom:1px solid #333;
+	color:#18bc9c;
+/*	color:#D0D2D4;*/
 	text-transform: uppercase;
-	font-size: 75%;
+	font-size: 85%;
 	letter-spacing: 1px;
-
+	padding:0 1rem;
+/*	border-bottom: 1px solid #6E879F;*/
+	line-height: 3rem;
+	height: 3rem;
+}
+aside ul h3 .icon{
+	height:2rem;
+	width: 3rem;
+	margin-bottom: -0.5rem;
+}
+aside ul li{
+	transition:all 0.3s;
 }
 aside ul li:hover{
-	color:#e5e5e5;
-	background-color:rgba(0,0,0,0.4);
+	color:#18bc9c;
+	background: #1a242f;
 
 }
 aside ul a li{
-	padding-left:2.5em;
+	padding-left:4em;
 }
 section{
 	width: 80%;
 	height:auto;
 }
-section.right{
-	padding:2.0rem 0 0 1.25rem;
+section h2{
+	font-size: 180%;
+	margin-bottom: 1.6rem;
+	margin-top:1rem;
 }
-section.right > .section-label{
+section.right{
+	padding:4rem 0 0 1.25rem;
+}
+/*section.right > .section-label{
 	margin-top:0.8rem;
 	margin-bottom:0.3rem;	
-}
+}*/
+
 section.right button{
 	cursor:pointer;
-	padding:0.2rem 0.6rem;
-	font-variant:small-caps;
-	background:#000;
+	padding:0.5rem 1rem;
+	background:#18bc9c;
 	margin:0.4rem 0.5rem;
 	color:#fff;
-	font-family: 'DanielBold-Regular';
-	font-size:1.2rem;
-	font-weight:bold;
+	border:none;
 }
-
-section.right button:hover{
+/*section.right button.editEtel,
+section.right button.editItal{
+background: #f39c12;
+}*/
+section.right button[class^="edit"]{
+	background: #f39c12;
+}
+section.right button[class^="delete"]{
+	background: #e74c3c;
+	} 
+/*section.right button:hover{
 	box-shadow:2px 1px 8px #222;
-}
+}*/
 section.right input + span.tooltip, section.right textarea + span.tooltip, section.right select + span.tooltip{
 	opacity:0.0;
 	transition:0.2s all;
 	letter-spacing:-0.5px;
 }
 section.right input[type="text"], section.right input[type="password"]{
-	padding:0.3rem 0.6rem;
-	margin:0.2rem 0.7rem;
-	box-shadow:inset 0 0 10px rgba(0,0,0,.2);
-	border-bottom:1px dashed #e3e3e3;
+	padding:0.5rem 1rem;
+	margin:0.2rem 0;
+	border-radius: 3px;
+	border:1px solid #ddd;
+	outline-color:#18bc9c ;
 	width:19.5rem;
+}
+section.right strong{
+	font-weight: 600;
+	line-height: 3;
+	color:#2c3e50;
 }
 section.right textarea{
 	padding:0.3rem 0.6rem;
-	margin:0.2rem 0.7rem;
-	box-shadow:inset 0 0 10px rgba(0,0,0,.3);
-	border-bottom:1px dashed #e3e3e3;
+	margin:0.2rem 0;
+	border:1px solid #ddd;
 	width:19.5rem;
 	height:7rem;
 	resize:none;
+	border-radius: 3px;
+	outline-color:#18bc9c;
 }
 section.right select{
-	padding:0.3rem 0.6rem;
-	margin:0.2rem 0.7rem;
-	box-shadow:inset 0 0 10px rgba(0,0,0,.3);
-	border-bottom:1px dashed #e3e3e3;
+	padding:0.5rem 1rem;
+	margin:0.2rem 0;
 	width:19.5rem;
+	border-radius: 3px;
+	outline-color:#18bc9c;
+	border:1px solid #ddd;
 	
 }
 section.right input:focus + span.tooltip, section.right input:focus + input + span.tooltip, section.right textarea:focus + span.tooltip, section.right select:focus + span.tooltip{

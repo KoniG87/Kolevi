@@ -15,7 +15,7 @@ $(".napi-tablak>li").each(function(){
 
 function napiMenuTablakOut(){
 
-  $(".stickyStart").waypoint(function(){
+  $("#napiMenu>.section-label").waypoint(function(){
   
     var tLength = $(".napi-tablak>li").length -1,
         tStagger = 250;

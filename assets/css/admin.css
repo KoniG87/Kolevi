@@ -11,7 +11,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block; }
 
 body {
-  line-height: 1; }
+  line-height: 1;
+}
 
 ol, ul {
   list-style: none; }
@@ -91,7 +92,6 @@ img{
 body{
   font-family: arial, 'sans serif';
   -ms-overflow-x: hidden;
-  background-color: #e3e3e3;
   position: relative;
 }
 

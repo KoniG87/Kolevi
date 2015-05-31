@@ -6,12 +6,7 @@
     $userKepek = $user->loadKepek();
 ?>
 
-<div class="section-label" data-labelpos="1">
-	<div class="papercut-left"></div>
-	<label for="dolgozok"><span></span>
-	<h2>Dolgozó rögzítése</h2></label>
-	<div class="papercut-right"></div>
-</div>
+<h2>Dolgozó rögzítése</h2>
 
 <button id="saveUser">Dolgozó mentése</button>
 

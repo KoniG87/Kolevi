@@ -4,22 +4,31 @@
 		<h3>Kőleves admin</h3>
 		<!-- <form action="POST"> -->
 		<form method="post" action="./dashboard" id="authForm">
-			<input type="text" id="admin-user"> 
-			<input type="password" id="admin-pass"> 
+			<input type="text" id="admin-user" placeholder="Felhasználónév"> 
+			<input type="password" id="admin-pass" placeholder="Jelszó"> 
 			<input type="submit" value="Belépés">
 		</form>
 		<!-- </form> -->
 	</div>
 </div>
+<style>
+	body{
+		background: #2c3e50 ;
+	}
 
+</style>
 <link rel="stylesheet" href="assets/css/admin.css">
 <link rel="stylesheet" href="assets/css/login.css">
 <link rel="stylesheet" href="assets/css/dashboard.css">
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		<?php
             if (isset($_SESSION['user']['id'])){ ?>
         window.location.href = "index.php?page=dashboard&sec=vendeglo&sub=dashboard";
+
+/*         $(".nav-head>a").removeClass('subsite-active');
+       $(".nav-head>a:nth-of-type(2)").addClass('subsite-active');*/
         <?php
             }
         ?>
@@ -34,7 +43,7 @@
 			$.post("requestHandler.php", queryData, function(resp){
 				if (resp.status == "ok"){
 					window.location.href = "index.php?page=dashboard&sec=vendeglo&sub=dashboard";
-	
+
 				}else{
 					e.preventDefault();
 					$('#authForm input').addClass('missing');

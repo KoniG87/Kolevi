@@ -3,10 +3,10 @@
         <div class="logo left">
             <a href="dashboard"><svg class="icon icon-logo"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-logo"></use></svg></a>
         </div>
-            <a href="?page=dashboard&sec=vendeglo&sub=dashboard" title="Vendéglő">Vendéglő</a>
-            <a href="?page=dashboard&sec=kert&sub=dashboard" title="Kert">Kert</a>
-            <a href="" title="Hamarosan">Delicates</a>
-            <a href="?page=dashboard&sec=apartman&sub=dashboard" title="Apartman">Apartman</a>
+            <a href="?page=dashboard&sec=vendeglo&sub=dashboard" title="Vendéglő"><svg class="icon icon-vendeglo-2"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-vendeglo-2"></use></svg></a>
+            <a href="?page=dashboard&sec=kert&sub=dashboard" title="Kert"><svg class="icon icon-kert-2"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kert-2"></use></svg></a>
+            <a href="" title="Hamarosan"><svg class="icon icon-delicates-2"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-delicates-2"></use></svg></a>
+            <a href="?page=dashboard&sec=apartman&sub=dashboard" title="Apartman"><svg class="icon icon-apartman-2"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-apartman-2"></use></svg></a>
             <a href="./vendeglo" class="right" style="margin-right:5rem;">Vissza az oldalra</a>
             <div class="lang-select">
             <?php 

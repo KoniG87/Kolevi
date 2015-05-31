@@ -1,4 +1,4 @@
-<h3>Napi menü</h3>
+<h3><svg class="icon icon-etel-foetel"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-etel-foetel"></use></svg>Napi menü</h3>
 <a href="index.php?page=dashboard&sub=napiAktualis">
 	<li>Aktuális hét</li>
 </a>
@@ -6,7 +6,7 @@
 	<li>Következő hét</li>
 </a>
 
-<h3>Menü</h3>
+<h3><svg class="icon icon-etel-leves"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-etel-leves"></use></svg>Menü</h3>
 <a href="index.php?page=dashboard&sub=etlap">
 	<li>Étlap</li>
 </a>
@@ -14,12 +14,12 @@
 	<li>Itallap</li>
 </a>
 
-<h3>Asztalfoglalás</h3>
+<h3><svg class="icon icon-phone"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-phone"></use></svg>Asztalfoglalás</h3>
 <a href="index.php?page=dashboard&sub=asztalFoglalas">
 	<li>Asztalfoglalások kezelése</li>
 </a>
 
-<h3>Rendezvények</h3>
+<h3><svg class="icon icon-ora"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-ora"></use></svg>Rendezvények</h3>
 <a href="index.php?page=dashboard&sub=rendezvenyRogzito">
 	<li>Rendezvény felvitele</li>
 </a>
@@ -27,7 +27,7 @@
 	<li>Rendezvény lista</li>
 </a>
 
-<h3>Programok</h3>
+<h3><svg class="icon icon-naptar"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-naptar"></use></svg>Programok</h3>
 <a href="index.php?page=dashboard&sub=programRogzito">
 	<li>Program felvitele</li>
 </a>
@@ -36,7 +36,7 @@
 </a>
 
 
-<h3>Rólunk</h3>
+<h3><svg class="icon icon-like"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-like"></use></svg>Rólunk</h3>
 <a href="index.php?page=dashboard&sub=userRogzito">
 	<li>User felvitel</li>
 </a>
@@ -44,7 +44,7 @@
 	<li>User lista</li>
 </a>
 
-<h3>Képek</h3>
+<h3><svg class="icon icon-slider-jobbra"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-slider-jobbra"></use></svg>Képek</h3>
 <a href="index.php?page=dashboard&sub=kepKezelo">
 	<li>Kezelése</li>
 </a>
@@ -52,7 +52,7 @@
 	<li>Feltöltés</li>
 </a>
 
-<h3>Hírek</h3>
+<h3><svg class="icon icon-etel-desszert"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-etel-desszert"></use></svg>Hírek</h3>
 <a href="index.php?page=dashboard&sub=hirLista">
 	<li>Barcas-felület</li>
 </a>

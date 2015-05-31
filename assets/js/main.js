@@ -1015,7 +1015,10 @@ function backToTop(){
         });
 }
 $(".backToTop").click(backToTop);
-
+$(".sticky-logo").on("click",function(event){
+    event.preventDefault();
+    backToTop();
+});
 
 // waypoint sticky fold animáció
 function stickyFoldAnim(){
