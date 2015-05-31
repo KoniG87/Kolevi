@@ -157,7 +157,7 @@ class VendegloView extends BaseView{
 				<td>'.$rendezvenyData['MEGJEGYZES'].'</td>
 				<td>'.getDecisionText($rendezvenyData['allapot']).'</td>
 				<td>
-                    <form method="post" action="index.php?page=dashboard&sub=rendezvenyRogzito">
+                    <form method="post" action="'.$_SESSION['helper']->getPath().'dashboard/rendezvenyRogzito">
                         <input type="hidden" name="id" value="'.$rendezvenyData['id'].'"/>
                         <button class="editEtel">Szerkesztés</button>
                     </form>
@@ -176,7 +176,7 @@ class VendegloView extends BaseView{
 				<td>'.$programData['datum'].'</td>
 				<td>'.getDecisionText($programData['allapot']).'</td>
 				<td>
-                    <form method="post" action="index.php?page=dashboard&sub=programRogzito">
+                    <form method="post" action="'.$_SESSION['helper']->getPath().'dashboard/programRogzito">
                         <input type="hidden" name="id" value="'.$programData['id'].'"/>
                         <button class="editProgram">Szerkesztés</button>
                     </form>    
@@ -210,7 +210,7 @@ class VendegloView extends BaseView{
 		';
 
 		$kepSzamlalo = 1;
-		foreach ($elements['rendezveny']['kepek'] AS $kepAdat){
+		foreach ($elements['elerhetoKepek'] AS $kepAdat){
 			echo '<tr>
 				<td><label>'.$kepSzamlalo.'. kép:</label></td>
 				<td>
@@ -218,7 +218,7 @@ class VendegloView extends BaseView{
 					<button data-id="'.$kepAdat['id'].'" class="deleteKep">Törlés</button>
 				</td>
 				<td>
-					<img src="'.$kepAdat['fajlnev'].'" alt="'.$kepAdat['fajlnev'].'"/>
+					<img src="'.$_SESSION['helper']->getPath().$kepAdat['fajlnev'].'" alt="'.$kepAdat['fajlnev'].'"/>
 				</td>
 			</tr>';
 			$kepSzamlalo++;

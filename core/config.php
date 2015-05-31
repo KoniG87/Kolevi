@@ -32,19 +32,21 @@
 				'language' => 'hu',
 				'validParams' => array(
 					'page',
-					'lang'	
-				)
+					'lang',
+					'base'	
+				),
+				'basePath'	=> '/koleves/'
 			),
 			'state'		=> 'dev',
 			'skin'		=> 'default',
 			'dbSalt' 	=> 'bi1Oc@-1pqS9&!7',
 			'dirs'	=> array(
 				'views' 	=> 'page/',
-				'skins' 	=> 'skins/',
-				'scripts'	=> 'js/',
-				'styles'	=> 'css/',
-                'images'	=> 'img/',
-                'fonts'	=> 'fonts/'
+				'scripts'	=> 'assets/js/',
+				'styles'	=> 'assets/css/',
+                'images'	=> 'assets/img/',
+                'fonts'	=> 'assets/fonts/',
+				'libs'	=> 'assets/libs/'
 			)
         )
 	);
@@ -77,5 +79,5 @@
 	}
 	
 	$app->initHelper($defaultParameters['application']['helperParams']);
-	
+	$_SESSION['helper']->initDirectories($defaultParameters['application']['dirs']);
 ?>

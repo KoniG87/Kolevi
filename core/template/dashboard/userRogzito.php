@@ -170,9 +170,9 @@
 			
 			if (canSubmit){
 				data.request = "dolgozoUpdate";
-				$.post('requestHandler.php', data, function(resp){
+				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					if (resp.status == "ok"){
-						window.location.href="index.php?page=dashboard&sub=userLista";
+						window.location.href="<?=$_SESSION['helper']->getPath()?>dashboard/userLista";
 						
 					}
 				}, 'json');

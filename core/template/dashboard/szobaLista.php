@@ -61,7 +61,7 @@
 
 			if (canSubmit){
 				data.request = 'rendezvenyUpdate';
-				$.post("requestHandler.php", data, function(resp){
+				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					window.location.href = "dashboard";
 				});
 			}

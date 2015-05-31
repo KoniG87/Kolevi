@@ -1,8 +1,8 @@
 <h3>Szobák</h3>
-<a href="index.php?page=dashboard&sec=apartman&sub=szobaRogzito">
+<a href="<?=$_SESSION['helper']->getPath()?>dashboard/apartman/szobaRogzito">
 	<li>Felvitele</li>
 </a>
-<a href="index.php?page=dashboard&sec=apartman&sub=szobaLista">
+<a href="<?=$_SESSION['helper']->getPath()?>dashboard/apartman/szobaLista">
 	<li>Kezelése</li>
 </a>
 

@@ -15,12 +15,12 @@
 	$vendeglo->drawRendezvenyAdmin($rendezvenyID);
 ?>
 </form>
-<link href="assets/css/datepicker.css" rel="stylesheet" type="text/css"/>
+
 
 <style type="text/css">
 	.tablaGrid img{width:7.5em;}
 </style>
-<script src="assets/js/vendor/jquery-ui.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		imageRefTemplate = $('.imageRefTemplate').parents('tr').clone();
@@ -56,9 +56,9 @@
 
 			if (canSubmit){
                 data.request = 'rendezvenyUpdate';
-				$.post("requestHandler.php", data, function(resp){
+				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					if (resp.status == "ok"){
-                       window.location.href = "index.php?page=dashboard&sub=rendezvenyLista";
+                       window.location.href = "<?=$_SESSION['helper']->getPath()?>dashboard/rendezvenyLista";
                     }
 				}, 'json');
 			}
@@ -72,7 +72,7 @@
 				id:	$(this).attr('data-id')				
 			};
 			
-			$.post("requestHandler.php", data, function(resp){
+			$.post("<?=$_SESSION['helper']->getPath()?>'requestHandler", data, function(resp){
 				if (resp.status == "ok"){
 				   affectedRow.hide(500, function(){ $(this).remove(); });
 				}
@@ -88,7 +88,7 @@
 			selectedImage = $('option:selected', $(this)).text();
 			selectedImagePath = $('option:selected', $(this)).attr('data-fullpath');
 			
-			$.post("requestHandler.php", data, function(resp){
+			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 				if (resp.status == "ok"){
 					numberOfImages = $('input[name^="kep_"]').length;
 					$('select[name^="kep_"]').replaceWith('<input readonly="readonly" type="text"  name="kep_'+resp.inputID+'" alt="'+resp.inputID+'. kép" value="'+selectedImage+'"/><button data-id="'+resp.inputID+'" class="deleteKep">Törlés</button>');

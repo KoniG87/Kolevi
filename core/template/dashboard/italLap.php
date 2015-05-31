@@ -56,7 +56,7 @@
 
 			if (canSubmit){
 				data.request = "itallapUpdate";
-				$.post('requestHandler.php', data, function(resp){
+				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					if (resp['status']){
 						$.each(data, function(key, val){
 							$('input[name="'+key+'"]:visible').val("");

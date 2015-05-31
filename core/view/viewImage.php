@@ -39,7 +39,7 @@ class ImageView extends BaseView{
             );
             
             echo '<tr data-id="'.$kepData['id'].'">
-                <td><img src="'.$thumbPath.'" alt="'.$kepData['fajlnev'].'"/></td>
+                <td><img src="'.$_SESSION['helper']->getPath().$thumbPath.'" alt="'.$kepData['fajlnev'].'"/></td>
                 <td>'.basename($kepData['fajlnev']).'</td>
                 <td>
                     <select class="reactive" name="gallery_tag">

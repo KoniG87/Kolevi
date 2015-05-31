@@ -96,7 +96,7 @@
 
 			if (canSubmit){
 				data.request = "etlapUpdate";
-				$.post('requestHandler.php', data, function(resp){
+				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					if (resp['status']){
 						$.each(data, function(key, val){
 							$('[name="'+key+'"]:visible').val("");
@@ -137,7 +137,7 @@
 				request: "etlapDelete"
 			};
 			
-			$.post('requestHandler.php', data, function(resp){
+			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 				if (resp['status']){
 					containingRow.hide(250, function(){ $(this).remove(); });			
 				}
@@ -169,7 +169,7 @@
 				request: "cetliUpdate"
 			};
 		
-			$.post("requestHandler.php", data, function(resp){
+			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 				if (resp["status"]){
 					triggeredInput.addClass("success");
 				}else{

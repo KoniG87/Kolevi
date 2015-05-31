@@ -26,8 +26,7 @@
 ?>
 	</tbody>
 </table>
-<link href="assets/css/datepicker.css" rel="stylesheet" type="text/css"/>
-<script src="assets/js/vendor/jquery-ui.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		
@@ -62,8 +61,8 @@
 
 			if (canSubmit){
 				data.request = 'rendezvenyUpdate';
-				$.post("requestHandler.php", data, function(resp){
-					window.location.href = "dashboard";
+				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
+					window.location.href = "<?=$_SESSION['helper']->getPath()?>dashboard";
 				});
 			}
 		});

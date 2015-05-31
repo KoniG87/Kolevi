@@ -8,13 +8,13 @@
 
 <div id="bootstrapped-fine-uploader"></div>
 
-<script type="text/javascript" src="assets/js/vendor/jquery.fineuploader.js"></script>	
+<script type="text/javascript" src="<?=$_SESSION['helper']->getPath('scripts')?>vendor/jquery.fineuploader.js"></script>	
    <script>
       function createUploader() {
         var uploader = new qq.FineUploader({
           element: document.getElementById('bootstrapped-fine-uploader'),
           request: {
-            endpoint: 'assets/libs/uploader/index.php',
+            endpoint: '<?=$_SESSION['helper']->getPath('libs')?>uploader/index.php',
 				paramsInBody: true
           },
 			 multiple:true,
@@ -38,7 +38,7 @@
                     $('.alert-success').slideToggle(550, function(){ $(this).remove(); });
                 }, 8500);
                 setTimeout(function(){
-                    $.post('requestHandler.php', {request: 'handleImages'}, function(resp){});
+                    $.post("<?=$_SESSION['helper']->getPath()?>requestHandler", {request: 'handleImages'}, function(resp){});
                 }, 750);
                 
                 

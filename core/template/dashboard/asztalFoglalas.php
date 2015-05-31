@@ -37,7 +37,7 @@
                 request: 'foglalasJovahagyas'
             };
             
-            $.post('requestHandler.php', data, function(resp){
+            $.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
                 if (resp.status == 'ok'){
                     $('.editFoglalas, .approveFoglalas', erintettSor).remove();
                 }else{

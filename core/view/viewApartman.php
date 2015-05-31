@@ -281,7 +281,7 @@ class ApartmanView extends BaseView{
 				<td>'.$rendezvenyData['MEGJEGYZES'].'</td>
 				<td>'.getDecisionText($rendezvenyData['allapot']).'</td>
 				<td>
-                    <form method="post" action="index.php?page=dashboard&sub=rendezvenyRogzito">
+                    <form method="post" action="'.$_SESSION['helper']->getPath().'/dashboard/rendezvenyRogzito">
                         <input type="hidden" name="id" value="'.$rendezvenyData['id'].'"/>
                         <button class="editEtel">Szerkesztés</button>
                     </form>
@@ -300,7 +300,7 @@ class ApartmanView extends BaseView{
 				<td>'.$programData['datum'].'</td>
 				<td>'.getDecisionText($programData['allapot']).'</td>
 				<td>
-                    <form method="post" action="index.php?page=dashboard&sub=programRogzito">
+                    <form method="post" action="'.$_SESSION['helper']->getPath().'dashboard/programRogzito">
                         <input type="hidden" name="id" value="'.$programData['id'].'"/>
                         <button class="editProgram">Szerkesztés</button>
                     </form>    

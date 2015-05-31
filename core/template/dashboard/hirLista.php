@@ -139,7 +139,7 @@
 			});
 
 			if (canSubmit){
-				$.post("requestHandler.php", data, function(resp){
+				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					$.each(data, function(key, val){
 						$('input:visible, select:visible').val("");
 					});

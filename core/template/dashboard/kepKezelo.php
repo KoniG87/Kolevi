@@ -28,7 +28,7 @@
             
 		
 				
-            $.post('requestHandler.php', queryData, function(resp){
+            $.post("<?=$_SESSION['helper']->getPath()?>requestHandler", queryData, function(resp){
                 if (resp.status == "ok"){
                     triggeredElement.addClass("success");
                 }else{

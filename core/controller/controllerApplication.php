@@ -37,9 +37,9 @@ class Application{
                         <meta name="msapplication-TileColor" content="#ffffff">
                         <meta name="application-name" content="Kőleves">-->
 
-        		<link rel="stylesheet" media="screen" type="text/css" href="assets/css/styles.min.css"/>
+        		<link rel="stylesheet" media="screen" type="text/css" href="'.$_SESSION['helper']->getPath('styles').'styles.min.css"/>
         		
-        		<script src="assets/js/vendor/jquery-1.11.1.min.js"></script>
+        		<script src="'.$_SESSION['helper']->getPath('scripts').'vendor/jquery-1.11.1.min.js"></script>
                 <script src="https://www.google.com/recaptcha/api.js"></script>
         	</head>
         	<body>
@@ -429,11 +429,11 @@ class Application{
     				});	
     		});
     			</script>
-    		<script src="assets/js/plugins.min.js"></script>
-        	<script src="assets/js/main.min.js"></script>
+    		<script src="'.$_SESSION['helper']->getPath('scripts').'plugins.min.js"></script>
+        	<script src="'.$_SESSION['helper']->getPath('scripts').'main.min.js"></script>
     	';
     
-    	$subPageScriptPath = 'assets/js/'.$subPage.'.min.js';
+    	$subPageScriptPath = $_SESSION['helper']->getPath('scripts').$subPage.'.min.js';
     	if (file_exists($subPageScriptPath)){
     		echo '<script src="'.$subPageScriptPath.'"></script>';
     	}
@@ -532,37 +532,7 @@ class Application{
 		}
 	}
     
-    public function generateView($viewName){
-        $viewFile = $this->parameters['directories']['views'] . $viewName .'.php';
-        $scriptFile = $this->parameters['directories']['skins'] . $this->parameters['skin'] . '/func/'. $viewName.'.js';
-        
-		if ($viewName != 'process' && !isset($_POST['formSubmitted'])){
-			echo '<script type="text/javascript">';
-			include($this->parameters['directories']['skins'] . $this->parameters['skin'] . '/func/default.js');
-			if (file_exists($scriptFile)){
-			   include($scriptFile);
-			}
-			echo '</script>';
-			
-			switch ($viewName){
-				case 'login': case 'home': case 'raktarAllapot': case 'szallitasiDatum': case 'szallitasiAdatok': case 'pakolasiLap': case 'karantenozoLap': case 'mboLap': case 'betaroloLap': case 'kirakodoLap': case 'kirakodasElorejelzes':
-					$containerName = 'content';
-					break;
-				default:
-					$containerName = 'container';
-			}
-			
-			
-			echo '<h1>'.($this->appState == 'dev' ? 'View::'.ucfirst($viewName) : '&nbsp;').'</h1>
-			<div id="'.$containerName.'">';
-			
-        
-		}
-		
-		include($viewFile);
-    }
-
-		
+    		
 	public function redirect($link = '.', $passParams = array()){
 		$redirectQuery = '<form id="returnForm" name="returnForm" method="post" action="'.$link.'">';
 		

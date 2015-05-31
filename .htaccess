@@ -3,4 +3,5 @@ RewriteEngine On
 RewriteRule ^([\w]+)/([\w]+)/([\w]+)$ index.php?page=dashboard&sec=$2&sub=$3 [NC,L]
 RewriteRule ^([\w]+)/([\w]+)/([\w]+)$ index.php?page=$1&sec=$2&sub=$3 [NC,L]
 RewriteRule ^([\w]+)/([\w]+)$ index.php?page=$1&sub=$2 [NC,L]
+RewriteRule ^requestHandler$ requestHandler.php [NC,L]
 RewriteRule ^([\w]+)$ index.php?page=$1 [NC,L]

@@ -58,8 +58,7 @@
 	</tbody>
 </table>
 </form>
-<link href="assets/css/datepicker.css" rel="stylesheet" type="text/css"/>
-<script src="assets/js/vendor/jquery-ui.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.datepicker').datepicker({
@@ -105,9 +104,9 @@
 			if (canSubmit){
 				data.request = 'programUpdate';
 				
-                $.post("requestHandler.php", data, function(resp){
+                $.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					if (resp.status == "ok"){
-                        window.location.href = "index.php?page=dashboard&sub=programLista";
+                        window.location.href = "<?=$_SESSION['helper']->getPath()?>dashboard/programLista";
                     }
 				}, 'json');
 			}

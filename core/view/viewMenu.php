@@ -76,7 +76,7 @@ class MenuView extends BaseView{
     				request: "napiUpdate"
 				};
     			
-				$.post("requestHandler.php", data, function(resp){
+				$.post("'.$_SESSION['helper']->getPath().'requestHandler", data, function(resp){
 					if (resp["status"]){
 						triggeredInput.addClass("success");
     					triggeredInput.next("input.menuTag").addClass("success");
@@ -355,7 +355,7 @@ class MenuView extends BaseView{
                                         echo '<p>'.$cetliAdat['labelText'].'</p>';
                                    }  
                             echo '</div>
-                            <a class="dl-pdf" target="_blank" href="requestHandler.php"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
+                            <a class="dl-pdf" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
                     </div>
                     </div>
 
@@ -507,7 +507,7 @@ public function drawKertEtlap($elements){
      }
      
      echo '
-     <a class="dl-pdf dl-pdf-itallap" target="_blank" href="requestHandler.php"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
+     <a class="dl-pdf dl-pdf-itallap" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
        </div> 
 
                     </div>
