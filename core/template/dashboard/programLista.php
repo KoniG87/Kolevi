@@ -2,12 +2,7 @@
 	$vendeg = new Vendeglo($app->getDbHandler());
 	
 ?>
-<div class="section-label" data-labelpos="1">
-	<div class="papercut-left"></div>
-	<label for="rendezveny"><span></span>
-	<h2>Rendezvények</h2></label>
-	<div class="papercut-right"></div>
-</div>
+<h2>Programok</h2>
 
 <table class="tablaGrid striped">
 	<thead>

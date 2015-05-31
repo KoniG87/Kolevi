@@ -10,10 +10,33 @@ if (isset($_GET['sec'])){
         <div class="logo left">
             <a href="dashboard"><svg class="icon icon-logo"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-logo"></use></svg></a>
         </div>
-            <a href="<?=$_SESSION['helper']->getPath()?>dashboard/vendeglo/dashboard" title="Vendéglő"><svg class="icon icon-vendeglo-2"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-vendeglo-2"></use></svg></a>
-            <a href="<?=$_SESSION['helper']->getPath()?>dashboard/kert/dashboard" title="Kert"><svg class="icon icon-kert-2"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kert-2"></use></svg></a>
-            <a href="" title="Hamarosan"><svg class="icon icon-delicates-2"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-delicates-2"></use></svg></a>
-            <a href="<?=$_SESSION['helper']->getPath()?>dashboard/apartman/dashboard" title="Apartman"><svg class="icon icon-apartman-2"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-apartman-2"></use></svg></a>
+        <?php 
+       //TODO dinamikus header class kezeles for Koni
+        $dashMenu = array(
+        	'vendeglo' => array(
+        		'link'	=> 	'vendeglo',
+        		'szoveg' => 'Vendéglő'
+        	),
+        	'kert' => array(
+        		'link'	=> 	'kert',
+        		'szoveg' => 'Vendéglő'
+        	),
+        	'delicates' => array(
+        		'link'	=> 	'vendeglo',
+        		'szoveg' => 'Hamarosan'
+        	),
+        	'apartman' => array(
+        		'link'	=> 	'apartman',
+        		'szoveg' => 'Vendéglő'
+        	)
+        );
+        
+                
+        foreach ($dashMenu AS $dashIcon => $dashData){
+        	echo '<a class="'.(strtolower($sectionIndicator) == $dashIcon ? 'dashMenuActive' : '').'" href="'.$_SESSION['helper']->getPath().'dashboard/'.$dashData['link'].'/dashboard" title="'.$dashData['szoveg'].'"><svg class="icon icon-'.$dashIcon.'-2"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-'.$dashIcon.'-2"></use></svg></a>';
+        }
+        ?>
+            
             
             <a href="<?=$_SESSION['helper']->getPath().strtolower($sectionIndicator)?>" class="right" style="margin-right:5rem;">Vissza az oldalra</a>
             <div class="lang-select">
@@ -62,36 +85,7 @@ if (isset($_GET['sec'])){
 	<script src="<?=$_SESSION['helper']->getPath('scripts')?>vendor/jquery-ui.min.js"></script>
   <script type="text/javascript">
 	$(document).ready(function(){
-		/*$('.dashNavigator a').click(function(e){
-			e.preventDefault();
-			path = $(this).attr('href');
-			target = $('section.right');
-			$.post('core/template/dashboard/'+path+'.php', function(resp){
-				target.fadeOut(250);
-				setTimeout(function(){
-					target.html(resp).fadeIn(250);
-				}, 500);
-			});
-		});
-		*/
 		
-		/*
-		$('.dashNavigator a').click(function(e){
-			e.preventDefault();
-			path = $(this).attr('href');
-			target = $('section.right');
-			data = {
-				'request'	=> 'napiAdmin'
-			};
-			$.post('core/requestHandler.php', data, function(resp){
-				target.fadeOut(250);
-				setTimeout(function(){
-					target.html(resp).fadeIn(250);
-				}, 500);
-			});
-		});
-		*/
-
 		$('input, select').focus(remainderCharacters);
 		$('input, select').keyup(remainderCharacters);
 	});
@@ -111,4 +105,5 @@ if (isset($_GET['sec'])){
   </script>
   <style type="text/css">
   	.countdownRemainder{}
+  	.dashMenuActive{background:rgba(24,188,156,0.2);}
   </style>

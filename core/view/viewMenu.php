@@ -175,14 +175,7 @@ class MenuView extends BaseView{
 	 
 </section>
     			
-    	<div class="section-label" data-labelpos="1">
-			<div class="papercut-left"></div>
-			<label for="cetli"><span></span>
-			<h2>Cetli</h2></label>
-			<div class="papercut-right"></div>
-		</div>
-    			
-    			
+    	<h2>Cetli</h2>
     	<section>';
     	
     	$cetliSzamlalo = 1;
@@ -199,12 +192,7 @@ class MenuView extends BaseView{
 		
 	
 				
-    		<div class="section-label" data-labelpos="2">
-				<div class="papercut-left"></div>
-				<label for="etlap"><span></span>
-				<h2>Étlap</h2></label>
-				<div class="papercut-right"></div>
-			</div>
+    		<h2>Étlap</h2>
 			
 			<table class="tablaGrid etlapTabla">
 				';
@@ -280,12 +268,7 @@ class MenuView extends BaseView{
     
 </section>
     
-    		<div class="section-label" data-labelpos="2">
-				<div class="papercut-left"></div>
-				<label for="etlap"><span></span>
-				<h2>Itallap</h2></label>
-				<div class="papercut-right"></div>
-			</div>
+    		<h2>Itallap</h2>
 		
 			<table class="tablaGrid etlapTabla">
     

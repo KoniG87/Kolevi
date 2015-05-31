@@ -3,12 +3,7 @@
     $rendezvenyID = isset($_POST['id']) ? $_POST['id'] : null;
     
 ?>
-<div class="section-label" data-labelpos="1">
-	<div class="papercut-left"></div>
-	<label for="rendezveny"><span></span>
-	<h2>Új rögzítése</h2></label>
-	<div class="papercut-right"></div>
-</div>
+<h2>Új rögzítése</h2>
 <button id="saveRendezveny">Rendezvény mentése</button>
 <form id="editForm">
 <?php

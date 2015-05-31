@@ -22,7 +22,7 @@ class Application{
         echo '<!doctype html>
         		<html>
         			<head>
-        				 <meta charset="utf-8"/>
+		        		 <meta charset="utf-8"/>
         				 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         				 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
         				 <title>Kőleves::Vendéglő</title>
@@ -433,11 +433,14 @@ class Application{
         	<script src="'.$_SESSION['helper']->getPath('scripts').'main.min.js"></script>
     	';
     
-    	$subPageScriptPath = $_SESSION['helper']->getPath('scripts').$subPage.'.min.js';
+    	
+    	//$subPageScriptPath = $_SESSION['helper']->getPath('scripts').$subPage.'.min.js';
+    	$subPageScriptPath = 'assets/js/'.$subPage.'.min.js';
+
     	if (file_exists($subPageScriptPath)){
     		echo '<script src="'.$subPageScriptPath.'"></script>';
     	}
-    	
+
     	echo '
     		<script type="text/javascript">
     			$(document).ready(function(){
@@ -519,7 +522,7 @@ class Application{
 		} catch (Exception $e){
 			echo '<html>
         	<head>
-	            <meta charset="utf-8"/>
+				<meta charset="utf-8"/>
             	<title>Kőleves :: Átmenetileg nem elérhető</title>
         	</head>
         	<body>

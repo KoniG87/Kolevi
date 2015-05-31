@@ -1,9 +1,4 @@
-<div class="section-label" data-labelpos="1">
-	<div class="papercut-left"></div>
-	<label for="kepkezelo"><span></span>
-	<h2>Képek kezelése</h2></label>
-	<div class="papercut-right"></div>
-</div>
+<h2>Képek kezelése</h2>
 
 
 <?php
