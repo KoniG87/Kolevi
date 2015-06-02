@@ -15,6 +15,13 @@ function refreshWaypoints(){
 
 /* langselect english kamu */
 
+/* TODO: /kolevit/ lecserélni /-re */
+if ( window.location.pathname == '/kolevi/' ){
+  $(".landing-logo-container .info-black>a").on("click",function(event){
+      event.preventDefault();
+      window.location.replace("/kolevi/vendeglo#footer");
+  });
+}
 
 function engPopup(){
   
@@ -422,6 +429,10 @@ function barkasSugo(){
 }
 
 
+
+
+
+
 /*
  *  LANDING DESKTOP -- HEADER
  */
@@ -516,7 +527,6 @@ $(".rolunk-kert-kep").Svgenerate({
     rangeX:0.8,
     rangeY:0.9
   });
-
 
     }               
 }

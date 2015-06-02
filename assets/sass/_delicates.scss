@@ -1,0 +1,204 @@
+.delicates-slider{
+
+	margin-bottom:6rem;
+	.slick-slide{
+		position:relative;
+		margin:1rem;
+/* 		img{
+			display: none;
+		} */
+	}
+	.slick-prev, .slick-next{
+		position:absolute;
+		width: 3.5rem;
+		height: 3.5rem;
+		top:10rem;
+		cursor: pointer;
+	}
+	.slick-prev{
+		left:-2rem;
+	}
+	.slick-next{
+		right:-2rem;
+	}
+
+	.slick-dots{
+		position: absolute;
+		bottom: -45px;
+		display: block;
+		width: 100%;
+		padding: 0;
+		list-style: none;
+		text-align: center;
+		li{
+			position: relative;
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			margin: 0 10px;
+			padding: 0;
+			cursor: pointer;
+			  button{
+				font-size: 0;
+				line-height: 0;
+				display: block;
+				width: 20px;
+				height: 20px;
+				padding: 5px;
+				cursor: pointer;
+				color: transparent;
+				border: 0;
+				outline: none;
+				background: transparent;
+					&:before{
+						/* font-family: 'slick'; */
+						font-size: 72px;
+						line-height: 20px;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 20px;
+						height: 20px;
+						content: '•';
+						text-align: center;
+						color: $black;
+						@include transition(color 0.5s);
+						}
+			  	}
+  		}
+  		li.slick-active{
+  			button{
+  				&:before{
+					color:#e99d3b;
+  				}
+  			}
+  		}
+	}
+}
+.delicates-slide{
+	.delicates-slide-img{
+		width: 70%;
+		@extend .left;
+		height: 100%;
+		position:relative;
+		img{
+			@extend .visuallyhidden;
+			height: 20rem;
+		}
+	}
+	aside{
+		width: 30%;
+		@extend .right;
+		/* background:$black; */
+		height: 100%;
+		color:$white;
+		padding: 2rem;
+		position: absolute;
+		right:1px;
+		font-family: $danielreg;
+		text-align: center;
+		letter-spacing: 0.5px;
+		h4{
+			margin:1rem 0;
+			font-size: 120%;
+			font-family: $danielbld;
+		}
+		p{
+			a{
+				color:#e99d3b;
+				&:hover{
+					opacity: 0.7;
+				}
+			}
+		}
+		h5{
+			margin:1rem 0;
+		}
+	}
+}
+.delicatesrol-bemutatkozas{
+	@include breakpoint(tablet){
+		padding:0 3rem;
+	}
+}
+/* BOLT */
+
+
+#bolt{
+/* 	.three{
+		border:1px solid red;
+		min-height: 1000px;
+	}
+	.nine{
+		border:1px solid red;
+		min-height: 1000px;
+	} */
+}
+
+.bolt-acco-container{
+	position:relative;
+	overflow:hidden;
+	/* border:1px solid violet; */
+}
+.bolt-acco-illustration{
+	width: 100%;
+	background: rgba(200,0,0,0.3);
+	height:12rem;
+	margin-bottom:1rem;
+}
+
+.bolt-acco{
+	@include perspective(400px);
+	font-family:$danielbld;
+	>li{
+		height:2.5rem;
+		line-height: 3rem;
+		padding:0 1rem;
+		width:97.5%;
+		margin:-3px 1.25%;
+		/* box-shadow: 0 0 30px -17px $black; */
+		/* border-right: 2px solid rgba(0,0,0,0.3); */
+		text-align: center;
+		letter-spacing: 3px;
+		font-size: 90%;
+/* 		z-index: 1; */
+		position: relative;
+		/* border:1px solid aqua; */
+	}
+	>ul{
+		z-index: -1;
+		position: relative;
+		margin-bottom: -5px;
+		margin-top: -5px;
+		li{
+			height:1.5rem;
+			line-height: 2rem;
+			padding:0 1rem;
+			width:94%;
+			margin:-3px 3%;
+			text-align: center;
+			letter-spacing: 2px;
+			font-size:75%;
+		}
+	}
+	>ul{
+		&:nth-of-type(even){
+			li{
+				width:98%;
+				margin:-3px 1%;
+			}
+		}
+	}
+}
+.bolt-acco-head{
+	color:$white;
+	background:#e05a25;
+	height:2.5rem;
+	line-height: 3rem;
+	text-align: center;
+	letter-spacing: 3px;
+	position: relative;
+	cursor: pointer;
+	z-index: 1;
+	margin-bottom:-1px;
+}
