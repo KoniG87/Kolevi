@@ -1126,11 +1126,6 @@ itallapAccordion();
 
 
 
-
-
-
-
-
 // rendezvények
 
 

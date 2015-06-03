@@ -196,39 +196,220 @@ boltAccordion();
 
 
 
+/* Bold Grid */
+
+
+
+$(".bolt-search").Svgenerate({
+  rangeX:0.97,
+  rangeY:0.94,
+});
+
+
+
+$(".bolt-grid>h3.eheto-label").Svgenerate({
+  rangeX:0.97,
+  rangeY:0.94,
+  fill: "#e05a25"
+});
+
+$(".bolt-grid>h3.ihato-label").Svgenerate({
+  rangeX:0.97,
+  rangeY:0.94,
+  fill: "#795f86"
+});
+
+$(".bolt-grid>h3.nemeheto-label").Svgenerate({
+  rangeX:0.97,
+  rangeY:0.94,
+  fill: "#186c9b"
+});
+
+
+function callBoltGridElements(){
+$(".bolt-grid-element-img").each(function(){
+  $(this).Svgenerate({
+    imgMask:"on",
+    setToImg:"on",
+    dropShadow: "on",
+    blur:3,
+    dX:40,
+    dY:40,
+    opacity:0.2,
+    rangeX:0.93,
+    rangeY:0.93
+  });
+});
+}
+
+callBoltGridElements();
+
+/* bolt-item-open */
+
+//open
+function boltItemOpen(){
+  $(".overlay-bolt").addClass("bolt-item-open");
+  $("html, body").addClass("no-scroll");
+}
+
+//close
+function boltItemClose(){
+	$(".overlay-bolt").removeClass("bolt-item-open");
+  $("html, body").removeClass("no-scroll");
+}
 
 
 
 
+$(".bolt-grid-element").on("click",function(event){
+	event.preventDefault();
+	boltItemOpen();
+
+/*
+IDE EJAKULÁLD AZ AJAXAL!
+*/
+itemCarousel();
+$(".bolt-item-slider-nav .slick-center").click();
+  $(".item-q input").Svgenerate({
+    rangeX:0.97,
+    rangeY:0.94,
+    fill: "#fff",
+    rightFixed: "on"
+  });
+  $(".item-q-up").Svgenerate({
+    fill: "#000",
+    rightFixed: "on",
+    topFixed: "on"
+  });
+  $(".item-q-down").Svgenerate({
+    fill: "#000",
+    rightFixed: "on",
+    bottomFixed: "on"
+  });
+
+  $(".bolt-item-info button").Svgenerate({
+  rangeX:0.94,
+  rangeY:0.91,
+});
+
+
+});
+
+$(".bolt-item-close").on("click",function(){
+	boltItemClose();
+});
+
+
+/* Item slider */
+
+function itemCarousel(){
+
+var itemPrev = "<svg class=\"icon icon-nyil-balra slick-prev\"><use xlink:href=\"#icon-nyil-balra\"></use></svg>";
+var itemNext = "<svg class=\"icon icon-nyil-jobbra slick-next\"><use xlink:href=\"#icon-nyil-jobbra\"></use></svg>";
 
 
 
+$(".bolt-item-slider").slick({ 
+	  adaptiveHeight: true,
+	  speed: 700,
+	  prevArrow: itemPrev,
+	  nextArrow: itemNext,
+	  asNavFor: $('.bolt-item-slider-nav')
+  });
+
+	$('.bolt-item-slider-nav').slick({
+	  slidesToShow: 3,
+	  slidesToScroll: 1,
+	  asNavFor: $(".bolt-item-slider"),
+	  dots: false,
+	  centerMode: true,
+	  focusOnSelect: true,
+	  arrows:false
+	});
+callitemCarouselSvg();			
+}
 
 
 
+function callitemCarouselSvg(){
+$(".bolt-item-slider .slick-slide").each(function(){
+  $(this).Svgenerate({
+    imgMask:"on",
+    setToImg:"on",
+    dropShadow: "on",
+    blur:3,
+    dX:5,
+    dY:5,
+    opacity:0.3,
+    rangeX:0.98,
+    rangeY:0.93
+  });
+});
+
+$(".bolt-item-slider-nav .slick-slide").each(function(){
+  $(this).Svgenerate({
+    imgMask:"on",
+    setToImg:"on",
+    dropShadow: "on",
+    blur:3,
+    dX:20,
+    dY:20,
+    opacity:0.3,
+    rangeX:0.93,
+    rangeY:0.93
+  });
+});
+}
 
 
+/* item quantity */
 
 
+function itemQuantityButtons(){
+  var qValue = $(".item-q>input").val();
+
+  $(".item-q-up").on("click",function(){
+    $(".item-q>input").val(parseInt(qValue)+1);
+  });
+  $(".item-q-down").on("click",function(){
+    if(qValue != 1){
+       $(".item-q>input").val(parseInt(qValue)-1);
+    }
+   
+  });
+
+/*if ($(this).hasClass(".item-q-up")) {
+    $(".item-q>input").val(parseInt(qValue)+1);
+}
+else if ($(this).hasClass(".item-q-down")) {
+    if(qValue != 1){
+       $(".item-q>input").val(parseInt(qValue)-1);
+    }
+}*/
+}
+
+$(".item-q").click(itemQuantityButtons);
 
 
+/* Hasonló termékek */
 
+function callHasonloGridElements(){
+$(".hasonlo-grid-element-img").each(function(){
+  $(this).Svgenerate({
+    imgMask:"on",
+    setToImg:"on",
+    dropShadow: "on",
+    blur:3,
+    dX:40,
+    dY:40,
+    opacity:0.2,
+    rangeX:0.93,
+    rangeY:0.93
+  });
+});
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+callHasonloGridElements();
 
 
 
@@ -252,7 +433,11 @@ function resizeend() {
         timeout = false;
 
 /*delicates*/
-callDelicatesCarouselSvg();
+setTimeout(function(){
+  callDelicatesCarouselSvg();
+callBoltGridElements();
+callHasonloGridElements();
+}, 200);
 
     }               
 }

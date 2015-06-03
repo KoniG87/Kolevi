@@ -782,7 +782,7 @@ input:focus::-ms-input-placeholder {
 }
 
 /* overlay becomes visible when a field is opened */
-.nl-overlay, .overlay {
+.nl-overlay, .overlay, .overlay-bolt {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -797,10 +797,10 @@ input:focus::-ms-input-placeholder {
 	-moz-transition: visibility 0s 0.3s, opacity 0.3s;
 	transition: visibility 0s 0.3s, opacity 0.3s;
 }
-.overlay{
+.overlay, .overlay-bolt{
 	background: rgba(255,255,255,0.9);
 }
-.nl-field.nl-field-open ~ .nl-overlay , .overlay.gallery-open{
+.nl-field.nl-field-open ~ .nl-overlay , .overlay.gallery-open, .overlay-bolt.bolt-item-open{
 	opacity: 1;
 	visibility: visible;
 	-webkit-transition-delay: 0s;
@@ -2182,6 +2182,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bcbcbc', end
 	min-height: 800px;
 }
 .gallery-grid-element{
+
     position: relative;
     padding: 2rem;
     @extend .left;

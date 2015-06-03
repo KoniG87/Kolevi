@@ -324,10 +324,10 @@ img {
   max-width: 100%; }
 
 /* Float classes */
-.right, .delicates-slide aside {
+.right, .delicates-slide aside, .bolt-search {
   float: right !important; }
 
-.left, .f-sitemap ul, .socials .social-link, .sitckyNav .row a, .rolunk-grid-element, .gallery-grid-element, .delicates-slide .delicates-slide-img {
+.left, .f-sitemap ul, .socials .social-link, .sitckyNav .row a, .rolunk-grid-element, .gallery-grid-element, .delicates-slide .delicates-slide-img, .bolt-grid-element, .bolt-item-info button, .item-q, .hasonlo-grid-element {
   float: left !important; }
 
 /* Hide / Show classes */
@@ -398,7 +398,7 @@ img {
   -webkit-transform: rotate(4deg);
   transform: rotate(4deg); }
 
-.visuallyhidden, .rend-slide img, .cikk-img img, .rolunk-visible img, .delicates-slide .delicates-slide-img img {
+.visuallyhidden, .rend-slide img, .cikk-img img, .rolunk-visible img, .delicates-slide .delicates-slide-img img, .bolt-grid-element-img img, .bolt-item-slider .slick-slide img, .bolt-item-slider-nav .slick-slide img, .hasonlo-grid-element-img img {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -426,6 +426,18 @@ img {
 
 body {
   -ms-overflow-x: hidden; }
+
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.no-scroll {
+  overflow-y: hidden !important;
+  position: static; }
 
 .has-sprite, .allergen, .cetli, .review-img {
   background-repeat: no-repeat;
@@ -3208,7 +3220,7 @@ header {
     margin: 0 2rem;
     color: #000; }
 
-#napiMenu > div.row > div.eight.columns.left > ul > li:nth-child(1) > div, .socials #napiMenu > div.row > div.eight.columns.social-link > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.rolunk-grid-element > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.gallery-grid-element > ul > li:nth-child(1) > div, .delicates-slide #napiMenu > div.row > div.eight.columns.delicates-slide-img > ul > li:nth-child(1) > div {
+#napiMenu > div.row > div.eight.columns.left > ul > li:nth-child(1) > div, .socials #napiMenu > div.row > div.eight.columns.social-link > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.rolunk-grid-element > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.gallery-grid-element > ul > li:nth-child(1) > div, .delicates-slide #napiMenu > div.row > div.eight.columns.delicates-slide-img > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.bolt-grid-element > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.item-q > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.hasonlo-grid-element > ul > li:nth-child(1) > div {
   display: none; }
 
 /*	ÉTLAP	*/
@@ -3367,7 +3379,7 @@ header {
   max-width: 180px;
   width: 33.33%; }
 
-.etlap-level.left, .f-sitemap ul.etlap-level, .socials .etlap-level.social-link, .sitckyNav .row a.etlap-level, .etlap-level.rolunk-grid-element, .etlap-level.gallery-grid-element, .delicates-slide .etlap-level.delicates-slide-img {
+.etlap-level.left, .f-sitemap ul.etlap-level, .socials .etlap-level.social-link, .sitckyNav .row a.etlap-level, .etlap-level.rolunk-grid-element, .etlap-level.gallery-grid-element, .delicates-slide .etlap-level.delicates-slide-img, .etlap-level.bolt-grid-element, .bolt-item-info button.etlap-level, .etlap-level.item-q, .etlap-level.hasonlo-grid-element {
   /*display: none;*/ }
 
 .etlap-logo {
@@ -3875,7 +3887,7 @@ input:focus::-ms-input-placeholder {
   background: #58a199; }
 
 /* overlay becomes visible when a field is opened */
-.nl-overlay, .overlay {
+.nl-overlay, .overlay, .overlay-bolt {
   position: fixed;
   top: 0;
   left: 0;
@@ -3890,10 +3902,10 @@ input:focus::-ms-input-placeholder {
   -moz-transition: visibility 0s 0.3s, opacity 0.3s;
   transition: visibility 0s 0.3s, opacity 0.3s; }
 
-.overlay {
+.overlay, .overlay-bolt {
   background: rgba(255, 255, 255, 0.9); }
 
-.nl-field.nl-field-open ~ .nl-overlay, .overlay.gallery-open {
+.nl-field.nl-field-open ~ .nl-overlay, .overlay.gallery-open, .overlay-bolt.bolt-item-open {
   opacity: 1;
   visibility: visible;
   -webkit-transition-delay: 0s;
@@ -5846,16 +5858,6 @@ form .stars span {
       padding: 0 3rem; } }
 
 /* BOLT */
-#bolt {
-  /* 	.three{
-  		border:1px solid red;
-  		min-height: 1000px;
-  	}
-  	.nine{
-  		border:1px solid red;
-  		min-height: 1000px;
-  	} */ }
-
 .bolt-acco-container {
   position: relative;
   overflow: hidden;
@@ -5914,3 +5916,272 @@ form .stars span {
   cursor: pointer;
   z-index: 1;
   margin-bottom: -1px; }
+
+/* Bolt grid */
+/* search */
+.bolt-search {
+  width: 10rem;
+  height: 2rem;
+  padding: 0.3rem;
+  color: #fff;
+  position: relative;
+  top: 0; }
+  .bolt-search svg {
+    position: absolute;
+    left: 0.3rem; }
+  .bolt-search input {
+    position: absolute;
+    width: 8rem;
+    right: 0.3rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: "DanielBold-Regular", sans serif;
+    padding: 0.2rem 0; }
+
+.bolt-search input::-webkit-input-placeholder {
+  color: #fff; }
+
+.bolt-search input::-moz-placeholder {
+  color: #fff; }
+
+.bolt-search input:-ms-input-placeholder {
+  color: #fff; }
+
+/* grid elements */
+.bolt-grid > h3 {
+  color: #fff;
+  display: table;
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+  margin-left: 2rem; }
+
+.bolt-grid-element {
+  position: relative;
+  padding: 2rem;
+  cursor: pointer;
+  width: 100%;
+  height: 20rem;
+  text-align: center;
+  letter-spacing: 1px;
+  /*560px*/
+  /*800px*/ }
+  @media (min-width: 35em) {
+    .bolt-grid-element {
+      width: 50%;
+      width: -webkit-calc(100% / 2);
+      width: calc(100% / 2); } }
+  @media (min-width: 50em) {
+    .bolt-grid-element {
+      height: 18rem;
+      width: 33%;
+      width: -webkit-calc(100% / 3);
+      width: calc(100% / 3); } }
+  .bolt-grid-element a {
+    text-decoration: none; }
+  .bolt-grid-element h4 {
+    font-weight: 600;
+    color: #000;
+    font-size: 80%;
+    margin-top: 0.5rem; }
+  .bolt-grid-element h5 {
+    color: #000;
+    font-size: 80%; }
+  .bolt-grid-element:hover .svg-dropShadow {
+    opacity: 0.5;
+    -moz-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95); }
+
+/* BOLT ITEM VIEW */
+/* overlay close */
+.bolt-item-close {
+  width: 4rem;
+  height: 4rem;
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+  cursor: pointer; }
+
+.bolt-item-view-container {
+  width: 100%;
+  height: 100%;
+  overflow: auto; }
+
+/* .bolt-item-view{
+	.five{
+		border:1px solid red;
+		min-height: 600px;
+	}
+	.seven{
+		border:1px solid red;
+		min-height: 600px;
+	}
+	.twelve{
+		border:1px solid red;
+		min-height: 6000px;
+	}
+	.five, .seven{
+		padding:1rem;
+	}
+} */
+.bolt-item-view {
+  padding: 6rem 0; }
+  .bolt-item-view .seven {
+    margin-top: 5rem; }
+  .bolt-item-view .five {
+    /*800px*/ }
+    @media (min-width: 50em) {
+      .bolt-item-view .five {
+        margin-right: -2.12766%;
+        padding: 1rem; } }
+
+.bolt-item-slider {
+  padding: 0 2rem 2rem 2rem;
+  cursor: pointer; }
+  .bolt-item-slider .slick-slide {
+    position: relative;
+    margin: 0.5rem; }
+  .bolt-item-slider .slick-prev, .bolt-item-slider .slick-next {
+    position: absolute;
+    width: 3.5rem;
+    height: 3.5rem;
+    top: 40%; }
+  .bolt-item-slider .slick-prev {
+    left: -1.5rem; }
+  .bolt-item-slider .slick-next {
+    right: -1.5rem; }
+
+.bolt-item-slider-nav {
+  cursor: pointer;
+  /* display:none; */
+  /* 	@include breakpoint (tablet){
+  		display: block;
+  	} */ }
+  .bolt-item-slider-nav .slick-slide {
+    padding: 1rem;
+    position: relative; }
+
+.bolt-item-info h4 {
+  font-weight: 600;
+  font-size: 120%;
+  letter-spacing: 2px; }
+.bolt-item-info p {
+  margin-top: 0.5rem; }
+  .bolt-item-info p a {
+    font-weight: 400; }
+  .bolt-item-info p svg {
+    margin-bottom: -0.1rem; }
+.bolt-item-info h5 {
+  margin-bottom: 2rem; }
+.bolt-item-info form {
+  position: relative;
+  margin-top: 5rem; }
+.bolt-item-info button {
+  line-height: 2rem;
+  cursor: pointer;
+  position: relative;
+  /*background: $black;*/
+  color: #fff;
+  font-size: 70%;
+  font-weight: bold;
+  letter-spacing: 3px;
+  padding: 0 0.6rem;
+  font-family: "DanielBold-Regular", sans serif;
+  height: 2rem;
+  margin-left: 2rem;
+  background: transparent;
+  border: none; }
+
+.item-q {
+  width: 5rem;
+  height: 2rem;
+  position: relative;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5); }
+  .item-q input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3rem;
+    height: 2rem;
+    border: none;
+    outline: none;
+    font-family: "Roboto Slab", Courier, serif;
+    font-weight: 600;
+    font-size: 100%;
+    padding: 0 0.5rem;
+    text-align: center;
+    background: transparent; }
+
+.item-q-up,
+.item-q-down {
+  position: absolute;
+  right: 0;
+  width: 2rem;
+  height: 1rem;
+  cursor: pointer; }
+  .item-q-up svg,
+  .item-q-down svg {
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    color: #fff;
+    width: 2rem;
+    display: block; }
+
+.item-q-up {
+  top: 0; }
+
+.item-q-down {
+  top: 1rem; }
+
+/* Hasonl termékek */
+.hasonlo-termekek h3 {
+  text-transform: uppercase;
+  margin: 2rem;
+  margin-bottom: 0;
+  font-size: 80%; }
+
+.hasonlo-grid-element {
+  position: relative;
+  padding: 2rem;
+  cursor: pointer;
+  width: 100%;
+  height: 20rem;
+  text-align: center;
+  letter-spacing: 1px;
+  /*560px*/
+  /*800px*/ }
+  @media (min-width: 35em) {
+    .hasonlo-grid-element {
+      width: 50%;
+      width: -webkit-calc(100% / 2);
+      width: calc(100% / 2); } }
+  @media (min-width: 50em) {
+    .hasonlo-grid-element {
+      height: 18rem;
+      width: 25%;
+      width: -webkit-calc(100% / 4);
+      width: calc(100% / 4); } }
+  .hasonlo-grid-element a {
+    text-decoration: none; }
+  .hasonlo-grid-element h4 {
+    font-weight: 600;
+    color: #000;
+    font-size: 80%;
+    margin-top: 0.5rem; }
+  .hasonlo-grid-element h5 {
+    color: #000;
+    font-size: 80%; }
+  .hasonlo-grid-element:hover .svg-dropShadow {
+    opacity: 0.5;
+    -moz-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95); }
