@@ -11,7 +11,7 @@ class Vendeglo extends BaseObject{
 	
 	public function drawCikkAdmin(){
 		$elements = array(
-			'cikk'	=> $this->getCikkData(2),
+			'cikkek'	=> $this->getCikkData(2),
 			'elerhetoKepek' => $this->loadKepek(6)
 		);
 	
@@ -127,8 +127,8 @@ class Vendeglo extends BaseObject{
     
     
     public function getCikkData($allapot){
-    	$SQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, ".$_SESSION['helper']->getLangLabel('leiras')." AS labelDesc, visible, kep, url FROM koleves_partnerek WHERE visible <> ? ORDER BY sorrend ASC;";
-    	 
+    	$SQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, visible, kiskep, nagykep, url FROM koleves_cikkek WHERE visible <> ? ORDER BY sorrend ASC;";
+    	
     	return $this->fetchItems($SQL, array($allapot));
     }
     

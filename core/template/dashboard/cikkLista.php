@@ -4,7 +4,7 @@
 ?>
 
 <style type="text/css">
-
+	.tablaGrid img{width:7.5em;max-width:7.5em;}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){

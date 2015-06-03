@@ -9,6 +9,106 @@ class VendegloView extends BaseView{
         
 	}
     
+	
+	
+	public function drawCikkAdmin($elements){
+		
+			
+		echo '
+	
+    	<section class="kategoriaEditor">
+    			<button id="addCikk">Cikk rögzítése</button>
+	
+				<table class="tablaGrid" >
+				<tr>
+					<td>Cím</td>
+					<td>
+						<input type="hidden" name="id" value="0"/>
+						<input type="text" maxlength="128" title="Cím" name="text" value="" required/>
+						<span class="tooltip">Cím, max. 128 karakter</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Megnevezés</td>
+					<td>
+	
+						<input type="text" maxlength="255" title="Étel neve" name="text" value="" required/>
+						<span class="tooltip">Étel neve, max. 255 karakter</span>
+					</td>
+				</tr>
+				<tr>
+					<td>URL</td>
+					<td>
+	
+						<input type="text" maxlength="255" title="Hivatkozás címe" name="text" value="" required/>
+						<span class="tooltip">Hivatkozás címe, max. 255 karakter</span>
+					</td>
+				</tr>
+	
+				
+				<tr>
+					<td>Cikk előnézeti képe:</label></td>
+				<td>
+					<select class="imageRefTemplate" name="kiskep" title="Előnézeti kép" required>
+						<option value=""></option>
+				';
+		foreach ($elements['elerhetoKepek'] AS $kepAdat){
+			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['id'].'">'.basename($kepAdat['fajlnev']).'</option>';
+		}
+		echo '
+			
+					</select>
+					<span class="tooltip">Kiskép</span>
+				</td>
+				
+			</tr>
+				
+				<tr>
+					<td>Cikk képe:</label></td>
+				<td>
+					<select class="imageRefTemplate" name="nagykep" title="Cikk képe" required>
+						<option value=""></option>
+				';
+		foreach ($elements['elerhetoKepek'] AS $kepAdat){
+			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['id'].'">'.basename($kepAdat['fajlnev']).'</option>';
+		}
+		echo '
+			
+					</select>
+					<span class="tooltip">Nagykép</span>
+				</td>
+				
+			</tr>
+			</table>
+	</section>
+	
+	
+	
+	
+    		<h2>Cikkek</h2>
+	
+			<table class="tablaGrid cikkTabla">
+				';
+	
+		foreach ($elements['cikkek'] AS $key => $cikkAdat){
+			
+				echo '<tr data-id="'.$cikkAdat['id'].'">
+						<td><img src="'.$_SESSION['helper']->getPath().$cikkAdat['kiskep'].'" alt=""/></td>
+						<td>'.$cikkAdat['labelHeader'].'</td>
+						
+						<td><button class="editCikk">Szerkesztés</button></td>
+						<td><button class="deleteCikk">Törlés</button></td>
+					</tr>';
+			}
+		
+	
+		echo '</table>';
+	}
+	
+	
+	
+	
+	
     public function drawFoglalasForm($elements){
     	echo '<section id="asztalfoglalas">';
     	
@@ -245,93 +345,7 @@ class VendegloView extends BaseView{
   
 	
 	
-	public function drawCikkAdmin($elements){
-		$kategoriaNevek = array_keys($elements['kategoriak']);
-		 
-		echo '
 	
-    	<section class="kategoriaEditor">
-    			<button id="addEtel">Cikk rögzítése</button>
-    
-				<table class="tablaGrid" >
-				<tr>
-					<td>Cím</td>
-					<td>
-						<input type="hidden" name="id" value="0"/>
-						<input type="text" maxlength="255" title="Cím" name="text" value="" required/>
-						<span class="tooltip">Cím, max. 255 karakter</span>
-					</td>
-				</tr>
-				<tr>
-					<td>Megnevezés</td>
-					<td>
-						
-						<input type="text" maxlength="255" title="Étel neve" name="text" value="" required/>
-						<span class="tooltip">Étel neve, max. 255 karakter</span>
-					</td>
-				</tr>
-				<tr>
-					<td>URL</td>
-					<td>
-						
-						<input type="text" maxlength="255" title="Hivatkozás címe" name="text" value="" required/>
-						<span class="tooltip">Hivatkozás címe, max. 255 karakter</span>
-					</td>
-				</tr>
-								
-				<tr>
-					<td>Cikk képe:</label></td>
-				<td>
-					<select class="imageRefTemplate" name="kep" title="Cikk képe" required>
-						<option value=""></option>
-				';
-		foreach ($elements['elerhetoKepek'] AS $kepAdat){
-			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['id'].'">'.basename($kepAdat['fajlnev']).'</option>';
-		}
-		echo '				
-					
-					</select>
-				</td>
-				<td></td>
-			</tr>
-			</table>
-	</section>
-    
-    
-	
-	
-    		<h2>Cikkek</h2>
-		
-			<table class="tablaGrid cikkTabla">
-				';
-	
-		foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
-			echo '<tr class="kategoriaRow">
-					<td colspan="5">'.$kategoria.'</td>
-					</tr>
-					';
-				
-			foreach ($kategoriaAdat['etelek'] AS $etelAdat){
-				echo '<tr data-id="'.$etelAdat['id'].'">
-						<td>'.$etelAdat['MEGNEVEZES'].'</td>
-						<td data-val="'.$etelAdat['TAGEK'].'">';
-	
-				$megadottAllergenek = explode(',', $etelAdat['TAGEK']);
-				foreach ($megadottAllergenek AS $allergenSzam){
-					echo '<span data-val="'.$allergenSzam.'" title="'.$allergenTipusok[$allergenSzam].'" class="allergen alg-'.$allergenSzam.'"></span>';
-				}
-					
-	
-				echo '</td>
-						<td>'.$etelAdat['AR'].'</td>
-						<td><button class="editEtel">Szerkesztés</button></td>
-						<td><button class="deleteEtel">Törlés</button></td>
-					</tr>';
-			}
-		}
-	
-		echo '</table>';
-	}
 	
 	
 	public function drawPartnerAdmin($elements){
