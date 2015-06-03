@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Hoszt: 127.0.0.1
--- Létrehozás ideje: 2015. Jún 03. 02:37
+-- Létrehozás ideje: 2015. Jún 03. 02:47
 -- Szerver verzió: 5.6.21
 -- PHP verzió: 5.6.3
 
@@ -63,6 +63,35 @@ INSERT INTO `koleves_asztalfoglalasok` (`ID`, `NEV`, `EMAIL`, `MEGJEGYZES`, `HAN
 (20, '', '', '', 1, '0000-00-00 00:00:00', 0, NULL, NULL),
 (21, '', '', '', 1, '0000-00-00 00:00:00', 0, NULL, NULL),
 (22, 'asf', 'basf@as.com', '', 2, '0000-00-00 00:00:00', 0, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `koleves_cikkek`
+--
+
+CREATE TABLE IF NOT EXISTS `koleves_cikkek` (
+  `ID` int(6) NOT NULL,
+  `TEXT_HU` varchar(128) COLLATE utf8_hungarian_ci NOT NULL,
+  `TEXT_EN` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `KISKEP` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `NAGYKEP` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `URL` varchar(256) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `SORREND` tinyint(3) DEFAULT NULL,
+  `VISIBLE` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `koleves_cikkek`
+--
+
+INSERT INTO `koleves_cikkek` (`ID`, `TEXT_HU`, `TEXT_EN`, `KISKEP`, `NAGYKEP`, `URL`, `SORREND`, `VISIBLE`) VALUES
+(0, 'Cikk neve', 'Article Name', 'assets/img/tmb-2.png', NULL, 'http://index.hu/kultur/2015/05/24/fozelekes_feri/', 1, 1),
+(0, 'Cikk neve', 'Article Name', 'assets/img/tmb-2.png', NULL, 'http://index.hu/kultur/2015/05/24/fozelekes_feri/', 2, 1),
+(0, 'Cikk neve', 'Article Name', 'assets/img/tmb-2.png', 'assets/uploads/kert.jpg', NULL, 3, 1),
+(0, 'Cikk neve', 'Article Name', 'assets/img/tmb-2.png', NULL, 'http://index.hu/kultur/2015/05/24/fozelekes_feri/', 4, 1),
+(0, 'Cikk neve', 'Article Name', 'assets/img/tmb-2.png', 'assets/uploads/kert.jpg', NULL, 5, 1),
+(0, 'Cikk neve', 'Article Name', 'assets/img/tmb-2.png', 'assets/uploads/kert.jpg', NULL, 6, 1);
 
 -- --------------------------------------------------------
 
