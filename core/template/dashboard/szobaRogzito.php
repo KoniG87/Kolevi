@@ -2,17 +2,14 @@
     $apartman = new Apartman($app->getDbHandler());
     $szobaID = isset($_POST['id']) ? $_POST['id'] : null;
     
+    
 ?>
-<div class="section-label" data-labelpos="1">
-	<div class="papercut-left"></div>
-	<label for="szoba"><span></span>
-	<h2>Új rögzítése</h2></label>
-	<div class="papercut-right"></div>
-</div>
-<!--<button id="saveRendezveny">Szoba mentése</button>-->
+<h2>Szoba rögzítése</h2>
+
+<button id="saveSzoba">Szoba mentése</button>
 <form id="editForm">
 <?php
-	//$apartman->drawSzobaAdmin($szobaID);
+	$apartman->drawSzobaAdmin($szobaID);
 ?>
 </form>
 <link href="assets/css/datepicker.css" rel="stylesheet" type="text/css"/>
@@ -35,12 +32,12 @@
 			
 		});
 		
-		$('#saveRendezveny').click(function(){
+		$('#saveSzoba').click(function(){
 			canSubmit = true;
 			data = {
                 id: $('#editForm input[name="id"]').val(),
-				text_hu: $('#editForm input[name="text_hu"]').val(),
-				leiras_hu: $('#editForm textarea[name="leiras_hu"]').val(),
+				text: $('#editForm input[name="text"]').val(),
+				leiras: $('#editForm textarea[name="leiras"]').val(),
 				allapot: 1
 			};
 
@@ -55,10 +52,10 @@
 			});
 
 			if (canSubmit){
-                data.request = 'rendezvenyUpdate';
+                data.request = 'szobaUpdate';
 				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					if (resp.status == "ok"){
-                       window.location.href = "<?=$_SESSION['helper']->getPath()?>dashboard/rendezvenyLista";
+                       window.location.href = "<?=$_SESSION['helper']->getPath()?>dashboard/apartman/szobaLista";
                     }
 				}, 'json');
 			}
@@ -83,7 +80,8 @@
 			data = {
 				request: 'insertImageRef',
 				rendezvenyID: $(this).attr('data-id'),
-				kepID: $(this).val()
+				kepID: $(this).val(),
+				kepTipus: 4
 			};
 			selectedImage = $('option:selected', $(this)).text();
 			selectedImagePath = $('option:selected', $(this)).attr('data-fullpath');

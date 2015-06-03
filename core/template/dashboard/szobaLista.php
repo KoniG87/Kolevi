@@ -2,12 +2,8 @@
 	$apartman = new Apartman($app->getDbHandler());
 	
 ?>
-<div class="section-label" data-labelpos="1">
-	<div class="papercut-left"></div>
-	<label for="szoba"><span></span>
-	<h2>Szobák</h2></label>
-	<div class="papercut-right"></div>
-</div>
+
+	<h2>Szobák</h2>
 
 <table class="tablaGrid striped">
 	<thead>
@@ -21,7 +17,7 @@
 	</thead>
 	<tbody>
 <?php 
-	//$apartman->drawSzobaList();
+	$apartman->drawSzobaList();
 ?>
 	</tbody>
 </table>
