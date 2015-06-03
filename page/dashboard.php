@@ -1,5 +1,5 @@
 <?php 
-$sectionIndicator = "Vendeglo";
+$sectionIndicator = "vendeglo";
 if (isset($_GET['sec'])){
 	$sectionIndicator = ucfirst($_GET['sec']);
 }
@@ -11,7 +11,7 @@ if (isset($_GET['sec'])){
             <a href="dashboard"><svg class="icon icon-logo"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-logo"></use></svg></a>
         </div>
         <?php 
-       //TODO dinamikus header class kezeles for Koni
+       
         $dashMenu = array(
         	'vendeglo' => array(
         		'link'	=> 	'vendeglo',
@@ -68,12 +68,16 @@ if (isset($_GET['sec'])){
     
     <?php
     	$subPath = 'core/template/dashboard/';
-    
+    	
     	if (!isset($_GET['sub']) || !file_exists($subPath.$_GET['sub'].'.php')){
     		$_GET['sub'] = 'dashboard';
     	}
-
-    	include($subPath.$_GET['sub'].'.php');		
+    	$subFile = $_GET['sub'].'.php';
+    	if (file_exists($subPath.strtolower($sectionIndicator).'/'.$subFile)){
+    		$subPath .= strtolower($sectionIndicator).'/';
+    	}
+    	
+    	include($subPath.$subFile);		
     ?>
     </section>
 </div>

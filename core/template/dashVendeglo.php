@@ -56,3 +56,9 @@
 <a href="<?=$_SESSION['helper']->getPath()?>dashboard/hirLista">
 	<li>Barcas-felület</li>
 </a>
+<a href="<?=$_SESSION['helper']->getPath()?>dashboard/cikkLista">
+	<li>Cikkek</li>
+</a>
+<a href="<?=$_SESSION['helper']->getPath()?>dashboard/partnerLista">
+	<li>Partnerek</li>
+</a>
