@@ -68,5 +68,42 @@ class BaseObject{
     protected function rollback(){
     	$this->dbHandler->rollback();
     }
+    
+    
+    private function explodeIconString($allergenString){
+    	return $allergenArray = explode(",", $allergenString);
+    }
+    
+    protected function fetchAllergenIcon($allergenString){
+    	 
+    	$viewOutput = '';
+    	$allergenArray = $this->explodeIconString($allergenString);
+    	 
+    	foreach ($allergenArray AS $allergenSorszam){
+    		 
+    		$iconPath = 'assets/img/allerg_'.sprintf("%02d", $allergenSorszam).'.jpg';
+    
+    		if (!file_exists($iconPath)){
+    			$iconPath = 'assets/img/allerg_00.jpg';
+    		}
+    
+    		$viewOutput .= '<img src="'.$iconPath.'" alt="Allergen" style="width:18px;height:18px;"/>';
+    	}
+    	return $viewOutput;
+    
+    }
+    
+    protected function fetchAllergenSpan($allergenString){
+    
+    	$viewOutput = '';
+    	$allergenArray = $this->explodeIconString($allergenString);
+    
+    	foreach ($allergenArray AS $allergenSorszam){
+    		 $viewOutput .= '<span class="allergen alg-'.$allergenSorszam.'"></span>';
+    	}
+    	
+    	return $viewOutput;
+    
+    }
 }
 ?>

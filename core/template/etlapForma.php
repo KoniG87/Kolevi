@@ -6,20 +6,7 @@
 
 <tr class="etlap-sor">
 <td>[[MEGNEVEZES]] • 
-<span class="allergen alg-1"></span>
-<span class="allergen alg-2"></span>
-<span class="allergen alg-3"></span>
-<span class="allergen alg-4"></span>
-<span class="allergen alg-5"></span>
-<span class="allergen alg-6"></span>
-<span class="allergen alg-7"></span>
-<span class="allergen alg-8"></span>
-<span class="allergen alg-9"></span>
-<span class="allergen alg-10"></span>
-<span class="allergen alg-11"></span>
-<span class="allergen alg-12"></span>
-<span class="allergen alg-13"></span>
-<span class="allergen alg-14"></span>
+[[TAGEK]]
 </td>
 <td>[[AR]] Ft</td>
 </tr>
