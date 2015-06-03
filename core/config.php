@@ -35,7 +35,8 @@
 					'lang',
 					'base'	
 				),
-				'basePath'	=> '/koleves/'
+				/*'basePath'	=> '/koleves/'*/
+				'basePath'	=> '/kolevi/'
 			),
 			'state'		=> 'dev',
 			'skin'		=> 'default',

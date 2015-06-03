@@ -353,7 +353,7 @@ class Application{
 	<div class="social-link">
 		<svg class="icon icon-trip-original left"><use xlink:href="#icon-trip-original"></use></svg>
 		
-        <p>TripAdvisor</p>
+        <p>Trip Advisor</p>
 	</div>
 </a>
     <a href="https://plus.google.com/118370404699522430705/posts" target="_blank">
@@ -388,7 +388,7 @@ class Application{
     
     
 		<div class="copyright">
-			<a href="http://halluci-nation.com/"><img src="assets/img/halu_logo.png" alt="Created by Halluci-Nation" title="Created by Halluci-Nation"><img src="assets/img/h_logo.png" alt="Created by Halluci-Nation" title="Created by Halluci-Nation" class="h-logo"></a>
+			<a href="http://halluci-nation.com/" target="_blank"><img src="assets/img/halu_logo.png" alt="Created by Halluci-Nation" title="Created by Halluci-Nation"><img src="assets/img/h_logo.png" alt="Created by Halluci-Nation" title="Created by Halluci-Nation" class="h-logo"></a>
 		</div>
 	</div>
             </footer>
