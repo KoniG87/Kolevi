@@ -122,7 +122,7 @@ class Image extends BaseObject{
 		$SQL = "INSERT INTO koleves_kep_osszekotesek SET tipus = ?, fk_id = ?, kep_id = ?;";
 		try{
 			$queryParams = array(
-				1,
+				$_POST['kepTipus'],
 				$_POST['rendezvenyID'],
 				$_POST['kepID']
 			);

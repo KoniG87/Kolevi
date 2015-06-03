@@ -36,7 +36,8 @@
                 id: $('#editForm input[name="id"]').val(),
 				text: $('#editForm input[name="text_hu"]').val(),
 				leiras: $('#editForm textarea[name="leiras_hu"]').val(),
-				allapot: 1
+				allapot: 1,
+				kepTipus: 1
 			};
 
 			$.each(data, function(key, val){

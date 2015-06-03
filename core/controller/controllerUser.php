@@ -8,14 +8,7 @@ class User extends BaseObject{
 		parent::__construct($dbHandler);
 	}
 	
-	private function getSalt(){
-		return "jlm.2@#.#29OifqAmbE";
-	}
 	
-	private function encodePass($pass){
-		$salt = $this->getSalt();
-		return hash('sha256', $salt.$pass);
-	}
 	
 	
 	public function authUser(){
@@ -39,6 +32,72 @@ class User extends BaseObject{
 		
 		echo json_encode($res);		
 	}
+	
+	
+	public function drawUserList(){
+		$elements = $this->getUsersData();
+	
+		$this->view->drawUserList($elements);
+	}
+	
+	
+	private function getSalt(){
+		return "jlm.2@#.#29OifqAmbE";
+	}
+	
+	
+	private function encodePass($pass){
+		$salt = $this->getSalt();
+		return hash('sha256', $salt.$pass);
+	}
+	
+	
+	
+	public function getUsersData($id = null){
+	
+		$SQL = "SELECT id, nev, username, kep, megjegyzes, facebook, email, telefon, allapot, jogosultsag_id, rendezvenyfelelos FROM koleves_dolgozok ".(!is_null($id) ? 'WHERE id = ?' : '');
+	
+		if (is_null($id)){
+			return $this->fetchItems($SQL);
+		}
+	
+		return $this->fetchItem($SQL, array($id));
+	}
+	
+	
+	
+	public function loadUserData($id = null){
+		$tmpArray = array(
+				'id'    => '0',
+				'username'  => '',
+				'nev'   => '',
+				'megjegyzes' => '',
+				'telefon'   => '',
+				'email' => '',
+				'kep'   => '',
+				'facebook'    => '',
+				'rendezvenyfelelos' => '0',
+				'jogosultsag_id'    => '1',
+				'allapot'   => '1'
+		);
+	
+		if (!is_null($id)){
+			$tmpArray = $this->getUsersData($id);
+		}
+	
+		return $tmpArray;
+	}
+	
+	
+	
+	
+	public function loadKepek(){
+		$SQL = "SELECT id, fajlnev FROM koleves_kepek WHERE szekcio = 3;";
+	
+		return $this->fetchItems($SQL);
+	}
+	
+	
 	
 	public function updateUser(){
     	$res = array();
@@ -115,51 +174,9 @@ class User extends BaseObject{
     }
     
     
-    public function getUsersData($id = null){
-        
-        $SQL = "SELECT id, nev, username, kep, megjegyzes, facebook, email, telefon, allapot, jogosultsag_id, rendezvenyfelelos FROM koleves_dolgozok ".(!is_null($id) ? 'WHERE id = ?' : '');
-        
-        if (is_null($id)){
-            return $this->fetchItems($SQL);
-        }
-        
-        return $this->fetchItem($SQL, array($id));
-    }
+   
     
     
-    public function loadUserData($id = null){
-        $tmpArray = array(
-            'id'    => '0',
-            'username'  => '',
-            'nev'   => '',
-            'megjegyzes' => '',
-            'telefon'   => '',
-            'email' => '',
-            'kep'   => '',
-            'facebook'    => '',
-            'rendezvenyfelelos' => '0',
-            'jogosultsag_id'    => '1',
-            'allapot'   => '1'
-        );
-        
-        if (!is_null($id)){
-            $tmpArray = $this->getUsersData($id);
-        }
-        
-        return $tmpArray;
-    }
     
-    public function drawUserList(){
-        $elements = $this->getUsersData();
-        
-        $this->view->drawUserList($elements);
-    }
-    
-    
-    public function loadKepek(){
-        $SQL = "SELECT id, fajlnev FROM koleves_kepek WHERE szekcio = 3;";
-        
-        return $this->fetchItems($SQL);
-    }
 }
 ?>
