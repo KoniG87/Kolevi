@@ -1,38 +1,5 @@
 <?php 
 
-/*$_POST['request'] = 'asztalfoglalasUpdate';
-$_POST['id'] = "0";
-$_POST['nev'] = 'Asd Józsi';
-$_POST['datum'] = '2015.04.04';
-$_POST['ido'] = '16:30';
-$_POST['email'] = 'asd@vasd.com';
-$_POST['megjegyzes'] = "";
-$_POST['hanyfo'] = "öt";
-*/
-/*
-$_POST['id'] = "0";
-$_POST['request'] = "rendezvenyUpdate";
-$_POST['text_hu'] = 'Ujrendezveny';
-$_POST['leiras_hu'] = 'leiras';
-$_POST['allapot'] = 1;
-*/
-/*
-$_POST['id'] = "1";
-$_POST['request'] = 'itallapUpdate';
-$_POST['text_hu'] = 'Capuchino';
-$_POST['ar'] = '550';
-$_POST['kategoria'] = 'forró italok';
-*/
-/*
-$_POST['request'] = 'updateImage';
-$_POST['id'] = '2';
-$_POST['param'] = 'gallery_tag';
-$_POST['value'] = '1';
-*/
-/*
-$_POST['request'] = 'foglalasJovahagyas';
-$_POST['id'] = '10';
-*/
 if (isset($_POST['request'])){
 	include('core/config.php');
 
@@ -97,7 +64,9 @@ if (isset($_POST['request'])){
 			
 			break;
 			
-		case 'generateEtlapPDF':
+		case 'generateKertEtlapPDF':
+			$kert = new Kert($app->getDbHandler());
+			$kert->generateEtlapPDF();
 			
 			break;
 			
