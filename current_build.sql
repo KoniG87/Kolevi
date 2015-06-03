@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Hoszt: 127.0.0.1
--- Létrehozás ideje: 2015. Máj 28. 23:44
+-- Létrehozás ideje: 2015. Jún 03. 02:37
 -- Szerver verzió: 5.6.21
 -- PHP verzió: 5.6.3
 
@@ -103,6 +103,7 @@ INSERT INTO `koleves_dolgozok` (`ID`, `USERNAME`, `NEV`, `MEGJEGYZES`, `SZULETES
 
 CREATE TABLE IF NOT EXISTS `koleves_etelek` (
 `ID` int(6) NOT NULL,
+  `ETTEREM_ID` tinyint(1) DEFAULT '1',
   `KATEGORIA_ID` int(2) DEFAULT NULL,
   `TEXT_HU` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
   `TEXT_EN` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
@@ -110,41 +111,53 @@ CREATE TABLE IF NOT EXISTS `koleves_etelek` (
   `TAGEK` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
   `AR` int(6) DEFAULT NULL,
   `VISIBLE` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_etelek`
 --
 
-INSERT INTO `koleves_etelek` (`ID`, `KATEGORIA_ID`, `TEXT_HU`, `TEXT_EN`, `SORREND`, `TAGEK`, `AR`, `VISIBLE`) VALUES
-(2, 1, 'Medvehagymás brokkolikrémleves füstölt fürjtojással', 'Broccolisoup with hot smokin eggs of delight', 2, '1,4,5,6,9', 890, 1),
-(3, 1, 'Palócgulyás borjúból', 'Palocgulyas with da beef', 3, '1,2,10,11,1,3,10', 1, 1),
-(4, 2, 'Avokádósaláta, szárított paradicsom, mandarin, mandula, kéksajt', 'Macesz-ball soup', 1, '1,3,6', 1550, 1),
-(5, 2, 'Füstölt tokhal, tökmagolajos saláta', 'Broccolisoup with hot smokin eggs of delight', 2, '2,8', 1450, 1),
-(6, 2, 'Szarvasgerinc, vargányás polenta, barnamártás', 'Palocgulyas with da beef', 3, '8,12', 1890, 1),
-(7, 3, 'Körtés-tejszínes tagliatelle ginnel, gorgonzolával', 'Macesz-ball soup', 1, '7,8,10', 2150, 1),
-(8, 3, 'Muszaka adzuki babbal, fekete lencsével', 'Broccolisoup with hot smokin eggs of delight', 2, '2,4,5,10', 2050, 1),
-(9, 3, 'Grillezett brie sajt, sült alma, céklás vöröslencse saláta', 'Palocgulyas with da beef', 3, '1,3,6', 2350, 1),
-(10, 4, 'Maceszflódni', 'Macesz-ball soup', 1, '2,3,10', 950, 1),
-(11, 4, 'Pisztáciás tiramisu', 'Broccolisoup with hot smokin eggs of delight', 2, '5,6', 960, 1),
-(12, 4, 'New York sajttorta', 'Palocgulyas with da beef', 3, '5,6', 990, 1),
-(13, 1, 'Maceszgombócleves', '', 1, '1,3,10', 890, 1),
-(14, 1, 'Skandináv rákleves', 'Scandinavian lobstersoup', 4, '4,9,13', 1180, 1),
-(15, 2, 'Tapas (füstölt libamell, bresaola, borjúsűlt, tárkonyos lazac, medvehagymás retek, kecskesajt, angol mustáros öntet)', '', 4, '5,6', 2400, 1),
-(16, 2, 'Vegetáriánus Tapas (taleggio sajt, chilis pecorino, olajbogyó, kecskesajttal töltött kápiapaprika, piros pesztó)', '', 5, '7,8,10', 2100, 1),
-(17, 3, 'Gombás-spenótos rétes zöld pesztóval, sütőtökös salátával', '', 4, '7,8,10', 2450, 1),
-(18, 3, 'Wokban pirított zöldségek, kesudió és jázmin rizs', '', 5, '1,14', 2090, 1),
-(19, 3, 'Tanyasi csirkemell, avokádósaláta, szárított paradicsom, mandarin, kéksajt', '', 6, '4,9,13', 2980, 1),
-(20, 3, 'Vadas házinyúl, zsemlegombóc', '', 7, '5,6', 3150, 1),
-(21, 3, 'Magyar báránysült, laskagomba, prósza, kefires fejes saláta', '', 8, '5,6', 4750, 1),
-(22, 3, 'Ribeye steak, tormás krumpli és céklás káposztasaláta', '', 9, '4,9,13', 4650, 1),
-(23, 3, 'Csodaszarvas steak, vargányás polenta, barnamártás', '', 10, '5,6', 4250, 1),
-(24, 3, 'Egészben sült pisztráng, sült édeskömény, gratin krumpli', '', 11, '4,9,13', 4350, 1),
-(25, 3, 'Konfitált libacomb, hagymás törtkrumpli és aszalt gyümölcsös párolt káposzta', '', 12, '2,8', 3280, 1),
-(26, 3, 'Sólet libacombbal vagy tojással (pénteken, szombaton, vasárnap)', '', 13, '2,3,10', 3080, 1),
-(27, 3, 'Wokban pirított kacsamell, zöldségek, kesudió és jázmin rizs', '', 14, '2,3,10', 2980, 1),
-(28, 3, 'Roston kacsamell, chilis-datolyás sült zeller', '', 15, '2,3,10', 3280, 1),
-(29, 4, 'Csokoládés karobtorta, fagylalt', '', 4, '4,9,13', 980, 1);
+INSERT INTO `koleves_etelek` (`ID`, `ETTEREM_ID`, `KATEGORIA_ID`, `TEXT_HU`, `TEXT_EN`, `SORREND`, `TAGEK`, `AR`, `VISIBLE`) VALUES
+(2, 1, 1, 'Medvehagymás brokkolikrémleves füstölt fürjtojással', 'Broccolisoup with hot smokin eggs of delight', 2, '1,4,5,6,9', 890, 1),
+(3, 1, 1, 'Palócgulyás borjúból', 'Palocgulyas with da beef', 3, '1,2,10,11', 1250, 1),
+(4, 1, 2, 'Avokádósaláta, szárított paradicsom, mandarin, mandula, kéksajt', 'Macesz-ball soup', 1, '1,3,6', 1550, 1),
+(5, 1, 2, 'Füstölt tokhal, tökmagolajos saláta', 'Broccolisoup with hot smokin eggs of delight', 2, '2,8', 1450, 1),
+(6, 1, 2, 'Szarvasgerinc, vargányás polenta, barnamártás', 'Palocgulyas with da beef', 3, '8,12', 1890, 1),
+(7, 1, 3, 'Körtés-tejszínes tagliatelle ginnel, gorgonzolával', 'Macesz-ball soup', 1, '7,8,10', 2150, 1),
+(8, 1, 3, 'Muszaka adzuki babbal, fekete lencsével', 'Broccolisoup with hot smokin eggs of delight', 2, '2,4,5,10', 2050, 1),
+(9, 1, 3, 'Grillezett brie sajt, sült alma, céklás vöröslencse saláta', 'Palocgulyas with da beef', 3, '1,3,6', 2350, 1),
+(10, 1, 4, 'Maceszflódni', 'Macesz-ball soup', 1, '2,3,10', 950, 1),
+(11, 1, 4, 'Pisztáciás tiramisu', 'Broccolisoup with hot smokin eggs of delight', 2, '5,6', 960, 1),
+(12, 1, 4, 'New York sajttorta', 'Palocgulyas with da beef', 3, '5,6', 990, 1),
+(13, 1, 1, 'Maceszgombócleves', 'Maceszballsoup', 1, '1,3,10', 890, 1),
+(14, 1, 1, 'Skandináv rákleves', 'Scandinavian lobstersoup', 4, '4,9,13', 1180, 1),
+(15, 1, 2, 'Tapas (füstölt libamell, bresaola, borjúsűlt, tárkonyos lazac, medvehagymás retek, kecskesajt, angol mustáros öntet)', 'Tapas (lots of variations)', 4, '5,6', 2400, 1),
+(16, 1, 2, 'Vegetáriánus Tapas (taleggio sajt, chilis pecorino, olajbogyó, kecskesajttal töltött kápiapaprika, piros pesztó)', 'Vega-tapas (lots of variations)', 5, '7,8,10', 2100, 1),
+(17, 1, 3, 'Gombás-spenótos rétes zöld pesztóval, sütőtökös salátával', 'Mushy-spinach strudel', 4, '7,8,10', 2450, 1),
+(18, 1, 3, 'Wokban pirított zöldségek, kesudió és jázmin rizs', 'Wok veggies with rice', 5, '1,14', 2090, 1),
+(19, 1, 3, 'Tanyasi csirkemell, avokádósaláta, szárított paradicsom, mandarin, kéksajt', 'Countryside chicken', 6, '4,9,13', 2980, 1),
+(20, 1, 3, 'Vadas házinyúl, zsemlegombóc', 'Wildling rab''stew', 7, '5,6', 3150, 1),
+(21, 1, 3, 'Magyar báránysült, laskagomba, prósza, kefires fejes saláta', 'Hungarian lambsteak', 8, '5,6', 4750, 1),
+(22, 1, 3, 'Ribeye steak, tormás krumpli és céklás káposztasaláta', 'Ribeye steak', 9, '4,9,13', 4650, 1),
+(23, 1, 3, 'Csodaszarvas steak, vargányás polenta, barnamártás', 'Wun-deer steak', 10, '5,6', 4250, 1),
+(24, 1, 3, 'Egészben sült pisztráng, sült édeskömény, gratin krumpli', 'Trout in whole', 11, '4,9,13', 4350, 1),
+(25, 1, 3, 'Konfitált libacomb, hagymás törtkrumpli és aszalt gyümölcsös párolt káposzta', 'Confiterage geeseleggings', 12, '2,8', 3280, 1),
+(26, 1, 3, 'Sólet libacombbal vagy tojással (pénteken, szombaton, vasárnap)', 'Geesethighs became show', 13, '2,3,10', 3080, 1),
+(27, 1, 3, 'Wokban pirított kacsamell, zöldségek, kesudió és jázmin rizs', 'Wok-peered ducktitties', 14, '2,3,10', 2980, 1),
+(28, 1, 3, 'Roston kacsamell, chilis-datolyás sült zeller', 'Ducktats on the grill', 15, '2,3,10', 3280, 1),
+(29, 1, 4, 'Csokoládés karobtorta, fagylalt', 'Carobcake chocolate chedarai', 4, '4,9,13', 980, 1),
+(30, 2, 3, 'Tócsni fokhagymás tejföllel, sajttal', 'Potato Pancake with Garlic Sour Cream and Cheese', 1, '1,3,7', 620, 1),
+(31, 2, 3, 'Tócsni fokhagymás tejföllel, sajttal és salátával', 'Potato Pancake with Garlic Sour Cream, Cheese and Salad', 2, '1,3,7', 780, 1),
+(32, 2, 3, 'Saláta sáprgával és sült paprikával', 'Salad with Asparagus and Roast Pepper', 3, '7', 1520, 1),
+(33, 2, 3, 'Spenótos-túrós lepény friss zöldséges salátával', 'Spinach-Cottage Cheese Pie with Fresh Salad', 4, '7,3', 1680, 1),
+(34, 2, 3, 'Philadelphia steak szendvics', 'Philadelphia Steak Sandwich', 5, '1,3,7', 1450, 1),
+(35, 2, 3, 'Barbecue marhasült coleslaw salátával', 'Barbecue Roast Beef with Coleslaw Salad', 6, '10,3,7', 2250, 1),
+(36, 2, 3, 'Kebab mentás padlizsánsalátával', 'Kebab with Roasted Eggplant and Mint Salad', 7, '7', 1950, 1),
+(37, 2, 3, 'Házi kacsakolbász újhagymás krumplisalátával', 'Home Made Duck Sausage with Scallion Potato Salad', 8, '10,3,7', 1850, 1),
+(38, 2, 3, 'Kolbászos paprikás krumpli, házi kenyér', 'Paprika Potatoes with Sausages, Homemade Bread', 9, '1', 1350, 1),
+(39, 2, 3, 'Roston sült gomolya friss zöldséges salátával', 'Grilled Soft Cheese, Fresh Vegetables Salad', 10, '7,11', 2150, 1),
+(40, 2, 3, 'Roston sült csirkemell friss zöldséges salátával', 'Grilled Chicken Breast, Fresh Vegetable Salad', 11, '7,11', 1850, 1),
+(41, 2, 3, 'Fűszeres sültkrumpli (házi paradicsomlekvár vagy újhagymás málnaecetes majonéz öntettel)', 'Spicy Chips with Sauce (Homemade Tomato Marmelade or Mayonnaise with Raspberry Vinegar)', 12, '10,1,3,7', 680, 1);
 
 -- --------------------------------------------------------
 
@@ -186,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `koleves_hirsav` (
   `ROGZITVE` datetime DEFAULT NULL,
   `SORREND` tinyint(2) DEFAULT '1',
   `ALLAPOT` tinyint(1) DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_hirsav`
@@ -231,6 +244,7 @@ INSERT INTO `koleves_italkategoriak` (`ID`, `TEXT_HU`, `TEXT_EN`, `SORREND`, `IK
 
 CREATE TABLE IF NOT EXISTS `koleves_italok` (
 `ID` int(6) NOT NULL,
+  `ETTEREM_ID` tinyint(1) DEFAULT '1',
   `KATEGORIA_ID` int(2) DEFAULT NULL,
   `TEXT_HU` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
   `TEXT_EN` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
@@ -238,47 +252,81 @@ CREATE TABLE IF NOT EXISTS `koleves_italok` (
   `SORREND` int(2) DEFAULT '1',
   `AR` int(6) DEFAULT NULL,
   `VISIBLE` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_italok`
 --
 
-INSERT INTO `koleves_italok` (`ID`, `KATEGORIA_ID`, `TEXT_HU`, `TEXT_EN`, `ALKATEGORIA`, `SORREND`, `AR`, `VISIBLE`) VALUES
-(1, 1, 'Capuchino', 'Some drink name', 0, 1, 550, 1),
-(2, 1, 'Ír kávé', 'Some drink name', 0, 2, 570, 1),
-(3, 1, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
-(4, 1, 'Egy sor szöveg', 'Some drink name', 0, 4, 420, 1),
-(5, 1, 'Egy sor szöveg', 'Some drink name', 0, 5, 520, 1),
-(6, 1, 'Egy sor szöveg', 'Some drink name', 0, 6, 420, 1),
-(7, 1, 'Egy sor szöveg', 'Some drink name', 0, 7, 420, 1),
-(8, 1, 'Egy sor szöveg', 'Some drink name', 0, 8, 520, 1),
-(9, 1, 'Egy sor szöveg', 'Some drink name', 0, 9, 420, 1),
-(10, 2, 'Egy sor szöveg', 'Some drink name', 0, 1, 420, 1),
-(11, 2, 'Egy sor szöveg', 'Some drink name', 0, 2, 460, 1),
-(12, 2, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
-(13, 2, 'Egy sor szöveg', 'Some drink name', 0, 4, 420, 1),
-(14, 2, 'Egy sor szöveg', 'Some drink name', 0, 5, 520, 1),
-(15, 2, 'Egy sor szöveg', 'Some drink name', 0, 6, 420, 1),
-(16, 3, 'Egy sor szöveg', 'Some drink name', 0, 1, 420, 1),
-(17, 3, 'Egy sor szöveg', 'Some drink name', 0, 2, 460, 1),
-(18, 3, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
-(19, 4, 'Egy sor szöveg', 'Some drink name', 0, 1, 420, 1),
-(20, 4, 'Egy sor szöveg', 'Some drink name', 0, 2, 460, 1),
-(21, 4, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
-(22, 4, 'Egy sor szöveg', 'Some drink name', 0, 4, 420, 1),
-(23, 4, 'Egy sor szöveg', 'Some drink name', 0, 5, 520, 1),
-(24, 5, 'Egy sor szöveg', 'Some drink name', 0, 1, 420, 1),
-(25, 5, 'Egy sor szöveg', 'Some drink name', 0, 2, 460, 1),
-(26, 5, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
-(27, 5, 'Egy sor szöveg', 'Some drink name', 0, 4, 420, 1),
-(28, 5, 'Egy sor szöveg', 'Some drink name', 0, 5, 520, 1),
-(29, 5, 'Egy sor szöveg', 'Some drink name', 0, 6, 420, 1),
-(30, 5, 'Egy sor szöveg', 'Some drink name', 0, 7, 420, 1),
-(31, 5, 'Egy sor szöveg', 'Some drink name', 0, 8, 520, 1),
-(32, 5, 'Egy sor szöveg', 'Some drink name', 0, 9, 420, 1),
-(33, 5, 'Egy sor szöveg', 'Some drink name', 0, 10, 520, 1),
-(34, 5, 'Egy sor szöveg', 'Some drink name', 0, 11, 420, 1);
+INSERT INTO `koleves_italok` (`ID`, `ETTEREM_ID`, `KATEGORIA_ID`, `TEXT_HU`, `TEXT_EN`, `ALKATEGORIA`, `SORREND`, `AR`, `VISIBLE`) VALUES
+(1, 1, 1, 'Capuchino', 'Some drink name', 0, 1, 550, 1),
+(2, 1, 1, 'Ír kávé', 'Some drink name', 0, 2, 570, 1),
+(3, 1, 1, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
+(4, 1, 1, 'Egy sor szöveg', 'Some drink name', 0, 4, 420, 1),
+(5, 1, 1, 'Egy sor szöveg', 'Some drink name', 0, 5, 520, 1),
+(6, 1, 1, 'Egy sor szöveg', 'Some drink name', 0, 6, 420, 1),
+(7, 1, 1, 'Egy sor szöveg', 'Some drink name', 0, 7, 420, 1),
+(8, 1, 1, 'Egy sor szöveg', 'Some drink name', 0, 8, 520, 1),
+(9, 1, 1, 'Egy sor szöveg', 'Some drink name', 0, 9, 420, 1),
+(10, 1, 2, 'Egy sor szöveg', 'Some drink name', 0, 1, 420, 1),
+(11, 1, 2, 'Egy sor szöveg', 'Some drink name', 0, 2, 460, 1),
+(12, 1, 2, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
+(13, 1, 2, 'Egy sor szöveg', 'Some drink name', 0, 4, 420, 1),
+(14, 1, 2, 'Egy sor szöveg', 'Some drink name', 0, 5, 520, 1),
+(15, 1, 2, 'Egy sor szöveg', 'Some drink name', 0, 6, 420, 1),
+(16, 1, 3, 'Egy sor szöveg', 'Some drink name', 0, 1, 420, 1),
+(17, 1, 3, 'Egy sor szöveg', 'Some drink name', 0, 2, 460, 1),
+(18, 1, 3, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
+(19, 1, 4, 'Egy sor szöveg', 'Some drink name', 0, 1, 420, 1),
+(20, 1, 4, 'Egy sor szöveg', 'Some drink name', 0, 2, 460, 1),
+(21, 1, 4, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
+(22, 1, 4, 'Egy sor szöveg', 'Some drink name', 0, 4, 420, 1),
+(23, 1, 4, 'Egy sor szöveg', 'Some drink name', 0, 5, 520, 1),
+(24, 1, 5, 'Egy sor szöveg', 'Some drink name', 0, 1, 420, 1),
+(25, 1, 5, 'Egy sor szöveg', 'Some drink name', 0, 2, 460, 1),
+(26, 1, 5, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
+(27, 1, 5, 'Egy sor szöveg', 'Some drink name', 0, 4, 420, 1),
+(28, 1, 5, 'Egy sor szöveg', 'Some drink name', 0, 5, 520, 1),
+(29, 1, 5, 'Egy sor szöveg', 'Some drink name', 0, 6, 420, 1),
+(30, 1, 5, 'Egy sor szöveg', 'Some drink name', 0, 7, 420, 1),
+(31, 1, 5, 'Egy sor szöveg', 'Some drink name', 0, 8, 520, 1),
+(32, 1, 5, 'Egy sor szöveg', 'Some drink name', 0, 9, 420, 1),
+(33, 1, 5, 'Egy sor szöveg', 'Some drink name', 0, 10, 520, 1),
+(34, 1, 5, 'Egy sor szöveg', 'Some drink name', 0, 11, 420, 1),
+(35, 2, 1, 'Capuchino', 'Some drink name', 0, 1, 550, 1),
+(36, 2, 1, 'Ír kávé', 'Some drink name', 0, 2, 570, 1),
+(37, 2, 1, 'Kert presszó', 'Some drink name', 0, 3, 470, 1),
+(38, 2, 1, 'Egy sor szöveg', 'Some drink name', 0, 4, 420, 1),
+(39, 2, 1, 'Egy sor szöveg', 'Some drink name', 0, 5, 520, 1),
+(40, 2, 1, 'Egy sor szöveg', 'Some drink name', 0, 6, 420, 1),
+(41, 2, 1, 'Egy sor szöveg', 'Some drink name', 0, 7, 420, 1),
+(42, 2, 1, 'Egy sor szöveg', 'Some drink name', 0, 8, 520, 1),
+(43, 2, 1, 'Egy sor szöveg', 'Some drink name', 0, 9, 420, 1),
+(44, 2, 2, 'Egy sor szöveg', 'Some drink name', 0, 1, 420, 1),
+(45, 2, 2, 'Egy sor szöveg', 'Some drink name', 0, 2, 460, 1),
+(46, 2, 2, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
+(47, 2, 2, 'Egy sor szöveg', 'Some drink name', 0, 4, 420, 1),
+(48, 2, 2, 'Egy sor szöveg', 'Some drink name', 0, 5, 520, 1),
+(49, 2, 2, 'Egy sor szöveg', 'Some drink name', 0, 6, 420, 1),
+(50, 2, 3, 'Egy sor szöveg', 'Some drink name', 0, 1, 420, 1),
+(51, 2, 3, 'Egy sor szöveg', 'Some drink name', 0, 2, 460, 1),
+(52, 2, 3, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
+(53, 2, 4, 'Egy sor szöveg', 'Some drink name', 0, 1, 420, 1),
+(54, 2, 4, 'Egy sor szöveg', 'Some drink name', 0, 2, 460, 1),
+(55, 2, 4, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
+(56, 2, 4, 'Egy sor szöveg', 'Some drink name', 0, 4, 420, 1),
+(57, 2, 4, 'Egy sor szöveg', 'Some drink name', 0, 5, 520, 1),
+(58, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 1, 420, 1),
+(59, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 2, 460, 1),
+(60, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 3, 470, 1),
+(61, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 4, 420, 1),
+(62, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 5, 520, 1),
+(63, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 6, 420, 1),
+(64, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 7, 420, 1),
+(65, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 8, 520, 1),
+(66, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 9, 420, 1),
+(67, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 10, 520, 1),
+(68, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 11, 420, 1);
 
 -- --------------------------------------------------------
 
@@ -313,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `koleves_kepek` (
   `LEIRAS_HU` varchar(256) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `GALLERY_TAG` tinyint(1) DEFAULT NULL,
   `SZEKCIO` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_kepek`
@@ -334,7 +382,8 @@ INSERT INTO `koleves_kepek` (`ID`, `FAJLNEV`, `LEIRAS_HU`, `GALLERY_TAG`, `SZEKC
 (14, 'assets/uploads/gslide-1.jpg', NULL, NULL, 4),
 (15, 'assets/uploads/gslide-2.jpg', NULL, NULL, 4),
 (16, 'assets/uploads/gslide-3.jpg', NULL, NULL, 4),
-(17, 'assets/uploads/gslide-4.jpg', NULL, NULL, 4);
+(17, 'assets/uploads/gslide-4.jpg', NULL, NULL, 4),
+(18, 'assets/uploads/6771046-architecture-wallpaper.jpg', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -347,7 +396,7 @@ CREATE TABLE IF NOT EXISTS `koleves_keptipusok` (
   `MEGNEVEZES` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `SZEKCIO` varchar(50) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `ALLAPOT` int(1) DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_keptipusok`
@@ -357,7 +406,9 @@ INSERT INTO `koleves_keptipusok` (`ID`, `MEGNEVEZES`, `SZEKCIO`, `ALLAPOT`) VALU
 (1, 'Rendezvény', 'rendezvenyek', 1),
 (2, 'Program', 'programok', 2),
 (3, 'Hir', NULL, 3),
-(4, 'Szoba', 'szoba', 4);
+(4, 'Szoba', 'szoba', 4),
+(5, 'Partner', 'partner', 5),
+(6, 'Cikk', 'cikk', 6);
 
 -- --------------------------------------------------------
 
@@ -403,7 +454,7 @@ CREATE TABLE IF NOT EXISTS `koleves_napimenuk` (
   `TEXT_HU` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
   `TEXT_EN` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
   `TAGEK` varchar(15) COLLATE utf8_hungarian_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_napimenuk`
@@ -461,7 +512,8 @@ INSERT INTO `koleves_napimenuk` (`ID`, `IDOSZAK_ID`, `NAPAZON`, `FOGASAZON`, `TE
 (55, 6, 1, 3, 'Rántott sajt áfonyalekvárral', '', 'V'),
 (57, 6, 2, 1, 'Something soup', '', 'TM'),
 (58, 6, 2, 3, 'Uj csupacsokidesszert', '', 'V'),
-(59, 7, 1, 1, 'Tedd oda', 'Pambam Soup', 'V');
+(59, 7, 1, 1, 'Tedd oda', 'Pambam Soup', 'V'),
+(60, 8, 1, 1, 'Something', '', '');
 
 -- --------------------------------------------------------
 
@@ -473,7 +525,7 @@ CREATE TABLE IF NOT EXISTS `koleves_napimenu_idoszakok` (
 `ID` int(6) NOT NULL,
   `EV` int(4) DEFAULT NULL,
   `HET` int(2) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_napimenu_idoszakok`
@@ -484,7 +536,35 @@ INSERT INTO `koleves_napimenu_idoszakok` (`ID`, `EV`, `HET`) VALUES
 (2, 2015, 16),
 (5, 2015, 17),
 (6, 2015, 18),
-(7, 2015, 21);
+(7, 2015, 21),
+(8, 2015, 22);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `koleves_partnerek`
+--
+
+CREATE TABLE IF NOT EXISTS `koleves_partnerek` (
+`ID` int(6) NOT NULL,
+  `TEXT_HU` varchar(128) COLLATE utf8_hungarian_ci NOT NULL,
+  `TEXT_EN` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `LEIRAS_HU` varchar(1024) COLLATE utf8_hungarian_ci NOT NULL,
+  `LEIRAS_EN` varchar(1024) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `KEP` varchar(100) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `URL` varchar(255) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `VISIBLE` tinyint(1) NOT NULL DEFAULT '1',
+  `SORREND` tinyint(2) unsigned NOT NULL DEFAULT '1',
+  `ROGZITVE` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `koleves_partnerek`
+--
+
+INSERT INTO `koleves_partnerek` (`ID`, `TEXT_HU`, `TEXT_EN`, `LEIRAS_HU`, `LEIRAS_EN`, `KEP`, `URL`, `VISIBLE`, `SORREND`, `ROGZITVE`) VALUES
+(1, 'A cég neve', NULL, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores similique facilis non quia aliquam perspiciatis, eum consectetur quisquam quo! Optio totam ad quibusdam repellat cupiditate consequuntur, amet est, quidem perferendis.', NULL, 'assets/img/tmb-2.png', 'http://rcko.fm', 1, 1, NULL),
+(2, 'A partner neve', NULL, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores similique facilis non quia aliquam perspiciatis, eum consectetur quisquam quo! Optio totam ad quibusdam repellat cupiditate consequuntur, amet est, quidem perferendis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores similique facilis non quia aliquam perspiciatis, eum consectetur quisquam quo! Optio totam ad quibusdam repellat cupiditate consequuntur, amet est, quidem perferendis.', NULL, 'assets/img/tmb-2.png', 'http://rcko.fm', 1, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -548,18 +628,18 @@ INSERT INTO `koleves_rendezvenyek` (`ID`, `TEXT_HU`, `LEIRAS_HU`, `TEXT_EN`, `LE
 CREATE TABLE IF NOT EXISTS `koleves_statikus` (
 `ID` int(6) NOT NULL,
   `LABEL` varchar(40) COLLATE utf8_hungarian_ci NOT NULL,
-  `TEXT_HU` varchar(2048) COLLATE utf8_hungarian_ci NOT NULL,
-  `TEXT_EN` varchar(2048) COLLATE utf8_hungarian_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+  `TEXT_HU` varchar(2048) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `TEXT_EN` varchar(2048) COLLATE utf8_hungarian_ci DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_statikus`
 --
 
 INSERT INTO `koleves_statikus` (`ID`, `LABEL`, `TEXT_HU`, `TEXT_EN`) VALUES
-(1, 'CETLI1', 'Csirkepaprikás nokedlivel', 'Chickenpaprika stew with'),
-(2, 'CETLI2', 'házi káposztasalátával', 'noodles and homemade cabbagesalad'),
-(3, 'CETLI3', '1950', '1950'),
+(1, 'CETLI1_1', 'Csirkepaprikás nokedlivel', 'Chickenpaprika stew with'),
+(2, 'CETLI1_2', 'házi káposztasalátával', 'noodles and homemade cabbagesalad'),
+(3, 'CETLI1_3', '1950', '1950'),
 (4, 'DEARGUESTS', 'Kedves Vendégeink!', 'Dear Guests!'),
 (5, 'NAPIMENU_TEXT', 'Vegetáriánus és húsos menünk van hétköznaponként 1.000 Ft és 1.250 Ft-os áron, ami mellé szörpöt is adunk. Siessetek, mert ½ 12-től van ebéd és 60-70 adagot készítünk, ezért van, hogy ½ 1-re elfogy.', 'We''ll be adding some further information here.'),
 (6, 'NAPIMENU_LEGEND', 'GM = gluténmentes TM = tejtermék mentes V = vegetáriánus', 'GM = gluten-free TM = lactose-free V = vegetarian'),
@@ -568,7 +648,13 @@ INSERT INTO `koleves_statikus` (`ID`, `LABEL`, `TEXT_HU`, `TEXT_EN`) VALUES
 (9, 'SZERVEZO', 'Szia!<br/>Amenyiben szeretnél rendezvényt hozni a Levesbe keress bátran!', 'Hi!For any info regarding events, just give me a ring!'),
 (10, 'VENDEGLO', 'A Kőleves 10 éves vendéglő. Imola és Kápszi ültünk egy rémséges vasút-állomáson 1995 körül és elhatároztuk, hogy nyitunk egy vendéglőt. Azt hiszem ez kb. 10 évvel később, de megvalósult 2005-ben. Ez a tíz év beszélgetés a vendéglőről elég volt ahhoz, hogy pontosan tudjuk mit akarunk és lássuk, hogy ugyanazt, ez azóta is töretlenül működik köztünk. Persze nem magától ment minden, hanem sok kölcsön pénzből, amivel az elején nehéz volt küzdenünk. Először a Dob-Kazinczy sarkán nyitottuk meg a Kőlevest, ahol 8 évig üzemeltünk egyre sikeresebben. Itt sikerült egysmást tanulnunk erről a szakmáról, hiszen egyikünk sem volt vendéglátós azelőtt, mégpedig főleg azt, hogy ha magunkat adjuk és beletesszük az energiáinkat, őszinték vagyunk, és figyelünk, akkor ezt a közönségünk is megérzi, és elérjük a sikert. A Kazinczy 41-be három éve költöztünk, ami már egy ötször akkora hely és itt megvalósulhatott minden álmunk, amit egy konyháról képzeltünk. Kidobhattuk a micro sütőt és mindent magunk tudunk elkészíteni, ami lekvár, szósz, pesto, öntet, vagy bármi hozzávaló és eredeti ízt kíván. Útközben még megnyitottuk a Kőleves kertet 7 évvel ezelőtt, hogy nyáron is lehessen könnyű grill konyhával a szabadban enni-inni. Azután 4 éve elkészült a Mika Tivadar Mulató, majd egy évvel később, a hozzá tartozó kert is.', 'We''ll be providing further description here.'),
 (11, 'ABOUT_US', 'Igazán fiatalos, modern arcok vagyunk - és mindemellett még finomkat is főzünk! Gyere be hozz, akár csak egy kávéra is, ha nem szeretnéd otthon egyedül meginni, hanem kedves társasággal szeretnéd megosztani a reggeli lendületet!', 'We''ll be providing further description here.'),
-(12, 'KERT', 'A Kőleves Kert 8. szezonját éli. Amikor még a sarkon volt a vendéglőnk és egy elég brutális mellék-helység volt a kertben, akkor a szimpla kerten kívül senki más nem volt a környéken, nagyon vártuk, hogy végre ennyire nyüzsgő belváros legyünk.', 'We''ll be providing further description here.');
+(12, 'KERT', 'A Kőleves Kert 8. szezonját éli. Amikor még a sarkon volt a vendéglőnk és egy elég brutális mellék-helység volt a kertben, akkor a szimpla kerten kívül senki más nem volt a környéken, nagyon vártuk, hogy végre ennyire nyüzsgő belváros legyünk.', 'We''ll be providing further description here.'),
+(13, 'CETLI2_1', 'Valami más is', NULL),
+(14, 'CETLI2_2', 'jó drágán, de finom', NULL),
+(15, 'CETLI2_3', '5000', NULL),
+(16, 'CETLI3_1', 'Is lesz', NULL),
+(17, 'CETLI3_2', 'itt', NULL),
+(18, 'CETLI3_3', '2300', NULL);
 
 -- --------------------------------------------------------
 
@@ -580,8 +666,8 @@ CREATE TABLE IF NOT EXISTS `koleves_szobak` (
 `ID` int(6) NOT NULL,
   `TEXT_HU` varchar(80) COLLATE utf8_hungarian_ci NOT NULL,
   `TEXT_EN` varchar(80) COLLATE utf8_hungarian_ci NOT NULL,
-  `LEIRAS_HU` varchar(512) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `LEIRAS_EN` varchar(512) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `LEIRAS_HU` varchar(1024) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `LEIRAS_EN` varchar(1024) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `KEZDOKEP` int(6) DEFAULT NULL,
   `VISIBLE` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -700,6 +786,12 @@ ALTER TABLE `koleves_napimenu_idoszakok`
  ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `koleves_partnerek`
+--
+ALTER TABLE `koleves_partnerek`
+ ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `koleves_programok`
 --
 ALTER TABLE `koleves_programok`
@@ -741,7 +833,7 @@ MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `koleves_etelek`
 --
 ALTER TABLE `koleves_etelek`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT for table `koleves_etelkategoriak`
 --
@@ -751,7 +843,7 @@ MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `koleves_hirsav`
 --
 ALTER TABLE `koleves_hirsav`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `koleves_italkategoriak`
 --
@@ -761,7 +853,7 @@ MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `koleves_italok`
 --
 ALTER TABLE `koleves_italok`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=98;
 --
 -- AUTO_INCREMENT for table `koleves_jogosultsagok`
 --
@@ -771,12 +863,12 @@ MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 -- AUTO_INCREMENT for table `koleves_kepek`
 --
 ALTER TABLE `koleves_kepek`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `koleves_keptipusok`
 --
 ALTER TABLE `koleves_keptipusok`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `koleves_kep_osszekotesek`
 --
@@ -786,12 +878,17 @@ MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 -- AUTO_INCREMENT for table `koleves_napimenuk`
 --
 ALTER TABLE `koleves_napimenuk`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=60;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `koleves_napimenu_idoszakok`
 --
 ALTER TABLE `koleves_napimenu_idoszakok`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `koleves_partnerek`
+--
+ALTER TABLE `koleves_partnerek`
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `koleves_programok`
 --
@@ -806,7 +903,7 @@ MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `koleves_statikus`
 --
 ALTER TABLE `koleves_statikus`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `koleves_szobak`
 --
