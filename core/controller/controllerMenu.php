@@ -6,6 +6,51 @@ class Menu extends BaseObject{
         
 		parent::__construct($dbHandler);
 	}
+	
+	
+	
+	public function drawEtlap(){
+	
+		$elements = array(
+				'cetli'	=> $this->getCetliData(),
+				'kategoriak' => $this->getEtlapData()
+		);
+	
+	
+	
+		$this->view->drawEtlap($elements);
+	}
+	
+	
+	public function drawEtlapAdmin($helyiseg = 'vendeglo'){
+		$elements = array(
+			'helyiseg'	=> $helyiseg,
+			'kategoriak'=> $this->getEtlapData(true),
+			'cetli'		=> $this->getCetliData()
+		);
+		 
+	
+		$this->view->drawEtlapAdmin($elements);
+	}
+	
+	
+	public function drawItallap($helyiseg = 'vendeglo'){
+		$elements = $this->getItallapData($helyiseg);
+	
+		$this->view->drawItallap($elements, $helyiseg);
+	}
+	
+	
+	public function drawItallapAdmin($helyiseg = 'vendeglo'){
+		$elements = array(
+				'kategoriak'	=> $this->getItallapData($helyiseg)
+		);
+	
+	
+		$this->view->drawItallapAdmin($elements);
+	}
+	
+	
     
     public function drawNapiMenu(){
     	$dayNames = array(
@@ -166,40 +211,41 @@ class Menu extends BaseObject{
     }
     
     
-    public function drawEtlapAdmin(){
-    	$elements = array(
-    		'kategoriak'	=> $this->getEtlapData(),
-    		'cetli'	=> $this->getCetliData()
-    	);
-    	
-    	 
-    	$this->view->drawEtlapAdmin($elements);
-    }
+   
 
-    public function drawItallapAdmin(){
-    	$elements = array(
-    			'kategoriak'	=> $this->getItallapData()
-    	);
-    	 
     
-    	$this->view->drawItallapAdmin($elements);
+    
+    
+    public function drawKertEtlap(){
+    	$elements = array(
+    			'kategoriak' => $this->getEtlapData()
+    	);
+    
+    	 
+    	$this->view->drawKertEtlap($elements);
     }
+    
+    
+    
+    
+    
+    
     
     
     public function getCetliData(){
-    	$cetliSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS labelText FROM koleves_statikus WHERE label LIKE 'CETLI%' ORDER BY label ASC;";
+    	$cetliSQL = "SELECT id, SUBSTRING(LABEL, 6, 1) AS cetliSzam, ".$_SESSION['helper']->getLangLabel('text')." AS labelText FROM koleves_statikus WHERE label LIKE 'CETLI%' ORDER BY label ASC;";
     	
     	return $this->fetchItems($cetliSQL);
     }
     
-    public function getEtlapData(){
+    public function getEtlapData($forAdminView = false){
     	$etlapArray = array();
     	
     	$etelKategoriaSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." as labelText, ikon FROM koleves_etelkategoriak ORDER BY id ASC;";
     	 
     	$etelSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, TAGEK, AR
     			FROM koleves_etelek
-    				WHERE visible = 1 AND kategoria_id = ?
+    				WHERE visible = 1 AND kategoria_id = ? AND etterem_id = 1
     			ORDER BY kategoria_id ASC, ".$_SESSION['helper']->getLangLabel('text')." ASC;";
     	
     	$kategoriaRES = $this->fetchItems($etelKategoriaSQL);
@@ -213,6 +259,9 @@ class Menu extends BaseObject{
     		$etelRES = $this->fetchItems($etelSQL, array($kategoriaAdat['id']));
     		foreach ($etelRES AS $etelAdat){
     			$etelAdat['AR'] = number_format($etelAdat['AR'], 0, '.', ' ');
+    			if (!$forAdminView){
+    				$etelAdat['TAGEK'] = $this->fetchAllergenSpan($etelAdat['TAGEK']);
+    			}
     			array_push($etlapArray[$kategoriaAdat['labelText']]['etelek'], $etelAdat);
     		}
     	
@@ -221,15 +270,23 @@ class Menu extends BaseObject{
     	return $etlapArray;
     }
     
-    public function getItallapData(){
+    
+    
+    public function getItallapData($helyiseg){
+    	$etteremID = 0;
+    	switch ($helyiseg){
+    		case 'vendeglo': $etteremID = 1; break;
+    		case 'kert': $etteremID = 2; break;
+    	}
+    	
     	$kategoriaSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text').", ikon FROM koleves_italkategoriak ORDER BY sorrend ASC;";
     	$kategoriaRES = $this->fetchItems($kategoriaSQL);
     	 
-    	$italSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, AR FROM koleves_italok WHERE kategoria_id = ? AND visible = 1 ORDER BY sorrend ASC;";
+    	$italSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, AR FROM koleves_italok WHERE kategoria_id = ? AND visible = 1 AND etterem_id = ? ORDER BY sorrend ASC;";
     	 
     	$kategoriak = array();
     	foreach ($kategoriaRES AS $key => $kategoriaData){
-    		$italRES = $this->fetchItems($italSQL, array($kategoriaData['id']));
+    		$italRES = $this->fetchItems($italSQL, array($kategoriaData['id'], $etteremID));
     	
     		$kategoriak[$kategoriaData[$_SESSION['helper']->getLangLabel('text')]] = array(
     				'ikon'	=> $kategoriaData['ikon'],
@@ -244,26 +301,58 @@ class Menu extends BaseObject{
     	return $kategoriak;
     }
     
-    public function drawEtlap(){
-    	
-    	$elements = array(
-    		'cetli'	=> $this->getCetliData(),
-    		'kategoriak' => $this->getEtlapData()
-    	);
-    	
-    	
-    	
-    	$this->view->drawEtlap($elements);
-    }
-
     
-    public function drawKertEtlap(){
-    	 $elements = array(
-    		'kategoriak' => $this->getEtlapData()
-    	);
-    	 
+
+    public function deleteEtlapElem(){
+    	$res = array();
+    
+    	try{
+    		$this->beginTransaction();
     		 
-    	$this->view->drawKertEtlap($elements);
+    		$SQL = "DELETE FROM koleves_etelek WHERE id = ?;";
+    
+    		$queryParams = array(
+    				$_POST['id']
+    		);
+    		$this->deleteItem($SQL, $queryParams);
+    
+    		$res['status'] = true;
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = false;
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    }
+    
+    
+    
+    
+
+    public function updateCetli(){
+    	$res = array();
+    
+    	try{
+    		$this->beginTransaction();
+    		 
+    		$cetliSQL = "UPDATE koleves_statikus SET ".$_SESSION['helper']->getLangLabel('text')." = ? WHERE id = ?;";
+    		 
+    		$cetliParams = array(
+    			$_POST['text'] == '' ? NULL : $_POST['text'],
+    			$_POST['id']
+    		);
+    		$this->updateItem($cetliSQL, $cetliParams);
+    
+    		$res['status'] = true;
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = false;
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    	 
     }
     
     
@@ -330,28 +419,7 @@ class Menu extends BaseObject{
     
     
     
-    public function deleteEtlapElem(){
-    	$res = array();
-    	 
-    	try{
-    		$this->beginTransaction();
-    	
-    		$SQL = "DELETE FROM koleves_etelek WHERE id = ?;";
-    			 
-    		$queryParams = array(
-    			$_POST['id']
-    		);
-    		$this->deleteItem($SQL, $queryParams);
-    			 
-    		$res['status'] = true;
-    		$this->commit();
-    	}catch(Exception $e){
-    		$res['status'] = false;
-    		$this->rollback();
-    	}
-    	 
-    	echo json_encode($res);
-    }
+    
     
     
     public function updateItallapElem(){
@@ -413,30 +481,6 @@ class Menu extends BaseObject{
     }
     
     
-    public function updateCetli(){
-    	$res = array();
-    	 
-    	try{
-    		$this->beginTransaction();
-    	
-    		$cetliSQL = "UPDATE koleves_statikus SET ".$_SESSION['helper']->getLangLabel('text')." = ? WHERE id = ?;";
-    	
-    		$cetliParams = array(
-    				$_POST['text'],
-    				$_POST['id']
-    		);
-    		$this->updateItem($cetliSQL, $cetliParams);
-    	    	
-    		$res['status'] = true;
-    		$this->commit();
-    	}catch(Exception $e){
-    		$res['status'] = false;
-    		$this->rollback();
-    	}
-    	 
-    	echo json_encode($res);
-    	
-    }
     
     
     public function updateNapiMenu(){
@@ -503,11 +547,7 @@ class Menu extends BaseObject{
     }
     
     
-    public function drawItallap($helyiseg = 'vendeglo'){
-    	$elements = $this->getItallapData();
-    	    	
-    	$this->view->drawItallap($elements, $helyiseg);
-    }
+    
     
     public function generateEtlapPDF(){
     	$kategoriak = $this->getEtlapData();
@@ -580,7 +620,7 @@ class Menu extends BaseObject{
     	
    		$pdf->writeHTML($html, true, false, true, false, '');
     	
-    	$pdf->Output('KolevesMenu.pdf', 'D');
+    	$pdf->Output('Koleves-Menu.pdf', 'D');
     }
 }
 ?>

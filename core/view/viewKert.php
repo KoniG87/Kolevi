@@ -337,5 +337,121 @@ ennyire nyüzsgő belváros legyünk.</p>
             </tr>';
         }
     }
+    
+    
+    
+    public function drawEtlapAdmin($elements){
+    	$kategoriaNevek = array_keys($elements['kategoriak']);
+    	 
+    	if ($elements['helyiseg'] == 'kert'){
+    		$etterem = 2;
+    	}
+    	
+    	echo '
+    
+    	<section class="kategoriaEditor">
+    			<button id="addEtel">Étel rögzítése</button>
+    
+				<table class="tablaGrid" >
+				<tr>
+					<td>Étlap szekció</td>
+					<td>
+    					<input type="hidden" name="etterem" value="'.$etterem.'"/>
+    					<input type="hidden" name="id" value="0"/>
+						<select name="kategoria" title="Ételszekció" value="" required>
+							<option value=""></option>';
+    	foreach ($kategoriaNevek AS $kategoria){
+    		echo '<option value="'.$kategoria.'">'.$kategoria.'</option>';
+    	}
+    	echo '
+						</select>
+						<span class="tooltip">Ételszekció</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Megnevezés</td>
+					<td>
+						<input type="text" maxlength="255" title="Étel neve" name="text" value="" required/>
+						<span class="tooltip">Étel neve, max. 255 karakter</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Ételjelölők</td>
+					<td>
+						<!--<input type="text" maxlength="20" title="Jelölők" name="tagek" value="" required/>
+						<span class="tooltip">Jelölők, max. 20 karakter</span>
+						-->
+				';
+    
+    
+    
+    	$allergenTipusok = array(
+    			1 => 'Csillagfürt',
+    			2 => 'Diófélék',
+    			3 => 'Földimogyi',
+    			4 => 'Glutén',
+    			5 => 'Hal',
+    			6 => 'Mustár',
+    			7 => 'Puhatestűek',
+    			8 => 'Rákfélék',
+    			9 => 'Szezámmag',
+    			10 => 'Szójabab',
+    			11 => 'Szulfitok',
+    			12 => 'Tej',
+    			13 => 'Tojás',
+    			14 => 'Zeller'
+    	);
+    
+    	for ($allergenCounter = 1; $allergenCounter <= 14; $allergenCounter++){
+    		echo '<span data-val="'.$allergenCounter.'" title="'.$allergenTipusok[$allergenCounter].'" class="allergen allergenSelector alg-'.$allergenCounter.'"></span>';
+    	}
+    
+    	echo '
+					</td>
+				</tr>
+				<tr>
+					<td>Ár</td>
+					<td>
+						<input type="text" title="Étel ára" name="ar" value="" required/>
+						<span class="tooltip">Étel ára</span>
+					</td>
+				</tr>
+			</table>
+    
+</section>
+    
+    	
+    		<h2>Étlap</h2>
+		
+			<table class="tablaGrid etlapTabla">
+				';
+    
+    	foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
+    		echo '<tr class="kategoriaRow">
+					<td colspan="5">'.$kategoria.'</td>
+					</tr>
+					';
+    			
+    		foreach ($kategoriaAdat['etelek'] AS $etelAdat){
+    			echo '<tr data-id="'.$etelAdat['id'].'">
+						<td>'.$etelAdat['MEGNEVEZES'].'</td>
+						<td data-val="'.$etelAdat['TAGEK'].'">';
+    
+    			$megadottAllergenek = explode(',', $etelAdat['TAGEK']);
+    			foreach ($megadottAllergenek AS $allergenSzam){
+    				echo '<span data-val="'.$allergenSzam.'" title="'.$allergenTipusok[$allergenSzam].'" class="allergen alg-'.$allergenSzam.'"></span>';
+    			}
+    				
+    
+    			echo '</td>
+						<td>'.$etelAdat['AR'].'</td>
+						<td><button class="editEtel">Szerkesztés</button></td>
+						<td><button class="deleteEtel">Törlés</button></td>
+					</tr>';
+    		}
+    	}
+    
+    	echo '</table>';
+    }
 }
 ?>

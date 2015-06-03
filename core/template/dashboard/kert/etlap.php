@@ -1,6 +1,6 @@
 <?php 
-	$menu = new Menu($app->getDbHandler());
-	$menu->drawEtlapAdmin();
+	$kert = new Kert($app->getDbHandler());
+	$kert->drawEtlapAdmin();
 ?>
 
 <style type="text/css">

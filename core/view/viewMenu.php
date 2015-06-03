@@ -103,6 +103,10 @@ class MenuView extends BaseView{
     public function drawEtlapAdmin($elements){
     	$kategoriaNevek = array_keys($elements['kategoriak']);
     	
+    	if ($elements['helyiseg'] == 'vendeglo'){
+    		$etterem = 1;
+    	}
+    	
     	echo '
 		
     	<section class="kategoriaEditor">
@@ -112,6 +116,7 @@ class MenuView extends BaseView{
 				<tr>
 					<td>Étlap szekció</td>
 					<td>
+    					<input type="hidden" name="etterem" value="'.$etterem.'"/>
     					<input type="hidden" name="id" value="0"/>
 						<select name="kategoria" title="Ételszekció" value="" required>
 							<option value=""></option>';
@@ -179,10 +184,17 @@ class MenuView extends BaseView{
     	<section>';
     	
     	$cetliSzamlalo = 1;
+    	$sorSzamlalo = 1;
     	foreach ($elements['cetli'] AS $cetliAdat){
+    		if ($cetliAdat['cetliSzam'] != $cetliSzamlalo){
+    			$cetliSzamlalo = $cetliAdat['cetliSzam'];
+    			$sorSzamlalo = 1;
+    			echo '<br/>';
+    		}
+    		
 			echo '
-    		<input class="reactive" type="text" maxlength="30" title="Cetli '.$cetliSzamlalo.'. sora" data-id="'.$cetliAdat['id'].'" name="cetli'.$cetliSzamlalo.'" value="'.$cetliAdat['labelText'].'"/> 
-    				<span class="tooltip">Cetli '.$cetliSzamlalo++.'. sora, max. 30 karakter</span> <br/>';
+    		<input class="reactive" type="text" maxlength="30" title="'.$cetliSzamlalo.'. cetli '.$sorSzamlalo.'. sora" data-id="'.$cetliAdat['id'].'" name="cetli'.$cetliSzamlalo.'" value="'.$cetliAdat['labelText'].'"/> 
+    				<span class="tooltip">Cetli '.$cetliSzamlalo.'. sora, max. 30 karakter</span> <br/>';
 		}
     	
     	
@@ -489,8 +501,24 @@ public function drawKertEtlap($elements){
       echo '</ul>';
      }
      
+
+     if ($helyiseg == 'kert'){
      echo '
      <a class="dl-pdf dl-pdf-itallap" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
+     <form id="requestEtlapForm" method="post" action="'.$_SESSION['helper']->getPath().'requestHandler" target="_blank">
+		<input type="hidden" name="request" value="generateKertEtlapPDF"/>
+     </form>
+     <script type="text/javascript">
+		$(document).ready(function(){
+    		$(".dl-pdf-itallap").click(function(e){
+    			e.preventDefault();
+     			$("#requestEtlapForm").submit();    
+    			
+    		});
+    	});
+     </script>';
+     }
+     echo '
        </div> 
 
                     </div>
@@ -503,20 +531,38 @@ public function drawKertEtlap($elements){
     
     
     public function drawCetli($elements){
-    	for ($i = 1; $i<= 3; $i++){
-    	echo '<div class="spec-ajanlat cetli-'.$i.'">
-                            <svg class="csipesz icon icon-csipesz"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-csipesz"></use></svg>
+    	
+    	$sorSzamlalo = 1;
+    	$cetliSzamlalo = 0;
+    	$isClosing = false;
+    	foreach ($elements AS $key => $cetliAdat){
+    		if ($cetliAdat['cetliSzam'] != $cetliSzamlalo){
+    			$cetliSzamlalo = $cetliAdat['cetliSzam'];
+    			
+    			if (!is_null($cetliAdat['labelText'])){
+    				if ($cetliSzamlalo > 1){
+    					echo '</div>
+            			</div>'; 
+    				}
+    				
+    			
+	    			$sorSzamlalo = 1; 
+	    		
+	    			echo '<div class="spec-ajanlat cetli-'.$cetliSzamlalo.'">
+	                  <svg class="csipesz icon icon-csipesz"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-csipesz"></use></svg>
+	   					<div class="cetli">
+	                      <h3>Külön ajánlat</h3>
+	    			';
+    			}
+    		}
 
-                                <div class="cetli">
-                                <h3>Külön ajánlat</h3>';
-       foreach ($elements AS $key => $cetliAdat){
-       		echo '<p>'.$cetliAdat['labelText'].'</p>';
-       }                             
-                                 
-                                    
-        echo '</div>
-            </div>';
+    		echo '<p>'.$cetliAdat['labelText'].'</p>';
+    		$sorSzamlalo++;
     	}
+    	echo '</div>
+          	</div>';
+    	
+    	
     }
     
 }
