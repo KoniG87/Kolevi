@@ -1,6 +1,10 @@
 <?php 
 include('page/home.php');
 ?>
+
+<div class="kosar">Kosár</div>
+<div class="bolt-trigger">Bolt trigger</div>
+
 <div class="row stickyStart">
 	<div class="twelve coulumns delicates-container">
 
@@ -15,7 +19,7 @@ include('page/home.php');
 		<div class="papercut-right"></div>
 	</div>
 
-	<div class="row">
+	<div class="row clearfix">
 		<div class="twelve columns centered delicates-slider">
 
 				<div class="delicates-slide">
@@ -92,15 +96,15 @@ include('page/home.php');
 	</div>
 
 
-	<div class="row">
-		<div class="twelve columns centered delicatesrol-bemutatkozas">
+	<div class="row delicatesrol-bemutatkozas">
+		<div class="twelve columns centered">
 			<h3>Kedves vásárló</h3>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, qui, ex? Temporibus natus at ad ducimus fuga sunt, odit quo fugiat recusandae cum cumque provident, deleniti, perspiciatis et incidunt vero placeat quia qui! Voluptatibus, nostrum nam repudiandae dicta, harum voluptatum.</p>
 		</div>
 	</div>
 </section>
 
-
+<!-- BOLT -->
 <section id="bolt">
 
 	<div class="section-label" data-labelpos="2">
@@ -112,15 +116,15 @@ include('page/home.php');
 
 	<div class="row">
 		<div class="three columns clearfix">
-			<div id="eheto" class="bolt-acco-container">
+			<div class="eheto bolt-acco-container">
 				<div class="bolt-acco-illustration">
-					
+					<svg class="icon icon-eheto"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-eheto"></use></svg>
 				</div>
 				<ul class="bolt-acco">
 					<div class="bolt-acco-head">
 						Ehető
 					</div>
-					<li>Pesztó</li>
+					<li class="bolt-acco-active">Pesztó</li>
 					<ul>
 						<li>subkat1</li>
 						<li>subkat2</li>
@@ -128,6 +132,39 @@ include('page/home.php');
 					<li>Csathni</li>
 					<ul>
 						<li>subkat1</li>
+						<li class="bolt-acco-active">subkat2</li>
+						<li>subkat3</li>
+						<li>subkat4</li>
+					</ul>
+					<li>Lekvár</li>
+					<ul>
+						
+					</ul>
+					<li>Kenyér</li>
+					<ul>
+						
+					</ul>
+				</ul>			
+			</div>
+
+
+
+			<div class="ihato bolt-acco-container">
+				<div class="bolt-acco-illustration">
+					<svg class="icon icon-ihato"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-ihato"></use></svg>
+				</div>
+				<ul class="bolt-acco">
+					<div class="bolt-acco-head">
+						Iható
+					</div>
+					<li class="bolt-acco-active">Pesztó</li>
+					<ul>
+						<li>subkat1</li>
+						<li>subkat2</li>
+					</ul>
+					<li>Csathni</li>
+					<ul>
+						<li class="bolt-acco-active">subkat1</li>
 						<li>subkat2</li>
 						<li>subkat3</li>
 						<li>subkat4</li>
@@ -142,18 +179,58 @@ include('page/home.php');
 					</ul>
 				</ul>			
 			</div>
+
+
+			<div class="nemeheto bolt-acco-container">
+				<div class="bolt-acco-illustration">
+					<svg class="icon icon-nemeheto"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-nemeheto"></use></svg>
+				</div>
+				<ul class="bolt-acco">
+					<div class="bolt-acco-head">
+						Nem ehető
+					</div>
+					<li>Pesztó</li>
+					<ul>
+						<li>subkat1</li>
+						<li>subkat2</li>
+					</ul>
+					<li class="bolt-acco-active">Csathni</li>
+					<ul>
+						<li>subkat1</li>
+						<li class="bolt-acco-active">subkat2</li>
+						<li>subkat3</li>
+						<li>subkat4</li>
+					</ul>
+					<li>Lekvár</li>
+					<ul>
+						
+					</ul>
+					<li>Kenyér</li>
+					<ul>
+						
+					</ul>
+				</ul>			
+			</div>
+
+
 		</div>
 		<div class="nine columns clearfix">
 			<div class="bolt-search">
+			<svg class="icon icon-kereso"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kereso"></use></svg>
 				<form action="">
-					<svg class="icon icon-etel-foetel"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-etel-foetel"></use></svg>
+				
+					<svg class="icon icon-nagyito"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-nagyito"></use></svg>
 					<input type="search" placeholder="keresés">
 				</form>
 			</div>
+
+
+
+
 			<div class="bolt-grid">
 
 				<h3 class="eheto-label clearfix">Csatni</h3>
-
+<!-- ha ez a h3 az ihatoban van akkor ihato-label-class-t kell kapnia, ha nem eheto akkor nemeheto-label -->
 				<div class="bolt-grid-element">
 					<a href="">
 						<div class="bolt-grid-element-img">
@@ -235,7 +312,162 @@ include('page/home.php');
 ?>
 
 	</div>
+<!-- CHECKOUT VIEW OVERLAY -->
+<div class="overlay-checkout">
+	<svg class="icon icon-close bolt-item-close"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use></svg>
+	<div class="checkout-container">
+		<form action="">
+			<div class="row checkout-items clearfix">
+			<h3>Kosár tartalma</h3>
+				<div class="twelve columns centered">
+					<div class="checkout-item">
+						<div class="checkout-item-details">
+							<h3>
+								<span class="checkout-item-name">Mangós Csatni</span>\ 
+								<span class="checkout-item-quantity">1</span>DB \ 
+								<span class="checkout-item-cost"> 1400</span>Ft
+							</h3>
+						</div>
+						<div class="checkout-item-img">
+							<img src="assets/uploads/th_gallery04.jpg" alt="">
+						</div>
+						<div class="checkout-item-remove">
+							<svg class="icon icon-close item-remove"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use></svg>
+						</div>
+					</div>
+					<div class="checkout-item">
+						<div class="checkout-item-details">
+							<h3>
+								<span class="checkout-item-name">Mangós Csatni</span>\ 
+								<span class="checkout-item-quantity">1</span>DB \ 
+								<span class="checkout-item-cost"> 1400</span>Ft
+							</h3>
+						</div>
+						<div class="checkout-item-img">
+							<img src="assets/uploads/th_gallery04.jpg" alt="">
+						</div>
+						<div class="checkout-item-remove">
+							<svg class="icon icon-close item-remove"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use></svg>
+						</div>
+					</div>
+					<div class="checkout-item">
+						<div class="checkout-item-details">
+							<h3>
+								<span class="checkout-item-name">Mangós Csatni</span>\ 
+								<span class="checkout-item-quantity">1</span>DB \ 
+								<span class="checkout-item-cost"> 1400</span>Ft
+							</h3>
+						</div>
+						<div class="checkout-item-img">
+							<img src="assets/uploads/th_gallery04.jpg" alt="">
+						</div>
+						<div class="checkout-item-remove">
+							<svg class="icon icon-close item-remove"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use></svg>
+						</div>
+					</div>
+					<div class="checkout-item">
+						<div class="checkout-item-details">
+							<h3>
+								<span class="checkout-item-name">Mangós Csatni</span>\ 
+								<span class="checkout-item-quantity">1</span>DB \ 
+								<span class="checkout-item-cost"> 1400</span>Ft
+							</h3>
+						</div>
+						<div class="checkout-item-img">
+							<img src="assets/uploads/th_gallery04.jpg" alt="">
+						</div>
+						<div class="checkout-item-remove">
+							<svg class="icon icon-close item-remove"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use></svg>
+						</div>
+					</div>
+					<div class="checkout-item">
+						<div class="checkout-item-details">
+							<h3>
+								<span class="checkout-item-name">Mangós Csatni</span>\ 
+								<span class="checkout-item-quantity">1</span>DB \ 
+								<span class="checkout-item-cost"> 1400</span>Ft
+							</h3>
+						</div>
+						<div class="checkout-item-img">
+							<img src="assets/uploads/th_gallery04.jpg" alt="">
+						</div>
+						<div class="checkout-item-remove">
+							<svg class="icon icon-close item-remove"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use></svg>
+						</div>
+					</div>
+					<div class="checkout-item">
+						<div class="checkout-item-details">
+							<h3>
+								<span class="checkout-item-name">Mangós Csatni</span>\ 
+								<span class="checkout-item-quantity">1</span>DB \ 
+								<span class="checkout-item-cost"> 1400</span>Ft
+							</h3>
+						</div>
+						<div class="checkout-item-img">
+							<img src="assets/uploads/th_gallery04.jpg" alt="">
+						</div>
+						<div class="checkout-item-remove">
+							<svg class="icon icon-close item-remove"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use></svg>
+						</div>
+					</div>
 
+					<div class="checkout-item">
+						<div class="checkout-item-details">
+							<h3>
+								<span class="checkout-item-name">Mangós Csatni</span>\ 
+								<span class="checkout-item-quantity">1</span>DB \ 
+								<span class="checkout-item-cost"> 1400</span>Ft
+							</h3>
+						</div>
+						<div class="checkout-item-img">
+							<img src="assets/uploads/th_gallery04.jpg" alt="">
+						</div>
+						<div class="checkout-item-remove">
+							<svg class="icon icon-close item-remove"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use></svg>
+						</div>
+					</div>
+
+					<div class="checkout-item">
+						<div class="checkout-item-details">
+							<h3>
+								<span class="checkout-item-name">Mangós Csatni</span>\ 
+								<span class="checkout-item-quantity">1</span>DB \ 
+								<span class="checkout-item-cost"> 1400</span>Ft
+							</h3>
+						</div>
+						<div class="checkout-item-img">
+							<img src="assets/uploads/th_gallery04.jpg" alt="">
+						</div>
+						<div class="checkout-item-remove">
+							<svg class="icon icon-close item-remove"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-close"></use></svg>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row checkout-closure clearfix">
+				<div class="twelve columns centered">
+					<div class="eight columns">
+						<div class="checkout-input-svg">
+							<textarea placeholder="Megjegyzés"></textarea>
+						</div>
+					</div>
+					<div class="four columns">
+						<div class="checkout-input-svg" style="margin-bottom:2.6rem;">
+							<input type="text" placeholder="Név">
+						</div>
+						<div class="checkout-input-svg">
+							<input type="text" placeholder="Email">
+						</div>
+					</div>
+				</div>
+				<div class="twelve columns centered checkout-finish">
+					<div>Összesen: <span class="sum-cost">0</span> Ft</div>
+					<button type="submit">Küldés</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
 
 <!-- ITEM VIEW OVERLAY -->
 	<div class="overlay-bolt">

@@ -11,6 +11,7 @@ function delicatesCarousel(){
 	  slidesToScroll: 1,
 	  dots: true,
 	  arrows:true,
+    speed: 700,
 	  prevArrow: delicatesrolPrev,
 	  nextArrow: delicatesrolNext,
 	});
@@ -21,9 +22,11 @@ function delicatesCarousel(){
 delicatesCarousel();
 
 function callDelicatesCarouselSvg(){
+if (mL.matches) {
+  // desktop
 $(".delicates-slide-img").each(function(){
   $(this).Svgenerate({
-  	rightFixed: "on",
+    rightFixed: "on",
     imgMask:"on",
     setToImg:"on",
     dropShadow: "on",
@@ -40,15 +43,40 @@ $(".delicates-slide-img").each(function(){
 
 $(".delicates-slide>aside").each(function(){
   $(this).Svgenerate({
-  	leftFixed: "on",
-  	rangeX:0.90,
-  	dropShadow: "on",
+    leftFixed: "on",
+    rangeX:0.90,
+/*    dropShadow: "on",
     blur:5,
     dX:5,
     dY:38,
-    opacity:0.4
+    opacity:0.4*/
   });
 });
+}
+else{
+  // mobile & tablet
+$(".delicates-slide-img").each(function(){
+  $(this).Svgenerate({
+    bottomFixed: "on",
+    imgMask:"on",
+    setToImg:"on",
+    dropShadow:"off",
+    rangeX:0.95,
+    rangeY:0.88,
+    midmove: 0.3
+  });
+});
+
+
+$(".delicates-slide>aside").each(function(){
+  $(this).Svgenerate({
+    topFixed: "on",
+    rangeX:0.96,
+
+  });
+});
+}
+
 
 }
 
@@ -61,9 +89,8 @@ var alapOddBolt = {
 		scaleX:0.8,
 		scaleY:0.8,
 		marginTop:"-2.5rem",
-		/*backgroundColor:"#ddd",*/
-		backgroundColor:"#ee8639",
-/*		backgroundColorAlpha: 0.1*/
+		backgroundColor:"#ddd"
+
 
        },
       alapEvenBolt = {
@@ -72,9 +99,8 @@ var alapOddBolt = {
 		scaleX:0.8,
 		scaleY:0.8,
 		marginTop:"-2.5rem",
-	/*	backgroundColor:"#f5f5f5",*/
-		backgroundColor:"#f2e064",
-/*		backgroundColorAlpha: 0.5*/
+		backgroundColor:"#f5f5f5"
+
 
        },
       nyitvaOddBolt = {
@@ -98,9 +124,8 @@ var alapOddBolt = {
 		scaleX:0.8,
 		scaleY:0.8,
 		marginTop:"-1.5rem",
-		/*backgroundColor:"#ccc",*/
-		backgroundColor:"#09b6b0",
-/*		backgroundColorAlpha: 0.1*/
+		backgroundColor:"#b4b4b4"
+
 
        },
       alapEvenBoltSubkateg = {
@@ -109,9 +134,8 @@ var alapOddBolt = {
 		scaleX:0.8,
 		scaleY:0.8,
 		marginTop:"-1.5rem",
-	/*	backgroundColor:"#f5f5f5",*/
-		backgroundColor:"#88fffb",
-/*		backgroundColorAlpha: 0.5*/
+		backgroundColor:"#ccc"
+
        },
       nyitvaOddBoltSubkateg = {
 		rotateX:"-30deg",
@@ -140,8 +164,8 @@ function boltAccordionCLICK(){
          thisOne.parent().find(">li:nth-of-type(even)").velocity(nyitvaEvenBolt,duration,spring);
       }
     else{
-       if ( $(".bolt-acco>ul").hasClass("bolt-subkateg-is-open")) {
-       $(".bolt-subkateg-is-open").prev('li').click();
+       if (thisOne.parent().find(">ul").hasClass("bolt-subkateg-is-open")) {
+       thisOne.parent().find(".bolt-subkateg-is-open").prev('li').click();
        setTimeout(function(){ 
 	        thisOne.parent().find(">li:nth-of-type(odd)").velocity(alapOddBolt,duration,spring);
 	        thisOne.parent().find(">li:nth-of-type(even)").velocity(alapEvenBolt,duration,spring);
@@ -197,32 +221,41 @@ boltAccordion();
 
 
 /* Bold Grid */
-
+/*
 
 
 $(".bolt-search").Svgenerate({
   rangeX:0.97,
   rangeY:0.94,
 });
+*/
 
 
-
-$(".bolt-grid>h3.eheto-label").Svgenerate({
-  rangeX:0.97,
-  rangeY:0.94,
-  fill: "#e05a25"
+$(".eheto .bolt-acco-head, .bolt-grid>h3.eheto-label").each(function(){
+  $(this).Svgenerate({
+    bottomFixed:"on",
+    rangeX:0.98,
+    rangeY:0.96,
+    fill: "#e05a25"
+  });
 });
 
-$(".bolt-grid>h3.ihato-label").Svgenerate({
-  rangeX:0.97,
-  rangeY:0.94,
-  fill: "#795f86"
+$(".ihato .bolt-acco-head, .bolt-grid>h3.ihato-label").each(function(){
+  $(this).Svgenerate({
+    bottomFixed:"on",
+    rangeX:0.98,
+    rangeY:0.96,
+    fill: "#795f86"
+  });
 });
 
-$(".bolt-grid>h3.nemeheto-label").Svgenerate({
-  rangeX:0.97,
-  rangeY:0.94,
-  fill: "#186c9b"
+$(".nemeheto .bolt-acco-head, .bolt-grid>h3.nemeheto-label").each(function(){
+  $(this).Svgenerate({
+    bottomFixed:"on",
+    rangeX:0.98,
+    rangeY:0.96,
+    fill: "#186c9b"
+  });
 });
 
 
@@ -243,6 +276,7 @@ $(".bolt-grid-element-img").each(function(){
 }
 
 callBoltGridElements();
+
 
 /* bolt-item-open */
 
@@ -292,11 +326,11 @@ $(".bolt-item-slider-nav .slick-center").click();
   rangeY:0.91,
 });
 
-
 });
 
 $(".bolt-item-close").on("click",function(){
 	boltItemClose();
+  checkoutClose();
 });
 
 
@@ -364,31 +398,18 @@ $(".bolt-item-slider-nav .slick-slide").each(function(){
 
 /* item quantity */
 
-
-function itemQuantityButtons(){
   var qValue = $(".item-q>input").val();
 
   $(".item-q-up").on("click",function(){
-    $(".item-q>input").val(parseInt(qValue)+1);
+    $(".item-q>input").val(parseInt($(".item-q>input").val())+1);
   });
   $(".item-q-down").on("click",function(){
-    if(qValue != 1){
-       $(".item-q>input").val(parseInt(qValue)-1);
+    if($(".item-q>input").val() != 1){
+       $(".item-q>input").val(parseInt($(".item-q>input").val())-1);
     }
    
   });
 
-/*if ($(this).hasClass(".item-q-up")) {
-    $(".item-q>input").val(parseInt(qValue)+1);
-}
-else if ($(this).hasClass(".item-q-down")) {
-    if(qValue != 1){
-       $(".item-q>input").val(parseInt(qValue)-1);
-    }
-}*/
-}
-
-$(".item-q").click(itemQuantityButtons);
 
 
 /* Hasonló termékek */
@@ -410,6 +431,132 @@ $(".hasonlo-grid-element-img").each(function(){
 }
 
 callHasonloGridElements();
+
+
+/* CHECKOUT */
+
+/* checkout-open */
+//open
+function checkoutOpen(){
+  $(".overlay-checkout").addClass("overlay-checkout-open");
+  $("html, body").addClass("no-scroll");
+}
+
+//close
+function checkoutClose(){
+  $(".overlay-checkout").removeClass("overlay-checkout-open");
+  $("html, body").removeClass("no-scroll");
+}
+
+$(".kosar").on("click",function(){
+  checkoutOpen();
+  refreshCheckoutSum();
+});
+
+
+/*checkout-item*/
+
+function callCheckoutItem(){
+  $(".checkout-item-img").each(function(){
+  $(this).Svgenerate({
+    rightFixed: "on",
+    imgMask:"on",
+    setToImg:"on",
+    dropShadow: "on",
+    blur:5,
+    dX:0,
+    dY:0,
+    opacity:0.4
+  });
+});
+
+
+$(".checkout-item-details").each(function(){
+  $(this).Svgenerate({
+    leftFixed: "on",
+    rightFixed: "on",
+    fill:"#fff",
+    rangeY:0.90,
+    dropShadow: "on",
+    blur:5,
+    dX:0,
+    dY:0,
+    opacity:0.4
+  });
+});
+
+
+$(".checkout-item-remove").each(function(){
+  $(this).Svgenerate({
+    leftFixed: "on",
+    dropShadow: "on",
+    blur:5,
+    dX:0,
+    dY:0,
+    opacity:0.4
+  });
+});
+
+}
+
+callCheckoutItem();
+
+/* sum cost */
+
+function checkoutSum(){
+  var sum = 0;
+  $('.checkout-item').each(function(){
+    sum += parseInt($(this).find('.checkout-item-cost').text());
+  });
+ return sum;
+}
+
+function refreshCheckoutSum(){
+  $(".sum-cost").text(checkoutSum);
+}
+
+
+/* remove item*/
+
+$(".checkout-item-remove").on("click", function(){
+  var thisOne = $(this);
+  var thisItem = thisOne.parent();
+  var biztostorlod = confirm("Biztosan törli a kiválasztott elemet?");
+  if (biztostorlod == true){
+        $(".checkout-container").addClass("no-scroll");
+        thisItem.css({zIndex:9999});
+        thisItem.velocity({ translateY: -30 },{ easing: "easeOut" }, 0.20).velocity({ translateY: 1000, rotateZ:"-30deg"},{opacity:0},{ easing: "easeInCirc" }, 0.80 ).velocity({height:0},{duration:300,complete:function(){
+          thisItem.remove();
+          refreshCheckoutSum();
+          $(".checkout-container").removeClass("no-scroll");
+        }});
+  }
+});
+
+/* input formák */
+$(".checkout-input-svg").each(function(){
+  $(this).Svgenerate({
+    dropShadow: "on",
+    fill:"#fff",
+    blur:10,
+    dX:0,
+    dY:0,
+    opacity:0.4
+  });
+});
+
+/* gomb formák */
+
+$(".checkout-finish button, .checkout-finish div").Svgenerate({
+  rangeX:0.94,
+  rangeY:0.91,
+});
+
+
+
+
+
+
 
 
 
@@ -434,12 +581,56 @@ function resizeend() {
 
 /*delicates*/
 setTimeout(function(){
-  callDelicatesCarouselSvg();
+callDelicatesCarouselSvg();
 callBoltGridElements();
 callHasonloGridElements();
+callCheckoutItem();
 }, 200);
 
     }               
 }
 
 });
+
+/*
+ *  JS MEDIA QUERY
+ */
+if (matchMedia) {
+        var mM = window.matchMedia('(max-width: 30em)');
+        var mT = window.matchMedia('(max-width: 50em) and (min-width: 30em)');
+        var mL = window.matchMedia('(min-width: 50em)');
+        // var mBig = window.matchMedia('(min-width: 64.375em)');
+
+        mM.addListener(matchMobile);
+        mT.addListener(matchTablet);
+        mL.addListener(matchLaptop);
+        // mBig.addListener(matchBig);
+
+        matchMobile(mM);
+        matchTablet(mT);
+        matchLaptop(mL);
+        // matchBig(mBig);
+    }
+
+// media query change
+    function matchMobile(mM) {
+        if (mM.matches) {
+        }
+
+    }
+    function matchTablet(mT) {
+        if (mT.matches) {
+
+        }
+
+    }
+    function matchLaptop(mL) {
+        if (mL.matches) {
+             onDesktop = true;
+      /*      callDelicatesCarouselSvg();*/
+        }
+        else {
+            onDesktop = false;
+/*            callDelicatesCarouselSvg();*/
+        }
+    }

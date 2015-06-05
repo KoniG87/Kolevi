@@ -782,7 +782,7 @@ input:focus::-ms-input-placeholder {
 }
 
 /* overlay becomes visible when a field is opened */
-.nl-overlay, .overlay, .overlay-bolt {
+.nl-overlay, .overlay, .overlay-bolt, .overlay-checkout {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -797,10 +797,10 @@ input:focus::-ms-input-placeholder {
 	-moz-transition: visibility 0s 0.3s, opacity 0.3s;
 	transition: visibility 0s 0.3s, opacity 0.3s;
 }
-.overlay, .overlay-bolt{
+.overlay, .overlay-bolt, .overlay-checkout{
 	background: rgba(255,255,255,0.9);
 }
-.nl-field.nl-field-open ~ .nl-overlay , .overlay.gallery-open, .overlay-bolt.bolt-item-open{
+.nl-field.nl-field-open ~ .nl-overlay , .overlay.gallery-open, .overlay-bolt.bolt-item-open, .overlay-checkout-open{
 	opacity: 1;
 	visibility: visible;
 	-webkit-transition-delay: 0s;

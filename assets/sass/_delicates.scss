@@ -12,8 +12,12 @@
 		position:absolute;
 		width: 3.5rem;
 		height: 3.5rem;
-		top:10rem;
+		top:50%;
 		cursor: pointer;
+		display: none !important;
+		@include breakpoint(moblet){
+			display: block !important;
+		}
 	}
 	.slick-prev{
 		left:-2rem;
@@ -76,28 +80,45 @@
 	}
 }
 .delicates-slide{
+/* 	height:40rem;
+			@include breakpoint(tablet){
+			height: auto;
+		} */
 	.delicates-slide-img{
-		width: 70%;
+		width: 100%;
 		@extend .left;
-		height: 100%;
+		height: 50%;
 		position:relative;
+		@include breakpoint(tablet){
+			width: 70%;
+			height: 100%;
+		}
 		img{
 			@extend .visuallyhidden;
-			height: 20rem;
+			/* height: 20rem; */
 		}
 	}
 	aside{
-		width: 30%;
+		width: 100%;
 		@extend .right;
 		/* background:$black; */
-		height: 100%;
+		height: 50%;
 		color:$white;
 		padding: 2rem;
-		position: absolute;
+		position: relative;
 		right:1px;
 		font-family: $danielreg;
 		text-align: center;
 		letter-spacing: 0.5px;
+/* 		top: 50%; */
+
+		@include breakpoint(tablet){
+			width: 30%;
+			height: 100%;
+			position:absolute;
+	/* 		top:0; */
+		}
+
 		h4{
 			margin:1rem 0;
 			font-size: 120%;
@@ -117,6 +138,7 @@
 	}
 }
 .delicatesrol-bemutatkozas{
+	margin-top: 5rem !important;
 	@include breakpoint(tablet){
 		padding:0 3rem;
 	}
@@ -127,18 +149,47 @@
 .bolt-acco-container{
 	position:relative;
 	overflow:hidden;
-	/* border:1px solid violet; */
+	width: 90%;
+	margin: 0 auto;
+	@include breakpoint(moblet){
+		width: 60%;
+	}
+	@include breakpoint(tabtop){
+		width: 30%;
+		margin: 0;
+		float: left;
+	}
+	@include breakpoint(tablet){
+		width: 100%;
+		float:none;
+	}
+}
+.ihato.bolt-acco-container{
+	@include breakpoint(tabtop){
+		margin: 0 5%;
+	}
+	@include breakpoint(tablet){
+		margin:0;
+	}
+
 }
 .bolt-acco-illustration{
 	width: 100%;
-	background: rgba(200,0,0,0.3);
 	height:12rem;
 	margin-bottom:1rem;
+	svg{
+		height: 100%;
+		width: 100%;
+	}
 }
 
 .bolt-acco{
 	@include perspective(400px);
 	font-family:$danielbld;
+	margin-bottom: 2rem;
+	li{
+		cursor:pointer;
+	}
 	>li{
 		height:2.5rem;
 		line-height: 3rem;
@@ -153,6 +204,9 @@
 /* 		z-index: 1; */
 		position: relative;
 		/* border:1px solid aqua; */
+		&:first-of-type{
+
+		}
 	}
 	>ul{
 		z-index: -1;
@@ -179,9 +233,22 @@
 		}
 	}
 }
+.eheto .bolt-acco-active{
+	color:#e05a25;
+	text-shadow:0 1px #fff;
+}
+.ihato .bolt-acco-active{
+	color:#795f86;
+	text-shadow:0 1px #fff;
+}
+.nemeheto .bolt-acco-active{
+	color:#186c9b;
+	text-shadow:0 1px #fff;
+}
+
 .bolt-acco-head{
 	color:$white;
-	background:#e05a25;
+	/* background:#e05a25; */
 	height:2.5rem;
 	line-height: 3rem;
 	text-align: center;
@@ -205,22 +272,49 @@
 	position:relative;
 	top:0;
 	@extend .right;
+	>svg{
+		color:$black;
+		width: 100%;
+		height: 10rem;
+		position: absolute;
+		top: -4.2rem;
+		left: -0.8rem;
+	}
+	form{
 	svg{
 		position:absolute;
 		left:0.3rem;
 	}
+	}
+
 	input{
 		position:absolute;
-		width: 8rem;
-		right: 0.3rem;
+		width: 7rem;
+		right: 1.3rem;
 		background:transparent;
 		border:none;
 		outline: none;
 		color:$white;
 		font-family:$danielbld;
 		padding:0.2rem 0;
+		
 	}
 }
+
+.bolt-search input::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+		}
+
+.bolt-search input::-moz-selection { /* Code for Firefox */
+    color: $black;
+    background: $white;
+}
+
+.bolt-search input::selection {
+    color: $black; 
+    background: $white;
+}
+
 .bolt-search input::-webkit-input-placeholder {
 	color: $white;
 }
@@ -305,7 +399,8 @@
 	cursor: pointer;
 }
 
-.bolt-item-view-container{
+.bolt-item-view-container,
+.checkout-container{
 	width:100%;
 	height: 100%;
 	overflow:auto;
@@ -525,4 +620,167 @@
 		@extend .visuallyhidden;
 	}
 	
+}
+
+/* korsárka */
+
+.kosar,
+.bolt-trigger{
+	position:fixed;
+	width: 4rem;
+	height: 4rem;
+	background:$black;
+	color:$white;
+	top:0;
+	right:0;
+	cursor:pointer;
+}
+.bolt-trigger{
+	right:5rem;
+}
+
+/* CHECKOUT */
+
+.checkout-closure,
+.checkout-items{
+/* 	border:1px solid coral; */
+}
+
+.checkout-container{
+	form{
+		margin:8rem 0;
+	}
+}
+
+.checkout-item{
+	width:100%;
+	height: 6rem;
+	position: relative;
+	margin:1rem 0;
+
+}
+.checkout-item-img,
+.checkout-item-details,
+.checkout-item-remove{
+	position: absolute;
+	top:0;
+}
+.checkout-item-img{
+	width: 6rem;
+	height: 6rem;
+	left:0;
+	img{
+		@extend .visuallyhidden;
+	}
+}
+.checkout-item-details{
+	width: calc(100% - 12rem);
+	height: 100%;
+	left:6rem;
+	display:table;
+
+	h3{	display:table-cell;
+		margin:0 auto;
+		padding:1rem;
+		height:6rem;
+		vertical-align: middle;
+		line-height: 1.4;
+		span{
+			padding:0 0.5rem;
+		}
+	}
+}
+.checkout-item-remove{
+	width: 6rem;
+	height: 6rem;
+	right:0;
+	cursor:pointer;
+	svg{
+		fill:#fff;
+		width: 3rem;
+		height: 3rem;
+		margin:1.5rem;
+		@include rotate(8);
+	}
+}
+
+.checkout-closure{
+	.twelve{
+		padding:1rem;
+	}
+	textarea{
+		width: 100%;
+		height: 7rem;
+		resize: none;
+		padding: 1rem 2rem;
+		outline:none;
+		border:none;
+		background:transparent;
+		position:relative;
+		font-family:$danielbld;
+		font-size:110%;
+		margin-top:5px;
+	}
+	input{
+		width: 100%;
+		height: 2.5rem;
+		padding:0 1rem;
+		line-height: 2.5rem;
+		outline:none;
+		border:none;
+		background:transparent;
+		position:relative;
+		font-family:$danielbld;
+		font-size:90%;
+		letter-spacing: 2px;
+
+	}
+}
+
+/* custom placeholder color */
+.checkout-closure input::-webkit-input-placeholder, .checkout-closure textarea::-webkit-input-placeholder {
+	color:#aaa;
+	font-family:$roboto;
+	letter-spacing:3px;
+	font-weight:600;
+}
+.checkout-closure input::-moz-placeholder, .checkout-closure textarea::-moz-placeholder {
+	color:#aaa;
+	font-family:$roboto;
+	letter-spacing:3px;
+	font-weight:600;
+}
+.checkout-closure input:-ms-input-placeholder, .checkout-closure textarea:-ms-input-placeholder {  
+	color:#aaa;
+	font-family:$roboto;
+	letter-spacing:3px;
+	font-weight:600;
+}
+.checkout-input-svg{
+	position:relative;
+}
+
+.checkout-finish{
+	button, div{
+			line-height: 3rem;
+			cursor: pointer;
+			position: relative;
+			color: #fff;
+			font-size: 100%;
+			font-weight: bold;
+			letter-spacing: 3px;
+			padding:0 1.5rem;
+			height:3rem;
+			background:transparent;
+			border:none;
+			outline:none;
+			font-family: $roboto;
+		}
+
+}
+.checkout-finish div{
+	@extend .left;
+}
+.checkout-finish button{
+	@extend .right;
 }
