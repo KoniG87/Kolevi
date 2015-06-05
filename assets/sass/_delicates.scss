@@ -143,6 +143,38 @@
 		padding:0 3rem;
 	}
 }
+
+.delicatesrol-acco{
+	display: none;
+	@include breakpoint(tablet){
+		display: block;
+	}
+	.bolt-acco-container{
+		width: 25%;
+		float:left;
+	}
+	.ihato.bolt-acco-container{
+		margin:0 12.5%;
+	}
+	.bolt-acco{
+		li:nth-of-type(odd){
+			@include rotate-3d(-30deg,0,0);
+			background-color:rgba(0,0,0,.2);
+			border-right:1px solid rgba(0,0,0,.2);
+			margin-top:-5px;
+		}
+		li:nth-of-type(even){
+			@include rotate-3d(30deg,0,0);
+			background-color:rgba(255,255,255,.6);
+			border-right:1px solid rgba(0,0,0,.2);
+			margin-top:-5px;
+		}
+		li:last-of-type{
+			border-bottom:1px solid rgba(0,0,0,.2);
+		}
+	}
+}
+
 /* BOLT */
 
 
@@ -189,6 +221,7 @@
 	margin-bottom: 2rem;
 	li{
 		cursor:pointer;
+		border-right:1px solid rgba(0,0,0,0.2);
 	}
 	>li{
 		height:2.5rem;
@@ -204,8 +237,8 @@
 /* 		z-index: 1; */
 		position: relative;
 		/* border:1px solid aqua; */
-		&:first-of-type{
-
+		&:last-of-type{
+			border-bottom:1px solid rgba(0,0,0,0.2);
 		}
 	}
 	>ul{
@@ -336,7 +369,7 @@
 		padding:0 2rem;
 		margin-bottom:2rem;
 		margin-left:2rem;
-
+		clear:both;
 	}
 }
 

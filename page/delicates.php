@@ -101,6 +101,59 @@ include('page/home.php');
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, qui, ex? Temporibus natus at ad ducimus fuga sunt, odit quo fugiat recusandae cum cumque provident, deleniti, perspiciatis et incidunt vero placeat quia qui! Voluptatibus, nostrum nam repudiandae dicta, harum voluptatum.</p>
 		</div>
 	</div>
+
+	<div class="row delicatesrol-acco">
+		<div class="ten columns centered">
+				<div class="eheto bolt-acco-container">
+					<div class="bolt-acco-illustration">
+						<svg class="icon icon-eheto"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-eheto"></use></svg>
+					</div>
+					<ul class="bolt-acco">
+						<div class="bolt-acco-head">
+							Ehető
+						</div>
+						<li>Pesztó</li>
+						<li>Csathni</li>
+						<li>Lekvár</li>
+						<li>Kenyér</li>
+
+					</ul>			
+				</div>
+
+				<div class="ihato bolt-acco-container">
+					<div class="bolt-acco-illustration">
+						<svg class="icon icon-ihato"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-ihato"></use></svg>
+					</div>
+					<ul class="bolt-acco">
+						<div class="bolt-acco-head">
+							Iható
+						</div>
+						<li>Pesztó</li>
+						<li>Csathni</li>
+						<li>Lekvár</li>
+						<li>Kenyér</li>
+
+					</ul>			
+				</div>
+
+
+				<div class="nemeheto bolt-acco-container">
+					<div class="bolt-acco-illustration">
+						<svg class="icon icon-nemeheto"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-nemeheto"></use></svg>
+					</div>
+					<ul class="bolt-acco">
+						<div class="bolt-acco-head">
+							Nem Ehető
+						</div>
+						<li>Pesztó</li>
+						<li>Csathni</li>
+						<li>Lekvár</li>
+						<li>Kenyér</li>
+					</ul>			
+				</div>
+
+		</div>
+	</div>
 </section>
 
 <!-- BOLT -->
@@ -123,7 +176,7 @@ include('page/home.php');
 					<div class="bolt-acco-head">
 						Ehető
 					</div>
-					<li class="bolt-acco-active">Pesztó</li>
+					<li>Pesztó</li>
 					<ul>
 						<li>subkat1</li>
 						<li>subkat2</li>
@@ -131,7 +184,7 @@ include('page/home.php');
 					<li>Csathni</li>
 					<ul>
 						<li>subkat1</li>
-						<li class="bolt-acco-active">subkat2</li>
+						<li>subkat2</li>
 						<li>subkat3</li>
 						<li>subkat4</li>
 					</ul>
@@ -156,14 +209,14 @@ include('page/home.php');
 					<div class="bolt-acco-head">
 						Iható
 					</div>
-					<li class="bolt-acco-active">Pesztó</li>
+					<li>Pesztó</li>
 					<ul>
 						<li>subkat1</li>
 						<li>subkat2</li>
 					</ul>
 					<li>Csathni</li>
 					<ul>
-						<li class="bolt-acco-active">subkat1</li>
+						<li>subkat1</li>
 						<li>subkat2</li>
 						<li>subkat3</li>
 						<li>subkat4</li>
@@ -193,10 +246,10 @@ include('page/home.php');
 						<li>subkat1</li>
 						<li>subkat2</li>
 					</ul>
-					<li class="bolt-acco-active">Csathni</li>
+					<li>Csathni</li>
 					<ul>
 						<li>subkat1</li>
-						<li class="bolt-acco-active">subkat2</li>
+						<li>subkat2</li>
 						<li>subkat3</li>
 						<li>subkat4</li>
 					</ul>

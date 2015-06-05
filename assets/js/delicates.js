@@ -86,8 +86,8 @@ $(".delicates-slide>aside").each(function(){
 var alapOddBolt = {
 		rotateX:"-90deg",
 		rotateZ:0,
-		scaleX:0.8,
-		scaleY:0.8,
+    scaleX: 1,
+    scaleY: 1,
 		marginTop:"-2.5rem",
 		backgroundColor:"#ddd"
 
@@ -96,8 +96,8 @@ var alapOddBolt = {
       alapEvenBolt = {
 		rotateX:"90deg",
 		rotateZ:0,
-		scaleX:0.8,
-		scaleY:0.8,
+    scaleX: 1,
+    scaleY: 1,
 		marginTop:"-2.5rem",
 		backgroundColor:"#f5f5f5"
 
@@ -121,8 +121,8 @@ var alapOddBolt = {
        alapOddBoltSubkateg = {
 		rotateX:"-90deg",
 		rotateZ:0,
-		scaleX:0.8,
-		scaleY:0.8,
+    scaleX: 1,
+    scaleY: 1,
 		marginTop:"-1.5rem",
 		backgroundColor:"#b4b4b4"
 
@@ -131,8 +131,8 @@ var alapOddBolt = {
       alapEvenBoltSubkateg = {
 		rotateX:"90deg",
 		rotateZ:0,
-		scaleX:0.8,
-		scaleY:0.8,
+    scaleX: 1,
+    scaleY: 1,
 		marginTop:"-1.5rem",
 		backgroundColor:"#ccc"
 
@@ -196,26 +196,31 @@ function boltAccordionListItemCLICK(){
 }
 
 function boltAccordion(){ 
-    $(".bolt-acco>li:nth-of-type(odd)").velocity(alapOddBolt,1,spring);
-    $(".bolt-acco>li:nth-of-type(even)").velocity(alapEvenBolt,1,spring);
+    $("#bolt .bolt-acco>li:nth-of-type(odd)").velocity(alapOddBolt,1,spring);
+    $("#bolt .bolt-acco>li:nth-of-type(even)").velocity(alapEvenBolt,1,spring);
     // CLICK
-    $(".bolt-acco-head").click(boltAccordionCLICK).click(function(){
+    $("#bolt .bolt-acco-head").click(boltAccordionCLICK).click(function(){
       setTimeout(function(){ refreshWaypoints(); }, 1400);
     });
 
 // subkateg
-    $(".bolt-acco>ul li:nth-of-type(odd)").velocity(alapOddBoltSubkateg,1,spring);
-    $(".bolt-acco>ul li:nth-of-type(even)").velocity(alapEvenBoltSubkateg,1,spring);
+    $("#bolt .bolt-acco>ul li:nth-of-type(odd)").velocity(alapOddBoltSubkateg,1,spring);
+    $("#bolt .bolt-acco>ul li:nth-of-type(even)").velocity(alapEvenBoltSubkateg,1,spring);
     // CLICK
-    $(".bolt-acco>li").click(boltAccordionListItemCLICK).click(function(){
+    $("#bolt .bolt-acco>li").click(boltAccordionListItemCLICK).click(function(){
       setTimeout(function(){ refreshWaypoints(); }, 1400);
     });
 }
 
-$(".bolt-acco li").on("click",function(){
 
-  $(".bolt-acco li").removeClass("bolt-acco-active");
-  $(this).addClass("bolt-acco-active");
+
+$("#bolt .bolt-acco li").on("click",function(){
+  $("#bolt .bolt-acco li").removeClass("bolt-acco-active"); // leveszi mindenről
+  $(this).addClass("bolt-acco-active"); //hozzáadja ehhez
+    if($(this).is("#bolt .bolt-acco>ul>li")){ // ha subkateg akkor:
+      $(this).parent().prev("li").addClass("bolt-acco-active"); //hozzáadja az előző list-itemhez is
+    }
+
 });
 
 
@@ -224,16 +229,45 @@ boltAccordion();
 
 
 
+
+  function delicatesrolAccoClick(){
+  var thisOne = $(this);
+  thisParent = thisOne.parent().parent();
+  var liIndex = $(this).index();
+
+  function kattKezelo(target){
+        if($("#bolt "+target+" .bolt-acco-head").hasClass("bolt-is-open")){
+          if(!$("#bolt "+target+" .bolt-acco").find(">li:nth-of-type("+liIndex+")").hasClass("bolt-acco-active")){
+            $("#bolt "+target+" .bolt-acco").find(">li:nth-of-type("+liIndex+")").click();
+          }
+        }
+        else{
+          $("#bolt "+target+" .bolt-acco-head").click();
+          $("#bolt "+target+" .bolt-acco").find(">li:nth-of-type("+liIndex+")").click();
+        }
+  }
+  $("#bolt").velocity("scroll", {
+            duration: 2000,
+            easing: "ease",
+            offset:80,
+            complete:function(){
+              /*alert("im done");*/
+              if(thisParent.hasClass("eheto")){
+                kattKezelo(".eheto");
+              }
+              else if(thisParent.hasClass("ihato")){
+                kattKezelo(".ihato");
+              }
+              else if(thisParent.hasClass("nemeheto")){
+                kattKezelo(".nemeheto");
+              }
+            }
+        });
+  }
+
+$(".delicatesrol-acco .bolt-acco>li").click(delicatesrolAccoClick);
+
 /* Bold Grid */
-/*
-
-
-$(".bolt-search").Svgenerate({
-  rangeX:0.97,
-  rangeY:0.94,
-});
-*/
-
 
 $(".eheto .bolt-acco-head, .bolt-grid>h3.eheto-label").each(function(){
   $(this).Svgenerate({
