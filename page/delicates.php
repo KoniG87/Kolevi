@@ -1,8 +1,7 @@
 <?php 
 include('page/home.php');
 ?>
-
-<div class="kosar">Kosár</div>
+<div class="kosar"><svg class="icon icon-kosar"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kosar"></use></svg><span>0</span><p>Kosár</p></div>
 <div class="bolt-trigger">Bolt trigger</div>
 
 <div class="row stickyStart">
@@ -452,7 +451,7 @@ include('page/home.php');
 						</div>
 					</div>
 					<div class="four columns">
-						<div class="checkout-input-svg" style="margin-bottom:2.6rem;">
+						<div class="checkout-input-svg" >
 							<input type="text" placeholder="Név">
 						</div>
 						<div class="checkout-input-svg">
@@ -476,7 +475,7 @@ include('page/home.php');
 		
 <div class="bolt-item-view-container">
 	<div class="row bolt-item-view clearfix">
-		<div class="five columns right bolt-item-info">
+		<div class="five columns bolt-item-info clearfix">
 			<h4>Mangós Csatni</h4>
 			<p><a href="">Ehető</a><svg class="icon icon-nyil-jobbra"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-nyil-jobbra"></use></svg><a href="">Csatni</a><svg class="icon icon-nyil-jobbra"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-nyil-jobbra"></use></svg><a href="">Édes Csatnik</a></p>
 			<h5>1.400 Ft</h5>
@@ -500,7 +499,7 @@ include('page/home.php');
 
 		</div>
 	
-		<div class="seven columns left">
+		<div class="seven columns clearfix">
 			<div class="bolt-item-slider">
 				<div><img src="assets/uploads/gslide-1.jpg" alt=""></div>
 				<div><img src="assets/uploads/gslide-2.jpg" alt=""></div>

@@ -324,10 +324,10 @@ img {
   max-width: 100%; }
 
 /* Float classes */
-.right, .delicates-slide aside, .bolt-search, .checkout-finish button {
+.right, .delicates-slide aside, .bolt-search {
   float: right !important; }
 
-.left, .f-sitemap ul, .socials .social-link, .sitckyNav .row a, .rolunk-grid-element, .gallery-grid-element, .delicates-slide .delicates-slide-img, .bolt-grid-element, .bolt-item-info button, .item-q, .hasonlo-grid-element, .checkout-finish div {
+.left, .f-sitemap ul, .socials .social-link, .sitckyNav .row a, .rolunk-grid-element, .gallery-grid-element, .delicates-slide .delicates-slide-img, .bolt-grid-element, .bolt-item-info button, .item-q, .hasonlo-grid-element {
   float: left !important; }
 
 /* Hide / Show classes */
@@ -398,7 +398,7 @@ img {
   -webkit-transform: rotate(4deg);
   transform: rotate(4deg); }
 
-.visuallyhidden, .rend-slide img, .cikk-img img, .rolunk-visible img, .delicates-slide .delicates-slide-img img, .bolt-grid-element-img img, .bolt-item-slider .slick-slide img, .bolt-item-slider-nav .slick-slide img, .hasonlo-grid-element-img img, .checkout-item-img img {
+.visuallyhidden, .rend-slide img, .cikk-img img, .rolunk-visible img, .delicates-slide .delicates-slide-img img, .bolt-grid-element-img img, .bolt-item-slider .slick-slide img, .bolt-item-slider-nav .slick-slide img, .hasonlo-grid-element-img img {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -3277,7 +3277,7 @@ header {
     margin: 0 2rem;
     color: #000; }
 
-#napiMenu > div.row > div.eight.columns.left > ul > li:nth-child(1) > div, .socials #napiMenu > div.row > div.eight.columns.social-link > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.rolunk-grid-element > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.gallery-grid-element > ul > li:nth-child(1) > div, .delicates-slide #napiMenu > div.row > div.eight.columns.delicates-slide-img > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.bolt-grid-element > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.item-q > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.hasonlo-grid-element > ul > li:nth-child(1) > div, .checkout-finish #napiMenu > div.row > div.eight.columns > ul > li:nth-child(1) > div {
+#napiMenu > div.row > div.eight.columns.left > ul > li:nth-child(1) > div, .socials #napiMenu > div.row > div.eight.columns.social-link > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.rolunk-grid-element > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.gallery-grid-element > ul > li:nth-child(1) > div, .delicates-slide #napiMenu > div.row > div.eight.columns.delicates-slide-img > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.bolt-grid-element > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.item-q > ul > li:nth-child(1) > div, #napiMenu > div.row > div.eight.columns.hasonlo-grid-element > ul > li:nth-child(1) > div {
   display: none; }
 
 /*	ÉTLAP	*/
@@ -3436,7 +3436,7 @@ header {
   max-width: 180px;
   width: 33.33%; }
 
-.etlap-level.left, .f-sitemap ul.etlap-level, .socials .etlap-level.social-link, .sitckyNav .row a.etlap-level, .etlap-level.rolunk-grid-element, .etlap-level.gallery-grid-element, .delicates-slide .etlap-level.delicates-slide-img, .etlap-level.bolt-grid-element, .bolt-item-info button.etlap-level, .etlap-level.item-q, .etlap-level.hasonlo-grid-element, .checkout-finish div.etlap-level {
+.etlap-level.left, .f-sitemap ul.etlap-level, .socials .etlap-level.social-link, .sitckyNav .row a.etlap-level, .etlap-level.rolunk-grid-element, .etlap-level.gallery-grid-element, .delicates-slide .etlap-level.delicates-slide-img, .etlap-level.bolt-grid-element, .bolt-item-info button.etlap-level, .etlap-level.item-q, .etlap-level.hasonlo-grid-element {
   /*display: none;*/ }
 
 .etlap-logo {
@@ -6056,7 +6056,8 @@ form .stars span {
     height: 10rem;
     position: absolute;
     top: -4.2rem;
-    left: -0.8rem; }
+    left: -0.8rem;
+    pointer-events: none; }
   .bolt-search form svg {
     position: absolute;
     left: 0.3rem; }
@@ -6104,14 +6105,27 @@ form .stars span {
   position: relative;
   padding: 2rem;
   cursor: pointer;
-  width: 100%;
-  height: 20rem;
+  width: 80%;
+  margin: 0 10%;
+  height: auto;
   text-align: center;
   letter-spacing: 1px;
+  /*400px*/
+  /*480px*/
   /*560px*/
   /*800px*/ }
+  @media (min-width: 25em) {
+    .bolt-grid-element {
+      width: 70%;
+      margin: 0 15%; } }
+  @media (min-width: 30em) {
+    .bolt-grid-element {
+      width: 62%;
+      margin: 0 19%; } }
   @media (min-width: 35em) {
     .bolt-grid-element {
+      margin: 0;
+      width: 100%;
       width: 50%;
       width: -webkit-calc(100% / 2);
       width: calc(100% / 2); } }
@@ -6142,12 +6156,20 @@ form .stars span {
 /* BOLT ITEM VIEW */
 /* overlay close */
 .bolt-item-close {
-  width: 4rem;
-  height: 4rem;
-  position: fixed;
-  right: 2rem;
-  top: 2rem;
-  cursor: pointer; }
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  cursor: pointer;
+  right: 1rem;
+  top: 1rem;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .bolt-item-close {
+      right: 2rem;
+      top: 2rem;
+      width: 4rem;
+      height: 4rem;
+      position: fixed; } }
 
 .bolt-item-view-container,
 .checkout-container {
@@ -6172,16 +6194,25 @@ form .stars span {
 		padding:1rem;
 	}
 } */
-.bolt-item-view {
-  padding: 6rem 0; }
-  .bolt-item-view .seven {
-    margin-top: 5rem; }
-  .bolt-item-view .five {
+.bolt-item-view.row {
+  padding: 2rem 3rem 2rem 2rem;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .bolt-item-view.row {
+      padding: 6rem 0; } }
+  .bolt-item-view.row .seven.columns {
     /*800px*/ }
     @media (min-width: 50em) {
-      .bolt-item-view .five {
+      .bolt-item-view.row .seven.columns {
+        margin-top: 5rem;
+        float: left; } }
+  .bolt-item-view.row .five.columns {
+    /*800px*/ }
+    @media (min-width: 50em) {
+      .bolt-item-view.row .five.columns {
         margin-right: -2.12766%;
-        padding: 1rem; } }
+        padding: 1rem;
+        float: right; } }
 
 .bolt-item-slider {
   padding: 0 2rem 2rem 2rem;
@@ -6223,7 +6254,13 @@ form .stars span {
   margin-bottom: 2rem; }
 .bolt-item-info form {
   position: relative;
-  margin-top: 5rem; }
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .bolt-item-info form {
+      margin-top: 5rem;
+      margin-bottom: 1rem; } }
 .bolt-item-info button {
   line-height: 2rem;
   cursor: pointer;
@@ -6331,7 +6368,6 @@ form .stars span {
     transform: scale(0.95); }
 
 /* korsárka */
-.kosar,
 .bolt-trigger {
   position: fixed;
   width: 4rem;
@@ -6345,19 +6381,64 @@ form .stars span {
 .bolt-trigger {
   right: 5rem; }
 
+.kosar {
+  position: absolute;
+  right: 1rem;
+  top: 2rem;
+  width: 3rem;
+  height: 3rem;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid red;
+  /*1280px*/ }
+  @media (min-width: 80em) {
+    .kosar {
+      right: 11rem;
+      top: 1rem; } }
+  .kosar p {
+    position: absolute;
+    bottom: -2rem;
+    display: none; }
+  .kosar svg {
+    height: 3rem;
+    width: 3rem;
+    bottom: -0.5rem;
+    left: 0;
+    position: absolute; }
+  .kosar span {
+    width: 100%;
+    text-align: center;
+    margin-top: -0.4rem;
+    display: block; }
+
 /* CHECKOUT */
 .checkout-closure,
 .checkout-items {
   /* 	border:1px solid coral; */ }
 
 .checkout-container form {
-  margin: 8rem 0; }
+  padding: 2rem 3rem 2rem 2rem;
+  margin: 0;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .checkout-container form {
+      margin: 8rem 0; } }
 
 .checkout-item {
   width: 100%;
-  height: 6rem;
+  height: auto;
   position: relative;
-  margin: 1rem 0; }
+  margin: 1rem 0;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .checkout-item {
+      height: 6rem; } }
+  .checkout-item svg.svg-maskedImg {
+    display: none;
+    /*800px*/ }
+    @media (min-width: 50em) {
+      .checkout-item svg.svg-maskedImg {
+        display: block; } }
 
 .checkout-item-img,
 .checkout-item-details,
@@ -6369,12 +6450,33 @@ form .stars span {
   width: 6rem;
   height: 6rem;
   left: 0; }
+  .checkout-item-img img {
+    /*800px*/ }
+    @media (min-width: 50em) {
+      .checkout-item-img img {
+        display: none; } }
 
 .checkout-item-details {
-  width: calc(100% - 12rem);
-  height: 100%;
-  left: 6rem;
-  display: table; }
+  width: 100%;
+  height: auto;
+  left: initial;
+  top: 0;
+  display: table;
+  position: relative;
+  padding-top: 6rem;
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .checkout-item-details {
+      position: absolute;
+      left: 6rem;
+      width: calc(100% - 12rem);
+      height: 100%;
+      top: 0;
+      background-color: transparent;
+      box-shadow: none;
+      padding-top: 0; } }
   .checkout-item-details h3 {
     display: table-cell;
     margin: 0 auto;
@@ -6389,7 +6491,8 @@ form .stars span {
   width: 6rem;
   height: 6rem;
   right: 0;
-  cursor: pointer; }
+  cursor: pointer;
+  background-color: #000; }
   .checkout-item-remove svg {
     fill: #fff;
     width: 3rem;
@@ -6405,7 +6508,7 @@ form .stars span {
   padding: 1rem; }
 .checkout-closure textarea {
   width: 100%;
-  height: 7rem;
+  height: 10rem;
   resize: none;
   padding: 1rem 2rem;
   outline: none;
@@ -6414,7 +6517,11 @@ form .stars span {
   position: relative;
   font-family: "DanielBold-Regular", sans serif;
   font-size: 110%;
-  margin-top: 5px; }
+  margin-top: 5px;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .checkout-closure textarea {
+      height: 7rem; } }
 .checkout-closure input {
   width: 100%;
   height: 2.5rem;
@@ -6427,6 +6534,13 @@ form .stars span {
   font-family: "DanielBold-Regular", sans serif;
   font-size: 90%;
   letter-spacing: 2px; }
+
+.four.columns .checkout-input-svg:nth-of-type(1) {
+  margin: 2rem 0;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .four.columns .checkout-input-svg:nth-of-type(1) {
+      margin: 0 0 2.6rem 0; } }
 
 /* custom placeholder color */
 .checkout-closure input::-webkit-input-placeholder, .checkout-closure textarea::-webkit-input-placeholder {
@@ -6459,8 +6573,23 @@ form .stars span {
   font-weight: bold;
   letter-spacing: 3px;
   padding: 0 1.5rem;
-  height: 3rem;
   background: transparent;
   border: none;
   outline: none;
-  font-family: "Roboto Slab", Courier, serif; }
+  font-family: "Roboto Slab", Courier, serif;
+  width: 45%;
+  height: auto;
+  text-align: center;
+  margin: 2rem 2.5%;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .checkout-finish button, .checkout-finish div {
+      margin: initial;
+      width: auto;
+      height: 3rem; } }
+
+.checkout-finish div {
+  float: left; }
+
+.checkout-finish button {
+  float: right; }

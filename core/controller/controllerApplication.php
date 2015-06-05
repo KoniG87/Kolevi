@@ -173,8 +173,11 @@ class Application{
     				$menuToShow[$menuData['showOn'][$subPage]][$menuKey] = $menuData['labels']['hu'];
     			}
     		}
-    		
+    		/* KOSAR CSAK DELICATESNÉL */
     	echo '<nav class="sitckyNav">
+
+<div class="kosar"><svg class="icon icon-kosar"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kosar"></use></svg><span>0</span><p>Kosár</p></div>
+
 <a href="" class="sticky-logo"><svg class="sticky-page-icon icon icon-'.$_SESSION['helper']->getPage().'-2"><use xlink:href="#icon-'.$_SESSION['helper']->getPage().'-2"></use></svg></a>
 <svg class="icon icon-backtotop backToTop"><use xlink:href="#icon-backtotop"></use></svg>
     <div class="row">';

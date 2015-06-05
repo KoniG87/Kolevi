@@ -212,7 +212,11 @@ function boltAccordion(){
     });
 }
 
+$(".bolt-acco li").on("click",function(){
 
+  $(".bolt-acco li").removeClass("bolt-acco-active");
+  $(this).addClass("bolt-acco-active");
+});
 
 
 
@@ -303,7 +307,6 @@ $(".bolt-grid-element").on("click",function(event){
 IDE EJAKULÁLD AZ AJAXAL!
 */
 itemCarousel();
-$(".bolt-item-slider-nav .slick-center").click();
   $(".item-q input").Svgenerate({
     rangeX:0.97,
     rangeY:0.94,
@@ -360,7 +363,11 @@ $(".bolt-item-slider").slick({
 	  focusOnSelect: true,
 	  arrows:false
 	});
-callitemCarouselSvg();			
+callitemCarouselSvg();
+setTimeout(function(){
+  $(".bolt-item-slider-nav .slick-center").click(); 
+},200);
+
 }
 
 
@@ -457,46 +464,47 @@ $(".kosar").on("click",function(){
 /*checkout-item*/
 
 function callCheckoutItem(){
-  $(".checkout-item-img").each(function(){
-  $(this).Svgenerate({
-    rightFixed: "on",
-    imgMask:"on",
-    setToImg:"on",
-    dropShadow: "on",
-    blur:5,
-    dX:0,
-    dY:0,
-    opacity:0.4
+  if (mL.matches){
+    $(".checkout-item-img").each(function(){
+    $(this).Svgenerate({
+      rightFixed: "on",
+      imgMask:"on",
+      setToImg:"on",
+      dropShadow: "on",
+      blur:5,
+      dX:0,
+      dY:0,
+      opacity:0.4
+    });
   });
-});
 
 
-$(".checkout-item-details").each(function(){
-  $(this).Svgenerate({
-    leftFixed: "on",
-    rightFixed: "on",
-    fill:"#fff",
-    rangeY:0.90,
-    dropShadow: "on",
-    blur:5,
-    dX:0,
-    dY:0,
-    opacity:0.4
+  $(".checkout-item-details").each(function(){
+    $(this).Svgenerate({
+      leftFixed: "on",
+      rightFixed: "on",
+      fill:"#fff",
+      rangeY:0.90,
+      dropShadow: "on",
+      blur:5,
+      dX:0,
+      dY:0,
+      opacity:0.4
+    });
   });
-});
 
 
-$(".checkout-item-remove").each(function(){
-  $(this).Svgenerate({
-    leftFixed: "on",
-    dropShadow: "on",
-    blur:5,
-    dX:0,
-    dY:0,
-    opacity:0.4
+  $(".checkout-item-remove").each(function(){
+    $(this).Svgenerate({
+      leftFixed: "on",
+      dropShadow: "on",
+      blur:5,
+      dX:0,
+      dY:0,
+      opacity:0.4
+    });
   });
-});
-
+}
 }
 
 callCheckoutItem();
@@ -525,7 +533,7 @@ $(".checkout-item-remove").on("click", function(){
   if (biztostorlod == true){
         $(".checkout-container").addClass("no-scroll");
         thisItem.css({zIndex:9999});
-        thisItem.velocity({ translateY: -30 },{ easing: "easeOut" }, 0.20).velocity({ translateY: 1000, rotateZ:"-30deg"},{opacity:0},{ easing: "easeInCirc" }, 0.80 ).velocity({height:0},{duration:300,complete:function(){
+        thisItem.velocity({ translateY: -30 },{ easing: "easeOut" }, 0.20).velocity({ translateY: 1000, rotateZ:"-30deg"},{opacity:0},{ easing: "easeInCirc" }, 0.80 ).delay(300).velocity({height:0},{duration:300,complete:function(){
           thisItem.remove();
           refreshCheckoutSum();
           $(".checkout-container").removeClass("no-scroll");
@@ -534,7 +542,8 @@ $(".checkout-item-remove").on("click", function(){
 });
 
 /* input formák */
-$(".checkout-input-svg").each(function(){
+function callCheckoutInputSvg(){
+  $(".checkout-input-svg").each(function(){
   $(this).Svgenerate({
     dropShadow: "on",
     fill:"#fff",
@@ -544,6 +553,8 @@ $(".checkout-input-svg").each(function(){
     opacity:0.4
   });
 });
+}
+callCheckoutInputSvg();
 
 /* gomb formák */
 
@@ -585,6 +596,8 @@ callDelicatesCarouselSvg();
 callBoltGridElements();
 callHasonloGridElements();
 callCheckoutItem();
+itemCarousel();
+callCheckoutInputSvg();
 }, 200);
 
     }               
