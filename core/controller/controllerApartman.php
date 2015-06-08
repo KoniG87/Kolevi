@@ -121,5 +121,60 @@ class Apartman extends BaseObject{
     }
     
     
+    
+    
+
+    public function updateSzobaElem(){
+    	$res = array();
+    	
+    	try{
+    		$this->beginTransaction();
+    
+    		$leirasText = str_replace(array("\r\n", "\r", "\n"), "<br/>", $_POST['leiras']);
+    		
+    		/*
+    		 * Új sor beszúrása
+    		*/
+    		if ($_POST['id'] == "0"){
+    			 
+    			$SQL = "INSERT INTO koleves_szobak SET ".$_SESSION['helper']->getLangLabel('text')." = ?, ".$_SESSION['helper']->getLangLabel('leiras')." = ?, kezdokep = ?;";
+    			 
+    			$queryParams = array(
+    				$_POST['text'],
+    				$leirasText,
+    				$_POST['kezdokep']
+    			);
+    			 
+    			$res['inputID'] = $this->insertItem($SQL, $queryParams);
+    		}
+    		/*
+    		 * Meglévő sor updatelése
+    		 */
+    		else{
+    			$SQL = "UPDATE koleves_szobak SET ".$_SESSION['helper']->getLangLabel('text')." = ?, ".$_SESSION['helper']->getLangLabel('leiras')." = ?, kezdokep = ?, visible = ? WHERE id = ?;";
+    
+    			$queryParams = array(
+    					$_POST['text'],
+    					$leirasText,
+    					$_POST['kezdokep'],
+    					$_POST['allapot'],
+    					$_POST['id']
+    			);
+    			
+    			$this->updateItem($SQL, $queryParams);
+    			 
+    		}
+    
+    		$res['status'] = "ok";
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = "nope";
+    		$this->rollback();
+    	}
+    	 
+    	echo json_encode($res);
+    }
+    
+    
 }
 ?>
