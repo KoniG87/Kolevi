@@ -35,6 +35,19 @@ if (isset($_POST['request'])){
 			
 			break;
 			
+			case 'itallapDelete':
+				$menu = new Menu($app->getDbHandler());
+				$menu->deleteItallapElem();
+					
+				break;
+			
+		case 'szobaUpdate':
+			
+			$apartman = new Apartman($app->getDbHandler());
+			$apartman->updateSzobaElem();
+					
+			break;
+			
 		case 'cetliUpdate':
 			$menu = new Menu($app->getDbHandler());
 			$menu->updateCetli();
