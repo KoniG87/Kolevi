@@ -42,7 +42,8 @@
 				id: containingRow.attr('data-id'),
 				kategoria: containingRow.prevAll('tr.kategoriaRow').first().find('td').text(),
 				text: $('td:nth-of-type(1)', containingRow).text(),
-				ar: $('td:nth-of-type(3)', containingRow).text()
+				ar: $('td:nth-of-type(3)', containingRow).text().replace(/\s/g, ''),
+				sorrend: $('td:nth-of-type(4)', containingRow).text()
 			};
 
 			var selectedAllergens = $('td:nth-of-type(2)', containingRow).attr('data-val').split(',');
@@ -80,7 +81,8 @@
 				text: $('input[name="text"]').val(),
 				etterem: $('input[name="etterem"]').val(),
 				tagek: $('.selected').map(function(){ return $(this).attr("data-val"); 	}).get().join(','),
-				ar: $('input[name="ar"]').val()
+				ar: $('input[name="ar"]').val(),
+				sorrend: $('input[name="sorrend"]').val()
 			};
 
 
@@ -114,11 +116,12 @@
 							$('td:nth-of-type(2) span.allergen', triggeredRow).removeClass('allergenSelector');
 							
 							$('td:nth-of-type(3)', triggeredRow).text(data.ar);
+							$('td:nth-of-type(4)', triggeredRow).text(data.sorrend);
 							if (data.kategoria != elozoKategoria){
 								$('.etlapTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after(triggeredRow);
 							}
 						}else{
-							$('.etlapTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after('<tr data-id="'+resp['inputID']+'"><td>'+data.text+'</td><td>'+data.tagek+'</td><td>'+data.ar+'</td></tr>');
+							$('.etlapTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after('<tr data-id="'+resp['inputID']+'"><td>'+data.text+'</td><td>'+data.tagek+'</td><td>'+data.ar+'</td><td>'+data.sorrend+'</td><td><button class="editEtel">Szerkesztés</button></td><td><button class="deleteEtel">Törlés</button></td></tr>');
 						}
 
 						$('.allergenSelector').removeClass('selected');
