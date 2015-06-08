@@ -1,5 +1,5 @@
 <?php 
-$sectionIndicator = "vendeglo";
+$sectionIndicator = "Vendeglo";
 if (isset($_GET['sec'])){
 	$sectionIndicator = ucfirst($_GET['sec']);
 }
