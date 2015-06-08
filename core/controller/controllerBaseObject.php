@@ -71,7 +71,13 @@ class BaseObject{
     
     
     private function explodeIconString($allergenString){
-    	return $allergenArray = explode(",", $allergenString);
+    	$allergenArray = array();
+    	
+    	if (!empty($allergenString)){
+    		$allergenArray = explode(",", $allergenString);
+    	}
+    	    	
+    	return $allergenArray;
     }
     
     protected function fetchAllergenIcon($allergenString){
