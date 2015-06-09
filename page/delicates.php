@@ -2,7 +2,7 @@
 include('page/home.php');
 ?>
 <div class="kosar"><svg class="icon icon-kosar"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kosar"></use></svg><span>0</span><p>Kosár</p></div>
-<div class="bolt-trigger">Bolt trigger</div>
+
 
 <div class="row stickyStart">
 	<div class="twelve coulumns delicates-container">

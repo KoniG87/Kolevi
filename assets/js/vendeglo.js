@@ -74,7 +74,6 @@ $(".fold-list:nth-child(5)>.itallap-head").Svgenerate({
   // asztalfoglalás
 
 
-
 /**
  * nlform.js v1.0.0
  * http://www.codrops.com
@@ -174,6 +173,7 @@ $(".fold-list:nth-child(5)>.itallap-head").Svgenerate({
       this.optionsList = document.createElement( 'ul' );
       this.getinput = document.createElement( 'input' );
       this.getinput.setAttribute( 'type', 'text' );
+      
       this.getinput.setAttribute( 'placeholder', this.elOriginal.getAttribute( 'placeholder' ) );
      /* this.getinput.focus();*/
       this.getinputWrapper = document.createElement( 'li' );
@@ -263,8 +263,94 @@ $(".fold-list:nth-child(5)>.itallap-head").Svgenerate({
 
 var nlform = new NLForm( document.getElementById( 'nl-form' ) );
 
-$(".nl-reset").on("click",function(){
-  nlform = new NLForm( document.getElementById( 'nl-form' ) );
+
+
+/* SHOW / HIDE TOOLTIP */
+function regTooltip(id) {
+    $(id).tooltipster('show', function () {
+        $(this).on('click', function () {
+            $(this).tooltipster('hide', function () {
+            });
+        });
+    });
+}
+/* VALIDATE */
+function validateEmail(email){
+    var regEx = /\S+@\S+\.\S+/;
+    return regEx.test(email);
+}
+function validateDate(dateString) {
+  var regEx = /^\d{4} . \d{2} . \d{2}$/;
+  return dateString.match(regEx) != null;
+}
+function validateTime(timeString) {
+  var regEx = /^\s*([01]?\d|2[0-3]):?([0-5]\d)\s*$/;
+  return timeString.match(regEx) != null;
+}
+
+
+/* TOOLTIP CLASS ÉS TITLE INJECTION*/
+
+function addTooltipText(id,text){
+  $(id).addClass("tooltip");
+  $(id).attr("title",text);
+}
+
+addTooltipText("#nl-form > div > div:nth-child(4) > a","Légyszi add meg a neved");
+addTooltipText("#nl-form > div > div.nl-field.nl-dd > a","Hányan főre kellene az asztal?");
+addTooltipText("#nl-form > div > input.datepicker","Adj meg egy dátumot");
+addTooltipText("#nl-form > div > input.timepicker","Adj meg egy időpontot");
+addTooltipText("#nl-form > div > div:nth-child(11) > a","Légyszi add meg az email címed");
+
+/* INIT TOOLTIP */
+
+$(".tooltip").tooltipster({
+    animation: 'grow',
+    delay: 200,
+    onlyOne: false,
+    position: 'top',
+    trigger: 'custom'
+});
+
+
+
+
+
+/* SUBMITTIN / TOOLTRIPPIN */
+
+$(".nl-submit").on("click",function(event){
+
+/* MENNYIAZIDŐ? */
+
+Date.prototype.today = function () { 
+    return  this.getFullYear() +" . "+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +" . "+((this.getDate() < 10)?"0":"") + this.getDate();
+}
+Date.prototype.timeNow = function () {
+     return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes();
+}
+var newDate = new Date();
+
+  event.preventDefault();
+    if($("#nl-form > div > div:nth-child(4) > a").text().length <= 3){ //valid name
+        regTooltip("#nl-form > div > div:nth-child(4) > a");
+    }
+    else if (!validateDate($("#nl-form > div > input.datepicker").val())){
+        regTooltip('#nl-form > div > input.datepicker');
+    }
+    else if (!validateTime($("#nl-form > div > input.timepicker").val())){
+        regTooltip('#nl-form > div > input.timepicker');
+    }
+    else if($("#nl-form > div > input.datepicker").val() == newDate.today() && newDate.timeNow() > "09:00"){
+      var nextTimeBaby = "Reggel 9:00-után már csak másnapra tudsz nálunk foglalni";
+      $("#nl-form > div > input.timepicker").tooltipster('content', nextTimeBaby);
+      regTooltip('#nl-form > div > input.timepicker');
+    }
+    else if (!validateEmail($('#nl-form > div > div:nth-child(11) > a').text())) { //valid mail
+        regTooltip('#nl-form > div > div:nth-child(11) > a');
+    }
+    else{
+      $(this).closest("#nl-form").submit();
+    }
 });
 
 /*asztalfoglalás kiegésztések*/
@@ -317,6 +403,34 @@ $(".nl-submit").Svgenerate({
   rangeX:0.94,
   rangeY:0.91,
 });
+
+
+
+/*var ujrafoglalasContent = $('<div/>').addClass("ujra-foglalas").html("<h3>Asztalfoglalás megtörtént!</h3><br/>Köszi, hogy betértél hozzánk! Hamarosan visszaigazolunk a megadott email címen, hogy a megadott időpontban tudjuk-e biztosítani a kért helyeket.<div class=\"nl-submit-wrap\"><button class=\"nl-reset\" type=\"submit\">Újbóli foglalás</button></div>");
+
+$(".nl-submit").on("click",function(){
+                         $(".foglalas-form").velocity({rotateX: "-90deg"}, 600);
+                          setTimeout(function(){
+                           $(".foglalas-form").velocity({rotateX: "-270deg"}, 0);
+                           $(".nl-replace").addClass("visuallyhidden");
+                           $("#nl-form").prepend(ujrafoglalasContent);
+                           $(".foglalas-form").velocity({rotateX: "-360deg"}, 600);
+                           $(".foglalas-form").velocity({rotateX: "0deg"}, 0);
+                           $(".nl-reset").Svgenerate({rangeX:0.94,rangeY:0.91,});
+                        }, 599);
+});
+         $(document).on("click", ".nl-reset", function(e){
+           e.preventDefault();
+           $(".foglalas-form").velocity({rotateX: "-90deg"}, 600);
+            setTimeout(function(){
+                           $(".foglalas-form").velocity({rotateX: "-270deg"}, 0);
+                           $(".ujra-foglalas").remove();
+                           $(".nl-replace").removeClass("visuallyhidden");
+                           $(".foglalas-form").velocity({rotateX: "-360deg"}, 600);
+                           $(".foglalas-form").velocity({rotateX: "0deg"}, 0);                     
+            }, 599);
+         });*/
+
 
 
 //programok

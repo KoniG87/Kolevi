@@ -12,6 +12,12 @@ a{
 a:hover{
 	color:#18bc9c;
 }
+
+.dashMenuActive{
+	color:#18bc9c;
+	background: none !important;
+}
+
 header{
 	width: 100%;
 	position: fixed;
@@ -256,3 +262,5 @@ input.reactive.error, select.reactive.error{background:#cb7267;}
 
 .tablaGrid tr.kategoriaRow{text-align:center;font-weight:bold;letter-spacing:0.15rem;}
 .tablaGrid tr.kategoriaRow td{background:#e2e2e2;}
+
+

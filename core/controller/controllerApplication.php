@@ -463,30 +463,37 @@ class Application{
                         email: $("input[name=\"email\"]" , $(this)).val(),
                         megjegyzes: $("input[name=\"megjegyzes\"]" , $(this)).val()               
                       };
-                          
+
+                    var ujrafoglalasContent = $("<div/>").addClass("ujra-foglalas").html("<h3>Asztalfoglalás megtörtént!</h3><br/>Köszi <span class=\"foglalas-data\">"+foglalasData.nev+"</span>, hogy betértél hozzánk! Hamarosan visszaigazolunk a <span class=\"foglalas-data\">"+foglalasData.email+"</span> email címen, hogy <span class=\"foglalas-data\">"+foglalasData.datum+" - "+foglalasData.ido+"</span>-kor tudjuk-e biztosítani a(z) <span class=\"foglalas-data\">"+foglalasData.hanyfo+"</span> helyet.<div class=\"nl-submit-wrap\"><button class=\"nl-reset\" type=\"submit\">Újbóli foglalás</button></div>");
+                  
 
                       $.post("requestHandler.php", foglalasData, function(resp){
                         
-                           $("#nl-form").fadeToggle();
-                           setTimeout(function(){
-                      	      $("#nl-form").html("<h3>Asztalfoglalás megörtént!</h3><br/>Köszi, hogy betértél hozzánk! Hamarosan visszaigazolunk a megadott email címen, hogy a megadott időpontban tudjuk-e biztosítani a kért helyeket.<div class=\"nl-submit-wrap\"><button class=\"nl-reset\" type=\"submit\">Újbóli foglalás</button></div>");
-                        	    $("#nl-form").fadeToggle();
-                            	$(".nl-reset").Svgenerate({rangeX:0.94,rangeY:0.91,});
-                           }, 350);
+                         $(".foglalas-form").velocity({rotateX: "-90deg"}, 600);
+                          setTimeout(function(){
+                           $(".foglalas-form").velocity({rotateX: "-270deg"}, 0);
+                           $(".nl-replace").addClass("visuallyhidden");
+                           $("#nl-form").prepend(ujrafoglalasContent);
+                           $(".foglalas-form").velocity({rotateX: "-360deg"}, 600);
+                           $(".foglalas-form").velocity({rotateX: "0deg"}, 0);
+                           $(".nl-reset").Svgenerate({rangeX:0.94,rangeY:0.91,});
+                        }, 599);
                          
                       }, "json");
                     
                     });
 					
-					$(document).on("click", ".nl-reset", function(e){
-						e.preventDefault();
-						$("#nl-form").fadeToggle();
-					   setTimeout(function(){
-                            $("#nl-form").html(contents);
-                            $("#nl-form").fadeToggle();
-                            
-					   }, 350);
-					});
+                     $(document).on("click", ".nl-reset", function(e){
+                       e.preventDefault();
+                       $(".foglalas-form").velocity({rotateX: "-90deg"}, 600);
+                        setTimeout(function(){
+                                       $(".foglalas-form").velocity({rotateX: "-270deg"}, 0);
+                                       $(".ujra-foglalas").remove();
+                                       $(".nl-replace").removeClass("visuallyhidden");
+                                       $(".foglalas-form").velocity({rotateX: "-360deg"}, 600);
+                                       $(".foglalas-form").velocity({rotateX: "0deg"}, 0);                     
+                        }, 599);
+                     });
     			
     				
     				$(".tag-label.tag-'.$_SESSION['helper']->getPage().'").trigger("click");

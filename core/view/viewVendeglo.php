@@ -607,3 +607,4 @@ class VendegloView extends BaseView{
     }
 }
 ?>
+

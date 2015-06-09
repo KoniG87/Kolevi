@@ -143,7 +143,9 @@ var maskUrlIndex = 0;
         }
         var t = $(this),
         pW = t.actual( 'width' ),
-        pH = t.actual( 'height' );
+        pH = t.actual( 'height' );        
+/*        pW = t.width(),
+        pH = t.height();*/
         var sourceImg = t.find("img"),
         imgSrc = sourceImg.attr("src");
 

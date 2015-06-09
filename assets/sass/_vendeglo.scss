@@ -15,7 +15,7 @@
 		color:$white;
 		padding: 2rem;
 		position: relative;
-		background-size:100%;
+		background-size:100% 100%;
 		background-repeat:no-repeat;
 		height:auto;
 		margin-bottom: 2rem;
@@ -32,8 +32,8 @@
 		li{
 			font-size: 80%;
 			letter-spacing: 3px;
-			list-style:decimal !important;
-			text-indent:1rem;
+/* 			list-style:decimal; 
+			text-indent:1rem;*/
 			line-height: 1.8;
 			margin-left: 1.6rem;
 	/*		list-style-position: inside;*/
@@ -202,6 +202,48 @@ background-position: -240px 0;
 .alg-14{
 background-position: -260px 0;
 }
+
+.allergen-magyarazo{
+	background: #fff;
+/* 	box-shadow:0 0 20px rgba(0,0,0,.2); */
+	padding:2rem;
+	width:90%;
+	margin:0 auto;
+	display:block;
+	margin-bottom:2rem;
+	@include breakpoint(tabtop){
+		width: 62%;
+	}
+	@include breakpoint(tablet){
+		width: 100%;
+		padding:0.5rem;
+    }
+	p{
+		margin-bottom: 0.2rem;
+		position:relative;
+		overflow-x:hidden;
+		&:before{
+		float: left;
+		width: 0;
+		white-space: nowrap;
+		margin-top: -0.2rem;
+		content:
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . "
+		". . . . . . . . . . . . . . . . . . . . "
+		}
+	}
+	.allergen{
+		
+	}
+	span{
+		background-color: #fff;
+	}
+}
+
+
+
 .etlap-head{
 	.icon-logo_barna{
 		width:3.5rem;
@@ -554,7 +596,11 @@ background-position: -260px 0;
 
 
 /*asztalfoglalás*/
-
+#asztalfoglalas{
+	.twelve.columns{
+		@include perspective(1000px);
+	}
+}
 /* general style for the form */
 .nl-form {
 	width: 100%;
@@ -577,7 +623,10 @@ background-position: -260px 0;
 		padding: 0;
 	}
 }
-
+.foglalas-data{
+  color: #8E8E8E;
+  border-bottom: 2px dashed;
+}
 
 
 /* normalize the input elements, make them look like everything else */
@@ -587,7 +636,7 @@ background-position: -260px 0;
 	border: none;
 	background: transparent;
 	display: inline-block;
-	padding: 0;
+	padding: 0.5rem 1.2rem;
 	margin: 0;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -702,6 +751,7 @@ background-position: -260px 0;
 	background: $black;
 	text-align: center;
 	color: white;
+	padding:0 !important;
 	svg{
 		width: 1.6rem;
 		height: 1.6rem;
@@ -2287,6 +2337,7 @@ section{
 
 .sitckyNav,
 .nl-submit,
+.nl-reset,
 .rend-contact,
 .days-container,
 .day.today,

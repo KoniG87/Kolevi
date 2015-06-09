@@ -318,8 +318,25 @@ class MenuView extends BaseView{
         echo '<div class="row clearfix">
                         <div class="three columns">
                             <img class="lazy illusztracio" data-src="assets/img/etlap-img.png" alt=""><noscript><img src="assets/img/etlap-img.png" alt=""></noscript>
+                            <div class="allergen-magyarazo">
+                                  <h3>Allergének</h3>
+
+                                  <p> <span>Csillagfürt</span> <span class="allergen alg-1 right"></span></p>
+                                  <p> <span>Diófélék</span> <span class="allergen alg-2 right"></span></p>
+                                  <p> <span>Földimogyoró</span> <span class="allergen alg-3 right"></span></p>
+                                  <p> <span>Glutén</span> <span class="allergen alg-4 right"></span></p>
+                                  <p> <span>Hal</span> <span class="allergen alg-5 right"></span></p>
+                                  <p> <span>Mustár</span> <span class="allergen alg-6 right"></span></p>
+                                  <p> <span>Puhatestűek</span> <span class="allergen alg-7 right"></span></p>
+                                  <p> <span>Rákfélék</span> <span class="allergen alg-8 right"></span></p>
+                                  <p> <span>Szezámmag</span> <span class="allergen alg-9 right"></span></p>
+                                  <p> <span>Szójabab</span> <span class="allergen alg-10 right"></span></p>
+                                  <p> <span>Szulfitok</span> <span class="allergen alg-11 right"></span></p>
+                                  <p> <span>Tej</span> <span class="allergen alg-12 right"></span></p>
+                                  <p> <span>Tojás</span> <span class="allergen alg-13 right"></span></p>
+                                  <p> <span>Zeller</span> <span class="allergen alg-14 right"></span></p>
+                            </div>
                         </div>
-    			
     			<div class="nine columns etlap">';
     	
     	$this->drawCetli($elements['cetli']);
@@ -441,7 +458,7 @@ public function drawKertEtlap($elements){
      	echo '
      
              <div class="three columns right illusztracio">
-             <p class="ehes-szomjas">Szomjas?</p>
+             <p class="ehes-szomjas">Szomjas vagy?</p>
     		 <img data-src="assets/img/asztalos_neni.png" alt="Kert itallap" class="lazy illusztracio">
     		<noscript>
       			<img src="assets/img/asztalos_neni.png" alt="Kert itallap">

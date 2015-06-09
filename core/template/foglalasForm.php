@@ -19,38 +19,42 @@
                                 
 
                                 <form id="nl-form" action="requestHandler.php" class="nl-form" name="nl-form">
-                                    <input type="hidden" name="request" value="asztalfoglalasUpdate"/>
-                                    <input type="hidden" name="id" value="0"/>
-                                    <h3>Asztalfoglalás</h3>
-                                    Sziasztok! 
-                                    <input type="text" name="nev" class="formText"  value="" placeholder="XY" data-subline="Ide írd be a neved: <em>Vezetéknév</em> és <em>Keresztnév</em> is kell" required/>
-                                    vagyok és nagyon szeretnék
-                                    <select name="hanyfo" required>
-                                        <option value="1" selected >egy</option>
-                                        <option value="2">két</option>
-                                        <option value="3">három</option>
-                                        <option value="4">négy</option>
-                                        <option value="5">öt</option>
-                                        <option value="6">hat</option>
-                                        <option value="7">hét</option>
-            
-                                    </select>
-                                    főre foglalni egy asztalt a Kőlevesben
-
-                                    <input type="text" class="datepicker"  name="datum" placeholder="ma" required/>
-                                    <input type="text" class="timepicker"  name="ido" placeholder="13:30" required/>
-                                    -kor. <br>
+                                    <div class="nl-replace">
                                     
-                                    <input type="text" class="formText"  name="email" required value="" placeholder="Erre az " data-subline="pl: <em>vendeg@email.com</em>"/>
-                                    e-mail címre küldhetitek a visszaigazolást. <br>
-                                    Még annyit szeretnék elmondani, hogy: <br>
-                                    <input type="text" class="formText" value="" name="megjegyzes" placeholder="Szeretem a maceszgombócot!" />
-                                    <br>
-                                    Köszi szépen!
-                                    <div class="nl-submit-wrap">
-                                        <button class="nl-submit" type="submit">Küldés</button>
+                                        <input type="hidden" name="request" value="asztalfoglalasUpdate"/>
+                                        <input type="hidden" name="id" value="0"/>
+                                        <h3>Asztalfoglalás</h3>
+                                        Sziasztok! 
+                                        <input type="text" name="nev" class="formText" value="" placeholder="XY" data-subline="Ide írd be a neved: <em>Vezetéknév</em> és <em>Keresztnév</em> is kell"/>
+                                        vagyok és nagyon szeretnék
+                                        <select name="hanyfo" required title="Tudnunk kell, hogy hányan jöttök.">
+                                            <option value="1" selected >egy</option>
+                                            <option value="2">két</option>
+                                            <option value="3">három</option>
+                                            <option value="4">négy</option>
+                                            <option value="5">öt</option>
+                                            <option value="6">hat</option>
+                                            <option value="7">hét</option>
+                
+                                        </select>
+                                        főre foglalni egy asztalt a Kőlevesben
+    
+                                        <input type="text" class="datepicker"  name="datum" placeholder="ma" required/>
+                                        <input type="text" class="timepicker"  name="ido" placeholder="13:30" required/>
+                                        -kor. <br>
+                                        
+                                        <input type="text" class="formText" name="email" required value="" placeholder="Erre az " data-subline="pl: <em>vendeg@email.com</em>"/>
+                                        e-mail címre küldhetitek a visszaigazolást. <br>
+                                        Még annyit szeretnék elmondani, hogy: <br>
+                                        <input type="text" class="formText"
+                                         value="" name="megjegyzes" placeholder="Szeretem a maceszgombócot!" />
+                                        <br>
+                                        Köszi szépen!
+                                        <div class="nl-submit-wrap">
+                                            <button class="nl-submit" type="submit">Küldés</button>
+                                        </div>
+                                        <div class="nl-overlay"></div>
                                     </div>
-                                    <div class="nl-overlay"></div>
                                 </form>
 
                             </div>
