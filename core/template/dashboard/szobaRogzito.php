@@ -38,9 +38,10 @@
                 id: $('#editForm input[name="id"]').val(),
 				text: $('#editForm input[name="text"]').val(),
 				leiras: $('#editForm textarea[name="leiras"]').val(),
+				kezdokep: "assets/img/gslide-1.jpg",
 				allapot: 1
 			};
-
+			
 			$.each(data, function(key, val){
 				attr = $('[name="'+key+'"]').attr('required');
 				if (typeof attr !== typeof undefined && attr !== false 

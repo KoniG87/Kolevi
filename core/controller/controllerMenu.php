@@ -10,13 +10,10 @@ class Menu extends BaseObject{
 	
 	
 	public function drawEtlap(){
-	
 		$elements = array(
-				'cetli'	=> $this->getCetliData(),
-				'kategoriak' => $this->getEtlapData()
+			'cetli'	=> $this->getCetliData(),
+			'kategoriak' => $this->getEtlapData()
 		);
-	
-	
 	
 		$this->view->drawEtlap($elements);
 	}
@@ -43,7 +40,8 @@ class Menu extends BaseObject{
 	
 	public function drawItallapAdmin($helyiseg = 'vendeglo'){
 		$elements = array(
-				'kategoriak'	=> $this->getItallapData($helyiseg)
+			'helyiseg'	=> $helyiseg,
+			'kategoriak'	=> $this->getItallapData($helyiseg)
 		);
 	
 	
@@ -241,12 +239,14 @@ class Menu extends BaseObject{
     public function getEtlapData($forAdminView = false){
     	$etlapArray = array();
     	
-    	$etelKategoriaSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." as labelText, ikon FROM koleves_etelkategoriak ORDER BY id ASC;";
+    	$etelKategoriaSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." as labelText, ikon 
+    			FROM koleves_etelkategoriak 
+    			ORDER BY sorrend ASC;";
     	 
-    	$etelSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, TAGEK, AR
+    	$etelSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, TAGEK, AR, SORREND
     			FROM koleves_etelek
     				WHERE visible = 1 AND kategoria_id = ? AND etterem_id = 1
-    			ORDER BY kategoria_id ASC, ".$_SESSION['helper']->getLangLabel('text')." ASC;";
+    			ORDER BY sorrend ASC, ".$_SESSION['helper']->getLangLabel('text')." ASC;";
     	
     	$kategoriaRES = $this->fetchItems($etelKategoriaSQL);
     	
@@ -279,10 +279,15 @@ class Menu extends BaseObject{
     		case 'kert': $etteremID = 2; break;
     	}
     	
-    	$kategoriaSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text').", ikon FROM koleves_italkategoriak ORDER BY sorrend ASC;";
+    	$kategoriaSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text').", ikon 
+    			FROM koleves_italkategoriak 
+    			ORDER BY sorrend ASC;";
     	$kategoriaRES = $this->fetchItems($kategoriaSQL);
     	 
-    	$italSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, AR FROM koleves_italok WHERE kategoria_id = ? AND visible = 1 AND etterem_id = ? ORDER BY sorrend ASC;";
+    	$italSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, AR, SORREND 
+    			FROM koleves_italok 
+    			WHERE kategoria_id = ? AND visible = 1 AND etterem_id = ? 
+    			ORDER BY sorrend ASC;";
     	 
     	$kategoriak = array();
     	foreach ($kategoriaRES AS $key => $kategoriaData){
@@ -327,7 +332,28 @@ class Menu extends BaseObject{
     }
     
     
+    public function deleteItallapElem(){
+    	$res = array();
     
+    	try{
+    		$this->beginTransaction();
+    		 
+    		$SQL = "DELETE FROM koleves_italok WHERE id = ?;";
+    
+    		$queryParams = array(
+    				$_POST['id']
+    		);
+    		$this->deleteItem($SQL, $queryParams);
+    
+    		$res['status'] = true;
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = false;
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    }
     
 
     public function updateCetli(){
@@ -377,14 +403,15 @@ class Menu extends BaseObject{
     		 */
     		if ($_POST['id'] == "0"){
     			
-    			$SQL = "INSERT INTO koleves_etelek SET kategoria_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, tagek = ?, ar = ?, sorrend = ?;";
+    			$SQL = "INSERT INTO koleves_etelek SET kategoria_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, tagek = ?, ar = ?, etterem_id = ?, sorrend = ?;";
     			
     			$queryParams = array(
-    					$kategoriaAdat['id'],
-    					$_POST['text'],
-    					$_POST['tagek'],
-    					$_POST['ar'],
-    					($kategoriaAdat['utolsoSorszam'] + 1)
+    				$kategoriaAdat['id'],
+    				$_POST['text'],
+    				$_POST['tagek'],
+    				$_POST['ar'],
+    				$_POST['etterem'],
+    				$_POST['sorrend']
     			);
     			
     			$res['inputID'] = $this->insertItem($SQL, $queryParams);
@@ -393,14 +420,16 @@ class Menu extends BaseObject{
     		 * Meglévő sor updatelése
     		 */
     		else{
-    			$SQL = "UPDATE koleves_etelek SET kategoria_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, tagek = ?, ar = ? WHERE id = ?;";
+    			$SQL = "UPDATE koleves_etelek SET kategoria_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, tagek = ?, ar = ?, etterem_id = ?, sorrend = ? WHERE id = ?;";
     			 
     			$queryParams = array(
-    					$kategoriaAdat['id'],
-    					$_POST['text'],
-    					$_POST['tagek'],
-    					$_POST['ar'],
-    					$_POST['id']
+    				$kategoriaAdat['id'],
+    				$_POST['text'],
+    				$_POST['tagek'],
+    				$_POST['ar'],
+    				$_POST['etterem'],
+    				$_POST['sorrend'],
+    				$_POST['id']
     			);
     			 
     			$this->updateItem($SQL, $queryParams);
@@ -442,13 +471,14 @@ class Menu extends BaseObject{
     		*/
     		if ($_POST['id'] == "0"){
     			 
-    			$SQL = "INSERT INTO koleves_italok SET kategoria_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, ar = ?, sorrend = ?;";
+    			$SQL = "INSERT INTO koleves_italok SET kategoria_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, ar = ?, etterem_id = ?, sorrend = ?;";
     			 
     			$queryParams = array(
     					$kategoriaAdat['id'],
     					$_POST['text'],
     					$_POST['ar'],
-    					($kategoriaAdat['utolsoSorszam'] + 1)
+    					$_POST['etterem'],
+    					$_POST['sorrend']
     			);
     			 
     			$res['inputID'] = $this->insertItem($SQL, $queryParams);
@@ -457,13 +487,15 @@ class Menu extends BaseObject{
     		 * Meglévő sor updatelése
     		 */
     		else{
-    			$SQL = "UPDATE koleves_italok SET kategoria_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, ar = ? WHERE id = ?;";
+    			$SQL = "UPDATE koleves_italok SET kategoria_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, ar = ?, etterem_id = ?, sorrend = ? WHERE id = ?;";
     
     			$queryParams = array(
     					$kategoriaAdat['id'],
     					$_POST['text'],
     					$_POST['ar'],
-    					$_POST['id']
+    					$_POST['etterem'],
+    					$_POST['sorrend'],
+    					$_POST['id']    					
     			);
     
     			$this->updateItem($SQL, $queryParams);
@@ -591,7 +623,11 @@ class Menu extends BaseObject{
 	<tr>
 		<td>&nbsp;&nbsp;</td>
 		<td style="text-align:center;">
-			<br/><br/><img src="assets/img/etlap-logo.png"/><br/><span style="font-size:22px;font-weight:bold;">ÉTLAP</span><br/>
+			<br/><br/>
+    		<img src="assets/img/koleves_logo_vendeglo.png" style="width:100px;height:100px;"/>
+    			<br/>
+    		<span style="font-size:22px;font-weight:bold;">ÉTLAP</span>
+    		<br/>
 		</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 	</tr>

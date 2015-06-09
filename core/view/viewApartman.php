@@ -309,7 +309,7 @@ class ApartmanView extends BaseView{
 				</tr>
 				<tr>
 					<td><label>Leírás</label></td>
-					<td><textarea maxlength="1024" type="text" name="leiras" title="Apartman leírása" required>'.$elements['szoba']['desc'].'</textarea>
+					<td><textarea maxlength="1024" type="text" name="leiras" title="Apartman leírása" required>'.str_replace(array("<br />","<br>","<br/>","<br />","&lt;br /&gt;","&lt;br/&gt;","&lt;br&gt;"), "\r\n", $elements['szoba']['desc']).'</textarea>
 					<span class="tooltip">Apartman leírása, max. 1024 karakter</span></td>
 					<td></td>
 				</tr>

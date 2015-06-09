@@ -378,9 +378,7 @@ ennyire nyüzsgő belváros legyünk.</p>
 				<tr>
 					<td>Ételjelölők</td>
 					<td>
-						<!--<input type="text" maxlength="20" title="Jelölők" name="tagek" value="" required/>
-						<span class="tooltip">Jelölők, max. 20 karakter</span>
-						-->
+						
 				';
     
     
@@ -416,6 +414,13 @@ ennyire nyüzsgő belváros legyünk.</p>
 						<span class="tooltip">Étel ára</span>
 					</td>
 				</tr>
+    			<tr>
+					<td>Sorrend</td>
+					<td>
+						<input type="number" title="Sorrend" min="1" name="sorrend" value="" required/>
+						<span class="tooltip">Sorrend</span>
+					</td>
+				</tr>
 			</table>
     
 </section>
@@ -428,7 +433,7 @@ ennyire nyüzsgő belváros legyünk.</p>
     
     	foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
     		echo '<tr class="kategoriaRow">
-					<td colspan="5">'.$kategoria.'</td>
+					<td colspan="6">'.$kategoria.'</td>
 					</tr>
 					';
     			
@@ -445,6 +450,7 @@ ennyire nyüzsgő belváros legyünk.</p>
     
     			echo '</td>
 						<td>'.$etelAdat['AR'].'</td>
+						<td>'.$etelAdat['SORREND'].'</td>
 						<td><button class="editEtel">Szerkesztés</button></td>
 						<td><button class="deleteEtel">Törlés</button></td>
 					</tr>';

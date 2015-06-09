@@ -5,10 +5,8 @@
 </tr> -->
 
 <tr class="etlap-sor">
-<td>[[MEGNEVEZES]] • 
-[[TAGEK]]
-</td>
-<td>[[AR]] Ft</td>
+	<td>[[MEGNEVEZES]] • [[TAGEK]]</td>
+	<td>[[AR]] Ft</td>
 </tr>
 
 

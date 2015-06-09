@@ -103,9 +103,12 @@ class MenuView extends BaseView{
     public function drawEtlapAdmin($elements){
     	$kategoriaNevek = array_keys($elements['kategoriak']);
     	
-    	if ($elements['helyiseg'] == 'vendeglo'){
-    		$etterem = 1;
+    	switch ($elements['helyiseg']){
+    		case 'vendeglo': $etterem = 1; break;
+    		case 'kert': $etterem = 2; break;
+    		default: $etterem = 1;
     	}
+    	
     	
     	echo '
 		
@@ -138,9 +141,7 @@ class MenuView extends BaseView{
 				<tr>
 					<td>Ételjelölők</td>
 					<td>
-						<!--<input type="text" maxlength="20" title="Jelölők" name="tagek" value="" required/>
-						<span class="tooltip">Jelölők, max. 20 karakter</span>
-						-->
+						
 				';
 		
 		
@@ -174,6 +175,13 @@ class MenuView extends BaseView{
 					<td>
 						<input type="text" title="Étel ára" name="ar" value="" required/>
 						<span class="tooltip">Étel ára</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Sorrend</td>
+					<td>
+						<input type="number" title="Sorrend" min="1" name="sorrend" value="" required/>
+						<span class="tooltip">Sorrend</span>
 					</td>
 				</tr>
 			</table>
@@ -211,7 +219,7 @@ class MenuView extends BaseView{
 		
 		foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
 			echo '<tr class="kategoriaRow">
-					<td colspan="5">'.$kategoria.'</td>
+					<td colspan="6">'.$kategoria.'</td>
 					</tr>
 					';
 			
@@ -220,14 +228,20 @@ class MenuView extends BaseView{
 						<td>'.$etelAdat['MEGNEVEZES'].'</td>
 						<td data-val="'.$etelAdat['TAGEK'].'">';
 
-				$megadottAllergenek = explode(',', $etelAdat['TAGEK']);
-				foreach ($megadottAllergenek AS $allergenSzam){
-					echo '<span data-val="'.$allergenSzam.'" title="'.$allergenTipusok[$allergenSzam].'" class="allergen alg-'.$allergenSzam.'"></span>';
+				$megadottAllergenek = array();
+				if (!empty($etelAdat['TAGEK'])){
+					$megadottAllergenek = explode(',', $etelAdat['TAGEK']);
 				}
-					
+				
+				if (count($megadottAllergenek)){
+					foreach ($megadottAllergenek AS $allergenSzam){
+						echo '<span data-val="'.$allergenSzam.'" title="'.$allergenTipusok[$allergenSzam].'" class="allergen alg-'.$allergenSzam.'"></span>';
+					}
+				}
 								
 				echo '</td>
 						<td>'.$etelAdat['AR'].'</td>
+						<td>'.$etelAdat['SORREND'].'</td>
 						<td><button class="editEtel">Szerkesztés</button></td>
 						<td><button class="deleteEtel">Törlés</button></td>
 					</tr>';
@@ -242,6 +256,12 @@ class MenuView extends BaseView{
     public function drawItallapAdmin($elements){
     	$kategoriaNevek = array_keys($elements['kategoriak']);
     	 
+    	switch ($elements['helyiseg']){
+    		case 'vendeglo': $etterem = 1; break;
+    		case 'kert': $etterem = 2; break;
+    		default: $etterem = 1;
+    	}
+    	
     	echo '
     
     	<section class="kategoriaEditor">
@@ -252,6 +272,7 @@ class MenuView extends BaseView{
 					<td>Itallap szekció</td>
 					<td>
     					<input type="hidden" name="id" value="0"/>
+    					<input type="hidden" name="etterem" value="'.$etterem.'"/>
 						<select name="kategoria" value="" required>
 							<option value=""></option>';
     	foreach ($kategoriaNevek AS $kategoria){
@@ -265,7 +286,7 @@ class MenuView extends BaseView{
 				<tr>
 					<td>Megnevezés</td>
 					<td>
-						<input type="text" maxlength="255" title="Ital neve" name="text_hu" value="" required/>
+						<input type="text" maxlength="255" title="Ital neve" name="text" value="" required/>
 						<span class="tooltip">Ital neve, max. 255 karakter</span>
 					</td>
 				</tr>
@@ -274,6 +295,13 @@ class MenuView extends BaseView{
 					<td>
 						<input type="text" title="Ital ára" name="ar" value="" required/>
 						<span class="tooltip">Ital ára</span>
+					</td>
+				</tr>
+    			<tr>
+					<td>Sorrend</td>
+					<td>
+						<input type="number" title="Sorrend" min="1" name="sorrend" value="" required/>
+						<span class="tooltip">Sorrend</span>
 					</td>
 				</tr>
 			</table>
@@ -290,15 +318,15 @@ class MenuView extends BaseView{
     	foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
     		
     		echo '<tr class="kategoriaRow">
-					<td colspan="4">'.$kategoria.'</td>
+					<td colspan="5">'.$kategoria.'</td>
 					</tr>
 					';
     			
     		foreach ($kategoriaAdat['italok'] AS $italAdat){
     			echo '<tr data-id="'.$italAdat['id'].'">
 						<td>'.$italAdat['MEGNEVEZES'].'</td>
-						
 						<td>'.$italAdat['AR'].'</td>
+						<td>'.$italAdat['SORREND'].'</td>
 						<td><button class="editItal">Szerkesztés</button></td>
 						<td><button class="deleteItal">Törlés</button></td>
 					</tr>';
@@ -307,6 +335,10 @@ class MenuView extends BaseView{
     
     	echo '</table>';
     }
+    
+    
+    
+    
     
     public function drawEtlap($elements){
     	

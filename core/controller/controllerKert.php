@@ -61,12 +61,14 @@ class Kert extends BaseObject{
     public function getEtlapData(){
     	$etlapArray = array();
     	 
-    	$etelKategoriaSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." as labelText, ikon FROM koleves_etelkategoriak ORDER BY sorrend ASC;";
+    	$etelKategoriaSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." as labelText, ikon 
+    			FROM koleves_etelkategoriak 
+    			ORDER BY sorrend ASC;";
     
-    	$etelSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, TAGEK, AR
+    	$etelSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, TAGEK, AR, SORREND
     			FROM koleves_etelek
     				WHERE visible = 1 AND kategoria_id = ? AND etterem_id = 2
-    			ORDER BY kategoria_id ASC, ".$_SESSION['helper']->getLangLabel('text')." ASC;";
+    			ORDER BY sorrend ASC, ".$_SESSION['helper']->getLangLabel('text')." ASC;";
     	 
     	$kategoriaRES = $this->fetchItems($etelKategoriaSQL);
     	 
@@ -195,7 +197,8 @@ class Kert extends BaseObject{
 					<td style="text-align:right;width:12px;">&bull;</td>
 
     				<td style="width:40%;text-align:left;width:290px;"> 
-    					'.$englishTextFirst .' '. $icons .'<br/>&nbsp;&nbsp;'.wordwrap($englishTextRest, $textCutOffIndex, "<br/>&nbsp;&nbsp;").'
+    					'.$englishTextFirst .' '. $icons .'<br/>
+    						&nbsp;&nbsp;'.wordwrap($englishTextRest, $textCutOffIndex, "<br/>&nbsp;&nbsp;").'
     				</td>
     			</tr>';
     	}
