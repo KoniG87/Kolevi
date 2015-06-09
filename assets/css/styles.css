@@ -6707,7 +6707,6 @@ form .stars span {
   height: 3rem;
   color: #fff;
   cursor: pointer;
-  border: 1px solid red;
   /*1280px*/ }
   @media (min-width: 80em) {
     .kosar {

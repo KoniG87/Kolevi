@@ -349,7 +349,9 @@ var newDate = new Date();
         regTooltip('#nl-form > div > div:nth-child(11) > a');
     }
     else{
+      $("#nl-form > div > div:nth-child(4) > a, #nl-form > div > input.datepicker, #nl-form > div > input.timepicker, #nl-form > div > div:nth-child(11) > a").tooltipster('hide');
       $(this).closest("#nl-form").submit();
+
     }
 });
 

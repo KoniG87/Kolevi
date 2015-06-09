@@ -491,7 +491,14 @@ class Application{
                                        $(".ujra-foglalas").remove();
                                        $(".nl-replace").removeClass("visuallyhidden");
                                        $(".foglalas-form").velocity({rotateX: "-360deg"}, 600);
-                                       $(".foglalas-form").velocity({rotateX: "0deg"}, 0);                     
+                                       $(".foglalas-form").velocity({rotateX: "0deg"}, 0);  
+
+                                       $("#nl-form > div > div:nth-child(4) > a").text("XY");
+                                       $("#nl-form > div > div.nl-field.nl-dd > a").text("egy");
+                                       $("#nl-form > div > input.datepicker").val("ma");  
+                                       $("#nl-form > div > input.timepicker").val("13:30");
+                                       $("#nl-form > div > div:nth-child(11) > a").text("Erre az");
+                                       $("#nl-form > div > div:nth-child(15) > a").text("Szeretem a maceszgombócot!");
                         }, 599);
                      });
     			
