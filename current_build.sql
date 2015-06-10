@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Hoszt: 127.0.0.1
--- Létrehozás ideje: 2015. Jún 03. 02:47
+-- Létrehozás ideje: 2015. Jún 10. 07:37
 -- Szerver verzió: 5.6.21
 -- PHP verzió: 5.6.3
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `koleves_asztalfoglalasok` (
   `JOVAHAGYVA` tinyint(1) DEFAULT '0',
   `JOVAHAGYTA` tinyint(6) DEFAULT NULL,
   `ROGZITVE` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_asztalfoglalasok`
@@ -62,7 +62,8 @@ INSERT INTO `koleves_asztalfoglalasok` (`ID`, `NEV`, `EMAIL`, `MEGJEGYZES`, `HAN
 (19, '', '', '', 1, '0000-00-00 00:00:00', 0, NULL, NULL),
 (20, '', '', '', 1, '0000-00-00 00:00:00', 0, NULL, NULL),
 (21, '', '', '', 1, '0000-00-00 00:00:00', 0, NULL, NULL),
-(22, 'asf', 'basf@as.com', '', 2, '0000-00-00 00:00:00', 0, NULL, NULL);
+(22, 'asf', 'basf@as.com', '', 2, '0000-00-00 00:00:00', 0, NULL, NULL),
+(23, 'Lali', 'odtahtenoeromemit@mailinator.com', 'Maceszgombóc extra!', 2, '0000-00-00 00:00:00', 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -140,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `koleves_etelek` (
   `TAGEK` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
   `AR` int(6) DEFAULT NULL,
   `VISIBLE` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_etelek`
@@ -180,13 +181,14 @@ INSERT INTO `koleves_etelek` (`ID`, `ETTEREM_ID`, `KATEGORIA_ID`, `TEXT_HU`, `TE
 (32, 2, 3, 'Saláta sáprgával és sült paprikával', 'Salad with Asparagus and Roast Pepper', 3, '7', 1520, 1),
 (33, 2, 3, 'Spenótos-túrós lepény friss zöldséges salátával', 'Spinach-Cottage Cheese Pie with Fresh Salad', 4, '7,3', 1680, 1),
 (34, 2, 3, 'Philadelphia steak szendvics', 'Philadelphia Steak Sandwich', 5, '1,3,7', 1450, 1),
-(35, 2, 3, 'Barbecue marhasült coleslaw salátával', 'Barbecue Roast Beef with Coleslaw Salad', 6, '10,3,7', 2250, 1),
+(35, 2, 3, 'Barbecue marhasült coleslaw salátával', 'Barbecue Roast Beef with Coleslaw Salad', 6, '3,7,10', 2250, 1),
 (36, 2, 3, 'Kebab mentás padlizsánsalátával', 'Kebab with Roasted Eggplant and Mint Salad', 7, '7', 1950, 1),
 (37, 2, 3, 'Házi kacsakolbász újhagymás krumplisalátával', 'Home Made Duck Sausage with Scallion Potato Salad', 8, '10,3,7', 1850, 1),
 (38, 2, 3, 'Kolbászos paprikás krumpli, házi kenyér', 'Paprika Potatoes with Sausages, Homemade Bread', 9, '1', 1350, 1),
 (39, 2, 3, 'Roston sült gomolya friss zöldséges salátával', 'Grilled Soft Cheese, Fresh Vegetables Salad', 10, '7,11', 2150, 1),
 (40, 2, 3, 'Roston sült csirkemell friss zöldséges salátával', 'Grilled Chicken Breast, Fresh Vegetable Salad', 11, '7,11', 1850, 1),
-(41, 2, 3, 'Fűszeres sültkrumpli (házi paradicsomlekvár vagy újhagymás málnaecetes majonéz öntettel)', 'Spicy Chips with Sauce (Homemade Tomato Marmelade or Mayonnaise with Raspberry Vinegar)', 12, '10,1,3,7', 680, 1);
+(41, 2, 3, 'Fűszeres sültkrumpli (házi paradicsomlekvár vagy újhagymás málnaecetes majonéz öntettel)', 'Spicy Chips with Sauce (Homemade Tomato Marmelade or Mayonnaise with Raspberry Vinegar)', 12, '10,1,3,7', 680, 1),
+(44, 1, 4, 'ASD', '', 5, '2', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -281,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `koleves_italok` (
   `SORREND` int(2) DEFAULT '1',
   `AR` int(6) DEFAULT NULL,
   `VISIBLE` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_italok`
@@ -355,7 +357,9 @@ INSERT INTO `koleves_italok` (`ID`, `ETTEREM_ID`, `KATEGORIA_ID`, `TEXT_HU`, `TE
 (65, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 8, 520, 1),
 (66, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 9, 420, 1),
 (67, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 10, 520, 1),
-(68, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 11, 420, 1);
+(68, 2, 5, 'Egy sor szöveg', 'Some drink name', 0, 11, 420, 1),
+(71, 1, 1, 'Új és forró', '', 0, 21, 200, 1),
+(72, 2, 1, 'asdasd', '', 0, 23, 250, 1);
 
 -- --------------------------------------------------------
 
@@ -706,7 +710,7 @@ CREATE TABLE IF NOT EXISTS `koleves_szobak` (
 --
 
 INSERT INTO `koleves_szobak` (`ID`, `TEXT_HU`, `TEXT_EN`, `LEIRAS_HU`, `LEIRAS_EN`, `KEZDOKEP`, `VISIBLE`) VALUES
-(1, 'Szoba 1', 'Room 1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto perspiciatis deserunt amet culpa commodi a praesentium fuga quod eligendi labore quidem asperiores sint accusamus aperiam similique id cupiditate dolorum omnis maiores enim quas tempora, ullam, perferendis officia accusantium. Quis, quasi.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto perspiciatis deserunt amet culpa commodi a praesentium fuga quod eligendi labore quidem asperiores sint accusamus aperiam similique id cupiditate dolorum omnis maiores enim quas tempora, ullam, perferendis officia accusantium. Quis, quasi.', NULL, 1);
+(1, 'Szoba11', 'Room 1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto perspiciatis deserunt amet culpa commodi a praesentium fuga quod eligendi labore quidem asperiores sint accusamus aperiam similique id cupiditate dolorum omnis maiores enim quas tempora, ullam, perferendis officia accusantium. Quis, quasi.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto perspiciatis deserunt amet culpa commodi a praesentium fuga quod eligendi labore quidem asperiores sint accusamus aperiam similique id cupiditate dolorum omnis maiores enim quas tempora, ullam, perferendis officia accusantium. Quis, quasi.', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -852,7 +856,7 @@ ALTER TABLE `koleves_szobak`
 -- AUTO_INCREMENT for table `koleves_asztalfoglalasok`
 --
 ALTER TABLE `koleves_asztalfoglalasok`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `koleves_dolgozok`
 --
@@ -862,7 +866,7 @@ MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `koleves_etelek`
 --
 ALTER TABLE `koleves_etelek`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `koleves_etelkategoriak`
 --
@@ -882,7 +886,7 @@ MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `koleves_italok`
 --
 ALTER TABLE `koleves_italok`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=98;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `koleves_jogosultsagok`
 --
