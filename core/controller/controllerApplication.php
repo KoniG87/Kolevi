@@ -487,7 +487,7 @@ echo '
                         megjegyzes: $("input[name=\"megjegyzes\"]" , $(this)).val()               
                       };
 
-                    var ujrafoglalasContent = $("<div/>").addClass("ujra-foglalas").html("<h3>Asztalfoglalás megtörtént!</h3><br/>Köszi <span class=\"foglalas-data\">"+foglalasData.nev+"</span>, hogy betértél hozzánk! Hamarosan visszaigazolunk a <span class=\"foglalas-data\">"+foglalasData.email+"</span> email címen, hogy <span class=\"foglalas-data\">"+foglalasData.datum+" - "+foglalasData.ido+"</span>-kor tudjuk-e biztosítani a(z) <span class=\"foglalas-data\">"+foglalasData.hanyfo+"</span> helyet.<div class=\"nl-submit-wrap\"><button class=\"nl-reset\" type=\"submit\">Újbóli foglalás</button></div>");
+                    var ujrafoglalasContent = $("<div/>").addClass("ujra-foglalas").html("<h3>Asztalfoglalás megtörtént!</h3><br/>Köszi <span class=\"foglalas-data\">"+foglalasData.nev+"</span>, hogy betértél hozzánk! Hamarosan visszaigazolunk a <span class=\"foglalas-data\">"+foglalasData.email+"</span> email címen, hogy <span class=\"foglalas-data\">"+foglalasData.datum+" - "+foglalasData.ido+"</span>-kor tudjuk-e biztosítani a(z) <span class=\"foglalas-data\">"+foglalasData.hanyfo+"</span> helyet.<div class=\"nl-submit-wrap\"><button class=\"nl-reset\" type=\"submit\">Újbóli foglalás</button><button class=\"nl-reset right\" type=\"submit\">Rendben, köszi</button></div>");
                   
 
                       $.post("requestHandler.php", foglalasData, function(resp){
