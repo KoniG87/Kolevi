@@ -262,10 +262,11 @@ class VendegloView extends BaseView{
                         <button class="editEtel">Szerkesztés</button>
                     </form>
                 </td>
-				
+				<td>
+                	<button class="deleteRendezveny">Törlés</button>
+                </td>
 			</tr>';
-            //<td><button class="deleteEtel">Törlés</button></td>
-    	}
+        }
     }
     
     public function drawProgramList($elements){
@@ -281,7 +282,9 @@ class VendegloView extends BaseView{
                         <button class="editProgram">Szerkesztés</button>
                     </form>    
                 </td>
-				
+				<td>
+                	<button class="deleteProgram">Törlés</button>
+                </td>
 			</tr>';
     	}
         //<td><button class="deleteEtel">Törlés</button></td>

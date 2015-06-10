@@ -4,30 +4,11 @@ if (isset($_POST['request'])){
 	include('core/config.php');
 
 	switch ($_POST['request']){
-		case 'napiUpdate':
-			$menu = new Menu($app->getDbHandler());
-			$menu->updateNapiMenu();
-				
-			break;
-			
-					
-		case 'dolgozoUpdate':
-			$user = new User($app->getDbHandler());
-			$user->updateUser();
-			
-			break;
-			
-		case 'etlapUpdate':
-			$menu = new Menu($app->getDbHandler());
-			$menu->updateEtlapElem();
-			
-			break;
+		
 
-		case 'itallapUpdate':
-			$menu = new Menu($app->getDbHandler());
-			$menu->updateItallapElem();
-				
-			break;
+		/*
+		 * Delete handlers
+		 * */	
 			
 		case 'etlapDelete':
 			$menu = new Menu($app->getDbHandler());
@@ -35,46 +16,39 @@ if (isset($_POST['request'])){
 			
 			break;
 			
-			case 'itallapDelete':
-				$menu = new Menu($app->getDbHandler());
-				$menu->deleteItallapElem();
-					
-				break;
-			
-		case 'szobaUpdate':
-			
-			$apartman = new Apartman($app->getDbHandler());
-			$apartman->updateSzobaElem();
-					
-			break;
-			
-		case 'cetliUpdate':
+		case 'itallapDelete':
 			$menu = new Menu($app->getDbHandler());
-			$menu->updateCetli();
+			$menu->deleteItallapElem();
+				
 			break;
 			
-		case 'programUpdate':
+		case 'programDelete':
 			$vendeglo = new Vendeglo($app->getDbHandler());
-			$vendeglo->updateProgram();
-        
+			$vendeglo->deleteProgramElem();
+		
 			break;
-        
-        case 'rendezvenyUpdate':
+			
+	
+		case 'rendezvenyDelete':
 			$vendeglo = new Vendeglo($app->getDbHandler());
-			$vendeglo->updateRendezveny();
-        
+			$vendeglo->deleteRendezvenyElem();
+		
 			break;
 			
-		case 'asztalfoglalasUpdate':
-			$vendeglo = new Vendeglo($app->getDbHandler());
-			$vendeglo->updateFoglalas();
-			
+		case 'deleteImageRef':
+			$image = new Image($app->getDbHandler());
+			$image->deleteImageRef();
+		
 			break;
 			
-		case 'authUser':
-			$user = new User($app->getDbHandler());
-			$user->authUser();
+		/*
+		 * Additional handlers
+		 */
 			
+		case 'insertImageRef':
+			$image = new Image($app->getDbHandler());
+			$image->insertImageRef();
+		
 			break;
 			
 		case 'generateKertEtlapPDF':
@@ -83,22 +57,23 @@ if (isset($_POST['request'])){
 			
 			break;
 			
+		case 'generateVendegloItallapPDF':
+			$menu = new Menu($app->getDbHandler());
+			$menu->generateVendegloItallapPDF();
+				
+			break;
+			
+			
+		case 'authUser':
+			$user = new User($app->getDbHandler());
+			$user->authUser();
+				
+			break;
+			
         case 'handleImages':
             $imageHandler = new Image($app->getDbHandler());    
             $imageHandler->processImages();
         
-            break;
-        
-        case 'updateImage':
-            $imageHandler = new Image($app->getDbHandler());    
-            $imageHandler->updateImage();
-        
-            break;
-        
-        
-        case 'updateHir':
-            $vendeglo = new Vendeglo($app->getDbHandler());
-			$vendeglo->updateHir();
             break;
         
         case 'foglalasJovahagyas':
@@ -107,24 +82,86 @@ if (isset($_POST['request'])){
         
             break;
         
-		case 'deleteImageRef':
-			$image = new Image($app->getDbHandler());
-			$image->deleteImageRef();
-		
-			break;
-			
-		case 'insertImageRef':
-			$image = new Image($app->getDbHandler());
-			$image->insertImageRef();
-		
-			break;
-			
 		case 'switchLanguage':
 			$_SESSION['helper']->registerValue('lang', $_POST['lang']);
 			
 			
 			break;
 		
+			
+		/*
+		 * Update handlers
+		 * */
+		case 'asztalfoglalasUpdate':
+			$vendeglo = new Vendeglo($app->getDbHandler());
+			$vendeglo->updateFoglalas();
+		
+			break;
+		
+		case 'cetliUpdate':
+			$menu = new Menu($app->getDbHandler());
+			$menu->updateCetli();
+			break;
+		
+		case 'dolgozoUpdate':
+			$user = new User($app->getDbHandler());
+			$user->updateUser();
+		
+			break;
+		
+		case 'etlapUpdate':
+			$menu = new Menu($app->getDbHandler());
+			$menu->updateEtlapElem();
+		
+			break;
+			
+		case 'itallapUpdate':
+			$menu = new Menu($app->getDbHandler());
+			$menu->updateItallapElem();
+		
+			break;
+		
+		case 'napiUpdate':
+			$menu = new Menu($app->getDbHandler());
+			$menu->updateNapiMenu();
+		
+			break;
+			
+		case 'programUpdate':
+			$vendeglo = new Vendeglo($app->getDbHandler());
+			$vendeglo->updateProgram();
+		
+			break;
+		
+		case 'rendezvenyUpdate':
+			$vendeglo = new Vendeglo($app->getDbHandler());
+			$vendeglo->updateRendezveny();
+		
+			break;
+			
+		case 'updateImage':
+			$imageHandler = new Image($app->getDbHandler());
+			$imageHandler->updateImage();
+		
+			break;
+		
+		case 'szobaUpdate':
+		
+			$apartman = new Apartman($app->getDbHandler());
+			$apartman->updateSzobaElem();
+		
+			break;
+			
+		case 'updateHir':
+			$vendeglo = new Vendeglo($app->getDbHandler());
+			$vendeglo->updateHir();
+			break;
+			
+		
+		/*
+		 * Default: generate vendeglo etlap PDF
+		 * */
+			
 		default:
 			$menu = new Menu($app->getDbHandler());
 			$menu->generateEtlapPDF();

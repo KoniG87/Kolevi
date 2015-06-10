@@ -186,6 +186,59 @@ class Vendeglo extends BaseObject{
     
     
     
+    
+    public function deleteProgramElem(){
+    	$res = array();
+    
+    	try{
+    		$this->beginTransaction();
+    		 
+    		$SQL = "DELETE FROM koleves_programok WHERE id = ?;";
+    
+    		$queryParams = array(
+    				$_POST['id']
+    		);
+    		$this->deleteItem($SQL, $queryParams);
+    
+    		$res['status'] = true;
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = false;
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    }
+    
+    
+    public function deleteRendezvenyElem(){
+    	$res = array();
+    
+    	try{
+    		$this->beginTransaction();
+    		 
+    		$SQL = "DELETE FROM koleves_rendezvenyek WHERE id = ?;";
+    		$kepSQL = "DELETE FROM koleves_kep_osszekotesek WHERE fk_id = ? AND tipus = ?;";
+    		$queryParams = array(
+    				$_POST['id']
+    		);
+    		$this->deleteItem($SQL, $queryParams);
+    
+    		array_push($queryParams, 1);
+    		$this->deleteItem($kepSQL, $queryParams);
+    		
+    		$res['status'] = true;
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = false;
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    }
+    
+    
+    
     public function loadKepek($tipusID = null){
     	$SQL = "SELECT id, fajlnev FROM koleves_kepek WHERE szekcio = ?;";
     
@@ -297,6 +350,20 @@ class Vendeglo extends BaseObject{
     			 
     		}
     	
+    		$foglalasData = array(
+    			'nev'	=> $_POST['nev'],
+    			'email'	=> $_POST['email'],
+    			'megjegyzes'	=> $_POST['megjegyzes'],
+    			'hanyfo'	=> $_POST['hanyfo'],
+    			'idopont'	=> $_POST['datum'].' '.$_POST['ido']
+    		);
+    		$ertesesiAdat = array(
+    			'email'	=> 'kapolnai.gabor@gmail.com',
+    			'nev'	=> 'Kápszi'
+    		);
+    		
+    		$this->foglalasErtesitoEmail($foglalasData, $ertesesiAdat);
+    		
     		$res['status'] = true;
     		$this->commit();
     	}catch(Exception $e){
@@ -469,42 +536,99 @@ class Vendeglo extends BaseObject{
     
     
     
+    function foglalasErtesitoEmail($foglalasData, $ertesitesiData){
+    	require 'assets/libs/phpmailer/PHPMailerAutoload.php';
+    	$res = array();
+    	 
+    	$mail = new PHPMailer;
+    	$mail->CharSet  = 'UTF-8';
+    	$mail->From = 'foglalas@kolevesvendeglo.hu';
+    	$mail->FromName = 'Kőleves';
+    	$mail->addAddress($ertesitesiData['email'], $ertesitesiData['nev']);
+    	$mail->addReplyTo('foglalas@kolevesvendeglo.hu', 'Kőleves');
+    	$mail->isHTML(true);
+    	 
+    	$mail->Subject = 'Kőleves foglalási kérés';
+    	$mail->Body    = '<table style="font-size:15px;background-image:url(http://kolevesvendeglo.hu/kolevi/assets/img/lightpaperfibers.png);">
+            <tr>
+                <td style="padding:10px;width:500px;text-align:center;" colspan="3">
+                    <img src="http://kolevesvendeglo.hu/kolevi/assets/img/etlap-logo.png" alt="Kőleves" title="Kőleves vendéglő"/>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:10px;width:500px" colspan="3">
+                    <p>A rendszer a következő adatokkal asztalfoglalási kérést fogadott:</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding:5px 10px;width:200px">
+                    <strong>Név</strong>
+                </td>
+                <td colspan="3" style="padding:5px 10px;width:300px">
+                    '.$foglalasData['nev'].'
+                </td>
+            </tr>
+			<tr>
+                <td style="padding:5px 10px;width:200px">
+                    <strong>Email</strong>
+                </td>
+                <td colspan="3" style="padding:5px 10px;width:300px">
+                    '.$foglalasData['email'].'
+                </td>
+            </tr>
+    		<tr>
+                <td style="padding:5px 10px;width:200px">
+                    <strong>Időpont</strong>
+                </td>
+                <td colspan="3" style="padding:5px 10px;width:300px">
+                    '.$foglalasData['idopont'].'
+                </td>
+            </tr>
+            </tr>
+                <tr>
+                <td style="padding:5px 10px;width:200px">
+                    <strong>Hány fő</strong>
+                </td>
+                <td colspan="3" style="padding:5px 10px;width:300px">
+                    '.$foglalasData['hanyfo'].'
+                </td>
+            </tr>
+            </tr>
+                <tr>
+                <td style="width:200px">
+                    <strong>Megjegyzés</strong>
+                </td>
+                <td colspan="3" style="width:300px">
+                    '.$foglalasData['megjegyzes'].'
+                </td>
+            </tr>
+            
+        </table>';
+    	$mail->AltBody = 'Foglalás érkezett a rendszerbe: '.$foglalasData['nev'].' ('.$foglalasData['email'].') foglalt összesen '.$foglalasData['hanyfo'].' főre, még pedig '.$foglalasData['idopont'].' időpontban'.(empty($foglalasData['megjegyzes']) ? '.' : ' a következő megjegyzéssel: '.$foglalasData['megjegyzes']);
+    	 
+    	$res['status'] = 'nope';
+    	if($mail->send()) {
+    		$res['status'] = 'ok';
+    	}
+    	 
+    	return $res;
+    }
     
     
-    
-    
-    
-    
-    
-    
-    
-    public function foglalasJovahagyas(){
-        $res = array();
-        
-        $SQL = "UPDATE koleves_asztalfoglalasok SET jovahagyva = ?, jovahagyta = ? WHERE id = ?;";
-        $queryParams = array(
-            1,
-            $_SESSION['user']['id'],
-            $_POST['id']
-        );
-        $this->updateItem($SQL, $queryParams);
-        
-        $SQL = "SELECT nev, email, megjegyzes, hanyfo, idopont FROM koleves_asztalfoglalasok WHERE id = ?;";
-        $queryParams = array($_POST['id']);
-        $foglalasData = $this->fetchItem($SQL, $queryParams);
-        
-        require 'assets/libs/phpmailer/PHPMailerAutoload.php';
-
-        $mail = new PHPMailer;
-        $mail->CharSet  = 'UTF-8';
-        $mail->From = 'foglalas@kolevesvendeglo.hu';
-        $mail->FromName = 'Kőleves';
-        $mail->addAddress($foglalasData['email'], $foglalasData['nev']);     
-        $mail->addReplyTo('foglalas@kolevesvendeglo.hu', 'Kőleves');
-        $mail->isHTML(true);                                  
-
-        $mail->Subject = 'Kőleves foglalás';
-        $mail->Body    = '<table style="font-size:15px;background-image:url(http://kolevesvendeglo.hu/kolevi/assets/img/lightpaperfibers.png);">
+    function foglalasJovahagyasEmail($foglalasData){
+    	require 'assets/libs/phpmailer/PHPMailerAutoload.php';
+    	$res = array();
+    	
+    	$mail = new PHPMailer;
+    	$mail->CharSet  = 'UTF-8';
+    	$mail->From = 'foglalas@kolevesvendeglo.hu';
+    	$mail->FromName = 'Kőleves';
+    	$mail->addAddress($foglalasData['email'], $foglalasData['nev']);
+    	$mail->addReplyTo('foglalas@kolevesvendeglo.hu', 'Kőleves');
+    	$mail->isHTML(true);
+    	
+    	$mail->Subject = 'Kőleves foglalás';
+    	$mail->Body    = '<table style="font-size:15px;background-image:url(http://kolevesvendeglo.hu/kolevi/assets/img/lightpaperfibers.png);">
             <tr>
                 <td style="padding:10px;width:500px;text-align:center;" colspan="3">
                     <img src="http://kolevesvendeglo.hu/kolevi/assets/img/etlap-logo.png" alt="Kőleves" title="Kőleves vendéglő"/>
@@ -549,12 +673,37 @@ class Vendeglo extends BaseObject{
                 </td>
             </tr>
         </table>';
-        $mail->AltBody = 'Kedves '.$foglalasData['nev'].'! Megkaptuk foglalását a Kőleves étterembe, a megjelölt '.$foglalasData['idopont'].' időpontban várjuk szeretettel!';
-
-        $res['status'] = 'nope';
-        if($mail->send()) {
-           $res['status'] = 'ok'; 
-        }
+    	$mail->AltBody = 'Kedves '.$foglalasData['nev'].'! Megkaptuk foglalását '.$foglalasData['hanyfo'].' főre a Kőleves étterembe, a megjelölt '.$foglalasData['idopont'].' időpontban várjuk szeretettel! Az alábbi megjegyzést hagyta számunkra: '.$foglalasData['megjegyzes'];
+    	
+    	$res['status'] = 'nope';
+    	if($mail->send()) {
+    		$res['status'] = 'ok';
+    	}
+    	
+    	return $res;
+    }
+    
+    
+    
+    
+    
+    
+    public function foglalasJovahagyas(){
+        $res = array();
+        
+        $SQL = "UPDATE koleves_asztalfoglalasok SET jovahagyva = ?, jovahagyta = ? WHERE id = ?;";
+        $queryParams = array(
+            1,
+            $_SESSION['user']['id'],
+            $_POST['id']
+        );
+        $this->updateItem($SQL, $queryParams);
+        
+        $SQL = "SELECT nev, email, megjegyzes, hanyfo, idopont FROM koleves_asztalfoglalasok WHERE id = ?;";
+        $queryParams = array($_POST['id']);
+        $foglalasData = $this->fetchItem($SQL, $queryParams);
+        
+        $res = $this->foglalasJovahagyasEmail($foglalasData);
         
         echo json_encode($res);
     }

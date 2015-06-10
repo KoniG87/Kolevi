@@ -1,7 +1,7 @@
 <?php 
 include('page/home.php');
 ?>
-<div class="kosar"><svg class="icon icon-kosar"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kosar"></use></svg><span>0</span><p>Kosár</p></div>
+<!-- <div class="kosar"><svg class="icon icon-kosar"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kosar"></use></svg><span>0</span><p>Kosár</p></div> -->
 
 
 <div class="row stickyStart">
@@ -9,11 +9,11 @@ include('page/home.php');
 
 
 <!-- DELICATESRŐL -->
-<section id="delicatesrol">
+<section id="delicates">
 
 	<div class="section-label" data-labelpos="1">
 		<div class="papercut-left"></div>
-		<label for="Delicates" ><span></span>
+		<label for="delicates" ><span></span>
 		<h2>Delicates</h2></label>
 		<div class="papercut-right"></div>
 	</div>

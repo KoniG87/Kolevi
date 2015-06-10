@@ -2,7 +2,7 @@
 
 class kolevesPDF extends TCPDF{
 	public function Footer() {
-		$this->SetY(-47);
+		$this->SetY(-42);
 		$this->SetFont('freesans', '', 8);
 		
 		$footer = '

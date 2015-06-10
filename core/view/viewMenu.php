@@ -552,21 +552,38 @@ public function drawKertEtlap($elements){
      
 
      if ($helyiseg == 'kert'){
-     echo '
-     <a class="dl-pdf dl-pdf-itallap" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
-     <form id="requestEtlapForm" method="post" action="'.$_SESSION['helper']->getPath().'requestHandler" target="_blank">
-		<input type="hidden" name="request" value="generateKertEtlapPDF"/>
-     </form>
-     <script type="text/javascript">
-		$(document).ready(function(){
-    		$(".dl-pdf-itallap").click(function(e){
-    			e.preventDefault();
-     			$("#requestEtlapForm").submit();    
-    			
-    		});
-    	});
-     </script>';
+	     echo '
+	     <a class="dl-pdf dl-pdf-itallap" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
+	     <form id="requestEtlapForm" method="post" action="'.$_SESSION['helper']->getPath().'requestHandler" target="_blank">
+			<input type="hidden" name="request" value="generateKertEtlapPDF"/>
+	     </form>
+	     <script type="text/javascript">
+			$(document).ready(function(){
+	    		$(".dl-pdf-itallap").click(function(e){
+	    			e.preventDefault();
+	     			$("#requestEtlapForm").submit();    
+	    			
+	    		});
+	    	});
+	     </script>';
      }
+     if ($helyiseg == "vendeglo"){
+     	echo '
+	     <a class="dl-pdf dl-pdf-itallap" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
+	     <form id="requestEtlapForm" method="post" action="'.$_SESSION['helper']->getPath().'requestHandler" target="_blank">
+			<input type="hidden" name="request" value="generateVendegloItallapPDF"/>
+	     </form>
+	     <script type="text/javascript">
+			$(document).ready(function(){
+	    		$(".dl-pdf-itallap").click(function(e){
+	    			e.preventDefault();
+	     			$("#requestEtlapForm").submit();
+	    
+	    		});
+	    	});
+	     </script>';
+     }
+     
      echo '
        </div> 
 

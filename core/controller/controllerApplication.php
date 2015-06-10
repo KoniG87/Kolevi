@@ -152,11 +152,30 @@ class Application{
     						'showOn' => array(
     								'vendeglo'	=> 7,
     								'kert'		=> 4,
-    								'apartman'	=> 4
+    								'apartman'	=> 4,
+    								'delicates'	=> 3
     						),
     						'labels' => array(
     								'hu'	=> 'Képek',
     								'en'	=> 'Pictures'
+    						)
+    				),
+    				'delicates'	=> array(
+    						'showOn' => array(
+    							'delicates'	=> 1
+    						),
+    						'labels' => array(
+    							'hu'	=> 'Delicates',
+    							'en'	=> 'Delicates'
+    						)
+    				),
+    				'bolt'	=> array(
+    						'showOn' => array(
+    							'delicates'	=> 2
+    						),
+    						'labels' => array(
+    							'hu'	=> 'Bolt',
+    							'en'	=> 'Shop'
     						)
     				)
     				
@@ -173,11 +192,15 @@ class Application{
     				$menuToShow[$menuData['showOn'][$subPage]][$menuKey] = $menuData['labels']['hu'];
     			}
     		}
-    		/* KOSAR CSAK DELICATESNÉL */
-    	echo '<nav class="sitckyNav">
+    		
+    	echo '<nav class="sitckyNav">';
 
-<div class="kosar"><svg class="icon icon-kosar"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kosar"></use></svg><span>0</span><p>Kosár</p></div>
+/* KOSAR CSAK DELICATESNÉL */    	
+if ($_SESSION['helper']->getPage() == 'delicates'){
+	echo '<div class="kosar"><svg class="icon icon-kosar"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kosar"></use></svg><span>0</span><p>Kosár</p></div>';
+}    	
 
+echo '
 <a href="" class="sticky-logo"><svg class="sticky-page-icon icon icon-'.$_SESSION['helper']->getPage().'-2"><use xlink:href="#icon-'.$_SESSION['helper']->getPage().'-2"></use></svg></a>
 <svg class="icon icon-backtotop backToTop"><use xlink:href="#icon-backtotop"></use></svg>
     <div class="row">';

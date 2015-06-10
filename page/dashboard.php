@@ -37,8 +37,8 @@ if (isset($_GET['sec'])){
         }
         ?>
             
-            
-            <a href="<?=$_SESSION['helper']->getPath().strtolower($sectionIndicator)?>" class="right" style="margin-right:5rem;">Vissza az oldalra</a>
+            <a href="<?=$_SESSION['helper']->getPath()?>logout.php" class="right" style="margin-right:5rem;">Kijelentkezés</a>
+            <a href="<?=$_SESSION['helper']->getPath().strtolower($sectionIndicator)?>" class="right" style="margin-right:1rem;">Vissza az oldalra</a>
             <div class="lang-select">
             
 				<span class="lang-active">Hu</span> / <span>En</span>

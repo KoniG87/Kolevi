@@ -60,6 +60,22 @@
 				});
 			}
 		});
+
+		
+		$(document).on('click', '.deleteRendezveny', function(){
+			containingRow = $(this).parents('tr');
+			data = {
+				id: containingRow.attr('data-id'),
+				request: "rendezvenyDelete"
+			};
+			
+			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
+				if (resp['status']){
+					containingRow.hide(250, function(){ $(this).remove(); });			
+				}
+			}, 'json');
+				
+		});
 	});
 </script>
 

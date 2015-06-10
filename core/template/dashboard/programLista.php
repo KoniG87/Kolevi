@@ -61,6 +61,21 @@
 				});
 			}
 		});
+
+		$(document).on('click', '.deleteProgram', function(){
+			containingRow = $(this).parents('tr');
+			data = {
+				id: containingRow.attr('data-id'),
+				request: "programDelete"
+			};
+			
+			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
+				if (resp['status']){
+					containingRow.hide(250, function(){ $(this).remove(); });			
+				}
+			}, 'json');
+				
+		});
 	});
 </script>
 

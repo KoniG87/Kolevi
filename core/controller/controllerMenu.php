@@ -626,7 +626,7 @@ class Menu extends BaseObject{
 			<br/><br/>
     		<img src="assets/img/koleves_logo_vendeglo.png" style="width:100px;height:100px;"/>
     			<br/>
-    		<span style="font-size:22px;font-weight:bold;">ÉTLAP</span>
+    		<span style="font-size:22px;font-weight:bold;">'.($_SESSION['helper']->getLang() == 'hu' ? 'ÉTLAP' : 'MENU').'</span>
     		<br/>
 		</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -658,5 +658,84 @@ class Menu extends BaseObject{
     	
     	$pdf->Output('Koleves-Menu.pdf', 'D');
     }
+    
+    
+    
+    public function generateVendegloItallapPDF(){
+    	$kategoriak = $this->getItallapData('vendeglo');
+    	 
+    
+    	require_once('assets/libs/tcpdf/tcpdf.php');
+    	require_once('assets/libs/tcpdf/kolevespdf.php');
+    	$pdf = new kolevesPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+    	 
+    	$pdf->SetAuthor('Kőleves');
+    	$pdf->SetTitle('Kőleves Itallap');
+    	$pdf->setPrintHeader(false);
+    	$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+    	$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+    	//$pdf->setPrintFooter(true);
+    	$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+    	$pdf->setTopMargin(15);
+    	 
+    	$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    	$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+    	$pdf->SetFont('freesans', '', 8);
+    	 
+    	 
+    	 
+    	$bMargin = $pdf->getBreakMargin();
+    	$auto_page_break = $pdf->getAutoPageBreak();
+    	$pdf->SetAutoPageBreak(false, 0);
+    	 
+    	$pdf->AddPage();
+    	 
+    	// Background pattern
+    	$img_file = 'assets/img/pdfBackground.jpg';
+    	$pdf->Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
+    	 
+    	$pdf->SetAutoPageBreak($auto_page_break, $bMargin);
+    	$pdf->setPageMark();
+    	 
+    	 
+    	$html = '
+<table>
+	<tr>
+		<td>&nbsp;&nbsp;</td>
+		<td style="text-align:center;">
+			<br/><br/>
+    		<img src="assets/img/koleves_logo_vendeglo.png" style="width:100px;height:100px;"/>
+    			<br/>
+    		<span style="font-size:22px;font-weight:bold;">'.($_SESSION['helper']->getLang() == 'hu' ? 'ITALLAP' : 'DRINKS').'</span>
+    		<br/>
+		</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	</tr>
+    
+</table>
+   
+<div style="text-align:center;">';
+    	 
+    	foreach ($kategoriak AS $kategoria => $kategoriaAdat){
+    		$html .= '<span style="font-size:12px;font-weight:bold;">&bull; '.$kategoria.' &bull;</span><p>';
+    	  
+    		foreach ($kategoriaAdat['italok'] AS $etelAdat){
+    			$html .= $etelAdat['MEGNEVEZES'].' <strong>'.$etelAdat['AR'].' Ft</strong><br/>';
+    		}
+    
+    		$html .= '</p>';
+    	  
+    	}
+    	 
+    	
+    	$html .= '</div>';
+    
+    	 
+    	$pdf->writeHTML($html, true, false, true, false, '');
+    	 
+    	$pdf->Output('Koleves-Drinks.pdf', 'D');
+    }
+    
+    
 }
 ?>

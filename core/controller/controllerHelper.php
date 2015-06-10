@@ -57,6 +57,13 @@ class Helper{
     	}    	    	
     }
     
+    public function dispatchUser(){
+    	if (isset($_SESSION['user'])){
+    		unset($_SESSION['user']);
+    	}
+    }
+    
+    
     public function getBasket(){
     	//TODO delicates
     }
