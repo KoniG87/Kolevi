@@ -582,7 +582,7 @@ class Menu extends BaseObject{
     
     
     public function generateEtlapPDF(){
-    	$kategoriak = $this->getEtlapData();
+    	$kategoriak = $this->getEtlapData(true);
     			
 		
     	require_once('assets/libs/tcpdf/tcpdf.php');
@@ -624,9 +624,9 @@ class Menu extends BaseObject{
 		<td>&nbsp;&nbsp;</td>
 		<td style="text-align:center;">
 			<br/><br/>
-    		<img src="assets/img/koleves_logo_vendeglo.png" style="width:100px;height:100px;"/>
+    		<img src="assets/img/koleves_logo_vendeglo.png" style="width:80px;height:80px;"/>
     			<br/>
-    		<span style="font-size:22px;font-weight:bold;">'.($_SESSION['helper']->getLang() == 'hu' ? 'ÉTLAP' : 'MENU').'</span>
+    		<span style="font-size:20px;font-weight:bold;">'.($_SESSION['helper']->getLang() == 'hu' ? 'ÉTLAP' : 'MENU').'</span>
     		<br/>
 		</td>
 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -637,10 +637,10 @@ class Menu extends BaseObject{
 <div style="text-align:center;">';
     	
 	    foreach ($kategoriak AS $kategoria => $kategoriaAdat){
-	    	$html .= '<span style="font-size:12px;font-weight:bold;">&bull; '.$kategoria.' &bull;</span><p>'; 	
+	    	$html .= '<span style="font-size:11px;font-weight:bold;">&bull; '.$kategoria.' &bull;</span><p>'; 	
 	    
 	    	foreach ($kategoriaAdat['etelek'] AS $etelAdat){
-	    		$html .= $etelAdat['MEGNEVEZES'].' '. (!is_null($etelAdat['TAGEK']) && trim($etelAdat['TAGEK']) != "" ? '&bull; '.$etelAdat['TAGEK'] : '').' - <strong>'.$etelAdat['AR'].' Ft</strong><br/>';	
+	    		$html .= $etelAdat['MEGNEVEZES'].' '. (!is_null($etelAdat['TAGEK']) && trim($etelAdat['TAGEK']) != "" ? '&bull; '.$this->fetchAllergenIcon($etelAdat['TAGEK'], 12) : '').' - <strong>'.$etelAdat['AR'].' Ft</strong><br/>';	
 	    	}
 	    	
 	    	$html .= '</p>';

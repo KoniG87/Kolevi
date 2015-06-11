@@ -320,7 +320,6 @@ class Vendeglo extends BaseObject{
     			 
     			$SQL = "INSERT INTO koleves_asztalfoglalasok SET nev = ?, email = ?, megjegyzes = ?, hanyfo = ?, idopont = ?;";
     			
-    			
     			$queryParams = array(
     					$_POST['nev'],
     					$_POST['email'],

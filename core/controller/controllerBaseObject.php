@@ -80,8 +80,14 @@ class BaseObject{
     	return $allergenArray;
     }
     
-    protected function fetchAllergenIcon($allergenString){
-    	 
+    
+    /**
+     * Converts comma-separated allergen tags to PDF compliant image format
+     * @param string $allergenString comma-separated string containing allergen tag numbers
+     * @param integer $imageSize provided size (width & height in one) for image output (default 16)
+     * @return string constructed images ready for inserting into html formatted output aimed at pdf 
+     */    
+    protected function fetchAllergenIcon($allergenString, $imageSize = 16){
     	$viewOutput = '';
     	$allergenArray = $this->explodeIconString($allergenString);
     	 
@@ -93,14 +99,19 @@ class BaseObject{
     			$iconPath = 'assets/img/allerg_00.jpg';
     		}
     
-    		$viewOutput .= '<img src="'.$iconPath.'" alt="Allergen" style="width:18px;height:18px;"/>';
+    		$viewOutput .= '<img src="'.$iconPath.'" alt="Allergen" style="width:'.$imageSize.'px;height:'.$imageSize.'px;"/>';
     	}
     	return $viewOutput;
     
     }
+
     
+    /**
+     * Converts comma-separated allergen tags to html browser compliant image format 
+     * @param string $allergenString
+     * @return string constructed images ready for inserting into html formatted output aimed at browser
+     */
     protected function fetchAllergenSpan($allergenString){
-    
     	$viewOutput = '';
     	$allergenArray = $this->explodeIconString($allergenString);
     
