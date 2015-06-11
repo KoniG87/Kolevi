@@ -110,4 +110,6 @@ if (isset($_GET['sec'])){
   <style type="text/css">
   	.countdownRemainder{}
   	.dashMenuActive{background:rgba(24,188,156,0.2);}
+  	td{transition:background-color 0.5s;}
+  	.justAdded td{background-color:#18bc9c;transition:background-color 0.5s;}
   </style>

@@ -83,7 +83,7 @@
 				etterem: $('input[name="etterem"]').val(),
 				tagek: ($('.selected').length > 0 ? $('.selected').map(function(){ return $(this).attr("data-val"); 	}).get().join(',') : ''),
 				ar: $('input[name="ar"]').val(),
-				sorrend: $('input[name="number"]').val()
+				sorrend: $('input[name="sorrend"]').val()
 			};
 
 
@@ -106,7 +106,7 @@
 						});
 						$('input[name="id"]').val("0");
 						
-
+						$(":input").removeClass('missing');
 						if (data.id != "0"){
 							$('td:nth-of-type(1)', triggeredRow).text(data.text);
 							$('td:nth-of-type(2)', triggeredRow).attr('data-val', data.tagek);
@@ -121,10 +121,23 @@
 							if (data.kategoria != elozoKategoria){
 								$('.etlapTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after(triggeredRow);
 							}
+							triggeredRow.addClass('justAdded');
 						}else{
-							$('.etlapTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after('<tr data-id="'+resp['inputID']+'"><td>'+data.text+'</td><td>'+data.tagek+'</td><td>'+data.ar+'</td><td>'+data.sorrend+'</td><td><button class="editEtel">Szerkesztés</button></td><td><button class="deleteEtel">Törlés</button></td></tr>');
+							$('.etlapTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after('<tr class="justAdded" data-id="'+resp['inputID']+'"><td>'+data.text+'</td><td>'+data.tagek+'</td><td>'+data.ar+'</td><td>'+data.sorrend+'</td><td><button class="editEtel">Szerkesztés</button></td><td><button class="deleteEtel">Törlés</button></td></tr>');
+							triggeredRow = $("tr.justAdded");
 						}
 
+						$(triggeredRow).velocity("scroll", {
+				            duration: 800,
+				            easing: "ease",
+				            offset:-350,
+				            complete: function(){
+								$("tr.justAdded").removeClass("justAdded");
+					    	} 
+					        
+				    	});
+
+						
 						$('.allergenSelector').removeClass('selected');
 						
 					}
