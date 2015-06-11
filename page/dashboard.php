@@ -90,8 +90,8 @@ if (isset($_GET['sec'])){
   <script type="text/javascript">
 	$(document).ready(function(){
 		
-		$('input, select').focus(remainderCharacters);
-		$('input, select').keyup(remainderCharacters);
+		$('input, select, textarea').focus(remainderCharacters);
+		$('input, select, textarea').keyup(remainderCharacters);
 	});
 
 

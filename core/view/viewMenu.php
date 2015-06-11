@@ -411,8 +411,7 @@ class MenuView extends BaseView{
     
     
 public function drawKertEtlap($elements){
-     /*print_r($elements);
-     exit;*/
+     
 		echo '<section id="etlap">';
 		
 		$this->drawSectionLabel("Étlap", "etlap", 2);

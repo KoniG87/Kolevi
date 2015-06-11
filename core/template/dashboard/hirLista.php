@@ -12,7 +12,7 @@
                 <input type="hidden" name="id" value="0"/>
                 <label>Típus</label></td>
 			<td>
-                <input type="hidden" name="id" value="0"/>
+                
                 <select name="tipus" title="Hírelem jellege" required>
                     <option value=""></option>
                     <option value="1">Rendezvény</option>
@@ -20,7 +20,7 @@
                     <option value="3">Link-nélkül</option>
                     <option value="4">Külső hivatkozás</option>
                 </select>
-			<span class="tooltip">Hírelem jellege</span>
+				<span class="tooltip">Hírelem jellege</span>
 			</td>
 		</tr>
     
@@ -71,8 +71,8 @@
 ?>
 	</tbody>
 </table>
-<link href="assets/css/datepicker.css" rel="stylesheet" type="text/css"/>
-<script src="assets/js/vendor/jquery-ui.min.js"></script>
+<link href="<?=$_SESSION['helper']->getPath()?>assets/css/datepicker.css" rel="stylesheet" type="text/css"/>
+<script src="<?=$_SESSION['helper']->getPath()?>assets/js/vendor/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var triggeredRow;
@@ -151,7 +151,7 @@
 							$('td:nth-of-type(2)', triggeredRow).text(data.allapot ? 'Igen' : 'Nem');
 							
 						}else{
-                    $('.hirTabla tbody').after('<tr data-id="'+resp['inputID']+'"><td>'+data.text_hu+'</td><td>'+data.allapot+'</td><td><button class="editHir">Szerkesztés</button></td></tr>');
+                    $('.hirTabla tbody').after('<tr data-id="'+resp['inputID']+'"><td>'+data.text_hu+'</td><td>'+data.allapot+'</td><td><button class="editHir">Szerkesztés</button></td><td><button class="deleteHir">Törlés</button></td></tr>');
                         }
 				});
 			}

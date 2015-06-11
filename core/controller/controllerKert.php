@@ -26,7 +26,16 @@ class Kert extends BaseObject{
     }
     
     
-      
+    public function drawKertEtlap(){
+    	$elements = array(
+    		'kategoriak' => $this->getEtlapData()
+    	);
+    
+    
+    	$this->view->drawKertEtlap($elements);
+    }  
+    
+    
     public function drawRendezveny(){
     	$szervezoSQL = "SELECT NEV, KEP, TELEFON, EMAIL, FACEBOOK FROM koleves_dolgozok WHERE rendezvenyfelelos = 1;";
     	

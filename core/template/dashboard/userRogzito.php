@@ -44,7 +44,8 @@
 		</tr>
 		<tr>
 			<td><label>Rövid leírás</label></td>
-			<td><textarea type="text" name="megjegyzes" maxlength="4096" title="Rövid leírás" maxlength="500"><?=$userData['megjegyzes']?></textarea>
+			<td>
+			<textarea type="text" name="megjegyzes" maxlength="4096" title="Rövid leírás" maxlength="500"><?=$userData['megjegyzes']?></textarea>
 			<span class="tooltip">Rövid leírás, max. 4096 karakter</span>
 			</td>
 		</tr>

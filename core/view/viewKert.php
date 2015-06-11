@@ -18,6 +18,189 @@ class KertView extends BaseView{
     
     
     
+    
+    public function drawKertEtlap($elements){
+    	 
+    	echo '<section id="etlap">';
+    
+    	$this->drawSectionLabel("Étlap", "etlap", 2);
+    
+    	echo '
+     		<div class="row clearfix">
+        <div class="three columns left illusztracio">
+        <p class="ehes-szomjas">Éhes vagy?</p>
+    <img data-src="assets/img/asztalos_bacsi.png" alt="kert étlap" class="lazy illusztracio" >
+    <noscript>
+      <img src="assets/img/asztalos_bacsi.png" alt="kert étlap">
+    </noscript>
+    
+        </div>
+             <div class="eight columns right  itallap etel-fold">';
+    	 
+    	foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
+    
+    		echo '<ul class="fold-list">
+                    <div class="etel-head">
+        <svg class="icon icon-'.$kategoriaAdat['ikon'].'"><use xlink:href="#icon-'.$kategoriaAdat['ikon'].'"></use></svg>
+        '.$kategoria.'</div>';
+    
+    		$italSzamlalo = 0;
+    		$osszesItal = sizeof($kategoriaAdat['etelek']);
+    
+    		$containerSzamlalo = 1;
+    		$maxElemSzam = 3;
+    
+    		$italContainer = array();
+    		foreach ($kategoriaAdat['etelek'] AS $ital){
+    			array_push($italContainer, $ital);
+    			$italSzamlalo += 1;
+    			 
+    			if (sizeof($italContainer) % $maxElemSzam == 0 || $italSzamlalo == $osszesItal){
+    				echo '<li>';
+    				$this->loadTemplate('itallapElem', $italContainer);
+    				echo '</li>';
+    				$containerSzamlalo++;
+    
+    				if ($containerSzamlalo == 1 || $containerSzamlalo == $osszesItal){
+    					$maxElemSzam = 3;
+    				}else{
+    					$maxElemSzam = 4;
+    				}
+    
+    
+    				$italContainer = array();
+    			}
+    		}
+    
+    		if ($containerSzamlalo % 2 == 1){
+    			echo '<li>
+         <p></p><b></b>
+         <p></p><b></b>
+         <p></p><b></b>
+        </li>';
+    		}
+    
+    		echo '</ul>';
+    	}
+    	 
+    	echo '
+       </div>
+           </div>
+                ';
+    	 
+    }
+    
+    
+    public function drawItallap($elements, $helyiseg){
+    	echo '<div class="row clearfix">';
+    	 
+    	if ($helyiseg == 'kert'){
+    		echo '
+   
+             <div class="three columns right illusztracio">
+             <p class="ehes-szomjas">Szomjas vagy?</p>
+    		 <img data-src="assets/img/asztalos_neni.png" alt="Kert itallap" class="lazy illusztracio">
+    		<noscript>
+      			<img src="assets/img/asztalos_neni.png" alt="Kert itallap">
+    			</noscript>
+  			</div>';
+    	}
+    	if ($helyiseg == 'vendeglo'){
+    		echo '<div class="twelve columns centered itallap ital-fold vendeglo-itallap">';
+    	}
+    	else{
+    		echo '<div class="twelve columns centered itallap ital-fold">';
+    	}
+    	foreach ( $elements as $kategoria => $kategoriaAdatok ) {
+    		echo '<ul class="fold-list">
+			<div class="itallap-head">
+	        <svg class="icon icon-' . $kategoriaAdatok ['ikon'] . '"><use xlink:href="#icon-' . $kategoriaAdatok ['ikon'] . '"></use></svg>
+	        ' . $kategoria . '</div>';
+    
+    		$italSzamlalo = 0;
+    		$osszesItal = sizeof ( $kategoriaAdatok ['italok'] );
+    
+    		$containerSzamlalo = 0;
+    		$maxElemSzam = 3;
+    
+    		$italContainer = array ();
+    		foreach ( $kategoriaAdatok ['italok'] as $ital ) {
+    			array_push ( $italContainer, $ital );
+    			$italSzamlalo += 1;
+    				
+    			if (sizeof ( $italContainer ) % $maxElemSzam == 0 || $italSzamlalo == $osszesItal) {
+    				echo '<li>';
+    				$this->loadTemplate ( 'itallapElem', $italContainer );
+    				echo '</li>';
+    				$containerSzamlalo ++;
+    					
+    				if ($containerSzamlalo > 1 || $italSzamlalo == $osszesItal) {
+    					$maxElemSzam = 3;
+    				} else {
+    					$maxElemSzam = 4;
+    				}
+    					
+    				$italContainer = array ();
+    			}
+    		}
+    
+    		if ($containerSzamlalo % 3 != 0){
+    			for ($i = (3- $containerSzamlalo % 3 ); $i > 0; $i--){
+    				echo '<li>
+        	 <p></p><b></b>
+         	<p></p><b></b>
+         	<p></p><b></b>
+        	</li>';
+    			}
+    			 
+    		}
+    
+    		echo '</ul>';
+    	}
+    	 
+    
+    	if ($helyiseg == 'kert'){
+    		echo '
+	     <a class="dl-pdf dl-pdf-itallap" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
+	     <form id="requestEtlapForm" method="post" action="'.$_SESSION['helper']->getPath().'requestHandler" target="_blank">
+			<input type="hidden" name="request" value="generateKertEtlapPDF"/>
+	     </form>
+	     <script type="text/javascript">
+			$(document).ready(function(){
+	    		$(".dl-pdf-itallap").click(function(e){
+	    			e.preventDefault();
+	     			$("#requestEtlapForm").submit();
+    
+	    		});
+	    	});
+	     </script>';
+    	}
+    	if ($helyiseg == "vendeglo"){
+    		echo '
+	     <a class="dl-pdf dl-pdf-itallap" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
+	     <form id="requestEtlapForm" method="post" action="'.$_SESSION['helper']->getPath().'requestHandler" target="_blank">
+			<input type="hidden" name="request" value="generateVendegloItallapPDF"/>
+	     </form>
+	     <script type="text/javascript">
+			$(document).ready(function(){
+	    		$(".dl-pdf-itallap").click(function(e){
+	    			e.preventDefault();
+	     			$("#requestEtlapForm").submit();
+	  
+	    		});
+	    	});
+	     </script>';
+    	}
+    	 
+    	echo '
+       </div>
+    
+                    </div>
+                </section>';
+    	 
+    }
+    
+    
     public function drawProgram($elements){
     	$monthNames = array(
     			1	=> 'január',
@@ -258,22 +441,22 @@ ennyire nyüzsgő belváros legyünk.</p>
 			</div>
 			<div class="row clearfix">
 				<div class="twelve columns">
-					<h3>Mi</h3>
-					<p>Igazán fiatalos, modern arcok vagyunk - és mindemellett még finomkat is főzünk! Gyere be hozz, akár csak egy kávéra is, ha nem szeretnéd otthon egyedül meginni, hanem kedves társasággal szeretnéd megosztani a reggeli lendületet!</p>
-					 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-			
-			
-			<form action="?" method="POST">
-			  <!--<div class="g-recaptcha" data-sitekey="6LctzgUTAAAAAEDRtdJAynba8NWcjWKgSsTtUnP7"></div>-->
-			  <br/>
-			</form>
+					
 					<div class="rolunk-container clearfix">
 					
 						';
 		/*
 		*	Recaptcha form
 		*/
-	/*	echo '<form method="post" action="verify.php">
+	/*	
+	 * <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+			
+			
+			<form action="?" method="POST">
+			  <!--<div class="g-recaptcha" data-sitekey="6LctzgUTAAAAAEDRtdJAynba8NWcjWKgSsTtUnP7"></div>-->
+			  <br/>
+			</form>
+	 * echo '<form method="post" action="verify.php">
 		<div class="rolunk-ikon">
 		<svg class="icon icon-phone"><use xlink:href="#icon-phone"></use></svg>
 	</div>

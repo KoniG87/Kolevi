@@ -604,7 +604,7 @@ class VendegloView extends BaseView{
                 <td>'.$hirData['felirat'].'</td>
                 <td>'.getDecisionText($hirData['allapot']).'</td>
                 <td><button class="editHir">Szerkesztés</button></td>
-                
+                <td><button class="deleteHir">Törlés</button></td>
             </tr>';
         }
     }

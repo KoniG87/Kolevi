@@ -192,7 +192,7 @@ class ApartmanView extends BaseView{
     	<div class=" seven columns">
     		<div class="szoba-carousel">';
     	
-    	$slideOutput = '';
+    	$slideOutput = '<div><img src="'.$szobaData['kezdokep'].'" alt=""></div>';
     	foreach ($szobaData['kepek'] AS $kepData){
     		$slideOutput .= '<div><img src="'.$kepData['fajlnev'].'" alt=""></div>'; 
     	}

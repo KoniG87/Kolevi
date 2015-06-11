@@ -10,6 +10,7 @@
 	$(document).ready(function(){
 		var triggeredRow;
 		var elozoKategoria;
+		
 		$(document).on('click', '.editCikk', function(){
 			
 			containingRow = $(this).parents('tr');

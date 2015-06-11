@@ -216,7 +216,7 @@ class Menu extends BaseObject{
     
     public function drawKertEtlap(){
     	$elements = array(
-    			'kategoriak' => $this->getEtlapData()
+    		'kategoriak' => $this->getEtlapData()
     	);
     
     	 

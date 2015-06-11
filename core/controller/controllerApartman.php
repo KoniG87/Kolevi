@@ -64,7 +64,7 @@ class Apartman extends BaseObject{
     
     public function drawSzobak(){
     	$elements = array(
-    		'szobak'	=> $this->getSzobaData()
+    		'szobak'	=> $this->getSzobaData(0)
     	);
     	
     	$this->view->drawSzobak($elements);
