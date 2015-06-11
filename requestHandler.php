@@ -1,7 +1,6 @@
 <?php 
-
+include('core/config.php');
 if (isset($_POST['request'])){
-	include('core/config.php');
 
 	switch ($_POST['request']){
 		
@@ -174,12 +173,10 @@ if (isset($_POST['request'])){
 		$_POST = $_GET;
 		$vendeglo = new Vendeglo($app->getDbHandler());
 		$vendeglo->updateFoglalas();
-		
+			
 	}else{
-	
 		if (isset($_SERVER['HTTP_REFERER'])){
-			include('core/config.php');
-		
+			
 			$menu = new Menu($app->getDbHandler());
 			$menu->generateEtlapPDF();
 		}else{

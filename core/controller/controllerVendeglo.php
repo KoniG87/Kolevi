@@ -310,7 +310,8 @@ class Vendeglo extends BaseObject{
     	try{
     		$this->beginTransaction();
     	
-    			    		
+
+    		$_POST['datum'] = str_replace(array(' ', '.'), array('', '-'), $_POST['datum']);
     		
     		/*
     		 * Új sor beszúrása
@@ -318,7 +319,8 @@ class Vendeglo extends BaseObject{
     		if ($_POST['id'] == "0"){
     			 
     			$SQL = "INSERT INTO koleves_asztalfoglalasok SET nev = ?, email = ?, megjegyzes = ?, hanyfo = ?, idopont = ?;";
-    			 
+    			
+    			
     			$queryParams = array(
     					$_POST['nev'],
     					$_POST['email'],
