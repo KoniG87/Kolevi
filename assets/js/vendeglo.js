@@ -386,8 +386,8 @@ $(".datepicker").datetimepicker({
   timepicker:false,
   format:'Y . m . d',
   closeOnDateSelect:true,
-  minDate:0,
-  todayButton:false,
+/*  minDate:0,
+  todayButton:false,*/
   dayOfWeekStart: 1,
   startDate:new Date()
 });

@@ -506,7 +506,7 @@ public function drawKertEtlap($elements){
 		echo '<ul class="fold-list">
 			<div class="itallap-head">
 	        <svg class="icon icon-' . $kategoriaAdatok ['ikon'] . '"><use xlink:href="#icon-' . $kategoriaAdatok ['ikon'] . '"></use></svg>
-	        ' . $kategoria . '</div>';
+	        <span>'.$kategoria.'</span></div>';
 				
 		$italSzamlalo = 0;
 		$osszesItal = sizeof ( $kategoriaAdatok ['italok'] );

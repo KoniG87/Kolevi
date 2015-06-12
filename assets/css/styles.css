@@ -3930,6 +3930,13 @@ header {
         width: 60px;
         height: 60px;
         top: 16px; } }
+  .itallap-head span, .etel-head span {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
 
 .fold-list {
   -webkit-perspective: 400px;
@@ -5708,6 +5715,9 @@ section {
 .itallap-head {
   background-size: cover !important;
   background-repeat: no-repeat !important; }
+
+.rolunk-visible {
+  background-size: 100% 100% !important; }
 
 .kert-container {
   padding-top: 10rem; }

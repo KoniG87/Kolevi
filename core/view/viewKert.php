@@ -42,7 +42,8 @@ class KertView extends BaseView{
     		echo '<ul class="fold-list">
                     <div class="etel-head">
         <svg class="icon icon-'.$kategoriaAdat['ikon'].'"><use xlink:href="#icon-'.$kategoriaAdat['ikon'].'"></use></svg>
-        '.$kategoria.'</div>';
+        <span>'.$kategoria.'</span>
+        </div>';
     
     		$italSzamlalo = 0;
     		$osszesItal = sizeof($kategoriaAdat['etelek']);
@@ -115,7 +116,7 @@ class KertView extends BaseView{
     		echo '<ul class="fold-list">
 			<div class="itallap-head">
 	        <svg class="icon icon-' . $kategoriaAdatok ['ikon'] . '"><use xlink:href="#icon-' . $kategoriaAdatok ['ikon'] . '"></use></svg>
-	        ' . $kategoria . '</div>';
+	        <span>'.$kategoria.'</span></div>';
     
     		$italSzamlalo = 0;
     		$osszesItal = sizeof ( $kategoriaAdatok ['italok'] );

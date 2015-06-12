@@ -459,6 +459,10 @@ background-position: -260px 0;
 		top: 16px;
 		}
 	}
+	span{
+		margin:auto;
+		@include abs-pos(0,0,0,0);
+	}
 }
 
 .fold-list{
@@ -2351,4 +2355,7 @@ section{
 .itallap-head {
 	background-size: cover !important;
 	background-repeat: no-repeat !important;
+}
+.rolunk-visible{
+	background-size: 100% 100% !important;
 }

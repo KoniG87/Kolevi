@@ -92,7 +92,9 @@ aside{
 	height: 100%;
 	position: fixed;
 	left:0;
-	top:5rem;
+	top:0;
+	padding:6rem 0 2rem 0;
+	overflow: auto;
 }
 
 aside ul{
