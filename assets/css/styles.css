@@ -3088,7 +3088,7 @@ footer {
     font-size: 90%;
     /*display: inline-block;*/
     width: 14.285714285714285714285714285714%;
-    width: calc(100% / 7);
+    /* 			width: calc(100% / 7); */
     -webkit-perspective: 200px;
     perspective: 200px; }
     .sitckyNav .row a:hover {

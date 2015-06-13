@@ -24,7 +24,7 @@
 			/*display: inline-block;*/
 			@extend .left;
 			width: 14.285714285714285714285714285714%;
-			width: calc(100% / 7);
+/* 			width: calc(100% / 7); */
 			@include perspective(200px);
 			&:hover{
 				color:$white;
