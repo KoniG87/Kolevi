@@ -287,6 +287,10 @@ function validateTime(timeString) {
   var regEx = /^\s*([01]?\d|2[0-3]):?([0-5]\d)\s*$/;
   return timeString.match(regEx) != null;
 }
+function validatePhone(phoneNum){
+  var regEx = /^[a-zA-Z0-9\-().\s]{10,15}$/;
+  return phoneNum.match(regEx) != null;
+}
 
 
 /* TOOLTIP CLASS ÉS TITLE INJECTION*/
@@ -301,6 +305,7 @@ addTooltipText("#nl-form > div > div.nl-field.nl-dd > a","Hányan főre kellene 
 addTooltipText("#nl-form > div > input.datepicker","Adj meg egy dátumot");
 addTooltipText("#nl-form > div > input.timepicker","Adj meg egy időpontot");
 addTooltipText("#nl-form > div > div:nth-child(11) > a","Légyszi add meg az email címed");
+addTooltipText("#nl-form > div > div:nth-child(14) > a","Légyszi add meg a telefonszámod");
 
 /* INIT TOOLTIP */
 
@@ -334,19 +339,22 @@ var newDate = new Date();
     if($("#nl-form > div > div:nth-child(4) > a").text().length <= 3){ //valid name
         regTooltip("#nl-form > div > div:nth-child(4) > a");
     }
-    else if (!validateDate($("#nl-form > div > input.datepicker").val())){
+    else if (!validateDate($("#nl-form > div > input.datepicker").val())){ //valid date
         regTooltip('#nl-form > div > input.datepicker');
     }
-    else if (!validateTime($("#nl-form > div > input.timepicker").val())){
+    else if (!validateTime($("#nl-form > div > input.timepicker").val())){ //valid time
         regTooltip('#nl-form > div > input.timepicker');
     }
-    else if($("#nl-form > div > input.datepicker").val() == newDate.today() && newDate.timeNow() > "09:00"){
+    else if($("#nl-form > div > input.datepicker").val() == newDate.today() && newDate.timeNow() > "09:00"){//valid time and date
       var nextTimeBaby = "Reggel 9:00-után már csak másnapra tudsz nálunk foglalni";
       $("#nl-form > div > input.timepicker").tooltipster('content', nextTimeBaby);
       regTooltip('#nl-form > div > input.timepicker');
     }
     else if (!validateEmail($('#nl-form > div > div:nth-child(11) > a').text())) { //valid mail
         regTooltip('#nl-form > div > div:nth-child(11) > a');
+    }
+    else if (!validatePhone($('#nl-form > div > div:nth-child(14) > a').text())) { //valid phone
+        regTooltip('#nl-form > div > div:nth-child(14) > a');
     }
     else{
       $("#nl-form > div > div:nth-child(4) > a, #nl-form > div > input.datepicker, #nl-form > div > input.timepicker, #nl-form > div > div:nth-child(11) > a").tooltipster('hide');
