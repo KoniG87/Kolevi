@@ -665,6 +665,7 @@ $(".barkas").on("mouseleave",barkasAccordionClose);
       deliSide = delic.find(".delic-side"),
       deliFront = delic.find(".delic-front"),
       fogaskerek = delic.find(".delic-fogaskerek"),
+      delicKihuzo = delic.find(".delic-kihuzo"),
 //apartman
       apartFront = apart.find(".apartman-front"),
       apartKihuzo = apart.find(".apartman-kihuzo-container");
@@ -704,7 +705,7 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
     out:hoverOff,
     interval:250
   });
-
+  delicKihuzo.velocity({rotateZ:"90deg"}, 0);
 
     // $(".illustration-container>.hoverEffect").on("mouseleave",function(){
 				// hoverOff();
@@ -762,7 +763,9 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
       apart.delay(100).velocity({rotateX:"55deg"}, {duration: 2000, easing: [ 300, 20 ]});
 
 
-      fogaskerek.delay(200).velocity({rotateZ:"-300deg"}, {duration: 1600});
+      fogaskerek.delay(200).velocity({rotateZ:"-300deg"}, {duration: 1600, complete:function(){
+        delicKihuzo.velocity({rotateZ:"0deg"}, easing);
+      }});
       kemeny.delay(200).velocity({bottom: 200}, {duration: 1600},{queue:false});
       bkutya.velocity({rotateX:"-65deg"}, easing);
       keriFL.delay(150).velocity({rotateX:"-110deg"}, easing);
@@ -770,6 +773,7 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
       vendFront.velocity({rotateX:"-110deg"}, {duration: 3000, easing: [ 300, 14 ]});
       fa.delay(200).velocity({rotateX:"50deg"}, easing);
       // kertKihuzo.delay(250).velocity({rotateX:"20deg"}, easing);
+      
     }
     else if(thisOne.hasClass("apartman")){
       /*keriSide.delay(100).velocity({rotateX:"-20deg"}, {duration: 2500, easing: [ 300, 20 ]});*/
@@ -899,6 +903,7 @@ if($(this).hasClass("vendeglo")){
           fogaskerek.velocity(alap);
           kertAsztal.delay(100).velocity(alap);
           apartKihuzo.delay(200).velocity({top: 0});
+          delicKihuzo.velocity({rotateZ:"90deg"});
         }    
         else if ($(this).hasClass("apartman")) {
           apartKihuzo.velocity(alap);

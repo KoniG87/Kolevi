@@ -269,19 +269,17 @@ echo '
       </ul>
       <ul>
         <svg class="icon icon-apartman"><use xlink:href="#icon-apartman"></use></svg>
-       <a href="apartman#terkep"><li>Térkép</li></a>
-    		<a href="apartman#hely"><li>A hely</li></a>
+        <a href="apartman#terkep"><li>Térkép</li></a>
+        <a href="apartman#hely"><li>A hely</li></a>
         <a href="apartman#szobak"><li>Szobák</li></a>
         <a href="apartman#kepek"><li>Képek</li></a>
 
       </ul>
       <ul>
         <svg class="icon icon-delicates"><use xlink:href="#icon-delicates"></use></svg>
-        '.(false ? '<a href=""><li>valami</li></a>
-        <a href=""><li>valami</li></a>
-        <a href=""><li>valami</li></a>
-        <a href=""><li>valami</li></a>
-        <a href=""><li>valami</li></a>' : '<li>Hamarosan</li>').'
+        <a href="delicates#delicates"><li>Delicatesről</li></a>
+        <a href="delicates#bolt"><li>Bolt</li></a>
+        <a href="delicates#kepek"><li>Képek</li></a>
       </ul>
       </div>
     </nav>';
@@ -322,10 +320,10 @@ echo '
 			<article class="right">
 				<h4>nyitvatartás</h4>
     
-				<p>Mon - Fri:</p>
-				<p>8:00 am - 12:00 am</p>
-				<p>Sat - Sun:</p>
-				<p>9:00 am - 12:00 am</p>
+				<p>Hétfő - Péntek:</p>
+				<p>8:00 - 12:00</p>
+				<p>Szombat - Vasárnap:</p>
+				<p>9:00 - 12:00</p>
 			</article>
 		</div>
 	</div>
@@ -358,11 +356,9 @@ echo '
 			</ul>
 			<ul>
 				<h4>delicates</h4>
-				'.(false ? '<a href=""><li>valami</li></a>
-				<a href=""><li>valami</li></a>
-				<a href=""><li>valami</li></a>
-				<a href=""><li>valami</li></a>
-				<a href=""><li>valami</li></a>' : '<li>Hamarosan</li>').'
+                <a href="delicates#delicates"><li>Delicatesről</li></a>
+                <a href="delicates#bolt"><li>Bolt</li></a>
+                <a href="delicates#kepek"><li>Képek</li></a>
 			</ul>
             <div class="diszvonal-vert" style="right:0;"></div>
 		</div>

@@ -137,53 +137,33 @@
                     
                      <div class="delic-side hoverEffect"></div>
 
-                     <div class="delic-kemeny hoverEffect">
                         <div class="delic-kihuzo">
                           <nav>
                             <ul>
-                              <a href="vendeglo">
-                                <li>Hamarosan!</li>
+                              <a href="delicates#delicates">
+                                <li>Delicatesről</li>
                               </a>
+                              <a href="delicates#bolt">
+                                <li>Bolt</li>
+                              </a>
+                              <a href="delicates#kepek">
+                                <li>Képek</li>
+                              </a>
+
                             </ul>
                           </nav>
+                      </div>
+
+                     <div class="delic-kemeny hoverEffect">
+
                       <div class="delic-kihuzo-ful">
                         <svg class="icon icon-delicates-2"><use xlink:href="#icon-delicates-2"></use></svg>
                       </div>
-                        </div>
+                       
                        <div class="delic-kemeny-kemeny"></div>
                      </div>
                     <div class="delic-fogaskerek"></div>
                     <div class="delic-front hoverEffect"></div>
-
-
-
-
-
-<!--                     <div class="delic-kihuzo-container">
-
-                      <div class="delic-mask">
-
-                        <div class="delic-kihuzo">
-                          <nav>
-                            <ul>
-                              <a href="vendeglo">
-                                <li>Hamarosan!</li>
-                              </a>
-                            </ul>
-                          </nav>
-
-                        </div>
-
-                      </div>
-
-                      <div class="delic-kihuzo-ful">
-                        <svg class="icon icon-delicates-2"><use xlink:href="#icon-delicates-2"></use></svg>
-                      </div>
-
-                    </div> -->
-
-
-
 
 
                 </div>
@@ -235,11 +215,6 @@
                         </div>
                   </div>
                     <div class="vend-kerites-front-left hoverEffect"></div>
-                    <!-- <div class="vend-bokor-kutya hoverEffect"></div> -->
-
-
-
-
 
                 </div>
                </div>
@@ -302,11 +277,9 @@
                   </div>
                   <div class="mobile-delicates mob-trigger">
                       <ul>
-                        <a href=""><li>Hamarosan</li></a>
-<!--                         <a href=""><li>valami</li></a>
-                        <a href=""><li>valami</li></a>
-                        <a href=""><li>valami</li></a>
-                        <a href=""><li>valami</li></a> -->
+                        <a href="delicates#delicates"><li>Delicatesről</li></a>
+                        <a href="delicates#bolt"><li>Bolt</li></a>
+                        <a href="delicates#kepek"><li>Képek</li></a>
                       </ul>
                   </div>
                 </div>
