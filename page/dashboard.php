@@ -19,15 +19,15 @@ if (isset($_GET['sec'])){
         	),
         	'kert' => array(
         		'link'	=> 	'kert',
-        		'szoveg' => 'Vendéglő'
+        		'szoveg' => 'Kert'
         	),
         	'delicates' => array(
-        		'link'	=> 	'vendeglo',
-        		'szoveg' => 'Hamarosan'
+        		'link'	=> 	'delicates',
+        		'szoveg' => 'Delicates'
         	),
         	'apartman' => array(
         		'link'	=> 	'apartman',
-        		'szoveg' => 'Vendéglő'
+        		'szoveg' => 'Apartman'
         	)
         );
         

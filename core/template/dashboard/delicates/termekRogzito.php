@@ -1,13 +1,14 @@
 <?php 
-    $vendeglo = new Vendeglo($app->getDbHandler());
-    $rendezvenyID = isset($_POST['id']) ? $_POST['id'] : null;
+    $termek = new Termek($app->getDbHandler());
+    $termekID = isset($_POST['id']) ? $_POST['id'] : null;
     
 ?>
-<h2>Rendezvény rögzítése</h2>
-<button id="saveRendezveny">Rendezvény mentése</button>
+<h2>Termék rögzítése</h2>
+
+<button id="saveTermek">Termék mentése</button>
 <form id="editForm">
 <?php
-	$vendeglo->drawRendezvenyAdmin($rendezvenyID);
+	$termek->drawTermekAdmin($termekID);
 ?>
 </form>
 
@@ -30,12 +31,12 @@
 			
 		});
 		
-		$('#saveRendezveny').click(function(){
+		$('#saveTermek').click(function(){
 			canSubmit = true;
 			data = {
                 id: $('#editForm input[name="id"]').val(),
-				text: $('#editForm input[name="text_hu"]').val(),
-				leiras: $('#editForm textarea[name="leiras_hu"]').val(),
+				text: $('#editForm input[name="text"]').val(),
+				leiras: $('#editForm textarea[name="leiras"]').val(),
 				allapot: 1,
 				kepTipus: 1
 			};
@@ -51,10 +52,10 @@
 			});
 
 			if (canSubmit){
-                data.request = 'rendezvenyUpdate';
+                data.request = 'termekUpdate';
 				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					if (resp.status == "ok"){
-                       window.location.href = "<?=$_SESSION['helper']->getPath()?>dashboard/rendezvenyLista";
+                       window.location.href = "<?=$_SESSION['helper']->getPath()?>dashboard/delicates/termekLista";
                     }
 				}, 'json');
 			}

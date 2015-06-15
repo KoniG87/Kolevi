@@ -945,3 +945,160 @@ MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+
+
+
+
+
+
+
+DROP TABLE koleves_delicates_slider;
+CREATE TABLE IF NOT EXISTS `koleves_delicates_slider` (
+	ID int(6) AUTO_INCREMENT NOT NULL,
+	`TEXT_HU` varchar(128) COLLATE utf8_hungarian_ci NOT NULL,
+	`TEXT_EN` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`LEIRAS_HU` varchar(1024) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`LEIRAS_EN` varchar(1024) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`TAG_HU` varchar(256) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`TAG_EN` varchar(256) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`KEP` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`AR` int(6) DEFAULT NULL,
+	SORREND int(3) DEFAULT 1,
+	VISIBLE tinyint(1) DEFAULT 1,
+	PRIMARY KEY(ID)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+INSERT INTO koleves_delicates_slider (TEXT_HU, TEXT_EN, LEIRAS_HU, LEIRAS_EN, TAG_HU, TAG_EN, KEP, AR, SORREND) VALUES
+	('Házi Libazsír', 'Geesegrease', 'Kóstold meg isteni finom hazai libánkat.', 'Godlike flavor Geesegrease', NULL, NULL, 'assets/uploads/gallery02.jpg', 1400, 1),
+	('Házi Libazsír, de egy másik libából.', 'Yet another Geesegrease', 'Kóstold meg isteni finom hazai libánkat. Kóstold meg isteni finom hazai libánkat.', 'Godlike indeed this Geesegrease is', 'lila <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">lila</a> lila ', 'purple <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">purple</a> purple', 'assets/uploads/gallery02.jpg', 1400, 2),
+	('Házi Libazsír, de egy másik libából.', 'Yet another Geesegrease', 'Kóstold meg isteni finom hazai libánkat. Kóstold meg isteni finom hazai libánkat.', 'Godlike indeed this Geesegrease is', 'lila <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">lila</a> lila ', 'purple <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">purple</a> purple', 'assets/uploads/gallery02.jpg', 1400, 3),
+	('Házi Libazsír, de egy másik libából.', 'Yet another Geesegrease', 'Kóstold meg isteni finom hazai libánkat. Kóstold meg isteni finom hazai libánkat.', 'Godlike indeed this Geesegrease is', 'lila <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">lila</a> lila ', 'purple <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">purple</a> purple', 'assets/uploads/gallery02.jpg', 990, 4),
+	('Házi Libazsír, de egy másik libából.', 'Yet another Geesegrease', 'Kóstold meg isteni finom hazai libánkat. Kóstold meg isteni finom hazai libánkat.', 'Godlike indeed this Geesegrease is', 'lila <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">lila</a> lila ', 'purple <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">purple</a> purple', 'assets/uploads/gallery02.jpg', 2000, 5),
+	('Házi Libazsír, de egy másik libából.', 'Yet another Geesegrease', 'Kóstold meg isteni finom hazai libánkat. Kóstold meg isteni finom hazai libánkat.', 'Godlike indeed this Geesegrease is', 'lila <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">lila</a> lila ', 'purple <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">purple</a> purple', 'assets/uploads/gallery02.jpg', 1600, 6),
+	('Házi Libazsír, de egy másik libából.', 'Yet another Geesegrease', 'Kóstold meg isteni finom hazai libánkat. Kóstold meg isteni finom hazai libánkat.', 'Godlike indeed this Geesegrease is', NULL, NULL, 'assets/uploads/gallery02.jpg', 1500, 7);
+
+
+
+CREATE TABLE IF NOT EXISTS `koleves_delicates_fokategoriak` (
+	ID int(2) AUTO_INCREMENT NOT NULL,
+	`TEXT_HU` varchar(64) COLLATE utf8_hungarian_ci NOT NULL,
+	`TEXT_EN` varchar(64) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`ICON` varchar(32) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	SORREND int(2) DEFAULT 1,
+	PRIMARY KEY(ID)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+INSERT INTO koleves_delicates_fokategoriak (ICON, TEXT_HU, TEXT_EN, SORREND) VALUES
+	('eheto', 'Ehető', 'Edibles', 1),
+	('ihato', 'Iható', 'Drinkables', 2),
+	('nemeheto', 'Nem ehető', 'Non-edibles', 3);
+
+CREATE TABLE IF NOT EXISTS `koleves_delicates_alkategoriak` (
+	ID int(3) AUTO_INCREMENT NOT NULL,
+	FOKATEGORIA_ID int(2) NOT NULL,
+	`TEXT_HU` varchar(64) COLLATE utf8_hungarian_ci NOT NULL,
+	`TEXT_EN` varchar(64) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	SORREND int(3) DEFAULT 1,
+	PRIMARY KEY(ID)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+INSERT INTO koleves_delicates_alkategoriak (FOKATEGORIA_ID, TEXT_HU, TEXT_EN, SORREND) VALUES
+	(1, 'Pesztó', 'Pesto', 1),
+	(1, 'Csathni', 'Chutney', 2),
+	(1, 'Lekvár', 'Jams', 3),
+	(1, 'Kenyér', 'Breads', 4),
+	(2, 'Borok', 'Wines', 1),
+	(2, 'Szörpök', 'Sirups', 2),
+	(2, 'Pálinkák', 'Palinka', 3),
+	(3, 'Könyvek', 'Books', 1),
+	(3, 'Étkészlet', 'Utensils', 2),
+	(3, 'Ajándéktárgyak', 'Souvenirs', 3);
+	
+	
+CREATE TABLE IF NOT EXISTS `koleves_delicates_termekek` (
+	ID int(6) AUTO_INCREMENT NOT NULL,
+	ALKATEGORIA_ID int(3) NOT NULL,
+	`TEXT_HU` varchar(128) COLLATE utf8_hungarian_ci NOT NULL,
+	`TEXT_EN` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`LEIRAS_HU` varchar(1024) COLLATE utf8_hungarian_ci NOT NULL,
+	`LEIRAS_EN` varchar(1024) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`KISKEP` varchar(100) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`NAGYKEP` varchar(100) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`TAG_HU` varchar(512) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`TAG_EN` varchar(512) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`AR` int(6) DEFAULT NULL,
+	SORREND int(3) DEFAULT 1,
+	PRIMARY KEY(ID)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+INSERT INTO koleves_delicates_termekek (ALKATEGORIA_ID, TEXT_HU, LEIRAS_HU, TAG_HU, KISKEP, NAGYKEP, AR, SORREND) VALUES
+	(1, 'Piszti Pesztó', 'Szuper pesztó', 'pesztó', "assets/uploads/th_gallery04.jpg", "assets/uploads/gallery04.jpg", 1400, 1),
+	(1, 'Pasta Pesztó', 'Pasta de pesztó', 'pesztó', "assets/uploads/th_gallery01.jpg", "assets/uploads/gallery01.jpg", 1500, 2),
+	(1, 'Rasta Pasta Pesztó', 'Rastafari delight', 'pesztó,rasta', "assets/uploads/th_gallery02.jpg", "assets/uploads/gallery02.jpg", 1700, 3),
+	(2, 'Málnás csatni', 'Csatni, mégpedig málnás', 'csatni,málnás', "assets/uploads/th_gallery04.jpg", "assets/uploads/gallery04.jpg", 800, 1),
+	(2, 'Epres csatni', 'Csatni, mégpedig epres', 'csatni,epres', "assets/uploads/th_gallery03.jpg", "assets/uploads/gallery03.jpg", 800, 2),
+	(2, 'Fügés csatni', 'Csatni, mégpedig fügés', 'csatni,fügés', "assets/uploads/th_gallery02.jpg", "assets/uploads/gallery02.jpg", 1100, 3),
+	(3, 'Málnás lekvár', 'Igazi lekvár, málnás', 'lekvár,málnás', "assets/uploads/th_gallery01.jpg", "assets/uploads/gallery01.jpg", 900, 1),
+	(3, 'Epres lekvár', 'Igazi lekvár, epres', 'lekvár,epres', "assets/uploads/th_gallery04.jpg", "assets/uploads/gallery04.jpg", 900, 2),
+	(3, 'Fügés lekvár', 'Igazi lekvár, fügés', 'lekvár,fügés', "assets/uploads/th_gallery02.jpg", "assets/uploads/gallery02.jpg", 1050, 3),
+	(4, 'Kenyér', 'Még pedig kenyér a javából', 'kenyér', "assets/uploads/th_gallery04.jpg", "assets/uploads/gallery04.jpg", 550, 1),
+	(5, 'Kabarné Szuvi Ilona', 'Cabernet a javából', 'bor', "assets/uploads/th_gallery02.jpg", "assets/uploads/gallery02.jpg", 2700, 1),
+	(5, 'Kék Frank', 'Franker wien', 'bor', "assets/uploads/th_gallery01.jpg", "assets/uploads/gallery01.jpg", 2200, 2),
+	(6, 'Málnás szörp', 'Szipidi-szörp, málnás', 'szörp,málnás', "assets/uploads/th_gallery01.jpg", "assets/uploads/gallery01.jpg", 1500, 1),
+	(6, 'Epres szörp', 'Szipidi-szörp, epres', 'szörp,epres', "assets/uploads/th_gallery02.jpg", "assets/uploads/gallery02.jpg", 1420, 2),
+	(6, 'Fügés szörp', 'Szipidi-szörp, fügés', 'szörp,fügés', "assets/uploads/th_gallery03.jpg", "assets/uploads/gallery03.jpg", 1680, 3),
+	(7, 'Pál Inka', 'Inka pálesz', 'pálinka,inka', "assets/uploads/th_gallery03.jpg", "assets/uploads/gallery03.jpg", 3000, 1),
+	(7, 'Pál Maya', 'Ez meg már maja, nem inka pálesz', 'pálinka,maja', "assets/uploads/th_gallery02.jpg", "assets/uploads/gallery02.jpg", 4500, 2),
+	(8, '1001 lekvár recept', 'Innen aztán még kolbász lekvárt is megtanulsz főzni', 'könyv,recept,lekvár', "assets/uploads/th_gallery02.jpg", "assets/uploads/gallery02.jpg", 4000, 1),
+	(8, '99 problems, but a lekvár aint one', 'Maga a Dzséjszi mester minden remek praktikája egy könyvben', 'könyv,recept,lekvár,swag', "assets/uploads/th_gallery03.jpg", "assets/uploads/gallery03.jpg", 4200, 2),
+	(9, 'Díszes bornyitó', 'tl;dr kinyitja aZ bort, fafaragás', 'bornyitó', "assets/uploads/th_gallery01.jpg", "assets/uploads/gallery01.jpg", 780, 1),
+	(9, 'Díszes sörnyító', 'tl;dr kinyitja aZ sört, fafaragás', 'sörnyitó', "assets/uploads/th_gallery02.jpg", "assets/uploads/gallery02.jpg", 780, 2),
+	(10, 'Kőlevi hűtőmágnes', 'Rátapad, rá bizony', 'souvenir,mágnes', "assets/uploads/th_gallery01.jpg", "assets/uploads/gallery01.jpg", 850, 1);
+	
+	
+	
+
+
+
+<div class="bolt-grid-element">
+					<a href="">
+						<div class="bolt-grid-element-img">
+							<img src="assets/uploads/th_gallery04.jpg" alt="">
+						</div>
+						<h4>Málnás Csatni</h4>
+						<h5>1.400 Ft</h5>
+					</a>
+				</div>
+
+CREATE TABLE IF NOT EXISTS `koleves_delicates_termekkepek` (
+	ID  int(6) AUTO_INCREMENT NOT NULL,
+	TERMEK_ID int(6) NOT NULL,
+	KEP varchar(100) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	SORREND int(2) DEFAULT 1,
+	PRIMARY KEY(ID)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS `koleves_delicates_hasonlotermekek` (
+	ID int(6) NOT NULL,
+	FOTERMEK_ID int(6) NOT NULL,
+	HASONLOTERMEK
+	FOKATEGORIA_ID int(2) NOT NULL,
+	`TEXT_HU` varchar(128) COLLATE utf8_hungarian_ci NOT NULL,
+	`TEXT_EN` varchar(128) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`LEIRAS_HU` varchar(1024) COLLATE utf8_hungarian_ci NOT NULL,
+	`LEIRAS_EN` varchar(1024) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`KISKEP` varchar(100) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`NAGYKEP` varchar(100) COLLATE utf8_hungarian_ci DEFAULT NULL,
+	`AR` int(6) DEFAULT NULL,
+	SORREND int(3) DEFAULT 1,
+	PRIMARY KEY(ID)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
