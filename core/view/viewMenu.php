@@ -549,7 +549,7 @@ public function drawKertEtlap($elements){
       echo '</ul>';
      }
      
-
+/*
      if ($helyiseg == 'kert'){
 	     echo '
 	     <a class="dl-pdf dl-pdf-itallap" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
@@ -565,7 +565,7 @@ public function drawKertEtlap($elements){
 	    		});
 	    	});
 	     </script>';
-     }
+     }*/
      if ($helyiseg == "vendeglo"){
      	echo '
 	     <a class="dl-pdf dl-pdf-itallap" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>

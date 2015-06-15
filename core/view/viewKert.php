@@ -27,15 +27,14 @@ class KertView extends BaseView{
     
     	echo '
      		<div class="row clearfix">
-        <div class="three columns left illusztracio">
-        <p class="ehes-szomjas">Éhes vagy?</p>
-    <img data-src="assets/img/asztalos_bacsi.png" alt="kert étlap" class="lazy illusztracio" >
-    <noscript>
-      <img src="assets/img/asztalos_bacsi.png" alt="kert étlap">
-    </noscript>
-    
-        </div>
-             <div class="eight columns right  itallap etel-fold">';
+        <div class="two columns left illusztracio">
+        	<p class="ehes-szomjas">Éhes vagy?</p>
+    		<img data-src="assets/img/asztalos_bacsi.png" alt="kert étlap" class="lazy illusztracio" >
+    		<noscript>
+      			<img src="assets/img/asztalos_bacsi.png" alt="kert étlap">
+    		</noscript>
+    	</div>
+        <div class="eight columns right  itallap etel-fold">';
     	 
     	foreach ($elements['kategoriak'] AS $kategoria => $kategoriaAdat){
     
@@ -86,6 +85,22 @@ class KertView extends BaseView{
     	 
     	echo '
        </div>
+    	<div class="one columns left illusztracio">
+    			
+	    	 <a class="dl-pdf dl-pdf-itallap" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
+	     	<form id="requestEtlapForm" method="post" action="'.$_SESSION['helper']->getPath().'requestHandler" target="_blank">
+				<input type="hidden" name="request" value="generateKertEtlapPDF"/>
+	     	</form>
+	     	<script type="text/javascript">
+				$(document).ready(function(){
+	    			$(".dl-pdf-itallap").click(function(e){
+		    			e.preventDefault();
+	     				$("#requestEtlapForm").submit();
+    
+		    		});
+		    	});
+		     </script>
+    	</div>
            </div>
                 ';
     	 
@@ -159,7 +174,7 @@ class KertView extends BaseView{
     		echo '</ul>';
     	}
     	 
-    
+   	 /*
     	if ($helyiseg == 'kert'){
     		echo '
 	     <a class="dl-pdf dl-pdf-itallap" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
@@ -176,6 +191,7 @@ class KertView extends BaseView{
 	    	});
 	     </script>';
     	}
+    	*/
     	if ($helyiseg == "vendeglo"){
     		echo '
 	     <a class="dl-pdf dl-pdf-itallap" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
