@@ -26,7 +26,7 @@
     
         <tr class="urlRow">
 			<td><label>Hivatkozás</label></td>
-			<td><input maxlength="250" type="text" name="url" title="Hivatkozás címe" value="" required/>
+			<td><input maxlength="250" type="text" name="url" title="Hivatkozás címe" value=""/>
 			<span class="tooltip">Hivatkozás címe, max. 250 karakter</span>
 			</td>
 		</tr>
@@ -119,6 +119,7 @@
 		
 		$('#saveHir').click(function(){
 			canSubmit = true;
+			
 			data = {
 				id: $('#editForm input[name="id"]').val(),
 				text: $('#editForm input[name="felirat"]').val(),
@@ -127,7 +128,7 @@
                 allapot: $('#editForm select[name="allapot"]').val(),
                 request: "updateHir"
 			};
-
+			
 			$.each(data, function(key, val){
 				attr = $('[name="'+key+'"]').attr('required');
 				if (typeof attr !== typeof undefined && attr !== false 
@@ -139,21 +140,22 @@
 			});
 
 			if (canSubmit){
+				
 				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					$.each(data, function(key, val){
 						$('input:visible, select:visible').val("");
 					});
 					$('.urlRow').fadeOut(250);
+					$('input', '.urlRow').removeAttr('required');
 					$('input[name="id"]').val("0");
                     
                     if (data.id != "0"){
-							$('td:nth-of-type(1)', triggeredRow).text(data.text);
-							$('td:nth-of-type(2)', triggeredRow).text(data.allapot ? 'Igen' : 'Nem');
-							
-						}else{
-                    $('.hirTabla tbody').after('<tr data-id="'+resp['inputID']+'"><td>'+data.text_hu+'</td><td>'+data.allapot+'</td><td><button class="editHir">Szerkesztés</button></td><td><button class="deleteHir">Törlés</button></td></tr>');
-                        }
-				});
+						$('td:nth-of-type(1)', triggeredRow).text(data.text);
+						$('td:nth-of-type(2)', triggeredRow).text(data.allapot ? 'Igen' : 'Nem');
+					}else{
+                    	$('.hirTabla tbody').after('<tr data-url="'+data['url']+'" data-id="'+resp['inputID']+'"><td>'+data.text+'</td><td>'+(data.allapot ? 'Igen' : 'Nem')+'</td><td><button class="editHir">Szerkesztés</button></td><td><button class="deleteHir">Törlés</button></td></tr>');
+                    }
+				}, 'json');
 			}
 		}); 
 
@@ -161,9 +163,26 @@
 		$('select[name="tipus"]').change(function(){
 			if ($(this).val() == 4){
 				$('.urlRow').fadeIn(250);
+				$('input', '.urlRow').attr('required', 'required');
 			}else{
 				$('.urlRow').fadeOut(250);
+				$('input', '.urlRow').removeAttr('required');
 			}
+		});
+
+		$(document).on('click', '.deleteHir', function(){
+			containingRow = $(this).parents('tr');
+			data = {
+				id: containingRow.attr('data-id'),
+				request: "hirDelete"
+			};
+			
+			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
+				if (resp['status']){
+					containingRow.hide(250, function(){ $(this).remove(); });			
+				}
+			}, 'json');
+				
 		});
 	});
 </script>

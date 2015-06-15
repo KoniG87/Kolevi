@@ -48,7 +48,8 @@
 				kep: $('select[name="kep"]').val(),
 				text: $('input[name="text"]').val(),
 				leiras: $('input[name="leiras"]').val(),
-				url: $('input[name="url"]').val()
+				url: $('input[name="url"]').val(),
+				allapot: $('input[name="allapot"]').val()
 			};
 
 
@@ -61,7 +62,7 @@
 					$('[name="'+key+'"]').addClass('missing');
 				}
 			});
-
+			console.log(data);
 			if (canSubmit){
 				data.request = "partnerUpdate";
 				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
@@ -82,7 +83,7 @@
 								$('.partnerTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after(triggeredRow);
 							}
 						}else{
-							$('.partnerTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after('<tr data-id="'+resp['inputID']+'"><td>'+data.text+'</td><td>'+data.tagek+'</td><td>'+data.ar+'</td></tr>');
+							$('.partnerTabla tbody').after('<tr data-id="'+resp['inputID']+'"><td><img src="'+data.kep+'" alt="'+data.text+'"/></td><td>'+data.text+'</td><td>'+data.leiras+'</td><td>'+data.url+'</td><td><button class="editPartner">Szerkesztés</button></td><td><button class="deletePartner">Törlés</button></td></tr>');
 						}
 
 						

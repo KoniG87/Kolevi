@@ -24,23 +24,17 @@ class VendegloView extends BaseView{
 					<td>Cím</td>
 					<td>
 						<input type="hidden" name="id" value="0"/>
+						<input type="hidden" name="allapot" value="1"/>
+				
 						<input type="text" maxlength="128" title="Cím" name="text" value="" required/>
 						<span class="tooltip">Cím, max. 128 karakter</span>
-					</td>
-				</tr>
-				<tr>
-					<td>Megnevezés</td>
-					<td>
-	
-						<input type="text" maxlength="255" title="Étel neve" name="text" value="" required/>
-						<span class="tooltip">Étel neve, max. 255 karakter</span>
 					</td>
 				</tr>
 				<tr>
 					<td>URL</td>
 					<td>
 	
-						<input type="text" maxlength="255" title="Hivatkozás címe" name="text" value="" required/>
+						<input type="text" maxlength="255" title="Hivatkozás címe" name="url" value="" required/>
 						<span class="tooltip">Hivatkozás címe, max. 255 karakter</span>
 					</td>
 				</tr>
@@ -53,7 +47,7 @@ class VendegloView extends BaseView{
 						<option value=""></option>
 				';
 		foreach ($elements['elerhetoKepek'] AS $kepAdat){
-			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['id'].'">'.basename($kepAdat['fajlnev']).'</option>';
+			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['fajlnev'].'">'.basename($kepAdat['fajlnev']).'</option>';
 		}
 		echo '
 			
@@ -70,7 +64,7 @@ class VendegloView extends BaseView{
 						<option value=""></option>
 				';
 		foreach ($elements['elerhetoKepek'] AS $kepAdat){
-			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['id'].'">'.basename($kepAdat['fajlnev']).'</option>';
+			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['fajlnev'].'">'.basename($kepAdat['fajlnev']).'</option>';
 		}
 		echo '
 			
@@ -92,7 +86,7 @@ class VendegloView extends BaseView{
 	
 		foreach ($elements['cikkek'] AS $key => $cikkAdat){
 			
-				echo '<tr data-id="'.$cikkAdat['id'].'">
+				echo '<tr data-nagykep="'.basename($cikkAdat['nagykep']).'" data-kiskep="'.basename($cikkAdat['kiskep']).'" data-url="'.$cikkAdat['url'].'" data-id="'.$cikkAdat['id'].'">
 						<td><img src="'.$_SESSION['helper']->getPath().$cikkAdat['kiskep'].'" alt=""/></td>
 						<td>'.$cikkAdat['labelHeader'].'</td>
 						
@@ -356,13 +350,15 @@ class VendegloView extends BaseView{
 		echo '
 	
     	<section class="kategoriaEditor">
-    			<button id="addEtel">Partner rögzítése</button>
+    			<button id="addPartner">Partner rögzítése</button>
     
 				<table class="tablaGrid" >
 				<tr>
 					<td>Megnevezés</td>
 					<td>
-						
+						<input type="hidden" name="id" value="0"/>
+						<input type="hidden" name="allapot" value="1"/>
+				
 						<input type="text" maxlength="128" title="Partner neve" name="text" value="" required/>
 						<span class="tooltip">Partner neve, max. 128 karakter</span>
 					</td>
@@ -391,7 +387,7 @@ class VendegloView extends BaseView{
 						<option value=""></option>
 				';
 		foreach ($elements['elerhetoKepek'] AS $kepAdat){
-			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['id'].'">'.basename($kepAdat['fajlnev']).'</option>';
+			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['fajlnev'].'">'.basename($kepAdat['fajlnev']).'</option>';
 		}
 		echo '				
 					
@@ -425,6 +421,11 @@ class VendegloView extends BaseView{
 		echo '</table>';
 	}
 	
+	
+	
+	
+	
+	
     
     public function drawRolunk($elements){
     	echo '<section id="rolunk">';
@@ -450,7 +451,9 @@ class VendegloView extends BaseView{
             <div class="row clearfix">
                 <div class="twelve columns cikkek-container">
                     <h3>Rólunk írták</h3>
-                    <div class="cikkek-slider">
+                    <div class="cikkek-slider">';
+    	$this->loadTemplate('cikkElem', $elements['cikkek']);
+    	/*
                         <div class="cikk">
                             <a href="http://index.hu/kultur/2015/05/24/fozelekes_feri/" target="blank">
                                 <div class="cikk-img">
@@ -490,7 +493,8 @@ class VendegloView extends BaseView{
                                 </div>
                                 <h4>Cikk neve képpel</h4>
                             </a>
-                        </div>
+                        </div>*/
+    	echo '
                     </div>
                 </div>
             </div>
@@ -535,44 +539,20 @@ class VendegloView extends BaseView{
 	echo '<div class="g-recaptcha" data-sitekey="'.$publickey.'"></div>
 	</form>';
 	*/
-    	$this->loadTemplate('rolunkEmber', $elements);
-                    echo '  	 
-                    </div>
-                        <div class="row clearfix">
-                            <div class="twelve columns partnerek-container">
-                                <h3>Akiket szeretünk</h3>
+    		$this->loadTemplate('rolunkEmber', $elements['emberek']);
 
+            echo '  	 
+              </div>
+			  	<div class="row clearfix">
+					<div class="twelve columns partnerek-container">
+                    <h3>Akiket szeretünk</h3>';
 
-                                    <div class="partner clearfix">
-                                        <div class="two columns">
-                                                <div class="partner-img">
-                                                    <a href="http://rcko.fm/radio/" target="_blank">
-                                                        <img src="assets/img/tmb-2.png" alt="">
-                                                    </a>
-                                                </div>
-                                        </div>
-                                        <div class="ten columns">
-                                            <a href="http://rcko.fm/radio/" target="_blank"><h3>A cég neve nem kellene ide?</h3></a>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores similique facilis non quia aliquam perspiciatis, eum consectetur quisquam quo! Optio totam ad quibusdam repellat cupiditate consequuntur, amet est, quidem perferendis.</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="partner clearfix">
-                                        <div class="two columns">
-                                                <div class="partner-img">
-                                                    <a href="http://rcko.fm/radio/" target="_blank">
-                                                        <img src="assets/img/tmb-2.png" alt="">
-                                                    </a>
-                                                </div>
-                                        </div>
-                                        <div class="ten columns">
-                                            <a href="http://rcko.fm/radio/" target="_blank"><h3>A cég neve nem kellene ide?</h3></a>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores similique facilis non quia aliquam perspiciatis, eum consectetur quisquam quo! Optio totam ad quibusdam repellat cupiditate consequuntur, amet est, quidem perferendis.</p>
-                                        </div>
-                                    </div>
-                            </div>
-                        </div>
-                </section>';
+            $this->loadTemplate('partnerElem', $elements['partnerek']);
+                                  
+             echo '
+					</div>
+               </div>
+             </section>';
     	
     }
  

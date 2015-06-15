@@ -92,7 +92,7 @@ class User extends BaseObject{
 	
 	
 	public function loadKepek(){
-		$SQL = "SELECT id, fajlnev FROM koleves_kepek WHERE szekcio = 3;";
+		$SQL = "SELECT k.id, k.fajlnev FROM koleves_kepek AS k LEFT JOIN koleves_keptipusok AS kt ON kt.id = k.szekcio WHERE kt.szekcio LIKE 'dolgozok';";
 	
 		return $this->fetchItems($SQL);
 	}

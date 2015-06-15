@@ -35,7 +35,12 @@ class ImageView extends BaseView{
             $szekcioNev = array(
                 1   => 'Programok',
                 2   => 'Rendezvények',
-                3   => 'Dolgozók'
+           		3   => 'Hírek',
+           		4   => 'Szobák',
+           		5   => 'Partnerek',
+           		6   => 'Cikkek',
+           		7   => 'Slide-k',
+                8   => 'Dolgozók'
             );
             
             echo '<tr data-id="'.$kepData['id'].'">

@@ -100,7 +100,7 @@ class DelicatesView extends BaseView{
 		
 	
 		echo '</table>';
-		*/
+		
 	}
 	
 	

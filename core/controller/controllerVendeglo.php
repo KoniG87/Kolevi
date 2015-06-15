@@ -119,7 +119,11 @@ class Vendeglo extends BaseObject{
     
     public function drawRolunk(){
     	$SQL = "SELECT username AS NICK, nev AS FULLNAME, megjegyzes AS DESCRIPTION, (CASE WHEN kep > '' THEN kep ELSE CONCAT('assets/img/no-pic-', neme, '.png') END) AS KEP FROM koleves_dolgozok WHERE vendeglo = 1 AND allapot = 1;";
-    	$elements = $this->fetchItems($SQL);
+    	$elements = array(
+    		'emberek' => $this->fetchItems($SQL),
+    		'partnerek'	=>  $this->getPartnerData(0),
+    		'cikkek'	=> $this->getCikkData(0)
+    	);
     
     	$this->view->drawRolunk($elements);
     
@@ -184,7 +188,75 @@ class Vendeglo extends BaseObject{
     	return $this->fetchItems($SQL, array($allapot));
     }
     
+    public function deleteCikkElem(){
+    	$res = array();
     
+    	try{
+    		$this->beginTransaction();
+    		 
+    		$SQL = "DELETE FROM koleves_cikkek WHERE id = ?;";
+    
+    		$queryParams = array(
+    				$_POST['id']
+    		);
+    		$this->deleteItem($SQL, $queryParams);
+    
+    		$res['status'] = true;
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = false;
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    }
+    
+    public function deleteHirElem(){
+    	$res = array();
+    
+    	try{
+    		$this->beginTransaction();
+    		 
+    		$SQL = "DELETE FROM koleves_hirsav WHERE id = ?;";
+    
+    		$queryParams = array(
+    				$_POST['id']
+    		);
+    		$this->deleteItem($SQL, $queryParams);
+    
+    		$res['status'] = true;
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = false;
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    }
+    
+    
+    public function deletePartnerElem(){
+    	$res = array();
+    
+    	try{
+    		$this->beginTransaction();
+    		 
+    		$SQL = "DELETE FROM koleves_partnerek WHERE id = ?;";
+    
+    		$queryParams = array(
+    				$_POST['id']
+    		);
+    		$this->deleteItem($SQL, $queryParams);
+    
+    		$res['status'] = true;
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = false;
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    }
     
     
     public function deleteProgramElem(){
@@ -295,7 +367,57 @@ class Vendeglo extends BaseObject{
     
     
     
-	
+    public function updateCikk(){
+    	$res = array();
+    
+    	try{
+    		$this->beginTransaction();
+    
+    		/*
+    		 * Új sor beszúrása
+    		*/
+    		if ($_POST['id'] == "0"){
+    
+    			$SQL = "INSERT INTO koleves_cikkek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, url = ?, kiskep = ?, nagykep = ?;";
+    
+    			$queryParams = array(
+    					$_POST['text'],
+    					empty($_POST['url']) ? NULL : $_POST['url'],
+    					$_POST['kiskep'],
+    					$_POST['nagykep']
+    			);
+    
+    			$res['inputID'] = $this->insertItem($SQL, $queryParams);
+    		}
+    		/*
+    		 * Meglévő sor updatelése
+    		 */
+    		else{
+    			$SQL = "UPDATE koleves_cikkek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, url = ?, kiskep = ?, nagykep = ?, visible = ? WHERE id = ?;";
+    
+    			$queryParams = array(
+    					$_POST['text'],
+    					empty($_POST['url']) ? NULL : $_POST['url'],
+    					$_POST['kiskep'],
+    					$_POST['nagykep'],
+    					$_POST['allapot'],
+    					$_POST['id']
+    			);
+    
+    			$this->updateItem($SQL, $queryParams);
+    
+    		}
+    
+    		$res['status'] = "ok";
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = "nope";
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    
+    }
 
     
     
@@ -427,7 +549,61 @@ class Vendeglo extends BaseObject{
     	echo json_encode($res);
     
     }
-	
+    
+    
+    
+    public function updatePartner(){
+    	$res = array();
+    
+    	try{
+    		$this->beginTransaction();
+    
+    		$leirasText = str_replace(array("\r\n", "\r", "\n"), "<br/>", $_POST['leiras']);
+    
+    		/*
+    		 * Új sor beszúrása
+    		*/
+    		if ($_POST['id'] == "0"){
+    
+    			$SQL = "INSERT INTO koleves_partnerek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, ".$_SESSION['helper']->getLangLabel('leiras')." = ?, kep = ?, url = ?;";
+    
+    			$queryParams = array(
+    					$_POST['text'],
+    					$leirasText,
+    					$_POST['kep'],
+    					$_POST['url']
+    			);
+    
+    			$res['inputID'] = $this->insertItem($SQL, $queryParams);
+    		}
+    		/*
+    		 * Meglévő sor updatelése
+    		 */
+    		else{
+    			$SQL = "UPDATE koleves_partnerek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, ".$_SESSION['helper']->getLangLabel('leiras')." = ?, kep = ?, url = ?, visible = ? WHERE id = ?;";
+    
+    			$queryParams = array(
+    					$_POST['text'],
+    					$leirasText,
+    					$_POST['kep'],
+    					$_POST['url'],
+    					$_POST['allapot'],
+    					$_POST['id']
+    			);
+    			$res['q'] = $SQL;
+    			$this->updateItem($SQL, $queryParams);
+    		}
+    
+    		$res['status'] = "ok";
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = "nope";
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    }
+    
     
    
     public function updateProgram(){

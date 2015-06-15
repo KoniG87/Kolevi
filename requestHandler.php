@@ -27,6 +27,23 @@ if (isset($_POST['request'])){
 		
 			break;
 			
+		case 'hirDelete':
+			$vendeglo = new Vendeglo($app->getDbHandler());
+			$vendeglo->deleteHirElem();
+		
+			break;
+
+		case 'cikkDelete' :
+			$vendeglo = new Vendeglo ( $app->getDbHandler () );
+			$vendeglo->deleteCikkElem ();
+			
+			break;
+			
+		case 'partnerDelete':
+			$vendeglo = new Vendeglo($app->getDbHandler());
+			$vendeglo->deleteHirElem();
+		
+			break;
 	
 		case 'rendezvenyDelete':
 			$vendeglo = new Vendeglo($app->getDbHandler());
@@ -101,6 +118,11 @@ if (isset($_POST['request'])){
 			$menu = new Menu($app->getDbHandler());
 			$menu->updateCetli();
 			break;
+			
+		case 'cikkUpdate':
+			$vendeglo = new Vendeglo($app->getDbHandler());
+			$vendeglo->updateCikk();
+			break;
 		
 		case 'dolgozoUpdate':
 			$user = new User($app->getDbHandler());
@@ -126,6 +148,12 @@ if (isset($_POST['request'])){
 		
 			break;
 			
+		case 'partnerUpdate':
+			$vendeglo = new Vendeglo($app->getDbHandler());
+			$vendeglo->updatePartner();
+		
+			break;
+		
 		case 'programUpdate':
 			$vendeglo = new Vendeglo($app->getDbHandler());
 			$vendeglo->updateProgram();
@@ -154,6 +182,7 @@ if (isset($_POST['request'])){
 		case 'updateHir':
 			$vendeglo = new Vendeglo($app->getDbHandler());
 			$vendeglo->updateHir();
+			
 			break;
 			
 		
