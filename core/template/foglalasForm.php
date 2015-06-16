@@ -46,7 +46,7 @@
                                         <input type="text" class="formText" name="email" required value="" placeholder="Erre az " data-subline="pl: <em>vendeg@email.com</em>"/>
                                         e-mail címre küldhetitek a visszaigazolást. <br>
                                         Bármi van hívjatok fel telefonon a
-                                        <input type="text" class="formText" name="tel" required value="" placeholder="Ezen a " data-subline="pl: <em>0036-3012-3456-789</em>"/>
+                                        <input type="text" class="formText" name="tel" required value="" placeholder="Ezen a " data-subline="pl: <em>+36 12 3456 789</em>"/>
                                         számon. Még annyit szeretnék elmondani, hogy: <br>
                                         <input type="text" class="formText" value="" name="megjegyzes" placeholder="Szeretem a maceszgombócot!" data-subline="Ide jöhet bármi, amit még hozzá tennél az asztalfoglaláshoz"/>
                                         <br>

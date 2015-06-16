@@ -185,9 +185,11 @@ class VendegloView extends BaseView{
                                 </div>
                             </div>
                             <div class="program-right four columns">
-                                <h3>'.$programData['labelHeader'].'</h3>
-                                <p>'.$programData['labelDesc'].'</p>
-                                '.(!empty($programData['fblink']) ? '<a target="_blank" href="'.$programData['fblink'].'">facebook esemény</a>' : '').'
+<div class="dot-inner-content">
+<h3>'.$programData['labelHeader'].'</h3>
+	<p>'.$programData['labelDesc'].'</p>
+	'.(!empty($programData['fblink']) ? '<a target="_blank" href="'.$programData['fblink'].'">facebook esemény</a>' : '').'
+	</div>
                                 <svg class="icon icon-rolunk-le program-nyil program-nyil-le"><use xlink:href="#icon-rolunk-le"></use></svg>	
                                 <svg class="icon icon-rolunk-le program-nyil program-nyil-fel"><use xlink:href="#icon-rolunk-le"></use></svg>
                             </div>

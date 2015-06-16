@@ -288,7 +288,8 @@ function validateTime(timeString) {
   return timeString.match(regEx) != null;
 }
 function validatePhone(phoneNum){
-  var regEx = /^[a-zA-Z0-9\-().\s]{10,15}$/;
+  //var regEx = /^[a-zA-Z0-9\-().\s]{10,15}$/;
+  var regEx = /^\+[0-9]{7,13}|[0-9]{7,13}|\+[0-9\s*]{7,24}|[0-9\s*]{7,24}$/;
   return phoneNum.match(regEx) != null;
 }
 
@@ -316,7 +317,6 @@ $(".tooltip").tooltipster({
     position: 'top',
     trigger: 'custom'
 });
-
 
 
 
@@ -486,14 +486,20 @@ var truncateIfNeeded = function(jqueryTag){
 truncateIfNeeded();
 // Ha nem kell még a dotdotdot,akkor tüntesd el a nyilakat...
 $(".program").each(function(){
-  var dotContent = $(this).find(".program-right");
+  var dotContent = $(this).find(".dot-inner-content");
 
-  if(dotContent.innerHeight() >= programDotHeight){
-    dotContent.find(".program-nyil").css("opacity","1");
-    
+
+  if(dotContent.innerHeight() > 144){
+    $(this).find(".program-right .program-nyil").css({
+      opacity:1,
+      pointerEvents:"initial"
+    });
   }
   else{
-    dotContent.find(".program-nyil").css("opacity","0");
+    $(this).find(".program-right .program-nyil").css({
+      opacity:0,
+      pointerEvents:"none"
+    });
   }
 });
 
@@ -501,7 +507,7 @@ $(".program").each(function(){
 function programNyilLe(){
 $(".program-nyil-le").on("click",function(event){
 event.preventDefault();
-var programokParent = $(this).parent().parent().parent();
+var programokParent = $(this).parent().parent().parent().parent();
 programokParent.toggleClass("program-fullheight");
 var parent = $(this).parent();
         parent.trigger("destroy");

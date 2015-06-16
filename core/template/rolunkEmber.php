@@ -64,12 +64,14 @@
 				<div class="diszvonal"></div>
 				<p>[[DESCRIPTION]]</p>
 				<div class="rolunk-ikon">
-					<svg class="icon icon-phone">
-						<use xlink:href="#icon-phone"></use></svg>
+					<svg class="icon icon-phone rolunk-tooltip" title="[[TELEFON]]">
+						<use xlink:href="#icon-phone"></use>
+					</svg>
 				</div>
 				<div class="rolunk-ikon">
-					<svg class="icon icon-mail">
-						<use xlink:href="#icon-mail"></use></svg>
+					<svg class="icon icon-mail rolunk-tooltip" title="[[EMAIL]]">
+						<use xlink:href="#icon-mail"></use>
+					</svg>
 				</div>
 			</div>
 		</div>
@@ -81,12 +83,14 @@
 
 
 				<div class="rolunk-ikon">
-					<svg class="icon icon-phone">
-						<use xlink:href="#icon-phone"></use></svg>
+					<svg class="icon icon-phone rolunk-tooltip" title="[[TELEFON]]">
+						<use xlink:href="#icon-phone"></use>
+					</svg>
 				</div>
 				<div class="rolunk-ikon">
-					<svg class="icon icon-mail">
-						<use xlink:href="#icon-mail"></use></svg>
+					<svg class="icon icon-mail rolunk-tooltip" title="[[EMAIL]]">
+						<use xlink:href="#icon-mail"></use>
+					</svg>
 				</div>
 
 			</div>

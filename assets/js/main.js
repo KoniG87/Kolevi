@@ -1206,6 +1206,33 @@ $("#rendezvenyek h3, .szoba-description h3").each(function(){
   });
 });
 
+/* INIT TOOLTIP */
+
+$(".rolunk-tooltip").tooltipster({
+    animation: 'grow',
+    theme: 'shadow',
+    delay: 200,
+    onlyOne: false,
+    position: 'top',
+    trigger: 'custom'
+});
+
+$(".rolunk-ikon svg").on("click",function(event){
+  event.stopPropagation();
+  regTooltipWhite($(this));
+});
+
+/* SHOW / HIDE TOOLTIP */
+function regTooltipWhite(id) {
+
+    $(id).tooltipster('show', function () {
+
+        $(document).on('click', function () {
+            $(id).tooltipster('hide', function () {
+            });
+        });
+    });
+}
 
  //rólunk
  setTimeout(function(){ 
@@ -1249,14 +1276,14 @@ $(".rolunk-le").on("click",function(){
 //rolunk-info FEL!
 
 $(".rolunk-fel").on("click",function(){
-  var thisOne = $(this).parent().parent().parent().parent(),
+  var thisOne = $(this).parent().parent().parent(),
   delay = 500;
   thisOne.find(".ori-4").delay(delay*0.5).velocity({rotateX:"-180deg",backgroundColor:"#fff"},{duration:(delay)});
   thisOne.find(".ori-3").delay(delay*1.2).velocity({rotateX:"-180deg",backgroundColor:"#fff"},{duration:delay});
   thisOne.find(".ori-2").delay(delay*1.5).velocity({rotateX:"-180deg",backgroundColor:"#fff"},{duration:delay});
   thisOne.find(".ori-1").delay(delay*2).velocity({rotateX:"-180deg",backgroundColor:"#fff"},{duration:(delay)});
   thisOne.find(".origami-container").delay(delay*2.3).velocity({height:0,marginTop:0});
- thisOne.parent().find("h4, svg.icon").delay(delay*2.5).velocity({opacity:1});
+ thisOne.find("h4, svg.icon").delay(delay*2.5).velocity({opacity:1});
 });
 
 
