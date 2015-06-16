@@ -9,6 +9,7 @@
 		<tr>
 			<th>Név</th>
 			<th>Email</th>
+			<th>Telefonszám</th>
 			<th>Dátum</th>
 			<th>Hány fő</th>
 			<th class="wideHeader">Megjegyzés</th>

@@ -2,15 +2,14 @@
 
 class kolevesPDF extends TCPDF{
 	public function Footer() {
-		$this->SetY(-42);
+		$this->SetY(-36);
 		$this->SetFont('freesans', '', 8);
 		
 		$footer = '
 			<p style="text-align:center;">
 			
 			
-				Szervízdíjat nem számolunk fel, ezért ha elégedettek voltatok, <br/>
-			a borravalót a pincéreknek adjátok oda! Köszönjük!<br/><br/>
+				Szervízdíjat nem számolunk fel, ezért ha elégedettek voltatok, a borravalót a pincéreknek adjátok oda! Köszönjük!<br/><br/>
 			
 			Kreatív chef: Bezdán Anita • Chef: Bíró Dániel • Üzletvezető: Dyssou Bona • Vendéglősök: Elek Imola, Kápolnai Gábor Zebulon<br/>
 			

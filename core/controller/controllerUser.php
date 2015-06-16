@@ -139,9 +139,10 @@ class User extends BaseObject{
     		 * Meglévő sor updatelése
     		 */
     		else{
-    			$SQL = "UPDATE koleves_dolgozok SET megjegyzes = ?, telefon = ?, email = ?, facebook = ?, nev = ?, kep = ?, allapot = ?, jogosultsag_id = ?, rendezvenyfelelos = ? WHERE id = ?;";
+    			$SQL = "UPDATE koleves_dolgozok SET username = ?, megjegyzes = ?, telefon = ?, email = ?, facebook = ?, nev = ?, kep = ?, allapot = ?, jogosultsag_id = ?, rendezvenyfelelos = ? WHERE id = ?;";
     			 
     			$queryParams = array(
+    					$_POST['username'],
     					$_POST['megjegyzes'],
     					$_POST['telefon'],
     					$_POST['email'],

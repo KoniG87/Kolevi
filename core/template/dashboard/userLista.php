@@ -10,6 +10,7 @@
 		<tr>
 			<th>Kép</th>
 			<th class="wideHeader">Név</th>
+			<th></th>
 			<?php 
 			/*
 			 

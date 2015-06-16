@@ -118,7 +118,7 @@ class Vendeglo extends BaseObject{
     
     
     public function drawRolunk(){
-    	$SQL = "SELECT username AS NICK, nev AS FULLNAME, megjegyzes AS DESCRIPTION, (CASE WHEN kep > '' THEN kep ELSE CONCAT('assets/img/no-pic-', neme, '.png') END) AS KEP FROM koleves_dolgozok WHERE vendeglo = 1 AND allapot = 1;";
+    	$SQL = "SELECT username AS NICK, nev AS FULLNAME, megjegyzes AS DESCRIPTION, (CASE WHEN kep > '' THEN kep ELSE CONCAT('assets/img/no-pic-', neme, '.png') END) AS KEP, telefon AS TELEFON, email AS EMAIL FROM koleves_dolgozok WHERE vendeglo = 1 AND allapot = 1;";
     	$elements = array(
     		'emberek' => $this->fetchItems($SQL),
     		'partnerek'	=>  $this->getPartnerData(0),
@@ -138,7 +138,7 @@ class Vendeglo extends BaseObject{
     
     
     public function getFoglalasData(){
-    	$foglalasSQL = "SELECT id, nev, megjegyzes, email, hanyfo, idopont, jovahagyva FROM koleves_asztalfoglalasok ORDER BY idopont DESC;";
+    	$foglalasSQL = "SELECT id, nev, megjegyzes, email, telefonszam, hanyfo, idopont, jovahagyva FROM koleves_asztalfoglalasok ORDER BY idopont DESC;";
     	$foglalasRES = $this->fetchItems($foglalasSQL);
     
     	return $foglalasRES;
@@ -440,11 +440,12 @@ class Vendeglo extends BaseObject{
     		*/
     		if ($_POST['id'] == "0"){
     			 
-    			$SQL = "INSERT INTO koleves_asztalfoglalasok SET nev = ?, email = ?, megjegyzes = ?, hanyfo = ?, idopont = ?;";
+    			$SQL = "INSERT INTO koleves_asztalfoglalasok SET nev = ?, email = ?, telefonszam = ?, megjegyzes = ?, hanyfo = ?, idopont = ?;";
     			
     			$queryParams = array(
     					$_POST['nev'],
     					$_POST['email'],
+    					$_POST['telefonszam'],
     					$_POST['megjegyzes'],
     					$_POST['hanyfo'],
     					$_POST['datum'].' '.$_POST['ido']
@@ -456,11 +457,12 @@ class Vendeglo extends BaseObject{
     		 * Meglévő sor updatelése
     		 */
     		else{
-    			$SQL = "UPDATE koleves_asztalfoglalasok SET nev = ?, email = ?, megjegyzes = ?, hanyfo = ?, idopont = ?, jovahagyta = ?, jovahagyva = ? WHERE id = ?;";
+    			$SQL = "UPDATE koleves_asztalfoglalasok SET nev = ?, email = ?, telefonszam = ?, megjegyzes = ?, hanyfo = ?, idopont = ?, jovahagyta = ?, jovahagyva = ? WHERE id = ?;";
     	
     			$queryParams = array(
     					$_POST['nev'],
     					$_POST['email'],
+    					$_POST['telefonszam'],
     					$_POST['megjegyzes'],
     					$_POST['hanyfo'],
     					$_POST['datum'].' '.$_POST['ido'],
@@ -476,16 +478,17 @@ class Vendeglo extends BaseObject{
     		$foglalasData = array(
     			'nev'	=> $_POST['nev'],
     			'email'	=> $_POST['email'],
+    			'telefonszam'	=> $_POST['telefonszam'],
     			'megjegyzes'	=> $_POST['megjegyzes'],
     			'hanyfo'	=> $_POST['hanyfo'],
     			'idopont'	=> $_POST['datum'].' '.$_POST['ido']
     		);
-    		$ertesesiAdat = array(
+    		$ertesesiData = array(
     			'email'	=> 'kapolnai.gabor@gmail.com',
     			'nev'	=> 'Kápszi'
     		);
     		
-    		$this->foglalasErtesitoEmail($foglalasData, $ertesesiAdat);
+    		$this->foglalasErtesitoEmail($foglalasData, $ertesesiData);
     		
     		$res['status'] = true;
     		$this->commit();

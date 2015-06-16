@@ -13,7 +13,7 @@
                 <label>Típus</label></td>
 			<td>
                 
-                <select name="tipus" title="Hírelem jellege" required>
+                <select name="tipus_id" title="Hírelem jellege" required>
                     <option value=""></option>
                     <option value="1">Rendezvény</option>
                     <option value="2">Program</option>
@@ -32,7 +32,7 @@
 		</tr>
 		<tr>
 			<td><label>Felirat</label></td>
-			<td><input maxlength="80" type="text" name="felirat" title="Megjelenő felirat" value="" required/>
+			<td><input maxlength="80" type="text" name="text" title="Megjelenő felirat" value="" required/>
 			<span class="tooltip">Megjelenő felirat, max. 80 karakter</span>
 			</td>
 		</tr>
@@ -79,6 +79,7 @@
 
 		$('input, textarea, select').change(function(){
 			attr = $(this).attr('required');
+			
 			if (typeof attr !== typeof undefined && attr !== false && $(this).val() != ""){
 				$(this).removeClass('missing');
 			} else{
@@ -122,14 +123,15 @@
 			
 			data = {
 				id: $('#editForm input[name="id"]').val(),
-				text: $('#editForm input[name="felirat"]').val(),
+				text: $('#editForm input[name="text"]').val(),
 				url: $('#editForm input[name="url"]').val(),
-                tipus_id: $('#editForm select[name="tipus"]').val(),
+                tipus_id: $('#editForm select[name="tipus_id"]').val(),
                 allapot: $('#editForm select[name="allapot"]').val(),
                 request: "updateHir"
 			};
 			
 			$.each(data, function(key, val){
+				console.log($('[name="'+key+'"]').attr("name") );
 				attr = $('[name="'+key+'"]').attr('required');
 				if (typeof attr !== typeof undefined && attr !== false 
 						&& 
@@ -138,6 +140,8 @@
 					$('[name="'+key+'"]').addClass('missing');
 				}
 			});
+
+
 
 			if (canSubmit){
 				

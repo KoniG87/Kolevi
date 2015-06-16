@@ -647,10 +647,7 @@ class Menu extends BaseObject{
 	    
 	    }
     	
-		$html .= '<span style="font-size:12px;font-weight:bold;">&bull; KÉRÉSRE GYEREKEKNEK IS KÉSZÍTÜNK ÉTELT &bull;</span><p>
-			GM = gluténmentes &nbsp; TM = tejtermék mentes &nbsp; V = vegetáriánus<br/>
-			</p>
-		';
+		
 		$html .= '</div>';
 
     	
