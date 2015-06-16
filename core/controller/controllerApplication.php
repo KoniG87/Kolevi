@@ -480,7 +480,7 @@ echo '
                         id:  $("input[name=\"id\"]" , $(this)).val(),
                         hanyfo: $("select[name=\"hanyfo\"]" , $(this)).val(),
                         email: $("input[name=\"email\"]" , $(this)).val(),
-                        tel: $("input[name=\"tel\"]" , $(this)).val(),
+                        tel: $("input[name=\"telefonszam\"]" , $(this)).val(),
                         megjegyzes: $("input[name=\"megjegyzes\"]" , $(this)).val()               
                       };
 
@@ -518,7 +518,9 @@ echo '
                              $("#nl-form > div > input.datepicker").val("ma");  
                              $("#nl-form > div > input.timepicker").val("13:30");
                              $("#nl-form > div > div:nth-child(11) > a").text("Erre az");
-                             $("#nl-form > div > div:nth-child(15) > a").text("Szeretem a maceszgombócot!");
+                             $("#nl-form > div > div:nth-child(14) > a").text("Ezen a");
+                             $("#nl-form > div > div:nth-child(17) > a").text("Szeretem a maceszgombócot!");
+
                         }, 599);
                      });
     			
