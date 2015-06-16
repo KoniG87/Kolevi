@@ -474,14 +474,14 @@ echo '
                       
                       foglalasData = {
                         request: "asztalfoglalasUpdate",
-                        nev: $("input[name=\"nev\"]" , $(this)).val(),
-                        datum: $("input[name=\"datum\"]" , $(this)).val(),
-                        ido: $("input[name=\"ido\"]" , $(this)).val(),
-                        id:  $("input[name=\"id\"]" , $(this)).val(),
-                        hanyfo: $("select[name=\"hanyfo\"]" , $(this)).val(),
-                        email: $("input[name=\"email\"]" , $(this)).val(),
-                        tel: $("input[name=\"telefonszam\"]" , $(this)).val(),
-                        megjegyzes: $("input[name=\"megjegyzes\"]" , $(this)).val()               
+                        nev: $("input[name=\'nev\']" , $(this)).val(),
+                        datum: $("input[name=\'datum\']" , $(this)).val(),
+                        ido: $("input[name=\'ido\']" , $(this)).val(),
+                        id:  $("input[name=\'id\']" , $(this)).val(),
+                        hanyfo: $("select[name=\'hanyfo\']" , $(this)).val(),
+                        email: $("input[name=\'email\']" , $(this)).val(),
+                        telefonszam: $("input[name=\'telefonszam\']" , $(this)).val(),
+                        megjegyzes: $("input[name=\'megjegyzes\']" , $(this)).val()               
                       };
 
                     var ujrafoglalasContent = $("<div/>").addClass("ujra-foglalas").html("<h3>Asztalfoglalás megtörtént!</h3><br/>Köszi <span class=\"foglalas-data\">"+foglalasData.nev+"</span>, hogy betértél hozzánk! Hamarosan visszaigazolunk a <span class=\"foglalas-data\">"+foglalasData.email+"</span> email címen, vagy a <span class=\"foglalas-data\">"+foglalasData.tel+"</span> telefonszámon, hogy <span class=\"foglalas-data\">"+foglalasData.datum+" - "+foglalasData.ido+"</span>-kor tudjuk-e biztosítani a(z) <span class=\"foglalas-data\">"+foglalasData.hanyfo+"</span> helyet.<div class=\"nl-submit-wrap\"><button class=\"nl-reset\" type=\"submit\">Újbóli foglalás</button><button class=\"nl-reset right\" type=\"submit\">Rendben, köszi</button></div>");
