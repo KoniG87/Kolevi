@@ -402,7 +402,7 @@ $(".timepicker").datetimepicker({
   datepicker:false,
   format:'H:i',
   step:30,
-  closeOnDateSelect:true,
+  closeOnTimeSelect:true,
   minTime:'08:00',
   maxTime:'24:00'
 })
@@ -446,11 +446,11 @@ $(".nl-submit").on("click",function(){
 
 // naptár ikon kinyitó
 
-$(".naptar-trigger").on("click",function(){
+/*$(".naptar-trigger").on("click",function(){
   $("#mini-clndr, .naptar-trigger").toggleClass("naptar-is-on");
   refreshWaypoints();
 });
-
+*/
 
 
 $(".program-date").each(function(){
@@ -484,26 +484,28 @@ var truncateIfNeeded = function(jqueryTag){
 };
 truncateIfNeeded();
 // Ha nem kell még a dotdotdot,akkor tüntesd el a nyilakat...
-$(".program").each(function(){
+
+$(".program").each(programNyilSetter);
+
+function programNyilSetter(){
   var dotContent = $(this).find(".dot-inner-content");
 
 
   if(dotContent.innerHeight() > 144){
-    $(this).find(".program-right .program-nyil").css({
+/*    $(this).find(".program-right .program-nyil").css({
       opacity:1,
       pointerEvents:"initial"
-    });
+    });*/
     $(this).removeClass("program-short");
   }
   else{
-    $(this).find(".program-right .program-nyil").css({
+/*    $(this).find(".program-right .program-nyil").css({
       opacity:0,
       pointerEvents:"none"
-    });
+    });*/
     $(this).addClass("program-short");
   }
-});
-
+}
 
 function programNyilLe(){
 $(".program-nyil-le").on("click",function(event){
@@ -539,35 +541,6 @@ truncateIfNeeded(parent);
 refreshWaypoints();
 
 }
-
-/*$(".program-nyil").on("click",function(event){
-event.preventDefault();
-var programokParent = $(this).parent().parent().parent();
-
-
-
-
-
-
-var programokParent = $(this).parent().parent().parent();
-
-programokParent.toggleClass("program-fullheight");
-
-if (programokParent.hasClass("program-fullheight")) {
-$(".program-nyil").velocity({ rotateZ: "180deg" });
-
-
-}
-else{
-$(".program-nyil").velocity({ rotateZ: "0" });
-
-
-
-}
-
-refreshWaypoints();
-});*/
-
 
 // CALENDAR
 
@@ -704,6 +677,8 @@ $(".cikk-img").each(function(){
   });
 });
 }
+
+
 
 
 if (matchMedia) {

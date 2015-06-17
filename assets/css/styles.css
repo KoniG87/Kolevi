@@ -4282,6 +4282,29 @@ input:focus::-ms-input-placeholder {
   -moz-transition-delay: 0s;
   transition-delay: 0s; }
 
+.nl-utoirat {
+  color: #999;
+  line-height: 0.8rem;
+  font-family: "Roboto Slab", Courier, serif;
+  padding: 1rem 0;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .nl-utoirat {
+      padding: 0;
+      position: absolute;
+      width: 62%;
+      right: 1rem;
+      bottom: 2rem; } }
+  .nl-utoirat span {
+    font-size: 160%;
+    position: absolute;
+    height: 1.4rem; }
+  .nl-utoirat p {
+    display: inline;
+    letter-spacing: 1px;
+    font-size: 60%;
+    padding-left: 1.5rem; }
+
 /*datetimepicker*/
 .xdsoft_datetimepicker {
   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.506);
@@ -5171,6 +5194,10 @@ input.timepicker:-ms-input-placeholder {
       overflow: hidden;
       min-height: 10rem;
       max-height: 10rem; } }
+
+.program-short .program-nyil {
+  opacity: 0;
+  pointer-events: none; }
 
 /* cubic-bezier(.5,0,1,0)
  */

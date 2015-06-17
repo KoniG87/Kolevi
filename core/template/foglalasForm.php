@@ -51,6 +51,11 @@
                                         <input type="text" class="formText" value="" name="megjegyzes" placeholder="Szeretem a maceszgombócot!" data-subline="Ide jöhet bármi, amit még hozzá tennél az asztalfoglaláshoz"/>
                                         <br>
                                         Köszi szépen!
+                                        <br>
+                                        <div class="nl-utoirat">
+                                            <span>*</span>
+                                            <p>Az itt kitöltött adatokat nem tároljuk el és kizárólag az asztalfoglalás felvételéhez használjuk fel. Miután a foglalás folyamata lezárult, a megadott adatokat töröljük!</p>
+                                        </div>
                                         <div class="nl-submit-wrap">
                                             <button class="nl-submit" type="submit">Küldés</button>
                                         </div>

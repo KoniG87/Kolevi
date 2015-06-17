@@ -862,6 +862,31 @@ input:focus::-ms-input-placeholder {
 	transition-delay: 0s;
 }
 
+.nl-utoirat{
+	color:$darkgray;
+	line-height:0.8rem;
+	font-family: $roboto;
+	padding:1rem 0;
+	@include breakpoint(tablet){
+		padding:0;
+		position:absolute;
+		width:62%;
+		right:1rem;
+		bottom:2rem;
+	}
+	span{
+		font-size: 160%;
+		position:absolute;
+		height: 1.4rem;
+	}
+	p{
+		display: inline;
+		letter-spacing: 1px;
+		font-size: 60%;
+		padding-left:1.5rem;
+	}
+}
+
 
 /*datetimepicker*/
 
@@ -1817,7 +1842,12 @@ input.timepicker:-ms-input-placeholder {
 	
 }
 
-
+.program-short{
+	.program-nyil{
+		opacity:0;
+		pointer-events: none;
+	}
+}
 /* cubic-bezier(.5,0,1,0)
  */.program-fullheight{
 	max-height:950px !important;

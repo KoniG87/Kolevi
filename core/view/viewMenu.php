@@ -394,11 +394,13 @@ class MenuView extends BaseView{
                     <div class="row clearfix">
                     <div class="four columns" style="margin-bottom:3rem;">
                             <div class="mobile-cetli">
+                            <img src="assets/img/mobile-cetli.png" alt="">
+                            <article>
                                 <h3>Külön ajánlat</h3>';
                                   foreach ($elements['cetli'] AS $key => $cetliAdat){
                                         echo '<p>'.$cetliAdat['labelText'].'</p>';
                                    }  
-                            echo '</div>
+                            echo '</article></div>
                             <a class="dl-pdf" target="_blank" href="'.$_SESSION['helper']->getPath().'requestHandler"><svg class="icon icon-letoltes"><use xlink:href="#icon-letoltes"></use></svg>Letöltés</a>
                     </div>
                     </div>
