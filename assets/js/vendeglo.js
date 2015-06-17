@@ -493,12 +493,14 @@ $(".program").each(function(){
       opacity:1,
       pointerEvents:"initial"
     });
+    $(this).removeClass("program-short");
   }
   else{
     $(this).find(".program-right .program-nyil").css({
       opacity:0,
       pointerEvents:"none"
     });
+    $(this).addClass("program-short");
   }
 });
 
@@ -604,9 +606,8 @@ template: $('#calendar-template').html(),
         easing: "ease",
         offset:-120
       });
-          if(targetProgi.find(".program-right").innerHeight() >= 160){
+          if(!targetProgi.hasClass("program-short")){
             targetProgi.find(".program-nyil-le").click();
-            /*console.log(targetProgi.innerHeight());*/
           }
         }
       },
