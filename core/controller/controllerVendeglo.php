@@ -756,6 +756,14 @@ class Vendeglo extends BaseObject{
                     '.$foglalasData['email'].'
                 </td>
             </tr>
+             <tr>
+                <td style="padding:5px 10px;width:200px">
+                    <strong>Telefonszám</strong>
+                </td>
+                <td colspan="3" style="padding:5px 10px;width:300px">
+                    '.$foglalasData['telefonszam'].'
+                </td>
+            </tr>
     		<tr>
                 <td style="padding:5px 10px;width:200px">
                     <strong>Időpont</strong>

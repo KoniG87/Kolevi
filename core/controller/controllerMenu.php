@@ -688,7 +688,7 @@ class Menu extends BaseObject{
     	$pdf->AddPage();
     	 
     	// Background pattern
-    	$img_file = 'assets/img/pdfBackground.jpg';
+    	$img_file = 'assets/img/pdfItallapBackground.jpg';
     	$pdf->Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
     	 
     	$pdf->SetAutoPageBreak($auto_page_break, $bMargin);

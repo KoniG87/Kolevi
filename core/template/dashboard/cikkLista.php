@@ -22,7 +22,7 @@
 				nagykep: containingRow.attr('data-nagykep'),
 				kiskep: containingRow.attr('data-kep')
 			};
-			console.log(data);
+			
 			$.each(data, function(key, val){
 				$('[name="'+key+'"]').val(val);
 			});
@@ -78,10 +78,10 @@
 							triggeredRow.attr('data-kiskep', data.kiskep);
 							
 							if (data.kategoria != elozoKategoria){
-								$('.cikkTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after(triggeredRow);
+								$('.cikkTabla tbody').after(triggeredRow);
 							}
 						}else{
-							$('.cikkTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after('<tr data-kiskep="'+data.kiskep+'" data-nagykep="'+data.nagykep+'" data-url="'+data.url+'" data-id="'+resp['inputID']+'"><td><img src="'+data.kiskep+'" alt="'+data.text+'"/></td><td>'+data.text+'</td><td><button class="editCikk">Szerkesztés</button></td><td><button class="deleteCikk">Törlés</button></td></tr>');
+							$('.cikkTabla tbody').after('<tr data-kiskep="'+data.kiskep+'" data-nagykep="'+data.nagykep+'" data-url="'+data.url+'" data-id="'+resp['inputID']+'"><td><img src="'+data.kiskep+'" alt="'+data.text+'"/></td><td>'+data.text+'</td><td><button class="editCikk">Szerkesztés</button></td><td><button class="deleteCikk">Törlés</button></td></tr>');
 						}
 
 						
