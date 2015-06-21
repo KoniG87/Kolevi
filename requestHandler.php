@@ -7,7 +7,7 @@ if (isset($_POST['request'])){
 
 		/*
 		 * Delete handlers
-		 * */	
+		 */	
 			
 		case 'etlapDelete':
 			$menu = new Menu($app->getDbHandler());
@@ -48,6 +48,12 @@ if (isset($_POST['request'])){
 		case 'rendezvenyDelete':
 			$vendeglo = new Vendeglo($app->getDbHandler());
 			$vendeglo->deleteRendezvenyElem();
+		
+			break;
+			
+		case 'slideDelete':
+			$delicates = new Delicates($app->getDbHandler());
+			$delicates->deleteSlideElem();
 		
 			break;
 			
@@ -141,6 +147,12 @@ if (isset($_POST['request'])){
 			$menu->updateItallapElem();
 		
 			break;
+			
+		case 'kategoriaUpdate':
+			$delicates = new Delicates($app->getDbHandler());
+			$delicates->updateKategoriaElem();
+		
+			break;
 		
 		case 'napiUpdate':
 			$menu = new Menu($app->getDbHandler());
@@ -163,6 +175,12 @@ if (isset($_POST['request'])){
 		case 'rendezvenyUpdate':
 			$vendeglo = new Vendeglo($app->getDbHandler());
 			$vendeglo->updateRendezveny();
+		
+			break;
+
+		case 'slideUpdate':
+			$delicates = new Delicates($app->getDbHandler());
+			$delicates->updateSlide();
 		
 			break;
 			

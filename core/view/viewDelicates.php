@@ -3,9 +3,7 @@
 class DelicatesView extends BaseView{
 	
 	function __construct(){
-		/*$valtozo < template/kajaMenu.php
 		
-		$valtozo */
         
 	}
     
@@ -50,7 +48,7 @@ class DelicatesView extends BaseView{
 						<option value=""></option>
 				';
 		foreach ($elements['elerhetoKepek'] AS $kepAdat){
-			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['id'].'">'.basename($kepAdat['fajlnev']).'</option>';
+			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['fajlnev'].'">'.basename($kepAdat['fajlnev']).'</option>';
 		}
 		echo '
 			
@@ -84,23 +82,146 @@ class DelicatesView extends BaseView{
 	
     		<h2>Akciók</h2>
 	
-			<table class="tablaGrid cikkTabla">
-				';
+			<table class="tablaGrid striped slideTabla">
+				<thead>
+					<tr>
+						<th>Kép</th>
+						<th>Cím</th>
+						<th class="wideHeader">Leírás</th>
+						<th>Tagek</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>';
 	
 		foreach ($elements['akciok'] AS $key => $slideAdat){
 			
-				echo '<tr data-id="'.$cikkAdat['id'].'">
-						<td><img src="'.$_SESSION['helper']->getPath().$slideAdat['kep'].'" alt=""/></td>
+				echo '<tr data-id="'.$slideAdat['id'].'" data-ar="'.$slideAdat['ar'].'" data-sorrend="'.$slideAdat['sorrend'].'">
+						<td><img data-original="'.$slideAdat['kep'].'" src="'.$this->getThumbnailPath($_SESSION['helper']->getPath().$slideAdat['kep']).'" alt=""/></td>
 						<td>'.$slideAdat['labelHeader'].'</td>
-						
-						<td><button class="editCikk">Szerkesztés</button></td>
-						<td><button class="deleteCikk">Törlés</button></td>
+						<td>'.$slideAdat['labelDesc'].'</td>
+						<td>'.$slideAdat['labelTag'].'</td>
+						<td><button class="editSlide">Szerkesztés</button></td>
+						<td><button class="deleteSlide">Törlés</button></td>
 					</tr>';
 			}
 		
 	
-		echo '</table>';
+		echo '</tbody>
+				</table>';
 		
+	}
+	
+	
+	
+	
+	
+	public function drawKategoriaAdmin($elements){
+		echo '
+	   	<section class="kategoriaEditor">
+    		<button id="addKategoria">Kategória rögzítése</button>
+	
+			<table class="tablaGrid" >
+				<tr>
+					<td>Cím</td>
+					<td>
+						<input type="hidden" name="id" value="0"/>
+						<input type="text" maxlength="128" title="Cím" name="text" value="" required/>
+						<span class="tooltip">Cím, max. 128 karakter</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Leírás</td>
+					<td>
+	
+						<input type="text" maxlength="1024" title="Leírás" name="leiras" value="" required/>
+						<span class="tooltip">Leírás, max. 1024 karakter</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Tag-ek</td>
+					<td>
+	
+						<input type="text" maxlength="255" title="Tag-ek" name="tag" value="" required/>
+						<span class="tooltip">Tag-ek, max. 255 karakter</span>
+					</td>
+				</tr>
+	
+	
+				<tr>
+					<td>Slide képe:</label></td>
+				<td>
+					<select class="imageRefTemplate" name="kep" title="Slide képe" required>
+						<option value=""></option>
+				';
+		foreach ($elements['elerhetoKepek'] AS $kepAdat){
+			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['fajlnev'].'">'.basename($kepAdat['fajlnev']).'</option>';
+		}
+		echo '
+		
+					</select>
+					<span class="tooltip">Kiskép</span>
+				</td>
+	
+			</tr>
+	
+			<tr>
+					<td>Ár:</label></td>
+				<td>
+					<input type="text" title="Ár" name="ar" value="" required/>
+					<span class="tooltip">Ár</span>
+				</td>
+	
+			</tr>
+	
+			<tr>
+				<td>Sorrend</td>
+				<td>
+					<input type="number" title="Sorrend" min="1" name="sorrend" value="" required/>
+					<span class="tooltip">Sorrend</span>
+				</td>
+			</tr>
+		</table>
+	</section>
+	
+	
+	
+	
+    		<h2>Akciók</h2>
+	
+			<table class="tablaGrid kategoriaTabla">
+				
+				<tbody>';
+	
+		foreach ($elements['kategoriak'] AS $kategoriaAdat){
+			echo '<tr class="kategoriaRow">
+					<td colspan="3">'.$kategoriaAdat['labelHeader'].'</td>
+					</tr>
+					';
+			foreach ($kategoriaAdat['alkategoriak'] AS $alkategoriaAdat){
+				/*echo '<tr data-id="'.$slideAdat['id'].'" data-ar="'.$slideAdat['ar'].'" data-sorrend="'.$slideAdat['sorrend'].'">
+						<td><img data-original="'.$slideAdat['kep'].'" src="'.$this->getThumbnailPath($_SESSION['helper']->getPath().$slideAdat['kep']).'" alt=""/></td>
+						<td>'.$slideAdat['labelHeader'].'</td>
+						<td>'.$slideAdat['labelDesc'].'</td>
+						<td>'.$slideAdat['labelTag'].'</td>
+						<td><button class="editKategoria">Szerkesztés</button></td>
+						<td><button class="deleteKategoria">Törlés</button></td>
+					</tr>';
+					*/
+				echo '<tr data-id="'.$alkategoriaAdat['id'].'">
+						<td >'.$alkategoriaAdat['labelHeader'].'</td>
+						<td><button class="editKategoria">Szerkesztés</button></td>
+						<td><button class="deleteKategoria">Törlés</button></td>
+						</tr>';
+			}
+			
+		}
+	
+	
+		echo '</tbody>
+				</table>';
+	
 	}
 	
 	
@@ -125,6 +246,116 @@ class DelicatesView extends BaseView{
 		}
 		
 	}
+	
+	
+	public function drawTermekAdmin($elements){
+		echo '
+	   	<section class="kategoriaEditor">
+    		<button id="addTermek">Termék rögzítése</button>
+	
+			<table class="tablaGrid" >
+				<tr>
+					<td>Cím</td>
+					<td>
+						<input type="hidden" name="id" value="0"/>
+						<input type="text" maxlength="128" title="Cím" name="text" value="" required/>
+						<span class="tooltip">Cím, max. 128 karakter</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Leírás</td>
+					<td>
+	
+						<input type="text" maxlength="1024" title="Leírás" name="leiras" value="" required/>
+						<span class="tooltip">Leírás, max. 1024 karakter</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Tag-ek</td>
+					<td>
+	
+						<input type="text" maxlength="255" title="Tag-ek" name="tag" value="" required/>
+						<span class="tooltip">Tag-ek, max. 255 karakter</span>
+					</td>
+				</tr>
+	
+	
+				<tr>
+					<td>Slide képe:</label></td>
+				<td>
+					<select class="imageRefTemplate" name="kep" title="Slide képe" required>
+						<option value=""></option>
+				';
+		foreach ($elements['elerhetoKepek'] AS $kepAdat){
+			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['fajlnev'].'">'.basename($kepAdat['fajlnev']).'</option>';
+		}
+		echo '
+	
+					</select>
+					<span class="tooltip">Kiskép</span>
+				</td>
+	
+			</tr>
+	
+			<tr>
+					<td>Ár:</label></td>
+				<td>
+					<input type="text" title="Ár" name="ar" value="" required/>
+					<span class="tooltip">Ár</span>
+				</td>
+	
+			</tr>
+	
+			<tr>
+				<td>Sorrend</td>
+				<td>
+					<input type="number" title="Sorrend" min="1" name="sorrend" value="" required/>
+					<span class="tooltip">Sorrend</span>
+				</td>
+			</tr>
+		</table>
+	</section>
+	
+	
+	
+	
+    		<h2>Akciók</h2>
+	
+			<table class="tablaGrid kategoriaTabla">
+	
+				<tbody>';
+	
+		foreach ($elements['kategoriak'] AS $kategoriaAdat){
+			echo '<tr class="kategoriaRow">
+					<td colspan="3">'.$kategoriaAdat['labelHeader'].'</td>
+					</tr>
+					';
+			foreach ($kategoriaAdat['alkategoriak'] AS $alkategoriaAdat){
+				/*echo '<tr data-id="'.$slideAdat['id'].'" data-ar="'.$slideAdat['ar'].'" data-sorrend="'.$slideAdat['sorrend'].'">
+				 <td><img data-original="'.$slideAdat['kep'].'" src="'.$this->getThumbnailPath($_SESSION['helper']->getPath().$slideAdat['kep']).'" alt=""/></td>
+				 <td>'.$slideAdat['labelHeader'].'</td>
+				 <td>'.$slideAdat['labelDesc'].'</td>
+				 <td>'.$slideAdat['labelTag'].'</td>
+				 <td><button class="editKategoria">Szerkesztés</button></td>
+				 <td><button class="deleteKategoria">Törlés</button></td>
+				 </tr>';
+				 */
+				echo '<tr data-id="'.$alkategoriaAdat['id'].'">
+						<td >'.$alkategoriaAdat['labelHeader'].'</td>
+						<td><button class="editKategoria">Szerkesztés</button></td>
+						<td><button class="deleteKategoria">Törlés</button></td>
+						</tr>';
+			}
+				
+		}
+	
+	
+		echo '</tbody>
+				</table>';
+	
+	}
+	
+	
 	
 	public function drawSlider($elements){
 		echo '<section id="delicates">';

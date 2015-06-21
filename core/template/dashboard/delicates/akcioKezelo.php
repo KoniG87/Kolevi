@@ -1,46 +1,39 @@
 <?php
-echo '!';
-/*
 $delicates = new Delicates($app->getDbHandler());
 
 $delicates->drawSliderAdmin();
-*/
+
 ?>
 
 <style type="text/css">
-
+	.slideTabla img{width:6em;}
+	.tablaGrid thead{font-weight:bold;}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var triggeredRow;
 		var elozoKategoria;
 
-		$(document).on('click', '.editEtel', function(){
-			$('.allergenSelector').removeClass('selected');
+		$(document).on('click', '.editSlide', function(){
+			
 			containingRow = $(this).parents('tr');
 			triggeredRow = containingRow;
 			data = {
 				id: containingRow.attr('data-id'),
-				kategoria: containingRow.prevAll('tr.kategoriaRow').first().find('td').text(),
-				text: $('td:nth-of-type(1)', containingRow).text(),
-				ar: $('td:nth-of-type(3)', containingRow).text().replace(/\s/g, ''),
-				sorrend: $('td:nth-of-type(4)', containingRow).text()
+				text: $('td:nth-of-type(2)', containingRow).text(),
+				leiras: $('td:nth-of-type(3)', containingRow).text(),
+				tag: $('td:nth-of-type(4)', containingRow).text(),
+				ar: containingRow.attr('data-ar'),
+				kep: $('td:nth-of-type(1) img', containingRow).attr('data-original'),
+				sorrend: containingRow.attr('data-sorrend')
 			};
 
-			var selectedAllergens = $('td:nth-of-type(2)', containingRow).attr('data-val').split(',');
-			$('.allergenSelector').each(function(){
-			    if ($.inArray($(this).attr('data-val'), selectedAllergens) >= 0){
-			        $(this).addClass('selected');
-			    } 
-			});
-						
-			elozoKategoria = data.kategoria;
-
+			
 			$.each(data, function(key, val){
 				$('[name="'+key+'"]').val(val);
 			});
 
-			$('#addEtel').velocity("scroll", {
+			$('#addSlide').velocity("scroll", {
 	            duration: 800,
 	            easing: "ease",
 	            offset:-100
@@ -49,11 +42,8 @@ $delicates->drawSliderAdmin();
 				
 		});
 
-		$('.allergenSelector').click(function(){
-			$(this).toggleClass('selected');
-		});
 
-		$(document).on('click', '#addEtel', function(){
+		$(document).on('click', '#addSlide', function(){
 			canSubmit = true;
 
 			data = {
@@ -78,7 +68,7 @@ $delicates->drawSliderAdmin();
 			});
 
 			if (canSubmit){
-				data.request = "etlapUpdate";
+				data.request = "slideUpdate";
 				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					if (resp['status']){
 						$.each(data, function(key, val){
@@ -127,11 +117,11 @@ $delicates->drawSliderAdmin();
 		});
 
 
-		$(document).on('click', '.deleteEtel', function(){
+		$(document).on('click', '.deleteSlide', function(){
 			containingRow = $(this).parents('tr');
 			data = {
 				id: containingRow.attr('data-id'),
-				request: "etlapDelete"
+				request: "slideDelete"
 			};
 			
 			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
@@ -155,30 +145,7 @@ $delicates->drawSliderAdmin();
 			
 		});
 
-		$('input[name^="cetli"]').focus(function(){
-			originalValue = $(this).val();
-		}).change(function(){
-			triggeredInput = $(this);
-			 		
-			data = {
-				id: triggeredInput.attr("data-id"),
-				text: triggeredInput.val(),
-				request: "cetliUpdate"
-			};
 		
-			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
-				if (resp["status"]){
-					triggeredInput.addClass("success");
-				}else{
-					triggeredInput.addClass("error");
-					triggeredInput.val(originalValue);
-				}
-		
-				setTimeout(function(){
-					triggeredInput.removeClass("success error");
-				}, 750);
-		}, "json");		
-		});	
 		
 		
 	});

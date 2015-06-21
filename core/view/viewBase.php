@@ -46,6 +46,13 @@ class BaseView{
         echo $output;
     }
     
+    
+    /*
+     * drawSectionLabel: generates the section separator label
+     * @param string $labelText		text to be displayed within the section separator
+     * @param string $forElement	id indicator for connecting separator to section and menustructure
+     * @param int $labelPos			ordinal position of separator within the page hierarchy
+     */
     public function drawSectionLabel($labelText, $forElement, $labelPos){
     	$elements = array(
     	    array(
@@ -58,6 +65,22 @@ class BaseView{
     	$templatePath = 'sectionHeader';
     	
     	$this->loadTemplate($templatePath, $elements);
+    }
+    
+    
+    /*
+     * getThumbnailPath: returns the thumbnail version of provided image (uploaded asset)
+     * @param string $imagePath		path to uploaded image asset
+     * @return string 				thumbnail path 
+     */
+    public function getThumbnailPath($imagePath){
+		$lastSeparatorPos = strrpos($imagePath, '/');
+		
+		$path = substr($imagePath, 0, $lastSeparatorPos + 1);
+		$image = substr($imagePath, $lastSeparatorPos + 1);
+		
+		return $path.'th_'.$image;
+	
     }
 }
 ?>

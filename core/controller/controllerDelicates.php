@@ -14,7 +14,7 @@ class Delicates extends BaseObject{
 			'elerhetoKepek' => $this->loadKepek(7),
 			'akciok'	=> $this->getSliderData(2)
 		);
-		print_r($elements);
+		//print_r($elements);
 		$this->view->drawSliderAdmin($elements);
 	}
 	
@@ -105,24 +105,95 @@ class Delicates extends BaseObject{
     	return $this->fetchItems($SQL, array($allapot));
     }
     
-    public function getKategoriaStruktura($melyseg = "full"){
-    	$elements = array();
-    	
+    public function getKategoriaData($melyseg = "full"){
     	$SQL = "SELECT id, icon, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader FROM koleves_delicates_fokategoriak ORDER BY sorrend ASC;";
     	$elements = $this->fetchItems($SQL);
-    	
+    
     	if ($melyseg == "full"){
-    		$alSQL = "SELECT ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader FROM koleves_delicates_alkategoriak WHERE fokategoria_id = ? ORDER BY sorrend ASC;";
-    		
+    		$alSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader FROM koleves_delicates_alkategoriak WHERE fokategoria_id = ? ORDER BY sorrend ASC;";
+    
     		$kategoriaSzamlalo = 0;
     		foreach ($elements AS $kategoriaData){
     			$elements[$kategoriaSzamlalo]['alkategoriak'] = $this->fetchItems($alSQL, array($kategoriaData['id']));
     			$kategoriaSzamlalo++;
     		}
     	}
-    	
+    	 
     	return $elements;
     }
+    
+    
+    public function getMegrendelesData($megrendelsAllapot){
+    	$allapot = 1;
+    	if ($megrendelsAllapot == 'archiv'){
+    		$allapot = 0;
+    	}
+    	
+    	$SQL = "
+    	SELECT m.id, m.nev, m.email, m.megjegyzes, SUM(egysegar*egyseg) AS osszeertek 
+    		FROM koleves_delicates_megrendelesek AS m
+			LEFT JOIN koleves_delicates_megrendelt_termekek AS mt ON mt.megrendeles_id = m.id
+    		WHERE visible = ?
+			GROUP BY mt.megrendeles_id
+    			SELECT id, nev, email, megjegyzes".$_SESSION['helper']->getLangLabel('text')." AS labelHeader FROM koleves_delicates_fokategoriak ORDER BY sorrend ASC;";
+    	$elements = $this->fetchItems($SQL, array($allapot));
+    
+    	if ($melyseg == "full"){
+    		$termekSQL = "
+    			SELECT mt.id, t.text_hu, t.kiskep, mt.egyseg, mt.egysegar, SUM(mt.egyseg * mt.egysegar ) AS osszar FROM koleves_delicates_megrendelt_termekek AS mt 
+					LEFT JOIN koleves_delicates_termekek AS t ON t.id = mt.termek_id
+					WHERE mt.megrendeles_id = ?
+					GROUP BY mt.termek_id";	
+    				
+    
+    		$megrendelesSzamlalo = 0;
+    		foreach ($elements AS $megrendelesAdat){
+    			$elements[$megrendelesSzamlalo]['termekek'] = $this->fetchItems($termekSQL, array($megrendelesAdat['id']));
+    			$megrendelesSzamlalo++;
+    		}
+    	}
+    
+    	return $elements;
+    }
+    
+    public function drawKategoriaAdmin(){
+    	$elements = array(
+    		'kategoriak'	=> $this->getKategoriaData()
+    	);
+    	//print_r($elements);
+    	$this->view->drawKategoriaAdmin($elements);
+    	
+    }
+    
+    public function drawTermekAdmin(){
+    	$elements = array(
+    		'termek'	=> $this->getKategoriaData()
+    	);
+    	//print_r($elements);
+    	$this->view->drawTermekAdmin($elements);
+    	 
+    }
+    
+    
+    public function drawMegrendelesAdmin($megrendelsAllapot = 'aktualis'){
+    	
+    	
+    	$elements = array(
+    			'termek'	=> $this->getKategoriaData()
+    	);
+    	//print_r($elements);
+    	$this->view->drawTermekAdmin($elements);
+    
+    }
+    
+    
+    
+    public function getKategoriaStruktura($melyseg = "full"){
+    	return $this->getKategoriaData($melyseg);
+    }
+    
+    
+    
     
     
     

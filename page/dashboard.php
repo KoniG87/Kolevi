@@ -69,12 +69,14 @@ if (isset($_GET['sec'])){
     <?php
     	$subPath = 'core/template/dashboard/';
     	
-    	if (!isset($_GET['sub']) || !file_exists($subPath.$_GET['sub'].'.php')){
-    		$_GET['sub'] = 'dashboard';
-    	}
     	$subFile = $_GET['sub'].'.php';
+    	
     	if (file_exists($subPath.strtolower($sectionIndicator).'/'.$subFile)){
     		$subPath .= strtolower($sectionIndicator).'/';
+    	}
+    	
+    	if (!isset($_GET['sub']) || !file_exists($subPath.$_GET['sub'].'.php')){
+    		$_GET['sub'] = 'dashboard';
     	}
     	
     	include($subPath.$subFile);		
