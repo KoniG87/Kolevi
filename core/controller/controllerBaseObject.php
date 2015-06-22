@@ -70,6 +70,12 @@ class BaseObject{
     }
     
     
+    
+    /**
+     * Helper function for converting comma-separated allergen string to array representation
+     * @param string $allergenString comma-separated string containing allergen tag numbers
+     * @return array array representation of input string
+     */
     private function explodeIconString($allergenString){
     	$allergenArray = array();
     	

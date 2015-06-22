@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Hoszt: 127.0.0.1
--- Létrehozás ideje: 2015. Jún 16. 23:30
+-- Létrehozás ideje: 2015. Jún 22. 09:03
 -- Szerver verzió: 5.6.21
 -- PHP verzió: 5.6.3
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `koleves_asztalfoglalasok` (
   `JOVAHAGYVA` tinyint(1) DEFAULT '0',
   `JOVAHAGYTA` tinyint(6) DEFAULT NULL,
   `ROGZITVE` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_asztalfoglalasok`
@@ -49,7 +49,11 @@ INSERT INTO `koleves_asztalfoglalasok` (`ID`, `NEV`, `EMAIL`, `TELEFONSZAM`, `ME
 (3, 'asd vasd', 'asd@asd.comv', NULL, '', 4, '2015-06-11 18:30:00', 0, NULL, NULL),
 (4, 'asd vasd', 'asd@asd.comv', NULL, '', 4, '2015-06-11 18:30:00', 0, NULL, NULL),
 (5, 'asd vasd', 'asd@asd.comv', NULL, 'most van kommentem is', 7, '2015-06-03 11:00:00', 0, NULL, NULL),
-(6, 'asd vasd', 'asd@asd.comv', NULL, 'most van kommentem is', 4, '2015-06-11 22:00:00', 0, NULL, NULL);
+(6, 'asd vasd', 'asd@asd.comv', NULL, 'most van kommentem is', 4, '2015-06-11 22:00:00', 0, NULL, NULL),
+(7, 'asdasd', 'asd@asd.com', NULL, 'asd', 3, '2015-06-19 11:00:00', 0, NULL, NULL),
+(8, 'asdasd', 'asd@asd.com', NULL, 'asd', 3, '2015-06-19 11:00:00', 0, NULL, NULL),
+(9, 'Joska Vagy', 'joska@asd.com', '23535235', '', 3, '2015-07-16 11:00:00', 0, NULL, NULL),
+(10, 'Joska', 'joska@asd.com', '2353523551353153', '', 5, '2015-07-22 22:30:00', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -136,6 +140,62 @@ INSERT INTO `koleves_delicates_fokategoriak` (`ID`, `TEXT_HU`, `TEXT_EN`, `ICON`
 -- --------------------------------------------------------
 
 --
+-- Tábla szerkezet ehhez a táblához `koleves_delicates_megrendelesek`
+--
+
+CREATE TABLE IF NOT EXISTS `koleves_delicates_megrendelesek` (
+`ID` int(6) NOT NULL,
+  `TAG` varchar(128) COLLATE utf8_hungarian_ci NOT NULL,
+  `NEV` varchar(80) COLLATE utf8_hungarian_ci NOT NULL,
+  `EMAIL` varchar(80) COLLATE utf8_hungarian_ci NOT NULL,
+  `MEGJEGYZES` varchar(2048) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `VISIBLE` tinyint(2) DEFAULT '1',
+  `JOVAHAGYVA` datetime DEFAULT NULL,
+  `JOVAHAGYTA` int(6) DEFAULT NULL,
+  `ROGZITVE` datetime DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `koleves_delicates_megrendelesek`
+--
+
+INSERT INTO `koleves_delicates_megrendelesek` (`ID`, `TAG`, `NEV`, `EMAIL`, `MEGJEGYZES`, `VISIBLE`, `JOVAHAGYVA`, `JOVAHAGYTA`, `ROGZITVE`) VALUES
+(1, '4f81c637ba40240b1376fc0dfa9a8ad9940b31c5cce46c55d6e9a4ab083f68fd', 'Almás Józsi', 'jozsi@almafarm.hu', 'Jövőhét keddig szeretném átvenni, köszi.', 0, NULL, NULL, '2015-05-17 11:18:55'),
+(2, '3da2d4a10be34bfcdf4aaa5bd589833bf8efee0ee39631e0b0b0ce9035efc1ed', 'Almás Józsi', 'jozsi@almafarm.hu', 'Jövőhét keddig szeretném átvenni, köszi.', 1, NULL, NULL, '2015-06-17 14:14:25'),
+(3, '0ba839bb755a771b4b02e5929977335faefde01fa77a9d1fdccf3ab679713d64', 'Barackos Levi', 'levi@barackfarm.hu', 'A szokásos csomag.', 1, NULL, NULL, '2015-06-22 15:14:25'),
+(4, '83ee9d34e200c7caf8424328f5fa037c4c2019cc8ff730b910f551fbe6e896d7', 'Körtés Karesz', 'karesz@korteland.hu', '', 1, NULL, NULL, '2015-06-15 16:44:07');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `koleves_delicates_megrendelt_termekek`
+--
+
+CREATE TABLE IF NOT EXISTS `koleves_delicates_megrendelt_termekek` (
+`ID` int(6) NOT NULL,
+  `MEGRENDELES_ID` int(6) DEFAULT NULL,
+  `TERMEK_ID` int(6) DEFAULT NULL,
+  `EGYSEG` int(5) NOT NULL,
+  `EGYSEGAR` varchar(2048) COLLATE utf8_hungarian_ci DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `koleves_delicates_megrendelt_termekek`
+--
+
+INSERT INTO `koleves_delicates_megrendelt_termekek` (`ID`, `MEGRENDELES_ID`, `TERMEK_ID`, `EGYSEG`, `EGYSEGAR`) VALUES
+(1, 1, 1, 10, '1400'),
+(2, 1, 3, 15, '1700'),
+(3, 2, 1, 5, '1400'),
+(4, 2, 2, 2, '1500'),
+(5, 2, 3, 22, '1700'),
+(6, 3, 1, 22, '1450'),
+(7, 4, 1, 30, '1400'),
+(8, 4, 6, 2, '1000');
+
+-- --------------------------------------------------------
+
+--
 -- Tábla szerkezet ehhez a táblához `koleves_delicates_slider`
 --
 
@@ -158,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `koleves_delicates_slider` (
 --
 
 INSERT INTO `koleves_delicates_slider` (`ID`, `TEXT_HU`, `TEXT_EN`, `LEIRAS_HU`, `LEIRAS_EN`, `TAG_HU`, `TAG_EN`, `KEP`, `AR`, `SORREND`, `VISIBLE`) VALUES
-(1, 'Házi Libazsír', 'Geesegrease', 'Kóstold meg isteni finom hazai libánkat.', 'Godlike flavor Geesegrease', NULL, NULL, 'assets/uploads/gallery02.jpg', 1400, 1, 1),
+(1, 'Házi Libazsír', 'Geesegrease', 'Kóstold meg isteni finom hazai libánkat.', 'Godlike flavor Geesegrease', NULL, NULL, 'assets/uploads/gallery04.jpg', 1400, 1, 1),
 (2, 'Házi Libazsír, de egy másik libából.', 'Yet another Geesegrease', 'Kóstold meg isteni finom hazai libánkat. Kóstold meg isteni finom hazai libánkat.', 'Godlike indeed this Geesegrease is', 'lila <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">lila</a> lila ', 'purple <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">purple</a> purple', 'assets/uploads/gallery02.jpg', 1400, 2, 1),
 (3, 'Házi Libazsír, de egy másik libából.', 'Yet another Geesegrease', 'Kóstold meg isteni finom hazai libánkat. Kóstold meg isteni finom hazai libánkat.', 'Godlike indeed this Geesegrease is', 'lila <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">lila</a> lila ', 'purple <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">purple</a> purple', 'assets/uploads/gallery02.jpg', 1400, 3, 1),
 (4, 'Házi Libazsír, de egy másik libából.', 'Yet another Geesegrease', 'Kóstold meg isteni finom hazai libánkat. Kóstold meg isteni finom hazai libánkat.', 'Godlike indeed this Geesegrease is', 'lila <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">lila</a> lila ', 'purple <a href="https://www.youtube.com/watch?v=-e0gcjgnxXw">purple</a> purple', 'assets/uploads/gallery02.jpg', 990, 4, 1),
@@ -366,7 +426,7 @@ CREATE TABLE IF NOT EXISTS `koleves_hirsav` (
   `ROGZITVE` datetime DEFAULT NULL,
   `SORREND` tinyint(2) DEFAULT '1',
   `ALLAPOT` tinyint(1) DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_hirsav`
@@ -543,9 +603,9 @@ INSERT INTO `koleves_kepek` (`ID`, `FAJLNEV`, `LEIRAS_HU`, `GALLERY_TAG`, `SZEKC
 (4, 'assets/uploads/gallery01.jpg', NULL, 1, 2),
 (5, 'assets/uploads/gallery02.jpg', NULL, NULL, 1),
 (6, 'assets/uploads/gallery03.jpg', NULL, NULL, 1),
-(7, 'assets/uploads/gallery04.jpg', NULL, NULL, NULL),
+(7, 'assets/uploads/gallery04.jpg', NULL, NULL, 7),
 (8, 'assets/uploads/about-img.png', NULL, NULL, 8),
-(9, 'assets/uploads/cat-tracks.jpg', NULL, NULL, NULL),
+(9, 'assets/uploads/cat-tracks.jpg', NULL, NULL, 7),
 (10, 'assets/uploads/gslide-1.jpg', NULL, NULL, 4),
 (11, 'assets/uploads/gslide-2.jpg', NULL, NULL, 4),
 (12, 'assets/uploads/gslide-3.jpg', NULL, NULL, 4),
@@ -777,7 +837,7 @@ CREATE TABLE IF NOT EXISTS `koleves_programok` (
   `KEP` varchar(155) COLLATE utf8_hungarian_ci NOT NULL,
   `FBLINK` varchar(155) COLLATE utf8_hungarian_ci DEFAULT NULL,
   `ALLAPOT` tinyint(1) DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `koleves_programok`
@@ -931,6 +991,18 @@ ALTER TABLE `koleves_delicates_fokategoriak`
  ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `koleves_delicates_megrendelesek`
+--
+ALTER TABLE `koleves_delicates_megrendelesek`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `koleves_delicates_megrendelt_termekek`
+--
+ALTER TABLE `koleves_delicates_megrendelt_termekek`
+ ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `koleves_delicates_slider`
 --
 ALTER TABLE `koleves_delicates_slider`
@@ -1058,7 +1130,7 @@ ALTER TABLE `koleves_szobak`
 -- AUTO_INCREMENT for table `koleves_asztalfoglalasok`
 --
 ALTER TABLE `koleves_asztalfoglalasok`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `koleves_cikkek`
 --
@@ -1074,6 +1146,16 @@ MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 ALTER TABLE `koleves_delicates_fokategoriak`
 MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `koleves_delicates_megrendelesek`
+--
+ALTER TABLE `koleves_delicates_megrendelesek`
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `koleves_delicates_megrendelt_termekek`
+--
+ALTER TABLE `koleves_delicates_megrendelt_termekek`
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `koleves_delicates_slider`
 --
@@ -1108,7 +1190,7 @@ MODIFY `ID` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `koleves_hirsav`
 --
 ALTER TABLE `koleves_hirsav`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `koleves_italkategoriak`
 --
@@ -1158,7 +1240,7 @@ MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `koleves_programok`
 --
 ALTER TABLE `koleves_programok`
-MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `koleves_rendezvenyek`
 --

@@ -1,7 +1,7 @@
 <?php
 $delicates = new Delicates($app->getDbHandler());
 
-$delicates->drawMegrendelesAdmin('aktualis');
+$delicates->drawKategoriaAdmin();
 
 ?>
 
@@ -150,4 +150,3 @@ $delicates->drawMegrendelesAdmin('aktualis');
 		
 	});
 </script>
-

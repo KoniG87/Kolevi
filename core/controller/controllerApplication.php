@@ -297,8 +297,9 @@ echo '
             'googleplus'    => '4.5*<br/>(69 reviews)'
         );
         try{
-            $fbResp = file_get_contents($facebookLink);
-            $fbInfo = json_decode($fbResp, true);
+            //$fbResp = file_get_contents($facebookLink);
+        	$fbResp = '{}';
+        	$fbInfo = json_decode($fbResp, true);
             
             $socNumbers['facebook'] = number_format($fbInfo['likes'], 0, ',', '.');
         }catch(Exception $e){
