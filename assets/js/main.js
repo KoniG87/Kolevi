@@ -144,8 +144,8 @@ var maskUrlIndex = 0;
         var t = $(this),
         pW = t.actual( 'width' ),
         pH = t.actual( 'height' );        
-/*        pW = t.width(),
-        pH = t.height();*/
+
+       
         var sourceImg = t.find("img"),
         imgSrc = sourceImg.attr("src");
 
@@ -153,10 +153,23 @@ var maskUrlIndex = 0;
 
         
         if(settings.setToImg == "on"){
-          var realImgRatio = (imgRealSize(sourceImg).width) / (imgRealSize(sourceImg).height),
-          setParentToImgRatio = pW / realImgRatio;
+          var imgRealWidth = imgRealSize(sourceImg).width;
+          var imgRealHeight = imgRealSize(sourceImg).height;
+              if(imgRealWidth == 0 || imgRealHeight == 0){
+                var hiba = '';
+                if(imgSrc == ''){
+                   hiba = 'nincs hozzá rendelve kép!';
+                }
+                   
+                console.error('epic fail: '+imgSrc+hiba);
+                imgRealWidth = 1.6;
+                imgRealHeight = 1;
+              }
+          var realImgRatio = (imgRealWidth) / (imgRealHeight);
+          var setParentToImgRatio = pW / realImgRatio;
           t.height(setParentToImgRatio);
           pH = setParentToImgRatio;
+
           }
       }
       
@@ -173,7 +186,7 @@ var maskUrlIndex = 0;
         if(settings.imgMask == "on"){
           maskImgClass = "class='svg-maskedImg'";
         }
-
+       /* pH = t.actual( 'height' );*/
         var mySVG = "<svg " + maskImgClass + " xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 " + pW + " " + pH + "' preserveAspectRatio='" + asRatio + "' >";           
         var shadow = "<svg class='svg-dropShadow' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 " + pW + " " + pH + "' preserveAspectRatio='" + asRatio + "' style='position:absolute;z-index:-1;left:" + settings.dX + "px;top:" + settings.dY + "px;filter: blur(" + settings.blur + "px);-webkit-filter: blur(" + settings.blur + "px);' >",
         rb,
@@ -206,7 +219,6 @@ var maskUrlIndex = 0;
           var randNum = (Math.random() * (max - min )) + min;
           return randNum ;
         };
-
 
         rb = pW*randomX() + "," + pH*randomY();
         mb = pW*randomX() / csuszka() + "," + pH*randomY();
