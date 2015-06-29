@@ -6,15 +6,19 @@ $delicates->drawTermekAdmin();
 ?>
 
 <style type="text/css">
-	.slideTabla img{width:6em;}
+	.kategoriaTabla img{width:6em;}
 	.tablaGrid thead{font-weight:bold;}
+	.tablaGrid .alKategoriaRow td{background-color:#C8C8C8;padding:0.6em 0 0.6em 4em;border-bottom:0.4rem solid #E2E2E2;border-top:0.5rem solid #E2E2E2;}
+	@media all and (max-width:1500px){
+		.kategoriaTabla img{min-width:48px;max-width:64px!important;}		
+	}	
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var triggeredRow;
 		var elozoKategoria;
 
-		$(document).on('click', '.editSlide', function(){
+		$(document).on('click', '.editTermek', function(){
 			
 			containingRow = $(this).parents('tr');
 			triggeredRow = containingRow;
@@ -22,18 +26,18 @@ $delicates->drawTermekAdmin();
 				id: containingRow.attr('data-id'),
 				text: $('td:nth-of-type(2)', containingRow).text(),
 				leiras: $('td:nth-of-type(3)', containingRow).text(),
-				tag: $('td:nth-of-type(4)', containingRow).text(),
-				ar: containingRow.attr('data-ar'),
-				kep: $('td:nth-of-type(1) img', containingRow).attr('data-original'),
-				sorrend: containingRow.attr('data-sorrend')
+				ar: $('td:nth-of-type(4)', containingRow).text().replace(/\s/g, ''),
+				tag: $('td:nth-of-type(5)', containingRow).text().replace(/\s/g, ''),
+				kep: $('td:nth-of-type(1) img', containingRow).attr('alt'),
+				sorrend: $('td:nth-of-type(6)', containingRow).text()
 			};
 
-			
+			console.log(data);
 			$.each(data, function(key, val){
 				$('[name="'+key+'"]').val(val);
 			});
 
-			$('#addSlide').velocity("scroll", {
+			$('#addTermek').velocity("scroll", {
 	            duration: 800,
 	            easing: "ease",
 	            offset:-100
@@ -43,16 +47,16 @@ $delicates->drawTermekAdmin();
 		});
 
 
-		$(document).on('click', '#addSlide', function(){
+		$(document).on('click', '#addTermek', function(){
 			canSubmit = true;
 
 			data = {
 				id: $('input[name="id"]').val(),
-				kategoria: $('select[name="kategoria"]').val(),
 				text: $('input[name="text"]').val(),
-				etterem: $('input[name="etterem"]').val(),
-				tagek: ($('.selected').length > 0 ? $('.selected').map(function(){ return $(this).attr("data-val"); 	}).get().join(',') : ''),
-				ar: $('input[name="ar"]').val(),
+				leiras: $('input[name="leiras"]').val(),
+				kep: $('select[name="kep"]').val(),
+				tagek: $('input[name="tag"]').val().replace(/\s/g, ''),
+				ar: $('input[name="ar"]').val().replace(/\s/g, ''),
 				sorrend: $('input[name="sorrend"]').val()
 			};
 
@@ -68,7 +72,7 @@ $delicates->drawTermekAdmin();
 			});
 
 			if (canSubmit){
-				data.request = "slideUpdate";
+				data.request = "termekUpdate";
 				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					if (resp['status']){
 						$.each(data, function(key, val){
@@ -78,16 +82,12 @@ $delicates->drawTermekAdmin();
 						
 						$(":input").removeClass('missing');
 						if (data.id != "0"){
-							$('td:nth-of-type(1)', triggeredRow).text(data.text);
-							$('td:nth-of-type(2)', triggeredRow).attr('data-val', data.tagek);
-
-							selectedAllergens = $('.allergenSelector.selected').clone();
-
-							$('td:nth-of-type(2)', triggeredRow).html(selectedAllergens);
-							$('td:nth-of-type(2) span.allergen', triggeredRow).removeClass('allergenSelector');
+							$('td:nth-of-type(2)', triggeredRow).text(data.text);
+							$('td:nth-of-type(3)', triggeredRow).text(data.leiras);
+							$('td:nth-of-type(4)', triggeredRow).text(data.tag);
+							$('td:nth-of-type(5)', triggeredRow).text(data.ar);
+							$('td:nth-of-type(6)', triggeredRow).text(data.sorrend);
 							
-							$('td:nth-of-type(3)', triggeredRow).text(data.ar);
-							$('td:nth-of-type(4)', triggeredRow).text(data.sorrend);
 							if (data.kategoria != elozoKategoria){
 								$('.etlapTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after(triggeredRow);
 							}
@@ -107,9 +107,6 @@ $delicates->drawTermekAdmin();
 					        
 				    	});
 
-						
-						$('.allergenSelector').removeClass('selected');
-						
 					}
 				}, 'json');
 				
@@ -117,11 +114,11 @@ $delicates->drawTermekAdmin();
 		});
 
 
-		$(document).on('click', '.deleteSlide', function(){
+		$(document).on('click', '.deleteTermek', function(){
 			containingRow = $(this).parents('tr');
 			data = {
 				id: containingRow.attr('data-id'),
-				request: "slideDelete"
+				request: "termekDelete"
 			};
 			
 			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){

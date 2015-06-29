@@ -40,7 +40,8 @@ class ImageView extends BaseView{
            		5   => 'Partnerek',
            		6   => 'Cikkek',
            		7   => 'Slide-k',
-                8   => 'Dolgozók'
+                8   => 'Dolgozók',
+            	9	=> 'Termékek'
             );
             
             echo '<tr data-id="'.$kepData['id'].'">

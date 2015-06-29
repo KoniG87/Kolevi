@@ -25,7 +25,7 @@ $delicates->drawSliderAdmin();
 				tag: $('td:nth-of-type(4)', containingRow).text(),
 				ar: containingRow.attr('data-ar'),
 				kep: $('td:nth-of-type(1) img', containingRow).attr('data-original'),
-				sorrend: containingRow.attr('data-sorrend')
+				sorrend: $('td:nth-of-type(5)', containingRow).text()
 			};
 
 			
@@ -78,16 +78,12 @@ $delicates->drawSliderAdmin();
 						
 						$(":input").removeClass('missing');
 						if (data.id != "0"){
-							$('td:nth-of-type(1)', triggeredRow).text(data.text);
-							$('td:nth-of-type(2)', triggeredRow).attr('data-val', data.tagek);
+							$('td:nth-of-type(2)', triggeredRow).text(data.text);
+							$('td:nth-of-type(3)', triggeredRow).text(data.leiras);
+							$('td:nth-of-type(4)', triggeredRow).text(data.tag);
+							$('td:nth-of-type(5)', triggeredRow).text(data.sorrend);
 
-							selectedAllergens = $('.allergenSelector.selected').clone();
 
-							$('td:nth-of-type(2)', triggeredRow).html(selectedAllergens);
-							$('td:nth-of-type(2) span.allergen', triggeredRow).removeClass('allergenSelector');
-							
-							$('td:nth-of-type(3)', triggeredRow).text(data.ar);
-							$('td:nth-of-type(4)', triggeredRow).text(data.sorrend);
 							if (data.kategoria != elozoKategoria){
 								$('.etlapTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after(triggeredRow);
 							}

@@ -6,44 +6,53 @@ $delicates->drawMegrendelesAdmin('aktualis');
 ?>
 
 <style type="text/css">
-	.slideTabla img{width:6em;}
-	.tablaGrid thead{font-weight:bold;}
+	.qtyInput{width:5.5rem!important;}
+	.termekRow td{padding:0.3rem 0.5rem!important;}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var triggeredRow;
 		var elozoKategoria;
 
-		$(document).on('click', '.editSlide', function(){
-			
+		$('.megrendelesEditor').hide();
+		
+		$(document).on('click', '.editMegrendeles', function(){
+			$(".termekRow").remove();
 			containingRow = $(this).parents('tr');
 			triggeredRow = containingRow;
 			data = {
 				id: containingRow.attr('data-id'),
-				text: $('td:nth-of-type(2)', containingRow).text(),
-				leiras: $('td:nth-of-type(3)', containingRow).text(),
-				tag: $('td:nth-of-type(4)', containingRow).text(),
-				ar: containingRow.attr('data-ar'),
-				kep: $('td:nth-of-type(1) img', containingRow).attr('data-original'),
-				sorrend: containingRow.attr('data-sorrend')
+				nev: $('td:nth-of-type(1)', containingRow).text(),
+				email: $('td:nth-of-type(2)', containingRow).text(),
+				megjegyzes: $('td:nth-of-type(3)', containingRow).text(),
+				osszertek: $('td:nth-of-type(4)', containingRow).text().replace(/\s/g, '')
 			};
 
+			//$(".megrendelesEditor .headerEnd").after($('tr').append('td'));
+
+			termekAdat = $.parseJSON(containingRow.attr('data-termekek').replace(/\'/g, '"'));
+			console.log(termekAdat);
+			
+			$.each(termekAdat, function(key, obj){
+				//console.log(obj.text_hu);
+				$(".megrendelesEditor .headerEnd").after('<tr class="termekRow"><td><img style="width:75px;" src="<?=$_SESSION['helper']->getPath()?>'+obj.kiskep+'" alt=""/></td><td>'+obj.text_hu+'</td><td><input type="number" class="qtyInput" name="egyseg" value="'+obj.egyseg+'"/> x <input type="number" class="qtyInput" name="egysegar" value="'+obj.egysegar+'"/> = <span class="osszar">'+obj.osszar+'</span></td></tr>');
+			});
 			
 			$.each(data, function(key, val){
 				$('[name="'+key+'"]').val(val);
 			});
 
-			$('#addSlide').velocity("scroll", {
+			$('#addMegrendeles').velocity("scroll", {
 	            duration: 800,
 	            easing: "ease",
 	            offset:-100
 	        });
 	
-				
+			$(".megrendelesEditor").fadeIn(500);
 		});
 
 
-		$(document).on('click', '#addSlide', function(){
+		$(document).on('click', '#addMegrendeles', function(){
 			canSubmit = true;
 
 			data = {
@@ -68,7 +77,7 @@ $delicates->drawMegrendelesAdmin('aktualis');
 			});
 
 			if (canSubmit){
-				data.request = "slideUpdate";
+				data.request = "megrendelesUpdate";
 				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					if (resp['status']){
 						$.each(data, function(key, val){
@@ -108,7 +117,7 @@ $delicates->drawMegrendelesAdmin('aktualis');
 				    	});
 
 						
-						$('.allergenSelector').removeClass('selected');
+						
 						
 					}
 				}, 'json');
@@ -117,11 +126,11 @@ $delicates->drawMegrendelesAdmin('aktualis');
 		});
 
 
-		$(document).on('click', '.deleteSlide', function(){
+		$(document).on('click', '.deleteMegrendeles', function(){
 			containingRow = $(this).parents('tr');
 			data = {
 				id: containingRow.attr('data-id'),
-				request: "slideDelete"
+				request: "megrendelesDelete"
 			};
 			
 			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){

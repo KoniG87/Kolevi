@@ -62,10 +62,43 @@ class Helper{
     		unset($_SESSION['user']);
     	}
     }
+
+    public function updateBasketItem($termekAdat, $termekIndex = null){
+		if (!isset($_SESSION['kosar']['termekek'])){
+			$_SESSION['kosar'] = array(
+				'termekek'	=> array()
+			);
+		}
+		
+    	if (!is_null($termekIndex)){
+			$_SESSION['kosar']['termekek'][$termekIndex]['egyseg'] = + $termekAdat['egyseg'];
+		}else{
+			array_push($_SESSION['kosar']['termekek'], $termekAdat);
+		}
+    }
+    
+    public function emptyBasket(){
+    	unset($_SESSION['kosar']['termekek']);
+    }
+    
+    public function getBasketContents(){
+    	$contentArray = array();
+    	
+    	if (isset($_SESSION['kosar']['termekek'])){
+    		$contentArray = $_SESSION['kosar']['termekek'];
+    	}
+    	
+    	return $contentArray;
+    }
     
     
-    public function getBasket(){
-    	//TODO delicates
+    public function getKosarEgysegek(){
+    	$egysegSzam = 0;
+    	foreach ($_SESSION['kosar']['termekek'] AS $termekAdat){
+    		$egysegSzam += $termekAdat['egyseg'];
+    	}
+    	
+    	return $egysegSzam;
     }
     
 }

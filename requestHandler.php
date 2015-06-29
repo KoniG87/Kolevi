@@ -67,6 +67,31 @@ if (isset($_POST['request'])){
 		 * Additional handlers
 		 */
 			
+		case 'checkoutForm':
+			$delicates = new Delicates($app->getDbHandler());
+			$delicates->drawCheckout();
+		
+			break;
+			
+		case 'itemForm':
+			$delicates = new Delicates($app->getDbHandler());
+			$delicates->drawProductPage();
+		
+			break;
+			
+		case 'shopCategoryData':
+			$delicates = new Delicates($app->getDbHandler());
+			$delicates->drawBoltKategoriaTermekek($_POST['id']);
+			
+			break;
+			
+			
+		case 'addToCart':
+			$delicates = new Delicates($app->getDbHandler());
+			$delicates->addToCart();
+			
+			break;
+			
 		case 'insertImageRef':
 			$image = new Image($app->getDbHandler());
 			$image->insertImageRef();

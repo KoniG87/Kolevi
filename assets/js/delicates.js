@@ -1,3 +1,4 @@
+var itemLoaded = false;
 $(document).ready(function(){
 
 /*delicatesről carousel*/
@@ -267,35 +268,38 @@ boltAccordion();
 
 $(".delicatesrol-acco .bolt-acco>li").click(delicatesrolAccoClick);
 
+
 /* Bold Grid */
+function colorizeCategoryLabel(){
+	$(".eheto .bolt-acco-head, .bolt-grid>h3.eheto-label").each(function(){
+	  $(this).Svgenerate({
+	    bottomFixed:"on",
+	    rangeX:0.98,
+	    rangeY:0.96,
+	    fill: "#e05a25"
+	  });
+	});
+	
+	$(".ihato .bolt-acco-head, .bolt-grid>h3.ihato-label").each(function(){
+	  $(this).Svgenerate({
+	    bottomFixed:"on",
+	    rangeX:0.98,
+	    rangeY:0.96,
+	    fill: "#795f86"
+	  });
+	});
+	
+	$(".nemeheto .bolt-acco-head, .bolt-grid>h3.nemeheto-label").each(function(){
+	  $(this).Svgenerate({
+	    bottomFixed:"on",
+	    rangeX:0.98,
+	    rangeY:0.96,
+	    fill: "#186c9b"
+	  });
+	});
+}
 
-$(".eheto .bolt-acco-head, .bolt-grid>h3.eheto-label").each(function(){
-  $(this).Svgenerate({
-    bottomFixed:"on",
-    rangeX:0.98,
-    rangeY:0.96,
-    fill: "#e05a25"
-  });
-});
-
-$(".ihato .bolt-acco-head, .bolt-grid>h3.ihato-label").each(function(){
-  $(this).Svgenerate({
-    bottomFixed:"on",
-    rangeX:0.98,
-    rangeY:0.96,
-    fill: "#795f86"
-  });
-});
-
-$(".nemeheto .bolt-acco-head, .bolt-grid>h3.nemeheto-label").each(function(){
-  $(this).Svgenerate({
-    bottomFixed:"on",
-    rangeX:0.98,
-    rangeY:0.96,
-    fill: "#186c9b"
-  });
-});
-
+colorizeCategoryLabel();
 
 function callBoltGridElements(){
 $(".bolt-grid-element-img").each(function(){
@@ -319,88 +323,106 @@ callBoltGridElements();
 /* bolt-item-open */
 
 //open
+
+/*
 function boltItemOpen(){
   $(".overlay-bolt").addClass("bolt-item-open");
   $("html, body").addClass("no-scroll");
 }
-
+*/
 //close
 function boltItemClose(){
 	$(".overlay-bolt").removeClass("bolt-item-open");
-  $("html, body").removeClass("no-scroll");
+	$("html, body").removeClass("no-scroll");
+	itemLoaded = false;
+	
+	if ($(".overlay-checkout-open").length == 0){
+		$(".bolt-item-slider, .bolt-item-slider-nav").slick("unslick");
+	}
 }
 
 
 
 
-$(".bolt-grid-element").on("click",function(event){
+$(document).on("click", ".bolt-grid-element" ,function(event){
 	event.preventDefault();
 	boltItemOpen();
 
-/*
-IDE EJAKULÁLD AZ AJAXAL!
-*/
-itemCarousel();
-  $(".item-q input").Svgenerate({
-    rangeX:0.97,
-    rangeY:0.94,
-    fill: "#fff",
-    rightFixed: "on"
-  });
-  $(".item-q-up").Svgenerate({
-    fill: "#000",
-    rightFixed: "on",
-    topFixed: "on"
-  });
-  $(".item-q-down").Svgenerate({
-    fill: "#000",
-    rightFixed: "on",
-    bottomFixed: "on"
-  });
-
-  $(".bolt-item-info button").Svgenerate({
-  rangeX:0.94,
-  rangeY:0.91,
+	
+	/*
+	IDE EJAKULÁLD AZ AJAXAL!
+	*/
+	applyItemCarousel();
 });
 
-});
-
-$(".bolt-item-close").on("click",function(){
+$(document).on("click", ".bolt-item-close", function(){
 	boltItemClose();
-  checkoutClose();
+	checkoutClose();
 });
 
+
+function applyItemCarousel(){
+	if (itemLoaded){
+		
+		itemCarousel();
+		$(".item-q input").Svgenerate({
+			rangeX:0.97,
+		    rangeY:0.94,
+		    fill: "#fff",
+		    rightFixed: "on"
+		});
+		$(".item-q-up").Svgenerate({
+		    fill: "#000",
+		    rightFixed: "on",
+		    topFixed: "on"
+		});
+		
+		$(".item-q-down").Svgenerate({
+		    fill: "#000",
+		    rightFixed: "on",
+		    bottomFixed: "on"
+		});
+		
+		$(".bolt-item-info button").Svgenerate({
+			rangeX:0.94,
+			rangeY:0.91,
+		});
+	}else{
+		setTimeout(function(){
+			applyItemCarousel();		
+		}, 250);	
+	}
+	
+}
 
 /* Item slider */
 
 function itemCarousel(){
 
-var itemPrev = "<svg class=\"icon icon-nyil-balra slick-prev\"><use xlink:href=\"#icon-nyil-balra\"></use></svg>";
-var itemNext = "<svg class=\"icon icon-nyil-jobbra slick-next\"><use xlink:href=\"#icon-nyil-jobbra\"></use></svg>";
+	var itemPrev = "<svg class=\"icon icon-nyil-balra slick-prev\"><use xlink:href=\"#icon-nyil-balra\"></use></svg>";
+	var itemNext = "<svg class=\"icon icon-nyil-jobbra slick-next\"><use xlink:href=\"#icon-nyil-jobbra\"></use></svg>";
 
-
-
-$(".bolt-item-slider").slick({ 
-	  adaptiveHeight: true,
-	  speed: 700,
-	  prevArrow: itemPrev,
-	  nextArrow: itemNext,
-	  asNavFor: $('.bolt-item-slider-nav')
-  });
-
-	$('.bolt-item-slider-nav').slick({
-	  slidesToShow: 3,
-	  slidesToScroll: 1,
-	  asNavFor: $(".bolt-item-slider"),
-	  dots: false,
-	  centerMode: true,
-	  focusOnSelect: true,
-	  arrows:false
-	});
-callitemCarouselSvg();
-setTimeout(function(){
-  $(".bolt-item-slider-nav .slick-center").click(); 
-},200);
+	$(".bolt-item-slider").slick({ 
+		  adaptiveHeight: true,
+		  speed: 700,
+		  prevArrow: itemPrev,
+		  nextArrow: itemNext,
+		  asNavFor: $('.bolt-item-slider-nav')
+	  });
+	
+		$('.bolt-item-slider-nav').slick({
+		  slidesToShow: 3,
+		  slidesToScroll: 1,
+		  asNavFor: $(".bolt-item-slider"),
+		  dots: false,
+		  centerMode: true,
+		  focusOnSelect: true,
+		  arrows:false
+		});
+	callitemCarouselSvg();
+	setTimeout(function(){
+		$(".bolt-item-slider-nav .slick-center").click(); 
+	},200);
 
 }
 
@@ -478,15 +500,17 @@ callHasonloGridElements();
 
 /* checkout-open */
 //open
-function checkoutOpen(){
+/*function checkoutOpen(){
   $(".overlay-checkout").addClass("overlay-checkout-open");
   $("html, body").addClass("no-scroll");
-}
+}*/
 
 //close
 function checkoutClose(){
+  //$('.checkout-item:visible').remove();
   $(".overlay-checkout").removeClass("overlay-checkout-open");
   $("html, body").removeClass("no-scroll");
+  
 }
 
 $(".kosar").on("click",function(){
@@ -543,19 +567,9 @@ function callCheckoutItem(){
 
 callCheckoutItem();
 
-/* sum cost */
 
-function checkoutSum(){
-  var sum = 0;
-  $('.checkout-item').each(function(){
-    sum += parseInt($(this).find('.checkout-item-cost').text());
-  });
- return sum;
-}
 
-function refreshCheckoutSum(){
-  $(".sum-cost").text(checkoutSum);
-}
+
 
 
 /* remove item*/
@@ -681,3 +695,24 @@ if (matchMedia) {
 /*            callDelicatesCarouselSvg();*/
         }
     }
+    
+
+
+/* sum cost */
+
+function checkoutSum(){
+  sum = 0;
+  console.log(sum); 
+  $('.checkout-item:visible').each(function(){
+    cost = parseInt($(this).find('.checkout-item-cost').text(), 10);
+    pieces = parseInt($(this).find('.checkout-item-quantity').text(), 10);
+    sum += cost * pieces;
+    console.log(cost + " * " + pieces + " = " + sum);
+  });
+  
+ return sum;
+}
+
+function refreshCheckoutSum(){
+  $(".sum-cost").text(checkoutSum);
+}

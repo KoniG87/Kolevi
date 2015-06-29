@@ -6,9 +6,13 @@
       //  unset($_SESSION['user']);
      }
     
+    
+    
     $page = isset($_GET['page']) ? $_GET['page'] : 'home';
     $path = 'page/'.$page.'.php';
     $pageExists = file_exists($path);
+    
+
     
 	$_SESSION['helper']->registerValue('page', $page);
     

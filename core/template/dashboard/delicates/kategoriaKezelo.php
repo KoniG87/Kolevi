@@ -14,18 +14,15 @@ $delicates->drawKategoriaAdmin();
 		var triggeredRow;
 		var elozoKategoria;
 
-		$(document).on('click', '.editSlide', function(){
+		$(document).on('click', '.editKategoria', function(){
 			
 			containingRow = $(this).parents('tr');
 			triggeredRow = containingRow;
 			data = {
 				id: containingRow.attr('data-id'),
-				text: $('td:nth-of-type(2)', containingRow).text(),
-				leiras: $('td:nth-of-type(3)', containingRow).text(),
-				tag: $('td:nth-of-type(4)', containingRow).text(),
-				ar: containingRow.attr('data-ar'),
-				kep: $('td:nth-of-type(1) img', containingRow).attr('data-original'),
-				sorrend: containingRow.attr('data-sorrend')
+				kategoria: containingRow.attr('data-kategoria'),
+				text: $('td:nth-of-type(1)', containingRow).text(),
+				sorrend: $('td:nth-of-type(2)', containingRow).text(),
 			};
 
 			
@@ -33,7 +30,7 @@ $delicates->drawKategoriaAdmin();
 				$('[name="'+key+'"]').val(val);
 			});
 
-			$('#addSlide').velocity("scroll", {
+			$('#addKategoria').velocity("scroll", {
 	            duration: 800,
 	            easing: "ease",
 	            offset:-100
@@ -43,16 +40,13 @@ $delicates->drawKategoriaAdmin();
 		});
 
 
-		$(document).on('click', '#addSlide', function(){
+		$(document).on('click', '#addKategoria', function(){
 			canSubmit = true;
 
 			data = {
 				id: $('input[name="id"]').val(),
 				kategoria: $('select[name="kategoria"]').val(),
 				text: $('input[name="text"]').val(),
-				etterem: $('input[name="etterem"]').val(),
-				tagek: ($('.selected').length > 0 ? $('.selected').map(function(){ return $(this).attr("data-val"); 	}).get().join(',') : ''),
-				ar: $('input[name="ar"]').val(),
 				sorrend: $('input[name="sorrend"]').val()
 			};
 
@@ -68,7 +62,7 @@ $delicates->drawKategoriaAdmin();
 			});
 
 			if (canSubmit){
-				data.request = "slideUpdate";
+				data.request = "kategoriaUpdate";
 				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 					if (resp['status']){
 						$.each(data, function(key, val){
@@ -79,15 +73,8 @@ $delicates->drawKategoriaAdmin();
 						$(":input").removeClass('missing');
 						if (data.id != "0"){
 							$('td:nth-of-type(1)', triggeredRow).text(data.text);
-							$('td:nth-of-type(2)', triggeredRow).attr('data-val', data.tagek);
+							$('td:nth-of-type(2)', triggeredRow).text(data.sorrend);
 
-							selectedAllergens = $('.allergenSelector.selected').clone();
-
-							$('td:nth-of-type(2)', triggeredRow).html(selectedAllergens);
-							$('td:nth-of-type(2) span.allergen', triggeredRow).removeClass('allergenSelector');
-							
-							$('td:nth-of-type(3)', triggeredRow).text(data.ar);
-							$('td:nth-of-type(4)', triggeredRow).text(data.sorrend);
 							if (data.kategoria != elozoKategoria){
 								$('.etlapTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after(triggeredRow);
 							}
@@ -108,8 +95,6 @@ $delicates->drawKategoriaAdmin();
 				    	});
 
 						
-						$('.allergenSelector').removeClass('selected');
-						
 					}
 				}, 'json');
 				
@@ -117,11 +102,11 @@ $delicates->drawKategoriaAdmin();
 		});
 
 
-		$(document).on('click', '.deleteSlide', function(){
+		$(document).on('click', '.deleteKategoria', function(){
 			containingRow = $(this).parents('tr');
 			data = {
 				id: containingRow.attr('data-id'),
-				request: "slideDelete"
+				request: "kategoriaDelete"
 			};
 			
 			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){

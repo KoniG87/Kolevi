@@ -89,6 +89,7 @@ class DelicatesView extends BaseView{
 						<th>Cím</th>
 						<th class="wideHeader">Leírás</th>
 						<th>Tagek</th>
+						<th>Sorrend</th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -97,11 +98,12 @@ class DelicatesView extends BaseView{
 	
 		foreach ($elements['akciok'] AS $key => $slideAdat){
 			
-				echo '<tr data-id="'.$slideAdat['id'].'" data-ar="'.$slideAdat['ar'].'" data-sorrend="'.$slideAdat['sorrend'].'">
+				echo '<tr data-id="'.$slideAdat['id'].'" data-ar="'.$slideAdat['ar'].'">
 						<td><img data-original="'.$slideAdat['kep'].'" src="'.$this->getThumbnailPath($_SESSION['helper']->getPath().$slideAdat['kep']).'" alt=""/></td>
 						<td>'.$slideAdat['labelHeader'].'</td>
 						<td>'.$slideAdat['labelDesc'].'</td>
 						<td>'.$slideAdat['labelTag'].'</td>
+						<td>'.$slideAdat['sorrend'].'</td>
 						<td><button class="editSlide">Szerkesztés</button></td>
 						<td><button class="deleteSlide">Törlés</button></td>
 					</tr>';
@@ -118,62 +120,39 @@ class DelicatesView extends BaseView{
 	
 	
 	public function drawKategoriaAdmin($elements){
+		$kategoriaNevek = array();
+		foreach ($elements['kategoriak'] AS $key => $kategoriaAdat){
+			array_push($kategoriaNevek, array('id' => $kategoriaAdat['id'], 'text' => $kategoriaAdat['labelHeader']));
+		}
+		
 		echo '
 	   	<section class="kategoriaEditor">
     		<button id="addKategoria">Kategória rögzítése</button>
 	
 			<table class="tablaGrid" >
 				<tr>
+					<td>Főkategória</td>
+					<td>
+    					<input type="hidden" name="id" value="0"/>
+						<select name="kategoria" title="Főkategória" value="" required>
+							<option value=""></option>';
+				foreach ($kategoriaNevek AS $kategoriaAdat){
+					echo '<option value="'.$kategoriaAdat['id'].'">'.$kategoriaAdat['text'].'</option>';
+				}
+				echo '
+						</select>
+						<span class="tooltip">Főkategória</span>
+					</td>
+				</tr>
+				<tr>
 					<td>Cím</td>
 					<td>
-						<input type="hidden" name="id" value="0"/>
+						
 						<input type="text" maxlength="128" title="Cím" name="text" value="" required/>
 						<span class="tooltip">Cím, max. 128 karakter</span>
 					</td>
 				</tr>
-				<tr>
-					<td>Leírás</td>
-					<td>
-	
-						<input type="text" maxlength="1024" title="Leírás" name="leiras" value="" required/>
-						<span class="tooltip">Leírás, max. 1024 karakter</span>
-					</td>
-				</tr>
-				<tr>
-					<td>Tag-ek</td>
-					<td>
-	
-						<input type="text" maxlength="255" title="Tag-ek" name="tag" value="" required/>
-						<span class="tooltip">Tag-ek, max. 255 karakter</span>
-					</td>
-				</tr>
-	
-	
-				<tr>
-					<td>Slide képe:</label></td>
-				<td>
-					<select class="imageRefTemplate" name="kep" title="Slide képe" required>
-						<option value=""></option>
-				';
-		foreach ($elements['elerhetoKepek'] AS $kepAdat){
-			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['fajlnev'].'">'.basename($kepAdat['fajlnev']).'</option>';
-		}
-		echo '
-		
-					</select>
-					<span class="tooltip">Kiskép</span>
-				</td>
-	
-			</tr>
-	
-			<tr>
-					<td>Ár:</label></td>
-				<td>
-					<input type="text" title="Ár" name="ar" value="" required/>
-					<span class="tooltip">Ár</span>
-				</td>
-	
-			</tr>
+			
 	
 			<tr>
 				<td>Sorrend</td>
@@ -196,21 +175,14 @@ class DelicatesView extends BaseView{
 	
 		foreach ($elements['kategoriak'] AS $kategoriaAdat){
 			echo '<tr class="kategoriaRow">
-					<td colspan="3">'.$kategoriaAdat['labelHeader'].'</td>
+					<td colspan="4">'.$kategoriaAdat['labelHeader'].'</td>
 					</tr>
 					';
 			foreach ($kategoriaAdat['alkategoriak'] AS $alkategoriaAdat){
-				/*echo '<tr data-id="'.$slideAdat['id'].'" data-ar="'.$slideAdat['ar'].'" data-sorrend="'.$slideAdat['sorrend'].'">
-						<td><img data-original="'.$slideAdat['kep'].'" src="'.$this->getThumbnailPath($_SESSION['helper']->getPath().$slideAdat['kep']).'" alt=""/></td>
-						<td>'.$slideAdat['labelHeader'].'</td>
-						<td>'.$slideAdat['labelDesc'].'</td>
-						<td>'.$slideAdat['labelTag'].'</td>
-						<td><button class="editKategoria">Szerkesztés</button></td>
-						<td><button class="deleteKategoria">Törlés</button></td>
-					</tr>';
-					*/
-				echo '<tr data-id="'.$alkategoriaAdat['id'].'">
+				
+				echo '<tr data-id="'.$alkategoriaAdat['id'].'" data-kategoria="'.$alkategoriaAdat['fokategoria_id'].'">
 						<td >'.$alkategoriaAdat['labelHeader'].'</td>
+						<td >'.$alkategoriaAdat['sorrend'].'</td>
 						<td><button class="editKategoria">Szerkesztés</button></td>
 						<td><button class="deleteKategoria">Törlés</button></td>
 						</tr>';
@@ -237,7 +209,7 @@ class DelicatesView extends BaseView{
 					<div class="bolt-acco-head">'.$kategoriaData['labelHeader'].'</div>';
 			
 			foreach ($kategoriaData['alkategoriak'] AS $alkategoriaData){
-				echo '<li>'.$alkategoriaData['labelHeader'].'</li>';
+				echo '<li data-kategoria="'. $kategoriaData['icon'] .'" data-id="'. $alkategoriaData['id'] .'">'.$alkategoriaData['labelHeader'].'</li>';
 			} 
 			
 			echo '
@@ -247,6 +219,79 @@ class DelicatesView extends BaseView{
 		
 	}
 	
+	
+	
+	public function drawMegrendelesAdmin($elements){
+		echo '
+	   	<section class="megrendelesEditor">
+    		<button id="addTermek">Megrendelés rögzítése</button>
+	
+			<table class="tablaGrid" >
+				<tr>
+					<td>Név</td>
+					<td style="width:200px;">
+						<input type="hidden" name="id" value="0"/>
+						<input type="text" maxlength="80" title="Név" name="nev" value="" required/>
+						<span class="tooltip">név, max. 80 karakter</span>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td>
+	
+						<input type="text" maxlength="80" title="Email" name="email" value="" required/>
+						<span class="tooltip">Email, max. 80 karakter</span>
+					</td>
+					<td></td>	
+				</tr>
+				<tr class="headerEnd">
+					<td>Megjegyzés</td>
+					<td>
+						<textarea maxlength="2048" title="Megjegyzés" name="megjegyzes"  required></textarea>
+						
+						<span class="tooltip">Megjegyzés, max. 2048 karakter</span>
+					</td>
+					<td></td>
+				</tr>
+	
+	
+		</table>
+		</section>
+		
+    	<h2>'.$elements['allapot'].' megrendelések</h2>
+	
+		<table class="tablaGrid striped megrendelesTabla">
+			<thead>
+				<tr>
+					<th>Név</th>
+					<th>Email</th>
+					<th class="wideHeader">Megjegyzés</th>
+					<th>Összérték</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>			
+			<tbody>';
+	
+		foreach ($elements['megrendelesek'] AS $megrendelesAdat){
+			echo '<tr data-id="'.$megrendelesAdat['id'].'" data-termekek="'.str_replace('"', '\'', json_encode($megrendelesAdat['termekek'])).'">
+				 <td>'.$megrendelesAdat['nev'].'</td>
+				 <td>'.$megrendelesAdat['email'].'</td>
+				 <td>'.$megrendelesAdat['megjegyzes'].'</td>
+				 <td>'.number_format($megrendelesAdat['osszertek'], 0, '.', ' ').'</td>
+				 <td><button class="editMegrendeles">Szerkesztés</button></td>
+				 <td><button class="deleteMegrendeles">Törlés</button></td>
+				 </tr>';
+			
+	
+		}
+	
+	
+		echo '</tbody>
+				</table>';
+	
+	}
 	
 	public function drawTermekAdmin($elements){
 		echo '
@@ -266,7 +311,9 @@ class DelicatesView extends BaseView{
 					<td>Leírás</td>
 					<td>
 	
-						<input type="text" maxlength="1024" title="Leírás" name="leiras" value="" required/>
+						<textarea maxlength="1024" title="Leírás" name="leiras" value="" required>
+				
+						</textarea>
 						<span class="tooltip">Leírás, max. 1024 karakter</span>
 					</td>
 				</tr>
@@ -281,20 +328,18 @@ class DelicatesView extends BaseView{
 	
 	
 				<tr>
-					<td>Slide képe:</label></td>
+					<td>Kezdőkép:</label></td>
 				<td>
-					<select class="imageRefTemplate" name="kep" title="Slide képe" required>
+					<select class="imageRefTemplate" name="kep" title="Kezdőkép" required>
 						<option value=""></option>
 				';
 		foreach ($elements['elerhetoKepek'] AS $kepAdat){
-			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['fajlnev'].'">'.basename($kepAdat['fajlnev']).'</option>';
+			echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['fajlnev'].'">'.$kepAdat['fajlnev'].'</option>';
 		}
 		echo '
-	
 					</select>
-					<span class="tooltip">Kiskép</span>
+					<span class="tooltip">Kezdőkép</span>
 				</td>
-	
 			</tr>
 	
 			<tr>
@@ -314,37 +359,38 @@ class DelicatesView extends BaseView{
 				</td>
 			</tr>
 		</table>
-	</section>
+		</section>
 	
 	
+    	<h2>Termékek</h2>
 	
-	
-    		<h2>Akciók</h2>
-	
-			<table class="tablaGrid kategoriaTabla">
-	
-				<tbody>';
+		<table class="tablaGrid kategoriaTabla">
+			<tbody>';
 	
 		foreach ($elements['kategoriak'] AS $kategoriaAdat){
 			echo '<tr class="kategoriaRow">
-					<td colspan="3">'.$kategoriaAdat['labelHeader'].'</td>
+					<td colspan="8">'.$kategoriaAdat['labelHeader'].'</td>
 					</tr>
 					';
 			foreach ($kategoriaAdat['alkategoriak'] AS $alkategoriaAdat){
-				/*echo '<tr data-id="'.$slideAdat['id'].'" data-ar="'.$slideAdat['ar'].'" data-sorrend="'.$slideAdat['sorrend'].'">
-				 <td><img data-original="'.$slideAdat['kep'].'" src="'.$this->getThumbnailPath($_SESSION['helper']->getPath().$slideAdat['kep']).'" alt=""/></td>
-				 <td>'.$slideAdat['labelHeader'].'</td>
-				 <td>'.$slideAdat['labelDesc'].'</td>
-				 <td>'.$slideAdat['labelTag'].'</td>
-				 <td><button class="editKategoria">Szerkesztés</button></td>
-				 <td><button class="deleteKategoria">Törlés</button></td>
-				 </tr>';
-				 */
-				echo '<tr data-id="'.$alkategoriaAdat['id'].'">
-						<td >'.$alkategoriaAdat['labelHeader'].'</td>
-						<td><button class="editKategoria">Szerkesztés</button></td>
-						<td><button class="deleteKategoria">Törlés</button></td>
+				
+				echo '<tr class="alKategoriaRow">
+						<td colspan="8">Alkategória: <strong>'.$alkategoriaAdat['labelHeader'].'</strong></td>
+						
 						</tr>';
+				
+				foreach ($alkategoriaAdat['termekek'] AS $termekAdat){
+					echo '<tr data-id="'.$termekAdat['id'].'">
+						<td><img src="'.$_SESSION['helper']->getPath().$termekAdat['kiskep'].'" alt="'.$termekAdat['nagykep'].'"/></td>
+						<td>'.$termekAdat['labelHeader'].'</td>
+						<td>'.$termekAdat['labelDesc'].'</td>
+						<td>'.$termekAdat['ar'].'</td>
+						<td>'.$termekAdat['labelTag'].'</td>
+						<td>'.$termekAdat['sorrend'].'</td>
+						<td><button class="editTermek">Szerkesztés</button></td>
+						<td><button class="deleteTermek">Törlés</button></td>
+						</tr>';
+				}
 			}
 				
 		}
@@ -508,6 +554,36 @@ class DelicatesView extends BaseView{
 	</div>
 </section>';
 	}
+	
+	
+	public function drawCheckout($elements){
+		echo json_encode($elements['termekek']);
+	
+	}
+	
+	
+	public function drawProductPage($elements){
+		echo json_encode($elements['termek']);
+		
+	}
+	
+	
+	public function drawBoltKategoriaTermekek($elements){
+		foreach ($elements['termekek'] AS $termekAdat){
+			echo '
+			<div class="bolt-grid-element">
+				<a href="">
+					<div class="bolt-grid-element-img" style="height: 162px;">
+						<img src="'.$termekAdat['kiskep'].'" alt="">
+						<svg class="svg-dropShadow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 162 162" preserveAspectRatio="none" style="position:absolute;z-index:-1;left:40px;top:40px;filter: blur(3px);-webkit-filter: blur(3px);"><defs></defs><polygon fill="rgba(0,0,0,0.2)" points="151.7723587386869,156.51972304003314 108.6086400487081,153.11276621779427 5.2634543188847545,154.14037702976725 5.047810207167629,59.869914068824464 6.219244894660079,2.9791638510441203 69.30165562701654,4.103926579481936 161.6820746989455,5.529374749632552 158.16217355797068,55.51234508029607 "></polygon></svg><svg class="svg-maskedImg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 162 162" preserveAspectRatio="none"><defs><clipPath id="img-mask-432"><polygon fill="#000" stroke="rgba(0,0,0,0)" stroke-width="0" points="151.7723587386869,156.51972304003314 108.6086400487081,153.11276621779427 5.2634543188847545,154.14037702976725 5.047810207167629,59.869914068824464 6.219244894660079,2.9791638510441203 69.30165562701654,4.103926579481936 161.6820746989455,5.529374749632552 158.16217355797068,55.51234508029607 "></polygon></clipPath></defs><image height="100%" width="100%" clip-path="url(#img-mask-432)" xlink:href="assets/uploads/th_gallery04.jpg"></image></svg>
+					</div>
+					<h4>'.$termekAdat['labelHeader'].'</h4>
+					<h5>'.number_format($termekAdat['ar'], 0, ' ', '.').' Ft</h5>
+				</a>
+			</div>';	
+		}
+	}
+	
 	
     public function drawFoglalasForm($elements){
     	echo '<section id="asztalfoglalas">';
@@ -826,155 +902,6 @@ class DelicatesView extends BaseView{
 	}
 	
     
-    public function drawRolunk($elements){
-    	echo '<section id="rolunk">';
-    	$this->drawSectionLabel("Rólunk", "rolunk", 6);
-    	echo '
-			<div class="row clearfix">
-				<div class="eight columns">
-					<h3>A Vendéglő</h3>
-					<p>A Kőleves 10 éves vendéglő. Imola és Kápszi ültünk egy rémséges vasút-állomáson 1995 körül és elhatároztuk, hogy nyitunk egy vendéglőt. 
-		Azt hiszem ez kb. 10 évvel később, de megvalósult 2005-ben. Ez a tíz év beszélgetés a vendéglőről elég volt ahhoz, hogy pontosan tudjuk mit akarunk és lássuk, 
-		hogy ugyanazt, ez azóta is töretlenül működik köztünk. Persze nem magától ment minden, hanem sok kölcsön pénzből, amivel az elején nehéz volt küzdenünk. Először 
-		a Dob-Kazinczy sarkán nyitottuk meg a Kőlevest, ahol 8 évig üzemeltünk egyre sikeresebben. Itt sikerült egysmást tanulnunk erről a szakmáról, hiszen egyikünk sem 
-		volt vendéglátós azelőtt, mégpedig főleg azt, hogy ha magunkat adjuk és beletesszük az energiáinkat, őszinték vagyunk, és figyelünk, akkor ezt a közönségünk is 
-		megérzi, és elérjük a sikert. A Kazinczy 41-be három éve költöztünk, ami már egy ötször akkora hely és itt megvalósulhatott minden álmunk, amit egy konyháról 
-		képzeltünk. Kidobhattuk a micro sütőt és mindent magunk tudunk elkészíteni, ami lekvár, szósz, pesto, öntet, vagy bármi hozzávaló és eredeti ízt kíván. Útközben 
-		még megnyitottuk a Kőleves kertet 7 évvel ezelőtt, hogy nyáron is lehessen könnyű grill konyhával a szabadban enni-inni. Azután 4 éve elkészült a <a href="http://www.mikativadarmulato.hu/">Mika Tivadar Mulató</a>, 
-		majd egy évvel később, a hozzá tartozó kert is.</p>
-				</div>
-				<div class="three columns right">
-					<img data-src="assets/img/vendegkonyv.png" alt="Rólunk" class="lazy illusztracio"><noscript><img src="assets/img/vendegkonyv.png" alt="Rólunk"></noscript>
-				</div>
-			</div>
-            <div class="row clearfix">
-                <div class="twelve columns cikkek-container">
-                    <h3>Rólunk írták</h3>
-                    <div class="cikkek-slider">
-                        <div class="cikk">
-                            <a href="http://index.hu/kultur/2015/05/24/fozelekes_feri/" target="blank">
-                                <div class="cikk-img">
-                                    <img src="assets/img/tmb-2.png" alt="">
-                                </div>
-                                <h4>Cikk neve</h4>
-                            </a>
-                        </div>
-                        <div class="cikk">
-                            <a href="http://index.hu/tech/mem/2015/05/24/tyrion_wtf/" target="blank">
-                                <div class="cikk-img">
-                                    <img src="assets/img/tmb-2.png" alt="">
-                                </div>
-                                <h4>Cikk neve</h4>
-                            </a>
-                        </div>
-                        <div class="cikk">
-                            <a href="assets/uploads/kert.jpg" target="blank">
-                                <div class="cikk-img">
-                                    <img src="assets/img/tmb-2.png" alt="">
-                                </div>
-                                <h4>Cikk neve képpel</h4>
-                            </a>
-                        </div>
-                        <div class="cikk">
-                            <a href="assets/uploads/kert.jpg" target="blank">
-                                <div class="cikk-img">
-                                    <img src="assets/img/tmb-2.png" alt="">
-                                </div>
-                                <h4>Cikk neve képpel</h4>
-                            </a>
-                        </div>
-                        <div class="cikk">
-                            <a href="assets/uploads/kert.jpg" target="blank">
-                                <div class="cikk-img">
-                                    <img src="assets/img/tmb-2.png" alt="">
-                                </div>
-                                <h4>Cikk neve képpel</h4>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-			<div class="row clearfix">
-				<div class="twelve columns">
-					
-					 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-			
-			
-			<form action="?" method="POST">
-			  <!--<div class="g-recaptcha" data-sitekey="6LctzgUTAAAAAEDRtdJAynba8NWcjWKgSsTtUnP7"></div>-->
-			  <br/>
-			</form>
-					<div class="rolunk-container clearfix">
-					<h3>Csapatunk tagjai</h3>
-						';
-		/*
-		*	Recaptcha form
-		*/
-	/*	echo '<form method="post" action="verify.php">
-		<div class="rolunk-ikon">
-		<svg class="icon icon-phone"><use xlink:href="#icon-phone"></use></svg>
-	</div>
-	<input type="hidden">';
- 
-	require_once('assets/libs/recaptcha/recaptchalib.php');
-    $publickey = "6LctzgUTAAAAAEDRtdJAynba8NWcjWKgSsTtUnP7"; 
-	$privatekey = "6LctzgUTAAAAACqo4ZyDvJxKT9BAK3pFumWKXXmA";
-    
-	echo recaptcha_get_html($publickey);
-	echo '<input type="submit" value="SUBMIT">';
-
-	$resp = recaptcha_check_answer ($privatekey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
-	
-	if (!$resp->is_valid) {
-		die ("The reCAPTCHA wasn't entered correctly. Go back and try it again." .
-        "(reCAPTCHA said: " . $resp->error . ")");
-	} else {
-		// jelenitsük meg azt a szaros telefonszámot.
-	}
-
-	echo '<div class="g-recaptcha" data-sitekey="'.$publickey.'"></div>
-	</form>';
-	*/
-    	$this->loadTemplate('rolunkEmber', $elements);
-                    echo '  	 
-                    </div>
-                        <div class="row clearfix">
-                            <div class="twelve columns partnerek-container">
-                                <h3>Akiket szeretünk</h3>
-
-
-                                    <div class="partner clearfix">
-                                        <div class="two columns">
-                                                <div class="partner-img">
-                                                    <a href="http://rcko.fm/radio/" target="_blank">
-                                                        <img src="assets/img/tmb-2.png" alt="">
-                                                    </a>
-                                                </div>
-                                        </div>
-                                        <div class="ten columns">
-                                            <a href="http://rcko.fm/radio/" target="_blank"><h3>A cég neve nem kellene ide?</h3></a>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores similique facilis non quia aliquam perspiciatis, eum consectetur quisquam quo! Optio totam ad quibusdam repellat cupiditate consequuntur, amet est, quidem perferendis.</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="partner clearfix">
-                                        <div class="two columns">
-                                                <div class="partner-img">
-                                                    <a href="http://rcko.fm/radio/" target="_blank">
-                                                        <img src="assets/img/tmb-2.png" alt="">
-                                                    </a>
-                                                </div>
-                                        </div>
-                                        <div class="ten columns">
-                                            <a href="http://rcko.fm/radio/" target="_blank"><h3>A cég neve nem kellene ide?</h3></a>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores similique facilis non quia aliquam perspiciatis, eum consectetur quisquam quo! Optio totam ad quibusdam repellat cupiditate consequuntur, amet est, quidem perferendis.</p>
-                                        </div>
-                                    </div>
-                            </div>
-                        </div>
-                </section>';
-    	
-    }
  
     
      public function drawFoglalasLista($elements){

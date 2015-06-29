@@ -38,64 +38,82 @@ class Delicates extends BaseObject{
 		$this->view->drawBolt($elements);
 	}
     
-    
-    
-    public function drawPartnerAdmin(){
+    public function drawCheckout(){
     	$elements = array(
-    		'partnerek'	=> $this->getPartnerData(2),
-    		'elerhetoKepek' => $this->loadKepek(5)
+    		'termekek' => $_SESSION['helper']->getBasketContents()
     	);
+    	
+    	$this->view->drawCheckout($elements);
+    }
+    
+    
+    public function updateCartItem($ujTermek){
+    	$kosarTartalom = $_SESSION['helper']->getBasketContents();
+    	
+    	$termekSzamlalo = 0;
+    	$benneVan = null;
+    	foreach ($kosarTartalom AS $termekAdat){
+    		if ($termekAdat['id'] == $ujTermek['id']){
+    			$benneVan = true;
+    			
+    			break;
+    		}
     		
-    
-    	$this->view->drawPartnerAdmin($elements);
-    }
-    
-    
-    public function drawProgram(){
-    	$elements = $this->getProgramData(0);
-    	 
-    	$this->view->drawProgram($elements);
-    }
-    
-    
-    
-    public function drawProgramList(){
-    	$elements = $this->getProgramData(2);
-    
-    	$this->view->drawProgramList($elements);
-    }
-    
-    
-    
-    public function drawRendezveny(){
+    		$termekSzamlalo += 1;
+    	}
     	
-    	$szervezoSQL = "SELECT NEV, KEP, TELEFON, EMAIL, FACEBOOK FROM koleves_dolgozok WHERE rendezvenyfelelos = 1;";
+    	$termekSQL = "SELECT ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, ar, kiskep FROM koleves_delicates_termekek WHERE id = ?;";
+    	$termekInfo = $this->fetchItem($termekSQL, array($ujTermek['id']));
     	
-    	$elements = array(
-    		'szervezo'	=> $this->fetchItem($szervezoSQL),
-    		'rendezvenyek' => $this->getRendezvenyData()
+    	$termekAdat = array(
+    		'id'		=> $ujTermek['id'],
+    		'labelHeader'	=> $termekInfo['labelHeader'],
+    		'egyseg'	=> $ujTermek['egyseg'],
+    		'egysegar'	=> $termekInfo['ar'],
+    		'kep'		=> $termekInfo['kiskep']
     	);
-    	$elements['szervezo']['FEJLEC_IMAGE'] = 'assets/img/rendezvenyek-img.png';
+
+    		
+    	$_SESSION['helper']->updateBasketItem($termekAdat, $benneVan ? $termekSzamlalo : null);
     	
-    
-    	$this->view->drawRendezveny($elements);
+    	
     }
     
     
-    public function drawRendezvenyAdmin($rendezvenyID){
+    public function drawProductPage(){
     	$elements = array(
-    		'rendezveny'	=> $this->loadRendezvenyData($rendezvenyID),
-    		'elerhetoKepek'	=> $this->loadKepek(1)
+    		'termek' => array(
+    			array(
+    				'id'			=> 1,
+    				'labelHeader'	=> 'Málnás lekvár',
+    				'labelDesc'		=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi praesentium, dolorem, eligendi cum dolor molestias eius possimus reprehenderit natus reiciendis.<br/>v',
+    				'labelKategoria'=> 'Ehető',
+    				'labelAlkategoria'=> 'Lekvár',
+    				'ar'			=> 2500,
+    				'kepek'	=> array(
+    					'nav'	=> array(
+    						'assets/uploads/raspberry-jam-01.jpg',
+    						'assets/uploads/raspberry-jam-02.jpg',
+    						'assets/uploads/raspberry-jam-03.jpg',
+    						'assets/uploads/raspberry-jam-04.jpg'
+    					),
+    					'slider'	=> array(
+    						'assets/uploads/raspberry-jam-01.jpg',
+    						'assets/uploads/raspberry-jam-02.jpg',
+    						'assets/uploads/raspberry-jam-03.jpg',
+    						'assets/uploads/raspberry-jam-04.jpg'
+    					)
+    				)
+    			)
+    		)	
     	);
-    
-    	$this->view->drawRendezvenyAdmin($elements);
+    	 
+    	$this->view->drawProductPage($elements);
     }
     
     
-    public function drawRendezvenyList(){
-    	$elements = $this->getRendezvenyData(2);
-    	 
-    	$this->view->drawRendezvenyList($elements);
+    public function addToCart(){
+    	
     }
     
     
@@ -105,12 +123,12 @@ class Delicates extends BaseObject{
     	return $this->fetchItems($SQL, array($allapot));
     }
     
-    public function getKategoriaData($melyseg = "full"){
+    public function getKategoriaData($melyseg = "full", $zeroCategoryExcluded = true){
     	$SQL = "SELECT id, icon, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader FROM koleves_delicates_fokategoriak ORDER BY sorrend ASC;";
     	$elements = $this->fetchItems($SQL);
     
     	if ($melyseg == "full"){
-    		$alSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader FROM koleves_delicates_alkategoriak WHERE fokategoria_id = ? ORDER BY sorrend ASC;";
+    		$alSQL = "SELECT id, fokategoria_id, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, sorrend FROM koleves_delicates_alkategoriak WHERE fokategoria_id = ? ".($zeroCategoryExcluded ? 'AND sorrend > 0' : '')." ORDER BY sorrend ASC;";
     
     		$kategoriaSzamlalo = 0;
     		foreach ($elements AS $kategoriaData){
@@ -123,21 +141,55 @@ class Delicates extends BaseObject{
     }
     
     
-    public function getMegrendelesData($megrendelsAllapot){
+    public function getKategoriaTermekek($kategoriaID = 1){
+    	$SQL = "SELECT id, 
+    			".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, 
+    			".$_SESSION['helper']->getLangLabel('leiras')." AS labelDesc, 
+    			".$_SESSION['helper']->getLangLabel('tag')." AS labelTag, 
+    			kiskep, nagykep, ar, sorrend 
+    				FROM koleves_delicates_termekek 
+    				WHERE alkategoria_id = ? 
+    				ORDER BY sorrend ASC;";
+    	$elements = $this->fetchItems($SQL, array($kategoriaID));
+    
+    	/*if ($melyseg == "full"){
+    		$alSQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader FROM koleves_delicates_alkategoriak WHERE fokategoria_id = ? ORDER BY sorrend ASC;";
+    
+    		$kategoriaSzamlalo = 0;
+    		foreach ($elements AS $kategoriaData){
+    			$elements[$kategoriaSzamlalo]['alkategoriak'] = $this->fetchItems($alSQL, array($kategoriaData['id']));
+    			$kategoriaSzamlalo++;
+    		}
+    	}*/
+    
+    	return $elements;
+    }
+    
+    
+    public function drawBoltKategoriaTermekek($alkategoriaID){
+    	$elements = array(
+    		'termekek'	=> $this->getKategoriaTermekek($alkategoriaID)		
+    	);
+    	
+    	$this->view->drawBoltKategoriaTermekek($elements);
+    }
+    
+    
+    public function getMegrendelesData($megrendelesAllapot = 'aktualis'){
     	$allapot = 1;
-    	if ($megrendelsAllapot == 'archiv'){
+    	if ($megrendelesAllapot == 'archiv'){
     		$allapot = 0;
     	}
     	
     	$SQL = "
-    	SELECT m.id, m.nev, m.email, m.megjegyzes, SUM(egysegar*egyseg) AS osszeertek 
+    	SELECT m.id, m.nev, m.email, m.megjegyzes, SUM(egysegar*egyseg) AS osszertek 
     		FROM koleves_delicates_megrendelesek AS m
 			LEFT JOIN koleves_delicates_megrendelt_termekek AS mt ON mt.megrendeles_id = m.id
     		WHERE visible = ?
-			GROUP BY mt.megrendeles_id
-    			SELECT id, nev, email, megjegyzes".$_SESSION['helper']->getLangLabel('text')." AS labelHeader FROM koleves_delicates_fokategoriak ORDER BY sorrend ASC;";
+			GROUP BY mt.megrendeles_id;";
+    	
     	$elements = $this->fetchItems($SQL, array($allapot));
-    
+    	$melyseg = "full";
     	if ($melyseg == "full"){
     		$termekSQL = "
     			SELECT mt.id, t.text_hu, t.kiskep, mt.egyseg, mt.egysegar, SUM(mt.egyseg * mt.egysegar ) AS osszar FROM koleves_delicates_megrendelt_termekek AS mt 
@@ -152,7 +204,7 @@ class Delicates extends BaseObject{
     			$megrendelesSzamlalo++;
     		}
     	}
-    
+    	
     	return $elements;
     }
     
@@ -167,22 +219,35 @@ class Delicates extends BaseObject{
     
     public function drawTermekAdmin(){
     	$elements = array(
-    		'termek'	=> $this->getKategoriaData()
+    		'kategoriak'	=> $this->getKategoriaData('full', false),
+    		'elerhetoKepek' => $this->loadKepek(9)
     	);
-    	//print_r($elements);
+    	
+    	$kategoriaSzamlalo = 0;
+    	foreach ($elements['kategoriak'] AS $kategoriaAdat){
+    		$alkategoriaSzamlalo = 0;
+    		foreach ($kategoriaAdat['alkategoriak'] AS $alkategoriaAdat){
+    				
+    			$elements['kategoriak'][$kategoriaSzamlalo]['alkategoriak'][$alkategoriaSzamlalo]['termekek'] = $this->getKategoriaTermekek($alkategoriaAdat['id']);
+    			$alkategoriaSzamlalo += 1;
+    		}
+    		
+    		$kategoriaSzamlalo += 1;
+    	}
+    	
     	$this->view->drawTermekAdmin($elements);
-    	 
     }
     
     
-    public function drawMegrendelesAdmin($megrendelsAllapot = 'aktualis'){
+    public function drawMegrendelesAdmin($megrendelesAllapot = 'aktualis'){
     	
     	
     	$elements = array(
-    			'termek'	=> $this->getKategoriaData()
+    		'megrendelesek'	=> $this->getMegrendelesData($megrendelesAllapot),
+    		'allapot'		=> ($megrendelesAllapot == 'aktualis' ? 'Aktuális' : 'Archivált') 
     	);
     	//print_r($elements);
-    	$this->view->drawTermekAdmin($elements);
+    	$this->view->drawMegrendelesAdmin($elements);
     
     }
     
@@ -197,51 +262,14 @@ class Delicates extends BaseObject{
     
     
     
-    public function getRendezvenyData($allapot = 0){
-    	$SQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, leiras_hu AS MEGJEGYZES, allapot FROM koleves_rendezvenyek WHERE allapot <> ? ORDER BY sorrend ASC;";
-    	$kepSQL = "SELECT FAJLNEV FROM koleves_kepek AS k LEFT JOIN koleves_kep_osszekotesek AS ko ON ko.kep_id = k.id WHERE ko.tipus = 1 AND ko.fk_id = ? ORDER BY ko.sorrend ASC;";
-    	
-    	
-    	$rendezvenyCounter = 0;
-    	
-    	$tmpArray = $this->fetchItems($SQL, array($allapot));
-    	
-    	if (sizeof($tmpArray) > 0){
-    		foreach ($tmpArray AS $rendezvenyData){
-    			$tmpArray[$rendezvenyCounter]['kepek'] = $this->fetchItems($kepSQL, array($rendezvenyData['id']));
-    			$rendezvenyCounter++;
-    		}
-    	}
-    	
-    	return $tmpArray;
-    }
     
-   
-    
-    public function getPartnerData($allapot){
-    	$SQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, ".$_SESSION['helper']->getLangLabel('leiras')." AS labelDesc, visible, kep, url FROM koleves_partnerek WHERE visible <> ? ORDER BY sorrend ASC;";
-    	
-    	return $this->fetchItems($SQL, array($allapot));
-    }
-    
-    
-     public function getProgramData($allapot){
-    	//$SQL = "SELECT id, datum, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, SUBSTRING(".$_SESSION['helper']->getLangLabel('leiras').", 1, 55) AS labelDesc, allapot, kep, fblink FROM koleves_programok WHERE allapot <> ? ORDER BY datum DESC;";
-     	$SQL = "SELECT id, datum, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, ".$_SESSION['helper']->getLangLabel('leiras')." AS labelDesc, allapot, kep, fblink FROM koleves_programok WHERE allapot <> ? ORDER BY datum DESC;";
-     	
-    	return $this->fetchItems($SQL, array($allapot));
-    }
-    
-    
-    
-    
-    public function deleteProgramElem(){
+    public function deleteSlideElem(){
     	$res = array();
     
     	try{
     		$this->beginTransaction();
     		 
-    		$SQL = "DELETE FROM koleves_programok WHERE id = ?;";
+    		$SQL = "DELETE FROM koleves_delicates_slider WHERE id = ?;";
     
     		$queryParams = array(
     				$_POST['id']
@@ -259,31 +287,7 @@ class Delicates extends BaseObject{
     }
     
     
-    public function deleteRendezvenyElem(){
-    	$res = array();
-    
-    	try{
-    		$this->beginTransaction();
-    		 
-    		$SQL = "DELETE FROM koleves_rendezvenyek WHERE id = ?;";
-    		$kepSQL = "DELETE FROM koleves_kep_osszekotesek WHERE fk_id = ? AND tipus = ?;";
-    		$queryParams = array(
-    				$_POST['id']
-    		);
-    		$this->deleteItem($SQL, $queryParams);
-    
-    		array_push($queryParams, 1);
-    		$this->deleteItem($kepSQL, $queryParams);
-    		
-    		$res['status'] = true;
-    		$this->commit();
-    	}catch(Exception $e){
-    		$res['status'] = false;
-    		$this->rollback();
-    	}
-    
-    	echo json_encode($res);
-    }
+  
     
     
     
@@ -315,44 +319,6 @@ class Delicates extends BaseObject{
     }
     
     
-    public function loadRendezvenyData($id = null){
-        $tmpArray = array(
-            'id'    => '0',
-            'MEGNEVEZES'  => '',
-            'MEGJEGYZES'   => '',
-            'allapot'   => '1',
-			'kepek'	=> null
-        );
-        
-        if (!is_null($id)){
-            $SQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, ".$_SESSION['helper']->getLangLabel('leiras')." AS MEGJEGYZES, allapot FROM koleves_rendezvenyek WHERE id = ?";
-            $tmpArray = $this->fetchItem($SQL, array($id));
-			
-			$kepSQL = "SELECT ok.id, k.fajlnev FROM koleves_kepek AS k 
-				LEFT JOIN koleves_kep_osszekotesek AS ok ON ok.kep_id = k.id
-				WHERE ok.fk_id = ? AND ok.tipus = ?
-				ORDER BY ok.sorrend ASC;";
-			$tmpArray['kepek'] = $this->fetchItems($kepSQL, array($id, 1));
-        }
-        
-        return $tmpArray;
-    }
-    
-    
-    
-    
-    
-    
-	
-
-    
-    
-   
-    
-    
-    
-    
-   
     public function updateProgram(){
     	$res = array();
     
@@ -408,55 +374,6 @@ class Delicates extends BaseObject{
     	echo json_encode($res);
     }
     
-    
-    
-    
-    public function updateRendezveny(){
-    	$res = array();
-    	 
-    	try{
-    		$this->beginTransaction();
-    
-    		/*
-    		 * Új sor beszúrása
-    		*/
-    		if ($_POST['id'] == "0"){
-    			 
-    			$SQL = "INSERT INTO koleves_rendezvenyek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, ".$_SESSION['helper']->getLangLabel('leiras')." = ?;";
-    			 
-    			$queryParams = array(
-    					$_POST['text'],
-    					$_POST['leiras']
-    			);
-    			 
-    			$res['inputID'] = $this->insertItem($SQL, $queryParams);
-    		}
-    		/*
-    		 * Meglévő sor updatelése
-    		 */
-    		else{
-    			$SQL = "UPDATE koleves_rendezvenyek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, ".$_SESSION['helper']->getLangLabel('leiras')." = ?, allapot = ? WHERE id = ?;";
-    
-    			$queryParams = array(
-    					$_POST['text'],
-    					$_POST['leiras'],
-    					$_POST['allapot'],
-    					$_POST['id']
-    			);
-    
-    			$this->updateItem($SQL, $queryParams);
-    			 
-    		}
-    
-    		$res['status'] = "ok";
-    		$this->commit();
-    	}catch(Exception $e){
-    		$res['status'] = "nope";
-    		$this->rollback();
-    	}
-    	 
-    	echo json_encode($res);
-    }
     
     
     

@@ -195,15 +195,19 @@ class Application{
     		
     	echo '<nav class="sitckyNav">';
 
-/* KOSAR CSAK DELICATESNÉL */    	
-if ($_SESSION['helper']->getPage() == 'delicates'){
-	echo '<div class="kosar"><svg class="icon icon-kosar"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kosar"></use></svg><span>0</span><p>Kosár</p></div>';
-}    	
-
-echo '
-<a href="" class="sticky-logo"><svg class="sticky-page-icon icon icon-'.$_SESSION['helper']->getPage().'-2"><use xlink:href="#icon-'.$_SESSION['helper']->getPage().'-2"></use></svg></a>
-<svg class="icon icon-backtotop backToTop"><use xlink:href="#icon-backtotop"></use></svg>
-    <div class="row">';
+	/* KOSAR CSAK DELICATESNÉL */    	
+	if ($_SESSION['helper']->getPage() == 'delicates'){
+		echo '<div class="kosar">
+			<svg class="icon icon-kosar"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kosar"></use></svg>
+			<span>'.$_SESSION['helper']->getKosarEgysegek().'</span>
+			<p>Kosár</p>
+		</div>';
+	}    	
+	
+	echo '
+	<a href="" class="sticky-logo"><svg class="sticky-page-icon icon icon-'.$_SESSION['helper']->getPage().'-2"><use xlink:href="#icon-'.$_SESSION['helper']->getPage().'-2"></use></svg></a>
+	<svg class="icon icon-backtotop backToTop"><use xlink:href="#icon-backtotop"></use></svg>
+	    <div class="row">';
     	
     	    	
     	ksort($menuToShow);
@@ -298,7 +302,7 @@ echo '
         );
         try{
             //$fbResp = file_get_contents($facebookLink);
-        	$fbResp = '{}';
+        	$fbResp = '{likes:"0"}';
         	$fbInfo = json_decode($fbResp, true);
             
             $socNumbers['facebook'] = number_format($fbInfo['likes'], 0, ',', '.');
@@ -458,14 +462,66 @@ echo '
     
     	
     	//$subPageScriptPath = $_SESSION['helper']->getPath('scripts').$subPage.'.min.js';
-    	$subPageScriptPath = 'assets/js/'.$subPage.'.min.js';
-
+    	//$subPageScriptPath = 'assets/js/'.$subPage.'.min.js';
+    	$subPageScriptPath = 'assets/js/'.$subPage.'.js';
+    	   
     	if (file_exists($subPageScriptPath)){
     		echo '<script src="'.$subPageScriptPath.'"></script>';
     	}
 
     	echo '
     		<script type="text/javascript">
+    			
+    			function checkoutOpen(){
+    				$.post("requestHandler", {request: "checkoutForm"}, function(resp){
+                		       	
+    					$.each(resp, function(id, obj){
+    			
+    						console.log(obj);
+    						itemTemplate = $(".checkout-item:first").clone(true);
+    						itemTemplate.find(".checkout-item-name").text(obj.labelHeader);
+    						itemTemplate.find(".checkout-item-quantity").text(obj.egyseg);
+    						itemTemplate.find(".checkout-item-cost").text(obj.egysegar);
+    						itemTemplate.find(".checkout-item-img").html("<img src=\""+obj.kep+"\"/>");
+    						
+    						$(".checkout-items > div").append(itemTemplate);
+    					});
+    			
+    					$(".checkout-item:first").hide();
+                       	$(".overlay-checkout").addClass("overlay-checkout-open");
+  						$("html, body").addClass("no-scroll");
+    					refreshCheckoutSum();
+                    }, "json");
+				}
+    			
+    			function boltItemOpen(){
+ 						
+    				$.post("requestHandler", {request: "itemForm"}, function(resp){
+                       	$.each(resp, function(key, obj){
+    						itemTemplate = $(".bolt-item-view:first").clone(true);
+    						itemTemplate.find("h4").text(obj.labelHeader);
+    						itemTemplate.find("h4").attr("id", obj.id);
+    						itemTemplate.find(".item-fokategoria").text(obj.labelKategoria);
+    						itemTemplate.find(".item-alkategoria").text(obj.labelAlkategoria);
+    						itemTemplate.find("h5").text(obj.ar);
+    						itemTemplate.find(".item-leiras").text(obj.leiras);
+    			
+    						itemTemplate.find(".checkout-item-img").html("<img src=\""+obj.kep+"\"/>");
+    			
+    						$(".bolt-item-view-container").append(itemTemplate);
+    					});
+    					
+    					$(".bolt-item-view:first").remove();
+    			
+                       	$(".overlay-bolt").addClass("bolt-item-open");
+				  		$("html, body").addClass("no-scroll"); 
+    					
+    					itemLoaded = true;
+                    }, "json"); 	 
+    			}
+    			
+				
+    			
     			$(document).ready(function(){
 					var contents = $("#nl-form").html();
 					
@@ -530,6 +586,7 @@ echo '
     		
     				
 
+    						
  //   				$(".langselect-container div").click(function(){
  //   					data = {
  //   						request: "switchLanguage",
