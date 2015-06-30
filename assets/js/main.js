@@ -1,6 +1,7 @@
 function callBoltGridElements(){
 $(".bolt-grid-element-img").each(function(){
   $(this).Svgenerate({
+    thumb: true,
     imgMask:"on",
     setToImg:"on",
     dropShadow: "on",
@@ -48,6 +49,7 @@ function callCheckoutItem(){
     $(".checkout-item-img").each(function(){
     $(this).Svgenerate({
       rightFixed: "on",
+      thumb:true,
       imgMask:"on",
       setToImg:"on",
       dropShadow: "on",
@@ -199,6 +201,7 @@ var maskUrlIndex = 0;
   jQuery.fn.extend({
     Svgenerate: function (options){
         var settings = $.extend({
+            thumb: false,
             imgMask: "off",
             rangeX : 0.95,
             rangeY : 0.95,
@@ -248,9 +251,16 @@ var maskUrlIndex = 0;
                    hiba = 'nincs hozzá rendelve kép!';
                 }
                    
-                console.error('epic fail: '+imgSrc+hiba);
+                console.log(imgSrc+"  -betöltése lemaradt a javascripthez képest.");
+                if(settings.thumb){
+                imgRealWidth = 1;
+                imgRealHeight = 1;
+                }
+                else{
                 imgRealWidth = 1.6;
                 imgRealHeight = 1;
+                  
+                }
               }
           var realImgRatio = (imgRealWidth) / (imgRealHeight);
           var setParentToImgRatio = pW / realImgRatio;

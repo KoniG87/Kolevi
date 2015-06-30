@@ -265,8 +265,8 @@ foreach ($termekek AS $termek){
 					});*/
 				
 				$(".bolt-grid").append(resp);
-				setTimeout(callBoltGridElements,200);
-				//callBoltGridElements();
+				//setTimeout(callBoltGridElements,200);
+				callBoltGridElements();
             });
 			
 			
