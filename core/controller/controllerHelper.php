@@ -91,18 +91,19 @@ class Helper{
     	return $contentArray;
     }
     
-    
-    public function getKosarEgysegek(){
-    	$egysegSzam = 0;
-    	
-    	if (isset($_SESSION['kosar']['termekek'])){
-	    	foreach ($_SESSION['kosar']['termekek'] AS $termekAdat){
-	    		$egysegSzam += $termekAdat['egyseg'];
-	    	}
-    	}
-    	
-    	return $egysegSzam;
+
+ public function getKosarEgysegek(){
+     $egysegSzam = 0;
+     
+     if (isset($_SESSION['kosar']['termekek'])){
+      foreach ($_SESSION['kosar']['termekek'] AS $termekAdat){
+       $egysegSzam += $termekAdat['egyseg'];
+      }
+     }
+     
+     return $egysegSzam;
+
     }
-    
+
 }
 ?>

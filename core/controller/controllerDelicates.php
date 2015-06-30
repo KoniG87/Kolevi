@@ -47,6 +47,28 @@ class Delicates extends BaseObject{
     }
     
     
+    public function getTermekData($termekID){
+    	$termekSQL = "SELECT 
+    			t.id, 
+    			t.".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, 
+    			t.".$_SESSION['helper']->getLangLabel('leiras')." AS labelDesc,
+    			f.".$_SESSION['helper']->getLangLabel('text')."	AS labelKategoria,
+    			a.".$_SESSION['helper']->getLangLabel('text')." AS labelAlkategoria,
+    			t.ar AS egysegar, 
+    			t.kiskep AS kep 
+    		FROM 
+    			koleves_delicates_termekek AS t
+    		LEFT JOIN 
+				koleves_delicates_alkategoriak AS a ON a.id = t.alkategoria_id
+			LEFT JOIN 
+				koleves_delicates_fokategoriak AS f ON f.id = a.fokategoria_id 
+	    	WHERE 
+    			t.id = ?;";
+    	
+    	return $this->fetchItem($termekSQL, array($termekID));
+    }
+    
+    
     public function updateCartItem($ujTermek){
     	$kosarTartalom = $_SESSION['helper']->getBasketContents();
     	
@@ -62,26 +84,18 @@ class Delicates extends BaseObject{
     		$termekSzamlalo += 1;
     	}
     	
-    	$termekSQL = "SELECT ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, ar, kiskep FROM koleves_delicates_termekek WHERE id = ?;";
-    	$termekInfo = $this->fetchItem($termekSQL, array($ujTermek['id']));
-    	
-    	$termekAdat = array(
-    		'id'		=> $ujTermek['id'],
-    		'labelHeader'	=> $termekInfo['labelHeader'],
-    		'egyseg'	=> $ujTermek['egyseg'],
-    		'egysegar'	=> $termekInfo['ar'],
-    		'kep'		=> $termekInfo['kiskep']
-    	);
+    	$termekAdat = $this->getTermekData($ujTermek['id']);
+    	$termekAdat['egyseg'] = $ujTermek['egyseg']; 
 
-    		
+    	
     	$_SESSION['helper']->updateBasketItem($termekAdat, $benneVan ? $termekSzamlalo : null);
     	
     	
     }
     
     
-    public function drawProductPage(){
-    	$elements = array(
+    public function drawProductPage($termekID){
+    	/*$elements = array(
     		'termek' => array(
     			array(
     				'id'			=> 1,
@@ -106,6 +120,23 @@ class Delicates extends BaseObject{
     				)
     			)
     		)	
+    	);*/
+    	$elements = array(
+    		'termek'	=> $this->getTermekData($termekID) 
+    	);
+    	$elements['termek']['kepek'] =  array(
+    			'nav'	=> array(
+    					'assets/uploads/raspberry-jam-01.jpg',
+    					'assets/uploads/raspberry-jam-02.jpg',
+    					'assets/uploads/raspberry-jam-03.jpg',
+    					'assets/uploads/raspberry-jam-04.jpg'
+    			),
+    			'slider'	=> array(
+    					'assets/uploads/raspberry-jam-01.jpg',
+    					'assets/uploads/raspberry-jam-02.jpg',
+    					'assets/uploads/raspberry-jam-03.jpg',
+    					'assets/uploads/raspberry-jam-04.jpg'
+    			)
     	);
     	 
     	$this->view->drawProductPage($elements);
@@ -256,10 +287,6 @@ class Delicates extends BaseObject{
     public function getKategoriaStruktura($melyseg = "full"){
     	return $this->getKategoriaData($melyseg);
     }
-    
-    
-    
-    
     
     
     

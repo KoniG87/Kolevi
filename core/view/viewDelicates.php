@@ -571,7 +571,7 @@ class DelicatesView extends BaseView{
 	public function drawBoltKategoriaTermekek($elements){
 		foreach ($elements['termekek'] AS $termekAdat){
 			echo '
-			<div class="bolt-grid-element">
+			<div class="bolt-grid-element" data-id="'.$termekAdat['id'].'">
 				<a href="">
 					<div class="bolt-grid-element-img" style="height: 162px;">
 						<img src="'.$termekAdat['kiskep'].'" alt="">

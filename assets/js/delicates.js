@@ -270,53 +270,9 @@ $(".delicatesrol-acco .bolt-acco>li").click(delicatesrolAccoClick);
 
 
 /* Bold Grid */
-function colorizeCategoryLabel(){
-	$(".eheto .bolt-acco-head, .bolt-grid>h3.eheto-label").each(function(){
-	  $(this).Svgenerate({
-	    bottomFixed:"on",
-	    rangeX:0.98,
-	    rangeY:0.96,
-	    fill: "#e05a25"
-	  });
-	});
-	
-	$(".ihato .bolt-acco-head, .bolt-grid>h3.ihato-label").each(function(){
-	  $(this).Svgenerate({
-	    bottomFixed:"on",
-	    rangeX:0.98,
-	    rangeY:0.96,
-	    fill: "#795f86"
-	  });
-	});
-	
-	$(".nemeheto .bolt-acco-head, .bolt-grid>h3.nemeheto-label").each(function(){
-	  $(this).Svgenerate({
-	    bottomFixed:"on",
-	    rangeX:0.98,
-	    rangeY:0.96,
-	    fill: "#186c9b"
-	  });
-	});
-}
+
 
 colorizeCategoryLabel();
-
-function callBoltGridElements(){
-$(".bolt-grid-element-img").each(function(){
-  $(this).Svgenerate({
-    imgMask:"on",
-    setToImg:"on",
-    dropShadow: "on",
-    blur:3,
-    dX:40,
-    dY:40,
-    opacity:0.2,
-    rangeX:0.93,
-    rangeY:0.93
-  });
-});
-}
-
 callBoltGridElements();
 
 
@@ -346,7 +302,8 @@ function boltItemClose(){
 
 $(document).on("click", ".bolt-grid-element" ,function(event){
 	event.preventDefault();
-	boltItemOpen();
+	boltItemOpen($(this).attr("data-id"));
+
 
 	
 	/*
@@ -506,6 +463,7 @@ callHasonloGridElements();
 }*/
 
 //close
+
 function checkoutClose(){
   //$('.checkout-item:visible').remove();
   $(".overlay-checkout").removeClass("overlay-checkout-open");
@@ -515,55 +473,12 @@ function checkoutClose(){
 
 $(".kosar").on("click",function(){
   checkoutOpen();
+  callCheckoutItem();
   refreshCheckoutSum();
 });
 
 
-/*checkout-item*/
 
-function callCheckoutItem(){
-  if (mL.matches){
-    $(".checkout-item-img").each(function(){
-    $(this).Svgenerate({
-      rightFixed: "on",
-      imgMask:"on",
-      setToImg:"on",
-      dropShadow: "on",
-      blur:5,
-      dX:0,
-      dY:0,
-      opacity:0.4
-    });
-  });
-
-
-  $(".checkout-item-details").each(function(){
-    $(this).Svgenerate({
-      leftFixed: "on",
-      rightFixed: "on",
-      fill:"#fff",
-      rangeY:0.90,
-      dropShadow: "on",
-      blur:5,
-      dX:0,
-      dY:0,
-      opacity:0.4
-    });
-  });
-
-
-  $(".checkout-item-remove").each(function(){
-    $(this).Svgenerate({
-      leftFixed: "on",
-      dropShadow: "on",
-      blur:5,
-      dX:0,
-      dY:0,
-      opacity:0.4
-    });
-  });
-}
-}
 
 callCheckoutItem();
 
@@ -702,12 +617,10 @@ if (matchMedia) {
 
 function checkoutSum(){
   sum = 0;
-  console.log(sum); 
   $('.checkout-item:visible').each(function(){
     cost = parseInt($(this).find('.checkout-item-cost').text(), 10);
     pieces = parseInt($(this).find('.checkout-item-quantity').text(), 10);
     sum += cost * pieces;
-    console.log(cost + " * " + pieces + " = " + sum);
   });
   
  return sum;

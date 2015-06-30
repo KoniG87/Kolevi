@@ -490,13 +490,15 @@ class Application{
     					$(".checkout-item:first").hide();
                        	$(".overlay-checkout").addClass("overlay-checkout-open");
   						$("html, body").addClass("no-scroll");
-    					refreshCheckoutSum();
+    			callCheckoutItem();		
+    			refreshCheckoutSum();
+    					
                     }, "json");
 				}
     			
-    			function boltItemOpen(){
+    			function boltItemOpen(itemID){
  						
-    				$.post("requestHandler", {request: "itemForm"}, function(resp){
+    				$.post("requestHandler", {request: "itemForm", id: itemID}, function(resp){
                        	$.each(resp, function(key, obj){
     						itemTemplate = $(".bolt-item-view:first").clone(true);
     						itemTemplate.find("h4").text(obj.labelHeader);

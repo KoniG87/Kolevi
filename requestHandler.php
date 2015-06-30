@@ -75,7 +75,7 @@ if (isset($_POST['request'])){
 			
 		case 'itemForm':
 			$delicates = new Delicates($app->getDbHandler());
-			$delicates->drawProductPage();
+			$delicates->drawProductPage($_POST['id']);
 		
 			break;
 			

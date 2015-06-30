@@ -1,4 +1,91 @@
+function callBoltGridElements(){
+$(".bolt-grid-element-img").each(function(){
+  $(this).Svgenerate({
+    imgMask:"on",
+    setToImg:"on",
+    dropShadow: "on",
+    blur:3,
+    dX:40,
+    dY:40,
+    opacity:0.2,
+    rangeX:0.93,
+    rangeY:0.93
+  });
+});
+}
+function colorizeCategoryLabel(){
+  $(".eheto .bolt-acco-head, .bolt-grid>h3.eheto-label").each(function(){
+    $(this).Svgenerate({
+      bottomFixed:"on",
+      rangeX:0.98,
+      rangeY:0.96,
+      fill: "#e05a25"
+    });
+  });
+  
+  $(".ihato .bolt-acco-head, .bolt-grid>h3.ihato-label").each(function(){
+    $(this).Svgenerate({
+      bottomFixed:"on",
+      rangeX:0.98,
+      rangeY:0.96,
+      fill: "#795f86"
+    });
+  });
+  
+  $(".nemeheto .bolt-acco-head, .bolt-grid>h3.nemeheto-label").each(function(){
+    $(this).Svgenerate({
+      bottomFixed:"on",
+      rangeX:0.98,
+      rangeY:0.96,
+      fill: "#186c9b"
+    });
+  });
+}
+/*checkout-item*/
 
+function callCheckoutItem(){
+  if (mL.matches){
+    $(".checkout-item-img").each(function(){
+    $(this).Svgenerate({
+      rightFixed: "on",
+      imgMask:"on",
+      setToImg:"on",
+      dropShadow: "on",
+      blur:5,
+      dX:0,
+      dY:0,
+      opacity:0.4
+    });
+  });
+
+
+  $(".checkout-item-details").each(function(){
+    $(this).Svgenerate({
+      leftFixed: "on",
+      rightFixed: "on",
+      fill:"#fff",
+      rangeY:0.90,
+      dropShadow: "on",
+      blur:5,
+      dX:0,
+      dY:0,
+      opacity:0.4
+    });
+  });
+
+
+  $(".checkout-item-remove").each(function(){
+    $(this).Svgenerate({
+      leftFixed: "on",
+      dropShadow: "on",
+      blur:5,
+      dX:0,
+      dY:0,
+      opacity:0.4
+    });
+  });
+}
+}
 // refresh waypoint (ha display:none-ból megjelentek valamit akkor be kell frissteni, különben behal ez a fos.)
 function refreshWaypoints(){
   $.waypoints('refresh');

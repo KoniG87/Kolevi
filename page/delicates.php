@@ -231,13 +231,13 @@ foreach ($termekek AS $termek){
 
 				$(".bolt-grid").html($("<h3 />").addClass(selectedCategory+"-label clearfix").text(selectedText));
 				
-				$('.bolt-search').velocity("scroll", {
+				$('.bolt-search').delay(200).velocity("scroll", {
 		            duration: 800,
 		            easing: "ease",
-		            offset:-300
+		            offset:-120
 		        });
-				//colorizeCategoryLabel();
-				$(".eheto .bolt-acco-head, .bolt-grid>h3.eheto-label").each(function(){
+				colorizeCategoryLabel();
+/*				$(".eheto .bolt-acco-head, .bolt-grid>h3.eheto-label").each(function(){
 					  $(this).Svgenerate({
 					    bottomFixed:"on",
 					    rangeX:0.98,
@@ -262,10 +262,11 @@ foreach ($termekek AS $termek){
 					    rangeY:0.96,
 					    fill: "#186c9b"
 					  });
-					});
+					});*/
 				
 				$(".bolt-grid").append(resp);
-				
+				setTimeout(callBoltGridElements,200);
+				//callBoltGridElements();
             });
 			
 			
