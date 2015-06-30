@@ -94,8 +94,11 @@ class Helper{
     
     public function getKosarEgysegek(){
     	$egysegSzam = 0;
-    	foreach ($_SESSION['kosar']['termekek'] AS $termekAdat){
-    		$egysegSzam += $termekAdat['egyseg'];
+    	
+    	if (isset($_SESSION['kosar']['termekek'])){
+	    	foreach ($_SESSION['kosar']['termekek'] AS $termekAdat){
+	    		$egysegSzam += $termekAdat['egyseg'];
+	    	}
     	}
     	
     	return $egysegSzam;
