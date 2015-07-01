@@ -303,14 +303,9 @@ function boltItemClose(){
 $(document).on("click", ".bolt-grid-element" ,function(event){
 	event.preventDefault();
 	boltItemOpen($(this).attr("data-id"));
-
-
-	
-	/*
-	IDE EJAKULÁLD AZ AJAXAL!
-	*/
 	applyItemCarousel();
 });
+
 
 $(document).on("click", ".bolt-item-close", function(){
 	boltItemClose();
@@ -344,7 +339,8 @@ function applyItemCarousel(){
 			rangeX:0.94,
 			rangeY:0.91,
 		});
-	}else{
+	}
+  else{
 		setTimeout(function(){
 			applyItemCarousel();		
 		}, 250);	

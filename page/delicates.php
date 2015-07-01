@@ -223,50 +223,29 @@ foreach ($termekek AS $termek){
             $(".bolt-item-close").trigger("click");
 		});
 
-		$(document).on("click", ".bolt-acco li", function(){
+		$(document).on("click", "#bolt .bolt-acco li", function(){
 			selectedCategory = $(this).attr("data-kategoria");
 			selectedText = $(this).text();
 			$.post("requestHandler", {request: "shopCategoryData", id: $(this).attr("data-id")}, function(resp){
-				$(".bolt-grid-element:visible").remove();
+				$(".bolt-grid-element:visible").remove(); // ez mit csinál voltaképp???
 
-				$(".bolt-grid").html($("<h3 />").addClass(selectedCategory+"-label clearfix").text(selectedText));
-				
-				$('.bolt-search').delay(200).velocity("scroll", {
-		            duration: 800,
-		            easing: "ease",
-		            offset:-120
-		        });
+				$(".bolt-grid").html($("<h3 style='opacity:0;'/>").addClass(selectedCategory+"-label clearfix").text(selectedText));
 				colorizeCategoryLabel();
-/*				$(".eheto .bolt-acco-head, .bolt-grid>h3.eheto-label").each(function(){
-					  $(this).Svgenerate({
-					    bottomFixed:"on",
-					    rangeX:0.98,
-					    rangeY:0.96,
-					    fill: "#e05a25"
-					  });
-					});
-					
-					$(".ihato .bolt-acco-head, .bolt-grid>h3.ihato-label").each(function(){
-					  $(this).Svgenerate({
-					    bottomFixed:"on",
-					    rangeX:0.98,
-					    rangeY:0.96,
-					    fill: "#795f86"
-					  });
-					});
-					
-					$(".nemeheto .bolt-acco-head, .bolt-grid>h3.nemeheto-label").each(function(){
-					  $(this).Svgenerate({
-					    bottomFixed:"on",
-					    rangeX:0.98,
-					    rangeY:0.96,
-					    fill: "#186c9b"
-					  });
-					});*/
+				$(".bolt-grid>h3").velocity({opacity:1},1000);
 				
+				$(".bolt-search").velocity("scroll", {
+				            duration: 800,
+				            easing: "ease",
+				            offset:-120
+				  });
+
 				$(".bolt-grid").append(resp);
-				//setTimeout(callBoltGridElements,200);
 				callBoltGridElements();
+				$(".bolt-grid-element").css("display","none");
+				$(".bolt-grid-element").velocity("transition.slideUpIn", { stagger: 150 });
+
+
+				
             });
 			
 			

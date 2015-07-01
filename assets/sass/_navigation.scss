@@ -327,7 +327,9 @@ header{
 }
 .nav-info{
         height: 1.5rem;
-        top:1.2rem;
+        top: 1.4rem;
+        
+  		right: 8.5rem;
     a{
         text-decoration: none;
         font-family: $danielbld;
@@ -336,9 +338,15 @@ header{
 }
 .langselect-container{
         top: 1.4rem;
+
+        right:2.5rem;
       
 }
 
+.kosar{
+	top: 0.5rem;
+  	right: 0.1rem;
+}
 
 
 }

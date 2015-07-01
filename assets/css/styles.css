@@ -3445,12 +3445,17 @@ header {
     top: 0; }
   header .nav-info {
     height: 1.5rem;
-    top: 1.2rem; }
+    top: 1.4rem;
+    right: 8.5rem; }
     header .nav-info a {
       text-decoration: none;
       font-family: "DanielBold-Regular", sans serif; }
   header .langselect-container {
-    top: 1.4rem; }
+    top: 1.4rem;
+    right: 2.5rem; }
+  header .kosar {
+    top: 0.5rem;
+    right: 0.1rem; }
 
 .side-nav-inner {
   moz-transform-origin: left;

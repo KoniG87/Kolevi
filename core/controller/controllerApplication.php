@@ -246,8 +246,16 @@ class Application{
       <div class="side-nav-inner">
         <header>
             <svg class="icon icon-logo"><use xlink:href="#icon-logo"></use></svg>
-            <!-- <h1>Vendéglő</h1> -->
-            <div class="nav-info right" ><a href="#footer"><span>Info</span><svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg></a></div>
+            <!-- <h1>Vendéglő</h1> -->';
+
+    if ($_SESSION['helper']->getPage() == 'delicates'){
+        echo '<div class="kosar">
+            <svg class="icon icon-kosar"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kosar"></use></svg>
+            <span>'.$_SESSION['helper']->getKosarEgysegek().'</span>
+            <p>Kosár</p>
+        </div>';
+    }  
+            echo '<div class="nav-info right" ><a href="#footer"><span>Info</span><svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg></a></div>
             <div class="langselect-container clearfix">
                 <svg class="icon icon-lang-select langselect right"><use xlink:href="#icon-lang-select"></use></svg>
                 <div class="left eng '.($_SESSION['helper']->getLang() == "en" ? 'lang-selected' : '') .'">Eng<span> / </span></div>

@@ -478,77 +478,8 @@ class DelicatesView extends BaseView{
 
 			<div class="bolt-grid">
 
-				<h3 class="eheto-label clearfix">Csatni</h3>
-<!-- ha ez a h3 az ihatoban van akkor ihato-label-class-t kell kapnia, ha nem eheto akkor nemeheto-label -->
-				<div class="bolt-grid-element">
-					<a href="">
-						<div class="bolt-grid-element-img">
-							<img src="assets/uploads/th_gallery04.jpg" alt="">
-						</div>
-						<h4>Málnás Csatni</h4>
-						<h5>1.400 Ft</h5>
-					</a>
-				</div>
+<!-- IDE TOLD BE AZ ÖSSZES TERMÉKET (BOLT-GRID-ELEMENT) ! SEMMI <H3>, SEMMI SZŰKITÉS-->
 
-				<div class="bolt-grid-element">
-					<a href="">
-						<div class="bolt-grid-element-img">
-							<img src="assets/uploads/th_gallery04.jpg" alt="">
-						</div>
-						<h4>Málnás Csatni</h4>
-						<h5>1.400 Ft</h5>
-					</a>
-				</div>
-
-				<div class="bolt-grid-element">
-					<a href="">
-						<div class="bolt-grid-element-img">
-							<img src="assets/uploads/th_gallery04.jpg" alt="">
-						</div>
-						<h4>Málnás Csatni</h4>
-						<h5>1.400 Ft</h5>
-					</a>
-				</div>
-
-				<div class="bolt-grid-element">
-					<a href="">
-						<div class="bolt-grid-element-img">
-							<img src="assets/uploads/th_gallery04.jpg" alt="">
-						</div>
-						<h4>Málnás Csatni</h4>
-						<h5>1.400 Ft</h5>
-					</a>
-				</div>
-
-				<div class="bolt-grid-element">
-					<a href="">
-						<div class="bolt-grid-element-img">
-							<img src="assets/uploads/th_gallery04.jpg" alt="">
-						</div>
-						<h4>Málnás Csatni</h4>
-						<h5>1.400 Ft</h5>
-					</a>
-				</div>
-
-				<div class="bolt-grid-element">
-					<a href="">
-						<div class="bolt-grid-element-img">
-							<img src="assets/uploads/th_gallery04.jpg" alt="">
-						</div>
-						<h4>Málnás Csatni</h4>
-						<h5>1.400 Ft</h5>
-					</a>
-				</div>
-
-				<div class="bolt-grid-element">
-					<a href="">
-						<div class="bolt-grid-element-img">
-							<img src="assets/uploads/th_gallery04.jpg" alt="">
-						</div>
-						<h4>Málnás Csatni</h4>
-						<h5>1.400 Ft</h5>
-					</a>
-				</div>
 			</div>
 		</div>
 	</div>
