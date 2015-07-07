@@ -94,7 +94,7 @@ if (isset($_POST['request'])){
 			
 		case 'removeFromCart':
 			$delicates = new Delicates($app->getDbHandler());
-			$delicates->removeCartItem();
+			$delicates->removeCartItem($_POST['id']);
 				
 			break;
 			
