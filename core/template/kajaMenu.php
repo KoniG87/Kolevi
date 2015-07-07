@@ -9,4 +9,4 @@
 		<li>[[MASODIK]] <span>[[MASODIK_TAG]]</span></li>
 		<li>[[HARMADIK]] <span>[[HARMADIK_TAG]]</span></li>
 	</ul>
-</li>
+</li> 
