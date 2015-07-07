@@ -1,5 +1,4 @@
 <?php
-
 class Vendeglo extends BaseObject{
 	
 	function __construct($dbHandler){
@@ -901,4 +900,4 @@ class Vendeglo extends BaseObject{
     
     
 }
-?>
+?> 

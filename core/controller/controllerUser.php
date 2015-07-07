@@ -1,5 +1,4 @@
 <?php
-
 class User extends BaseObject{
 	
 	function __construct($dbHandler){
@@ -180,4 +179,4 @@ class User extends BaseObject{
     
     
 }
-?>
+?> 
