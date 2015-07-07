@@ -1,5 +1,4 @@
 <?php
-
 class DelicatesView extends BaseView{
 	
 	function __construct(){
@@ -867,5 +866,4 @@ class DelicatesView extends BaseView{
         }
     }
 }
-?>
-
+?> 
