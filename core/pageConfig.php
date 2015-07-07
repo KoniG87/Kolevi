@@ -6,5 +6,4 @@ $frameRequired = array(
 	'delicates',
 	'requestHandler'
 );
-
 ?>
