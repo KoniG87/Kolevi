@@ -1,5 +1,4 @@
 <?php
-
 class UserView extends BaseView{
 	
 	function __construct(){
@@ -27,4 +26,4 @@ class UserView extends BaseView{
         }
     }
 }
-?>
+?> 
