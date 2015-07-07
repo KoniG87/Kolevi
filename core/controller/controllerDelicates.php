@@ -116,8 +116,8 @@ class Delicates extends BaseObject{
     	$benneVan = false;
     	 
     	foreach ($kosarTartalom AS $termekAdat){
-    		file_put_contents('data.txt', '\n'.$termekSzamlalo.'. '.$termekAdat['id'].' '.$termekID, FILE_APPEND);
-    		if ($termekAdat['id'] == $ujTermek['id']){
+    		
+    		if ($termekAdat['id'] == $termekID){
     			$benneVan = true;
     	
     			break;
@@ -127,7 +127,7 @@ class Delicates extends BaseObject{
     	}
 
     	if ($benneVan){
-    		$_SESSION['helper']->updateBasketItem($termekAdat, $benneVan ? $termekSzamlalo : null);
+    		$_SESSION['helper']->removeBasketItem($benneVan ? $termekSzamlalo : null);
     	}
     	
     }
@@ -141,7 +141,7 @@ class Delicates extends BaseObject{
     	$benneVan = false;
     	
     	foreach ($kosarTartalom AS $termekAdat){
-    		file_put_contents('data.txt', '\n'.$termekSzamlalo.'. '.$termekAdat['id'].' '.$termekID, FILE_APPEND);
+    		
     		if ($termekAdat['id'] == $ujTermek['id']){
     			$benneVan = true;
     			 
