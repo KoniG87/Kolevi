@@ -1,5 +1,4 @@
 <?php
-
 class ApartmanView extends BaseView{
 	
 	function __construct(){
@@ -349,4 +348,4 @@ class ApartmanView extends BaseView{
 		</table>';
     }
 }
-?>
+?> 
