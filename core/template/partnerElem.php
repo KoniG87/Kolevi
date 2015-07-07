@@ -10,4 +10,4 @@
 		<a href="[[url]]" target="_blank"><h3>[[labelHeader]]</h3></a>
 		<p>[[labelDesc]]</p>
 	</div>
-</div>
+</div> 
