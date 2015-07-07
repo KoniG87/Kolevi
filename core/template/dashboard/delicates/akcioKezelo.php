@@ -145,4 +145,4 @@ $delicates->drawSliderAdmin();
 		
 		
 	});
-</script>
+</script> 
