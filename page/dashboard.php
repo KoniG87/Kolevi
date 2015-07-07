@@ -4,7 +4,6 @@ if (isset($_GET['sec'])){
 	$sectionIndicator = ucfirst($_GET['sec']);
 }
 ?>
-
 <header>
         <nav class="nav-head right">
         <div class="logo left">
