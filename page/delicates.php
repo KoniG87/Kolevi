@@ -251,6 +251,9 @@ foreach ($termekek AS $termek){
 
 		$(document).on("click", ".item-remove", function(){
 			console.log("item removed");
+			$.post("requestHandler", {request: "removeFromCart", id: 1}, function(resp){
+							
+            });
 		});	
 	});
 </script>
