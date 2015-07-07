@@ -1,7 +1,6 @@
 <?php
     $vendeglo = new Vendeglo($app->getDbHandler());
 ?>
-
 <h2>Foglalások</h2>
 
 <table class="tablaGrid striped">
@@ -42,4 +41,4 @@
             }, 'json');
         });
     });
-</script>
+</script> 

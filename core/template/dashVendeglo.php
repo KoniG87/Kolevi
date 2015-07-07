@@ -61,4 +61,4 @@
 </a>
 <a href="<?=$_SESSION['helper']->getPath()?>dashboard/partnerLista">
 	<li>Partnerek</li>
-</a>
+</a> 

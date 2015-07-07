@@ -1,1 +1,1 @@
-<!-- <img src="assets/img/etlap-logo.png" alt="Kőleves"/> -->
+<!-- <img src="assets/img/etlap-logo.png" alt="Kőleves"/> --> 

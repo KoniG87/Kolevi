@@ -4,7 +4,7 @@
 </a>
 <a href="<?=$_SESSION['helper']->getPath()?>dashboard/delicates/kategoriaKezelo">
 	<li>Kategória lista</li>
-</a>
+</a> 
 
 
 <h3><svg class="icon icon-like"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-like"></use></svg>Megrendelések</h3>
