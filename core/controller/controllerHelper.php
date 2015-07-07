@@ -86,11 +86,8 @@ class Helper{
     	}
     	
     	if (!is_null($termekIndex)){
-    		$_SESSION['kosar']['termekek'][$termekIndex]['egyseg'] += $termekAdat['egyseg'];
-    	}else{
-    		array_push($_SESSION['kosar']['termekek'], $termekAdat);
-    	}
-    	
+    		unset($_SESSION['kosar']['termekek'][$termekIndex]);
+    	}    	
     }
     
     
