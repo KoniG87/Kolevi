@@ -23,4 +23,5 @@ function getDecisionText($decision){
 	
 	return $text;
 }
+
 ?>
