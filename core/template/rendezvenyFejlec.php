@@ -27,4 +27,4 @@
 			<img src="[[FEJLEC_IMAGE]]" alt="Rendezvények">
 		</noscript>
 	</div>
-</div>
+</div> 
