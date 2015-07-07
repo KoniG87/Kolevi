@@ -71,15 +71,58 @@ class Helper{
 		}
 		
     	if (!is_null($termekIndex)){
-			$_SESSION['kosar']['termekek'][$termekIndex]['egyseg'] = + $termekAdat['egyseg'];
+			$_SESSION['kosar']['termekek'][$termekIndex]['egyseg'] += $termekAdat['egyseg'];
 		}else{
 			array_push($_SESSION['kosar']['termekek'], $termekAdat);
 		}
     }
     
+    
+    public function removeBasketItem($termekIndex = null){
+    	if (!isset($_SESSION['kosar']['termekek'])){
+    		$_SESSION['kosar'] = array(
+    			'termekek'	=> array()
+    		);
+    	}
+    	
+    	if (!is_null($termekIndex)){
+    		$_SESSION['kosar']['termekek'][$termekIndex]['egyseg'] += $termekAdat['egyseg'];
+    	}else{
+    		array_push($_SESSION['kosar']['termekek'], $termekAdat);
+    	}
+    	
+    }
+    
+    
+    public function checkCartContainsItem($termekID){
+    	$kosarTartalom = $_SESSION['helper']->getBasketContents();
+    	$termekSzamlalo = 0;
+    	$benneVan = false;
+    	
+    	foreach ($kosarTartalom AS $termekAdat){
+    		file_put_contents('data.txt', '\n'.$termekSzamlalo.'. '.$termekAdat['id'].' '.$termekID, FILE_APPEND);
+    		if ($termekAdat['id'] == $termekID){
+    			$benneVan = true;
+    			 
+    			break;
+    		}
+    	
+    		$termekSzamlalo += 1;
+    	}
+    	
+    	if ($termekSzamlalo == sizeof($kosarTartalom) && !$benneVan){
+    		$termekSzamlalo = false;
+    	}
+
+    	return $termekSzamlalo;
+    }
+    
+    
     public function emptyBasket(){
     	unset($_SESSION['kosar']['termekek']);
     }
+    
+    
     
     public function getBasketContents(){
     	$contentArray = array();
