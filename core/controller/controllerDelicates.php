@@ -47,7 +47,7 @@ class Delicates extends BaseObject{
     }
     
     
-    public function getTermekData($termekID){
+    public function getTermekData($termekID, $includeShopKepek = false){
     	$termekSQL = "SELECT 
     			t.id, 
     			t.".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, 
@@ -65,22 +65,89 @@ class Delicates extends BaseObject{
 	    	WHERE 
     			t.id = ?;";
     	
-    	return $this->fetchItem($termekSQL, array($termekID));
+    	$termekAdat = $this->fetchItem($termekSQL, array($termekID));
+    	
+    	if ($includeShopKepek){
+    		$SQL = "SELECT kep FROM koleves_delicates_termekkepek WHERE termek_id = ? ORDER BY sorrend ASC;";
+    		$termekAdat['kepek'] =  array(
+    				/*
+    				'nav'	=> array(),
+    				'slider'=> array()
+    				*/
+    		);
+    		/*
+    		$termekAdat['kepek'] =  array(
+    				'nav'	=> array(
+    						'assets/uploads/raspberry-jam-01.jpg',
+    						'assets/uploads/raspberry-jam-02.jpg',
+    						'assets/uploads/raspberry-jam-03.jpg',
+    						'assets/uploads/raspberry-jam-04.jpg'
+    				),
+    				'slider'	=> array(
+    						'assets/uploads/raspberry-jam-01.jpg',
+    						'assets/uploads/raspberry-jam-02.jpg',
+    						'assets/uploads/raspberry-jam-03.jpg',
+    						'assets/uploads/raspberry-jam-04.jpg'
+    				)
+    		);
+    		*/
+    		
+    		$termekKepek = $this->fetchItems($SQL, array($termekID));
+    		foreach ($termekKepek AS $kepAdat){
+    			/*
+    			array_push($termekAdat['kepek']['nav'], $kepAdat['kep']);
+    			array_push($termekAdat['kepek']['slider'], $kepAdat['kep']);
+    			*/
+    			array_push($termekAdat['kepek'], $kepAdat['kep']);
+    		}
+    		
+    		
+    	}
+    	
+    	return $termekAdat;
+
+    }
+    
+    public function removeCartItem($termekID){
+    	// TODO: debug Helper->checkCartContainsItem
+    	// $benneVan = $_SESSION['helper']->checkCartContainsItem($ujTermek['id']);
+    	$kosarTartalom = $_SESSION['helper']->getBasketContents();
+    	$termekSzamlalo = 0;
+    	$benneVan = false;
+    	 
+    	foreach ($kosarTartalom AS $termekAdat){
+    		file_put_contents('data.txt', '\n'.$termekSzamlalo.'. '.$termekAdat['id'].' '.$termekID, FILE_APPEND);
+    		if ($termekAdat['id'] == $ujTermek['id']){
+    			$benneVan = true;
+    	
+    			break;
+    		}
+    		 
+    		$termekSzamlalo += 1;
+    	}
+
+    	if ($benneVan){
+    		$_SESSION['helper']->updateBasketItem($termekAdat, $benneVan ? $termekSzamlalo : null);
+    	}
+    	
     }
     
     
     public function updateCartItem($ujTermek){
-    	$kosarTartalom = $_SESSION['helper']->getBasketContents();
-    	
+    	// TODO: debug Helper->checkCartContainsItem
+    	// $benneVan = $_SESSION['helper']->checkCartContainsItem($ujTermek['id']);
+	    $kosarTartalom = $_SESSION['helper']->getBasketContents();
     	$termekSzamlalo = 0;
-    	$benneVan = null;
+    	$benneVan = false;
+    	
     	foreach ($kosarTartalom AS $termekAdat){
+    		file_put_contents('data.txt', '\n'.$termekSzamlalo.'. '.$termekAdat['id'].' '.$termekID, FILE_APPEND);
     		if ($termekAdat['id'] == $ujTermek['id']){
     			$benneVan = true;
-    			
+    			 
     			break;
     		}
-    		
+    	
     		$termekSzamlalo += 1;
     	}
     	
@@ -90,53 +157,12 @@ class Delicates extends BaseObject{
     	
     	$_SESSION['helper']->updateBasketItem($termekAdat, $benneVan ? $termekSzamlalo : null);
     	
-    	
     }
     
     
     public function drawProductPage($termekID){
-    	/*$elements = array(
-    		'termek' => array(
-    			array(
-    				'id'			=> 1,
-    				'labelHeader'	=> 'Málnás lekvár',
-    				'labelDesc'		=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi praesentium, dolorem, eligendi cum dolor molestias eius possimus reprehenderit natus reiciendis.<br/>v',
-    				'labelKategoria'=> 'Ehető',
-    				'labelAlkategoria'=> 'Lekvár',
-    				'ar'			=> 2500,
-    				'kepek'	=> array(
-    					'nav'	=> array(
-    						'assets/uploads/raspberry-jam-01.jpg',
-    						'assets/uploads/raspberry-jam-02.jpg',
-    						'assets/uploads/raspberry-jam-03.jpg',
-    						'assets/uploads/raspberry-jam-04.jpg'
-    					),
-    					'slider'	=> array(
-    						'assets/uploads/raspberry-jam-01.jpg',
-    						'assets/uploads/raspberry-jam-02.jpg',
-    						'assets/uploads/raspberry-jam-03.jpg',
-    						'assets/uploads/raspberry-jam-04.jpg'
-    					)
-    				)
-    			)
-    		)	
-    	);*/
     	$elements = array(
-    		'termek'	=> $this->getTermekData($termekID) 
-    	);
-    	$elements['termek']['kepek'] =  array(
-    			'nav'	=> array(
-    					'assets/uploads/raspberry-jam-01.jpg',
-    					'assets/uploads/raspberry-jam-02.jpg',
-    					'assets/uploads/raspberry-jam-03.jpg',
-    					'assets/uploads/raspberry-jam-04.jpg'
-    			),
-    			'slider'	=> array(
-    					'assets/uploads/raspberry-jam-01.jpg',
-    					'assets/uploads/raspberry-jam-02.jpg',
-    					'assets/uploads/raspberry-jam-03.jpg',
-    					'assets/uploads/raspberry-jam-04.jpg'
-    			)
+    		'termek'	=> $this->getTermekData($termekID, true) 
     	);
     	 
     	$this->view->drawProductPage($elements);
@@ -144,7 +170,12 @@ class Delicates extends BaseObject{
     
     
     public function addToCart(){
+    	$termekAdat = array( 
+    		'id'	=> $_POST['id'],
+    		'egyseg'=> $_POST['egyseg']	
+    	);
     	
+    	$this->updateCartItem($termekAdat);
     }
     
     
