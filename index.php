@@ -2,18 +2,10 @@
 	include('core/config.php');
     include('core/functions.php');
     
-    if (isset($_SESSION['user'])){
-      //  unset($_SESSION['user']);
-     }
-    
-    
-    
     $page = isset($_GET['page']) ? $_GET['page'] : 'home';
     $path = 'page/'.$page.'.php';
     $pageExists = file_exists($path);
-    
-
-    
+        
 	$_SESSION['helper']->registerValue('page', $page);
     
 	if (in_array($page, $frameRequired) && $pageExists){

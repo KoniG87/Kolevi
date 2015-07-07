@@ -1,5 +1,4 @@
 <?php
-
 class VendegloView extends BaseView{
 	
 	function __construct(){
@@ -594,5 +593,4 @@ class VendegloView extends BaseView{
         }
     }
 }
-?>
-
+?> 
