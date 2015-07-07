@@ -4,7 +4,6 @@ include('page/home.php');
 <div class="row stickyStart">
 	<div class="twelve coulumns apartman-container">
 
-
 <?php 
 	$db = $app->getDbHandler();
 	
