@@ -1,5 +1,4 @@
 <?php
-
 class Kert extends BaseObject{
     
     function __construct($dbHandler){
@@ -226,4 +225,4 @@ class Kert extends BaseObject{
     }
     
 }
-?>
+?> 
