@@ -27,5 +27,4 @@
             $user->drawUserList();
         ?>
 	</tbody>
-</table>
-
+</table> 
