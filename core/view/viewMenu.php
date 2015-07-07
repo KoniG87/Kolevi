@@ -1,5 +1,4 @@
 <?php
-
 class MenuView extends BaseView{
 	
 	function __construct(){
@@ -633,4 +632,4 @@ public function drawKertEtlap($elements){
     }
     
 }
-?>
+?> 
