@@ -484,8 +484,6 @@ class Application{
     				$.post("requestHandler", {request: "checkoutForm"}, function(resp){
                 		       	
     					$.each(resp, function(id, obj){
-    			
-    						console.log(obj);
     						itemTemplate = $(".checkout-item:first").clone(true);
     						itemTemplate.find(".checkout-item-name").text(obj.labelHeader);
     						itemTemplate.find(".checkout-item-quantity").text(obj.egyseg);
@@ -498,8 +496,9 @@ class Application{
     					$(".checkout-item:first").hide();
                        	$(".overlay-checkout").addClass("overlay-checkout-open");
   						$("html, body").addClass("no-scroll");
-    			callCheckoutItem();		
-    			refreshCheckoutSum();
+    			
+    					callCheckoutItem();		
+    					refreshCheckoutSum();
     					
                     }, "json");
 				}
@@ -507,20 +506,31 @@ class Application{
     			function boltItemOpen(itemID){
  						
     				$.post("requestHandler", {request: "itemForm", id: itemID}, function(resp){
-                       	$.each(resp, function(key, obj){
+                
     						itemTemplate = $(".bolt-item-view:first").clone(true);
-    						itemTemplate.find("h4").text(obj.labelHeader);
-    						itemTemplate.find("h4").attr("id", obj.id);
-    						itemTemplate.find(".item-fokategoria").text(obj.labelKategoria);
-    						itemTemplate.find(".item-alkategoria").text(obj.labelAlkategoria);
-    						itemTemplate.find("h5").text(obj.ar);
-    						itemTemplate.find(".item-leiras").text(obj.leiras);
+    						sliderContainer	= $(".bolt-item-slider", itemTemplate);
+    						sliderNavContainer = $(".bolt-item-slider-nav", itemTemplate);
+
+    						sliderContainer.html("");
+    						sliderNavContainer.html("");
     			
-    						itemTemplate.find(".checkout-item-img").html("<img src=\""+obj.kep+"\"/>");
+    						$.each(resp.kepek, function(key, val){
+    							
+    							sliderContainer.append(  $("<div/>").append( $("<img/>").attr("src", "'.$_SESSION['helper']->getPath().'"+val) ) );
+    							sliderNavContainer.append(  $("<div/>").append( $("<img/>").attr("src", "'.$_SESSION['helper']->getPath().'"+val) ) );
+    						});
+    			
+    						itemTemplate.find("h4").text(resp.labelHeader);
+    						itemTemplate.find("h4").attr("data-id", resp.id);
+    						itemTemplate.find(".item-fokategoria").text(resp.labelKategoria);
+    						itemTemplate.find(".item-alkategoria").text(resp.labelAlkategoria);
+    						itemTemplate.find("h5").text(resp.egysegar);
+    						itemTemplate.find(".item-leiras").text(resp.labelDesc);
+    			
+    						itemTemplate.find(".checkout-item-img").html("<img src=\""+resp.kep+"\"/>");
     			
     						$(".bolt-item-view-container").append(itemTemplate);
-    					});
-    					
+    			
     					$(".bolt-item-view:first").remove();
     			
                        	$(".overlay-bolt").addClass("bolt-item-open");
