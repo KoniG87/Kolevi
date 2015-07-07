@@ -1,7 +1,6 @@
 <?php 
 include('page/home.php');
 ?>
-
 <div class="row stickyStart">
 	<div class="twelve coulumns kert-container">
 <?php
