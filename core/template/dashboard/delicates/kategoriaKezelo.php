@@ -134,4 +134,4 @@ $delicates->drawKategoriaAdmin();
 		
 		
 	});
-</script>
+</script> 
