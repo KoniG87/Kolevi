@@ -9,7 +9,6 @@
 	<td>[[AR]] Ft</td>
 </tr>
 
-
 <!-- 
 alg-1 -- csillagfürt
 alg-2 -- diófélék
@@ -25,4 +24,4 @@ alg-11 -- szulfitok
 alg-12 -- tej
 alg-13 -- tojás
 alg-14 -- zeller
- -->
+ --> 
