@@ -251,6 +251,5 @@ $delicates->drawTermekAdmin();
 	});
 </script>
 
-
 */
-?>
+?> 
