@@ -17,6 +17,7 @@
 	}
 
 </style>
+
 <link rel="stylesheet" href="<?=$_SESSION['helper']->getPath('styles')?>admin.css">
 <link rel="stylesheet" href="<?=$_SESSION['helper']->getPath('styles')?>login.css">
 <link rel="stylesheet" href="<?=$_SESSION['helper']->getPath('styles')?>dashboard.css">
