@@ -7,4 +7,4 @@
 
 	$menu = new Menu($app->getDbHandler());
 	$menu->drawNapiAdmin($firstDay);
-?>
+?> 
