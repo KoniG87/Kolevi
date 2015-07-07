@@ -1,5 +1,4 @@
 <?php
-
 class GaleriaView extends BaseView{
 	
 	function __construct(){
@@ -62,4 +61,4 @@ class GaleriaView extends BaseView{
     }
     
 }
-?>
+?> 

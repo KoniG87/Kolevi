@@ -1,5 +1,4 @@
 <?php
-
 class ImageView extends BaseView{
 	
 	function __construct(){
@@ -74,4 +73,4 @@ class ImageView extends BaseView{
         </table>';
     }
 }
-?>
+?> 
