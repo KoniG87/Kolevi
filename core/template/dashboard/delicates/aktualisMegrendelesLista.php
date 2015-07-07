@@ -158,5 +158,4 @@ $delicates->drawMegrendelesAdmin('aktualis');
 		
 		
 	});
-</script>
-
+</script> 
