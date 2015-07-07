@@ -5,27 +5,32 @@ $db = $app->getDbHandler();
 $delicates = new Delicates($db);
 $galeria = new Galeria($db);
 //$_SESSION['helper']->emptyBasket();
-$termekek = array(
-	array(
-		'id'			=> 1,
-		'egyseg'		=> 1
-	),
- 	array(
-		'id'			=> 3,
-		'egyseg'		=> 6
-	),
-	array(
-		'id'			=> 2,
-		'egyseg'		=> 1
-	),
-	array(
-		'id'			=> 5,
-		'egyseg'		=> 2
-	)
-);
+/*
+ if (empty($_SESSION['helper']->getBasketContents())){
+	$termekek = array(
+		array(
+			'id'			=> 1,
+			'egyseg'		=> 1
+		),
+	 	array(
+			'id'			=> 3,
+			'egyseg'		=> 6
+		),
+		array(
+			'id'			=> 2,
+			'egyseg'		=> 1
+		),
+		array(
+			'id'			=> 5,
+			'egyseg'		=> 2
+		)
+	);
+}
+
 foreach ($termekek AS $termek){
 	$delicates->updateCartItem($termek);
 }
+*/
 ?>
 
 <div class="row stickyStart">
@@ -194,29 +199,22 @@ foreach ($termekek AS $termek){
 			
 			queryParams = {
 				request: "addToCart",
-				id: $(".bolt-item-inf h4").attr("data-id"),
+				id: $(".bolt-item-info h4").attr("data-id"),
 				egyseg: $(".kosar-egyseg").val()
 			};
-			aktualisKosarMeret = parseInt($(".kosar > span").text(), 10); 
-			$(".kosar > span").text(aktualisKosarMeret + parseInt(queryParams.egyseg, 10));
+			aktualisKosarMeret = parseInt($(".kosar > span").html(), 10); 
+			ujEgysegek = parseInt(queryParams.egyseg, 10);
+			ujKosarMeret = aktualisKosarMeret + ujEgysegek;
+
+			console.log('aktualis: '+ aktualisKosarMeret);
+			console.log('kivalasztva: '+ ujEgysegek);
+			console.log('uj: '+ ujKosarMeret);
+
+			$(".kosar > span").html(ujKosarMeret);
 			
-			
+			console.log(queryParams);
 			$.post("requestHandler", queryParams, function(resp){
-				/*$.each(resp, function(id, obj){
-					itemTemplate = $(".checkout-item:first").clone(true);
-					itemTemplate.find(".checkout-item-name").text(obj.labelHeader);
-					itemTemplate.find(".checkout-item-quantity").text(obj.egyseg);
-					itemTemplate.find(".checkout-item-cost").text(obj.egysegar);
-					itemTemplate.find(".checkout-item-img").html("<img src=\""+obj.kep+"\"/>");
-					
-					$(".checkout-items > div").append(itemTemplate);
-				});
-		
-				$(".checkout-item:first").hide();
-               	$(".overlay-checkout").addClass("overlay-checkout-open");
-					$("html, body").addClass("no-scroll");
-				refreshCheckoutSum();
-				*/
+			
             }, "json");
             
 
@@ -249,6 +247,10 @@ foreach ($termekek AS $termek){
             });
 			
 			
+		});
+
+		$(document).on("click", ".item-remove", function(){
+			console.log("item removed");
 		});	
 	});
 </script>
