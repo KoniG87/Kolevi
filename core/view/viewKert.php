@@ -1,5 +1,4 @@
 <?php
-
 class KertView extends BaseView{
 	
 	function __construct(){
@@ -660,4 +659,4 @@ ennyire nyüzsgő belváros legyünk.</p>
     	echo '</table>';
     }
 }
-?>
+?> 
