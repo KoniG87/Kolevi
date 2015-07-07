@@ -1,5 +1,4 @@
 <?php
-
 class Apartman extends BaseObject{
     
     function __construct($dbHandler){
@@ -178,3 +177,4 @@ class Apartman extends BaseObject{
     
 }
 ?>
+ 
