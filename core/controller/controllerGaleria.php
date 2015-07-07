@@ -1,5 +1,4 @@
 <?php
-
 class Galeria extends BaseObject{
 	
 	function __construct($dbHandler){
@@ -28,4 +27,4 @@ class Galeria extends BaseObject{
     
     
 }
-?>
+?> 
