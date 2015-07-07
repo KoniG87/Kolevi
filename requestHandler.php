@@ -92,6 +92,12 @@ if (isset($_POST['request'])){
 			
 			break;
 			
+		case 'removeFromCart':
+			$delicates = new Delicates($app->getDbHandler());
+			$delicates->removeCartItem();
+				
+			break;
+			
 		case 'insertImageRef':
 			$image = new Image($app->getDbHandler());
 			$image->insertImageRef();
