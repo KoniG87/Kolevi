@@ -1,5 +1,4 @@
 <?php
-
 class BaseView{
 	
 	function __construct(){
@@ -83,4 +82,4 @@ class BaseView{
 	
     }
 }
-?>
+?> 
