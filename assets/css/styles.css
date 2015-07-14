@@ -439,7 +439,7 @@ body {
   overflow-y: hidden !important;
   position: static; }
 
-.has-sprite, .allergen, .cetli, .review-img {
+.has-sprite, .barkas ul li a:after, .barkas-top, .barkas-bottom, .illustration-container, .vendeglo .vend-fa, .vendeglo .vend-front .vend-front-front, .vendeglo .vend-kerites-front-left, div[class^="vend-emberke"], .vend-kihuzo, .vend-kihuzo-ful, .delicates .delic-side, .delicates .delic-kemeny-kemeny, .delicates .delic-kihuzo, .delicates .delic-kihuzo-ful, .delicates .delic-front, .delicates .delic-fogaskerek, .apartman .apartman-front, .apartman .apartman-front-left, .apartman div[class^="apartman-emberke"], .apartman .apartman-kihuzo, .kert .kert-fa-villa, .kert .kert-kerites-side, .kert .kert-kerites-top, .kert .kert-bokor-sima, .kert .kert-bokor-vodor, .kert .kert-bokor-sima2, .kert .kert-kerites-front-right, .kert .kert-kihuzo-cover, .kert .kert-emberek-cover, .kert .kert-asztal, .kert .kert-fiu, .kert .kert-lany, .kert div[class^="kert-kisvirag"], .kert .kert-kihuzo, .kert .kert-kihuzo-ful, .allergen, .cetli, .review-img {
   background-repeat: no-repeat;
   background-image: url("../img/koleves_sprite.png");
   /*@include image-2x("../img/main-sprite@2x.png", 300px, 300px);*/ }
@@ -1005,11 +1005,9 @@ body {
         .barkas ul li a:after {
           content: "";
           position: absolute;
-          width: 1rem;
-          height: 1rem;
-          background-image: url(../img/barkas_hir-nyil.png);
-          background-repeat: no-repeat;
-          background-size: cover;
+          width: 16px;
+          height: 16px;
+          background-position: 0 -60px;
           margin-top: 7px; }
     .barkas ul li:nth-child(odd) {
       /*@extend .paper-bg;*/
@@ -1024,14 +1022,14 @@ body {
     margin-bottom: -5px !important; }
 
 .barkas-top {
-  width: 100%;
+  width: 400px;
   height: 177px;
-  background-image: url(../img/barkas_top.png); }
+  background-position: -519px 0; }
 
 .barkas-bottom {
-  width: 100%;
+  width: 400px;
   height: 95px;
-  background-image: url(../img/barkas_bottom.png);
+  background-position: -519px -177px;
   margin-bottom: 3px; }
 
 .barkas-cover {
@@ -1040,7 +1038,7 @@ body {
   z-index: 999; }
 
 .illustration-container {
-  background-image: url(../img/landing_bg.png);
+  background-position: -919px 0;
   position: absolute;
   top: 0;
   right: 0;
@@ -1052,20 +1050,7 @@ body {
   -webkit-perspective: 1000px;
   perspective: 1000px; }
   .illustration-container > div {
-    position: absolute;
-    /*    -webkit-transform-style: preserve-3d;
-         -moz-transform-style: preserve-3d;
-         transform-style: preserve-3d;*/
-    /*	    -webkit-backface-visibility: hidden;
-    	   -moz-backface-visibility: hidden;*/
-    /*box-shadow:0 0px 20px rgba(0,0,0,.3);*/
-    /*opacity:0.7;*/
-    /*border:1px solid rgba(255, 0, 0, 0.5);*/ }
-    .illustration-container > div div {
-      /*      -webkit-backface-visibility: hidden;
-           -moz-backface-visibility: hidden;*/
-      /*     -webkit-transform-style: flat;
-           -moz-transform-style: flat;*/ }
+    position: absolute; }
 
 .allo {
   /*box-shadow:0 0 20px rgba(0,0,0,.4) !important;*/ }
@@ -1087,21 +1072,13 @@ div[class^="apartman-"] {
   left: 0;
   bottom: 0;
   width: 495px;
-  height: 296px;
-  /*@include perspective(2000px);*/
-  /*  .vend-frontW{
-      width: 495px;
-      height: 296px;
-      bottom:0;
-      left:0;
-      background-image: url(../img/vend_frontW.png);
-    }*/ }
+  height: 296px; }
   .vendeglo .vend-fa {
-    top: -40px;
+    top: -50px;
     left: 220px;
     width: 146px;
-    height: 251px;
-    background-image: url(../img/fa.png); }
+    height: 240px;
+    background-position: -519px -272px; }
   .vendeglo .vend-front {
     width: 495px;
     height: 296px;
@@ -1111,15 +1088,9 @@ div[class^="apartman-"] {
     -o-transform-origin: bottom;
     -ms-transform-origin: bottom;
     -webkit-transform-origin: bottom;
-    transform-origin: bottom;
-    /*    &:hover{
-    transform: rotateX(-130deg) rotateY(0deg) rotateZ(0deg) perspective(15000px);
-    
-        }*/ }
+    transform-origin: bottom; }
     .vendeglo .vend-front .vend-front-front {
-      background-image: url(../img/vend_front.png);
-      background-size: cover;
-      background-repeat: no-repeat;
+      background-position: 0 -596px;
       width: 100%;
       height: 100%;
       position: absolute;
@@ -1127,59 +1098,44 @@ div[class^="apartman-"] {
   .vendeglo .vend-kerites-front-left {
     width: 129px;
     height: 96px;
-    background-image: url(../img/kerites_front-left.png);
+    background-position: -665px -272px;
     right: -125px;
     bottom: 0; }
-  .vendeglo .vend-bokor-kutya {
-    width: 101px;
-    height: 115px;
-    background-image: url(../img/bokor_kutya.png);
-    right: -165px;
-    bottom: -8px; }
 
 div[class^="vend-emberke"] {
-  width: 90px;
-  height: 72px;
-  background-image: url(../img/vend_emberkek.png);
-  background-repeat: no-repeat; }
+  width: 50px;
+  height: 70px; }
 
 .vend-emberke1 {
   left: 28px;
   top: 94px;
-  /*background-position: -28px -94px;*/
-  background-position: -67px -94px; }
+  background-position: -380px -520px; }
 
 .vend-emberke2 {
   left: 180px;
   top: 94px;
-  /*background-position: -180px -94px;*/
-  background-position: -215px -94px; }
+  background-position: -480px -520px; }
 
 .vend-emberke3 {
   left: 405px;
   top: 94px;
-  /*background-position: -405px -94px;*/
-  background-position: -441px -94px; }
+  background-position: -580px -520px; }
 
 .vend-emberke4 {
   left: 105px;
   top: 183px;
-  /*background-position: -105px -183px;*/
-  background-position: -143px -183px; }
+  background-position: -680px -510px; }
 
 .vend-emberke5 {
   left: 251px;
   top: 183px;
-  /*background-position: -251px -183px;*/
-  background-position: -285px -183px; }
+  background-position: -780px -520px; }
 
 .vend-kihuzo {
   width: 180px;
   height: 210px;
-  background-image: url(../img/vend_kihuzo.png);
+  background-position: -495px -596px;
   right: 8px;
-  /*margin:auto 0;*/
-  /*bottom:0;*/
   top: 2rem;
   z-index: -1 !important; }
   .vend-kihuzo nav {
@@ -1204,9 +1160,8 @@ div[class^="vend-emberke"] {
 .vend-kihuzo-ful {
   width: 140px;
   height: 140px;
-  background-image: url(../img/vend-kihuzo-ful.png);
+  background-position: -675px -633px;
   position: absolute;
-  background-repeat: no-repeat;
   right: -140px;
   top: 37px; }
   .vend-kihuzo-ful .icon {
@@ -1218,58 +1173,35 @@ div[class^="vend-emberke"] {
 .delicates {
   top: 0;
   width: 287px;
-  height: 450px;
-  /*    .delic-kihuzo-container{
-        width: 0;
-        height: 200px;
-        left: 55px;
-        top:-80px;
-        top:20px;
-      }
-      .delic-mask{
-        max-width: 180px;
-        height: 200px;
-        overflow: hidden;
-        position: relative !important;
-  
-      }*/ }
+  height: 450px; }
   .delicates .delic-side {
     left: 0;
     top: 0;
     width: 287px;
-    height: 450px;
-    background-image: url(../img/delic_side.png); }
+    height: 440px;
+    background-position: -831px -521px; }
   .delicates .delic-kemeny {
     bottom: 125px;
-    /*bottom: 250px;*/
     left: 10px;
     width: 69px;
     height: 305px; }
   .delicates .delic-kemeny-kemeny {
     width: 69px;
     height: 305px;
-    background-image: url(../img/kemeny.png); }
+    background-position: -1118px -521px; }
   .delicates .delic-kihuzo {
     width: 200px;
     height: 140px;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
-    background-image: url(../img/delic_kihuzo2.png);
-    background-size: cover;
+    background-position: -495px -826px;
     left: 90px;
-    /*margin:auto 0;*/
-    /*bottom:0;*/
     top: 70px;
     moz-transform-origin: left center;
     -o-transform-origin: left center;
     -ms-transform-origin: left center;
     -webkit-transform-origin: left center;
-    transform-origin: left center;
-    /*       transform:rotate-z(0deg);
-          -ms-transform:rotate-z(0deg);
-          -webkit-transform:rotate-z(0deg);
-          -moz-transform:rotate-z(0deg); */
-    /* @include rotate-3d(0,0,90deg); */ }
+    transform-origin: left center; }
     .delicates .delic-kihuzo nav {
       position: absolute;
       height: 100%;
@@ -1292,13 +1224,12 @@ div[class^="vend-emberke"] {
       .delicates .delic-kihuzo li:hover {
         color: #000; }
   .delicates .delic-kihuzo-ful {
-    width: 110px;
+    width: 103px;
     height: 100px;
     position: absolute;
     left: 50px;
     top: 0;
-    background-image: url(../img/delic_kihuzo_ful.png);
-    background-repeat: no-repeat; }
+    background-position: -696px -817px; }
     .delicates .delic-kihuzo-ful .icon {
       width: 90px;
       height: 90px;
@@ -1306,10 +1237,10 @@ div[class^="vend-emberke"] {
       margin-top: -7px; }
   .delicates .delic-front {
     left: 0;
-    top: 0;
-    width: 287px;
-    height: 450px;
-    background-image: url(../img/delic_front.png);
+    bottom: 0;
+    width: 160px;
+    height: 340px;
+    background-position: -1187px -521px;
     pointer-events: none; }
   .delicates .delic-fogaskerek {
     width: 121px;
@@ -1321,7 +1252,7 @@ div[class^="vend-emberke"] {
     -ms-transform-origin: center;
     -webkit-transform-origin: center;
     transform-origin: center;
-    background-image: url(../img/fogaskerek.png); }
+    background-position: -675px -368px; }
 
 .apartman {
   top: -3px;
@@ -1329,27 +1260,24 @@ div[class^="vend-emberke"] {
   height: 238px;
   left: 215px; }
   .apartman .apartman-front {
-    background-image: url(../img/apartman_front.png);
+    background-position: -1347px -521px;
     width: 351px;
-    height: 238px; }
+    height: 88px; }
   .apartman .apartman-front-left {
     width: 351px;
     height: 238px;
     pointer-events: none;
-    background-image: url(../img/apartman_front-left.png); }
-  .apartman div[class^="apartman-emberke"] {
-    background-image: url(../img/apartman_emberek-elefant2.png);
-    background-repeat: no-repeat; }
+    background-position: -1347px -608px; }
   .apartman .apartman-emberke1 {
-    /*background-position: -28px -54px;*/
     background-position: -28px 0;
+    background-position: -1725px -521px;
     left: 267px;
     top: 17px;
     width: 50px;
     height: 50px; }
   .apartman .apartman-emberke2 {
-    /*background-position: -76px -53px;*/
     background-position: -76px 6px;
+    background-position: -1773px -515px;
     left: 262px;
     top: 121px;
     width: 70px;
@@ -1360,7 +1288,7 @@ div[class^="vend-emberke"] {
     left: 85px;
     top: 130px;
     background-position: -144px -2px;
-    background-position: -144px -2px; }
+    background-position: -1841px -523px; }
   .apartman .apartman-kihuzo-container {
     width: 166px;
     height: 166px;
@@ -1376,16 +1304,14 @@ div[class^="vend-emberke"] {
     height: 236px;
     top: 0;
     left: 80px;
-    background-image: url(../img/apartman_kihuzo2.png); }
+    background-position: -1697px -641px; }
     .apartman .apartman-kihuzo nav {
       position: absolute;
       width: 100%;
       left: 0;
       bottom: 0;
       padding: 1rem;
-      top: 5.5rem;
-      /*@include rotate(90);*/
-      /*padding: 2rem 3.5rem 2.5rem 1rem;*/ }
+      top: 5.5rem; }
       .apartman .apartman-kihuzo nav a {
         text-decoration: none;
         color: #444;
@@ -1412,7 +1338,6 @@ div[class^="vend-emberke"] {
       margin-top: -10px; }
 
 .kert {
-  /*border: 1px solid rgba(0,255,0,.5);*/
   width: 300px;
   height: 250px;
   right: 100px;
@@ -1420,43 +1345,43 @@ div[class^="vend-emberke"] {
   .kert .kert-fa-villa {
     width: 163px;
     height: 278px;
-    background-image: url(../img/fa_villa.png);
+    background-position: 0 -892px;
     top: -180px;
     left: -50px; }
   .kert .kert-kerites-side {
     width: 119px;
     height: 258px;
-    background-image: url(../img/kerites-side.png);
-    right: -101px;
-    bottom: -27px; }
+    background-position: -163px -892px;
+    right: -104px;
+    bottom: -30px; }
   .kert .kert-kerites-top {
     width: 335px;
     height: 87px;
-    background-image: url(../img/kerites_top.png);
+    background-position: -1240px -860px;
     top: 15px;
     right: 0; }
   .kert .kert-bokor-sima {
     width: 121px;
     height: 105px;
-    background-image: url(../img/bokor_sima.png);
+    background-position: -796px -368px;
     left: -40px;
     top: 5px; }
   .kert .kert-bokor-vodor {
     width: 90px;
     height: 118px;
-    background-image: url(../img/bokor_vodor.png);
+    background-position: -1697px -992px;
     right: 0px;
     top: 10px; }
   .kert .kert-bokor-sima2 {
     width: 98px;
     height: 85px;
-    background-image: url(../img/bokor_sima2.png);
+    background-position: -796px -272px;
     right: -36px;
     bottom: 3px; }
   .kert .kert-kerites-front-right {
     width: 252px;
     height: 96px;
-    background-image: url(../img/kerites_front-right.png);
+    background-position: -1637px -872px;
     bottom: -45px;
     right: -106px; }
   .kert .kert-viragok {
@@ -1469,29 +1394,15 @@ div[class^="vend-emberke"] {
     height: 166px;
     left: 30px;
     box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.5);
-    background-image: url(../img/landing_bg.png);
-    background-position: -615px -323px;
-    background-repeat: no-repeat; }
+    background-position: -1534px -323px; }
   .kert .kert-emberek-cover {
     width: 400px;
     height: 110px;
-    background-image: url(../img/landing_bg.png);
-    background-repeat: no-repeat;
-    background-position: -285px -375px;
+    background-position: -1204px -375px;
     bottom: -6px;
     right: 300px;
     pointer-events: none;
-    box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.5);
-    /*   &:after{
-        content: "";
-        position: absolute;
-        bottom:96px;
-        width: 100%;
-        height: 5px;
-        background-image:url(../img/vagas.png);
-        background-size:100% 5px;
-        background-repeat:no-repeat;
-      } */ }
+    box-shadow: 0 -10px 10px -10px rgba(0, 0, 0, 0.5); }
   .kert .kert-emberek {
     width: 240px;
     height: 260px;
@@ -1501,10 +1412,9 @@ div[class^="vend-emberke"] {
   .kert .kert-asztal {
     width: 80px;
     height: 141px;
-    background-image: url(../img/kert_asztal.png);
+    background-position: -449px -970px;
     bottom: 80px;
     left: 75px;
-    /* @include rotate-3d(30deg,0,0);*/
     moz-transform-origin: bottom;
     -o-transform-origin: bottom;
     -ms-transform-origin: bottom;
@@ -1516,28 +1426,25 @@ div[class^="vend-emberke"] {
     width: 167px;
     bottom: -20px; }
   .kert .kert-fiu {
-    background-image: url(../img/kert_fiu.png);
+    background-position: -282px -892px;
     left: -70px;
     moz-transform-origin: top right;
     -o-transform-origin: top right;
     -ms-transform-origin: top right;
     -webkit-transform-origin: top right;
-    transform-origin: top right;
-    /*@include rotate-3d(0,0,-90deg);*/ }
+    transform-origin: top right; }
   .kert .kert-lany {
-    background-image: url(../img/kert_lany.png);
+    background-position: -282px -992px;
     right: -70px;
     moz-transform-origin: top left;
     -o-transform-origin: top left;
     -ms-transform-origin: top left;
     -webkit-transform-origin: top left;
-    transform-origin: top left;
-    /*@include rotate-3d(0,0,90deg);*/ }
+    transform-origin: top left; }
   .kert div[class^="kert-kisvirag"] {
     width: 55px;
-    height: 125px;
-    background-image: url(../img/kert_kisviragok.png);
-    background-repeat: no-repeat;
+    height: 110px;
+    /*   background-image:url(../img/kert_kisviragok.png); */
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5); }
     .kert div[class^="kert-kisvirag"]:after {
       content: "";
@@ -1551,57 +1458,63 @@ div[class^="vend-emberke"] {
   .kert .kert-kisvirag1 {
     right: 162px;
     bottom: 77px;
-    background-position: 0 125px; }
+    background-position: -1007px -950px; }
   .kert .kert-kisvirag2 {
     right: 300px;
     bottom: 50px;
-    background-position: -55px 125px; }
+    background-position: -55px 125px;
+    background-position: -1062px -950px; }
   .kert .kert-kisvirag3 {
     right: 304px;
     bottom: 73px;
-    background-position: -110px 125px; }
+    background-position: -110px 125px;
+    background-position: -1117px -950px; }
   .kert .kert-kisvirag4 {
     right: 340px;
     bottom: 140px;
-    background-position: -389px 125px; }
+    background-position: -389px 125px;
+    background-position: -1172px -950px; }
   .kert .kert-kisvirag5 {
     right: 391px;
     bottom: 44px;
-    background-position: -220px 125px; }
+    background-position: -220px 125px;
+    background-position: -1227px -950px; }
   .kert .kert-kisvirag6 {
     right: 600px;
     bottom: 25px;
-    background-position: -275px 125px; }
+    background-position: -275px 125px;
+    background-position: -1282px -950px; }
   .kert .kert-kisvirag7 {
     right: 504px;
     bottom: 45px;
-    background-position: -330px 125px; }
+    background-position: -330px 125px;
+    background-position: -1337px -950px; }
   .kert .kert-kisvirag8 {
     right: 470px;
     bottom: 220px;
     background-position: -165px 125px;
-    /*   &:after{
-        bottom:20px !important;
-      } */ }
+    background-position: -1172px -950px; }
   .kert .kert-kisvirag9 {
     right: 567px;
     bottom: 134px;
-    background-position: -440px 125px; }
+    background-position: -440px 125px;
+    background-position: -1447px -950px; }
   .kert .kert-kisvirag10 {
     right: 618px;
     bottom: 175px;
-    background-position: -495px 125px; }
+    background-position: -495px 125px;
+    background-position: -1502px -950px; }
   .kert .kert-kisvirag11 {
     right: 630px;
     bottom: 66px;
-    background-position: -550px 125px; }
+    background-position: -550px 125px;
+    background-position: -1557px -950px; }
   .kert .kert-kihuzo {
     width: 187px;
     height: 160px;
     top: 0;
     left: 50px;
-    background-image: url(../img/kert_kihuzo.png);
-    /*  box-shadow: inset 0 -63px 50px -50px rgba(0,0,0,0.9);*/ }
+    background-position: -798px -806px; }
     .kert .kert-kihuzo nav {
       position: absolute;
       height: 100%;
@@ -1622,16 +1535,16 @@ div[class^="vend-emberke"] {
       .kert .kert-kihuzo li:hover {
         color: #000; }
   .kert .kert-kihuzo-ful {
-    width: 187px;
+    width: 117px;
     height: 130px;
-    background-image: url(../img/kert_kihuzo_ful.png);
+    background-position: -830px -676px;
     position: absolute;
     top: -130px;
-    left: -1px; }
+    left: 43px; }
     .kert .kert-kihuzo-ful .icon {
       width: 100px;
       height: 100px;
-      margin-left: 52px;
+      margin-left: 10px;
       margin-top: 5px; }
 
 /*MOBILE*/

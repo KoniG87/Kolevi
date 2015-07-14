@@ -854,11 +854,11 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
       keriFR.delay(150).velocity({rotateX:"-40deg"}, easing);
       vendFront.delay(250).velocity({rotateX:"-15deg"}, {duration: 2500, easing: [ 300, 14 ]});
       vendKihuzo.delay(500).velocity({right: -155}, {duration: dur, easing: [ 300, 25 ]});
-      $(this).find(".vend-emberke1").delay(800).velocity({backgroundPositionX: -28}, {duration: dur, easing: [ 200, 20 ]});
-      $(this).find(".vend-emberke2").delay(800).velocity({backgroundPositionX: -180}, {duration: dur, easing: [ 200, 20 ]});
-      $(this).find(".vend-emberke3").delay(800).velocity({backgroundPositionX: -405}, {duration: dur, easing: [ 200, 20 ]});
-      $(this).find(".vend-emberke4").delay(800).velocity({backgroundPositionX: -105}, {duration: dur, easing: [ 200, 20 ]});
-      $(this).find(".vend-emberke5").delay(800).velocity({backgroundPositionX: -251}, {duration: dur, easing: [ 200, 20 ]});
+      $(this).find(".vend-emberke1").delay(800).velocity({backgroundPositionX: -340}, {duration: dur, easing: [ 200, 20 ]});
+      $(this).find(".vend-emberke2").delay(800).velocity({backgroundPositionX: -440}, {duration: dur, easing: [ 200, 20 ]});
+      $(this).find(".vend-emberke3").delay(800).velocity({backgroundPositionX: -530}, {duration: dur, easing: [ 200, 20 ]});
+      $(this).find(".vend-emberke4").delay(800).velocity({backgroundPositionX: -635}, {duration: dur, easing: [ 200, 20 ]});
+      $(this).find(".vend-emberke5").delay(800).velocity({backgroundPositionX: -730}, {duration: dur, easing: [ 200, 20 ]});
     }
     else if(thisOne.hasClass("delicates")){
       // delic.velocity({rotateX:"-15deg"}, easing);
@@ -903,9 +903,9 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
       vendFront.velocity({rotateX:"-110deg"}, {duration: 3000, easing: [ 300, 14 ]});
       // faVilla.delay(150).velocity({rotateX:"15deg"}, {duration: 2000, easing: [ 300, 14 ]});
 
-      $(this).find(".apartman-emberke1").delay(1200).velocity({backgroundPositionY: -54}, {duration: dur, easing: [ 200, 20 ]});
-      $(this).find(".apartman-emberke2").delay(1200).velocity({backgroundPositionY: -52}, {duration: dur, easing: [ 200, 20 ]});
-      $(this).find(".apartman-emberke3").delay(1200).velocity({backgroundPositionY: -60}, {duration: dur, easing: [ 200, 20 ]});
+      $(this).find(".apartman-emberke1").delay(1200).velocity({backgroundPositionY: -575}, {duration: dur, easing: [ 200, 20 ]});
+      $(this).find(".apartman-emberke2").delay(1200).velocity({backgroundPositionY: -573}, {duration: dur, easing: [ 200, 20 ]});
+      $(this).find(".apartman-emberke3").delay(1200).velocity({backgroundPositionY: -581}, {duration: dur, easing: [ 200, 20 ]});
       apartKihuzo.delay(1000).velocity({top: -100}, {duration: 2500, easing: [ 300, 16 ]});
     }
     else if(thisOne.hasClass("kert")){
@@ -925,7 +925,7 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
       kertFiu.delay(250).velocity({rotateZ:"90deg"}, easing);
       kertLany.delay(250).velocity({rotateZ:"-90deg"}, easing);
 
-      $(this).find("div[class^='kert-kisvirag']").delay(400).velocity({backgroundPositionY: 0}, {duration: 1000});
+      $(this).find("div[class^='kert-kisvirag']").delay(400).velocity({backgroundPositionY: -1060}, {duration: 1000});
     }
   }
   
@@ -952,11 +952,11 @@ if($(this).hasClass("vendeglo")){
           delic.delay(100).velocity(alap);
           kertKihuzo.velocity({top: 0}).velocity(alap);
           kertAsztal.delay(100).velocity(alap);
-          $(this).find(".vend-emberke1").delay(200).velocity({backgroundPositionX: -67});
-          $(this).find(".vend-emberke2").delay(200).velocity({backgroundPositionX: -215});
-          $(this).find(".vend-emberke3").delay(200).velocity({backgroundPositionX: -441});
-          $(this).find(".vend-emberke4").delay(200).velocity({backgroundPositionX: -143});
-          $(this).find(".vend-emberke5").delay(200).velocity({backgroundPositionX: -285});
+          $(this).find(".vend-emberke1").delay(200).velocity({backgroundPositionX: -380});
+          $(this).find(".vend-emberke2").delay(200).velocity({backgroundPositionX: -480});
+          $(this).find(".vend-emberke3").delay(200).velocity({backgroundPositionX: -580});
+          $(this).find(".vend-emberke4").delay(200).velocity({backgroundPositionX: -680});
+          $(this).find(".vend-emberke5").delay(200).velocity({backgroundPositionX: -780});
           apartKihuzo.delay(200).velocity({top: 0});
         }
         else if ($(this).hasClass("kert")) {
@@ -984,7 +984,7 @@ if($(this).hasClass("vendeglo")){
           kertLany.delay(250).velocity(alap);
           apartKihuzo.delay(200).velocity({top: 0});
           kertAsztal.delay(100).velocity(alap);
-          $(this).find("div[class^='kert-kisvirag']").velocity({backgroundPositionY: 125});
+          $(this).find("div[class^='kert-kisvirag']").velocity({backgroundPositionY: -950});
         }
 
         else if ($(this).hasClass("delicates")) {
@@ -1016,9 +1016,9 @@ if($(this).hasClass("vendeglo")){
         }    
         else if ($(this).hasClass("apartman")) {
           apartKihuzo.velocity(alap);
-          $(this).find(".apartman-emberke1").delay(200).velocity({backgroundPositionY: 0});
-          $(this).find(".apartman-emberke2").delay(200).velocity({backgroundPositionY: 6});
-          $(this).find(".apartman-emberke3").delay(200).velocity({backgroundPositionY: -2});
+          $(this).find(".apartman-emberke1").delay(200).velocity({backgroundPositionY: -521});
+          $(this).find(".apartman-emberke2").delay(200).velocity({backgroundPositionY: -515});
+          $(this).find(".apartman-emberke3").delay(200).velocity({backgroundPositionY: -523});
 
           vendFront.velocity(alap);
           kemeny.velocity(alap);
