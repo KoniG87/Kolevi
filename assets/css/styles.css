@@ -444,6 +444,10 @@ body {
   background-image: url("../img/koleves_sprite.png");
   /*@include image-2x("../img/main-sprite@2x.png", 300px, 300px);*/ }
 
+.has-mobsprite, .mobile-apartman, .mobile-kerites, .mobile-villafa, .mobile-kert, .mobile-delicates, .mobile-vendeglo, .mobile-sugo-bubble, .mobile-barkas, .mobile-sugo-trigger {
+  background-repeat: no-repeat;
+  background-image: url("../img/koleves_mobilesprite.png"); }
+
 /*
 .preloaded-images {
    position: absolute;
@@ -1576,7 +1580,8 @@ div[class^="vend-emberke"] {
 .mobile-apartman {
   width: 391px;
   height: 158px;
-  background-image: url(../img/mob_apartman.png);
+  background-position: -362px -611px;
+  /*   background-image:url(../img/mob_apartman.png); */
   top: 12px;
   left: -95px;
   /*480px*/ }
@@ -1588,15 +1593,17 @@ div[class^="vend-emberke"] {
 
 .mobile-kerites {
   width: 281px;
-  height: 76px;
-  background-image: url(../img/mob_kerites.png);
-  bottom: 0;
+  height: 72px;
+  /*   background-image:url(../img/mob_kerites.png); */
+  background-position: 0 -698px;
+  bottom: 5px;
   right: -275px; }
 
 .mobile-villafa {
   width: 125px;
   height: 214px;
-  background-image: url(../img/mob_villafa.png);
+  /*   background-image:url(../img/mob_villafa.png); */
+  background-position: -615px -28px;
   right: -6%;
   top: 0;
   pointer-events: none;
@@ -1613,7 +1620,8 @@ div[class^="vend-emberke"] {
 .mobile-kert {
   width: 349px;
   height: 240px;
-  background-image: url(../img/mob_kert.png);
+  /*  background-image:url(../img/mob_kert.png); */
+  background-position: 0 -458px;
   right: -264px;
   top: 26%; }
   .mobile-kert ul {
@@ -1625,7 +1633,8 @@ div[class^="vend-emberke"] {
 .mobile-delicates {
   width: 427px;
   height: 320px;
-  background-image: url(../img/mob_delicates.png);
+  /*   background-image:url(../img/mob_delicates.png); */
+  background-position: -362px -277px;
   top: 0;
   left: -273px;
   /*480px*/ }
@@ -1638,7 +1647,8 @@ div[class^="vend-emberke"] {
 .mobile-vendeglo {
   width: 364px;
   height: 463px;
-  background-image: url(../img/mob_vendeglo.png);
+  /*   background-image:url(../img/mob_vendeglo.png); */
+  background-position: 0 0;
   bottom: -260px;
   left: -80px; }
   .mobile-vendeglo ul {
@@ -1657,7 +1667,8 @@ div[class^="vend-emberke"] {
 .mobile-sugo-bubble {
   width: 170px;
   height: 156px;
-  background-image: url(../img/mob_sugo-bubble.png);
+  /*   background-image:url(../img/mob_sugo-bubble.png); */
+  background-position: -362px 0;
   top: -160px;
   padding: 2rem 1rem;
   text-align: center;
@@ -1677,12 +1688,14 @@ div[class^="vend-emberke"] {
   right: 0;
   width: 206px;
   height: 97px;
-  background-image: url(../img/mob_barkas.png); }
+  /*     background-image:url(../img/mob_barkas.png); */
+  background-position: -395px -180px; }
 
 .mobile-sugo-trigger {
   width: 49px;
   height: 46px;
-  background-image: url(../img/mob_sugo-trigger.png);
+  /*   background-image:url(../img/mob_sugo-trigger.png); */
+  background-position: -550px -29px;
   bottom: 1rem;
   right: 1rem;
   cursor: pointer; }
