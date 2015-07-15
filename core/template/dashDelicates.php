@@ -1,4 +1,4 @@
-<h3><svg class="icon icon-etel-desszert"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-etel-desszert"></use></svg>Termékek</h3>
+<h3><svg class="icon icon-a_termekek"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-a_termekek"></use></svg>Termékek</h3>
 <a href="<?=$_SESSION['helper']->getPath()?>dashboard/delicates/termekKezelo">
 	<li>Terméklista</li>
 </a>
@@ -7,7 +7,7 @@
 </a> 
 
 
-<h3><svg class="icon icon-like"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-like"></use></svg>Megrendelések</h3>
+<h3><svg class="icon icon-a_megrendelesek"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-a_megrendelesek"></use></svg>Megrendelések</h3>
 <a href="<?=$_SESSION['helper']->getPath()?>dashboard/delicates/aktualisMegrendelesLista">
 	<li>Aktuális megrendelések</li>
 </a>
@@ -15,13 +15,13 @@
 	<li>Korábbi megrendelések</li>
 </a>
 
-<h3><svg class="icon icon-naptar"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-naptar"></use></svg>Slider</h3>
+<h3><svg class="icon icon-a_slider"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-a_slider"></use></svg>Slider</h3>
 <a href="<?=$_SESSION['helper']->getPath()?>dashboard/delicates/akcioKezelo">
 	<li>Akciók kezelése</li>
 </a>
 
 
-<h3><svg class="icon icon-slider-jobbra"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-slider-jobbra"></use></svg>Képek</h3>
+<h3><svg class="icon icon-a_kepek"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-a_kepek"></use></svg>Képek</h3>
 <a href="<?=$_SESSION['helper']->getPath()?>dashboard/delicates/kepKezelo">
 	<li>Kezelése</li>
 </a>
