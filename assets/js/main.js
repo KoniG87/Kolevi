@@ -873,7 +873,7 @@ var easing = {duration: dur, easing: [ 300, 20 ]};
 
 
       fogaskerek.delay(200).velocity({rotateZ:"-300deg"}, {duration: 1600, complete:function(){
-        delicKihuzo.velocity({rotateZ:"0deg"}, easing);
+      delicKihuzo.velocity({rotateZ:"0deg"}, easing);
       }});
       kemeny.delay(200).velocity({bottom: 200}, {duration: 1600},{queue:false});
       bkutya.velocity({rotateX:"-65deg"}, easing);
@@ -988,6 +988,7 @@ if($(this).hasClass("vendeglo")){
         }
 
         else if ($(this).hasClass("delicates")) {
+          delicKihuzo.velocity({rotateZ:"90deg"});
           kemeny.velocity({bottom: 125});
 
           kertKihuzo.velocity({top: 0}).velocity(alap);
@@ -1012,7 +1013,7 @@ if($(this).hasClass("vendeglo")){
           fogaskerek.velocity(alap);
           kertAsztal.delay(100).velocity(alap);
           apartKihuzo.delay(200).velocity({top: 0});
-          delicKihuzo.velocity({rotateZ:"90deg"});
+          
         }    
         else if ($(this).hasClass("apartman")) {
           apartKihuzo.velocity(alap);
