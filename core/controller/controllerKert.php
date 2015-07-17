@@ -220,7 +220,7 @@ class Kert extends BaseObject{
     
     	 
     	$pdf->writeHTML($html, true, false, true, false, '');
-    	 
+    	ob_end_clean();
     	$pdf->Output('Koleves-Kert-Menu.pdf', 'D');
     }
     

@@ -468,10 +468,10 @@ class DelicatesView extends BaseView{
 		<div class="nine columns clearfix">
 			<div class="bolt-search">
 			<svg class="icon icon-kereso"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-kereso"></use></svg>
-				<form action="">
+				<form id="searchForm" action="">
 				
 					<svg class="icon icon-nagyito"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-nagyito"></use></svg>
-					<input type="search" placeholder="keresés">
+					<input type="search" class="productSearchField" placeholder="keresés">
 				</form>
 			</div>
 

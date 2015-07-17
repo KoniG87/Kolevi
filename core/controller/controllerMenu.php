@@ -584,9 +584,10 @@ class Menu extends BaseObject{
     public function generateEtlapPDF(){
     	$kategoriak = $this->getEtlapData(true);
     			
-		
+    	
     	require_once('assets/libs/tcpdf/tcpdf.php');
     	require_once('assets/libs/tcpdf/kolevespdf.php');
+    	
     	$pdf = new kolevesPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
     	
     	$pdf->SetAuthor('Kőleves');
@@ -651,9 +652,11 @@ class Menu extends BaseObject{
 		$html .= '</div>';
 
     	
-   		$pdf->writeHTML($html, true, false, true, false, '');
-    	
+   		
+    	$pdf->writeHTML($html, true, false, true, false, '');
+    	ob_end_clean();
     	$pdf->Output('Koleves-Menu.pdf', 'D');
+    	
     }
     
     
@@ -729,8 +732,9 @@ class Menu extends BaseObject{
     
     	 
     	$pdf->writeHTML($html, true, false, true, false, '');
-    	 
+    	ob_end_clean();
     	$pdf->Output('Koleves-Drinks.pdf', 'D');
+    	
     }
     
     

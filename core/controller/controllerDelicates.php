@@ -203,6 +203,39 @@ class Delicates extends BaseObject{
     }
     
     
+    
+    public function getKeresettTermekek($keresesiSzoveg = null){
+    	$whereStatement = "";
+    	$kifejezesParams = array();
+    	if (!is_null($keresesiSzoveg)){
+    		$kifejezesArray = explode(" ", $keresesiSzoveg);
+    		$whereStatement = "WHERE allapot = 1";
+    		
+    		$checkedTexts = "CONCAT(".$_SESSION['helper']->getLangLabel('text').", ".$_SESSION['helper']->getLangLabel('leiras').")";
+    		
+    		foreach ($kifejezesArray AS $kifejezes){
+    			$whereStatement .= " AND ".$checkedTexts." LIKE ?";
+    			array_push($kifejezesParams, '%'. $kifejezes .'%');
+    		}
+    	}
+    	
+    	
+    	
+    	$SQL = "SELECT id,
+    			".$_SESSION['helper']->getLangLabel('text')." AS labelHeader,
+    			".$_SESSION['helper']->getLangLabel('leiras')." AS labelDesc,
+    			".$_SESSION['helper']->getLangLabel('tag')." AS labelTag,
+    			kiskep, nagykep, ar, sorrend
+    				FROM koleves_delicates_termekek
+    				".$whereStatement."
+    				ORDER BY sorrend ASC;";
+    	$elements = $this->fetchItems($SQL, $kifejezesParams);
+    	
+    	
+    	return $elements;
+    }
+    
+    
     public function getKategoriaTermekek($kategoriaID = 1){
     	$SQL = "SELECT id, 
     			".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, 
@@ -227,6 +260,14 @@ class Delicates extends BaseObject{
     	return $elements;
     }
     
+    
+    public function drawBoltKeresettTermekek($keresesiSzoveg){
+    	$elements = array(
+    		'termekek'	=> $this->getKeresettTermekek($keresesiSzoveg)
+    	);
+    	 
+    	$this->view->drawBoltKategoriaTermekek($elements);
+    }
     
     public function drawBoltKategoriaTermekek($alkategoriaID){
     	$elements = array(

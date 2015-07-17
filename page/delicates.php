@@ -224,6 +224,7 @@ foreach ($termekek AS $termek){
 		$(document).on("click", "#bolt .bolt-acco li", function(){
 			selectedCategory = $(this).attr("data-kategoria");
 			selectedText = $(this).text();
+			$(".productSearchField").val('');
 			$.post("requestHandler", {request: "shopCategoryData", id: $(this).attr("data-id")}, function(resp){
 				$(".bolt-grid-element:visible").remove(); // ez mit csinál voltaképp???
 
@@ -232,10 +233,10 @@ foreach ($termekek AS $termek){
 				$(".bolt-grid>h3").velocity({opacity:1},1000);
 				
 				$(".bolt-search").velocity("scroll", {
-				            duration: 800,
-				            easing: "ease",
-				            offset:-120
-				  });
+				      duration: 800,
+				      easing: "ease",
+				      offset:-120
+				});
 
 				$(".bolt-grid").append(resp);
 				callBoltGridElements();
@@ -255,5 +256,36 @@ foreach ($termekek AS $termek){
 							
             });
 		});	
+
+		$(".productSearchField").change(function(){
+			selectedText = $(this).val();
+			$.post("requestHandler", {request: "shopSearchData", kereses: selectedText}, function(resp){
+				$(".bolt-grid-element:visible").remove(); 
+
+				$(".bolt-grid").html($("<h3 style='opacity:0;'/>").addClass("eheto-label clearfix").text("Keresés: "+ selectedText));
+				colorizeCategoryLabel();
+				$(".bolt-grid>h3").velocity({opacity:1},1000);
+				
+				$(".bolt-search").velocity("scroll", {
+				      duration: 800,
+				      easing: "ease",
+				      offset:-120
+				});
+
+				$(".bolt-grid").append(resp);
+				callBoltGridElements();
+				$(".bolt-grid-element").css("display","none");
+				$(".bolt-grid-element").velocity("transition.slideUpIn", { stagger: 150 });
+
+
+				
+            });
+		});
+
+
+		$("#searchForm").submit(function(e){
+			e.preventDefault();
+		});
+		
 	});
 </script>

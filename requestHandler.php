@@ -1,5 +1,7 @@
 <?php 
 include('core/config.php');
+
+try{
 if (isset($_POST['request'])){
 
 	switch ($_POST['request']){
@@ -85,6 +87,12 @@ if (isset($_POST['request'])){
 			
 			break;
 			
+			
+		case 'shopSearchData':
+			$delicates = new Delicates($app->getDbHandler());
+			$delicates->drawBoltKeresettTermekek($_POST['kereses']);
+				
+			break;
 			
 		case 'addToCart':
 			$delicates = new Delicates($app->getDbHandler());
@@ -262,6 +270,10 @@ if (isset($_POST['request'])){
 			
 		}
 	}
+	
 }
-
+}catch(Exception $e){
+	echo $e->getMessage();
+	
+}
 ?>

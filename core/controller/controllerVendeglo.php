@@ -489,6 +489,14 @@ class Vendeglo extends BaseObject{
     		
     		$this->foglalasErtesitoEmail($foglalasData, $ertesesiData);
     		
+    		$ertesesiData = array(
+    				'email'	=> 'bona.dyssou@gmail.com',
+    				'nev'	=> 'Bona Dyssou'
+    		);
+    		
+    		$this->foglalasErtesitoEmail($foglalasData, $ertesesiData);
+    		
+    		
     		$res['status'] = true;
     		$this->commit();
     	}catch(Exception $e){
