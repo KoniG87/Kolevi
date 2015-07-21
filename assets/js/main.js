@@ -990,7 +990,6 @@ if($(this).hasClass("vendeglo")){
         else if ($(this).hasClass("delicates")) {
           delicKihuzo.velocity({rotateZ:"90deg"});
           kemeny.velocity({bottom: 125});
-
           kertKihuzo.velocity({top: 0}).velocity(alap);
           vendFront.velocity(alap);
           vendKihuzo.velocity({right: 8}).velocity(alap);

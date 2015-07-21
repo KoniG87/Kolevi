@@ -112,7 +112,7 @@ class KertView extends BaseView{
     	if ($helyiseg == 'kert'){
     		echo '
    
-             <div class="three columns right illusztracio">
+             <div class="two columns right illusztracio">
              <p class="ehes-szomjas">Szomjas vagy?</p>
     		 <img data-src="assets/img/asztalos_neni.png" alt="Kert itallap" class="lazy illusztracio">
     		<noscript>

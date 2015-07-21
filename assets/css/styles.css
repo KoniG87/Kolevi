@@ -5704,7 +5704,12 @@ section {
 .kert-spec .itallap {
   float: left !important;
   padding-top: 0 !important;
-  margin-bottom: 5rem; }
+  margin-bottom: 5rem;
+  width: 100% !important;
+  /*800px*/ }
+  @media (min-width: 50em) {
+    .kert-spec .itallap {
+      width: 65.95745% !important; } }
 
 .rolunk-kert-kep {
   position: relative; }

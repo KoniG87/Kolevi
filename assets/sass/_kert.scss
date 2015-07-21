@@ -7,6 +7,10 @@
 	float:left !important;
 	padding-top:0 !important;
 	margin-bottom:5rem;
+	width: 100% !important;
+	@include breakpoint(tablet){
+		width: 65.95745% !important;
+	}
 }
 
 }
