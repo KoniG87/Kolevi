@@ -142,7 +142,7 @@ class qqFileUploader {
      */
     public function getUploadName(){
         if( isset( $this->uploadName ) )
-            return $this->uploadName;
+            return $this->stripSpecialCharacters($this->uploadName);
     }
 	
     /**
@@ -151,7 +151,30 @@ class qqFileUploader {
      */
     public function getName(){
         if ($this->file)
-            return $this->file->getName();
+            return $this->stripSpecialCharacters($this->file->getName());
+    }
+    
+    /**
+     * Remove all non-basic English characters
+     */
+    public function stripSpecialCharacters($string){
+    	$invalidArray = array(
+    			'Á', 'á', 'É', 'é', 'Í', 'í',
+    			'Ő', 'ő', 'Ö', 'ö', 'Ó', 'ó',
+    			'Ű', 'ű', 'Ü', 'ü', 'Ú', 'ú',
+    			' ', '_'
+    	);
+    	$replacementArray = array(
+    			'A', 'a', 'E', 'e', 'I', 'i',
+    			'O', 'o', 'O', 'o', 'O', 'o',
+    			'U', 'u', 'U', 'u', 'U', 'u',
+    			'-', '-'
+    	);
+    	 
+    	$str = str_replace($invalidArray, $replacementArray, $string);
+    	$str = preg_replace('/[^a-z0-9-.]+/i', '', $str);
+    	 
+    	return $str;
     }
     
     /**
@@ -209,7 +232,7 @@ class qqFileUploader {
         }
         
         $pathinfo = pathinfo($this->file->getName());
-        $filename = $pathinfo['filename'];
+        $filename = $this->stripSpecialCharacters($pathinfo['filename']);
         //$filename = md5(uniqid());
         $ext = @$pathinfo['extension'];		// hide notices if extension is empty
 

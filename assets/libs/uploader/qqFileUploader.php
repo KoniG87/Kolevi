@@ -21,17 +21,40 @@ class qqFileUploader {
      */
     public function getName(){
         if (isset($_REQUEST['qqfilename']))
-            return $_REQUEST['qqfilename'];
+            return $this->stripSpecialCharacters($_REQUEST['qqfilename']);
 
         if (isset($_FILES[$this->inputName]))
-            return $_FILES[$this->inputName]['name'];
+            return $this->stripSpecialCharacters($_FILES[$this->inputName]['name']);
     }
 
     /**
      * Get the name of the uploaded file
      */
     public function getUploadName(){
-        return $this->uploadName;
+        return $this->stripSpecialCharacters($this->uploadName);
+    }
+    
+    /**
+     * Remove all non-basic English characters
+     */
+    public function stripSpecialCharacters($string){
+    	$invalidArray = array(
+    			'Á', 'á', 'É', 'é', 'Í', 'í',
+    			'Ő', 'ő', 'Ö', 'ö', 'Ó', 'ó',
+    			'Ű', 'ű', 'Ü', 'ü', 'Ú', 'ú',
+    			' ', '_'
+    	);
+    	$replacementArray = array(
+    			'A', 'a', 'E', 'e', 'I', 'i',
+    			'O', 'o', 'O', 'o', 'O', 'o',
+    			'U', 'u', 'U', 'u', 'U', 'u',
+    			'-', '-'
+    	);
+    	
+    	$str = str_replace($invalidArray, $replacementArray, $string);
+    	$str = preg_replace('/[^a-z0-9-.]+/i', '', $str);
+    	
+    	return $str;
     }
 
     /**
