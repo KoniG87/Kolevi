@@ -11,6 +11,8 @@
 			<th>Kép</th>
 			<th class="wideHeader">Név</th>
 			<th></th>
+			<th></th>
+			
 			<?php 
 			/*
 			 
@@ -27,4 +29,25 @@
             $user->drawUserList();
         ?>
 	</tbody>
-</table> 
+</table>
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".deleteDolgozo").click(function(e){
+			e.preventDefault();
+
+			containingRow = $(this).parents('tr');
+			data = {
+				id: containingRow.attr('data-id'),
+				request: "dolgozoDelete"
+			};
+			
+			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
+				if (resp['status']){
+					containingRow.hide(250, function(){ $(this).remove(); });			
+				}
+			}, 'json');
+		});
+	});
+</script>

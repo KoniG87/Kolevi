@@ -51,6 +51,32 @@ class User extends BaseObject{
 	}
 	
 	
+	public function deleteDolgozoElem(){
+		
+		$res = array();
+	
+		try{
+			$this->beginTransaction();
+			 
+			$SQL = "UPDATE koleves_dolgozok SET allapot = 0 WHERE id = ?;";
+	
+			$queryParams = array(
+				$_POST['id']
+			);
+			$this->deleteItem($SQL, $queryParams);
+	
+			$res['status'] = true;
+			$this->commit();
+		}catch(Exception $e){
+			$res['status'] = false;
+			$this->rollback();
+		}
+	
+		echo json_encode($res);
+		
+	}
+	
+	
 	
 	public function getUsersData($id = null){
 	

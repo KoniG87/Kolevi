@@ -10,6 +10,12 @@ if (isset($_POST['request'])){
 		/*
 		 * Delete handlers
 		 */	
+		
+		case 'dolgozoDelete':
+			$user = new User($app->getDbHandler());
+			$user->deleteDolgozoElem();
+				
+			break;
 			
 		case 'etlapDelete':
 			$menu = new Menu($app->getDbHandler());
