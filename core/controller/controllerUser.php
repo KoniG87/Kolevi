@@ -80,7 +80,10 @@ class User extends BaseObject{
 	
 	public function getUsersData($id = null){
 	
-		$SQL = "SELECT id, nev, username, kep, megjegyzes, facebook, email, telefon, allapot, jogosultsag_id, rendezvenyfelelos FROM koleves_dolgozok ".(!is_null($id) ? 'WHERE id = ?' : '');
+		$SQL = "SELECT 
+					id, nev, username, kep, megjegyzes, facebook, email, telefon, allapot, jogosultsag_id, rendezvenyfelelos 
+				FROM 
+					koleves_dolgozok WHERE allapot = 1 ".(!is_null($id) ? 'AND id = ?' : '');
 	
 		if (is_null($id)){
 			return $this->fetchItems($SQL);
