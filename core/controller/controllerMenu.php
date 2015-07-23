@@ -108,7 +108,7 @@ class Menu extends BaseObject{
     		}
     		$napAzon = $napiMenuAdat['napazon'];
     		$tmpArray[$etelIndex[$napiMenuAdat['fogasazon']]] = $napiMenuAdat['labeltext'];
-    		$tmpArray[$etelIndex[$napiMenuAdat['fogasazon']]."_TAG"] = $napiMenuAdat['tagek'];
+    		$tmpArray[$etelIndex[$napiMenuAdat['fogasazon']]."_TAG"] = $this->fetchAllergenSpan($napiMenuAdat['tagek']);
     	}
     	array_push($elements, $tmpArray);
     	}
