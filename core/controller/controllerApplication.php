@@ -558,7 +558,8 @@ class Application{
                         hanyfo: $("select[name=\'hanyfo\']" , $(this)).val(),
                         email: $("input[name=\'email\']" , $(this)).val(),
                         telefonszam: $("input[name=\'telefonszam\']" , $(this)).val(),
-                        megjegyzes: $("input[name=\'megjegyzes\']" , $(this)).val()               
+                        megjegyzes: $("input[name=\'megjegyzes\']" , $(this)).val(),
+    					jovahagyas: 1             
                       };
 
                     var ujrafoglalasContent = $("<div/>").addClass("ujra-foglalas").html("<h3>Asztalfoglalás megtörtént!</h3><br/>Köszi <span class=\"foglalas-data\">"+foglalasData.nev+"</span>, hogy betértél hozzánk! Hamarosan visszaigazolunk a <span class=\"foglalas-data\">"+foglalasData.email+"</span> email címen, vagy a <span class=\"foglalas-data\">"+foglalasData.telefonszam+"</span> telefonszámon, hogy <span class=\"foglalas-data\">"+foglalasData.datum+" - "+foglalasData.ido+"</span>-kor tudjuk-e biztosítani a(z) <span class=\"foglalas-data\">"+foglalasData.hanyfo+"</span> helyet.<div class=\"nl-submit-wrap\"><button class=\"nl-reset\" type=\"submit\">Újbóli foglalás</button><button class=\"nl-reset right\" type=\"submit\">Rendben, köszi</button></div>");

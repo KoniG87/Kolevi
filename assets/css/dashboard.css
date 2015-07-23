@@ -176,7 +176,10 @@ section.right button[class^="edit"]{
 }
 section.right button[class^="delete"]{
 	background: #e74c3c;
-	} 
+}
+section.right button[class^="cancel"]{
+	background: #e74c3c;
+} 
 /*section.right button:hover{
 	box-shadow:2px 1px 8px #222;
 }*/

@@ -514,34 +514,7 @@ class VendegloView extends BaseView{
 					<div class="rolunk-container clearfix">
 					<h3>Csapatunk tagjai</h3>
 						';
-		/*
-		*	Recaptcha form
-		*/
-	/*	echo '<form method="post" action="verify.php">
-		<div class="rolunk-ikon">
-		<svg class="icon icon-phone"><use xlink:href="#icon-phone"></use></svg>
-	</div>
-	<input type="hidden">';
- 
-	require_once('assets/libs/recaptcha/recaptchalib.php');
-    $publickey = "6LctzgUTAAAAAEDRtdJAynba8NWcjWKgSsTtUnP7"; 
-	$privatekey = "6LctzgUTAAAAACqo4ZyDvJxKT9BAK3pFumWKXXmA";
-    
-	echo recaptcha_get_html($publickey);
-	echo '<input type="submit" value="SUBMIT">';
-
-	$resp = recaptcha_check_answer ($privatekey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
-	
-	if (!$resp->is_valid) {
-		die ("The reCAPTCHA wasn't entered correctly. Go back and try it again." .
-        "(reCAPTCHA said: " . $resp->error . ")");
-	} else {
-		// jelenitsük meg azt a szaros telefonszámot.
-	}
-
-	echo '<div class="g-recaptcha" data-sitekey="'.$publickey.'"></div>
-	</form>';
-	*/
+		
     		$this->loadTemplate('rolunkEmber', $elements['emberek']);
 
             echo '  	 
@@ -568,18 +541,21 @@ class VendegloView extends BaseView{
 			<td>'.$foglalasData['nev'].'</td>
 			<td>'.$foglalasData['email'].'</td>
 			<td>'.$foglalasData['telefonszam'].'</td>
-			<td>'.substr($foglalasData['idopont'],0, 10).'<br/>'.substr($foglalasData['idopont'],11, 5).'</td>
+			<td>'.substr($foglalasData['idopont'],0, 10).'<br/> '.substr($foglalasData['idopont'],11, 5).'</td>
 			<td>'.$foglalasData['hanyfo'].'</td>
 			<td class="wideHeader">'.wordwrap($foglalasData['megjegyzes'], 28, '<br/>').'</td>
 			<td>'.($foglalasData['jovahagyva'] == 0 && $foglalasData['visible'] == 1 ? '
 				<button class="editFoglalas" title="Ezzel szerkeszted a foglalás adatait!">Szerkesztés</button>' : '').'					
 			</td>
 			<td>'.($foglalasData['jovahagyva'] == 0 && $foglalasData['visible'] == 1 ? '
-				<button class="deleteFoglalas" title="Ezzel törlöd a foglalást!">Törlés</button>' : '').'					
+				<button class="deleteFoglalas" title="Ezzel törlöd a foglalást!">Törlés</button>
+				<button class="cancelFoglalas" style="display:none;" title="Ezzel elveted az adatok módosításait!">Mégse</button>' : 
+					($foglalasData['jovahagyva'] == 0 && $foglalasData['visible'] == 0 ? 'Törölve' : '') ).'					
 			</td>
 			<td>'.($foglalasData['jovahagyva'] == 0 && $foglalasData['visible'] == 1 ? '
-                
-                <button class="approveFoglalas" title="Ezzel jóváhagyod a foglalás adatait, egyben értesítő emailt küld a rendszer a vendégnek!">Jóváhagyás</button>' : '').'
+                <button class="approveFoglalas" title="Ezzel jóváhagyod a foglalás adatait, egyben értesítő emailt küld a rendszer a vendégnek!">Jóváhagyás</button>
+				<button class="saveFoglalas" style="display:none;" title="Ezzel elmented az adatokat!">Mentés</button>' : 
+					($foglalasData['jovahagyva'] == 1 && $foglalasData['visible'] == 0 ? 'Jóváhaagyva' : '') ).'
             </td>
             
 		</tr>';

@@ -489,7 +489,7 @@ class Vendeglo extends BaseObject{
     		 * Meglévő sor updatelése
     		 */
     		else{
-    			$SQL = "UPDATE koleves_asztalfoglalasok SET nev = ?, email = ?, telefonszam = ?, megjegyzes = ?, hanyfo = ?, idopont = ?, jovahagyta = ?, jovahagyva = ? WHERE id = ?;";
+    			$SQL = "UPDATE koleves_asztalfoglalasok SET nev = ?, email = ?, telefonszam = ?, megjegyzes = ?, hanyfo = ?, idopont = ?, jovahagyta = ?, jovahagyas = ?, jovahagyva = ? WHERE id = ?;";
     	
     			$queryParams = array(
     					$_POST['nev'],
@@ -499,7 +499,8 @@ class Vendeglo extends BaseObject{
     					$_POST['hanyfo'],
     					$_POST['datum'].' '.$_POST['ido'],
     					$_SESSION['user']['id'],
-    					currentTime(),
+    					date('Y-m-d H:i:s'),
+    					$_POST['jovahagyas'],
     					$_POST['id']
     			);
     	
@@ -515,20 +516,22 @@ class Vendeglo extends BaseObject{
     			'hanyfo'	=> $_POST['hanyfo'],
     			'idopont'	=> $_POST['datum'].' '.$_POST['ido']
     		);
-    		$ertesesiData = array(
-    			'email'	=> 'kapolnai.gabor@gmail.com',
-    			'nev'	=> 'Kápszi'
-    		);
     		
-    		$this->foglalasErtesitoEmail($foglalasData, $ertesesiData);
-    		
-    		$ertesesiData = array(
-    				'email'	=> 'bona.dyssou@gmail.com',
-    				'nev'	=> 'Bona Dyssou'
-    		);
-    		
-    		$this->foglalasErtesitoEmail($foglalasData, $ertesesiData);
-    		
+    		if ($_POST['jovahagyas'] != "0"){
+	    		$ertesesiData = array(
+	    			'email'	=> 'kapolnai.gabor@gmail.com',
+	    			'nev'	=> 'Kápszi'
+	    		);
+	    		
+	    		$this->foglalasErtesitoEmail($foglalasData, $ertesesiData);
+	    		
+	    		$ertesesiData = array(
+	    				'email'	=> 'bona.dyssou@gmail.com',
+	    				'nev'	=> 'Bona Dyssou'
+	    		);
+	    		
+	    		$this->foglalasErtesitoEmail($foglalasData, $ertesesiData);
+    		}
     		
     		$res['status'] = true;
     		$this->commit();
@@ -923,7 +926,7 @@ class Vendeglo extends BaseObject{
         $queryParams = array(
             1,
             $_SESSION['user']['id'],
-        	currentTime(),
+        	date('Y-m-d H:i:s'),
             $_POST['id']
         );
         $this->updateItem($SQL, $queryParams);
