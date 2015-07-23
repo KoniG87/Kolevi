@@ -94,12 +94,13 @@
 			triggeredRow = containingRow;
             data = {
 				id: containingRow.attr('data-id'),
-                tipus: containingRow.attr('data-tipus'),
+                tipus_id: containingRow.attr('data-tipus'),
 				url: containingRow.attr('data-url'),
-				felirat: $('td:nth-of-type(1)', containingRow).text(),
+				text: $('td:nth-of-type(1)', containingRow).text(),
 				allapot: containingRow.attr('data-allapot')
 			};
-			if (data.tipus == 4){
+			
+			if (data.tipus_id == 4){
 				$('.urlRow').fadeIn(250);
 			}else{
 				$('.urlRow').fadeOut(250);
@@ -126,12 +127,10 @@
 				text: $('#editForm input[name="text"]').val(),
 				url: $('#editForm input[name="url"]').val(),
                 tipus_id: $('#editForm select[name="tipus_id"]').val(),
-                allapot: $('#editForm select[name="allapot"]').val(),
-                request: "updateHir"
-			};
+                allapot: $('#editForm select[name="allapot"]').val()
+            };
 			
 			$.each(data, function(key, val){
-				console.log($('[name="'+key+'"]').attr("name") );
 				attr = $('[name="'+key+'"]').attr('required');
 				if (typeof attr !== typeof undefined && attr !== false 
 						&& 
@@ -141,14 +140,15 @@
 				}
 			});
 
-
-
+			
+	
 			if (canSubmit){
-				
+				data.request = "updateHir";
+					
 				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
-					$.each(data, function(key, val){
-						$('input:visible, select:visible').val("");
-					});
+					
+					$('input:visible, select:visible').val("");
+					
 					$('.urlRow').fadeOut(250);
 					$('input', '.urlRow').removeAttr('required');
 					$('input[name="id"]').val("0");
@@ -164,7 +164,7 @@
 		}); 
 
 		$('.urlRow').hide();
-		$('select[name="tipus"]').change(function(){
+		$('select[name="tipus_id"]').change(function(){
 			if ($(this).val() == 4){
 				$('.urlRow').fadeIn(250);
 				$('input', '.urlRow').attr('required', 'required');

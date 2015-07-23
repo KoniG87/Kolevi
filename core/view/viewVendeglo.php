@@ -570,10 +570,17 @@ class VendegloView extends BaseView{
 			<td>'.$foglalasData['telefonszam'].'</td>
 			<td>'.substr($foglalasData['idopont'],0, 10).'<br/>'.substr($foglalasData['idopont'],11, 5).'</td>
 			<td>'.$foglalasData['hanyfo'].'</td>
-			<td class="wideHeader">'.$foglalasData['megjegyzes'].'</td>
-			<td>'.($foglalasData['jovahagyva'] == 0 ? '
+			<td class="wideHeader">'.wordwrap($foglalasData['megjegyzes'], 28, '<br/>').'</td>
+			<td>'.($foglalasData['jovahagyva'] == 0 && $foglalasData['visible'] == 1 ? '
+				<button class="editFoglalas" title="Ezzel szerkeszted a foglalás adatait!">Szerkesztés</button>' : '').'					
+			</td>
+			<td>'.($foglalasData['jovahagyva'] == 0 && $foglalasData['visible'] == 1 ? '
+				<button class="deleteFoglalas" title="Ezzel törlöd a foglalást!">Törlés</button>' : '').'					
+			</td>
+			<td>'.($foglalasData['jovahagyva'] == 0 && $foglalasData['visible'] == 1 ? '
                 
-                <button class="approveFoglalas" title="Ezzel jóváhagyod a foglalás adatait, egyben értesítő emailt küld a rendszer a vendégnek!">Jóváhagyás</button>' : '').'</td>
+                <button class="approveFoglalas" title="Ezzel jóváhagyod a foglalás adatait, egyben értesítő emailt küld a rendszer a vendégnek!">Jóváhagyás</button>' : '').'
+            </td>
             
 		</tr>';
             //<button class="editFoglalas">Szerkesztés</button> <br/> 

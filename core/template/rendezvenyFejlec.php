@@ -15,7 +15,7 @@
 			<div class="rend-ikons-container">
 				<div class="rend-ikon">[[TELEFON]]</div>
 				<div class="rend-ikon">[[EMAIL]]</div>
-				<div class="rend-ikon">facebook/[[FACEBOOK]]</div>
+				<div class="rend-ikon">[[FACEBOOK]]</div>
 			</div>
 		</article>
 

@@ -65,7 +65,11 @@ class ImageView extends BaseView{
                 echo '        
                     </select>
                 </td>
-                <td></td>
+                <td>
+                	<form method="post" action="">
+                      	<button class="deleteKep">Törlés</button>
+	                </form>		
+                </td>
             </tr>';
         }
         

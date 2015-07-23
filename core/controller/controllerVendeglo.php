@@ -38,8 +38,8 @@ class Vendeglo extends BaseObject{
     
     
     
-    public function drawFoglalasLista(){
-    	$elements = $this->getFoglalasData();
+    public function drawFoglalasLista($foglalasAllapot = 'fuggo'){
+    	$elements = $this->getFoglalasData($foglalasAllapot == 'fuggo' ? 1 : 0);
     
     	$this->view->drawFoglalasLista($elements);
     }
@@ -136,9 +136,16 @@ class Vendeglo extends BaseObject{
     }
     
     
-    public function getFoglalasData(){
-    	$foglalasSQL = "SELECT id, nev, megjegyzes, email, telefonszam, hanyfo, idopont, jovahagyva FROM koleves_asztalfoglalasok ORDER BY idopont DESC;";
-    	$foglalasRES = $this->fetchItems($foglalasSQL);
+    public function getFoglalasData($visible = 1){
+    	$foglalasSQL = "SELECT 
+    			id, nev, megjegyzes, email, telefonszam, hanyfo, idopont, jovahagyva, visible 
+    			FROM 
+    				koleves_asztalfoglalasok
+    			WHERE
+    				visible = ? 
+    			ORDER BY 
+    				idopont DESC;";
+    	$foglalasRES = $this->fetchItems($foglalasSQL, array($visible));
     
     	return $foglalasRES;
     }
@@ -186,6 +193,32 @@ class Vendeglo extends BaseObject{
      	
     	return $this->fetchItems($SQL, array($allapot));
     }
+    
+	public function deleteAsztalfoglalasElem(){
+    	$res = array();
+    
+    	try{
+    		$this->beginTransaction();
+    		 
+    		$SQL = "UPDATE koleves_asztalfoglalasok SET visible = 0, jovahagyta = ?, jovahagyas = ? WHERE id = ?;";
+    
+    		$queryParams = array(
+    			$_SESSION['user']['id'],
+    			date('Y-m-d H:i:s'),
+    			$_POST['id']
+    		);
+    		$this->deleteItem($SQL, $queryParams);
+    
+    		$res['status'] = true;
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = false;
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    }
+    
     
     public function deleteCikkElem(){
     	$res = array();
@@ -886,10 +919,11 @@ class Vendeglo extends BaseObject{
     public function foglalasJovahagyas(){
         $res = array();
         
-        $SQL = "UPDATE koleves_asztalfoglalasok SET jovahagyva = ?, jovahagyta = ? WHERE id = ?;";
+        $SQL = "UPDATE koleves_asztalfoglalasok SET jovahagyva = ?, jovahagyta = ?, jovahagyas = ? WHERE id = ?;";
         $queryParams = array(
             1,
             $_SESSION['user']['id'],
+        	currentTime(),
             $_POST['id']
         );
         $this->updateItem($SQL, $queryParams);

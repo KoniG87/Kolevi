@@ -18,6 +18,10 @@
 <a href="<?=$_SESSION['helper']->getPath()?>dashboard/asztalFoglalas">
 	<li>Asztalfoglalások kezelése</li>
 </a>
+<a href="<?=$_SESSION['helper']->getPath()?>dashboard/lezartAsztalFoglalasok">
+	<li>Lezárt foglalások</li>
+</a>
+
 
 <h3><svg class="icon icon-a_rendezvenyek"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-a_rendezvenyek"></use></svg>Rendezvények</h3>
 <a href="<?=$_SESSION['helper']->getPath()?>dashboard/rendezvenyRogzito">

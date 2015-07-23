@@ -75,7 +75,9 @@
 			
 		});
 		
-		$('#saveProgram').click(function(){
+		$('#saveProgram').click(function(e){
+			e.preventDefault();
+			
 			canSubmit = true;
 			data = {
                 id:  $('#editForm input[name="id"]').val(),

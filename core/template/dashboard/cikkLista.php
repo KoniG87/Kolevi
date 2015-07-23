@@ -19,8 +19,8 @@
 				id: containingRow.attr('data-id'),
 				text: $('td:nth-of-type(2)', containingRow).text(),
 				url: containingRow.attr('data-url'),
-				nagykep: containingRow.attr('data-nagykep'),
-				kiskep: containingRow.attr('data-kep')
+				nagykep: 'assets/uploads/'+containingRow.attr('data-nagykep'),
+				kiskep: 'assets/uploads/'+containingRow.attr('data-kiskep')
 			};
 			
 			$.each(data, function(key, val){

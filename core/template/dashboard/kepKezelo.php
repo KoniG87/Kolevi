@@ -36,6 +36,23 @@
 				}, 750);
             }, 'json');
         });
+
+        $(".deleteKep").click(function(e){
+			e.preventDefault();
+			containingRow = $(this).parents('tr');
+			data = {
+				id: containingRow.attr('data-id'),
+				request: "kepDelete"
+			};
+			containingRow.hide(250, function(){ $(this).remove(); });
+			/*
+			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
+				if (resp['status']){
+					containingRow.hide(250, function(){ $(this).remove(); });			
+				}
+			}, 'json');
+			*/
+        });
     });
 </script>
 

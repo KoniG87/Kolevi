@@ -49,7 +49,7 @@ if (isset($_POST['request'])){
 			
 		case 'partnerDelete':
 			$vendeglo = new Vendeglo($app->getDbHandler());
-			$vendeglo->deleteHirElem();
+			$vendeglo->deletePartnerElem();
 		
 			break;
 	
@@ -70,6 +70,14 @@ if (isset($_POST['request'])){
 			$image->deleteImageRef();
 		
 			break;
+
+			
+		case 'foglalasDelete':
+			$vendeglo = new Vendeglo($app->getDbHandler());
+			$vendeglo->deleteAsztalfoglalasElem();
+			
+			break;
+			
 			
 		/*
 		 * Additional handlers

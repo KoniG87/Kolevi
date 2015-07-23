@@ -16,12 +16,12 @@
 			triggeredRow = containingRow;
 			data = {
 				id: containingRow.attr('data-id'),
-				kep: $('td:nth-of-type(1) img', containingRow).attr('src'),
+				kep: 'assets/uploads/'+ $('td:nth-of-type(1) img', containingRow).attr('src').substring($('td:nth-of-type(1) img', containingRow).attr('src').lastIndexOf('/') + 1),
 				text: $('td:nth-of-type(2)', containingRow).text(),
 				leiras: $('td:nth-of-type(3)', containingRow).text(),
 				url: $('td:nth-of-type(4)', containingRow).text()
 			};
-
+			
 
 			$.each(data, function(key, val){
 				$('[name="'+key+'"]').val(val);

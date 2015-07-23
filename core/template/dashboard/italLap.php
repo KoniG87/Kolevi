@@ -67,7 +67,7 @@
                         $('input[name="id"]').val("0");
                         $(":input").removeClass('missing');
                         if (data.id != "0"){
-							$('td:nth-of-type(1)', triggeredRow).text(data.text_hu);
+							$('td:nth-of-type(1)', triggeredRow).text(data.text);
 							$('td:nth-of-type(2)', triggeredRow).text(data.ar);
 							$('td:nth-of-type(3)', triggeredRow).text(data.sorrend);
 							if (data.kategoria != elozoKategoria){
