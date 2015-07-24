@@ -23,7 +23,7 @@ class VendegloView extends BaseView{
 					<td>Cím</td>
 					<td>
 						<input type="hidden" name="id" value="0"/>
-						<input type="hidden" name="allapot" value="1"/>
+						
 				
 						<input type="text" maxlength="128" title="Cím" name="text" value="" required/>
 						<span class="tooltip">Cím, max. 128 karakter</span>
@@ -72,6 +72,27 @@ class VendegloView extends BaseView{
 				</td>
 				
 			</tr>
+				
+				<tr>
+					<td>Sorrend</td>
+					<td>
+						<input type="number" title="Sorrend" min="1" name="sorrend" value="" required/>
+						<span class="tooltip">Sorrend</span>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>Látható</td>
+					<td>
+						 <select name="allapot" required>
+		                    <option value=""></option>
+		                    <option value="0">Inaktív</option>
+		                    <option value="1">Látható</option>
+		                    
+		                </select>
+		                <span class="tooltip">Látható legyen-e a Barcasban</span>
+					</td>
+				</tr>
 			</table>
 	</section>
 	
@@ -85,7 +106,7 @@ class VendegloView extends BaseView{
 	
 		foreach ($elements['cikkek'] AS $key => $cikkAdat){
 			
-				echo '<tr data-nagykep="'.basename($cikkAdat['nagykep']).'" data-kiskep="'.basename($cikkAdat['kiskep']).'" data-url="'.$cikkAdat['url'].'" data-id="'.$cikkAdat['id'].'">
+				echo '<tr data-nagykep="'.basename($cikkAdat['nagykep']).'" data-kiskep="'.basename($cikkAdat['kiskep']).'" data-url="'.$cikkAdat['url'].'" data-id="'.$cikkAdat['id'].'" data-sorrend="'.$cikkAdat['sorrend'].'" data-allapot="'.$cikkAdat['visible'].'">
 						<td><img src="'.$_SESSION['helper']->getPath().$cikkAdat['kiskep'].'" alt=""/></td>
 						<td>'.$cikkAdat['labelHeader'].'</td>
 						
@@ -360,8 +381,7 @@ class VendegloView extends BaseView{
 					<td>Megnevezés</td>
 					<td>
 						<input type="hidden" name="id" value="0"/>
-						<input type="hidden" name="allapot" value="1"/>
-				
+						
 						<input type="text" maxlength="128" title="Partner neve" name="text" value="" required/>
 						<span class="tooltip">Partner neve, max. 128 karakter</span>
 					</td>
@@ -380,6 +400,26 @@ class VendegloView extends BaseView{
 						
 						<input type="text" maxlength="255" title="URL" name="url" value="" required/>
 						<span class="tooltip">URL, max. 255 karakter</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Sorrend</td>
+					<td>
+						<input type="number" title="Sorrend" min="1" name="sorrend" value="" required/>
+						<span class="tooltip">Sorrend</span>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>Látható</td>
+					<td>
+						 <select name="allapot" required>
+		                    <option value=""></option>
+		                    <option value="0">Inaktív</option>
+		                    <option value="1">Látható</option>
+		                    
+		                </select>
+		                <span class="tooltip">Látható legyen-e a Barcasban</span>
 					</td>
 				</tr>
 				
@@ -411,7 +451,7 @@ class VendegloView extends BaseView{
 				';
 	
 		foreach ($elements['partnerek'] AS $key => $partnerAdat){
-			echo '<tr data-id="'.$partnerAdat['id'].'">
+			echo '<tr data-id="'.$partnerAdat['id'].'" data-sorrend="'.$partnerAdat['sorrend'].'" data-allapot="'.$partnerAdat['visible'].'">
 					<td><img src="'.$_SESSION['helper']->getPath().$partnerAdat['kep'].'" alt="'.$partnerAdat['labelHeader'].'"/></td>
 					<td>'.$partnerAdat['labelHeader'].'</td>
 					<td>'.$partnerAdat['labelDesc'].'</td>
@@ -566,7 +606,7 @@ class VendegloView extends BaseView{
     
     public function drawHirList($elements){
         foreach ($elements AS $hirData){
-            echo '<tr data-id="'.$hirData['id'].'" data-url="'.$hirData['url'].'" data-tipus="'.$hirData['tipus_id'].'" data-allapot="'.$hirData['allapot'].'" data-bejegyzes="'.$hirData['fk_id'].'">
+            echo '<tr data-sorrend="'.$hirData['sorrend'].'" data-id="'.$hirData['id'].'" data-url="'.$hirData['url'].'" data-tipus="'.$hirData['tipus_id'].'" data-allapot="'.$hirData['allapot'].'" data-bejegyzes="'.$hirData['fk_id'].'">
                 
                 <td>'.$hirData['felirat'].'</td>
                 <td>'.getDecisionText($hirData['allapot']).'</td>

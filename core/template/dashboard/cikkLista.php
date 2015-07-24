@@ -20,7 +20,9 @@
 				text: $('td:nth-of-type(2)', containingRow).text(),
 				url: containingRow.attr('data-url'),
 				nagykep: 'assets/uploads/'+containingRow.attr('data-nagykep'),
-				kiskep: 'assets/uploads/'+containingRow.attr('data-kiskep')
+				kiskep: 'assets/uploads/'+containingRow.attr('data-kiskep'),
+				sorrend: containingRow.attr('data-sorrend'),
+				allapot: containingRow.attr('data-allapot')
 			};
 			
 			$.each(data, function(key, val){
@@ -46,7 +48,9 @@
 				url: $('input[name="url"]').val(),
 				allapot: $('input[name="allapot"]').val(),
 				kiskep: $('select[name="kiskep"]').val(),
-				nagykep: $('select[name="nagykep"]').val()
+				nagykep: $('select[name="nagykep"]').val(),
+				allapot: $('select[name="allapot"]').val(),
+				sorrend: $('input[name="sorrend"]').val()				
 			};
 
 
@@ -69,19 +73,21 @@
 						});
 						$('input[name="id"]').val("0");
 						
-
+					console.log(data);
 						if (data.id != "0"){
-							$('td:nth-of-type(1) img', triggeredRow).attr('src', <?=$_SESSION['helper']->getPath()?>data.kiskep);
+							$('td:nth-of-type(1) img', triggeredRow).attr('src', '<?=$_SESSION['helper']->getPath()?>'+data.kiskep);
 							$('td:nth-of-type(2)', triggeredRow).text(data.text);
 							triggeredRow.attr('data-url', data.url);
-							triggeredRow.attr('data-nagykep', data.nagykep);
-							triggeredRow.attr('data-kiskep', data.kiskep);
+							triggeredRow.attr('data-allapot', data.allapot);
+							triggeredRow.attr('data-sorrend', data.sorrend);
+							triggeredRow.attr('data-nagykep', data.nagykep.substring(data.nagykep.lastIndexOf('/') + 1));
+							triggeredRow.attr('data-kiskep', data.kiskep.substring(data.kiskep.lastIndexOf('/') + 1 ));
 							
 							if (data.kategoria != elozoKategoria){
 								$('.cikkTabla tbody').after(triggeredRow);
 							}
 						}else{
-							$('.cikkTabla tbody').after('<tr data-kiskep="'+data.kiskep+'" data-nagykep="'+data.nagykep+'" data-url="'+data.url+'" data-id="'+resp['inputID']+'"><td><img src="'+data.kiskep+'" alt="'+data.text+'"/></td><td>'+data.text+'</td><td><button class="editCikk">Szerkesztés</button></td><td><button class="deleteCikk">Törlés</button></td></tr>');
+							$('.cikkTabla tbody').after('<tr data-allapot="'+data.allapot+'" data-sorrend="'+data.sorrend+'" data-kiskep="'+data.kiskep+'" data-nagykep="'+data.nagykep+'" data-url="'+data.url+'" data-id="'+resp['inputID']+'"><td><img src="'+data.kiskep+'" alt="'+data.text+'"/></td><td>'+data.text+'</td><td><button class="editCikk">Szerkesztés</button></td><td><button class="deleteCikk">Törlés</button></td></tr>');
 						}
 
 						

@@ -36,11 +36,17 @@
 			<span class="tooltip">Megjelenő felirat, max. 80 karakter</span>
 			</td>
 		</tr>
-		
+		<tr>
+			<td>Sorrend</td>
+			<td>
+				<input type="number" title="Sorrend" min="1" name="sorrend" value="" required/>
+				<span class="tooltip">Sorrend</span>
+			</td>
+		</tr>
 		<tr>
 			<td>Látható</td>
 			<td>
-				 <select name="allapot"required>
+				 <select name="allapot" required>
                     <option value=""></option>
                     <option value="0">Inaktív</option>
                     <option value="1">Látható</option>
@@ -97,7 +103,8 @@
                 tipus_id: containingRow.attr('data-tipus'),
 				url: containingRow.attr('data-url'),
 				text: $('td:nth-of-type(1)', containingRow).text(),
-				allapot: containingRow.attr('data-allapot')
+				allapot: containingRow.attr('data-allapot'),
+				sorrend: containingRow.attr('data-sorrend')
 			};
 			
 			if (data.tipus_id == 4){
@@ -127,6 +134,7 @@
 				text: $('#editForm input[name="text"]').val(),
 				url: $('#editForm input[name="url"]').val(),
                 tipus_id: $('#editForm select[name="tipus_id"]').val(),
+                sorrend: $('#editForm input[name="sorrend"]').val(),
                 allapot: $('#editForm select[name="allapot"]').val()
             };
 			
@@ -156,6 +164,9 @@
                     if (data.id != "0"){
 						$('td:nth-of-type(1)', triggeredRow).text(data.text);
 						$('td:nth-of-type(2)', triggeredRow).text(data.allapot ? 'Igen' : 'Nem');
+						triggeredRow.attr("data-sorrend", data.sorrend);
+						triggeredRow.attr("data-allapot", data.allapot);
+						triggeredRow.attr("data-url", data.url);
 					}else{
                     	$('.hirTabla tbody').after('<tr data-url="'+data['url']+'" data-id="'+resp['inputID']+'"><td>'+data.text+'</td><td>'+(data.allapot ? 'Igen' : 'Nem')+'</td><td><button class="editHir">Szerkesztés</button></td><td><button class="deleteHir">Törlés</button></td></tr>');
                     }

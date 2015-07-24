@@ -130,7 +130,13 @@ class Vendeglo extends BaseObject{
     
     
     public function getCikkData($allapot){
-    	$SQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, visible, kiskep, nagykep, url FROM koleves_cikkek WHERE visible <> ? ORDER BY sorrend ASC;";
+    	$SQL = "SELECT 
+    			id, 
+    			".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, 
+    			visible, sorrend, kiskep, nagykep, url 
+    			FROM koleves_cikkek 
+    			WHERE visible <> ? 
+    			ORDER BY sorrend ASC;";
     	
     	return $this->fetchItems($SQL, array($allapot));
     }
@@ -152,7 +158,11 @@ class Vendeglo extends BaseObject{
     
     
     public function getHirData($allapot = 0){
-    	$SQL = "SELECT id, fk_id, url, tipus_id, ".$_SESSION['helper']->getLangLabel('text')." AS felirat, sorrend, allapot FROM koleves_hirsav WHERE allapot <> ?;";
+    	$SQL = "SELECT id, fk_id, url, tipus_id, 
+    			".$_SESSION['helper']->getLangLabel('text')." AS felirat, 
+    			sorrend, allapot 
+    			FROM koleves_hirsav 
+    			WHERE allapot <> ?;";
     
     	return $this->fetchItems($SQL, array($allapot));
     }
@@ -181,7 +191,14 @@ class Vendeglo extends BaseObject{
    
     
     public function getPartnerData($allapot){
-    	$SQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, ".$_SESSION['helper']->getLangLabel('leiras')." AS labelDesc, visible, kep, url FROM koleves_partnerek WHERE visible <> ? ORDER BY sorrend ASC;";
+    	$SQL = "SELECT 
+    			id, 
+    			".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, 
+    			".$_SESSION['helper']->getLangLabel('leiras')." AS labelDesc, 
+    			visible, sorrend, kep, url 
+    			FROM koleves_partnerek 
+    			WHERE visible <> ? 
+    			ORDER BY sorrend ASC;";
     	
     	return $this->fetchItems($SQL, array($allapot));
     }
@@ -410,13 +427,15 @@ class Vendeglo extends BaseObject{
     		*/
     		if ($_POST['id'] == "0"){
     
-    			$SQL = "INSERT INTO koleves_cikkek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, url = ?, kiskep = ?, nagykep = ?;";
+    			$SQL = "INSERT INTO koleves_cikkek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, url = ?, kiskep = ?, nagykep = ?, sorrend = ?, allapot = ?;";
     
     			$queryParams = array(
     					$_POST['text'],
     					empty($_POST['url']) ? NULL : $_POST['url'],
     					$_POST['kiskep'],
-    					$_POST['nagykep']
+    					$_POST['nagykep'],
+    					$_POST['sorrend'],
+    					$_POST['allapot']
     			);
     
     			$res['inputID'] = $this->insertItem($SQL, $queryParams);
@@ -425,13 +444,14 @@ class Vendeglo extends BaseObject{
     		 * Meglévő sor updatelése
     		 */
     		else{
-    			$SQL = "UPDATE koleves_cikkek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, url = ?, kiskep = ?, nagykep = ?, visible = ? WHERE id = ?;";
+    			$SQL = "UPDATE koleves_cikkek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, url = ?, kiskep = ?, nagykep = ?, sorrend = ?, visible = ? WHERE id = ?;";
     
     			$queryParams = array(
     					$_POST['text'],
     					empty($_POST['url']) ? NULL : $_POST['url'],
     					$_POST['kiskep'],
     					$_POST['nagykep'],
+    					$_POST['sorrend'],
     					$_POST['allapot'],
     					$_POST['id']
     			);
@@ -557,12 +577,14 @@ class Vendeglo extends BaseObject{
     		*/
     		if ($_POST['id'] == "0"){
     
-    			$SQL = "INSERT INTO koleves_hirsav SET tipus_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, url = ?, rogzitve = ?;";
+    			$SQL = "INSERT INTO koleves_hirsav SET tipus_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, url = ?, sorrend = ?, allapot = ?, rogzitve = ?;";
     
     			$queryParams = array(
     					$_POST['tipus_id'],
     					$_POST['text'],
     					$_POST['url'],
+    					$_POST['sorrend'],
+    					$_POST['allapot'],
     					date('Y-m-d H:i:s')
     			);
     
@@ -572,12 +594,14 @@ class Vendeglo extends BaseObject{
     		 * Meglévő sor updatelése
     		 */
     		else{
-    			$SQL = "UPDATE koleves_hirsav SET tipus_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, url = ? WHERE id = ?;";
+    			$SQL = "UPDATE koleves_hirsav SET tipus_id = ?, ".$_SESSION['helper']->getLangLabel('text')." = ?, url = ?, sorrend = ?, allapot = ? WHERE id = ?;";
     
     			$queryParams = array(
     					$_POST['tipus_id'],
     					$_POST['text'],
     					$_POST['url'],
+    					$_POST['sorrend'],
+    					$_POST['allapot'],
     					$_POST['id']
     			);
     
@@ -611,13 +635,15 @@ class Vendeglo extends BaseObject{
     		*/
     		if ($_POST['id'] == "0"){
     
-    			$SQL = "INSERT INTO koleves_partnerek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, ".$_SESSION['helper']->getLangLabel('leiras')." = ?, kep = ?, url = ?;";
+    			$SQL = "INSERT INTO koleves_partnerek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, ".$_SESSION['helper']->getLangLabel('leiras')." = ?, kep = ?, url = ?, visible = ?, sorrend = ?;";
     
     			$queryParams = array(
     					$_POST['text'],
     					$leirasText,
     					$_POST['kep'],
-    					$_POST['url']
+    					$_POST['url'],
+    					$_POST['allapot'],
+    					$_POST['sorrend']
     			);
     
     			$res['inputID'] = $this->insertItem($SQL, $queryParams);
@@ -626,7 +652,7 @@ class Vendeglo extends BaseObject{
     		 * Meglévő sor updatelése
     		 */
     		else{
-    			$SQL = "UPDATE koleves_partnerek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, ".$_SESSION['helper']->getLangLabel('leiras')." = ?, kep = ?, url = ?, visible = ? WHERE id = ?;";
+    			$SQL = "UPDATE koleves_partnerek SET ".$_SESSION['helper']->getLangLabel('text')." = ?, ".$_SESSION['helper']->getLangLabel('leiras')." = ?, kep = ?, url = ?, visible = ?, sorrend = ? WHERE id = ?;";
     
     			$queryParams = array(
     					$_POST['text'],
@@ -634,6 +660,7 @@ class Vendeglo extends BaseObject{
     					$_POST['kep'],
     					$_POST['url'],
     					$_POST['allapot'],
+    					$_POST['sorrend'],
     					$_POST['id']
     			);
     			$res['q'] = $SQL;
