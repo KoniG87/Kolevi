@@ -3612,9 +3612,37 @@ header {
 .alg-14 {
   background-position: -260px 0; }
 
+.napi-tablak .alg-1 {
+  background-position: 0 -20px; }
+.napi-tablak .alg-2 {
+  background-position: -20px -20px; }
+.napi-tablak .alg-3 {
+  background-position: -40px -20px; }
+.napi-tablak .alg-4 {
+  background-position: -60px -20px; }
+.napi-tablak .alg-5 {
+  background-position: -80px -20px; }
+.napi-tablak .alg-6 {
+  background-position: -100px -20px; }
+.napi-tablak .alg-7 {
+  background-position: -120px -20px; }
+.napi-tablak .alg-8 {
+  background-position: -140px -20px; }
+.napi-tablak .alg-9 {
+  background-position: -160px -20px; }
+.napi-tablak .alg-10 {
+  background-position: -180px -20px; }
+.napi-tablak .alg-11 {
+  background-position: -200px -20px; }
+.napi-tablak .alg-12 {
+  background-position: -220px -20px; }
+.napi-tablak .alg-13 {
+  background-position: -240px -20px; }
+.napi-tablak .alg-14 {
+  background-position: -260px -20px; }
+
 .allergen-magyarazo {
   background: #fff;
-  /* 	box-shadow:0 0 20px rgba(0,0,0,.2); */
   padding: 2rem;
   width: 90%;
   margin: 0 auto;
