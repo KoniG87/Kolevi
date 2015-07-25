@@ -329,7 +329,8 @@ class VendegloView extends BaseView{
 		';
 
 		$kepSzamlalo = 1;
-		if (!is_null(($elements['rendezveny']['kepek']))){
+		
+		if ($elements['rendezveny']['id'] != 0 && !is_null(($elements['rendezveny']['kepek']))){
 			foreach ($elements['rendezveny']['kepek'] AS $kepAdat){
 				echo '<tr>
 					<td><label>'.$kepSzamlalo.'. kép:</label></td>
@@ -343,7 +344,7 @@ class VendegloView extends BaseView{
 				</tr>';
 				$kepSzamlalo++;
 			}
-		}
+		
 		
 		echo '<tr>
 				<td><label>'.$kepSzamlalo.'. kép:</label></td>
@@ -359,7 +360,9 @@ class VendegloView extends BaseView{
 					</select>
 				</td>
 				<td></td>
-			</tr>
+			</tr>';
+		}
+		echo '
 			</tbody>
 		</table>';
 	}

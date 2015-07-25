@@ -113,4 +113,30 @@ if (isset($_GET['sec'])){
   	.dashMenuActive{background:rgba(24,188,156,0.2);}
   	td{transition:background-color 0.5s;}
   	.justAdded td{background-color:#18bc9c;transition:background-color 0.5s;}
+  	
+  	.allergenSelector{
+
+  		border-radius: 0.1rem;
+  		width:20px;
+  		height:20px;
+  		cursor:pointer;
+  		transition:background-color 0.5s;
+	}
+	.allergenSelector.alg-1{background-position:0 0;}
+	.allergenSelector.alg-2{background-position:-20px 0;}
+	.allergenSelector.alg-3{background-position:-40px 0;}
+	.allergenSelector.alg-4{background-position:-60px 0;}
+	.allergenSelector.alg-5{background-position:-80px 0;}
+	.allergenSelector.alg-6{background-position:-100px 0;}
+	.allergenSelector.alg-7{background-position:-120px 0;}
+	.allergenSelector.alg-8{background-position:-140px 0;}
+	.allergenSelector.alg-9{background-position:-160px 0;}
+	.allergenSelector.alg-10{background-position:-180px 0;}
+	.allergenSelector.alg-11{background-position:-200px 0;}
+	.allergenSelector.alg-12{background-position:-220px 0;}
+	.allergenSelector.alg-13{background-position:-240px 0;}
+	.allergenSelector.alg-14{background-position:-260px 0;}
+	
+	.allergenSelector:hover{background-color:#ddd;}
+	.allergenSelector.selected{background-color:#7ddd31;}
   </style>

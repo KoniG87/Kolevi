@@ -1,7 +1,23 @@
 <?php
 class MenuView extends BaseView{
-	
+	private $allergenTipusok;
 	function __construct(){
+		$this->allergenTipusok = array(
+			1 => 'Csillagfürt',
+			2 => 'Diófélék',
+			3 => 'Földimogyi',
+			4 => 'Glutén',
+			5 => 'Hal',
+			6 => 'Mustár',
+			7 => 'Puhatestűek',
+			8 => 'Rákfélék',
+			9 => 'Szezámmag',
+			10 => 'Szójabab',
+			11 => 'Szulfitok',
+			12 => 'Tej',
+			13 => 'Tojás',
+			14 => 'Zeller'
+		);
 	}
     
     public function drawNapiMenu($elements){
@@ -33,23 +49,27 @@ class MenuView extends BaseView{
     
     
     public function drawNapiAdmin($elements){
+    	$indexKeyArray = array(
+    		1	=> 'ELSO',
+    		2	=> 'MASODIK',
+    		3	=> 'HARMADIK'
+    	);
     	
     	foreach ($elements AS $napiAdat){
-    		echo '<strong data-napazon="'.$napiAdat['NAPAZON'].'" data-ev="'.$napiAdat['EV'].'" data-het="'.$napiAdat['HET'].'">'.$napiAdat['NAPSZAM']. " " .$napiAdat['NAPNEV'].'</strong><br/>
-    				<input maxlength="100" title="1. fogás neve" name="menuInput" class="menuInput reactive" data-id="'.$napiAdat['ELSO']['ID'].'" data-fogas="1"  type="text" value="'. $napiAdat['ELSO']['ETEL']. '"/> 
-					<input maxlength="15" title="1. fogás összetevők" name="menuTag" class="menuTag reactive" data-id="'.$napiAdat['ELSO']['ID'].'" data-fogas="1"  type="text" value="'. $napiAdat['ELSO']['TAG']. '"/> 
-					<span class="tooltip">Leves, max. 100 karakter</span> <br/>
-    				
-					<input maxlength="100" title="2. fogás neve" name="menuInput" class="menuInput reactive" data-id="'.$napiAdat['MASODIK']['ID'].'" data-fogas="2" type="text" value="'. $napiAdat['MASODIK']['ETEL']. '"/> 
-					<input maxlength="15" title="2. fogás összetevők" name="menuTag" class="menuTag reactive" data-id="'.$napiAdat['MASODIK']['ID'].'" data-fogas="2"  type="text" value="'. $napiAdat['MASODIK']['TAG']. '"/>
-					<span class="tooltip">Főétel, max. 100 karakter</span> <br/>
-    				
-					
-					<input maxlength="100" title="3. fogás neve" name="menuInput" class="menuInput reactive" data-id="'.$napiAdat['HARMADIK']['ID'].'" data-fogas="3" type="text" value="'. $napiAdat['HARMADIK']['ETEL']. '"/> 
-					<input maxlength="15" title="3. fogás összetevők" name="menuTag" class="menuTag reactive" data-id="'.$napiAdat['HARMADIK']['ID'].'" data-fogas="3"  type="text" value="'. $napiAdat['HARMADIK']['TAG']. '"/>
-					<span class="tooltip">Desszeret, max. 100 karakter</span> <br/>
-    				';
-    		
+    		echo '<strong data-napazon="'.$napiAdat['NAPAZON'].'" data-ev="'.$napiAdat['EV'].'" data-het="'.$napiAdat['HET'].'">'.$napiAdat['NAPSZAM']. " " .$napiAdat['NAPNEV'].'</strong><br/>';
+    		for ($napIndex = 1; $napIndex <= 3; $napIndex++){
+    			$tagArray = explode(',', $napiAdat[$indexKeyArray[$napIndex]]['TAG']);
+    			
+    			echo '<q><input maxlength="100" title="'.$napIndex.'. fogás neve" name="menuInput" class="menuInput reactive" data-id="'.$napiAdat[$indexKeyArray[$napIndex]]['ID'].'" data-fogas="1"  type="text" value="'. $napiAdat[$indexKeyArray[$napIndex]]['ETEL']. '"/>';
+    				//<input maxlength="15" title="'.$napIndex.'. fogás összetevők" name="menuTag" class="menuTag reactive" data-id="'.$napiAdat[$indexKeyArray[$napIndex]]['ID'].'" data-fogas="1"  type="text" value="'. $napiAdat[$indexKeyArray[$napIndex]]['TAG']. '"/>
+    			
+    			for ($allergenCounter = 1; $allergenCounter <= 14; $allergenCounter++){
+    				$selectedClass = (in_array($allergenCounter, $tagArray) ? 'selected' : '');
+    				echo '<span data-val="'.$allergenCounter.'" title="'.$this->allergenTipusok[$allergenCounter].'" class="allergen allergenSelector alg-'.$allergenCounter.' '.$selectedClass.'"></span>';
+    			}
+    			
+    			echo '<span class="tooltip">Leves, max. 100 karakter</span> <br/></q>';
+    		}
     	}
     	
     	echo '<br/><br/>
@@ -67,7 +87,7 @@ class MenuView extends BaseView{
     			data = {
     				id: triggeredInput.attr("data-id"),
     				menuInput: triggeredInput.val(),
-					menuTag: triggeredInput.next("input.menuTag").val(),
+					menuTag: (triggeredInput.parents("q").find(".selected").length > 0 ? triggeredInput.parents("q").find(".selected").map(function(){ return $(this).attr("data-val"); 	}).get().join(",") : ""),
     				ev: dayElement.attr("data-ev"),
     				het: dayElement.attr("data-het"),
     				fogasazon: triggeredInput.attr("data-fogas"),
@@ -93,6 +113,12 @@ class MenuView extends BaseView{
     			}, 750);
     			}, "json");		
     		});	
+						
+						
+			$(".allergenSelector").click(function(){
+				$(this).toggleClass("selected");
+						$(this).prevAll("input.menuInput:first").trigger("change");
+			});			
     	});
     	</script>';
     	
@@ -145,25 +171,8 @@ class MenuView extends BaseView{
 		
 		
 		
-		$allergenTipusok = array(
-			1 => 'Csillagfürt',
-			2 => 'Diófélék',	
-			3 => 'Földimogyi',
-			4 => 'Glutén',
-			5 => 'Hal',
-			6 => 'Mustár',
-			7 => 'Puhatestűek',
-			8 => 'Rákfélék',
-			9 => 'Szezámmag',
-			10 => 'Szójabab',
-			11 => 'Szulfitok',
-			12 => 'Tej',
-			13 => 'Tojás',
-			14 => 'Zeller'				
-		);
-		
 		for ($allergenCounter = 1; $allergenCounter <= 14; $allergenCounter++){
-			echo '<span data-val="'.$allergenCounter.'" title="'.$allergenTipusok[$allergenCounter].'" class="allergen allergenSelector alg-'.$allergenCounter.'"></span>';
+			echo '<span data-val="'.$allergenCounter.'" title="'.$this->allergenTipusok[$allergenCounter].'" class="allergen allergenSelector alg-'.$allergenCounter.'"></span>';
 		}
 		
 		echo '
@@ -199,9 +208,9 @@ class MenuView extends BaseView{
     			echo '<br/>';
     		}
     		
-			echo '
+			echo '<q>
     		<input class="reactive" type="text" maxlength="30" title="'.$cetliSzamlalo.'. cetli '.$sorSzamlalo.'. sora" data-id="'.$cetliAdat['id'].'" name="cetli'.$cetliSzamlalo.'" value="'.$cetliAdat['labelText'].'"/> 
-    				<span class="tooltip">Cetli '.$cetliSzamlalo.'. sora, max. 30 karakter</span> <br/>';
+    				<span class="tooltip">Cetli '.$cetliSzamlalo.'. sora, max. 30 karakter</span> <br/></q>';
 		}
     	
     	
@@ -234,7 +243,7 @@ class MenuView extends BaseView{
 				
 				if (count($megadottAllergenek)){
 					foreach ($megadottAllergenek AS $allergenSzam){
-						echo '<span data-val="'.$allergenSzam.'" title="'.$allergenTipusok[$allergenSzam].'" class="allergen alg-'.$allergenSzam.'"></span>';
+						echo '<span data-val="'.$allergenSzam.'" title="'.$this->allergenTipusok[$allergenSzam].'" class="allergen alg-'.$allergenSzam.'"></span>';
 					}
 				}
 								

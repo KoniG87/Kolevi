@@ -183,7 +183,7 @@ section.right button[class^="cancel"]{
 /*section.right button:hover{
 	box-shadow:2px 1px 8px #222;
 }*/
-section.right input + span.tooltip, section.right textarea + span.tooltip, section.right select + span.tooltip{
+section.right input ~ span.tooltip, section.right textarea + span.tooltip, section.right select + span.tooltip{
 	opacity:0.0;
 	transition:0.2s all;
 	letter-spacing:-0.5px;
@@ -220,7 +220,7 @@ section.right select{
 	border:1px solid #ddd;
 	
 }
-section.right input:focus + span.tooltip, section.right input:focus + input + span.tooltip, section.right textarea:focus + span.tooltip, section.right select:focus + span.tooltip{
+section.right input:focus + span.tooltip, section.right input:focus ~ span.tooltip, section.right textarea:focus + span.tooltip, section.right select:focus + span.tooltip{
 	opacity:1.0;
 }
 section.right input.shortInput{
