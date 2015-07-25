@@ -115,6 +115,60 @@ class Image extends BaseObject{
 	}
 	
 	
+	public function deleteImage(){
+		$res = array();
+	
+		$delKepRefSQL = "DELETE FROM koleves_kep_osszekotesek WHERE id = ?;";
+		$fajlInfoSQL = "SELECT fajlnev FROM koleves_kepek WHERE id = ?;";
+		$delKepSQL = "DELETE FROM koleves_kepek WHERE id = ?;";
+		
+		$updateSQLArray = array(
+			'UPDATE koleves_cikkek SET kiskep = ? WHERE kiskep LIKE ?',
+			'UPDATE koleves_cikkek SET nagykep = ? WHERE nagykep LIKE ?',
+			'UPDATE koleves_dolgozok SET kep = ? WHERE kep LIKE ?',
+			'UPDATE koleves_partnerek SET kep = ? WHERE kep LIKE ?',
+			'UPDATE koleves_programok SET kep = ? WHERE kep LIKE ?',
+			'UPDATE koleves_szobak SET kezdokep = ? WHERE kezdokep LIKE ?',
+			'UPDATE koleves_delicates_termekek SET kiskep = ? WHERE kiskep LIKE ?',
+			'UPDATE koleves_delicates_termekek SET nagykep = ? WHERE nagykep LIKE ?'
+		);
+		
+		
+		
+		
+		$fajlInfo = $this->fetchItem($fajlInfoSQL, array($_POST['id']));
+		
+		try{
+			$this->deleteItem($delKepRefSQL, array($_POST['id']));
+			$this->deleteItem($delKepSQL, array($_POST['id']));
+			
+			$kepNev = basename($fajlInfo['fajlnev']);
+			$folder = "assets/uploads/";
+			$backupImage = "assets/img/tmb-1.png";
+			
+			if (file_exists($folder.$kepNev)){
+				unlink($folder.$kepNev);
+			}
+			if (file_exists($folder.'th_'.$kepNev)){
+				unlink($folder.'th_'.$kepNev);
+			}
+			
+			foreach ($updateSQLArray AS $SQL){
+				$this->updateItem($SQL, array($backupImage, $fajlInfo['fajlnev']));
+			}
+			
+			
+			$res['status'] = 'ok';
+				
+		}catch(Exception $e){
+			$res['status'] = 'nope';
+				
+		}
+	
+		echo json_encode($res);
+	}
+	
+	
 	public function insertImageRef(){
 		$res = array();
 		

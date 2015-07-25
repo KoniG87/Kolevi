@@ -71,6 +71,11 @@ if (isset($_POST['request'])){
 		
 			break;
 
+		case 'kepDelete':	
+			$image = new Image($app->getDbHandler());
+			$image->deleteImage();
+			
+			break;
 			
 		case 'foglalasDelete':
 			$vendeglo = new Vendeglo($app->getDbHandler());
