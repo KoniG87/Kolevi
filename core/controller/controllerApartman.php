@@ -31,31 +31,21 @@ class Apartman extends BaseObject{
     
     public function loadReviewData($szobaID = null){
     	$tmpArray = array(
-    		'reviewek'	=> array(
-    			'id'    => '0',
-    			'header'  => '',
-    			'desc'   => '',
-    			'allapot'   => '1',
-    			'nev'	=> '',
-    			'rating'	=> ''
-    		)
+    		'id'    => '0',
+    		'header'  => '',
+    		'desc'   => '',
+    		'allapot'   => '1',
+    		'nev'	=> '',
+    		'rating'	=> ''
     	);
     	
     	if (!is_null($szobaID)){
+    		
+    		
     		$SQL = "SELECT id, nev, cim, leiras, kep, rating, sorrend, visible FROM koleves_szoba_reviewek WHERE visible = 1 AND szoba_id = ?;";
-    		$tmpArray['reviewek'] = $this->fetchItem($SQL, array($szobaID));
+    		$tmpArray = $this->fetchItems($SQL, array($szobaID));
     	
-    		/*
-    		$kepSQL = "SELECT k.id, k.fajlnev FROM koleves_kepek AS k
-    			LEFT JOIN koleves_kep_osszekotesek AS ok ON ok.kep_id = k.id
-    			WHERE ok.fk_id = ? AND ok.tipus = ?
-    			ORDER BY ok.sorrend ASC;";
-    		 
-    		$reviewSQL = "SELECT cim, nev, leiras, kep, rating FROM koleves_szoba_reviewek WHERE szoba_id = ? AND visible = ?;";
     	
-    		$tmpArray['szoba']['kepek'] = $this->fetchItems($kepSQL, array($id, 4));
-    		$tmpArray['szoba']['reviewek'] = $this->fetchItems($reviewSQL, array($id, 1));
-    		*/
     	}
     	 
     	return $tmpArray;
@@ -64,6 +54,7 @@ class Apartman extends BaseObject{
     
     public function drawReviewAdmin($szobaID){
     	$elements = array(
+    		'szobaID'	=> $szobaID,
     		'reviewek'	=> $this->loadReviewData($szobaID)
     	);
     
@@ -162,7 +153,63 @@ class Apartman extends BaseObject{
     }
     
     
+
+    public function updateReviewElem(){
+    	$res = array();
+    	 
+    	try{
+    		$this->beginTransaction();
     
+    		$leirasText = str_replace(array("\r\n", "\r", "\n"), "<br/>", $_POST['leiras']);
+    
+    		/*
+    		 * Új sor beszúrása
+    		*/
+    		if ($_POST['id'] == "0"){
+    
+    			$SQL = "INSERT INTO koleves_szoba_reviewek SET szoba_id = ?, nev = ?, leiras = ?, cim = ?, rating = ?, sorrend = ?, visible = ?;";
+    
+    			$queryParams = array(
+    				$_POST['szoba_id'],
+    				$_POST['nev'],
+    				$leirasText,
+    				$_POST['cim'],
+    				$_POST['rating'],
+    				$_POST['sorrend'],
+    				$_POST['allapot']
+    			);
+    
+    			$res['inputID'] = $this->insertItem($SQL, $queryParams);
+    		}
+    		/*
+    		 * Meglévő sor updatelése
+    		 */
+    		else{
+    			$SQL = "UPDATE koleves_szoba_reviewek SET nev = ?, leiras = ?, cim = ?, rating = ?, sorrend = ?, visible = ? WHERE id = ?;";
+    
+    			$queryParams = array(
+    					$_POST['nev'],
+    					$leirasText,
+    					$_POST['cim'],
+    					$_POST['rating'],
+    					$_POST['sorrend'],
+    					$_POST['allapot'],
+    					$_POST['id']
+    			);
+    			 
+    			$this->updateItem($SQL, $queryParams);
+    
+    		}
+    
+    		$res['status'] = "ok";
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = "nope";
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    }
     
 
     public function updateSzobaElem(){
@@ -216,6 +263,31 @@ class Apartman extends BaseObject{
     	echo json_encode($res);
     }
     
+    
+    public function deleteReviewElem(){
+    	$res = array();
+    
+    	try{
+    		$this->beginTransaction();
+    		 
+    		$SQL = "DELETE FROM koleves_szoba_reviewek WHERE id = ?;";
+    		
+    
+    		$queryParams = array(
+    				$_POST['id']
+    		);
+    		$this->deleteItem($SQL, $queryParams);
+    		
+    
+    		$res['status'] = true;
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = false;
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    }
     
     
     public function deleteSzobaElem(){

@@ -58,6 +58,13 @@ if (isset($_POST['request'])){
 			$vendeglo->deleteRendezvenyElem();
 		
 			break;
+
+		case 'reviewDelete':
+			$apartman = new Apartman($app->getDbHandler());
+			$apartman->deleteReviewElem();
+			
+			break;
+			
 			
 		case 'slideDelete':
 			$delicates = new Delicates($app->getDbHandler());
@@ -254,8 +261,13 @@ if (isset($_POST['request'])){
 		
 			break;
 		
+		case 'reviewUpdate':
+			$apartman = new Apartman($app->getDbHandler());
+			$apartman->updateReviewElem(); 
+			
+			break;
+			
 		case 'szobaUpdate':
-		
 			$apartman = new Apartman($app->getDbHandler());
 			$apartman->updateSzobaElem();
 		

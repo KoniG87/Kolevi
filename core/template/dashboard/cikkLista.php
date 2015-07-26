@@ -46,7 +46,6 @@
 				id: $('input[name="id"]').val(),
 				text: $('input[name="text"]').val(),
 				url: $('input[name="url"]').val(),
-				allapot: $('input[name="allapot"]').val(),
 				kiskep: $('select[name="kiskep"]').val(),
 				nagykep: $('select[name="nagykep"]').val(),
 				allapot: $('select[name="allapot"]').val(),

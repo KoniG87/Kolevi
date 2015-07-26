@@ -181,23 +181,23 @@ class ApartmanView extends BaseView{
     	echo '
     
     	<section class="kategoriaEditor">
-    			<button id="addCikk">Review rögzítése</button>
+    			<button id="addReview">Review rögzítése</button>
     
 				<table class="tablaGrid" >
 				<tr>
 					<td>Név</td>
 					<td>
-						<input type="hidden" name="nev" value="0"/>
+						<input type="hidden" name="id" value="0"/>
+    					<input type="hidden" name="szoba_id" value="'.$elements['szobaID'].'"/>
     
-    
-						<input type="text" maxlength="128" title="Név" name="text" value="" required/>
+						<input type="text" maxlength="128" title="Név" name="nev" value="" required/>
 						<span class="tooltip">Név, max. 128 karakter</span>
 					</td>
 				</tr>
     			<tr>
 					<td>Cím</td>
 					<td>
-						<input type="text" maxlength="128" title="Cím" name="text" value="" required/>
+						<input type="text" maxlength="128" title="Cím" name="cim" value="" required/>
 						<span class="tooltip">Cím, max. 128 karakter</span>
 					</td>
 				</tr>
@@ -234,7 +234,7 @@ class ApartmanView extends BaseView{
 		                    <option value="1">Látható</option>
     
 		                </select>
-		                <span class="tooltip">Látható legyen-e a Barcasban</span>
+		                <span class="tooltip">Látható legyen-e a weboldalon</span>
 					</td>
 				</tr>
 			</table>
@@ -243,19 +243,19 @@ class ApartmanView extends BaseView{
     
     
     
-    		<h2>Cikkek</h2>
+    		<h2>Szobához tartozó review-k</h2>
     
-			<table class="tablaGrid cikkTabla">
+			<table class="tablaGrid reviewTabla">
 				';
-    
+    	
     	foreach ($elements['reviewek'] AS $key => $reviewAdat){
     			
-    		echo '<tr data-id="'.$reviewAdat['id'].'" data-sorrend="'.$reviewAdat['sorrend'].'" data-allapot="'.$reviewAdat['visible'].'">
+    		echo '<tr data-id="'.$reviewAdat['id'].'" data-sorrend="'.$reviewAdat['sorrend'].'" data-rating="'.$reviewAdat['rating'].'" data-allapot="'.$reviewAdat['visible'].'">
 						<td>'.$reviewAdat['nev'].'</td>
 						<td>'.$reviewAdat['cim'].'</td>
 						<td>'.wordwrap($reviewAdat['leiras'], 60, '<br/>').'</td>
     					<td>
-							<div class="star-rating" data-rating="'.$reviewAdat['rating'].'" style="width: 120px;"></div>
+							<div class="star-rating" data-rating="'.$reviewAdat['rating'].'" style="width: '. ($reviewAdat['rating'] * 31) .'px;"></div>
 						</td>
     					<td>'.getDecisionText($reviewAdat['visible']).'</td>
 								
