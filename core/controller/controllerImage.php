@@ -90,8 +90,8 @@ class Image extends BaseObject{
         $res['status'] = 'nope';
         
         if (in_array($_POST['param'], $validParameters)){
-            $SQL = "UPDATE koleves_kepek SET ".$_POST['param']." = ? WHERE id = ?;";
-            $this->updateItem($SQL, array($_POST['value'], $_POST['id']));
+            $SQL = "UPDATE koleves_kepek SET gallery_tag = ?, szekcio = ? WHERE id = ?;";
+            $this->updateItem($SQL, array($_POST['value'], $_POST['szekcio'], $_POST['id']));
             $res['status'] = 'ok';
         }
         

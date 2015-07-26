@@ -14,7 +14,7 @@ class Menu extends BaseObject{
 			'cetli'	=> $this->getCetliData(),
 			'kategoriak' => $this->getEtlapData()
 		);
-	
+		
 		$this->view->drawEtlap($elements);
 	}
 	

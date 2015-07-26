@@ -3,7 +3,7 @@
     $programID = isset($_POST['id']) ? $_POST['id'] : null;
     $programData = $vendeglo->loadProgramData($programID);
 
-    $programKepek = $vendeglo->loadKepek(1);
+    $programKepek = $vendeglo->loadKepek(2);
 ?>
 
 <h2>Új rögzítése</h2>

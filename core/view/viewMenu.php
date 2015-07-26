@@ -117,7 +117,7 @@ class MenuView extends BaseView{
 						
 			$(".allergenSelector").click(function(){
 				$(this).toggleClass("selected");
-						$(this).prevAll("input.menuInput:first").trigger("change");
+				$(this).prevAll("input.menuInput:first").trigger("change");
 			});			
     	});
     	</script>';

@@ -206,7 +206,14 @@ class Vendeglo extends BaseObject{
     
      public function getProgramData($allapot){
     	//$SQL = "SELECT id, datum, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, SUBSTRING(".$_SESSION['helper']->getLangLabel('leiras').", 1, 55) AS labelDesc, allapot, kep, fblink FROM koleves_programok WHERE allapot <> ? ORDER BY datum DESC;";
-     	$SQL = "SELECT id, datum, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, ".$_SESSION['helper']->getLangLabel('leiras')." AS labelDesc, allapot, kep, fblink FROM koleves_programok WHERE allapot <> ? ORDER BY datum DESC;";
+     	$SQL = "SELECT 
+     			id, datum, 
+     			".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, 
+     			".$_SESSION['helper']->getLangLabel('leiras')." AS labelDesc, 
+     			allapot, kep, fblink 
+     		FROM koleves_programok 
+     		WHERE allapot <> ? 
+     		ORDER BY datum DESC;";
      	
     	return $this->fetchItems($SQL, array($allapot));
     }
@@ -361,9 +368,14 @@ class Vendeglo extends BaseObject{
     
     
     public function loadKepek($tipusID = null){
-    	$SQL = "SELECT id, fajlnev FROM koleves_kepek WHERE szekcio = ?;";
+    	$SQL = "SELECT id, fajlnev FROM koleves_kepek WHERE szekcio LIKE ?;";
     
-    	return $this->fetchItems($SQL, array($tipusID));
+    	$queryParams = array(
+    		'%'. $tipusID .'%'
+    	);
+    	
+    	
+    	return $this->fetchItems($SQL, $queryParams);
     }
     
     

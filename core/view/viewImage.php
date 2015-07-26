@@ -32,9 +32,9 @@ class ImageView extends BaseView{
                 4   => 'Apartman'
             );
             $szekcioNev = array(
-                1   => 'Programok',
-                2   => 'Rendezvények',
-           		3   => 'Hírek',
+            	1   => 'Rendezvények',
+            	2   => 'Programok',
+                3   => 'Hírek',
            		4   => 'Szobák',
            		5   => 'Partnerek',
            		6   => 'Cikkek',
@@ -45,7 +45,7 @@ class ImageView extends BaseView{
             
             echo '<tr data-id="'.$kepData['id'].'">
                 <td><img src="'.$_SESSION['helper']->getPath().$thumbPath.'" alt="'.$kepData['fajlnev'].'"/></td>
-                <td>'.basename($kepData['fajlnev']).'</td>
+                <td>'.wordwrap(basename($kepData['fajlnev']), 30, '<br/>', true).'</td>
                 <td>
                     <select class="reactive" name="gallery_tag">
                         <option value=""></option>';
@@ -57,13 +57,15 @@ class ImageView extends BaseView{
                     </select>
                 </td>
                 <td>
-                    <select class="reactive" name="szekcio">
-                        <option value=""></option>';
+                    ';
+                    
+			$szekcioTagArray = explode(',', $kepData['szekcio']);
+                    
             foreach ($szekcioNev AS $key => $val){
-                echo '<option '.($kepData['szekcio'] == $key ? 'selected="selected"' : '').' value="'.$key.'">'.$val.'</option>';
+                echo '<span class="tag '. (in_array($key, $szekcioTagArray) ? 'selected' : '') .'" data-szekcioid="'. $key .'">'. $val .'</span>';
             }
                 echo '        
-                    </select>
+                    
                 </td>
                 <td>
                 	<form method="post" action="">
