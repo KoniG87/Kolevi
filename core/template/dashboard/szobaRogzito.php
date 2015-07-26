@@ -12,12 +12,12 @@
 	$apartman->drawSzobaAdmin($szobaID);
 ?>
 </form>
-<link href="assets/css/datepicker.css" rel="stylesheet" type="text/css"/>
+<link href="<?=$_SESSION['helper']->getPath()?>assets/css/datepicker.css" rel="stylesheet" type="text/css"/>
 
 <style type="text/css">
 	.tablaGrid img{width:7.5em;}
 </style>
-<script src="assets/js/vendor/jquery-ui.min.js"></script>
+<script src="<?=$_SESSION['helper']->getPath()?>assets/js/vendor/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		imageRefTemplate = $('.imageRefTemplate').parents('tr').clone();
@@ -94,11 +94,13 @@
 			
 			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
 				if (resp.status == "ok"){
-					numberOfImages = $('input[name^="kep_"]').length;
-					$('select[name^="kep_"]').replaceWith('<input readonly="readonly" type="text"  name="kep_'+resp.inputID+'" alt="'+resp.inputID+'. kép" value="'+selectedImage+'"/><button data-id="'+resp.inputID+'" class="deleteKep">Törlés</button>');
-					$('input[name="kep_'+resp.inputID+'"]').parent('td').after('<td><img src="'+ selectedImagePath + '" alt="'+ selectedImage +'"/></td>');
-					$('label', imageRefTemplate).html(numberOfImages+ '. kép:');
-					$('.tablaGrid').append(imageRefTemplate)
+					newImageRow = imageRefTemplate;
+
+					numberOfImages = $('input[name^="kep_"]:not(.shortInput)').length + 2;
+					$('select[name^="kep_"]').replaceWith('<input readonly="readonly" type="text"  name="kep_'+resp.inputID+'" alt="'+resp.inputID+'. kép" value="'+selectedImage+'"/><input type="number" data-id="'+resp.inputID+'" name="kep_'+numberOfImages+'_sorrend" alt="'+numberOfImages+'. kép" value="1" class="kepSorrend shortInput reactive"/><button data-id="'+resp.inputID+'" class="deleteKep">Törlés</button>');
+					$('input[name="kep_'+resp.inputID+'"]').parent('td').after('<td><img src="<?=$_SESSION['helper']->getPath()?>'+ selectedImagePath + '" alt="'+ selectedImage +'"/></td>');
+					$('label', newImageRow).html(numberOfImages+ '. kép:');
+					$('.tablaGrid').append(newImageRow)
 				}
 			}, 'json');
 			
