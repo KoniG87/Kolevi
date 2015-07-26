@@ -409,6 +409,27 @@ class ApartmanView extends BaseView{
 					<span class="tooltip">Apartman leírása, max. 1024 karakter</span></td>
 					<td></td>
 				</tr>
+				<tr>
+					<td>
+						<label>Sorrend</label></td>
+						<td><input type="number" min="1" name="sorrend" title="Sorrend" value="'.$elements['szoba']['sorrend'].'" required/>
+						<span class="tooltip">Sorrend</span>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Látható</td>
+					<td>
+						 <select name="allapot" required>
+		                    <option value=""></option>
+		                    <option '.($elements['szoba']['visible'] ? '' : 'selected="selected"').' value="0">Inaktív</option>
+		                    <option '.($elements['szoba']['visible'] ? 'selected="selected"' : '').' value="1">Látható</option>
+		                    
+		                </select>
+		                <span class="tooltip">Látható legyen-e a Barcasban</span>
+					</td>
+					<td></td>
+				</tr>
 		';
     	
     	$kepSzamlalo = 1;
@@ -417,6 +438,7 @@ class ApartmanView extends BaseView{
 				<td><label>'.$kepSzamlalo.'. kép:</label></td>
 				<td>
 					<input readonly="readonly" type="text"  name="kep_'.$kepSzamlalo.'" alt="'.$kepSzamlalo.'. kép" value="'.basename($kepAdat['fajlnev']).'"/>
+					<input type="number" data-id="'.$kepAdat['id'].'" name="kep_'.$kepSzamlalo.'_sorrend" alt="'.$kepSzamlalo.'. kép" value="'.$kepAdat['sorrend'].'" class="kepSorrend shortInput reactive"/>
 					<button data-id="'.$kepAdat['id'].'" class="deleteKep">Törlés</button>
 				</td>
 				<td>

@@ -97,7 +97,27 @@ class Image extends BaseObject{
         
         echo json_encode($res);
     }
+    
+    
 	
+    public function updateImageSorrend(){
+    	$res = array();
+    
+    	$res['status'] = 'nope';
+    
+    	try{
+    		$SQL = "UPDATE koleves_kep_osszekotesek SET sorrend = ? WHERE id = ?;";
+    		$this->updateItem($SQL, array($_POST['sorrend'], $_POST['kepID']));
+    		$res['status'] = 'ok';
+    	}catch(Exception $e){
+    		$res['status'] = 'error';
+    	}
+    
+    	echo json_encode($res);
+    }
+    
+    
+    
 	public function deleteImageRef(){
 		$res = array();
 		

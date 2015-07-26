@@ -24,11 +24,15 @@
 
 		$('input, textarea, select').change(function(){
 			attr = $(this).attr('required');
-			if (typeof attr !== typeof undefined && attr !== false && $(this).val() != ""){
-				$(this).removeClass('missing');
-			} else{
-				$(this).addClass('missing');
+			if (typeof attr !== typeof undefined && attr !== false){
+				if ($(this).val() != ""){
+					$(this).removeClass('missing');
+				} else{
+					$(this).addClass('missing');
+				}
 			}
+
+				
 			
 		});
 		
@@ -39,7 +43,8 @@
 				text: $('#editForm input[name="text"]').val(),
 				leiras: $('#editForm textarea[name="leiras"]').val(),
 				kezdokep: "assets/img/gslide-1.jpg",
-				allapot: 1
+				sorrend: $('#editForm input[name="sorrend"]').val(), 
+				allapot: $('#editForm select[name="allapot"]').val()
 			};
 			
 			$.each(data, function(key, val){
@@ -97,6 +102,25 @@
 				}
 			}, 'json');
 			
+		});
+
+		$(document).on('change', '.kepSorrend', function(){
+			triggeredInput = $(this);
+			
+			data = {
+				request: 'imageSorrendUpdate',
+				sorrend: $(this).val(),
+				kepID: $(this).attr('data-id')					
+			};
+				
+			$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
+				if (resp.status == "ok"){
+					triggeredInput.addClass("success");
+					setTimeout(function(){
+						triggeredInput.removeClass("success error");
+					}, 750);
+				}
+			}, 'json');
 		});
 	});
 </script>

@@ -79,7 +79,7 @@
 							$('td:nth-of-type(2)', triggeredRow).text(data.cim);
 							$('td:nth-of-type(3)', triggeredRow).text(data.leiras);
 							$('td:nth-of-type(4) .star-rating', triggeredRow).attr("data-rating", data.rating).attr("style", "width: "+ (parseInt(data.rating, 10) * 31) + "px");
-							$('td:nth-of-type(5)', triggeredRow).text(data.allapot ? 'Igen' : 'Nem');
+							$('td:nth-of-type(5)', triggeredRow).text(data.allapot == "1" ? 'Igen' : 'Nem');
 							triggeredRow.attr('data-allapot', data.allapot);
 							triggeredRow.attr('data-sorrend', data.sorrend);
 							triggeredRow.attr('data-rating', data.rating);

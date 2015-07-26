@@ -213,6 +213,12 @@ if (isset($_POST['request'])){
 		
 			break;
 			
+		case 'imageSorrendUpdate':
+			$imageHandler = new Image($app->getDbHandler());
+			$imageHandler->updateImageSorrend();
+			
+			break;
+			
 		case 'itallapUpdate':
 			$menu = new Menu($app->getDbHandler());
 			$menu->updateItallapElem();

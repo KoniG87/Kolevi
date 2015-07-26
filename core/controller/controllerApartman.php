@@ -29,7 +29,7 @@ class Apartman extends BaseObject{
     }
     
     
-    public function loadReviewData($szobaID = null){
+    public function loadReviewData($szobaID = null, $visibility = 2){
     	$tmpArray = array(
     		'id'    => '0',
     		'header'  => '',
@@ -42,8 +42,8 @@ class Apartman extends BaseObject{
     	if (!is_null($szobaID)){
     		
     		
-    		$SQL = "SELECT id, nev, cim, leiras, kep, rating, sorrend, visible FROM koleves_szoba_reviewek WHERE visible = 1 AND szoba_id = ?;";
-    		$tmpArray = $this->fetchItems($SQL, array($szobaID));
+    		$SQL = "SELECT id, nev, cim, leiras, kep, rating, sorrend, visible FROM koleves_szoba_reviewek WHERE visible <> ? AND szoba_id = ?;";
+    		$tmpArray = $this->fetchItems($SQL, array($visibility, $szobaID));
     	
     	
     	}
@@ -133,10 +133,10 @@ class Apartman extends BaseObject{
     	);
     
     	if (!is_null($id)){
-    		$SQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS header, ".$_SESSION['helper']->getLangLabel('leiras')." AS \"desc\", kezdokep, visible FROM koleves_szobak WHERE id = ?;";
+    		$SQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS header, ".$_SESSION['helper']->getLangLabel('leiras')." AS \"desc\", kezdokep, sorrend, visible FROM koleves_szobak WHERE id = ?;";
     		$tmpArray['szoba'] = $this->fetchItem($SQL, array($id));
     		
-    		$kepSQL = "SELECT k.id, k.fajlnev FROM koleves_kepek AS k
+    		$kepSQL = "SELECT ok.id, k.fajlnev, ok.sorrend FROM koleves_kepek AS k
     			LEFT JOIN koleves_kep_osszekotesek AS ok ON ok.kep_id = k.id
     			WHERE ok.fk_id = ? AND ok.tipus = ?
     			ORDER BY ok.sorrend ASC;";
