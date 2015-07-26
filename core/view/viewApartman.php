@@ -177,6 +177,97 @@ class ApartmanView extends BaseView{
 			</div>';
     }
     
+    public function drawReviewAdmin($elements){
+    	echo '
+    
+    	<section class="kategoriaEditor">
+    			<button id="addCikk">Review rögzítése</button>
+    
+				<table class="tablaGrid" >
+				<tr>
+					<td>Név</td>
+					<td>
+						<input type="hidden" name="nev" value="0"/>
+    
+    
+						<input type="text" maxlength="128" title="Név" name="text" value="" required/>
+						<span class="tooltip">Név, max. 128 karakter</span>
+					</td>
+				</tr>
+    			<tr>
+					<td>Cím</td>
+					<td>
+						<input type="text" maxlength="128" title="Cím" name="text" value="" required/>
+						<span class="tooltip">Cím, max. 128 karakter</span>
+					</td>
+				</tr>
+    			<tr>
+					<td>Leírás</td>
+					<td>
+						<textarea maxlength="1024" title="Leírás" name="leiras" required></textarea>
+						<span class="tooltip">Leírás, max. 1024 karakter</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Értékelés</td>
+					<td>
+    					<input type="number" title="Értékelési csillagok" name="rating" min="1" max="5" value="" required/>
+						<span class="tooltip">Értékelés</span>
+					</td>
+				</tr>
+    
+    
+				<tr>
+					<td>Sorrend</td>
+					<td>
+						<input type="number" title="Sorrend" min="1" name="sorrend" value="" required/>
+						<span class="tooltip">Sorrend</span>
+					</td>
+				</tr>
+    
+				<tr>
+					<td>Látható</td>
+					<td>
+						 <select name="allapot" required>
+		                    <option value=""></option>
+		                    <option value="0">Inaktív</option>
+		                    <option value="1">Látható</option>
+    
+		                </select>
+		                <span class="tooltip">Látható legyen-e a Barcasban</span>
+					</td>
+				</tr>
+			</table>
+	</section>
+    
+    
+    
+    
+    		<h2>Cikkek</h2>
+    
+			<table class="tablaGrid cikkTabla">
+				';
+    
+    	foreach ($elements['reviewek'] AS $key => $reviewAdat){
+    			
+    		echo '<tr data-id="'.$reviewAdat['id'].'" data-sorrend="'.$reviewAdat['sorrend'].'" data-allapot="'.$reviewAdat['visible'].'">
+						<td>'.$reviewAdat['nev'].'</td>
+						<td>'.$reviewAdat['cim'].'</td>
+						<td>'.wordwrap($reviewAdat['leiras'], 60, '<br/>').'</td>
+    					<td>
+							<div class="star-rating" data-rating="'.$reviewAdat['rating'].'" style="width: 120px;"></div>
+						</td>
+    					<td>'.getDecisionText($reviewAdat['visible']).'</td>
+								
+						<td><button class="editReview">Szerkesztés</button></td>
+						<td><button class="deleteReview">Törlés</button></td>
+					</tr>';
+    	}
+    
+    
+    	echo '</table>';
+    }
+    
     
     public function drawSzoba($szobaData){
     	$counterSzoba = 0;
@@ -277,12 +368,18 @@ class ApartmanView extends BaseView{
     	foreach ($elements AS $szobaData){
     		echo '<tr data-id="'.$szobaData['id'].'">
 			 	<td>'.$szobaData['header'].'</td>
-				<td>'.$szobaData['desc'].'</td>
+				<td>'.wordwrap($szobaData['desc'], 60, '<br/>').'</td>
 				<td>'.getDecisionText($szobaData['allapot']).'</td>
+				<td>
+                    <form method="post" action="'.$_SESSION['helper']->getPath().'/dashboard/apartman/reviewKezelo">
+                        <input type="hidden" name="szobaID" value="'.$szobaData['id'].'"/>
+                        <button class="editReview">Vélemények</button>
+                    </form>
+                </td>
 				<td>
                     <form method="post" action="'.$_SESSION['helper']->getPath().'/dashboard/apartman/szobaRogzito">
                         <input type="hidden" name="id" value="'.$szobaData['id'].'"/>
-                        <button class="editEtel">Szerkesztés</button>
+                        <button class="editSzoba">Szerkesztés</button>
                     </form>
                 </td>
 				<td><button class="deleteSzoba">Törlés</button></td>	

@@ -29,6 +29,48 @@ class Apartman extends BaseObject{
     }
     
     
+    public function loadReviewData($szobaID = null){
+    	$tmpArray = array(
+    		'reviewek'	=> array(
+    			'id'    => '0',
+    			'header'  => '',
+    			'desc'   => '',
+    			'allapot'   => '1',
+    			'nev'	=> '',
+    			'rating'	=> ''
+    		)
+    	);
+    	
+    	if (!is_null($szobaID)){
+    		$SQL = "SELECT id, nev, cim, leiras, kep, rating, sorrend, visible FROM koleves_szoba_reviewek WHERE visible = 1 AND szoba_id = ?;";
+    		$tmpArray['reviewek'] = $this->fetchItem($SQL, array($szobaID));
+    	
+    		/*
+    		$kepSQL = "SELECT k.id, k.fajlnev FROM koleves_kepek AS k
+    			LEFT JOIN koleves_kep_osszekotesek AS ok ON ok.kep_id = k.id
+    			WHERE ok.fk_id = ? AND ok.tipus = ?
+    			ORDER BY ok.sorrend ASC;";
+    		 
+    		$reviewSQL = "SELECT cim, nev, leiras, kep, rating FROM koleves_szoba_reviewek WHERE szoba_id = ? AND visible = ?;";
+    	
+    		$tmpArray['szoba']['kepek'] = $this->fetchItems($kepSQL, array($id, 4));
+    		$tmpArray['szoba']['reviewek'] = $this->fetchItems($reviewSQL, array($id, 1));
+    		*/
+    	}
+    	 
+    	return $tmpArray;
+    }
+    
+    
+    public function drawReviewAdmin($szobaID){
+    	$elements = array(
+    		'reviewek'	=> $this->loadReviewData($szobaID)
+    	);
+    
+    	$this->view->drawReviewAdmin($elements);
+    }
+    
+    
     public function getSzobaData($visible = 1){
     	$elements = array();
     	
