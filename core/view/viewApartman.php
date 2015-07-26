@@ -285,9 +285,9 @@ class ApartmanView extends BaseView{
                         <button class="editEtel">Szerkesztés</button>
                     </form>
                 </td>
-				
+				<td><button class="deleteSzoba">Törlés</button></td>	
 			</tr>';
-            //<td><button class="deleteEtel">Törlés</button></td>
+            
     	}
     }
   
@@ -329,20 +329,23 @@ class ApartmanView extends BaseView{
     		$kepSzamlalo++;
     	}
     	
-    	echo '<tr>
-				<td><label>'.$kepSzamlalo.'. kép:</label></td>
-				<td>
-					<select class="imageRefTemplate" data-id="'.$elements['szoba']['id'].'" name="kep_'.$kepSzamlalo.'">
-						<option value=""></option>
-				';
-    	foreach ($elements['elerhetoKepek'] AS $kepAdat){
-    		echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['id'].'">'.basename($kepAdat['fajlnev']).'</option>';
+    	if ($elements['szoba']['id'] != 0 && !is_null(($elements['szoba']['kepek']))){
+	    	echo '<tr>
+					<td><label>'.$kepSzamlalo.'. kép:</label></td>
+					<td>
+						<select class="imageRefTemplate" data-id="'.$elements['szoba']['id'].'" name="kep_'.$kepSzamlalo.'">
+							<option value=""></option>
+					';
+	    	foreach ($elements['elerhetoKepek'] AS $kepAdat){
+	    		echo '<option data-fullpath="'.$kepAdat['fajlnev'].'" value="'.$kepAdat['id'].'">'.basename($kepAdat['fajlnev']).'</option>';
+	    	}
+	    	echo '
+				
+						</select>
+					</td>
+					<td></td>';
     	}
     	echo '
-			
-					</select>
-				</td>
-				<td></td>
 			</tr>
 			</tbody>
 		</table>';

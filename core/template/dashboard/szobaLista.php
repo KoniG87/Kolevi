@@ -37,28 +37,17 @@
 			
 		});
 		
-		$('#saveRendezveny').click(function(){
+		$('.deleteSzoba').click(function(){
+			containingRow = $(this).parents('tr');
 			canSubmit = true;
 			data = {
-				id: $('#editForm input[name="id"]').val(),
-				megnevezes: $('#editForm input[name="megnevezes"]').val(),
-				megjegyzes: $('#editForm textarea[name="megjegyzes"]').val()
+				id: containingRow.attr('data-id'),
+				request: 'szobaDelete'
 			};
 
-			$.each(data, function(key, val){
-				attr = $('[name="'+key+'"]').attr('required');
-				if (typeof attr !== typeof undefined && attr !== false 
-						&& 
-						$('[name="'+key+'"]').val() == ""){
-					canSubmit = false;
-					$('[name="'+key+'"]').addClass('missing');
-				}
-			});
-
 			if (canSubmit){
-				data.request = 'rendezvenyUpdate';
 				$.post("<?=$_SESSION['helper']->getPath()?>requestHandler", data, function(resp){
-					window.location.href = "dashboard";
+					containingRow.hide(250, function(){ $(this).remove(); });
 				});
 			}
 		});

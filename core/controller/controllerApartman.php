@@ -175,6 +175,36 @@ class Apartman extends BaseObject{
     }
     
     
+    
+    public function deleteSzobaElem(){
+    	$res = array();
+    
+    	try{
+    		$this->beginTransaction();
+    		 
+    		$SQL = "DELETE FROM koleves_szobak WHERE id = ?;";
+    		$kepSQL = "DELETE FROM koleves_kep_osszekotesek WHERE fk_id = ? AND tipus = ?;";
+    		$reviewSQL = "DELETE FROM koleves_szoba_reviewek WHERE szoba_id = ?;";
+    		
+    		$queryParams = array(
+    			$_POST['id']
+    		);
+    		$this->deleteItem($SQL, $queryParams);
+    		$this->deleteItem($reviewSQL, $queryParams);
+    		
+    		array_push($queryParams, 4);
+    		$this->deleteItem($kepSQL, $queryParams);
+    
+    		$res['status'] = true;
+    		$this->commit();
+    	}catch(Exception $e){
+    		$res['status'] = false;
+    		$this->rollback();
+    	}
+    
+    	echo json_encode($res);
+    }
+    
 }
 ?>
  

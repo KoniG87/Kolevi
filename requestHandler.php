@@ -65,6 +65,12 @@ if (isset($_POST['request'])){
 		
 			break;
 			
+		case 'szobaDelete':
+			$apartman = new Apartman($app->getDbHandler());
+			$apartman->deleteSzobaElem();
+		
+			break;
+		
 		case 'deleteImageRef':
 			$image = new Image($app->getDbHandler());
 			$image->deleteImageRef();
