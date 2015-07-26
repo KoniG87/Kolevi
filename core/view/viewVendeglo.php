@@ -326,6 +326,28 @@ class VendegloView extends BaseView{
 					<span class="tooltip">Leírás, max. 1024 karakter</span></td>
 					<td></td>
 				</tr>
+				<tr>
+					<td>Sorrend</td>
+					<td>
+						<input type="number" title="Sorrend" min="1" name="sorrend" value="'.$elements['rendezveny']['sorrend'].'" required/>
+						<span class="tooltip">Sorrend</span>
+					</td>
+					<td></td>
+				</tr>
+    						
+				<tr>
+					<td>Látható</td>
+					<td>
+						 <select name="allapot" required>
+		                    <option value=""></option>
+		                    <option '.($elements['rendezveny']['allapot'] ? '' : 'selected="selected"').' value="0">Inaktív</option>
+		                    <option '.($elements['rendezveny']['allapot'] ? 'selected="selected"' : '').' value="1">Látható</option>
+    
+		                </select>
+		                <span class="tooltip">Látható legyen-e a weboldalon</span>
+					</td>
+		            <td></td>
+				</tr>			
 		';
 
 		$kepSzamlalo = 1;

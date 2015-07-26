@@ -36,7 +36,8 @@
                 id: $('#editForm input[name="id"]').val(),
 				text: $('#editForm input[name="text"]').val(),
 				leiras: $('#editForm textarea[name="leiras"]').val(),
-				allapot: 1,
+				allapot: $('#editForm select[name="allapot"]').val(),
+				sorrend: $('#editForm input[name="sorrend"]').val(),
 				kepTipus: 1
 			};
 

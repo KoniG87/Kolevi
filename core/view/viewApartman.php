@@ -224,7 +224,7 @@ class ApartmanView extends BaseView{
 						<span class="tooltip">Sorrend</span>
 					</td>
 				</tr>
-    
+    			
 				<tr>
 					<td>Látható</td>
 					<td>
