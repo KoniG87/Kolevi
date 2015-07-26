@@ -162,7 +162,7 @@ class Kert extends BaseObject{
     	 
     	$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
     	$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-    	$pdf->SetFont('freesans', '', 10);
+    	$pdf->SetFont('freesans', '', 9);
     	 
     	 
     	$bMargin = $pdf->getBreakMargin();
@@ -179,13 +179,13 @@ class Kert extends BaseObject{
     	$pdf->setPageMark();
     	 
     	 
-    	$html = '<br/><br/><br/><br/><br/><br/><br/><br/>
+    	$html = '<br/><br/><br/><br/><br/>
    
 <div style="text-align:center;">
     			<table>';
     	 
     	    	  
-    	$textCutOffIndex = 30;
+    	$textCutOffIndex = 32;
     	foreach ($etelek AS $etelAdat){
     		$icons = $this->fetchAllergenIcon($etelAdat['TAGEK']);
     		$englishTextFirst = substr($etelAdat['text_en'], 0, $textCutOffIndex);
