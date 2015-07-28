@@ -520,62 +520,17 @@ class VendegloView extends BaseView{
                 <div class="twelve columns cikkek-container">
                     <h3>Rólunk írták</h3>
                     <div class="cikkek-slider">';
+    	
+    	
     	$this->loadTemplate('cikkElem', $elements['cikkek']);
-    	/*
-                        <div class="cikk">
-                            <a href="http://index.hu/kultur/2015/05/24/fozelekes_feri/" target="blank">
-                                <div class="cikk-img">
-                                    <img src="assets/img/tmb-2.png" alt="">
-                                </div>
-                                <h4>Cikk neve</h4>
-                            </a>
-                        </div>
-                        <div class="cikk">
-                            <a href="http://index.hu/tech/mem/2015/05/24/tyrion_wtf/" target="blank">
-                                <div class="cikk-img">
-                                    <img src="assets/img/tmb-2.png" alt="">
-                                </div>
-                                <h4>Cikk neve</h4>
-                            </a>
-                        </div>
-                        <div class="cikk">
-                            <a href="assets/uploads/kert.jpg" target="blank">
-                                <div class="cikk-img">
-                                    <img src="assets/img/tmb-2.png" alt="">
-                                </div>
-                                <h4>Cikk neve képpel</h4>
-                            </a>
-                        </div>
-                        <div class="cikk">
-                            <a href="assets/uploads/kert.jpg" target="blank">
-                                <div class="cikk-img">
-                                    <img src="assets/img/tmb-2.png" alt="">
-                                </div>
-                                <h4>Cikk neve képpel</h4>
-                            </a>
-                        </div>
-                        <div class="cikk">
-                            <a href="assets/uploads/kert.jpg" target="blank">
-                                <div class="cikk-img">
-                                    <img src="assets/img/tmb-2.png" alt="">
-                                </div>
-                                <h4>Cikk neve képpel</h4>
-                            </a>
-                        </div>*/
+    	
     	echo '
                     </div>
                 </div>
             </div>
 			<div class="row clearfix">
 				<div class="twelve columns">
-					
-					 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 			
-			
-			<form action="?" method="POST">
-			  <!--<div class="g-recaptcha" data-sitekey="6LctzgUTAAAAAEDRtdJAynba8NWcjWKgSsTtUnP7"></div>-->
-			  <br/>
-			</form>
 					<div class="rolunk-container clearfix">
 					<h3>Csapatunk tagjai</h3>
 						';

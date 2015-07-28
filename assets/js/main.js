@@ -1315,8 +1315,10 @@ $("#rendezvenyek h3, .szoba-description h3").each(function(){
   });
 });
 
+
 /* INIT TOOLTIP */
 
+$(".rolunk-tooltip[title='']").remove();
 $(".rolunk-tooltip").tooltipster({
     animation: 'grow',
     theme: 'shadow',

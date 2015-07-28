@@ -465,7 +465,7 @@ class Application{
     		});
     			</script>
     		<script src="'.$_SESSION['helper']->getPath('scripts').'plugins.min.js"></script>
-        	<script src="'.$_SESSION['helper']->getPath('scripts').'main.min.js"></script>
+        	<script src="'.$_SESSION['helper']->getPath('scripts').'main.js"></script>
     	';
     
     	
