@@ -86,7 +86,7 @@
 								$('.cikkTabla tbody').after(triggeredRow);
 							}
 						}else{
-							$('.cikkTabla tbody').after('<tr data-allapot="'+data.allapot+'" data-sorrend="'+data.sorrend+'" data-kiskep="'+data.kiskep+'" data-nagykep="'+data.nagykep+'" data-url="'+data.url+'" data-id="'+resp['inputID']+'"><td><img src="'+data.kiskep+'" alt="'+data.text+'"/></td><td>'+data.text+'</td><td><button class="editCikk">Szerkesztés</button></td><td><button class="deleteCikk">Törlés</button></td></tr>');
+							$('.cikkTabla tbody').after('<tr data-allapot="'+data.allapot+'" data-sorrend="'+data.sorrend+'" data-kiskep="'+data.kiskep+'" data-nagykep="'+data.nagykep+'" data-url="'+data.url+'" data-id="'+resp['inputID']+'"><td><img src="<?=$_SESSION['helper']->getPath()?>'+data.kiskep+'" alt="'+data.text+'"/></td><td>'+data.text+'</td><td><button class="editCikk">Szerkesztés</button></td><td><button class="deleteCikk">Törlés</button></td></tr>');
 						}
 
 						

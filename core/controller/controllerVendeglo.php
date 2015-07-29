@@ -368,7 +368,7 @@ class Vendeglo extends BaseObject{
     
     
     public function loadKepek($tipusID = null){
-    	$SQL = "SELECT id, fajlnev FROM koleves_kepek WHERE szekcio LIKE ?;";
+    	$SQL = "SELECT id, fajlnev FROM koleves_kepek WHERE szekcio LIKE ? ORDER BY id DESC;";
     
     	$queryParams = array(
     		'%'. $tipusID .'%'
@@ -392,7 +392,11 @@ class Vendeglo extends BaseObject{
     	);
     
     	if (!is_null($id)){
-    		$SQL = "SELECT id, datum, ".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, ".$_SESSION['helper']->getLangLabel('leiras')." AS labelDesc, allapot, kep, fblink FROM koleves_programok WHERE id = ?;";
+    		$SQL = "SELECT id, datum, 
+    			".$_SESSION['helper']->getLangLabel('text')." AS labelHeader, 
+    			".$_SESSION['helper']->getLangLabel('leiras')." AS labelDesc, 
+    			allapot, 
+    			kep, fblink FROM koleves_programok WHERE id = ? ORDER BY datum DESC;";
     		$tmpArray = $this->fetchItem($SQL, array($id));
     	}
     
@@ -411,7 +415,11 @@ class Vendeglo extends BaseObject{
         );
         
         if (!is_null($id)){
-            $SQL = "SELECT id, ".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, ".$_SESSION['helper']->getLangLabel('leiras')." AS MEGJEGYZES, allapot, sorrend FROM koleves_rendezvenyek WHERE id = ?";
+            $SQL = "SELECT id, 
+            		".$_SESSION['helper']->getLangLabel('text')." AS MEGNEVEZES, 
+            		".$_SESSION['helper']->getLangLabel('leiras')." AS MEGJEGYZES, 
+            		allapot, sorrend 
+            		FROM koleves_rendezvenyek WHERE id = ?";
             $tmpArray = $this->fetchItem($SQL, array($id));
 			
 			$kepSQL = "SELECT ok.id, k.fajlnev FROM koleves_kepek AS k 

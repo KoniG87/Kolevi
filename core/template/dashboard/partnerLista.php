@@ -29,7 +29,7 @@
 			$.each(data, function(key, val){
 				$('[name="'+key+'"]').val(val);
 			});
-console.log(data);
+
 			$('#addPartner').velocity("scroll", {
 	            duration: 800,
 	            easing: "ease",
@@ -79,7 +79,7 @@ console.log(data);
 						
 
 						if (data.id != "0"){
-							$('td:nth-of-type(1) img', triggeredRow).attr('src', data.kep);
+							$('td:nth-of-type(1) img', triggeredRow).attr('src', '<?=$_SESSION['helper']->getPath()?>'+ data.kep);
 							$('td:nth-of-type(2)', triggeredRow).text(data.text);
 							$('td:nth-of-type(3)', triggeredRow).text(data.leiras);
 							$('td:nth-of-type(4)', triggeredRow).text(data.url);
@@ -90,7 +90,7 @@ console.log(data);
 								$('.partnerTabla tr.kategoriaRow:contains("'+data.kategoria+'")').after(triggeredRow);
 							}
 						}else{
-							$('.partnerTabla tbody').after('<tr data-sorrend="'+ data.sorrend +'" data-allapot="'+ data.allapot +'" data-id="'+resp['inputID']+'"><td><img src="'+data.kep+'" alt="'+data.text+'"/></td><td>'+data.text+'</td><td>'+data.leiras+'</td><td>'+data.url+'</td><td><button class="editPartner">Szerkesztés</button></td><td><button class="deletePartner">Törlés</button></td></tr>');
+							$('.partnerTabla tbody').after('<tr data-sorrend="'+ data.sorrend +'" data-allapot="'+ data.allapot +'" data-id="'+resp['inputID']+'"><td><img src="<?=$_SESSION['helper']->getPath()?>'+data.kep+'" alt="'+data.text+'"/></td><td>'+data.text+'</td><td>'+data.leiras+'</td><td>'+data.url+'</td><td><button class="editPartner">Szerkesztés</button></td><td><button class="deletePartner">Törlés</button></td></tr>');
 						}
 
 						

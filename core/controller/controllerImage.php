@@ -71,7 +71,7 @@ class Image extends BaseObject{
     
     
     public function getImages(){
-        $SQL = "SELECT id, fajlnev, leiras_hu, gallery_tag, szekcio FROM koleves_kepek;";
+        $SQL = "SELECT id, fajlnev, leiras_hu, gallery_tag, szekcio FROM koleves_kepek ORDER BY id DESC;";
         $elements = $this->fetchItems($SQL);
         
         $this->view->getImages($elements);

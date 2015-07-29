@@ -167,13 +167,14 @@ class Apartman extends BaseObject{
     		*/
     		if ($_POST['id'] == "0"){
     
-    			$SQL = "INSERT INTO koleves_szoba_reviewek SET szoba_id = ?, nev = ?, leiras = ?, cim = ?, rating = ?, sorrend = ?, visible = ?;";
+    			$SQL = "INSERT INTO koleves_szoba_reviewek SET szoba_id = ?, nev = ?, leiras = ?, cim = ?, kep = ?, rating = ?, sorrend = ?, visible = ?;";
     
     			$queryParams = array(
     				$_POST['szoba_id'],
     				$_POST['nev'],
     				$leirasText,
     				$_POST['cim'],
+    				'assets/img/tmb-2.png',
     				$_POST['rating'],
     				$_POST['sorrend'],
     				$_POST['allapot']

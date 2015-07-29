@@ -161,11 +161,21 @@ class ApartmanView extends BaseView{
     
     
     public function drawReview($reviewData){
+    	/*
+    	 * For consideration: eredetileg nem szerinti emberke picto-k lettek volna, de ez el lett vetve,
+    	 * 		most kivettem a feltoltott kepeket lehetove tevo html markup-ot, es meghagytam a default
+    	 * 		narancs fiusat, de azert itt hagyom a kodot for historical reasons (es nem baj, hogy a git
+    	 * 		is megtartja a revision-ek keresztul, evvan, mwuuhaa)
+    	 * 
+    	 * <div class="review-card-img">
+		 *		<img src="'.$reviewData['kep'].'" alt="'.$reviewData['kep'].'">
+		 *	</div>
+    	 * */
+    	
     	echo '		
 			<div class="review-card clearfix" >
 				<div class="three columns">
-					<div class="review-card-img">
-						<img src="'.$reviewData['kep'].'" alt="'.$reviewData['kep'].'">
+					<div class="review-img">
 					</div>
 					<h2>'.$reviewData['nev'].'</h2>
 				</div>
